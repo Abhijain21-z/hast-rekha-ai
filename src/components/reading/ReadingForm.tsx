@@ -97,7 +97,17 @@ export default function ReadingForm({ loggedIn }: Props) {
     if (!fullName.trim()) errs.fullName = t.form.errName;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) errs.birthDate = t.form.errDate;
     const latN = Number(lat), lngN = Number(lng), tzN = Number(tz);
-    if (!placeQuery.trim() || Number.isNaN(latN) || Number.isNaN(lngN) || lat === "" || lng === "") errs.place = t.form.errPlace;
+    // Free-text places are accepted: if no lat/lng are known, fall back to Delhi (28.61, 77.21, IST).
+    // Users who need exact coordinates can open "manual coords" and set them.
+    const place = placeQuery.trim();
+    const hasCoords = lat !== "" && lng !== "" && !Number.isNaN(latN) && !Number.isNaN(lngN);
+    if (!place) {
+      errs.place = t.form.errPlace;
+    } else if (!hasCoords) {
+      setLat("28.6139");
+      setLng("77.209");
+      setTz(tz || "5.5");
+    }
     setErrors(errs);
     if (Object.keys(errs).length) return;
 

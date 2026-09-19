@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useLang } from "@/components/providers/LanguageProvider";
 
 /**
@@ -74,8 +75,20 @@ function SaturnGlobe({ size }: { size: number }) {
   );
 }
 
+const CENTER_IMAGES = [
+  { src: "/images/ganesh.png", label: (t: ReturnType<typeof useLang>["t"]) => t.navagraha.ganesh },
+  { src: "/images/hand.png", label: (t: ReturnType<typeof useLang>["t"]) => t.navagraha.hand },
+  { src: "/images/surya.jpg", label: (t: ReturnType<typeof useLang>["t"]) => t.navagraha.surya },
+];
+
 export default function Navagraha() {
   const { t } = useLang();
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setIdx((i) => (i + 1) % CENTER_IMAGES.length), 2000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[560px] select-none">
@@ -119,47 +132,36 @@ export default function Navagraha() {
       {/* central mandala */}
       <div className="absolute inset-[23%]">
         <div className="absolute -inset-[3px] rounded-full bg-[conic-gradient(from_0deg,#f5c242,#7c3aed,#f5c242,#a855f7,#f5c242)] opacity-80" style={{ animation: "halo-spin 24s linear infinite" }} />
-        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_40%,#2a1560_0%,#0b0618_70%)] shadow-[0_0_80px_-10px_rgba(168,85,247,0.7)]" />
-        <div className="mandala-bg absolute inset-0 rounded-full opacity-70" />
+        {/* sun-like radiant interior: warm golden core glowing outward */}
+        <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_45%,#fff3c4_0%,#ffd76a_18%,#f5a623_38%,#b8641a_58%,#3a1c08_82%,#1a0d04_100%)] shadow-[0_0_90px_-8px_rgba(255,170,0,0.85)]" />
+        <div className="pointer-events-none absolute inset-0 rounded-full opacity-60" style={{ animation: "sun-breathe 6s ease-in-out infinite", background: "radial-gradient(circle at 50% 42%, rgba(255,240,180,0.85) 0%, rgba(255,200,80,0.35) 40%, transparent 70%)" }} />
+        <div className="mandala-bg absolute inset-0 rounded-full opacity-40" />
         <span className="absolute left-1/2 top-[3%] -translate-x-1/2 font-display text-lg text-gold-300 drop-shadow-[0_0_10px_rgba(245,194,66,0.8)]">ॐ</span>
 
-        <div className="absolute inset-0 flex items-center justify-center gap-[2%] px-[4%]">
-          {/* Ganesh ji */}
-          <motion.div
-            className="relative w-[31%]"
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="absolute -inset-[8%] rounded-full bg-[conic-gradient(from_90deg,transparent,rgba(245,194,66,.55),transparent)]" style={{ animation: "halo-spin 10s linear infinite" }} />
-            <div className="relative aspect-square overflow-hidden rounded-full">
-              <Image src="/images/ganesh.png" alt={t.navagraha.ganesh} fill sizes="180px" className="mask-fade object-cover" priority />
-            </div>
-            <p className="mt-1 text-center text-[10px] text-gold-200/90">{t.navagraha.ganesh}</p>
-          </motion.div>
-
-          {/* Glowing palm */}
-          <div className="relative w-[38%]">
+        <div className="absolute inset-0 flex items-center justify-center px-[4%]">
+          {/* single rotating image: one at a time, 2s each, zoom-out on change */}
+          <div className="relative w-[46%]">
             {[0, 1].map((i) => (
               <span key={i} className="pointer-events-none absolute inset-[6%] rounded-full border border-gold-400/50" style={{ animation: `ring-pulse 3.2s ease-out ${i * 1.6}s infinite` }} />
             ))}
             <div className="relative aspect-square" style={{ animation: "hand-float 6s ease-in-out infinite" }}>
-              <Image src="/images/hand.png" alt={t.navagraha.hand} fill sizes="220px" className="blend-screen object-contain drop-shadow-[0_0_24px_rgba(245,194,66,0.7)]" priority />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={idx}
+                  className="absolute inset-0"
+                  initial={{ opacity: 0, scale: 1.25 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                >
+                  <div className="relative aspect-square overflow-hidden rounded-full">
+                    <Image src={CENTER_IMAGES[idx].src} alt={CENTER_IMAGES[idx].label(t)} fill sizes="260px" className="mask-fade object-cover" priority />
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
-            <p className="-mt-1 text-center text-[10px] text-gold-200/90">{t.navagraha.hand}</p>
+            <p className="-mt-1 text-center text-[10px] text-gold-200/90">{CENTER_IMAGES[idx].label(t)}</p>
           </div>
-
-          {/* Surya Dev */}
-          <motion.div
-            className="relative w-[31%]"
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
-          >
-            <div className="absolute -inset-[8%] rounded-full bg-[conic-gradient(from_270deg,transparent,rgba(255,170,0,.6),transparent)]" style={{ animation: "halo-spin 10s linear infinite reverse" }} />
-            <div className="relative aspect-square overflow-hidden rounded-full">
-              <Image src="/images/surya.jpg" alt={t.navagraha.surya} fill sizes="180px" className="mask-fade object-cover" priority />
-            </div>
-            <p className="mt-1 text-center text-[10px] text-gold-200/90">{t.navagraha.surya}</p>
-          </motion.div>
         </div>
       </div>
 

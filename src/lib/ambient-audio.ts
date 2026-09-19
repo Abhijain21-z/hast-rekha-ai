@@ -1,13 +1,13 @@
 /**
- * Ambient spiritual soundscape: loops the user's own "om sound" recording
- * through the Web Audio API with a soft fade-in/out and gentle low-pass
- * warmth so it sits quietly behind the site.
+ * Ambient spiritual soundscape: a gentle low-volume synth drone (om-like
+ * tanpura warmth) built from Web Audio oscillators — no external file,
+ * calm by design.
  */
 export class AmbientEngine {
   private ctx: AudioContext | null = null;
   private master: GainNode | null = null;
-  private el: HTMLAudioElement | null = null;
-  private src: MediaElementAudioSourceNode | null = null;
+  private oscs: OscillatorNode[] = [];
+  private lfo: OscillatorNode | null = null;
   running = false;
 
   get supported() {
@@ -27,46 +27,63 @@ export class AmbientEngine {
     }
     if (this.ctx.state !== "running") return false;
 
-    if (!this.el) {
-      this.el = new Audio("/audio/om.mp3");
-      this.el.loop = true;
-      this.el.preload = "auto";
-      this.el.crossOrigin = "anonymous";
-    }
-    if (!this.src) {
-      this.src = this.ctx.createMediaElementSource(this.el);
-      const warm = this.ctx.createBiquadFilter();
-      warm.type = "lowpass";
-      warm.frequency.value = 4200;
-      this.master = this.ctx.createGain();
+    if (!this.master) {
+      const ctx = this.ctx;
+      this.master = ctx.createGain();
       this.master.gain.value = 0;
-      this.src.connect(warm);
-      warm.connect(this.master);
-      this.master.connect(this.ctx.destination);
+
+      // warm lowpass so nothing harsh escapes
+      const warm = ctx.createBiquadFilter();
+      warm.type = "lowpass";
+      warm.frequency.value = 1400;
+      warm.Q.value = 0.4;
+      this.master.connect(warm);
+      warm.connect(ctx.destination);
+
+      // om-like drone: 136.1 Hz (om tuning) + octave + fifth, gently detuned
+      const freqs: [number, OscillatorType, number][] = [
+        [136.1, "sine", 0.5],
+        [136.5, "sine", 0.35],
+        [272.2, "sine", 0.22],
+        [204.15, "triangle", 0.12],
+        [68.05, "sine", 0.4],
+      ];
+      this.oscs = freqs.map(([f, type, g]) => {
+        const o = ctx.createOscillator();
+        o.type = type;
+        o.frequency.value = f;
+        const gain = ctx.createGain();
+        gain.gain.value = g;
+        o.connect(gain);
+        gain.connect(this.master!);
+        o.start();
+        return o;
+      });
+
+      // slow breathing LFO on the drone volume
+      this.lfo = ctx.createOscillator();
+      this.lfo.frequency.value = 0.08; // ~12s cycle
+      const lfoGain = ctx.createGain();
+      lfoGain.gain.value = 0.06;
+      this.lfo.connect(lfoGain);
+      lfoGain.connect(this.master.gain);
+      this.lfo.start();
     }
 
-    try {
-      await this.el.play();
-    } catch {
-      return false;
-    }
     const t = this.ctx.currentTime;
-    this.master!.gain.cancelScheduledValues(t);
-    this.master!.gain.setValueAtTime(this.master!.gain.value, t);
-    this.master!.gain.linearRampToValueAtTime(0.35, t + 2);
+    this.master.gain.cancelScheduledValues(t);
+    this.master.gain.setValueAtTime(this.master.gain.value, t);
+    this.master.gain.linearRampToValueAtTime(0.12, t + 2.5);
     this.running = true;
     return true;
   }
 
   async stop() {
-    if (!this.ctx || !this.master || !this.el) return;
+    if (!this.ctx || !this.master) return;
     const t = this.ctx.currentTime;
     this.master.gain.cancelScheduledValues(t);
     this.master.gain.setValueAtTime(this.master.gain.value, t);
     this.master.gain.linearRampToValueAtTime(0, t + 1.2);
-    window.setTimeout(() => {
-      this.el?.pause();
-    }, 1300);
     this.running = false;
   }
 }

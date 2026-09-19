@@ -1,135 +1,3103 @@
 [
-  ["New Delhi", "Delhi, India", 28.6139, 77.209, 5.5],
-  ["Mumbai", "Maharashtra, India", 19.076, 72.8777, 5.5],
-  ["Kolkata", "West Bengal, India", 22.5726, 88.3639, 5.5],
-  ["Chennai", "Tamil Nadu, India", 13.0827, 80.2707, 5.5],
-  ["Bengaluru", "Karnataka, India", 12.9716, 77.5946, 5.5],
-  ["Hyderabad", "Telangana, India", 17.385, 78.4867, 5.5],
-  ["Ahmedabad", "Gujarat, India", 23.0225, 72.5714, 5.5],
-  ["Pune", "Maharashtra, India", 18.5204, 73.8567, 5.5],
-  ["Jaipur", "Rajasthan, India", 26.9124, 75.7873, 5.5],
-  ["Lucknow", "Uttar Pradesh, India", 26.8467, 80.9462, 5.5],
-  ["Kanpur", "Uttar Pradesh, India", 26.4499, 80.3319, 5.5],
-  ["Nagpur", "Maharashtra, India", 21.1458, 79.0882, 5.5],
-  ["Indore", "Madhya Pradesh, India", 22.7196, 75.8577, 5.5],
-  ["Bhopal", "Madhya Pradesh, India", 23.2599, 77.4126, 5.5],
-  ["Patna", "Bihar, India", 25.5941, 85.1376, 5.5],
-  ["Vadodara", "Gujarat, India", 22.3072, 73.1812, 5.5],
-  ["Surat", "Gujarat, India", 21.1702, 72.8311, 5.5],
-  ["Ludhiana", "Punjab, India", 30.901, 75.8573, 5.5],
-  ["Agra", "Uttar Pradesh, India", 27.1767, 78.0081, 5.5],
-  ["Varanasi", "Uttar Pradesh, India", 25.3176, 82.9739, 5.5],
-  ["Nashik", "Maharashtra, India", 19.9975, 73.7898, 5.5],
-  ["Meerut", "Uttar Pradesh, India", 28.9845, 77.7064, 5.5],
-  ["Rajkot", "Gujarat, India", 22.3039, 70.8022, 5.5],
-  ["Amritsar", "Punjab, India", 31.634, 74.8723, 5.5],
-  ["Chandigarh", "Chandigarh, India", 30.7333, 76.7794, 5.5],
-  ["Guwahati", "Assam, India", 26.1445, 91.7362, 5.5],
-  ["Dehradun", "Uttarakhand, India", 30.3165, 78.0322, 5.5],
-  ["Shimla", "Himachal Pradesh, India", 31.1048, 77.1734, 5.5],
-  ["Ranchi", "Jharkhand, India", 23.3441, 85.3096, 5.5],
-  ["Raipur", "Chhattisgarh, India", 21.2514, 81.6296, 5.5],
-  ["Bhubaneswar", "Odisha, India", 20.2961, 85.8245, 5.5],
-  ["Coimbatore", "Tamil Nadu, India", 11.0168, 76.9558, 5.5],
-  ["Madurai", "Tamil Nadu, India", 9.9252, 78.1198, 5.5],
-  ["Kochi", "Kerala, India", 9.9312, 76.2673, 5.5],
-  ["Thiruvananthapuram", "Kerala, India", 8.5241, 76.9366, 5.5],
-  ["Visakhapatnam", "Andhra Pradesh, India", 17.6868, 83.2185, 5.5],
-  ["Vijayawada", "Andhra Pradesh, India", 16.5062, 80.648, 5.5],
-  ["Mysuru", "Karnataka, India", 12.2958, 76.6394, 5.5],
-  ["Mangaluru", "Karnataka, India", 12.9141, 74.856, 5.5],
-  ["Jodhpur", "Rajasthan, India", 26.2389, 73.0243, 5.5],
-  ["Udaipur", "Rajasthan, India", 24.5854, 73.7125, 5.5],
-  ["Kota", "Rajasthan, India", 25.2138, 75.8648, 5.5],
-  ["Ajmer", "Rajasthan, India", 26.4499, 74.6399, 5.5],
-  ["Bikaner", "Rajasthan, India", 28.0229, 73.3119, 5.5],
-  ["Gwalior", "Madhya Pradesh, India", 26.2183, 78.1828, 5.5],
-  ["Jabalpur", "Madhya Pradesh, India", 23.1815, 79.9864, 5.5],
-  ["Ujjain", "Madhya Pradesh, India", 23.1765, 75.7885, 5.5],
-  ["Prayagraj", "Uttar Pradesh, India", 25.4358, 81.8463, 5.5],
-  ["Gorakhpur", "Uttar Pradesh, India", 26.7606, 83.3732, 5.5],
-  ["Bareilly", "Uttar Pradesh, India", 28.367, 79.4304, 5.5],
-  ["Aligarh", "Uttar Pradesh, India", 27.8974, 78.088, 5.5],
-  ["Mathura", "Uttar Pradesh, India", 27.4924, 77.6737, 5.5],
-  ["Ayodhya", "Uttar Pradesh, India", 26.7922, 82.1998, 5.5],
-  ["Moradabad", "Uttar Pradesh, India", 28.8386, 78.7733, 5.5],
-  ["Jhansi", "Uttar Pradesh, India", 25.4484, 78.5685, 5.5],
-  ["Noida", "Uttar Pradesh, India", 28.5355, 77.391, 5.5],
-  ["Ghaziabad", "Uttar Pradesh, India", 28.6692, 77.4538, 5.5],
-  ["Gurugram", "Haryana, India", 28.4595, 77.0266, 5.5],
-  ["Faridabad", "Haryana, India", 28.4089, 77.3178, 5.5],
-  ["Jammu", "Jammu & Kashmir, India", 32.7266, 74.857, 5.5],
-  ["Srinagar", "Jammu & Kashmir, India", 34.0837, 74.7973, 5.5],
-  ["Leh", "Ladakh, India", 34.1526, 77.5771, 5.5],
-  ["Haridwar", "Uttarakhand, India", 29.9457, 78.1642, 5.5],
-  ["Rishikesh", "Uttarakhand, India", 30.0869, 78.2676, 5.5],
-  ["Dharamshala", "Himachal Pradesh, India", 32.219, 76.3234, 5.5],
-  ["Jalandhar", "Punjab, India", 31.326, 75.5762, 5.5],
-  ["Patiala", "Punjab, India", 30.3398, 76.3869, 5.5],
-  ["Gaya", "Bihar, India", 24.7955, 85.0002, 5.5],
-  ["Muzaffarpur", "Bihar, India", 26.1209, 85.3647, 5.5],
-  ["Dhanbad", "Jharkhand, India", 23.7957, 86.4304, 5.5],
-  ["Jamshedpur", "Jharkhand, India", 22.8046, 86.2029, 5.5],
-  ["Siliguri", "West Bengal, India", 26.7271, 88.3953, 5.5],
-  ["Howrah", "West Bengal, India", 22.5958, 88.2636, 5.5],
-  ["Durgapur", "West Bengal, India", 23.5204, 87.3119, 5.5],
-  ["Cuttack", "Odisha, India", 20.4625, 85.883, 5.5],
-  ["Puri", "Odisha, India", 19.8135, 85.8312, 5.5],
-  ["Rourkela", "Odisha, India", 22.2604, 84.8536, 5.5],
-  ["Bilaspur", "Chhattisgarh, India", 22.0797, 82.1409, 5.5],
-  ["Imphal", "Manipur, India", 24.817, 93.9368, 5.5],
-  ["Shillong", "Meghalaya, India", 25.5788, 91.8933, 5.5],
-  ["Agartala", "Tripura, India", 23.8315, 91.2868, 5.5],
-  ["Aizawl", "Mizoram, India", 23.7271, 92.7176, 5.5],
-  ["Kohima", "Nagaland, India", 25.6751, 94.1086, 5.5],
-  ["Itanagar", "Arunachal Pradesh, India", 27.0844, 93.6053, 5.5],
-  ["Gangtok", "Sikkim, India", 27.3389, 88.6065, 5.5],
-  ["Panaji", "Goa, India", 15.4909, 73.8278, 5.5],
-  ["Puducherry", "Puducherry, India", 11.9416, 79.8083, 5.5],
-  ["Tiruchirappalli", "Tamil Nadu, India", 10.7905, 78.7047, 5.5],
-  ["Salem", "Tamil Nadu, India", 11.6643, 78.146, 5.5],
-  ["Tirunelveli", "Tamil Nadu, India", 8.7139, 77.7567, 5.5],
-  ["Vellore", "Tamil Nadu, India", 12.9165, 79.1325, 5.5],
-  ["Warangal", "Telangana, India", 17.9689, 79.5941, 5.5],
-  ["Guntur", "Andhra Pradesh, India", 16.3067, 80.4365, 5.5],
-  ["Tirupati", "Andhra Pradesh, India", 13.6288, 79.4192, 5.5],
-  ["Nellore", "Andhra Pradesh, India", 14.4426, 79.9865, 5.5],
-  ["Kurnool", "Andhra Pradesh, India", 15.8281, 78.0373, 5.5],
-  ["Rajahmundry", "Andhra Pradesh, India", 17.0005, 81.804, 5.5],
-  ["Hubballi", "Karnataka, India", 15.3647, 75.124, 5.5],
-  ["Belagavi", "Karnataka, India", 15.8497, 74.4977, 5.5],
-  ["Solapur", "Maharashtra, India", 17.6599, 75.9064, 5.5],
-  ["Kolhapur", "Maharashtra, India", 16.705, 74.2433, 5.5],
-  ["Aurangabad", "Maharashtra, India", 19.8762, 75.3433, 5.5],
-  ["Thane", "Maharashtra, India", 19.2183, 72.9781, 5.5],
-  ["Navi Mumbai", "Maharashtra, India", 19.033, 73.0297, 5.5],
-  ["Amravati", "Maharashtra, India", 20.9374, 77.7796, 5.5],
-  ["Kozhikode", "Kerala, India", 11.2588, 75.7804, 5.5],
-  ["Thrissur", "Kerala, India", 10.5276, 76.2144, 5.5],
-  ["Kollam", "Kerala, India", 8.8932, 76.6141, 5.5],
-  ["Saharanpur", "Uttar Pradesh, India", 29.968, 77.551, 5.5],
-  ["Rohtak", "Haryana, India", 28.8955, 76.6066, 5.5],
-  ["Hisar", "Haryana, India", 29.1492, 75.7217, 5.5],
-  ["Port Blair", "Andaman & Nicobar, India", 11.6234, 92.7265, 5.5],
-  ["Kathmandu", "Nepal", 27.7172, 85.324, 5.75],
-  ["Dhaka", "Bangladesh", 23.8103, 90.4125, 6],
-  ["Colombo", "Sri Lanka", 6.9271, 79.8612, 5.5],
-  ["Karachi", "Pakistan", 24.8607, 67.0011, 5],
-  ["Lahore", "Pakistan", 31.5204, 74.3587, 5],
-  ["Dubai", "UAE", 25.2048, 55.2708, 4],
-  ["Abu Dhabi", "UAE", 24.4539, 54.3773, 4],
-  ["Doha", "Qatar", 25.2854, 51.531, 3],
-  ["Singapore", "Singapore", 1.3521, 103.8198, 8],
-  ["Kuala Lumpur", "Malaysia", 3.139, 101.6869, 8],
-  ["London", "United Kingdom", 51.5074, -0.1278, 0],
-  ["New York", "USA", 40.7128, -74.006, -5],
-  ["San Francisco", "USA", 37.7749, -122.4194, -8],
-  ["Chicago", "USA", 41.8781, -87.6298, -6],
-  ["Toronto", "Canada", 43.6532, -79.3832, -5],
-  ["Vancouver", "Canada", 49.2827, -123.1207, -8],
-  ["Sydney", "Australia", -33.8688, 151.2093, 10],
-  ["Melbourne", "Australia", -37.8136, 144.9631, 10],
-  ["Auckland", "New Zealand", -36.8485, 174.7633, 12],
-  ["Nairobi", "Kenya", -1.2921, 36.8219, 3],
-  ["Johannesburg", "South Africa", -26.2041, 28.0473, 2]
+ [
+  "New Delhi",
+  "Delhi, India",
+  28.6139,
+  77.209,
+  5.5
+ ],
+ [
+  "Mumbai",
+  "Maharashtra, India",
+  19.076,
+  72.8777,
+  5.5
+ ],
+ [
+  "Kolkata",
+  "West Bengal, India",
+  22.5726,
+  88.3639,
+  5.5
+ ],
+ [
+  "Chennai",
+  "Tamil Nadu, India",
+  13.0827,
+  80.2707,
+  5.5
+ ],
+ [
+  "Bengaluru",
+  "Karnataka, India",
+  12.9716,
+  77.5946,
+  5.5
+ ],
+ [
+  "Hyderabad",
+  "Telangana, India",
+  17.385,
+  78.4867,
+  5.5
+ ],
+ [
+  "Ahmedabad",
+  "Gujarat, India",
+  23.0225,
+  72.5714,
+  5.5
+ ],
+ [
+  "Pune",
+  "Maharashtra, India",
+  18.5204,
+  73.8567,
+  5.5
+ ],
+ [
+  "Jaipur",
+  "Rajasthan, India",
+  26.9124,
+  75.7873,
+  5.5
+ ],
+ [
+  "Lucknow",
+  "Uttar Pradesh, India",
+  26.8467,
+  80.9462,
+  5.5
+ ],
+ [
+  "Kanpur",
+  "Uttar Pradesh, India",
+  26.4499,
+  80.3319,
+  5.5
+ ],
+ [
+  "Nagpur",
+  "Maharashtra, India",
+  21.1458,
+  79.0882,
+  5.5
+ ],
+ [
+  "Indore",
+  "Madhya Pradesh, India",
+  22.7196,
+  75.8577,
+  5.5
+ ],
+ [
+  "Bhopal",
+  "Madhya Pradesh, India",
+  23.2599,
+  77.4126,
+  5.5
+ ],
+ [
+  "Patna",
+  "Bihar, India",
+  25.5941,
+  85.1376,
+  5.5
+ ],
+ [
+  "Vadodara",
+  "Gujarat, India",
+  22.3072,
+  73.1812,
+  5.5
+ ],
+ [
+  "Surat",
+  "Gujarat, India",
+  21.1702,
+  72.8311,
+  5.5
+ ],
+ [
+  "Ludhiana",
+  "Punjab, India",
+  30.901,
+  75.8573,
+  5.5
+ ],
+ [
+  "Agra",
+  "Uttar Pradesh, India",
+  27.1767,
+  78.0081,
+  5.5
+ ],
+ [
+  "Varanasi",
+  "Uttar Pradesh, India",
+  25.3176,
+  82.9739,
+  5.5
+ ],
+ [
+  "Nashik",
+  "Maharashtra, India",
+  19.9975,
+  73.7898,
+  5.5
+ ],
+ [
+  "Meerut",
+  "Uttar Pradesh, India",
+  28.9845,
+  77.7064,
+  5.5
+ ],
+ [
+  "Rajkot",
+  "Gujarat, India",
+  22.3039,
+  70.8022,
+  5.5
+ ],
+ [
+  "Amritsar",
+  "Punjab, India",
+  31.634,
+  74.8723,
+  5.5
+ ],
+ [
+  "Chandigarh",
+  "Chandigarh, India",
+  30.7333,
+  76.7794,
+  5.5
+ ],
+ [
+  "Guwahati",
+  "Assam, India",
+  26.1445,
+  91.7362,
+  5.5
+ ],
+ [
+  "Dehradun",
+  "Uttarakhand, India",
+  30.3165,
+  78.0322,
+  5.5
+ ],
+ [
+  "Shimla",
+  "Himachal Pradesh, India",
+  31.1048,
+  77.1734,
+  5.5
+ ],
+ [
+  "Ranchi",
+  "Jharkhand, India",
+  23.3441,
+  85.3096,
+  5.5
+ ],
+ [
+  "Raipur",
+  "Chhattisgarh, India",
+  21.2514,
+  81.6296,
+  5.5
+ ],
+ [
+  "Bhubaneswar",
+  "Odisha, India",
+  20.2961,
+  85.8245,
+  5.5
+ ],
+ [
+  "Coimbatore",
+  "Tamil Nadu, India",
+  11.0168,
+  76.9558,
+  5.5
+ ],
+ [
+  "Madurai",
+  "Tamil Nadu, India",
+  9.9252,
+  78.1198,
+  5.5
+ ],
+ [
+  "Kochi",
+  "Kerala, India",
+  9.9312,
+  76.2673,
+  5.5
+ ],
+ [
+  "Thiruvananthapuram",
+  "Kerala, India",
+  8.5241,
+  76.9366,
+  5.5
+ ],
+ [
+  "Visakhapatnam",
+  "Andhra Pradesh, India",
+  17.6868,
+  83.2185,
+  5.5
+ ],
+ [
+  "Vijayawada",
+  "Andhra Pradesh, India",
+  16.5062,
+  80.648,
+  5.5
+ ],
+ [
+  "Mysuru",
+  "Karnataka, India",
+  12.2958,
+  76.6394,
+  5.5
+ ],
+ [
+  "Mangaluru",
+  "Karnataka, India",
+  12.9141,
+  74.856,
+  5.5
+ ],
+ [
+  "Jodhpur",
+  "Rajasthan, India",
+  26.2389,
+  73.0243,
+  5.5
+ ],
+ [
+  "Udaipur",
+  "Rajasthan, India",
+  24.5854,
+  73.7125,
+  5.5
+ ],
+ [
+  "Kota",
+  "Rajasthan, India",
+  25.2138,
+  75.8648,
+  5.5
+ ],
+ [
+  "Ajmer",
+  "Rajasthan, India",
+  26.4499,
+  74.6399,
+  5.5
+ ],
+ [
+  "Bikaner",
+  "Rajasthan, India",
+  28.0229,
+  73.3119,
+  5.5
+ ],
+ [
+  "Gwalior",
+  "Madhya Pradesh, India",
+  26.2183,
+  78.1828,
+  5.5
+ ],
+ [
+  "Jabalpur",
+  "Madhya Pradesh, India",
+  23.1815,
+  79.9864,
+  5.5
+ ],
+ [
+  "Ujjain",
+  "Madhya Pradesh, India",
+  23.1765,
+  75.7885,
+  5.5
+ ],
+ [
+  "Prayagraj",
+  "Uttar Pradesh, India",
+  25.4358,
+  81.8463,
+  5.5
+ ],
+ [
+  "Gorakhpur",
+  "Uttar Pradesh, India",
+  26.7606,
+  83.3732,
+  5.5
+ ],
+ [
+  "Bareilly",
+  "Uttar Pradesh, India",
+  28.367,
+  79.4304,
+  5.5
+ ],
+ [
+  "Aligarh",
+  "Uttar Pradesh, India",
+  27.8974,
+  78.088,
+  5.5
+ ],
+ [
+  "Mathura",
+  "Uttar Pradesh, India",
+  27.4924,
+  77.6737,
+  5.5
+ ],
+ [
+  "Ayodhya",
+  "Uttar Pradesh, India",
+  26.7922,
+  82.1998,
+  5.5
+ ],
+ [
+  "Moradabad",
+  "Uttar Pradesh, India",
+  28.8386,
+  78.7733,
+  5.5
+ ],
+ [
+  "Jhansi",
+  "Uttar Pradesh, India",
+  25.4484,
+  78.5685,
+  5.5
+ ],
+ [
+  "Noida",
+  "Uttar Pradesh, India",
+  28.5355,
+  77.391,
+  5.5
+ ],
+ [
+  "Ghaziabad",
+  "Uttar Pradesh, India",
+  28.6692,
+  77.4538,
+  5.5
+ ],
+ [
+  "Gurugram",
+  "Haryana, India",
+  28.4595,
+  77.0266,
+  5.5
+ ],
+ [
+  "Faridabad",
+  "Haryana, India",
+  28.4089,
+  77.3178,
+  5.5
+ ],
+ [
+  "Jammu",
+  "Jammu & Kashmir, India",
+  32.7266,
+  74.857,
+  5.5
+ ],
+ [
+  "Srinagar",
+  "Jammu & Kashmir, India",
+  34.0837,
+  74.7973,
+  5.5
+ ],
+ [
+  "Leh",
+  "Ladakh, India",
+  34.1526,
+  77.5771,
+  5.5
+ ],
+ [
+  "Haridwar",
+  "Uttarakhand, India",
+  29.9457,
+  78.1642,
+  5.5
+ ],
+ [
+  "Rishikesh",
+  "Uttarakhand, India",
+  30.0869,
+  78.2676,
+  5.5
+ ],
+ [
+  "Dharamshala",
+  "Himachal Pradesh, India",
+  32.219,
+  76.3234,
+  5.5
+ ],
+ [
+  "Jalandhar",
+  "Punjab, India",
+  31.326,
+  75.5762,
+  5.5
+ ],
+ [
+  "Patiala",
+  "Punjab, India",
+  30.3398,
+  76.3869,
+  5.5
+ ],
+ [
+  "Gaya",
+  "Bihar, India",
+  24.7955,
+  85.0002,
+  5.5
+ ],
+ [
+  "Muzaffarpur",
+  "Bihar, India",
+  26.1209,
+  85.3647,
+  5.5
+ ],
+ [
+  "Dhanbad",
+  "Jharkhand, India",
+  23.7957,
+  86.4304,
+  5.5
+ ],
+ [
+  "Jamshedpur",
+  "Jharkhand, India",
+  22.8046,
+  86.2029,
+  5.5
+ ],
+ [
+  "Siliguri",
+  "West Bengal, India",
+  26.7271,
+  88.3953,
+  5.5
+ ],
+ [
+  "Howrah",
+  "West Bengal, India",
+  22.5958,
+  88.2636,
+  5.5
+ ],
+ [
+  "Durgapur",
+  "West Bengal, India",
+  23.5204,
+  87.3119,
+  5.5
+ ],
+ [
+  "Cuttack",
+  "Odisha, India",
+  20.4625,
+  85.883,
+  5.5
+ ],
+ [
+  "Puri",
+  "Odisha, India",
+  19.8135,
+  85.8312,
+  5.5
+ ],
+ [
+  "Rourkela",
+  "Odisha, India",
+  22.2604,
+  84.8536,
+  5.5
+ ],
+ [
+  "Bilaspur",
+  "Chhattisgarh, India",
+  22.0797,
+  82.1409,
+  5.5
+ ],
+ [
+  "Imphal",
+  "Manipur, India",
+  24.817,
+  93.9368,
+  5.5
+ ],
+ [
+  "Shillong",
+  "Meghalaya, India",
+  25.5788,
+  91.8933,
+  5.5
+ ],
+ [
+  "Agartala",
+  "Tripura, India",
+  23.8315,
+  91.2868,
+  5.5
+ ],
+ [
+  "Aizawl",
+  "Mizoram, India",
+  23.7271,
+  92.7176,
+  5.5
+ ],
+ [
+  "Kohima",
+  "Nagaland, India",
+  25.6751,
+  94.1086,
+  5.5
+ ],
+ [
+  "Itanagar",
+  "Arunachal Pradesh, India",
+  27.0844,
+  93.6053,
+  5.5
+ ],
+ [
+  "Gangtok",
+  "Sikkim, India",
+  27.3389,
+  88.6065,
+  5.5
+ ],
+ [
+  "Panaji",
+  "Goa, India",
+  15.4909,
+  73.8278,
+  5.5
+ ],
+ [
+  "Puducherry",
+  "Puducherry, India",
+  11.9416,
+  79.8083,
+  5.5
+ ],
+ [
+  "Tiruchirappalli",
+  "Tamil Nadu, India",
+  10.7905,
+  78.7047,
+  5.5
+ ],
+ [
+  "Salem",
+  "Tamil Nadu, India",
+  11.6643,
+  78.146,
+  5.5
+ ],
+ [
+  "Tirunelveli",
+  "Tamil Nadu, India",
+  8.7139,
+  77.7567,
+  5.5
+ ],
+ [
+  "Vellore",
+  "Tamil Nadu, India",
+  12.9165,
+  79.1325,
+  5.5
+ ],
+ [
+  "Warangal",
+  "Telangana, India",
+  17.9689,
+  79.5941,
+  5.5
+ ],
+ [
+  "Guntur",
+  "Andhra Pradesh, India",
+  16.3067,
+  80.4365,
+  5.5
+ ],
+ [
+  "Tirupati",
+  "Andhra Pradesh, India",
+  13.6288,
+  79.4192,
+  5.5
+ ],
+ [
+  "Nellore",
+  "Andhra Pradesh, India",
+  14.4426,
+  79.9865,
+  5.5
+ ],
+ [
+  "Kurnool",
+  "Andhra Pradesh, India",
+  15.8281,
+  78.0373,
+  5.5
+ ],
+ [
+  "Rajahmundry",
+  "Andhra Pradesh, India",
+  17.0005,
+  81.804,
+  5.5
+ ],
+ [
+  "Hubballi",
+  "Karnataka, India",
+  15.3647,
+  75.124,
+  5.5
+ ],
+ [
+  "Belagavi",
+  "Karnataka, India",
+  15.8497,
+  74.4977,
+  5.5
+ ],
+ [
+  "Solapur",
+  "Maharashtra, India",
+  17.6599,
+  75.9064,
+  5.5
+ ],
+ [
+  "Kolhapur",
+  "Maharashtra, India",
+  16.705,
+  74.2433,
+  5.5
+ ],
+ [
+  "Aurangabad",
+  "Maharashtra, India",
+  19.8762,
+  75.3433,
+  5.5
+ ],
+ [
+  "Thane",
+  "Maharashtra, India",
+  19.2183,
+  72.9781,
+  5.5
+ ],
+ [
+  "Navi Mumbai",
+  "Maharashtra, India",
+  19.033,
+  73.0297,
+  5.5
+ ],
+ [
+  "Amravati",
+  "Maharashtra, India",
+  20.9374,
+  77.7796,
+  5.5
+ ],
+ [
+  "Kozhikode",
+  "Kerala, India",
+  11.2588,
+  75.7804,
+  5.5
+ ],
+ [
+  "Thrissur",
+  "Kerala, India",
+  10.5276,
+  76.2144,
+  5.5
+ ],
+ [
+  "Kollam",
+  "Kerala, India",
+  8.8932,
+  76.6141,
+  5.5
+ ],
+ [
+  "Saharanpur",
+  "Uttar Pradesh, India",
+  29.968,
+  77.551,
+  5.5
+ ],
+ [
+  "Rohtak",
+  "Haryana, India",
+  28.8955,
+  76.6066,
+  5.5
+ ],
+ [
+  "Hisar",
+  "Haryana, India",
+  29.1492,
+  75.7217,
+  5.5
+ ],
+ [
+  "Port Blair",
+  "Andaman & Nicobar, India",
+  11.6234,
+  92.7265,
+  5.5
+ ],
+ [
+  "Kathmandu",
+  "Nepal",
+  27.7172,
+  85.324,
+  5.75
+ ],
+ [
+  "Dhaka",
+  "Bangladesh",
+  23.8103,
+  90.4125,
+  6
+ ],
+ [
+  "Colombo",
+  "Sri Lanka",
+  6.9271,
+  79.8612,
+  5.5
+ ],
+ [
+  "Karachi",
+  "Pakistan",
+  24.8607,
+  67.0011,
+  5
+ ],
+ [
+  "Lahore",
+  "Pakistan",
+  31.5204,
+  74.3587,
+  5
+ ],
+ [
+  "Dubai",
+  "UAE",
+  25.2048,
+  55.2708,
+  4
+ ],
+ [
+  "Abu Dhabi",
+  "UAE",
+  24.4539,
+  54.3773,
+  4
+ ],
+ [
+  "Doha",
+  "Qatar",
+  25.2854,
+  51.531,
+  3
+ ],
+ [
+  "Singapore",
+  "Singapore",
+  1.3521,
+  103.8198,
+  8
+ ],
+ [
+  "Kuala Lumpur",
+  "Malaysia",
+  3.139,
+  101.6869,
+  8
+ ],
+ [
+  "London",
+  "United Kingdom",
+  51.5074,
+  -0.1278,
+  0
+ ],
+ [
+  "New York",
+  "USA",
+  40.7128,
+  -74.006,
+  -5
+ ],
+ [
+  "San Francisco",
+  "USA",
+  37.7749,
+  -122.4194,
+  -8
+ ],
+ [
+  "Chicago",
+  "USA",
+  41.8781,
+  -87.6298,
+  -6
+ ],
+ [
+  "Toronto",
+  "Canada",
+  43.6532,
+  -79.3832,
+  -5
+ ],
+ [
+  "Vancouver",
+  "Canada",
+  49.2827,
+  -123.1207,
+  -8
+ ],
+ [
+  "Sydney",
+  "Australia",
+  -33.8688,
+  151.2093,
+  10
+ ],
+ [
+  "Melbourne",
+  "Australia",
+  -37.8136,
+  144.9631,
+  10
+ ],
+ [
+  "Auckland",
+  "New Zealand",
+  -36.8485,
+  174.7633,
+  12
+ ],
+ [
+  "Nairobi",
+  "Kenya",
+  -1.2921,
+  36.8219,
+  3
+ ],
+ [
+  "Johannesburg",
+  "South Africa",
+  -26.2041,
+  28.0473,
+  2
+ ],
+ [
+  "Firozabad",
+  "Uttar Pradesh, India",
+  27.1592,
+  78.3958,
+  5.5
+ ],
+ [
+  "Vrindavan",
+  "Uttar Pradesh, India",
+  27.5806,
+  77.6991,
+  5.5
+ ],
+ [
+  "Rampur",
+  "Uttar Pradesh, India",
+  28.8062,
+  79.0257,
+  5.5
+ ],
+ [
+  "Muzaffarnagar",
+  "Uttar Pradesh, India",
+  29.4727,
+  77.7086,
+  5.5
+ ],
+ [
+  "Etawah",
+  "Uttar Pradesh, India",
+  26.7781,
+  79.0213,
+  5.5
+ ],
+ [
+  "Budaun",
+  "Uttar Pradesh, India",
+  28.0407,
+  79.1245,
+  5.5
+ ],
+ [
+  "Sitapur",
+  "Uttar Pradesh, India",
+  27.5667,
+  80.6833,
+  5.5
+ ],
+ [
+  "Hardoi",
+  "Uttar Pradesh, India",
+  27.4187,
+  80.1196,
+  5.5
+ ],
+ [
+  "Azamgarh",
+  "Uttar Pradesh, India",
+  26.0689,
+  83.1824,
+  5.5
+ ],
+ [
+  "Ballia",
+  "Uttar Pradesh, India",
+  25.7597,
+  84.1496,
+  5.5
+ ],
+ [
+  "Mirzapur",
+  "Uttar Pradesh, India",
+  25.1466,
+  82.5693,
+  5.5
+ ],
+ [
+  "Sultanpur",
+  "Uttar Pradesh, India",
+  26.2605,
+  82.0735,
+  5.5
+ ],
+ [
+  "Faizabad",
+  "Uttar Pradesh, India",
+  26.7749,
+  82.1524,
+  5.5
+ ],
+ [
+  "Hapur",
+  "Uttar Pradesh, India",
+  28.7304,
+  77.7815,
+  5.5
+ ],
+ [
+  "Bulandshahr",
+  "Uttar Pradesh, India",
+  28.4089,
+  77.8543,
+  5.5
+ ],
+ [
+  "Amroha",
+  "Uttar Pradesh, India",
+  28.9037,
+  78.4678,
+  5.5
+ ],
+ [
+  "Fatehpur",
+  "Uttar Pradesh, India",
+  25.9304,
+  80.7993,
+  5.5
+ ],
+ [
+  "Unnao",
+  "Uttar Pradesh, India",
+  26.5469,
+  80.4889,
+  5.5
+ ],
+ [
+  "Lakhimpur",
+  "Uttar Pradesh, India",
+  27.9516,
+  80.7826,
+  5.5
+ ],
+ [
+  "Banda",
+  "Uttar Pradesh, India",
+  25.4753,
+  80.3345,
+  5.5
+ ],
+ [
+  "Orai",
+  "Uttar Pradesh, India",
+  25.9904,
+  79.4492,
+  5.5
+ ],
+ [
+  "Bhagalpur",
+  "Bihar, India",
+  25.2425,
+  86.9842,
+  5.5
+ ],
+ [
+  "Darbhanga",
+  "Bihar, India",
+  26.1542,
+  85.8918,
+  5.5
+ ],
+ [
+  "Purnia",
+  "Bihar, India",
+  25.7789,
+  87.4753,
+  5.5
+ ],
+ [
+  "Arrah",
+  "Bihar, India",
+  25.5542,
+  84.6622,
+  5.5
+ ],
+ [
+  "Begusarai",
+  "Bihar, India",
+  25.4185,
+  86.1247,
+  5.5
+ ],
+ [
+  "Katihar",
+  "Bihar, India",
+  25.5389,
+  87.5806,
+  5.5
+ ],
+ [
+  "Munger",
+  "Bihar, India",
+  25.3748,
+  86.4789,
+  5.5
+ ],
+ [
+  "Chhapra",
+  "Bihar, India",
+  25.7803,
+  84.7543,
+  5.5
+ ],
+ [
+  "Danapur",
+  "Bihar, India",
+  25.6271,
+  85.0481,
+  5.5
+ ],
+ [
+  "Saharsa",
+  "Bihar, India",
+  25.8837,
+  86.5988,
+  5.5
+ ],
+ [
+  "Sasaram",
+  "Bihar, India",
+  24.9512,
+  84.0326,
+  5.5
+ ],
+ [
+  "Hajipur",
+  "Bihar, India",
+  25.6906,
+  85.2088,
+  5.5
+ ],
+ [
+  "Dehri",
+  "Bihar, India",
+  24.9046,
+  84.1837,
+  5.5
+ ],
+ [
+  "Siwan",
+  "Bihar, India",
+  26.2213,
+  84.3606,
+  5.5
+ ],
+ [
+  "Motihari",
+  "Bihar, India",
+  26.6515,
+  84.9215,
+  5.5
+ ],
+ [
+  "Nawada",
+  "Bihar, India",
+  24.8867,
+  85.5418,
+  5.5
+ ],
+ [
+  "Bagaha",
+  "Bihar, India",
+  27.0991,
+  84.0906,
+  5.5
+ ],
+ [
+  "Buxar",
+  "Bihar, India",
+  25.5643,
+  83.9775,
+  5.5
+ ],
+ [
+  "Kishanganj",
+  "Bihar, India",
+  26.1029,
+  87.9541,
+  5.5
+ ],
+ [
+  "Sitamarhi",
+  "Bihar, India",
+  26.5915,
+  85.4903,
+  5.5
+ ],
+ [
+  "Jamui",
+  "Bihar, India",
+  24.9258,
+  86.2259,
+  5.5
+ ],
+ [
+  "Jehanabad",
+  "Bihar, India",
+  25.2117,
+  84.9879,
+  5.5
+ ],
+ [
+  "Lakhisarai",
+  "Bihar, India",
+  25.1711,
+  86.0928,
+  5.5
+ ],
+ [
+  "Alwar",
+  "Rajasthan, India",
+  27.5529,
+  76.6346,
+  5.5
+ ],
+ [
+  "Bharatpur",
+  "Rajasthan, India",
+  27.2152,
+  77.503,
+  5.5
+ ],
+ [
+  "Sikar",
+  "Rajasthan, India",
+  27.6094,
+  75.1399,
+  5.5
+ ],
+ [
+  "Pali",
+  "Rajasthan, India",
+  25.7714,
+  73.3233,
+  5.5
+ ],
+ [
+  "Sri Ganganagar",
+  "Rajasthan, India",
+  29.9038,
+  73.8772,
+  5.5
+ ],
+ [
+  "Kishangarh",
+  "Rajasthan, India",
+  26.5882,
+  74.8614,
+  5.5
+ ],
+ [
+  "Baran",
+  "Rajasthan, India",
+  25.1027,
+  76.5132,
+  5.5
+ ],
+ [
+  "Dhaulpur",
+  "Rajasthan, India",
+  26.7028,
+  77.8962,
+  5.5
+ ],
+ [
+  "Tonk",
+  "Rajasthan, India",
+  26.1542,
+  75.7939,
+  5.5
+ ],
+ [
+  "Beawar",
+  "Rajasthan, India",
+  26.1012,
+  74.3177,
+  5.5
+ ],
+ [
+  "Hanumangarh",
+  "Rajasthan, India",
+  29.5818,
+  74.3218,
+  5.5
+ ],
+ [
+  "Kalyan",
+  "Maharashtra, India",
+  19.2403,
+  73.1305,
+  5.5
+ ],
+ [
+  "Vasai-Virar",
+  "Maharashtra, India",
+  19.3919,
+  72.8397,
+  5.5
+ ],
+ [
+  "Nanded",
+  "Maharashtra, India",
+  19.1383,
+  77.321,
+  5.5
+ ],
+ [
+  "Sangli",
+  "Maharashtra, India",
+  16.8524,
+  74.5815,
+  5.5
+ ],
+ [
+  "Malegaon",
+  "Maharashtra, India",
+  20.5537,
+  74.5288,
+  5.5
+ ],
+ [
+  "Jalgaon",
+  "Maharashtra, India",
+  21.0077,
+  75.5626,
+  5.5
+ ],
+ [
+  "Akola",
+  "Maharashtra, India",
+  20.7002,
+  77.0082,
+  5.5
+ ],
+ [
+  "Latur",
+  "Maharashtra, India",
+  18.4046,
+  76.5766,
+  5.5
+ ],
+ [
+  "Dhule",
+  "Maharashtra, India",
+  20.9094,
+  74.7742,
+  5.5
+ ],
+ [
+  "Ahmednagar",
+  "Maharashtra, India",
+  19.0948,
+  74.748,
+  5.5
+ ],
+ [
+  "Chandrapur",
+  "Maharashtra, India",
+  19.9712,
+  79.2961,
+  5.5
+ ],
+ [
+  "Parbhani",
+  "Maharashtra, India",
+  19.2684,
+  76.775,
+  5.5
+ ],
+ [
+  "Yavatmal",
+  "Maharashtra, India",
+  20.3888,
+  78.1302,
+  5.5
+ ],
+ [
+  "Osmanabad",
+  "Maharashtra, India",
+  18.1866,
+  76.0386,
+  5.5
+ ],
+ [
+  "Nandurbar",
+  "Maharashtra, India",
+  21.3669,
+  74.2389,
+  5.5
+ ],
+ [
+  "Wardha",
+  "Maharashtra, India",
+  20.7453,
+  78.6022,
+  5.5
+ ],
+ [
+  "Udgir",
+  "Maharashtra, India",
+  18.3917,
+  77.1169,
+  5.5
+ ],
+ [
+  "Hinganghat",
+  "Maharashtra, India",
+  20.5478,
+  78.8398,
+  5.5
+ ],
+ [
+  "Sagar",
+  "Madhya Pradesh, India",
+  23.8315,
+  78.7299,
+  5.5
+ ],
+ [
+  "Dewas",
+  "Madhya Pradesh, India",
+  22.9624,
+  76.0508,
+  5.5
+ ],
+ [
+  "Satna",
+  "Madhya Pradesh, India",
+  24.5745,
+  80.8322,
+  5.5
+ ],
+ [
+  "Ratlam",
+  "Madhya Pradesh, India",
+  23.3315,
+  75.0367,
+  5.5
+ ],
+ [
+  "Rewa",
+  "Madhya Pradesh, India",
+  24.5339,
+  81.2968,
+  5.5
+ ],
+ [
+  "Murwara",
+  "Madhya Pradesh, India",
+  24.0857,
+  80.0803,
+  5.5
+ ],
+ [
+  "Singrauli",
+  "Madhya Pradesh, India",
+  24.1991,
+  81.6666,
+  5.5
+ ],
+ [
+  "Burhanpur",
+  "Madhya Pradesh, India",
+  21.3091,
+  76.2328,
+  5.5
+ ],
+ [
+  "Khandwa",
+  "Madhya Pradesh, India",
+  21.8254,
+  76.3468,
+  5.5
+ ],
+ [
+  "Morena",
+  "Madhya Pradesh, India",
+  26.4972,
+  78.1988,
+  5.5
+ ],
+ [
+  "Bhind",
+  "Madhya Pradesh, India",
+  26.5622,
+  78.7897,
+  5.5
+ ],
+ [
+  "Chhindwara",
+  "Madhya Pradesh, India",
+  22.058,
+  78.9403,
+  5.5
+ ],
+ [
+  "Guna",
+  "Madhya Pradesh, India",
+  24.6545,
+  77.3116,
+  5.5
+ ],
+ [
+  "Shivpuri",
+  "Madhya Pradesh, India",
+  25.4235,
+  77.6603,
+  5.5
+ ],
+ [
+  "Vidisha",
+  "Madhya Pradesh, India",
+  23.5247,
+  77.8098,
+  5.5
+ ],
+ [
+  "Mandsaur",
+  "Madhya Pradesh, India",
+  24.0718,
+  75.0686,
+  5.5
+ ],
+ [
+  "Chhatarpur",
+  "Madhya Pradesh, India",
+  24.9164,
+  79.5874,
+  5.5
+ ],
+ [
+  "Damoh",
+  "Madhya Pradesh, India",
+  23.8334,
+  79.4425,
+  5.5
+ ],
+ [
+  "Khargone",
+  "Madhya Pradesh, India",
+  21.8203,
+  75.6107,
+  5.5
+ ],
+ [
+  "Neemuch",
+  "Madhya Pradesh, India",
+  24.4707,
+  74.8693,
+  5.5
+ ],
+ [
+  "Hoshangabad",
+  "Madhya Pradesh, India",
+  22.7494,
+  77.7185,
+  5.5
+ ],
+ [
+  "Sehore",
+  "Madhya Pradesh, India",
+  23.1971,
+  77.0857,
+  5.5
+ ],
+ [
+  "Bhavnagar",
+  "Gujarat, India",
+  21.7645,
+  72.1519,
+  5.5
+ ],
+ [
+  "Jamnagar",
+  "Gujarat, India",
+  22.4707,
+  70.0577,
+  5.5
+ ],
+ [
+  "Junagadh",
+  "Gujarat, India",
+  21.5222,
+  70.4579,
+  5.5
+ ],
+ [
+  "Gandhinagar",
+  "Gujarat, India",
+  23.2156,
+  72.6369,
+  5.5
+ ],
+ [
+  "Gandhidham",
+  "Gujarat, India",
+  23.0803,
+  70.1338,
+  5.5
+ ],
+ [
+  "Anand",
+  "Gujarat, India",
+  22.5645,
+  72.9289,
+  5.5
+ ],
+ [
+  "Navsari",
+  "Gujarat, India",
+  20.9499,
+  72.9245,
+  5.5
+ ],
+ [
+  "Morbi",
+  "Gujarat, India",
+  22.8174,
+  70.838,
+  5.5
+ ],
+ [
+  "Nadiad",
+  "Gujarat, India",
+  22.6939,
+  72.8615,
+  5.5
+ ],
+ [
+  "Surendranagar",
+  "Gujarat, India",
+  22.7288,
+  71.6483,
+  5.5
+ ],
+ [
+  "Bharuch",
+  "Gujarat, India",
+  21.7053,
+  72.9954,
+  5.5
+ ],
+ [
+  "Mehsana",
+  "Gujarat, India",
+  23.5874,
+  72.3695,
+  5.5
+ ],
+ [
+  "Bhuj",
+  "Gujarat, India",
+  23.2599,
+  69.6669,
+  5.5
+ ],
+ [
+  "Porbandar",
+  "Gujarat, India",
+  21.6417,
+  69.6293,
+  5.5
+ ],
+ [
+  "Palanpur",
+  "Gujarat, India",
+  24.1714,
+  72.4379,
+  5.5
+ ],
+ [
+  "Valsad",
+  "Gujarat, India",
+  20.6085,
+  72.9344,
+  5.5
+ ],
+ [
+  "Vapi",
+  "Gujarat, India",
+  20.3711,
+  72.9045,
+  5.5
+ ],
+ [
+  "Godhra",
+  "Gujarat, India",
+  22.7781,
+  73.6122,
+  5.5
+ ],
+ [
+  "Patan",
+  "Gujarat, India",
+  23.8507,
+  72.1271,
+  5.5
+ ],
+ [
+  "Botad",
+  "Gujarat, India",
+  22.1726,
+  71.6664,
+  5.5
+ ],
+ [
+  "Amreli",
+  "Gujarat, India",
+  21.6038,
+  71.2193,
+  5.5
+ ],
+ [
+  "Asansol",
+  "West Bengal, India",
+  23.6839,
+  86.9661,
+  5.5
+ ],
+ [
+  "Bardhaman",
+  "West Bengal, India",
+  23.2324,
+  87.8615,
+  5.5
+ ],
+ [
+  "Malda",
+  "West Bengal, India",
+  25.0106,
+  88.1411,
+  5.5
+ ],
+ [
+  "Baharampur",
+  "West Bengal, India",
+  24.1048,
+  88.2518,
+  5.5
+ ],
+ [
+  "Habra",
+  "West Bengal, India",
+  22.8284,
+  88.6288,
+  5.5
+ ],
+ [
+  "Kharagpur",
+  "West Bengal, India",
+  22.346,
+  87.2322,
+  5.5
+ ],
+ [
+  "Shantipur",
+  "West Bengal, India",
+  23.2523,
+  88.4329,
+  5.5
+ ],
+ [
+  "Dankuni",
+  "West Bengal, India",
+  22.6797,
+  88.3014,
+  5.5
+ ],
+ [
+  "Dhulian",
+  "West Bengal, India",
+  24.6786,
+  87.9684,
+  5.5
+ ],
+ [
+  "Ranaghat",
+  "West Bengal, India",
+  23.1765,
+  88.5836,
+  5.5
+ ],
+ [
+  "Haldia",
+  "West Bengal, India",
+  22.0651,
+  88.1004,
+  5.5
+ ],
+ [
+  "Raiganj",
+  "West Bengal, India",
+  25.6207,
+  88.1222,
+  5.5
+ ],
+ [
+  "Krishnanagar",
+  "West Bengal, India",
+  23.4012,
+  88.5015,
+  5.5
+ ],
+ [
+  "Nabadwip",
+  "West Bengal, India",
+  23.4077,
+  88.3639,
+  5.5
+ ],
+ [
+  "Medinipur",
+  "West Bengal, India",
+  22.4285,
+  87.3239,
+  5.5
+ ],
+ [
+  "Jalpaiguri",
+  "West Bengal, India",
+  26.5214,
+  88.7196,
+  5.5
+ ],
+ [
+  "Balurghat",
+  "West Bengal, India",
+  25.2211,
+  88.7636,
+  5.5
+ ],
+ [
+  "Basirhat",
+  "West Bengal, India",
+  22.6596,
+  88.863,
+  5.5
+ ],
+ [
+  "Bankura",
+  "West Bengal, India",
+  23.2324,
+  87.0732,
+  5.5
+ ],
+ [
+  "Chakdaha",
+  "West Bengal, India",
+  23.0833,
+  88.5167,
+  5.5
+ ],
+ [
+  "Darjeeling",
+  "West Bengal, India",
+  27.041,
+  88.2663,
+  5.5
+ ],
+ [
+  "Tiruppur",
+  "Tamil Nadu, India",
+  11.1085,
+  77.3411,
+  5.5
+ ],
+ [
+  "Erode",
+  "Tamil Nadu, India",
+  11.341,
+  77.7172,
+  5.5
+ ],
+ [
+  "Thoothukudi",
+  "Tamil Nadu, India",
+  8.7642,
+  78.1348,
+  5.5
+ ],
+ [
+  "Dindigul",
+  "Tamil Nadu, India",
+  10.3673,
+  77.9803,
+  5.5
+ ],
+ [
+  "Thanjavur",
+  "Tamil Nadu, India",
+  10.787,
+  79.1378,
+  5.5
+ ],
+ [
+  "Ranipet",
+  "Tamil Nadu, India",
+  12.9331,
+  79.3294,
+  5.5
+ ],
+ [
+  "Sivakasi",
+  "Tamil Nadu, India",
+  9.4533,
+  77.7929,
+  5.5
+ ],
+ [
+  "Karur",
+  "Tamil Nadu, India",
+  10.9601,
+  78.0766,
+  5.5
+ ],
+ [
+  "Udhagamandalam",
+  "Tamil Nadu, India",
+  11.4102,
+  76.695,
+  5.5
+ ],
+ [
+  "Hosur",
+  "Tamil Nadu, India",
+  12.7409,
+  77.8253,
+  5.5
+ ],
+ [
+  "Nagercoil",
+  "Tamil Nadu, India",
+  8.178,
+  77.4279,
+  5.5
+ ],
+ [
+  "Kanchipuram",
+  "Tamil Nadu, India",
+  12.8342,
+  79.7036,
+  5.5
+ ],
+ [
+  "Kumbakonam",
+  "Tamil Nadu, India",
+  10.9601,
+  79.3845,
+  5.5
+ ],
+ [
+  "Cuddalore",
+  "Tamil Nadu, India",
+  11.748,
+  79.7714,
+  5.5
+ ],
+ [
+  "Tiruvannamalai",
+  "Tamil Nadu, India",
+  12.2253,
+  79.0747,
+  5.5
+ ],
+ [
+  "Pollachi",
+  "Tamil Nadu, India",
+  10.6589,
+  77.0087,
+  5.5
+ ],
+ [
+  "Rajapalayam",
+  "Tamil Nadu, India",
+  9.4533,
+  77.5526,
+  5.5
+ ],
+ [
+  "Pudukkottai",
+  "Tamil Nadu, India",
+  10.3833,
+  78.8001,
+  5.5
+ ],
+ [
+  "Neyveli",
+  "Tamil Nadu, India",
+  11.5333,
+  79.4833,
+  5.5
+ ],
+ [
+  "Nagapattinam",
+  "Tamil Nadu, India",
+  10.7672,
+  79.8449,
+  5.5
+ ],
+ [
+  "Davanagere",
+  "Karnataka, India",
+  14.4644,
+  75.9218,
+  5.5
+ ],
+ [
+  "Bellary",
+  "Karnataka, India",
+  15.1394,
+  76.9214,
+  5.5
+ ],
+ [
+  "Vijayapura",
+  "Karnataka, India",
+  16.8302,
+  75.7104,
+  5.5
+ ],
+ [
+  "Shivamogga",
+  "Karnataka, India",
+  13.9299,
+  75.5681,
+  5.5
+ ],
+ [
+  "Tumakuru",
+  "Karnataka, India",
+  13.3392,
+  77.114,
+  5.5
+ ],
+ [
+  "Raichur",
+  "Karnataka, India",
+  16.212,
+  77.3566,
+  5.5
+ ],
+ [
+  "Bidar",
+  "Karnataka, India",
+  17.9104,
+  77.5199,
+  5.5
+ ],
+ [
+  "Hospet",
+  "Karnataka, India",
+  15.2699,
+  76.3869,
+  5.5
+ ],
+ [
+  "Hassan",
+  "Karnataka, India",
+  13.0083,
+  76.0964,
+  5.5
+ ],
+ [
+  "Gadag",
+  "Karnataka, India",
+  15.4315,
+  75.6329,
+  5.5
+ ],
+ [
+  "Udupi",
+  "Karnataka, India",
+  13.3409,
+  74.7421,
+  5.5
+ ],
+ [
+  "Chitradurga",
+  "Karnataka, India",
+  14.2251,
+  76.398,
+  5.5
+ ],
+ [
+  "Kolar",
+  "Karnataka, India",
+  13.1365,
+  78.1291,
+  5.5
+ ],
+ [
+  "Mandya",
+  "Karnataka, India",
+  12.5223,
+  76.8962,
+  5.5
+ ],
+ [
+  "Chikkamagaluru",
+  "Karnataka, India",
+  13.3189,
+  75.7718,
+  5.5
+ ],
+ [
+  "Bagalkot",
+  "Karnataka, India",
+  16.1819,
+  75.7011,
+  5.5
+ ],
+ [
+  "Nizamabad",
+  "Telangana, India",
+  18.6725,
+  78.0941,
+  5.5
+ ],
+ [
+  "Karimnagar",
+  "Telangana, India",
+  18.4386,
+  79.1288,
+  5.5
+ ],
+ [
+  "Ramagundam",
+  "Telangana, India",
+  18.755,
+  79.4781,
+  5.5
+ ],
+ [
+  "Khammam",
+  "Telangana, India",
+  17.2473,
+  80.1514,
+  5.5
+ ],
+ [
+  "Mahbubnagar",
+  "Telangana, India",
+  16.7488,
+  77.9845,
+  5.5
+ ],
+ [
+  "Nalgonda",
+  "Telangana, India",
+  17.0544,
+  79.2678,
+  5.5
+ ],
+ [
+  "Adilabad",
+  "Telangana, India",
+  19.6637,
+  78.5321,
+  5.5
+ ],
+ [
+  "Siddipet",
+  "Telangana, India",
+  18.1034,
+  78.8487,
+  5.5
+ ],
+ [
+  "Miryalaguda",
+  "Telangana, India",
+  16.8722,
+  79.5675,
+  5.5
+ ],
+ [
+  "Jagtial",
+  "Telangana, India",
+  18.7926,
+  78.9142,
+  5.5
+ ],
+ [
+  "Mancherial",
+  "Telangana, India",
+  18.8707,
+  79.4442,
+  5.5
+ ],
+ [
+  "Suryapet",
+  "Telangana, India",
+  17.1399,
+  79.6229,
+  5.5
+ ],
+ [
+  "Kakinada",
+  "Andhra Pradesh, India",
+  16.9891,
+  82.2475,
+  5.5
+ ],
+ [
+  "Kadapa",
+  "Andhra Pradesh, India",
+  14.4673,
+  78.8242,
+  5.5
+ ],
+ [
+  "Anantapur",
+  "Andhra Pradesh, India",
+  14.6819,
+  77.6006,
+  5.5
+ ],
+ [
+  "Eluru",
+  "Andhra Pradesh, India",
+  16.7107,
+  81.0946,
+  5.5
+ ],
+ [
+  "Ongole",
+  "Andhra Pradesh, India",
+  15.5057,
+  80.0499,
+  5.5
+ ],
+ [
+  "Srikakulam",
+  "Andhra Pradesh, India",
+  18.2949,
+  83.8878,
+  5.5
+ ],
+ [
+  "Machilipatnam",
+  "Andhra Pradesh, India",
+  16.1873,
+  81.1389,
+  5.5
+ ],
+ [
+  "Tenali",
+  "Andhra Pradesh, India",
+  16.2382,
+  80.6417,
+  5.5
+ ],
+ [
+  "Proddatur",
+  "Andhra Pradesh, India",
+  14.7502,
+  78.5481,
+  5.5
+ ],
+ [
+  "Amaravati",
+  "Andhra Pradesh, India",
+  16.5384,
+  80.5148,
+  5.5
+ ],
+ [
+  "Chittoor",
+  "Andhra Pradesh, India",
+  13.2172,
+  79.1003,
+  5.5
+ ],
+ [
+  "Hindupur",
+  "Andhra Pradesh, India",
+  13.8276,
+  77.4918,
+  5.5
+ ],
+ [
+  "Vizianagaram",
+  "Andhra Pradesh, India",
+  18.1067,
+  83.4056,
+  5.5
+ ],
+ [
+  "Alappuzha",
+  "Kerala, India",
+  9.4981,
+  76.3388,
+  5.5
+ ],
+ [
+  "Palakkad",
+  "Kerala, India",
+  10.7867,
+  76.6548,
+  5.5
+ ],
+ [
+  "Kannur",
+  "Kerala, India",
+  11.8745,
+  75.3704,
+  5.5
+ ],
+ [
+  "Thalassery",
+  "Kerala, India",
+  11.7514,
+  75.4945,
+  5.5
+ ],
+ [
+  "Kottayam",
+  "Kerala, India",
+  9.5916,
+  76.5222,
+  5.5
+ ],
+ [
+  "Chavakkad",
+  "Kerala, India",
+  10.5697,
+  76.0214,
+  5.5
+ ],
+ [
+  "Pathanamthitta",
+  "Kerala, India",
+  9.2648,
+  76.7871,
+  5.5
+ ],
+ [
+  "Kasaragod",
+  "Kerala, India",
+  12.4996,
+  74.9869,
+  5.5
+ ],
+ [
+  "Malappuram",
+  "Kerala, India",
+  11.051,
+  76.0711,
+  5.5
+ ],
+ [
+  "Idukki",
+  "Kerala, India",
+  9.8497,
+  76.9732,
+  5.5
+ ],
+ [
+  "Bathinda",
+  "Punjab, India",
+  30.211,
+  74.9455,
+  5.5
+ ],
+ [
+  "Mohali",
+  "Punjab, India",
+  30.7046,
+  76.7179,
+  5.5
+ ],
+ [
+  "Hoshiarpur",
+  "Punjab, India",
+  31.5321,
+  75.9122,
+  5.5
+ ],
+ [
+  "Batala",
+  "Punjab, India",
+  31.8186,
+  75.2017,
+  5.5
+ ],
+ [
+  "Pathankot",
+  "Punjab, India",
+  32.2745,
+  75.6522,
+  5.5
+ ],
+ [
+  "Moga",
+  "Punjab, India",
+  30.7987,
+  75.1605,
+  5.5
+ ],
+ [
+  "Abohar",
+  "Punjab, India",
+  30.1437,
+  74.1976,
+  5.5
+ ],
+ [
+  "Malerkotla",
+  "Punjab, India",
+  30.5257,
+  75.8787,
+  5.5
+ ],
+ [
+  "Khanna",
+  "Punjab, India",
+  30.7015,
+  76.2212,
+  5.5
+ ],
+ [
+  "Phagwara",
+  "Punjab, India",
+  31.2217,
+  75.7717,
+  5.5
+ ],
+ [
+  "Muktsar",
+  "Punjab, India",
+  30.4742,
+  74.5162,
+  5.5
+ ],
+ [
+  "Barnala",
+  "Punjab, India",
+  30.3782,
+  75.5445,
+  5.5
+ ],
+ [
+  "Rajpura",
+  "Punjab, India",
+  30.4845,
+  76.5943,
+  5.5
+ ],
+ [
+  "Firozpur",
+  "Punjab, India",
+  30.9256,
+  74.6131,
+  5.5
+ ],
+ [
+  "Kapurthala",
+  "Punjab, India",
+  31.3798,
+  75.3833,
+  5.5
+ ],
+ [
+  "Sangrur",
+  "Punjab, India",
+  30.2449,
+  75.8404,
+  5.5
+ ],
+ [
+  "Panipat",
+  "Haryana, India",
+  29.3909,
+  76.9635,
+  5.5
+ ],
+ [
+  "Ambala",
+  "Haryana, India",
+  30.3782,
+  76.7767,
+  5.5
+ ],
+ [
+  "Yamunanagar",
+  "Haryana, India",
+  30.129,
+  77.2674,
+  5.5
+ ],
+ [
+  "Karnal",
+  "Haryana, India",
+  29.6857,
+  76.9905,
+  5.5
+ ],
+ [
+  "Sonipat",
+  "Haryana, India",
+  28.9931,
+  77.0151,
+  5.5
+ ],
+ [
+  "Panchkula",
+  "Haryana, India",
+  30.6942,
+  76.8606,
+  5.5
+ ],
+ [
+  "Bhiwani",
+  "Haryana, India",
+  28.7974,
+  76.1399,
+  5.5
+ ],
+ [
+  "Sirsa",
+  "Haryana, India",
+  29.5321,
+  75.0303,
+  5.5
+ ],
+ [
+  "Bahadurgarh",
+  "Haryana, India",
+  28.6928,
+  76.9383,
+  5.5
+ ],
+ [
+  "Jind",
+  "Haryana, India",
+  29.3159,
+  76.3142,
+  5.5
+ ],
+ [
+  "Thanesar",
+  "Haryana, India",
+  29.968,
+  76.819,
+  5.5
+ ],
+ [
+  "Kaithal",
+  "Haryana, India",
+  29.8022,
+  76.4039,
+  5.5
+ ],
+ [
+  "Rewari",
+  "Haryana, India",
+  28.1983,
+  76.6186,
+  5.5
+ ],
+ [
+  "Palwal",
+  "Haryana, India",
+  28.1444,
+  77.3309,
+  5.5
+ ],
+ [
+  "Fatehabad",
+  "Haryana, India",
+  29.5127,
+  75.4539,
+  5.5
+ ],
+ [
+  "Hans",
+  "Haryana, India",
+  29.0988,
+  75.7285,
+  5.5
+ ],
+ [
+  "Anantnag",
+  "Jammu & Kashmir, India",
+  33.7299,
+  75.1544,
+  5.5
+ ],
+ [
+  "Baramulla",
+  "Jammu & Kashmir, India",
+  34.1993,
+  74.2101,
+  5.5
+ ],
+ [
+  "Sopore",
+  "Jammu & Kashmir, India",
+  34.2996,
+  74.4701,
+  5.5
+ ],
+ [
+  "Kathua",
+  "Jammu & Kashmir, India",
+  32.3714,
+  75.5192,
+  5.5
+ ],
+ [
+  "Kupwara",
+  "Jammu & Kashmir, India",
+  34.5283,
+  74.2649,
+  5.5
+ ],
+ [
+  "Udhampur",
+  "Jammu & Kashmir, India",
+  32.9161,
+  75.1357,
+  5.5
+ ],
+ [
+  "Pulwama",
+  "Jammu & Kashmir, India",
+  33.8743,
+  74.8995,
+  5.5
+ ],
+ [
+  "Kargil",
+  "Ladakh, India",
+  34.5598,
+  76.1313,
+  5.5
+ ],
+ [
+  "Roorkee",
+  "Uttarakhand, India",
+  29.8524,
+  77.888,
+  5.5
+ ],
+ [
+  "Haldwani",
+  "Uttarakhand, India",
+  29.2183,
+  79.513,
+  5.5
+ ],
+ [
+  "Rudrapur",
+  "Uttarakhand, India",
+  28.9694,
+  79.401,
+  5.5
+ ],
+ [
+  "Kashipur",
+  "Uttarakhand, India",
+  29.2141,
+  78.9542,
+  5.5
+ ],
+ [
+  "Nainital",
+  "Uttarakhand, India",
+  29.3803,
+  79.4636,
+  5.5
+ ],
+ [
+  "Mussoorie",
+  "Uttarakhand, India",
+  30.4597,
+  78.0665,
+  5.5
+ ],
+ [
+  "Almora",
+  "Uttarakhand, India",
+  29.5984,
+  79.6423,
+  5.5
+ ],
+ [
+  "Pithoragarh",
+  "Uttarakhand, India",
+  29.5847,
+  80.2179,
+  5.5
+ ],
+ [
+  "Mandi",
+  "Himachal Pradesh, India",
+  31.7085,
+  76.9314,
+  5.5
+ ],
+ [
+  "Solan",
+  "Himachal Pradesh, India",
+  30.9045,
+  77.0967,
+  5.5
+ ],
+ [
+  "Kullu",
+  "Himachal Pradesh, India",
+  31.9584,
+  77.1095,
+  5.5
+ ],
+ [
+  "Hamirpur",
+  "Himachal Pradesh, India",
+  31.6835,
+  76.5235,
+  5.5
+ ],
+ [
+  "Chamba",
+  "Himachal Pradesh, India",
+  32.5516,
+  76.1272,
+  5.5
+ ],
+ [
+  "Kangra",
+  "Himachal Pradesh, India",
+  32.0996,
+  76.2673,
+  5.5
+ ],
+ [
+  "Brahmapur",
+  "Odisha, India",
+  19.3149,
+  84.7941,
+  5.5
+ ],
+ [
+  "Sambalpur",
+  "Odisha, India",
+  21.4669,
+  83.9756,
+  5.5
+ ],
+ [
+  "Balasore",
+  "Odisha, India",
+  21.4944,
+  86.9336,
+  5.5
+ ],
+ [
+  "Baripada",
+  "Odisha, India",
+  21.9424,
+  86.7226,
+  5.5
+ ],
+ [
+  "Bhadrak",
+  "Odisha, India",
+  21.0581,
+  86.5016,
+  5.5
+ ],
+ [
+  "Jharsuguda",
+  "Odisha, India",
+  21.8565,
+  84.0151,
+  5.5
+ ],
+ [
+  "Jeypore",
+  "Odisha, India",
+  18.8556,
+  82.5682,
+  5.5
+ ],
+ [
+  "Angul",
+  "Odisha, India",
+  20.8374,
+  85.0995,
+  5.5
+ ],
+ [
+  "Hinjilicut",
+  "Odisha, India",
+  19.4863,
+  84.7448,
+  5.5
+ ],
+ [
+  "Bokaro",
+  "Jharkhand, India",
+  23.6693,
+  86.1511,
+  5.5
+ ],
+ [
+  "Deoghar",
+  "Jharkhand, India",
+  24.4821,
+  86.7004,
+  5.5
+ ],
+ [
+  "Phusro",
+  "Jharkhand, India",
+  23.7661,
+  85.9427,
+  5.5
+ ],
+ [
+  "Hazaribagh",
+  "Jharkhand, India",
+  23.9934,
+  85.3625,
+  5.5
+ ],
+ [
+  "Giridih",
+  "Jharkhand, India",
+  24.1824,
+  86.2974,
+  5.5
+ ],
+ [
+  "Ramgarh",
+  "Jharkhand, India",
+  23.6321,
+  85.5203,
+  5.5
+ ],
+ [
+  "Medininagar",
+  "Jharkhand, India",
+  23.5883,
+  84.0796,
+  5.5
+ ],
+ [
+  "Chaibasa",
+  "Jharkhand, India",
+  22.5481,
+  85.8025,
+  5.5
+ ],
+ [
+  "Dumka",
+  "Jharkhand, India",
+  24.2683,
+  87.2482,
+  5.5
+ ],
+ [
+  "Jhumri Telaiya",
+  "Jharkhand, India",
+  24.4303,
+  85.5299,
+  5.5
+ ],
+ [
+  "Bhilai",
+  "Chhattisgarh, India",
+  21.1938,
+  81.3509,
+  5.5
+ ],
+ [
+  "Korba",
+  "Chhattisgarh, India",
+  22.3459,
+  82.6899,
+  5.5
+ ],
+ [
+  "Durg",
+  "Chhattisgarh, India",
+  21.1904,
+  81.2849,
+  5.5
+ ],
+ [
+  "Rajnandgaon",
+  "Chhattisgarh, India",
+  21.0984,
+  81.0305,
+  5.5
+ ],
+ [
+  "Jagdalpur",
+  "Chhattisgarh, India",
+  19.0948,
+  82.0185,
+  5.5
+ ],
+ [
+  "Raigarh",
+  "Chhattisgarh, India",
+  21.9,
+  83.4,
+  5.5
+ ],
+ [
+  "Ambikapur",
+  "Chhattisgarh, India",
+  23.1223,
+  83.1986,
+  5.5
+ ],
+ [
+  "Dhamtari",
+  "Chhattisgarh, India",
+  20.7072,
+  81.5481,
+  5.5
+ ],
+ [
+  "Silchar",
+  "Assam, India",
+  24.8333,
+  92.7789,
+  5.5
+ ],
+ [
+  "Dibrugarh",
+  "Assam, India",
+  27.4728,
+  94.912,
+  5.5
+ ],
+ [
+  "Jorhat",
+  "Assam, India",
+  26.7509,
+  94.2037,
+  5.5
+ ],
+ [
+  "Nagaon",
+  "Assam, India",
+  26.3333,
+  92.6836,
+  5.5
+ ],
+ [
+  "Tinsukia",
+  "Assam, India",
+  27.4894,
+  95.3567,
+  5.5
+ ],
+ [
+  "Tezpur",
+  "Assam, India",
+  26.1667,
+  92.4167,
+  5.5
+ ],
+ [
+  "Bongaigaon",
+  "Assam, India",
+  26.477,
+  90.5583,
+  5.5
+ ],
+ [
+  "Dhubri",
+  "Assam, India",
+  26.0207,
+  89.9834,
+  5.5
+ ],
+ [
+  "Diphu",
+  "Assam, India",
+  25.8402,
+  93.4277,
+  5.5
+ ],
+ [
+  "Goalpara",
+  "Assam, India",
+  26.1667,
+  90.6167,
+  5.5
+ ],
+ [
+  "Thoubal",
+  "Manipur, India",
+  24.6356,
+  94.0056,
+  5.5
+ ],
+ [
+  "Tura",
+  "Meghalaya, India",
+  25.5144,
+  90.2019,
+  5.5
+ ],
+ [
+  "Dimapur",
+  "Nagaland, India",
+  25.9064,
+  93.7281,
+  5.5
+ ],
+ [
+  "Naharlagun",
+  "Arunachal Pradesh, India",
+  27.1021,
+  93.6904,
+  5.5
+ ],
+ [
+  "Margao",
+  "Goa, India",
+  15.2703,
+  73.9576,
+  5.5
+ ],
+ [
+  "Vasco da Gama",
+  "Goa, India",
+  15.3983,
+  73.8137,
+  5.5
+ ],
+ [
+  "Karaikal",
+  "Puducherry, India",
+  10.9167,
+  79.3833,
+  5.5
+ ],
+ [
+  "Kavaratti",
+  "Lakshadweep, India",
+  10.5667,
+  72.6333,
+  5.5
+ ],
+ [
+  "Silvassa",
+  "Dadra & Nagar Haveli, India",
+  20.2738,
+  73.0137,
+  5.5
+ ],
+ [
+  "Daman",
+  "Daman & Diu, India",
+  20.3974,
+  72.8328,
+  5.5
+ ],
+ [
+  "Diu",
+  "Daman & Diu, India",
+  20.7144,
+  70.9874,
+  5.5
+ ]
 ]
