@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Priya Sharma",
+    "location": { "en": "Jaipur, Rajasthan", "hi": "जयपुर, राजस्थान" },
+    "rating": 5,
+    "quote": {
+      "en": "The Nakshatra and Lagna matched exactly with the kundli my family pandit made years ago. The Hindi predictions felt like they were written just for me.",
+      "hi": "नक्षत्र और लग्न बिल्कुल वही निकले जो वर्षों पहले हमारे पंडित जी ने कुंडली में बताए थे। हिंदी में भविष्यवाणियाँ ऐसी लगीं जैसे मेरे लिए ही लिखी गई हों।"
+    }
+  },
+  {
+    "name": "Rahul Verma",
+    "location": { "en": "Lucknow, Uttar Pradesh", "hi": "लखनऊ, उत्तर प्रदेश" },
+    "rating": 5,
+    "quote": {
+      "en": "I was changing jobs and the career section described my situation with scary accuracy. Instant results, no waiting, no hidden charges.",
+      "hi": "मैं नौकरी बदल रहा था और करियर वाले हिस्से ने मेरी स्थिति को अद्भुत सटीकता से बताया। तुरंत परिणाम, कोई इंतज़ार नहीं, कोई छिपा शुल्क नहीं।"
+    }
+  },
+  {
+    "name": "Ananya Iyer",
+    "location": { "en": "Chennai, Tamil Nadu", "hi": "चेन्नई, तमिलनाडु" },
+    "rating": 4,
+    "quote": {
+      "en": "Loved the palm reading guide — it explained each line so clearly that I finally understood what my grandmother used to say about my heart line.",
+      "hi": "हस्तरेखा मार्गदर्शिका बहुत पसंद आई — हर रेखा को इतनी स्पष्टता से समझाया कि आख़िरकार मुझे समझ आया कि दादी मेरी हृदय रेखा के बारे में क्या कहती थीं।"
+    }
+  },
+  {
+    "name": "Vikram Singh",
+    "location": { "en": "Chandigarh", "hi": "चंडीगढ़" },
+    "rating": 5,
+    "quote": {
+      "en": "As an engineer I was sceptical, but the calculations are transparent — real astronomical positions, Lahiri ayanamsa, everything shown in degrees.",
+      "hi": "एक इंजीनियर होने के नाते मुझे संदेह था, पर गणनाएँ पारदर्शी हैं — वास्तविक खगोलीय स्थितियाँ, लाहिड़ी अयनांश, सब कुछ अंशों में दिखाया गया।"
+    }
+  },
+  {
+    "name": "Meera Patel",
+    "location": { "en": "Ahmedabad, Gujarat", "hi": "अहमदाबाद, गुजरात" },
+    "rating": 5,
+    "quote": {
+      "en": "I saved readings for my whole family in the dashboard. Switching between Hindi and English for my parents is a blessing.",
+      "hi": "मैंने डैशबोर्ड में पूरे परिवार की रीडिंग सहेज ली हैं। माता-पिता के लिए हिंदी और अंग्रेज़ी के बीच स्विच करना वरदान जैसा है।"
+    }
+  },
+  {
+    "name": "Arjun Nair",
+    "location": { "en": "Kochi, Kerala", "hi": "कोच्चि, केरल" },
+    "rating": 4,
+    "quote": {
+      "en": "Beautiful design and the 3D zodiac wheel is mesmerising. The daily horoscope has become part of my morning routine.",
+      "hi": "सुंदर डिज़ाइन और 3D राशि चक्र मंत्रमुग्ध कर देता है। दैनिक राशिफल मेरी सुबह की दिनचर्या का हिस्सा बन गया है।"
+    }
+  }
+]

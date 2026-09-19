@@ -1,0 +1,65 @@
+{
+  "title": { "en": "Premium 5-Year Bhavishyavani", "hi": "प्रीमियम 5-वर्षीय भविष्यवाणी" },
+  "sub": { "en": "A year-by-year roadmap of the next five years — events, mistakes to avoid, right field of work, remedies, stotras and gemstone guidance.", "hi": "आने वाले पाँच वर्षों का वर्ष-दर-वर्ष रोडमैप — घटनाएँ, किन गलतियों से बचना है, किस क्षेत्र में कार्य करें, उपाय, स्तोत्र और रत्न-धारण विधि।" },
+  "perks": [
+    { "en": "Year-by-year predictions for the next 5 years", "hi": "आने वाले 5 वर्षों की वर्ष-दर-वर्ष भविष्यवाणी" },
+    { "en": "Mistakes you must avoid each year", "hi": "हर वर्ष किन गलतियों से बचना है" },
+    { "en": "The right field & direction of work", "hi": "सही कार्य-क्षेत्र और दिशा" },
+    { "en": "Personal upay for each year", "hi": "हर वर्ष के लिए व्यक्तिगत उपाय" },
+    { "en": "Stotra / mantra to recite", "hi": "पाठ करने योग्य स्तोत्र / मंत्र" },
+    { "en": "Gemstone wearing method (day, metal, finger)", "hi": "रत्न धारण विधि (वार, धातु, उंगली)" },
+    { "en": "Printable full report", "hi": "प्रिंट करने योग्य संपूर्ण रिपोर्ट" },
+    { "en": "Print & download the complete premium report", "hi": "प्रीमियम रिपोर्ट प्रिंट व डाउनलोड" }
+  ],
+  "fields": {
+    "Fire": { "en": "leadership, defence, sports, surgery, entrepreneurship, energy & engineering", "hi": "नेतृत्व, रक्षा, खेल, सर्जरी, उद्यमिता, ऊर्जा व इंजीनियरिंग" },
+    "Earth": { "en": "banking, finance, real estate, agriculture, construction, administration", "hi": "बैंकिंग, वित्त, रियल एस्टेट, कृषि, निर्माण, प्रशासन" },
+    "Air": { "en": "media, writing, IT, teaching, consulting, trade & communication", "hi": "मीडिया, लेखन, आईटी, शिक्षण, परामर्श, व्यापार व संचार" },
+    "Water": { "en": "healing, counselling, arts, music, hospitality, spirituality & sea-related work", "hi": "उपचार, परामर्श, कला, संगीत, आतिथ्य, आध्यात्म व जल-संबंधित कार्य" }
+  },
+  "years": [
+    {
+      "theme": { "en": "Year of Foundation", "hi": "नींव का वर्ष" },
+      "events": { "en": "A fresh beginning takes root — a new role, course, home decision or relationship commitment. Elders' support arrives around mid-year; a small property or vehicle purchase is favoured after {month}.", "hi": "एक नई शुरुआत जड़ पकड़ती है — नई भूमिका, पाठ्यक्रम, घर का निर्णय या संबंध की प्रतिबद्धता। वर्ष के मध्य में बड़ों का सहयोग मिलता है; {month} के बाद छोटी संपत्ति या वाहन खरीद अनुकूल है।" },
+      "mistakes": { "en": "Do not co-sign loans or give big guarantees this year; avoid starting two ventures at once.", "hi": "इस वर्ष ऋण पर सह-हस्ताक्षर या बड़ी गारंटी न दें; एक साथ दो उद्यम शुरू न करें।" },
+      "upay": { "en": "Offer water to the rising Sun every morning for 40 days; feed jaggery-gram to a cow on Saturdays.", "hi": "प्रतिदिन प्रातः उगते सूर्य को 40 दिनों तक जल अर्पित करें; शनिवार को गाय को गुड़-चना खिलाएँ।" },
+      "stotra": { "en": "Aditya Hridaya Stotra on Sundays (or Gayatri Mantra 108 times daily).", "hi": "रविवार को आदित्य हृदय स्तोत्र (या प्रतिदिन गायत्री मंत्र 108 बार)।" }
+    },
+    {
+      "theme": { "en": "Year of Effort & Discipline", "hi": "प्रयास व अनुशासन का वर्ष" },
+      "events": { "en": "Workload rises and results feel slow — this is Saturn testing your patience. A promotion or responsibility increase comes near the year's end. Health of an elder needs attention in winter.", "hi": "कार्यभार बढ़ता है और परिणाम धीमे लगते हैं — यह शनि आपके धैर्य की परीक्षा ले रहे हैं। वर्षांत में पदोन्नति या ज़िम्मेदारी बढ़ती है। शीतकाल में किसी बड़े के स्वास्थ्य पर ध्यान दें।" },
+      "mistakes": { "en": "Do not argue with seniors or authority figures; do not delay tax, paperwork or medical check-ups.", "hi": "वरिष्ठों या अधिकारियों से वाद-विवाद न करें; कर, कागज़ी कार्य या स्वास्थ्य जाँच में देरी न करें।" },
+      "upay": { "en": "Light a mustard-oil lamp under a Peepal tree on Saturdays; serve the elderly and disabled without expectation.", "hi": "शनिवार को पीपल के नीचे सरसों के तेल का दीपक जलाएँ; बुज़ुर्गों व विकलांगों की निःस्वार्थ सेवा करें।" },
+      "stotra": { "en": "Hanuman Chalisa daily; Shani Shanti path on Saturdays.", "hi": "प्रतिदिन हनुमान चालीसा; शनिवार को शनि शांति पाठ।" }
+    },
+    {
+      "theme": { "en": "Year of Expansion & Luck", "hi": "विस्तार व सौभाग्य का वर्ष" },
+      "events": { "en": "Jupiter's blessing — income grows, a mentor appears, and long-pending gains (refund, inheritance, recognition) arrive. A marriage, childbirth or housewarming is strongly favoured. Travel brings profit.", "hi": "गुरु की कृपा — आय बढ़ती है, एक मार्गदर्शक मिलता है और लंबे समय से रुके लाभ (रिफंड, विरासत, पहचान) आते हैं। विवाह, संतान या गृहप्रवेश प्रबल रूप से अनुकूल है। यात्रा लाभ देती है।" },
+      "mistakes": { "en": "Do not over-promise or over-expand on credit; avoid lending large sums even to relatives.", "hi": "उधार पर अधिक वादा या अधिक विस्तार न करें; रिश्तेदारों को भी बड़ी रकम उधार न दें।" },
+      "upay": { "en": "Donate yellow items (chana dal, turmeric, yellow cloth) on Thursdays; respect teachers and gurus.", "hi": "गुरुवार को पीली वस्तुएँ (चना दाल, हल्दी, पीला वस्त्र) दान करें; गुरुजनों का सम्मान करें।" },
+      "stotra": { "en": "Vishnu Sahasranama on Thursdays; 'Om Brim Brihaspataye Namah' 108 times.", "hi": "गुरुवार को विष्णु सहस्रनाम; 'ॐ बृं बृहस्पतये नमः' 108 बार।" }
+    },
+    {
+      "theme": { "en": "Year of Change & Courage", "hi": "परिवर्तन व साहस का वर्ष" },
+      "events": { "en": "A bold move — relocation, career switch or a new city — reshapes your path. Rahu brings sudden opportunities through technology or foreigners; one risk taken after research pays well. Guard documents and passwords.", "hi": "एक साहसिक कदम — स्थानांतरण, करियर परिवर्तन या नया शहर — आपके मार्ग को नया रूप देता है। राहु तकनीक या विदेशियों के माध्यम से अचानक अवसर लाता है; शोध के बाद लिया गया एक जोखिम अच्छा फल देता है। दस्तावेज़ों व पासवर्ड की रक्षा करें।" },
+      "mistakes": { "en": "Do not trust get-rich-quick schemes or unknown online offers; avoid illegal shortcuts entirely.", "hi": "झटपट अमीर बनाने वाली योजनाओं या अज्ञात ऑनलाइन प्रस्तावों पर भरोसा न करें; अवैध शॉर्टकट से पूरी तरह बचें।" },
+      "upay": { "en": "Feed dogs and birds; keep a small piece of silver with you; chant Durga Saptashati's Argala Stotra.", "hi": "कुत्तों व पक्षियों को भोजन दें; पास चांदी का छोटा टुकड़ा रखें; दुर्गा सप्तशती का अर्गला स्तोत्र पढ़ें।" },
+      "stotra": { "en": "Durga Kavach or 'Om Rahave Namah' on Saturdays; Saraswati Vandana before important work.", "hi": "शनिवार को दुर्गा कवच या 'ॐ राहवे नमः'; महत्वपूर्ण कार्य से पहले सरस्वती वंदना।" }
+    },
+    {
+      "theme": { "en": "Year of Harvest & Recognition", "hi": "फसल व पहचान का वर्ष" },
+      "events": { "en": "The seeds of the past years ripen — public recognition, a senior position or a successful venture. Property or long-term investment made now grows steadily. Family celebrations; a pilgrimage brings peace and a final blessing of the five-year cycle.", "hi": "पिछले वर्षों के बीज पकते हैं — सार्वजनिक पहचान, वरिष्ठ पद या सफल उद्यम। अब की गई संपत्ति या दीर्घकालिक निवेश स्थिर रूप से बढ़ता है। पारिवारिक उत्सव; एक तीर्थयात्रा शांति और पाँच-वर्षीय चक्र का अंतिम आशीर्वाद लाती है।" },
+      "mistakes": { "en": "Do not become arrogant in success; avoid public controversy and unnecessary legal battles.", "hi": "सफलता में अहंकारी न हों; सार्वजनिक विवाद और अनावश्यक कानूनी लड़ाइयों से बचें।" },
+      "upay": { "en": "Share your success — donate 2.5% of a big gain to a temple, school or hospital; feed Brahmins or the needy on your birthday.", "hi": "सफलता बाँटें — बड़े लाभ का 2.5% मंदिर, विद्यालय या अस्पताल को दान करें; जन्मदिन पर ब्राह्मणों या ज़रूरतमंदों को भोजन कराएँ।" },
+      "stotra": { "en": "Lalitha Sahasranama or Shri Sukta on Fridays; gratitude prayer every full-moon night.", "hi": "शुक्रवार को ललिता सहस्रनाम या श्री सूक्त; प्रत्येक पूर्णिमा की रात कृतज्ञता प्रार्थना।" }
+    }
+  ],
+  "gemVidhi": { "en": "Wear {gem} in a {metal} ring on the {finger} of your working hand on {day} morning during Shukla Paksha, after chanting {mantra} 108 times. Energise it in gangajal and raw milk before first wear.", "hi": "{gem} को {metal} की अंगूठी में कार्य वाले हाथ की {finger} उंगली में {day} प्रातः शुक्ल पक्ष में धारण करें, {mantra} का 108 बार जप करने के बाद। पहली बार धारण से पहले गंगाजल व कच्चे दूध में अभिमंत्रित करें।" },
+  "fingers": ["index finger", "middle finger", "ring finger", "little finger", "thumb"],
+  "fingersHi": ["तर्जनी", "मध्यमा", "अनामिका", "कनिष्ठा", "अंगूठा"],
+  "metals": ["gold", "silver", "panchdhatu"],
+  "metalsHi": ["स्वर्ण", "रजत", "पंचधातु"],
+  "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  "monthsHi": ["जनवरी", "फ़रवरी", "मार्च", "अप्रैल", "मई", "जून", "जुलाई", "अगस्त", "सितम्बर", "अक्टूबर", "नवम्बर", "दिसम्बर"],
+  "closing": { "en": "Remember: the stars incline, they do not compel. Your karma, discipline and faith shape the final outcome. Revisit this roadmap on every New Year and on your birthday.", "hi": "स्मरण रखें: ग्रह झुकाव देते हैं, विवश नहीं करते। आपका कर्म, अनुशासन और श्रद्धा अंतिम परिणाम गढ़ते हैं। हर नववर्ष और अपने जन्मदिन पर इस रोडमैप को दोबारा देखें।" }
+}

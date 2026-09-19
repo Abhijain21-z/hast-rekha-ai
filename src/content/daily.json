@@ -1,0 +1,24 @@
+{
+  "messages": [
+    { "en": "A conversation you have been postponing will go better than expected. Speak from the heart before noon.", "hi": "जिस बातचीत को आप टालते आ रहे हैं, वह अपेक्षा से बेहतर रहेगी। दोपहर से पहले दिल से बात करें।" },
+    { "en": "Money matters need a second look today; a small correction now saves a big headache later.", "hi": "आज धन संबंधी मामलों पर दोबारा नज़र डालें; अभी की छोटी सुधार बाद की बड़ी परेशानी बचाएगी।" },
+    { "en": "Your energy is high — channel it into one important task instead of ten small ones.", "hi": "आपकी ऊर्जा उच्च है — इसे दस छोटे कामों की बजाय एक महत्वपूर्ण कार्य में लगाएँ।" },
+    { "en": "An elder's advice carries hidden value today. Listen more than you speak.", "hi": "आज किसी बड़े की सलाह में छिपा मूल्य है। बोलने से अधिक सुनें।" },
+    { "en": "Romance is favoured this evening; a simple gesture will mean more than a grand plan.", "hi": "आज शाम प्रेम अनुकूल है; एक साधारण इशारा बड़ी योजना से अधिक मायने रखेगा।" },
+    { "en": "Rest is productive too. Slow down, hydrate, and let a decision wait until tomorrow.", "hi": "विश्राम भी उत्पादक है। धीमे चलें, पानी पिएँ और निर्णय को कल तक टाल दें।" },
+    { "en": "A creative idea arrives out of nowhere — write it down before it slips away.", "hi": "एक रचनात्मक विचार अचानक आएगा — उसे फिसलने से पहले लिख लें।" },
+    { "en": "Teamwork brings recognition. Share credit freely and doors will open.", "hi": "टीमवर्क से पहचान मिलेगी। श्रेय खुले दिल से बाँटें और द्वार खुलेंगे।" },
+    { "en": "Avoid lending or borrowing today; keep your commitments light and clear.", "hi": "आज उधार लेने-देने से बचें; अपनी प्रतिबद्धताएँ हल्की और स्पष्ट रखें।" },
+    { "en": "A short journey or a call from far away brings good news.", "hi": "छोटी यात्रा या दूर से आया एक फ़ोन शुभ समाचार लाएगा।" },
+    { "en": "Focus on health routines — a walk at sunrise resets your whole day.", "hi": "स्वास्थ्य की दिनचर्या पर ध्यान दें — सूर्योदय की सैर आपका पूरा दिन संवार देगी।" },
+    { "en": "Patience with family pays off. What feels like friction is actually care.", "hi": "परिवार के साथ धैर्य फलदायी होगा। जो टकराव लगता है वह वास्तव में परवाह है।" }
+  ],
+  "moods": [
+    { "en": "Energetic", "hi": "ऊर्जावान" },
+    { "en": "Reflective", "hi": "चिंतनशील" },
+    { "en": "Social", "hi": "सामाजिक" },
+    { "en": "Focused", "hi": "एकाग्र" },
+    { "en": "Romantic", "hi": "रोमांटिक" },
+    { "en": "Calm", "hi": "शांत" }
+  ]
+}

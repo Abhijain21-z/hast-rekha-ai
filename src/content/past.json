@@ -1,0 +1,21 @@
+{
+  "always": [
+    { "en": "You have been deceived by people you trusted — help you gave from the heart was returned with betrayal, and it changed the way you trust.", "hi": "जिन लोगों पर आपने भरोसा किया, उन्हीं से आपको धोखा मिला — दिल से की गई मदद का बदला विश्वासघात से मिला, और इसने आपके भरोसा करने का तरीका बदल दिया।" },
+    { "en": "Your heart is clean, but people often misunderstand your intentions; you have been blamed for things you never meant.", "hi": "आपका दिल साफ़ है, पर लोग अक्सर आपकी नीयत को गलत समझते हैं; आप पर ऐसी बातों का दोष लगा है जो आपने कभी चाही ही नहीं थीं।" },
+    { "en": "There was one person you loved truly and deeply, yet you could never fully express it — that feeling still lives quietly within you.", "hi": "एक व्यक्ति ऐसा था जिसे आपने सच्चा और गहरा प्रेम किया, पर उसे कभी पूरी तरह व्यक्त नहीं कर पाए — वह भावना आज भी आपके भीतर चुपचाप जीवित है।" },
+    { "en": "More than once you have narrowly escaped a serious accident or danger; the protective square on your life line and your Ishta Devta stood beside you.", "hi": "एक से अधिक बार आप किसी गंभीर दुर्घटना या संकट से बाल-बाल बचे हैं; आपकी जीवन रेखा का रक्षक वर्ग और आपके इष्ट देव आपके साथ खड़े रहे।" },
+    { "en": "God is with you — whenever you were completely alone, help arrived from an unexpected direction.", "hi": "भगवान आपके साथ हैं — जब-जब आप पूरी तरह अकेले पड़े, किसी अप्रत्याशित दिशा से सहायता आई।" },
+    { "en": "What you think intensely tends to happen — your words and intuitions have come true so often that it has surprised even you.", "hi": "आप जो तीव्रता से सोचते हैं, वह घटित हो जाता है — आपकी बातें और अंतःप्रेरणाएँ इतनी बार सच हुई हैं कि आप स्वयं चौंक गए हैं।" },
+    { "en": "You have taken wrong decisions without wanting to — under pressure, in emotion or for someone else's sake — and regretted them later.", "hi": "आपने न चाहते हुए भी गलत निर्णय लिए हैं — दबाव में, भावना में या किसी और की खातिर — और बाद में पछताए हैं।" }
+  ],
+  "optional": [
+    { "en": "Money has come to you but slipped away quickly through family needs or generosity; you have rarely kept what you earned for yourself.", "hi": "धन आपके पास आया पर पारिवारिक आवश्यकताओं या उदारता में शीघ्र चला गया; अपनी कमाई का बहुत कम आपने स्वयं पर रखा।" },
+    { "en": "People come to you for advice and comfort, but when you needed the same, very few stood by you.", "hi": "लोग सलाह और सांत्वना के लिए आपके पास आते हैं, पर जब आपको इसकी ज़रूरत पड़ी तो बहुत कम लोग साथ खड़े हुए।" },
+    { "en": "At night your mind replays old conversations; you think far more than you show to the world.", "hi": "रात में आपका मन पुरानी बातचीत दोहराता है; आप दुनिया को जितना दिखाते हैं उससे कहीं अधिक सोचते हैं।" },
+    { "en": "A big opportunity once slipped from your hands because of someone else's delay or wrong advice — but that loss redirected you to a better path.", "hi": "किसी और की देरी या गलत सलाह के कारण एक बड़ा अवसर आपके हाथ से निकल गया — पर उस हानि ने आपको बेहतर मार्ग की ओर मोड़ दिया।" },
+    { "en": "Between the ages of {t1} and {t2} you went through a phase of struggle that quietly rebuilt your personality.", "hi": "{t1} से {t2} वर्ष की आयु के बीच आप संघर्ष के ऐसे दौर से गुज़रे जिसने चुपचाप आपके व्यक्तित्व को नए सिरे से गढ़ा।" },
+    { "en": "An elder — a grandparent or a teacher — had a deep influence on you, and you still remember their words.", "hi": "किसी बुज़ुर्ग — दादा-दादी, नाना-नानी या गुरु — का आप पर गहरा प्रभाव रहा, और आज भी आपको उनके शब्द याद हैं।" },
+    { "en": "Distance from someone dear has been a hidden sorrow — not because of a quarrel, but because of circumstances.", "hi": "किसी अपने से दूरी आपका छिपा हुआ दुःख रही है — झगड़े के कारण नहीं, परिस्थितियों के कारण।" },
+    { "en": "You have often felt that you were born for something bigger than your present situation, and that feeling is not wrong.", "hi": "आपको अक्सर लगा है कि आप अपनी वर्तमान स्थिति से कुछ बड़ा करने के लिए जन्मे हैं, और यह भावना गलत नहीं है।" }
+  ]
+}

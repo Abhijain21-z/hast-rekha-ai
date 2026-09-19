@@ -1,0 +1,71 @@
+{
+  "privacy": {
+    "title": { "en": "Privacy Policy", "hi": "गोपनीयता नीति" },
+    "updated": { "en": "Last updated: 1 August 2026", "hi": "अंतिम अद्यतन: 1 अगस्त 2026" },
+    "intro": { "en": "Hast Rekha AI (\"we\", \"our\") respects your privacy. This policy explains what we collect, why we collect it, and how you remain in control. By using hastrekha.ai you agree to this policy.", "hi": "हस्तरेखा AI (\"हम\") आपकी गोपनीयता का सम्मान करता है। यह नीति बताती है कि हम क्या एकत्र करते हैं, क्यों करते हैं, और आपका नियंत्रण कैसे बना रहता है। hastrekha.ai का उपयोग करके आप इस नीति से सहमत होते हैं।" },
+    "sections": [
+      { "h": { "en": "What we collect", "hi": "हम क्या एकत्र करते हैं" }, "p": [
+        { "en": "Account data: name, email and a hashed password when you register. Reading data: the birth details you enter (name, date, time, place) and any palm photo you upload. Payment data: only the UPI transaction reference (UTR) you voluntarily submit for the ₹51 premium unlock — we never see or store your bank or card details.", "hi": "खाता डेटा: पंजीकरण पर नाम, ईमेल और हैश्ड पासवर्ड। रीडिंग डेटा: आपके दर्ज जन्म विवरण (नाम, तिथि, समय, स्थान) और आपकी अपलोड की गई हथेली की फ़ोटो। भुगतान डेटा: केवल वह UPI लेन-देन संदर्भ (UTR) जो आप प्रीमियम अनलॉक हेतु स्वयं भेजते हैं — हम आपका बैंक या कार्ड विवरण कभी नहीं देखते या सहेजते।" }
+      ] },
+      { "h": { "en": "How we use it", "hi": "हम इसका उपयोग कैसे करते हैं" }, "p": [
+        { "en": "Birth details are used solely to compute your reading on our servers. Palm photos are resized inside your browser and stored only with your reading so you can revisit them. We do not sell, rent or share personal data with third parties, and we use no advertising trackers.", "hi": "जन्म विवरण का उपयोग केवल हमारे सर्वर पर आपकी रीडिंग गणना हेतु होता है। हथेली की फ़ोटो आपके ब्राउज़र में छोटी होती है और केवल आपकी रीडिंग के साथ सहेजी जाती है ताकि आप दोबारा देख सकें। हम व्यक्तिगत डेटा किसी तीसरे पक्ष को बेचते, किराए पर देते या साझा करते नहीं, और कोई विज्ञापन ट्रैकर उपयोग नहीं करते।" }
+      ] },
+      { "h": { "en": "Cookies", "hi": "कुकीज़" }, "p": [
+        { "en": "We use a session cookie to keep you logged in and a language cookie to remember your Hindi/English choice. Both are essential and first-party; we do not use third-party analytics cookies.", "hi": "हम आपको लॉगिन रखने हेतु सत्र कुकी और आपकी हिंदी/अंग्रेज़ी पसंद याद रखने हेतु भाषा कुकी उपयोग करते हैं। दोनों आवश्यक और प्रथम-पक्ष हैं; हम तृतीय-पक्ष विश्लेषण कुकीज़ उपयोग नहीं करते।" }
+      ] },
+      { "h": { "en": "Your rights", "hi": "आपके अधिकार" }, "p": [
+        { "en": "You can delete any reading, profile or palm photo from your dashboard at any time. To delete your entire account and all associated data, write to abhijain.technical@gmail.com and we will erase it within 7 days.", "hi": "आप अपने डैशबोर्ड से कभी भी कोई रीडिंग, प्रोफ़ाइल या हथेली की फ़ोटो हटा सकते हैं। पूरा खाता व संबंधित डेटा हटाने हेतु abhijain.technical@gmail.com पर लिखें; हम 7 दिनों में मिटा देंगे।" }
+      ] },
+      { "h": { "en": "Security", "hi": "सुरक्षा" }, "p": [
+        { "en": "Passwords are stored only as bcrypt hashes; sessions are random tokens in httpOnly cookies; premium payment happens directly between your UPI app and our UPI ID — our servers never touch your money.", "hi": "पासवर्ड केवल bcrypt हैश के रूप में सहेजे जाते हैं; सत्र httpOnly कुकीज़ में यादृच्छिक टोकन हैं; प्रीमियम भुगतान सीधे आपके UPI ऐप और हमारी UPI ID के बीच होता है — हमारे सर्वर आपके धन को कभी स्पर्श नहीं करते।" }
+      ] }
+    ]
+  },
+  "disclaimer": {
+    "title": { "en": "Disclaimer", "hi": "अस्वीकरण" },
+    "updated": { "en": "Last updated: 1 August 2026", "hi": "अंतिम अद्यतन: 1 अगस्त 2026" },
+    "intro": { "en": "Hast Rekha AI is provided for entertainment and self-reflection purposes only.", "hi": "हस्तरेखा AI केवल मनोरंजन और आत्मचिंतन के उद्देश्य से प्रदान किया गया है।" },
+    "sections": [
+      { "h": { "en": "Not professional advice", "hi": "पेशेवर सलाह नहीं" }, "p": [
+        { "en": "Nothing on this website constitutes medical, legal, financial or psychological advice. Predictions, remedies, gemstone suggestions and stotras are drawn from traditional Vedic palmistry and astrology for cultural and entertainment value. Always consult qualified professionals for health, legal or financial decisions.", "hi": "इस वेबसाइट की कोई भी सामग्री चिकित्सा, कानूनी, वित्तीय या मनोवैज्ञानिक सलाह नहीं है। भविष्यवाणियाँ, उपाय, रत्न सुझाव और स्तोत्र पारंपरिक वैदिक हस्तरेखा व ज्योतिष से सांस्कृतिक व मनोरंजन मूल्य हेतु लिए गए हैं। स्वास्थ्य, कानूनी या वित्तीय निर्णयों हेतु सदा योग्य विशेषज्ञों से परामर्श करें।" }
+      ] },
+      { "h": { "en": "Rule-based calculations", "hi": "नियम-आधारित गणना" }, "p": [
+        { "en": "Astronomical positions are computed with standard formulas (Lahiri ayanamsa). Results are deterministic and transparent — the technical panel in every report shows the exact numbers. Still, no calculation can guarantee future events.", "hi": "खगोलीय स्थितियाँ मानक सूत्रों (लाहिड़ी अयनांश) से गणित हैं। परिणाम नियतात्मक व पारदर्शी हैं — हर रिपोर्ट का तकनीकी पैनल सटीक अंक दिखाता है। फिर भी कोई गणना भविष्य की घटनाओं की गारंटी नहीं दे सकती।" }
+      ] },
+      { "h": { "en": "Premium payments", "hi": "प्रीमियम भुगतान" }, "p": [
+        { "en": "The ₹51 premium unlock and optional donations are voluntary contributions processed directly through UPI to our published UPI ID. Refunds for the digital premium report are available within 24 hours if the report fails to unlock; write to abhijain.technical@gmail.com.", "hi": "₹51 प्रीमियम अनलॉक व वैकल्पिक दान हमारी प्रकाशित UPI ID पर UPI से प्रत्यक्ष प्रक्रिया की गई स्वैच्छिक सहभागिता है। यदि रिपोर्ट अनलॉक न हो तो 24 घंटे के भीतर डिजिटल प्रीमियम रिपोर्ट हेतु धनवापसी उपलब्ध; abhijain.technical@gmail.com पर लिखें।" }
+      ] },
+      { "h": { "en": "External links & content", "hi": "बाहरी लिंक व सामग्री" }, "p": [
+        { "en": "Blog articles and reading content are editorial material. We are not liable for actions taken solely on the basis of this content.", "hi": "ब्लॉग लेख व रीडिंग सामग्री संपादकीय सामग्री है। केवल इस सामग्री के आधार पर उठाए गए कदमों हेतु हम उत्तरदायी नहीं हैं।" }
+      ] }
+    ]
+  },
+  "about": {
+    "title": { "en": "About Hast Rekha AI", "hi": "हस्तरेखा AI के बारे में" },
+    "intro": { "en": "Hast Rekha AI was born from a simple wish: that every Indian family — from a grandmother in Varanasi to a developer in Bengaluru — should be able to read their own hands and stars in the language they love, without paying consultants or trusting black-box AI.", "hi": "हस्तरेखा AI एक सरल इच्छा से जन्मा: कि हर भारतीय परिवार — वाराणसी की दादी से लेकर बेंगलुरु के डेवलपर तक — अपनी पसंदीदा भाषा में अपने हाथ और सितारे पढ़ सके, बिना सलाहकारों को भुगतान किए या ब्लैक-बॉक्स AI पर भरोसा किए।" },
+    "sections": [
+      { "h": { "en": "What we do", "hi": "हम क्या करते हैं" }, "p": [
+        { "en": "We compute real planetary positions with astronomical formulas, apply the classical Lahiri ayanamsa, and combine the result with a rule-based reading of your palm's lines, mounts and marks — producing a complete bilingual report: Rashi, Nakshatra, Lagna, Panchang, life-area predictions and a five-year premium roadmap.", "hi": "हम खगोलीय सूत्रों से वास्तविक ग्रह स्थितियाँ गणित करते हैं, शास्त्रीय लाहिड़ी अयनांश लागू करते हैं, और परिणाम को आपकी हथेली की रेखाओं, पर्वतों व चिह्नों की नियम-आधारित रीडिंग से जोड़ते हैं — पूर्ण द्विभाषी रिपोर्ट बनती है: राशि, नक्षत्र, लग्न, पंचांग, जीवन-क्षेत्र भविष्यवाणियाँ और पाँच-वर्षीय प्रीमियम रोडमैप।" }
+      ] },
+      { "h": { "en": "Our principles", "hi": "हमारे सिद्धांत" }, "p": [
+        { "en": "Transparency: every report shows the exact degrees and ayanamsa behind it. Privacy: your data stays with you. Bilingual first: Hindi and English, written by humans. No fear-mongering: every caution is paired with a remedy. Affordability: the complete free report costs nothing; the premium 5-year roadmap is a one-time ₹51.", "hi": "पारदर्शिता: हर रिपोर्ट अपने पीछे के सटीक अंश व अयनांश दिखाती है। गोपनीयता: आपका डेटा आपके पास रहता है। द्विभाषी सर्वप्रथम: हिंदी व अंग्रेज़ी, मनुष्यों द्वारा लिखित। भय न फैलाना: हर सावधानी के साथ उपाय। किफ़ायत: संपूर्ण निःशुल्क रिपोर्ट का कोई शुल्क नहीं; प्रीमियम 5-वर्षीय रोडमैप एक बार का ₹51।" }
+      ] },
+      { "h": { "en": "The tradition we honour", "hi": "जिस परंपरा का हम सम्मान करते हैं" }, "p": [
+        { "en": "Samudrika Shastra, Bhrigu Samhita, Phaladeepika and the classical palmistry texts of India taught that the body is a manuscript of karma. We are students of that tradition, presenting it with modern astronomy and a modern, mobile-first interface.", "hi": "समुद्रिक शास्त्र, भृगु संहिता, फलदीपिका और भारत के शास्त्रीय हस्तरेखा ग्रंथों ने सिखाया कि शरीर कर्म की पांडुलिपि है। हम उस परंपरा के विद्यार्थी हैं, जिसे आधुनिक खगोल विज्ञान व आधुनिक, मोबाइल-प्रथम इंटरफ़ेस के साथ प्रस्तुत करते हैं।" }
+      ] },
+      { "h": { "en": "Contact", "hi": "संपर्क" }, "p": [
+        { "en": "Write to abhijain.technical@gmail.com or call/WhatsApp +91 9522333669 for questions, corrections or content suggestions. We read every message.", "hi": "प्रश्न, सुधार या सामग्री सुझाव हेतु abhijain.technical@gmail.com पर लिखें या +91 9522333669 पर कॉल/व्हाट्सऐप करें। हम हर संदेश पढ़ते हैं।" }
+      ] }
+    ]
+  },
+  "contact": {
+    "title": { "en": "Contact Us", "hi": "संपर्क करें" },
+    "intro": { "en": "Questions about your reading, a correction to our content, a partnership idea or payment help — we usually reply within two working days.", "hi": "आपकी रीडिंग, सामग्री सुधार, साझेदारी विचार या भुगतान सहायता हेतु प्रश्न — हम प्रायः दो कार्यदिवसों में उत्तर देते हैं।" },
+    "channels": [
+      { "label": { "en": "Email", "hi": "ईमेल" }, "value": "abhijain.technical@gmail.com" },
+      { "label": { "en": "Phone / WhatsApp", "hi": "फ़ोन / व्हाट्सऐप" }, "value": "+91 9522333669" },
+      { "label": { "en": "UPI / Payments & Donations", "hi": "UPI / भुगतान व दान" }, "value": "9522333669@jio" },
+      { "label": { "en": "Hours", "hi": "समय" }, "value": { "en": "Mon–Sat, 10:00–18:00 IST", "hi": "सोम–शनि, 10:00–18:00 IST" } }
+    ]
+  }
+}

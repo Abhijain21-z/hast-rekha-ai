@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cosmic-950: #05020d;
+  --color-cosmic-900: #0b0618;
+  --color-cosmic-800: #140b2a;
+  --color-cosmic-700: #1f1240;
+  --color-cosmic-600: #2c1a5c;
+  --color-gold-200: #fbeab8;
+  --color-gold-300: #f9dc8c;
+  --color-gold-400: #f5c242;
+  --color-gold-500: #d4a12a;
+  --color-gold-600: #b3841a;
+  --color-mystic-400: #c084fc;
+  --color-mystic-500: #a855f7;
+  --color-mystic-600: #7c3aed;
+  --color-mystic-700: #5b21b6;
+
+  --font-display: "Cinzel", "Noto Sans Devanagari", Georgia, serif;
+  --font-body: "Poppins", "Noto Sans Devanagari", system-ui, sans-serif;
+
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+  --animate-spin-slow: spin 60s linear infinite;
+  --animate-spin-slower: spin 120s linear infinite reverse;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-pulse-glow: pulseGlow 3s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.2s linear infinite;
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+}
+
+html { scroll-behavior: smooth; }
+html[dir="rtl"] body { text-align: right; }
+html[data-lang="hi"] body, html[data-lang="mr"] body, html[data-lang="sa"] body { font-family: "Noto Sans Devanagari", "Poppins", system-ui, sans-serif; }
+html[data-lang="gu"] body { font-family: "Noto Sans Gujarati", "Poppins", system-ui, sans-serif; }
+html[data-lang="pa"] body { font-family: "Noto Sans Gurmukhi", "Poppins", system-ui, sans-serif; }
+html[data-lang="bn"] body { font-family: "Noto Sans Bengali", "Poppins", system-ui, sans-serif; }
+html[data-lang="or"] body { font-family: "Noto Sans Oriya", "Poppins", system-ui, sans-serif; }
+html[data-lang="te"] body { font-family: "Noto Sans Telugu", "Poppins", system-ui, sans-serif; }
+html[data-lang="kn"] body { font-family: "Noto Sans Kannada", "Poppins", system-ui, sans-serif; }
+html[data-lang="ml"] body { font-family: "Noto Sans Malayalam", "Poppins", system-ui, sans-serif; }
+html[data-lang="ta"] body { font-family: "Noto Sans Tamil", "Poppins", system-ui, sans-serif; }
+html[data-lang="ur"] body { font-family: "Noto Nastaliq Urdu", "Poppins", system-ui, sans-serif; line-height: 2; }
+
+body {
+  background: radial-gradient(ellipse at top, #160b33 0%, #0b0618 45%, #05020d 100%) fixed;
+  color: #e9e4f5;
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
+
+::selection { background: rgba(245, 194, 66, 0.35); color: #fff; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0b0618; }
+::-webkit-scrollbar-thumb { background: #3b2a6b; border-radius: 8px; }
+
+.font-display { font-family: var(--font-display); letter-spacing: 0.02em; }
+
+.gold-text {
+  background: linear-gradient(120deg, #fbeab8 0%, #f5c242 40%, #d4a12a 60%, #fbeab8 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.glass-strong {
+  background: linear-gradient(160deg, rgba(31, 18, 64, 0.85), rgba(11, 6, 24, 0.9));
+  border: 1px solid rgba(245, 194, 66, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.gold-border { border: 1px solid rgba(245, 194, 66, 0.35); }
+.gold-glow { box-shadow: 0 0 40px -10px rgba(245, 194, 66, 0.45); }
+.mystic-glow { box-shadow: 0 0 60px -15px rgba(168, 85, 247, 0.6); }
+
+.btn-gold {
+  background: linear-gradient(135deg, #f9dc8c 0%, #f5c242 45%, #d4a12a 100%);
+  color: #1a1030;
+  font-weight: 600;
+  box-shadow: 0 10px 30px -10px rgba(245, 194, 66, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+.btn-gold:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 14px 34px -10px rgba(245, 194, 66, 0.75); }
+.btn-gold:active { transform: translateY(0); }
+.btn-gold:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.input-dark {
+  width: 100%;
+  border-radius: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.8rem 1rem;
+  color: #f4f0ff;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.input-dark::placeholder { color: rgba(233, 228, 245, 0.35); }
+.input-dark:focus { border-color: rgba(245, 194, 66, 0.6); box-shadow: 0 0 0 4px rgba(245, 194, 66, 0.12); background: rgba(255, 255, 255, 0.06); }
+.input-dark::-webkit-calendar-picker-indicator { filter: invert(0.8) sepia(1) saturate(3) hue-rotate(5deg); cursor: pointer; }
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+  border-radius: 0.75rem;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245, 194, 66, 0.4), transparent);
+}
+
+.mandala-bg {
+  background-image: radial-gradient(circle at center, rgba(245, 194, 66, 0.08) 0, transparent 40%),
+    repeating-conic-gradient(from 0deg, rgba(168, 85, 247, 0.06) 0deg 15deg, transparent 15deg 30deg);
+}
+
+/* ---------- Navagraha orbit system ---------- */
+@keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes orbit-reverse { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+@keyframes halo-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes hand-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg) scale(1); }
+  50% { transform: translateY(-10px) rotate(2deg) scale(1.03); }
+}
+@keyframes ring-pulse {
+  0% { transform: scale(0.85); opacity: 0.7; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+/* ---------- Animated zodiac wheel (sun artwork) ---------- */
+@keyframes wheel-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes wheel-sway {
+  0%, 100% { transform: translateY(0) rotate(-1.2deg) scale(1); }
+  50% { transform: translateY(-12px) rotate(1.2deg) scale(1.025); }
+}
+@keyframes sun-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.09); opacity: 1; }
+}
+@keyframes wheel-shine {
+  0% { transform: translateX(-130%) rotate(18deg); opacity: 0; }
+  35% { opacity: 0.55; }
+  100% { transform: translateX(130%) rotate(18deg); opacity: 0; }
+}
+.planet {
+  position: relative;
+  border-radius: 9999px;
+  box-shadow: inset -6px -6px 12px rgba(0, 0, 0, 0.65), inset 3px 3px 8px rgba(255, 255, 255, 0.18);
+}
+.planet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.45), transparent 42%),
+    radial-gradient(circle at 72% 78%, rgba(0, 0, 0, 0.55), transparent 62%);
+}
+.blend-screen { mix-blend-mode: screen; }
+.mask-fade { -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 72%); mask-image: radial-gradient(circle, #000 52%, transparent 72%); }
+.perspective-1000 { perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; }
+
+@media print {
+  body { background: #fff !important; color: #111 !important; }
+  .no-print { display: none !important; }
+  .glass, .glass-strong { background: #fff !important; border-color: #ddd !important; color: #111 !important; }
+}

@@ -1,0 +1,79 @@
+{
+  "eyebrow": { "en": "✦ Rishi Parampara", "hi": "✦ ऋषि परंपरा" },
+  "title": { "en": "The Rishis Who Gave Us Hast Rekha", "hi": "जिन ऋषियों ने दिया हस्तरेखा विज्ञान" },
+  "sub": { "en": "Palmistry is not a modern invention — it is a rishi-given science preserved in the Samudrika and Saptarishi traditions.", "hi": "हस्तरेखा कोई आधुनिक आविष्कार नहीं — यह ऋषि-प्रदत्त विज्ञान है, समुद्रिक और सप्तर्षि परंपरा में सुरक्षित।" },
+  "agastya": {
+    "name": { "en": "Maharshi Agastya", "hi": "महर्षि अगस्त्य" },
+    "role": { "en": "Father of Hast Rekha & Siddha Science", "hi": "हस्तरेखा व सिद्ध विज्ञान के जनक" },
+    "paras": [
+      { "en": "Maharshi Agastya is revered as the principal rishi of palmistry and Samudrika Shastra. The classical Agastya Samudrika texts read the entire destiny from the body's signs — and the palm is their most complete manuscript. He systematised the lines, mounts and marks that we still read today.", "hi": "महर्षि अगस्त्य को हस्तरेखा व समुद्रिक शास्त्र के प्रधान ऋषि के रूप में पूजा जाता है। शास्त्रीय अगस्त्य समुद्रिक ग्रंथ शरीर के चिह्नों से संपूर्ण भाग्य पढ़ते हैं — और हथेली उनकी सबसे पूर्ण पांडुलिपि है। रेखाओं, पर्वतों व चिह्नों का वही क्रमबद्ध रूप है जिसे हम आज भी पढ़ते हैं।" },
+      { "en": "His discoveries go far beyond the palm: the Agastya Nadi texts, the science of herbs and rasayana, the Siddha medicine of the South, water-purification methods (remembered in the legend of drinking the sea), and the spread of Vedic knowledge across the Vindhya to the Tamil land. Palmistry, astrology and healing travel together in his lineage.", "hi": "उनकी खोजें हथेली से बहुत आगे हैं: अगस्त्य नाड़ी ग्रंथ, औषधीय व रसायन विज्ञान, दक्षिण की सिद्ध चिकित्सा, जल-शोधन विधियाँ (समुद्र पान की कथा में स्मृत), और विंध्या के पार तमिल भूमि तक वैदिक ज्ञान का विस्तार। हस्तरेखा, ज्योतिष और चिकित्सा उनकी परंपरा में साथ चलते हैं।" }
+    ]
+  },
+  "saptarishi": [
+    {
+      "name": { "en": "Vashistha", "hi": "वशिष्ठ" },
+      "role": { "en": "Brahmarishi · Guru of the Solar Dynasty", "hi": "ब्रह्मर्षि · सूर्यवंश के गुरु" },
+      "work": { "en": "Guru of kings; his Yoga Vashistha maps the mind — the inner half of every palm reading.", "hi": "राजगुरु; उनका योग वशिष्ठ मन का नक्शा है — हर हस्तरेखा रीडिंग का आंतरिक पक्ष।" },
+      "paras": [
+        { "en": "Brahmarishi Vashistha was the Rajaguru of the Solar Dynasty and one of the Saptarishis of the Rigveda, where dozens of hymns flow from his family of seers. Rama, Dasharatha and generations of kings learned at his gurukul, and the sacred Kamadhenu of his ashram symbolises the abundance of true knowledge.", "hi": "ब्रह्मर्षि वशिष्ठ सूर्यवंश के राजगुरु और ऋग्वेद के सप्तर्षियों में से एक थे — उनके ऋषि-परिवार से दर्जनों मंत्र ऋग्वेद में प्रवाहित होते हैं। राम, दशरथ और पीढ़ी-दर-पीढ़ी राजा उनके गुरुकुल से शिक्षा पाते थे, और उनके आश्रम की कामधेनु सच्चे ज्ञान की समृद्धि का प्रतीक है।" },
+        { "en": "His great gift to palmistry is indirect but foundational: the Yoga Vashistha — among the world's deepest texts on the mind. It teaches that destiny is shaped by samskaras held in the mind, exactly what a palmist reads as the mental print behind the lines. Every reading of the head line and moon mount stands on his psychology.", "hi": "हस्तरेखा को उनकी देन अप्रत्यक्ष पर आधारभूत है: योग वशिष्ठ — मन पर विश्व के सबसे गहरे ग्रंथों में से एक। उसमें सिखाया गया कि भाग्य मन में धारित संस्कारों से बनता है — ठीक वही जो हस्तरेखी रेखाओं के पीछे के मानसिक प्रिंट के रूप में पढ़ता है। मस्तिष्क रेखा और चंद्र पर्वत की हर व्याख्या उन्हीं के मनोविज्ञान पर खड़ी है।" }
+      ]
+    },
+    {
+      "name": { "en": "Vishwamitra", "hi": "विश्वामित्र" },
+      "role": { "en": "Rajarishi · Seer of the Gayatri", "hi": "राजर्षि · गायत्री के द्रष्टा" },
+      "work": { "en": "King-to-rishi who gave the Gayatri Mantra — the remedy behind countless upay traditions.", "hi": "राजा से ऋषि; गायत्री मंत्र के दाता — अनगिनत उपाय परंपराओं के पीछे का मंत्र।" },
+      "paras": [
+        { "en": "Vishwamitra was a mighty king (Chakravarti of the Chandravamsha) who renounced an empire to become a rishi. Through thousands of years of tapas — resisting temptation, anger and pride — he rose from Rajarishi to Brahmarishi, the only seer to complete that journey, and even tested the gods themselves.", "hi": "विश्वामित्र एक पराक्रमी चक्रवर्ती सम्राट थे जिन्होंने साम्राज्य त्यागकर ऋषि होने का व्रत लिया। हजारों वर्षों की तपस्या से — मोह, क्रोध और अहंकार पर विजय पाकर — वे राजर्षि से ब्रह्मर्षि बने; यह यात्रा पूर्ण करने वाले वे एकमात्र द्रष्टा हैं।" },
+        { "en": "He is the seer (drashta) of the Gayatri Mantra, the Rigveda's most sacred verse, and of the third mandala. For hast rekha, his legacy lives in the upay tradition: when a reading reveals a weak Sun or afflicted line, the mantra-remedies prescribed trace back to his Gayatri. He proved that fate lines can be risen above — the very hope every reading offers.", "hi": "वे गायत्री मंत्र — ऋग्वेद की सबसे पवित्र ऋचा — और तृतीय मंडल के द्रष्टा हैं। हस्तरेखा में उनकी विरासत उपाय-परंपरा में जीवित है: जब रीडिंग में कोई कमजोर रेखा या सूर्य दिखे, तो सुझाए जाने वाले मंत्र-उपाय उन्हीं की गायत्री तक जाते हैं। उन्होंने सिद्ध किया कि रेखाओं से ऊपर उठा जा सकता है — यही तो हर रीडिंग की आशा है।" }
+      ]
+    },
+    {
+      "name": { "en": "Jamadagni", "hi": "जमदग्नि" },
+      "role": { "en": "Saptarishi · Father of Parashurama", "hi": "सप्तर्षि · परशुराम के पिता" },
+      "work": { "en": "Father of Parashurama; his lineage preserved dharma-shastra and body-sign omens.", "hi": "परशुराम के पिता; उनकी परंपरा ने धर्मशास्त्र और शरीर-शकुन विद्या सुरक्षित रखी।" },
+      "paras": [
+        { "en": "Jamadagni, son of Rishi Richika and Satyavati, was a Saptarishi of terrible tapas and unshakeable dharma. His ashram at Renuka was famed where, by his yogic power, the sun itself moved gently. He authored hymns of the Rigveda and texts of dharma that his descendants guarded for ages.", "hi": "ऋचीक और सत्यवती के पुत्र जमदग्नि भीषण तप और अडिग धर्म वाले सप्तर्षि थे। रेणुका के उनके आश्रम की यह गाथा थी कि उनकी योग-शक्ति से सूर्य भी कोमल चलता था। उन्होंने ऋग्वेद के मंत्र और धर्म-शास्त्र के ग्रंथ रचे, जिन्हें उनकी परंपरा ने युगों तक सँभालकर रखा।" },
+        { "en": "His son Parashurama — the sixth Vishnu avatar, immortal Chiranjivi — is honoured in the Agastya Samudrika tradition as a transmitters of palm-lore to Kerala's astrologers. The body-sign science (samudrika lakshana) that palmistry belongs to survived the ages largely through Jamadagni's lineage of warrior-sages.", "hi": "उनके पुत्र परशुराम — षठम् विष्णुअवतार, अजर चिरंजीवी — अगस्त्य समुद्रिक परंपरा में हस्त-विद्या को केरल के ज्योतिषियों तक पहुँचाने वाले माने जाते हैं। समुद्रिक लक्षण की वह विद्या जिसका हस्तरेखा अंग है, बड़े भाग में जमदग्नि की ऋषि-परंपरा के कारण ही युगों तक जीवित रही।" }
+      ]
+    },
+    {
+      "name": { "en": "Gautama", "hi": "गौतम" },
+      "role": { "en": "Saptarishi · Founder of Nyaya", "hi": "सप्तर्षि · न्याय-दर्शन के प्रवर्तक" },
+      "work": { "en": "The logician rishi; his Nyaya school trained palmists to infer, not guess.", "hi": "तार्किक ऋषि; उनकी न्याय-शाखा ने हस्तरेखा शास्त्रियों को अनुमान नहीं, अनुमिति सिखाई।" },
+      "paras": [
+        { "en": "Gautama (Dirghatamas of the Rigveda lineage) is credited with founding the Nyaya school — India's science of logic and reasoning. His Nyaya Sutras systematised perception, inference, comparison and testimony as the four valid means of knowledge, the toolkit of every classical debate.", "hi": "गौतम (ऋग्वेद-परंपरा के दीर्घतमा) को न्याय-दर्शन का प्रवर्तक माना जाता है — भारत का तर्क-विज्ञान। उनके न्याय-सूत्रों ने प्रत्यक्ष, अनुमान, उपमान और शब्द को ज्ञान के चार प्रमाण रूप में क्रमबद्ध किया — जो हर शास्त्रार्थ का आधार-साधन है।" },
+        { "en": "This is the quiet backbone of hast rekha as a shastra rather than superstition: a palmist trained in Nyaya reasons from sign to meaning (\"this fork on the fate line + this mount = this tendency\") instead of guessing. The Gautama-dharmasutra, from his tradition, also forms the earliest layer of the dharma-shastra that framed Vedic life.", "hi": "यही न्याय हस्तरेखा को अंधविश्वास से शास्त्र बनाता है: न्याय में निपुण हस्तरेखी चिह्न से अर्थ तक तर्क चलाता है (\"भाग्य रेखा का यह विभाजन + यह पर्वत = यह प्रवृत्ति\"), अंदाज़े से नहीं। उनकी परंपरा के गौतम-धर्मसूत्र वैदिक जीवन के ढाँचे बने धर्मशास्त्र की आदि परत हैं।" }
+      ]
+    },
+    {
+      "name": { "en": "Bharadwaja", "hi": "भरद्वाज" },
+      "role": { "en": "Saptarishi · Father of Ayurveda", "hi": "सप्तर्षि · आयुर्वेद के प्रवर्तक" },
+      "work": { "en": "Rishi of Ayurveda and longevity — the health chapter of every palm report.", "hi": "आयुर्वेद व दीर्घायु के ऋषि — हर हस्तरेखा रिपोर्ट का स्वास्थ्य अध्याय।" },
+      "paras": [
+        { "en": "Bharadwaja, adopted son of King Bharata and a Rigvedic seer of hundreds of hymns, is remembered as the rishi who brought Ayurveda to humanity. Tradition says he ascended to heaven itself to study the three Vedas and returned with the science of life (ayus-veda), which he compiled for physicians.", "hi": "भरत राजा के दत्तक-पुत्र और ऋग्वेद के शताधिक मंत्रों के द्रष्टा भरद्वाज को आयुर्वेद लाने वाले ऋषि के रूप में स्मरण किया जाता है। परंपरा कहती है कि उन्होंने स्वर्ग तक जाकर वेद-अध्ययन किया और आयुष्-वेद (जीवन-विज्ञान) लेकर आए, जिसे उन्होंने चिकित्सकों के लिए संकलित किया।" },
+        { "en": "His connection to palmistry runs through the health lines: the life line's vitality, the health line (Mercury line), and colour-and-texture readings of the hand all descend from Ayurveda's body diagnosis, which his tradition codified. The Bharadwaja lineage also gave us Dhanurveda (archery), the Vimanashastra hymns and the vast Bharadwaja Gotra.", "hi": "हस्तरेखा से उनका संबंध स्वास्थ्य-रेखाओं से जुड़ता है: जीवन रेखा की जीवनी, स्वास्थ्य रेखा (बुध रेखा) और हाथ के रंग-स्पर्श का विश्लेषण — ये सब आयुर्वेद की शरीर-परीक्षा परंपरा से उतरे हैं, जिसे उन्हीं की शाखा ने क्रमबद्ध किया। भरद्वाज परंपरा से धनुर्वेद और विशाल भरद्वाज गोत्र भी चला है।" }
+      ]
+    },
+    {
+      "name": { "en": "Atri", "hi": "अत्रि" },
+      "role": { "en": "Brahmarishi · Mind-born of Brahma", "hi": "ब्रह्मर्षि · ब्रह्मा के मानस-पुत्र" },
+      "work": { "en": "Seer of hymns to the stars; his lineage fed the nakshatra science of Jyotish.", "hi": "नक्षत्र-स्तोत्रों के द्रष्टा; उनकी परंपरा ने ज्योतिष की नक्षत्र विद्या को पोषित किया।" },
+      "paras": [
+        { "en": "Atri is one of Brahma's mind-born sons and the seer of the entire fifth mandala of the Rigveda — hundreds of hymns flowing from him, his wife Anasuya (famed for her tapas that turned the Trimurti into infants) and their lineage. He is invoked in the very creation hymn that first names the nakshatras.", "hi": "अत्रि ब्रह्मा के मानस-पुत्रों में से हैं और ऋग्वेद के पूरे पंचम मंडल के द्रष्टा — सैकड़ों मंत्र उनसे, उनकी पत्नी अनसूया से (जिनके तप ने त्रिमूर्तियों को शिशु बना दिया था) और उनके वंश से प्रवाहित होते हैं। नक्षत्रों का पहली बार उल्लेख करने वाले सृष्टि-सूक्त में उन्हीं का आह्वान है।" },
+        { "en": "That is his bridge to palmistry: Jyotish reads the hand against the nakshatras — the moon's mansion at birth, the mounts named for planets. The Atri lineage (alongside descendants like Dattatreya and the Atri Gotra) kept the star-hymns that later became the nakshatra chakra every Hast Rekha reading is placed inside.", "hi": "हस्तरेखा से उनका पुल यही है: ज्योतिष हथेली को नक्षत्रों के आगे पढ़ता है — जन्म के समय चंद्र का नक्षत्र, ग्रहों पर नाम पर्वत। अत्रि वंश (दत्तात्रेय जैसे वंशजों और अत्रि गोत्र सहित) ने वे नक्षत्र-सूक्त सँभाले जो आगे चलकर उस नक्षत्र-चक्र बने जिसके भीतर हर हस्तरेखा रीडिंग रखी जाती है।" }
+      ]
+    },
+    {
+      "name": { "en": "Kashyapa", "hi": "कश्यप" },
+      "role": { "en": "Brahmarishi · Father of All Beings", "hi": "ब्रह्मर्षि · समस्त प्राणियों के पिता" },
+      "work": { "en": "Father of all beings; his Kashyapa Samhita covers omens, children and naming.", "hi": "समस्त प्राणियों के पिता; उनकी कश्यप संहिता शकुन, बालक और नामकरण पर है।" },
+      "paras": [
+        { "en": "Kashyapa, son of Marichi and grandson of Brahma, is the great progenitor of creation itself: the devas, asuras, nagas, garudas, humans and every living kind are called his children through his thirteen wives — hence the name Kashyapa, \"the tortoise that holds the world\". He is the most cited seer across all four Vedas.", "hi": "मरीचि के पुत्र और ब्रह्मा के पौत्र कश्यप सृष्टि के महान पितामह हैं: देव, असुर, नाग, गरुड़, मनुष्य और समस्त प्राणी उन्हीं के तेरह पत्नियों से संतान कहे जाते हैं — इसीलिए नाम कश्यप, \"विश्व धारण करने वाले कूर्म\"। चारों वेदों में सबसे अधिक उल्लिखित द्रष्टा भी ये ही हैं।" },
+        { "en": "For hast rekha his name anchors two traditions: the Kashyapa Samhita, an Ayurvedic classic devoted to children's health, naming (namakarana) and omens — the very questions palm readings of children's lines and naming remedies address — and the Kashyapa Jyotisha, an early astrology text. The Kashyapa Gotra carries his line to this day.", "hi": "हस्तरेखा के लिए उनका नाम दो परंपराओं का आधार है: कश्यप संहिता — बालकों के स्वास्थ्य, नामकरण और शकुन-विद्या पर आयुर्वेद का प्रसिद्ध ग्रंथ (ठीक वे विषय जो संतान रेखा और नामकरण-उपाय की रीडिंग संबोधित करती है) — और कश्यप ज्योतिष नामक प्राचीन ज्योतिष-ग्रंथ। कश्यप गोत्र उनकी परंपरा आज भी चल रही है।" }
+      ]
+    }
+  ],
+  "closing": { "en": "When you read a palm on Hast Rekha AI, you are reading a manuscript these rishis began writing five thousand years ago.", "hi": "जब आप हस्तरेखा AI पर हथेली पढ़ते हैं, तो आप वही पांडुलिपि पढ़ रहे हैं जिसे इन ऋषियों ने पाँच हज़ार वर्ष पहले लिखना आरंभ किया था।" }
+}

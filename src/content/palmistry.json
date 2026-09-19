@@ -1,0 +1,61 @@
+{
+  "intro": {
+    "en": "Hast Rekha Shastra (palmistry) reads the story written on your palm. In Indian tradition the right hand shows what you are making of your life, while the left hand shows innate potential. Below is an educational guide to the four major lines, paired with your uploaded palm.",
+    "hi": "हस्त रेखा शास्त्र आपकी हथेली पर लिखी कहानी पढ़ता है। भारतीय परंपरा में दायाँ हाथ बताता है कि आप अपने जीवन को क्या रूप दे रहे हैं, जबकि बायाँ हाथ जन्मजात क्षमता दर्शाता है। नीचे चार प्रमुख रेखाओं की शैक्षिक मार्गदर्शिका दी गई है, जिसे आपके अपलोड किए गए हाथ के साथ जोड़ा गया है।"
+  },
+  "lines": [
+    {
+      "key": "life",
+      "name": { "en": "Life Line (Jeevan Rekha)", "hi": "जीवन रेखा" },
+      "location": { "en": "Curves around the base of the thumb from between thumb and index finger.", "hi": "अंगूठे और तर्जनी के बीच से शुरू होकर अंगूठे के आधार के चारों ओर घूमती है।" },
+      "meaning": { "en": "Reflects vitality, physical energy, major life changes and overall zest for living — not the length of life.", "hi": "जीवन शक्ति, शारीरिक ऊर्जा, जीवन के बड़े परिवर्तन और जीने के उत्साह को दर्शाती है — आयु की लंबाई को नहीं।" },
+      "variants": [
+        { "label": { "en": "Long & deep", "hi": "लंबी व गहरी" }, "text": { "en": "A strong life line suggests robust stamina, resilience after setbacks and a grounded, steady approach to life.", "hi": "मज़बूत जीवन रेखा अच्छी सहनशक्ति, असफलताओं के बाद उठ खड़े होने की क्षमता और जीवन के प्रति स्थिर दृष्टिकोण का संकेत देती है।" } },
+        { "label": { "en": "Wide curve", "hi": "चौड़ा घुमाव" }, "text": { "en": "A life line that sweeps wide into the palm shows an adventurous spirit, enthusiasm and a love for travel and new experiences.", "hi": "हथेली में दूर तक फैली जीवन रेखा साहसी स्वभाव, उत्साह और यात्रा व नए अनुभवों के प्रेम को दर्शाती है।" } },
+        { "label": { "en": "Faint or chained", "hi": "हल्की या श्रृंखलाबद्ध" }, "text": { "en": "A lighter or chained life line points to a sensitive constitution; rest, routine and mindful energy management bring balance.", "hi": "हल्की या श्रृंखलाबद्ध जीवन रेखा संवेदनशील शरीर की ओर संकेत करती है; विश्राम, दिनचर्या और सचेत ऊर्जा प्रबंधन संतुलन लाते हैं।" } }
+      ]
+    },
+    {
+      "key": "heart",
+      "name": { "en": "Heart Line (Hridaya Rekha)", "hi": "हृदय रेखा" },
+      "location": { "en": "Runs horizontally across the top of the palm, below the fingers.", "hi": "उंगलियों के नीचे हथेली के ऊपरी भाग में क्षैतिज रूप से चलती है।" },
+      "meaning": { "en": "Governs emotional life, romantic style, empathy and how you give and receive love.", "hi": "भावनात्मक जीवन, प्रेम की शैली, सहानुभूति और आप कैसे प्रेम देते व पाते हैं — इन्हें नियंत्रित करती है।" },
+      "variants": [
+        { "label": { "en": "Curving up to index finger", "hi": "तर्जनी की ओर ऊपर मुड़ती" }, "text": { "en": "Indicates an idealistic, warm and expressive lover who seeks a deep, romantic partnership.", "hi": "एक आदर्शवादी, स्नेही और अभिव्यंजक प्रेमी का संकेत, जो गहरी रोमांटिक साझेदारी चाहता है।" } },
+        { "label": { "en": "Straight & long", "hi": "सीधी व लंबी" }, "text": { "en": "Suggests a calm, rational approach to love; you value loyalty and think carefully before committing.", "hi": "प्रेम के प्रति शांत और तार्किक दृष्टिकोण; आप वफ़ादारी को महत्व देते हैं और प्रतिबद्धता से पहले सोच-विचार करते हैं।" } },
+        { "label": { "en": "Ending under middle finger", "hi": "मध्यमा के नीचे समाप्त" }, "text": { "en": "Points to an independent heart that values freedom; learning to voice feelings strengthens relationships.", "hi": "स्वतंत्र हृदय का संकेत जो आज़ादी को महत्व देता है; भावनाओं को व्यक्त करना सीखना रिश्तों को मज़बूत करता है।" } }
+      ]
+    },
+    {
+      "key": "head",
+      "name": { "en": "Head Line (Mastishk Rekha)", "hi": "मस्तिष्क रेखा" },
+      "location": { "en": "Starts between thumb and index finger and crosses the middle of the palm.", "hi": "अंगूठे और तर्जनी के बीच से शुरू होकर हथेली के मध्य से होकर गुज़रती है।" },
+      "meaning": { "en": "Represents intellect, learning style, concentration and decision-making.", "hi": "बुद्धि, सीखने की शैली, एकाग्रता और निर्णय-क्षमता का प्रतिनिधित्व करती है।" },
+      "variants": [
+        { "label": { "en": "Long & straight", "hi": "लंबी व सीधी" }, "text": { "en": "A logical, analytical thinker who excels at planning, mathematics and structured problem-solving.", "hi": "तार्किक, विश्लेषणात्मक विचारक जो योजना, गणित और व्यवस्थित समस्या-समाधान में निपुण है।" } },
+        { "label": { "en": "Sloping downward", "hi": "नीचे की ओर ढलान" }, "text": { "en": "A creative, imaginative mind drawn to arts, storytelling and intuitive insight.", "hi": "रचनात्मक, कल्पनाशील मन जो कला, कहानी कहने और सहज अंतर्दृष्टि की ओर आकर्षित है।" } },
+        { "label": { "en": "Short & clear", "hi": "छोटी व स्पष्ट" }, "text": { "en": "Quick, practical decision-making; you prefer action over lengthy deliberation.", "hi": "त्वरित, व्यावहारिक निर्णय; आप लंबे विचार-विमर्श की बजाय कार्रवाई पसंद करते हैं।" } }
+      ]
+    },
+    {
+      "key": "fate",
+      "name": { "en": "Fate Line (Bhagya Rekha)", "hi": "भाग्य रेखा" },
+      "location": { "en": "Runs vertically from the base of the palm toward the middle finger.", "hi": "हथेली के आधार से मध्यमा उंगली की ओर लंबवत चलती है।" },
+      "meaning": { "en": "Shows career direction, sense of purpose and how outside forces shape your path.", "hi": "करियर की दिशा, उद्देश्य की भावना और बाहरी परिस्थितियाँ आपके मार्ग को कैसे आकार देती हैं — यह दर्शाती है।" },
+      "variants": [
+        { "label": { "en": "Deep & unbroken", "hi": "गहरी व अखंड" }, "text": { "en": "A clear sense of purpose and a steady career path, often in one field for many years.", "hi": "उद्देश्य की स्पष्ट भावना और स्थिर करियर मार्ग, प्रायः कई वर्षों तक एक ही क्षेत्र में।" } },
+        { "label": { "en": "Starting from life line", "hi": "जीवन रेखा से आरंभ" }, "text": { "en": "Self-made success; achievements come through personal effort rather than inheritance.", "hi": "स्वयं की मेहनत से सफलता; उपलब्धियाँ विरासत की बजाय व्यक्तिगत प्रयास से आती हैं।" } },
+        { "label": { "en": "Broken or forked", "hi": "टूटी या द्विशाखित" }, "text": { "en": "Multiple careers or a significant change of direction; adaptability is your strength.", "hi": "कई करियर या दिशा में महत्वपूर्ण परिवर्तन; अनुकूलनशीलता आपकी शक्ति है।" } }
+      ]
+    }
+  ],
+  "summaryTemplates": [
+    { "en": "{name}, your palm and your {rashi} Moon tell a consistent story: a {element}-natured person whose hands reveal both practical strength and a rich inner life.", "hi": "{name}, आपकी हथेली और आपका {rashi} चंद्र एक ही कहानी कहते हैं: {element} प्रकृति का व्यक्ति जिसके हाथ व्यावहारिक शक्ति और समृद्ध आंतरिक जीवन दोनों दर्शाते हैं।" },
+    { "en": "{name}, the lines of your hand echo the qualities of {rashi}: read them as a mirror for reflection, and revisit them as your life unfolds.", "hi": "{name}, आपके हाथ की रेखाएँ {rashi} के गुणों की प्रतिध्वनि हैं: इन्हें आत्मचिंतन के दर्पण की तरह पढ़ें और जीवन के साथ-साथ दोबारा देखें।" },
+    { "en": "{name}, with a {element} temperament and {rashi} as your Moon sign, your palm points toward growth through self-awareness and steady effort.", "hi": "{name}, {element} स्वभाव और {rashi} चंद्र राशि के साथ, आपकी हथेली आत्म-जागरूकता और निरंतर प्रयास से विकास की ओर संकेत करती है।" }
+  ],
+  "tips": {
+    "en": ["Photograph your dominant hand in soft daylight.", "Keep fingers slightly apart and the palm flat.", "Avoid harsh shadows and heavy filters."],
+    "hi": ["अपने प्रमुख हाथ की फ़ोटो कोमल दिन की रोशनी में लें।", "उंगलियाँ थोड़ी अलग और हथेली सपाट रखें।", "गहरी छाया और भारी फ़िल्टर से बचें।"]
+  }
+}

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="700" viewBox="0 0 600 700"><defs>
+    <radialGradient id="undefinedbg" cx="50%" cy="34%" r="76%">
+      <stop offset="0%" stop-color="#241452"/><stop offset="58%" stop-color="#12083a"/><stop offset="100%" stop-color="#06030f"/>
+    </radialGradient>
+    <radialGradient id="undefinedglow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#ff7ac0" stop-opacity="0.55"/><stop offset="100%" stop-color="#ff7ac0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="undefinedring" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff0b8"/><stop offset="55%" stop-color="#f5c242"/><stop offset="100%" stop-color="#a9791a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="700" fill="url(#undefinedbg)"/>
+  <circle cx="0.4" cy="679.0" r="1.29" fill="#f8d678" opacity="0.64"/><circle cx="289.1" cy="647.7" r="0.67" fill="#f8d678" opacity="0.67"/><circle cx="489.6" cy="39.9" r="1.47" fill="#f8d678" opacity="0.36"/><circle cx="370.7" cy="102.2" r="1.42" fill="#f8d678" opacity="0.32"/><circle cx="44.8" cy="490.4" r="1.46" fill="#f8d678" opacity="0.25"/><circle cx="594.7" cy="347.4" r="1.08" fill="#f8d678" opacity="0.60"/><circle cx="0.7" cy="665.4" r="0.78" fill="#f8d678" opacity="0.50"/><circle cx="513.6" cy="565.8" r="1.39" fill="#f8d678" opacity="0.42"/><circle cx="529.9" cy="223.5" r="1.58" fill="#f8d678" opacity="0.72"/><circle cx="342.1" cy="583.3" r="0.54" fill="#f8d678" opacity="0.35"/><circle cx="288.3" cy="288.5" r="1.29" fill="#f8d678" opacity="0.53"/><circle cx="172.9" cy="430.1" r="0.92" fill="#f8d678" opacity="0.51"/><circle cx="490.0" cy="499.4" r="1.28" fill="#f8d678" opacity="0.48"/><circle cx="382.5" cy="11.6" r="1.20" fill="#f8d678" opacity="0.29"/><circle cx="163.8" cy="480.7" r="1.26" fill="#f8d678" opacity="0.51"/><circle cx="194.1" cy="638.1" r="1.58" fill="#f8d678" opacity="0.22"/><circle cx="470.7" cy="666.3" r="0.58" fill="#f8d678" opacity="0.35"/><circle cx="147.9" cy="497.8" r="1.03" fill="#f8d678" opacity="0.77"/><circle cx="128.7" cy="110.2" r="0.57" fill="#f8d678" opacity="0.36"/><circle cx="377.5" cy="390.3" r="0.69" fill="#f8d678" opacity="0.25"/><circle cx="198.8" cy="285.8" r="0.88" fill="#f8d678" opacity="0.59"/><circle cx="6.3" cy="201.9" r="1.60" fill="#f8d678" opacity="0.21"/><circle cx="570.4" cy="602.1" r="0.59" fill="#f8d678" opacity="0.73"/><circle cx="565.4" cy="495.5" r="1.33" fill="#f8d678" opacity="0.79"/><circle cx="299.6" cy="404.2" r="0.96" fill="#f8d678" opacity="0.68"/><circle cx="536.8" cy="406.3" r="0.48" fill="#f8d678" opacity="0.34"/><circle cx="593.1" cy="14.4" r="0.32" fill="#f8d678" opacity="0.20"/><circle cx="381.0" cy="253.2" r="1.52" fill="#f8d678" opacity="0.26"/><circle cx="280.3" cy="40.0" r="1.42" fill="#f8d678" opacity="0.58"/><circle cx="323.3" cy="252.3" r="0.35" fill="#f8d678" opacity="0.72"/><circle cx="168.1" cy="691.3" r="0.65" fill="#f8d678" opacity="0.62"/><circle cx="267.4" cy="415.5" r="0.75" fill="#f8d678" opacity="0.70"/><circle cx="276.9" cy="627.3" r="1.23" fill="#f8d678" opacity="0.40"/><circle cx="408.3" cy="1.8" r="0.44" fill="#f8d678" opacity="0.37"/><circle cx="285.9" cy="297.9" r="0.86" fill="#f8d678" opacity="0.77"/><circle cx="419.9" cy="659.5" r="1.09" fill="#f8d678" opacity="0.49"/><circle cx="288.5" cy="138.4" r="1.48" fill="#f8d678" opacity="0.44"/><circle cx="566.1" cy="318.4" r="0.59" fill="#f8d678" opacity="0.48"/><circle cx="281.3" cy="124.5" r="0.37" fill="#f8d678" opacity="0.36"/><circle cx="318.5" cy="184.9" r="1.04" fill="#f8d678" opacity="0.25"/><circle cx="332.2" cy="248.7" r="0.86" fill="#f8d678" opacity="0.50"/><circle cx="349.3" cy="36.6" r="1.35" fill="#f8d678" opacity="0.75"/><circle cx="132.8" cy="236.9" r="1.52" fill="#f8d678" opacity="0.56"/><circle cx="232.7" cy="532.0" r="0.91" fill="#f8d678" opacity="0.35"/><circle cx="16.9" cy="206.5" r="0.65" fill="#f8d678" opacity="0.46"/><circle cx="484.0" cy="111.5" r="1.10" fill="#f8d678" opacity="0.67"/><circle cx="179.9" cy="411.3" r="1.40" fill="#f8d678" opacity="0.63"/><circle cx="456.9" cy="236.8" r="1.45" fill="#f8d678" opacity="0.23"/><circle cx="381.5" cy="278.7" r="1.32" fill="#f8d678" opacity="0.24"/><circle cx="344.7" cy="405.5" r="1.57" fill="#f8d678" opacity="0.23"/><circle cx="418.4" cy="630.6" r="1.38" fill="#f8d678" opacity="0.71"/><circle cx="279.3" cy="229.4" r="1.48" fill="#f8d678" opacity="0.69"/><circle cx="247.5" cy="473.6" r="0.93" fill="#f8d678" opacity="0.66"/><circle cx="26.1" cy="284.9" r="0.43" fill="#f8d678" opacity="0.27"/><circle cx="519.3" cy="206.3" r="0.94" fill="#f8d678" opacity="0.64"/><circle cx="377.3" cy="541.7" r="0.51" fill="#f8d678" opacity="0.76"/><circle cx="552.9" cy="345.7" r="1.29" fill="#f8d678" opacity="0.24"/><circle cx="95.7" cy="289.6" r="1.33" fill="#f8d678" opacity="0.80"/><circle cx="299.6" cy="466.7" r="1.58" fill="#f8d678" opacity="0.22"/><circle cx="368.0" cy="411.7" r="1.25" fill="#f8d678" opacity="0.70"/><circle cx="130.1" cy="10.5" r="1.01" fill="#f8d678" opacity="0.44"/><circle cx="137.6" cy="173.8" r="1.50" fill="#f8d678" opacity="0.79"/><circle cx="224.7" cy="61.5" r="0.37" fill="#f8d678" opacity="0.25"/><circle cx="225.0" cy="131.2" r="0.36" fill="#f8d678" opacity="0.21"/><circle cx="64.2" cy="651.8" r="1.18" fill="#f8d678" opacity="0.27"/><circle cx="307.1" cy="288.7" r="1.09" fill="#f8d678" opacity="0.46"/><circle cx="314.7" cy="203.7" r="0.90" fill="#f8d678" opacity="0.46"/><circle cx="225.9" cy="268.0" r="1.14" fill="#f8d678" opacity="0.34"/><circle cx="286.0" cy="349.0" r="1.58" fill="#f8d678" opacity="0.71"/><circle cx="416.9" cy="232.2" r="0.88" fill="#f8d678" opacity="0.61"/>
+  <rect width="600" height="700" fill="url(#undefinedglow)"/>
+  <!-- halo rings -->
+  <circle cx="300" cy="318" r="252" fill="none" stroke="url(#undefinedring)" stroke-width="3" opacity="0.85"/>
+  <circle cx="300" cy="318" r="268" fill="none" stroke="url(#undefinedring)" stroke-width="1.2" opacity="0.4"/>
+  <circle cx="300" cy="318" r="232" fill="none" stroke="#f5c242" stroke-width="1" opacity="0.25" stroke-dasharray="3 12"/>
+  
+  <g transform="translate(300,318)">
+    <!-- jata crown (matted hair coils) -->
+    <g fill="#f2b8d0" opacity="0.9">
+      <circle cx="0" cy="-140" r="42"/>
+      <circle cx="-38" cy="-118" r="26"/><circle cx="38" cy="-118" r="26"/>
+      <circle cx="-20" cy="-166" r="20"/><circle cx="20" cy="-166" r="20"/>
+      <circle cx="0" cy="-186" r="15"/>
+    </g>
+    <!-- head + neck -->
+    <path d="M-46,-104 q46,-34 92,0 q6,52 -10,74 q-36,22 -72,0 q-16,-22 -10,-74 Z" fill="#e8b98a"/>
+    <path d="M-30,-40 h60 v34 q-30,16 -60,0 Z" fill="#d9a476"/>
+    <!-- beard -->
+    <path d="M-46,-46 q10,96 46,120 q36,-24 46,-120 q-14,42 -46,50 q-32,-8 -46,-50 Z" fill="#efe6da" opacity="0.95"/>
+    <!-- face features -->
+    <g fill="#5a3a22">
+      <ellipse cx="-17" cy="-88" rx="6" ry="3.4"/>
+      <ellipse cx="17" cy="-88" rx="6" ry="3.4"/>
+    </g>
+    <path d="M-13,-70 q13,9 26,0" fill="none" stroke="#7a4a2a" stroke-width="3" stroke-linecap="round"/>
+    <!-- tilak -->
+    <path d="M0,-118 v30" stroke="#f2b8d0" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="0" cy="-124" r="4.5" fill="#f2b8d0"/>
+    <!-- rudraksha mala -->
+    <g fill="#8a5a2b">
+      <circle cx="-78.0" cy="34.0" r="7.5"/><circle cx="-75.7" cy="48.8" r="7.5"/><circle cx="-69.1" cy="62.8" r="7.5"/><circle cx="-58.4" cy="75.1" r="7.5"/><circle cx="-44.3" cy="85.0" r="7.5"/><circle cx="-27.7" cy="92.0" r="7.5"/><circle cx="-9.4" cy="95.5" r="7.5"/><circle cx="9.4" cy="95.5" r="7.5"/><circle cx="27.7" cy="92.0" r="7.5"/><circle cx="44.3" cy="85.0" r="7.5"/><circle cx="58.4" cy="75.1" r="7.5"/><circle cx="69.1" cy="62.8" r="7.5"/><circle cx="75.7" cy="48.8" r="7.5"/>
+      <circle cx="0" cy="96" r="11" fill="#a9702f"/>
+    </g>
+    <!-- shoulders / robe -->
+    <path d="M-150,230 q150,-130 300,0 q-40,26 -300,0 Z" fill="#1a1038" opacity="0.98"/>
+    <path d="M-118,230 q118,-108 236,0" fill="none" stroke="#f2b8d0" stroke-width="4" opacity="0.7"/>
+    <!-- folded hands -->
+    <g fill="#e8b98a">
+      <path d="M-44,150 q44,-30 88,0 q-10,40 -44,44 q-34,-4 -44,-44 Z"/>
+    </g>
+    <path d="M-44,150 q44,-30 88,0" fill="none" stroke="#c99566" stroke-width="3"/>
+  </g>
+  <!-- attribute glyph badge -->
+  <g transform="translate(300,606)">
+    <circle r="46" fill="#0b0620" stroke="url(#undefinedring)" stroke-width="2.5"/>
+    <text x="0" y="16" text-anchor="middle" font-family="'Segoe UI Symbol','Noto Sans Symbols',serif" font-size="46" fill="#f8d678">☾</text>
+  </g>
+  <text x="300" y="686" text-anchor="middle" font-family="serif" font-size="26" fill="#f5c242" opacity="0.85">कश्यप</text></svg>

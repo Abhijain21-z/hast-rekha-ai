@@ -1,0 +1,218 @@
+[
+  {
+    "key": "mesha",
+    "symbol": "♈",
+    "name": { "en": "Mesha (Aries)", "hi": "मेष (Aries)" },
+    "short": { "en": "Aries", "hi": "मेष" },
+    "dates": "Mar 21 – Apr 19",
+    "element": { "en": "Fire", "hi": "अग्नि" },
+    "lord": { "en": "Mars (Mangal)", "hi": "मंगल" },
+    "quality": { "en": "Movable", "hi": "चर" },
+    "traits": { "en": ["Courageous", "Energetic", "Pioneering", "Impulsive"], "hi": ["साहसी", "ऊर्जावान", "अग्रणी", "आवेगी"] },
+    "lucky": { "color": { "en": "Red", "hi": "लाल" }, "number": 9, "day": { "en": "Tuesday", "hi": "मंगलवार" }, "gem": { "en": "Red Coral", "hi": "मूंगा" }, "mantra": "ॐ अं अंगारकाय नमः" },
+    "predictions": {
+      "career": { "en": "Your Mars-driven energy makes you a natural leader and initiator. Roles in entrepreneurship, defence, sports, engineering or surgery suit you; the coming phase rewards bold, well-timed decisions rather than impulsive leaps.", "hi": "मंगल की ऊर्जा आपको स्वाभाविक नेता और पहल करने वाला बनाती है। उद्यमिता, रक्षा, खेल, इंजीनियरिंग या सर्जरी जैसे क्षेत्र आपके लिए उपयुक्त हैं; आने वाला समय साहसी लेकिन सोच-समझकर लिए गए निर्णयों का फल देगा।" },
+      "love": { "en": "You love passionately and directly, but patience is your lesson. Give your partner space to express themselves; a relationship built on mutual respect will bring the warmth you seek.", "hi": "आप प्रेम में जोशीले और स्पष्टवादी हैं, पर धैर्य आपकी सीख है। साथी को अपनी बात कहने का अवसर दें; आपसी सम्मान पर टिका रिश्ता आपको वह गर्माहट देगा जिसकी आपको तलाश है।" },
+      "health": { "en": "Headaches, stress and minor injuries from haste are your weak spots. Regular exercise, cooling foods and adequate sleep keep your fiery constitution balanced.", "hi": "सिरदर्द, तनाव और जल्दबाज़ी से होने वाली छोटी चोटें आपकी कमज़ोरी हैं। नियमित व्यायाम, ठंडी तासीर का भोजन और पर्याप्त नींद आपकी अग्नि प्रकृति को संतुलित रखते हैं।" },
+      "finance": { "en": "Money comes quickly to you but can leave just as fast. Create an automatic savings habit and avoid speculative bets; steady investments in property or your own venture pay off.", "hi": "धन आपके पास तेज़ी से आता है पर उतनी ही तेज़ी से जा भी सकता है। स्वचालित बचत की आदत बनाएं और सट्टे से बचें; संपत्ति या अपने उद्यम में स्थिर निवेश लाभ देगा।" }
+    }
+  },
+  {
+    "key": "vrishabha",
+    "symbol": "♉",
+    "name": { "en": "Vrishabha (Taurus)", "hi": "वृषभ (Taurus)" },
+    "short": { "en": "Taurus", "hi": "वृषभ" },
+    "dates": "Apr 20 – May 20",
+    "element": { "en": "Earth", "hi": "पृथ्वी" },
+    "lord": { "en": "Venus (Shukra)", "hi": "शुक्र" },
+    "quality": { "en": "Fixed", "hi": "स्थिर" },
+    "traits": { "en": ["Patient", "Reliable", "Sensual", "Stubborn"], "hi": ["धैर्यवान", "विश्वसनीय", "भावुक", "ज़िद्दी"] },
+    "lucky": { "color": { "en": "White & Pink", "hi": "सफ़ेद व गुलाबी" }, "number": 6, "day": { "en": "Friday", "hi": "शुक्रवार" }, "gem": { "en": "Diamond / Opal", "hi": "हीरा / ओपल" }, "mantra": "ॐ शुं शुक्राय नमः" },
+    "predictions": {
+      "career": { "en": "Venus blesses you with persistence and an eye for beauty. Banking, finance, agriculture, fashion, food, music and real estate are favourable; slow and steady progress leads to lasting seniority.", "hi": "शुक्र आपको दृढ़ता और सौंदर्य की समझ देता है। बैंकिंग, वित्त, कृषि, फ़ैशन, खान-पान, संगीत और रियल एस्टेट अनुकूल क्षेत्र हैं; धीमी पर निरंतर प्रगति आपको स्थायी उच्च पद तक ले जाएगी।" },
+      "love": { "en": "Loyal and sensual, you seek stability and comfort in love. Avoid possessiveness; expressing appreciation openly will deepen the bond you already treasure.", "hi": "वफ़ादार और भावुक, आप प्रेम में स्थिरता और सुख चाहते हैं। अधिकार-भाव से बचें; खुले दिल से प्रशंसा व्यक्त करना आपके रिश्ते को और गहरा बनाएगा।" },
+      "health": { "en": "Throat, neck and thyroid need attention, as does a tendency to overindulge. Mindful eating, walking in nature and regular check-ups keep you strong.", "hi": "गला, गर्दन और थायरॉइड पर ध्यान दें, साथ ही अधिक खाने-पीने की प्रवृत्ति पर भी। सचेत भोजन, प्रकृति में टहलना और नियमित जांच आपको स्वस्थ रखेंगे।" },
+      "finance": { "en": "You are naturally good at accumulating wealth. Long-term fixed deposits, gold and land are your friends; resist luxury spending sprees during emotional lows.", "hi": "धन संचय में आप स्वाभाविक रूप से कुशल हैं। दीर्घकालिक जमा, सोना और ज़मीन आपके मित्र हैं; भावनात्मक उतार में विलासिता पर खर्च से बचें।" }
+    }
+  },
+  {
+    "key": "mithuna",
+    "symbol": "♊",
+    "name": { "en": "Mithuna (Gemini)", "hi": "मिथुन (Gemini)" },
+    "short": { "en": "Gemini", "hi": "मिथुन" },
+    "dates": "May 21 – Jun 20",
+    "element": { "en": "Air", "hi": "वायु" },
+    "lord": { "en": "Mercury (Budh)", "hi": "बुध" },
+    "quality": { "en": "Dual", "hi": "द्विस्वभाव" },
+    "traits": { "en": ["Curious", "Witty", "Adaptable", "Restless"], "hi": ["जिज्ञासु", "हाज़िरजवाब", "अनुकूलनशील", "चंचल"] },
+    "lucky": { "color": { "en": "Green", "hi": "हरा" }, "number": 5, "day": { "en": "Wednesday", "hi": "बुधवार" }, "gem": { "en": "Emerald", "hi": "पन्ना" }, "mantra": "ॐ बुं बुधाय नमः" },
+    "predictions": {
+      "career": { "en": "Mercury sharpens your communication and adaptability. Media, writing, marketing, IT, teaching and trade suit you well; focus on finishing what you start to convert talent into recognition.", "hi": "बुध आपकी संवाद-क्षमता और अनुकूलनशीलता को धार देता है। मीडिया, लेखन, मार्केटिंग, आईटी, शिक्षण और व्यापार आपके लिए उत्तम हैं; शुरू किए काम को पूरा करने पर ध्यान दें ताकि प्रतिभा पहचान में बदले।" },
+      "love": { "en": "You need mental connection as much as romance. Honest conversations keep the spark alive; guard against restlessness and give your relationship time to mature.", "hi": "आपको रोमांस जितना ही मानसिक जुड़ाव चाहिए। सच्ची बातचीत रिश्ते की चमक बनाए रखती है; चंचलता से बचें और रिश्ते को परिपक्व होने का समय दें।" },
+      "health": { "en": "Nervous tension, respiratory issues and irregular sleep are your challenges. Pranayama, a fixed routine and less screen time bring noticeable calm.", "hi": "मानसिक तनाव, श्वास संबंधी समस्याएँ और अनियमित नींद आपकी चुनौतियाँ हैं। प्राणायाम, नियमित दिनचर्या और कम स्क्रीन-समय आपको उल्लेखनीय शांति देंगे।" },
+      "finance": { "en": "Multiple income streams appeal to you and usually work. Keep a written budget, since scattered spending is your blind spot; investments in learning bring the best returns.", "hi": "आय के कई स्रोत आपको आकर्षित करते हैं और प्रायः सफल भी होते हैं। लिखित बजट रखें क्योंकि बिखरा हुआ खर्च आपकी कमज़ोरी है; सीखने में निवेश सर्वोत्तम लाभ देगा।" }
+    }
+  },
+  {
+    "key": "karka",
+    "symbol": "♋",
+    "name": { "en": "Karka (Cancer)", "hi": "कर्क (Cancer)" },
+    "short": { "en": "Cancer", "hi": "कर्क" },
+    "dates": "Jun 21 – Jul 22",
+    "element": { "en": "Water", "hi": "जल" },
+    "lord": { "en": "Moon (Chandra)", "hi": "चंद्र" },
+    "quality": { "en": "Movable", "hi": "चर" },
+    "traits": { "en": ["Nurturing", "Intuitive", "Loyal", "Moody"], "hi": ["पालनकर्ता", "अंतर्ज्ञानी", "वफ़ादार", "भावुक"] },
+    "lucky": { "color": { "en": "White & Silver", "hi": "सफ़ेद व चांदी" }, "number": 2, "day": { "en": "Monday", "hi": "सोमवार" }, "gem": { "en": "Pearl", "hi": "मोती" }, "mantra": "ॐ सों सोमाय नमः" },
+    "predictions": {
+      "career": { "en": "The Moon gives you intuition and a caring nature. Hospitality, healthcare, teaching, psychology, real estate and public service are rewarding; trust your instincts about people and timing.", "hi": "चंद्रमा आपको अंतर्ज्ञान और संवेदनशील स्वभाव देता है। आतिथ्य, स्वास्थ्य सेवा, शिक्षण, मनोविज्ञान, रियल एस्टेट और जनसेवा फलदायी हैं; लोगों और समय के बारे में अपनी अंतर्दृष्टि पर भरोसा करें।" },
+      "love": { "en": "Deeply devoted, you nurture your loved ones with all your heart. Avoid holding on to past hurts; sharing your feelings openly builds the security you crave.", "hi": "गहरे समर्पित, आप अपने प्रियजनों को पूरे दिल से संभालते हैं। पुरानी चोटों को पकड़े न रहें; भावनाओं को खुलकर साझा करना आपको वह सुरक्षा देगा जिसकी आप चाह रखते हैं।" },
+      "health": { "en": "Digestion, chest and emotional eating need care. Warm home-cooked food, moon-lit walks and emotional boundaries protect your sensitive system.", "hi": "पाचन, छाती और भावनात्मक खाने पर ध्यान दें। गर्म घर का भोजन, चांदनी में टहलना और भावनात्मक सीमाएँ आपके संवेदनशील तंत्र की रक्षा करेंगी।" },
+      "finance": { "en": "You save instinctively and value security. Home ownership and family-oriented investments bring joy; avoid lending money emotionally without clear terms.", "hi": "आप स्वाभाविक रूप से बचत करते हैं और सुरक्षा को महत्व देते हैं। अपना घर और परिवार-केंद्रित निवेश सुख देंगे; बिना स्पष्ट शर्तों के भावनात्मक रूप से उधार देने से बचें।" }
+    }
+  },
+  {
+    "key": "simha",
+    "symbol": "♌",
+    "name": { "en": "Simha (Leo)", "hi": "सिंह (Leo)" },
+    "short": { "en": "Leo", "hi": "सिंह" },
+    "dates": "Jul 23 – Aug 22",
+    "element": { "en": "Fire", "hi": "अग्नि" },
+    "lord": { "en": "Sun (Surya)", "hi": "सूर्य" },
+    "quality": { "en": "Fixed", "hi": "स्थिर" },
+    "traits": { "en": ["Confident", "Generous", "Creative", "Proud"], "hi": ["आत्मविश्वासी", "उदार", "रचनात्मक", "स्वाभिमानी"] },
+    "lucky": { "color": { "en": "Gold & Orange", "hi": "सुनहरा व नारंगी" }, "number": 1, "day": { "en": "Sunday", "hi": "रविवार" }, "gem": { "en": "Ruby", "hi": "माणिक" }, "mantra": "ॐ ह्रां ह्रीं ह्रौं सः सूर्याय नमः" },
+    "predictions": {
+      "career": { "en": "The Sun crowns you with confidence and charisma. Leadership, politics, entertainment, government service and creative direction suit you; share credit generously to build loyal teams.", "hi": "सूर्य आपको आत्मविश्वास और करिश्मे का ताज पहनाता है। नेतृत्व, राजनीति, मनोरंजन, सरकारी सेवा और रचनात्मक निर्देशन आपके लिए उपयुक्त हैं; श्रेय उदारता से बांटें ताकि वफ़ादार टीम बने।" },
+      "love": { "en": "You love grandly and expect admiration in return. Remember that your partner also needs the spotlight; humility turns your romance into a lifelong celebration.", "hi": "आप भव्यता से प्रेम करते हैं और बदले में प्रशंसा चाहते हैं। याद रखें आपके साथी को भी सुर्खियों की ज़रूरत है; विनम्रता आपके रोमांस को जीवन भर का उत्सव बना देगी।" },
+      "health": { "en": "Heart, spine and blood pressure are your focus areas. Sun salutations, moderation in rich foods and regular cardio keep your royal energy high.", "hi": "हृदय, रीढ़ और रक्तचाप आपके ध्यान के क्षेत्र हैं। सूर्य नमस्कार, गरिष्ठ भोजन में संयम और नियमित कार्डियो आपकी राजसी ऊर्जा बनाए रखेंगे।" },
+      "finance": { "en": "Generosity and a taste for luxury shape your money story. Budget for status spending consciously; investments in gold and blue-chip stocks suit your temperament.", "hi": "उदारता और विलासिता की रुचि आपकी धन-कहानी को आकार देती है। दिखावे के खर्च का सोच-समझकर बजट बनाएं; सोना और प्रतिष्ठित कंपनियों के शेयर आपके स्वभाव के अनुकूल हैं।" }
+    }
+  },
+  {
+    "key": "kanya",
+    "symbol": "♍",
+    "name": { "en": "Kanya (Virgo)", "hi": "कन्या (Virgo)" },
+    "short": { "en": "Virgo", "hi": "कन्या" },
+    "dates": "Aug 23 – Sep 22",
+    "element": { "en": "Earth", "hi": "पृथ्वी" },
+    "lord": { "en": "Mercury (Budh)", "hi": "बुध" },
+    "quality": { "en": "Dual", "hi": "द्विस्वभाव" },
+    "traits": { "en": ["Analytical", "Practical", "Helpful", "Critical"], "hi": ["विश्लेषणात्मक", "व्यावहारिक", "सहायक", "आलोचक"] },
+    "lucky": { "color": { "en": "Green", "hi": "हरा" }, "number": 5, "day": { "en": "Wednesday", "hi": "बुधवार" }, "gem": { "en": "Emerald", "hi": "पन्ना" }, "mantra": "ॐ बुं बुधाय नमः" },
+    "predictions": {
+      "career": { "en": "Mercury gives you precision, analysis and service orientation. Medicine, accounting, research, data science, editing and nutrition are ideal; do not let perfectionism delay your growth.", "hi": "बुध आपको सटीकता, विश्लेषण और सेवा-भाव देता है। चिकित्सा, लेखा, अनुसंधान, डेटा साइंस, संपादन और पोषण आदर्श क्षेत्र हैं; पूर्णतावाद को अपनी प्रगति में बाधा न बनने दें।" },
+      "love": { "en": "You show love through acts of service and quiet devotion. Speak your affection aloud sometimes; accept imperfection in your partner as gracefully as you give care.", "hi": "आप सेवा और मौन समर्पण से प्रेम दिखाते हैं। कभी-कभी अपना स्नेह शब्दों में भी कहें; जैसे आप देखभाल देते हैं, वैसे ही साथी की कमियों को भी सहजता से स्वीकारें।" },
+      "health": { "en": "Digestive sensitivity and anxiety are your patterns. A clean, fibre-rich diet, gut-friendly foods and journaling keep both body and mind orderly.", "hi": "पाचन की संवेदनशीलता और चिंता आपकी प्रवृत्तियाँ हैं। स्वच्छ, रेशेदार आहार, पेट के अनुकूल भोजन और डायरी लिखना शरीर और मन दोनों को व्यवस्थित रखेंगे।" },
+      "finance": { "en": "You are a careful planner who rarely overspends. Systematic investment plans and health insurance suit you; allow yourself occasional guilt-free enjoyment.", "hi": "आप सावधान योजनाकार हैं जो कम ही फ़िज़ूलख़र्ची करते हैं। व्यवस्थित निवेश योजनाएँ और स्वास्थ्य बीमा आपके लिए उपयुक्त हैं; कभी-कभी बिना अपराध-बोध के आनंद भी लें।" }
+    }
+  },
+  {
+    "key": "tula",
+    "symbol": "♎",
+    "name": { "en": "Tula (Libra)", "hi": "तुला (Libra)" },
+    "short": { "en": "Libra", "hi": "तुला" },
+    "dates": "Sep 23 – Oct 22",
+    "element": { "en": "Air", "hi": "वायु" },
+    "lord": { "en": "Venus (Shukra)", "hi": "शुक्र" },
+    "quality": { "en": "Movable", "hi": "चर" },
+    "traits": { "en": ["Diplomatic", "Charming", "Fair", "Indecisive"], "hi": ["कूटनीतिक", "आकर्षक", "न्यायप्रिय", "अनिर्णायक"] },
+    "lucky": { "color": { "en": "White & Blue", "hi": "सफ़ेद व नीला" }, "number": 6, "day": { "en": "Friday", "hi": "शुक्रवार" }, "gem": { "en": "Diamond", "hi": "हीरा" }, "mantra": "ॐ शुं शुक्राय नमः" },
+    "predictions": {
+      "career": { "en": "Venus makes you diplomatic, artistic and fair. Law, design, diplomacy, HR, fashion and public relations favour you; decisiveness is the skill that unlocks your next promotion.", "hi": "शुक्र आपको कूटनीतिक, कलात्मक और न्यायप्रिय बनाता है। क़ानून, डिज़ाइन, कूटनीति, एचआर, फ़ैशन और जनसंपर्क आपके लिए अनुकूल हैं; निर्णायकता वह कौशल है जो आपकी अगली पदोन्नति खोलेगा।" },
+      "love": { "en": "Partnership is central to your happiness. You are charming and considerate; avoid people-pleasing and state your needs so that harmony is real, not just surface-deep.", "hi": "साझेदारी आपकी खुशी का केंद्र है। आप आकर्षक और विचारशील हैं; सबको खुश रखने की कोशिश से बचें और अपनी ज़रूरतें बताएं ताकि सामंजस्य सतही न होकर सच्चा हो।" },
+      "health": { "en": "Kidneys, lower back and skin deserve attention. Hydration, balanced meals and regular movement keep your scales in equilibrium.", "hi": "गुर्दे, कमर के निचले हिस्से और त्वचा पर ध्यान दें। पर्याप्त पानी, संतुलित भोजन और नियमित गतिविधि आपके तराज़ू को संतुलन में रखेंगे।" },
+      "finance": { "en": "You appreciate beautiful things and enjoy spending on them. Partnerships and joint ventures bring gains; keep a separate emergency fund untouched by aesthetics.", "hi": "आप सुंदर वस्तुओं की क़द्र करते हैं और उन पर खर्च का आनंद लेते हैं। साझेदारियाँ और संयुक्त उद्यम लाभ देंगे; एक अलग आपातकालीन कोष रखें जिसे सौंदर्य-खर्च से दूर रखें।" }
+    }
+  },
+  {
+    "key": "vrishchika",
+    "symbol": "♏",
+    "name": { "en": "Vrishchika (Scorpio)", "hi": "वृश्चिक (Scorpio)" },
+    "short": { "en": "Scorpio", "hi": "वृश्चिक" },
+    "dates": "Oct 23 – Nov 21",
+    "element": { "en": "Water", "hi": "जल" },
+    "lord": { "en": "Mars (Mangal)", "hi": "मंगल" },
+    "quality": { "en": "Fixed", "hi": "स्थिर" },
+    "traits": { "en": ["Intense", "Passionate", "Loyal", "Secretive"], "hi": ["तीव्र", "जुनूनी", "वफ़ादार", "रहस्यमय"] },
+    "lucky": { "color": { "en": "Red & Maroon", "hi": "लाल व मैरून" }, "number": 9, "day": { "en": "Tuesday", "hi": "मंगलवार" }, "gem": { "en": "Red Coral", "hi": "मूंगा" }, "mantra": "ॐ अं अंगारकाय नमः" },
+    "predictions": {
+      "career": { "en": "Mars and Ketu give you intensity, focus and investigative depth. Research, surgery, psychology, cybersecurity, occult sciences and crisis management are your arenas; channel your power with patience.", "hi": "मंगल और केतु आपको तीव्रता, एकाग्रता और गहन खोजी दृष्टि देते हैं। अनुसंधान, सर्जरी, मनोविज्ञान, साइबर सुरक्षा, गूढ़ विद्याएँ और संकट प्रबंधन आपके क्षेत्र हैं; अपनी शक्ति को धैर्य के साथ दिशा दें।" },
+      "love": { "en": "You love with total intensity and expect loyalty. Trust is built slowly for you; release the need to control and your relationships transform into deep, healing bonds.", "hi": "आप पूरी तीव्रता से प्रेम करते हैं और वफ़ादारी की अपेक्षा रखते हैं। आपके लिए विश्वास धीरे-धीरे बनता है; नियंत्रण की इच्छा छोड़ें और आपके रिश्ते गहरे, उपचारक बंधनों में बदल जाएंगे।" },
+      "health": { "en": "Reproductive health, hormonal balance and suppressed stress need care. Swimming, meditation and emotional release practices keep your inner fire steady.", "hi": "प्रजनन स्वास्थ्य, हार्मोनल संतुलन और दबे हुए तनाव पर ध्यान दें। तैराकी, ध्यान और भावनात्मक मुक्ति के अभ्यास आपकी आंतरिक अग्नि को स्थिर रखेंगे।" },
+      "finance": { "en": "You are strategic and private about money, often gaining through inheritance, insurance or research-based investing. Avoid impulsive spending; long-term compounding is your ally.", "hi": "आप धन के मामले में रणनीतिक और गोपनीय हैं, प्रायः विरासत, बीमा या शोध-आधारित निवेश से लाभ पाते हैं। आवेश में खर्च से बचें; दीर्घकालिक चक्रवृद्धि आपकी सहयोगी है।" }
+    }
+  },
+  {
+    "key": "dhanu",
+    "symbol": "♐",
+    "name": { "en": "Dhanu (Sagittarius)", "hi": "धनु (Sagittarius)" },
+    "short": { "en": "Sagittarius", "hi": "धनु" },
+    "dates": "Nov 22 – Dec 21",
+    "element": { "en": "Fire", "hi": "अग्नि" },
+    "lord": { "en": "Jupiter (Guru)", "hi": "गुरु (बृहस्पति)" },
+    "quality": { "en": "Dual", "hi": "द्विस्वभाव" },
+    "traits": { "en": ["Optimistic", "Adventurous", "Honest", "Blunt"], "hi": ["आशावादी", "साहसिक", "ईमानदार", "स्पष्टवादी"] },
+    "lucky": { "color": { "en": "Yellow", "hi": "पीला" }, "number": 3, "day": { "en": "Thursday", "hi": "गुरुवार" }, "gem": { "en": "Yellow Sapphire", "hi": "पुखराज" }, "mantra": "ॐ बृं बृहस्पतये नमः" },
+    "predictions": {
+      "career": { "en": "Jupiter expands your vision, wisdom and optimism. Teaching, law, philosophy, travel, publishing, consulting and spiritual work suit you; ground your big ideas with practical follow-through.", "hi": "गुरु आपकी दृष्टि, ज्ञान और आशावाद का विस्तार करते हैं। शिक्षण, क़ानून, दर्शन, यात्रा, प्रकाशन, परामर्श और आध्यात्मिक कार्य आपके लिए उपयुक्त हैं; अपने बड़े विचारों को व्यावहारिक क्रियान्वयन से ज़मीन दें।" },
+      "love": { "en": "You need freedom and shared adventure in love. Honesty comes naturally, but tact matters too; a partner who grows with you will keep your heart at home.", "hi": "प्रेम में आपको स्वतंत्रता और साझा रोमांच चाहिए। सच्चाई आपके लिए सहज है, पर व्यवहार-कुशलता भी ज़रूरी है; जो साथी आपके साथ आगे बढ़े, वही आपके दिल को घर जैसा सुकून देगा।" },
+      "health": { "en": "Hips, thighs, liver and weight gain from excess are your watch points. Outdoor activity, moderation in sweets and yoga keep your energy expansive yet balanced.", "hi": "कूल्हे, जांघें, यकृत और अति से बढ़ता वज़न आपके सतर्कता बिंदु हैं। बाहरी गतिविधियाँ, मिठाई में संयम और योग आपकी ऊर्जा को व्यापक पर संतुलित रखेंगे।" },
+      "finance": { "en": "Luck often supports you financially, but over-optimism can lead to risky bets. Invest in education, travel with purpose and diversified mutual funds.", "hi": "भाग्य प्रायः आर्थिक रूप से आपका साथ देता है, पर अति-आशावाद जोखिम भरे दांव की ओर ले जा सकता है। शिक्षा, उद्देश्यपूर्ण यात्रा और विविध म्यूचुअल फंड में निवेश करें।" }
+    }
+  },
+  {
+    "key": "makara",
+    "symbol": "♑",
+    "name": { "en": "Makara (Capricorn)", "hi": "मकर (Capricorn)" },
+    "short": { "en": "Capricorn", "hi": "मकर" },
+    "dates": "Dec 22 – Jan 19",
+    "element": { "en": "Earth", "hi": "पृथ्वी" },
+    "lord": { "en": "Saturn (Shani)", "hi": "शनि" },
+    "quality": { "en": "Movable", "hi": "चर" },
+    "traits": { "en": ["Disciplined", "Ambitious", "Patient", "Reserved"], "hi": ["अनुशासित", "महत्वाकांक्षी", "धैर्यवान", "संकोची"] },
+    "lucky": { "color": { "en": "Blue & Black", "hi": "नीला व काला" }, "number": 8, "day": { "en": "Saturday", "hi": "शनिवार" }, "gem": { "en": "Blue Sapphire", "hi": "नीलम" }, "mantra": "ॐ शं शनैश्चराय नमः" },
+    "predictions": {
+      "career": { "en": "Saturn rewards your discipline, ambition and endurance. Administration, engineering, government, mining, construction and corporate leadership suit you; success arrives later but stays longer.", "hi": "शनि आपके अनुशासन, महत्वाकांक्षा और सहनशीलता को पुरस्कृत करते हैं। प्रशासन, इंजीनियरिंग, सरकारी सेवा, खनन, निर्माण और कॉर्पोरेट नेतृत्व आपके लिए उपयुक्त हैं; सफलता देर से आती है पर लंबे समय टिकती है।" },
+      "love": { "en": "You are reserved but deeply committed once you trust. Make time for tenderness amid responsibilities; small consistent gestures mean more to your partner than grand plans.", "hi": "आप संकोची हैं पर एक बार भरोसा हो जाए तो गहराई से समर्पित। ज़िम्मेदारियों के बीच कोमलता के लिए समय निकालें; छोटे नियमित प्रयास आपके साथी के लिए बड़ी योजनाओं से अधिक मायने रखते हैं।" },
+      "health": { "en": "Knees, bones, joints and teeth need care, as does a tendency to overwork. Calcium-rich food, stretching and real rest days keep you resilient.", "hi": "घुटने, हड्डियाँ, जोड़ और दांत ध्यान मांगते हैं, साथ ही अधिक काम करने की प्रवृत्ति भी। कैल्शियम युक्त भोजन, स्ट्रेचिंग और वास्तविक विश्राम दिवस आपको मज़बूत रखेंगे।" },
+      "finance": { "en": "You are a disciplined builder of wealth. Real estate, retirement funds and long-horizon investments suit you; remember to enjoy the fruits of your patience.", "hi": "आप धन के अनुशासित निर्माता हैं। रियल एस्टेट, सेवानिवृत्ति कोष और दीर्घकालिक निवेश आपके लिए उपयुक्त हैं; अपने धैर्य के फलों का आनंद लेना न भूलें।" }
+    }
+  },
+  {
+    "key": "kumbha",
+    "symbol": "♒",
+    "name": { "en": "Kumbha (Aquarius)", "hi": "कुंभ (Aquarius)" },
+    "short": { "en": "Aquarius", "hi": "कुंभ" },
+    "dates": "Jan 20 – Feb 18",
+    "element": { "en": "Air", "hi": "वायु" },
+    "lord": { "en": "Saturn (Shani)", "hi": "शनि" },
+    "quality": { "en": "Fixed", "hi": "स्थिर" },
+    "traits": { "en": ["Innovative", "Independent", "Humanitarian", "Detached"], "hi": ["नवोन्मेषी", "स्वतंत्र", "मानवतावादी", "निर्लिप्त"] },
+    "lucky": { "color": { "en": "Blue", "hi": "नीला" }, "number": 8, "day": { "en": "Saturday", "hi": "शनिवार" }, "gem": { "en": "Blue Sapphire", "hi": "नीलम" }, "mantra": "ॐ शं शनैश्चराय नमः" },
+    "predictions": {
+      "career": { "en": "Saturn and Rahu make you innovative, humanitarian and ahead of your time. Technology, science, social work, aviation, startups and research suit you; collaborate to bring your visions to life.", "hi": "शनि और राहु आपको नवोन्मेषी, मानवतावादी और समय से आगे बनाते हैं। तकनीक, विज्ञान, समाज सेवा, विमानन, स्टार्टअप और अनुसंधान आपके लिए उपयुक्त हैं; अपने दृष्टिकोण को साकार करने के लिए सहयोग करें।" },
+      "love": { "en": "Friendship is the foundation of your love. You value independence; let your partner into your inner world and emotional intimacy will follow naturally.", "hi": "मित्रता आपके प्रेम की नींव है। आप स्वतंत्रता को महत्व देते हैं; साथी को अपनी भीतरी दुनिया में आने दें और भावनात्मक निकटता स्वाभाविक रूप से आएगी।" },
+      "health": { "en": "Circulation, ankles, calves and the nervous system need attention. Regular movement, warm oil massage and time away from screens restore your balance.", "hi": "रक्त संचार, टखने, पिंडलियाँ और तंत्रिका तंत्र पर ध्यान दें। नियमित गतिविधि, गर्म तेल की मालिश और स्क्रीन से दूरी आपका संतुलन लौटाएगी।" },
+      "finance": { "en": "Unconventional income sources and technology-driven gains suit you. Avoid impulsive spending on gadgets; a mix of index funds and a cause you believe in feels right.", "hi": "अपरंपरागत आय स्रोत और तकनीक-आधारित लाभ आपके लिए उपयुक्त हैं। गैजेट्स पर आवेगपूर्ण खर्च से बचें; इंडेक्स फंड और किसी विश्वसनीय उद्देश्य में निवेश का मिश्रण सही रहेगा।" }
+    }
+  },
+  {
+    "key": "meena",
+    "symbol": "♓",
+    "name": { "en": "Meena (Pisces)", "hi": "मीन (Pisces)" },
+    "short": { "en": "Pisces", "hi": "मीन" },
+    "dates": "Feb 19 – Mar 20",
+    "element": { "en": "Water", "hi": "जल" },
+    "lord": { "en": "Jupiter (Guru)", "hi": "गुरु (बृहस्पति)" },
+    "quality": { "en": "Dual", "hi": "द्विस्वभाव" },
+    "traits": { "en": ["Compassionate", "Artistic", "Intuitive", "Dreamy"], "hi": ["करुणामय", "कलात्मक", "अंतर्ज्ञानी", "स्वप्निल"] },
+    "lucky": { "color": { "en": "Yellow", "hi": "पीला" }, "number": 3, "day": { "en": "Thursday", "hi": "गुरुवार" }, "gem": { "en": "Yellow Sapphire", "hi": "पुखराज" }, "mantra": "ॐ बृं बृहस्पतये नमः" },
+    "predictions": {
+      "career": { "en": "Jupiter gives you imagination, compassion and spiritual depth. Arts, music, healing, counselling, marine work, film and charity suit you; set clear boundaries so your gifts are valued.", "hi": "गुरु आपको कल्पनाशीलता, करुणा और आध्यात्मिक गहराई देते हैं। कला, संगीत, उपचार, परामर्श, समुद्री कार्य, फ़िल्म और परोपकार आपके लिए उपयुक्त हैं; स्पष्ट सीमाएँ तय करें ताकि आपकी प्रतिभा का सम्मान हो।" },
+      "love": { "en": "You are a romantic dreamer who gives selflessly. Choose partners who reciprocate your care; grounded communication keeps your love story from drifting into illusion.", "hi": "आप निःस्वार्थ प्रेम देने वाले रोमांटिक स्वप्नदर्शी हैं। ऐसे साथी चुनें जो आपकी देखभाल का प्रतिदान दें; ज़मीनी संवाद आपकी प्रेम कहानी को भ्रम में बहने से बचाएगा।" },
+      "health": { "en": "Feet, lymphatic system and immunity need care, along with a tendency to absorb others' moods. Salt-water baths, adequate sleep and creative outlets keep you well.", "hi": "पैर, लसीका तंत्र और रोग-प्रतिरोधक क्षमता पर ध्यान दें, साथ ही दूसरों की भावनाओं को सोख लेने की प्रवृत्ति पर भी। नमक-जल स्नान, पर्याप्त नींद और रचनात्मक अभिव्यक्ति आपको स्वस्थ रखेंगी।" },
+      "finance": { "en": "Money matters can feel abstract to you. Automate savings, seek a trusted advisor and invest in creative or ethical funds; generosity is wonderful once your own base is secure.", "hi": "धन के मामले आपको अमूर्त लग सकते हैं। बचत को स्वचालित करें, किसी विश्वसनीय सलाहकार की मदद लें और रचनात्मक या नैतिक फंड में निवेश करें; अपनी नींव सुरक्षित होने पर उदारता अद्भुत है।" }
+    }
+  }
+]

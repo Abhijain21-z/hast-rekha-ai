@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+build/
+.pgdata/
+.pg.log
+.env
+.env*.local
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+.claude/

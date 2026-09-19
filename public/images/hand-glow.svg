@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="700" viewBox="0 0 500 700"><defs>
+    <linearGradient id="hgG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff0b8"/><stop offset="60%" stop-color="#f5c242"/><stop offset="100%" stop-color="#c8901c"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="500" height="700" fill="none"/>
+  <g filter="url(#glow)">
+  <g fill="none" stroke="url(#hgG)" stroke-linecap="round">
+    <path d="M250,640 C160,640 120,560 118,480 L112,360 C110,330 140,325 148,352 L165,410 C170,420 182,418 180,405 L165,250 C160,215 195,208 202,242 L220,350 C226,360 238,358 236,345 L220,160 C216,120 255,115 261,155 L278,340 C284,350 295,349 296,338 L292,120 C290,80 330,80 332,120 L336,345 C338,356 350,356 354,344 L378,220 C386,185 420,195 410,230 L375,420 C370,440 380,448 392,432 L420,390 C438,365 465,385 450,412 L400,510 C365,595 320,640 250,640 Z" stroke-width="7"/>
+    <path d="M160,470 Q250,430 350,455" stroke-width="3.5" opacity="0.9"/>
+    <path d="M155,520 Q250,495 345,510" stroke-width="3.5" opacity="0.9"/>
+    <path d="M230,560 Q280,520 330,545" stroke-width="3.5" opacity="0.9"/>
+  </g></g></svg>
