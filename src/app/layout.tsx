@@ -10,7 +10,7 @@ import FloatingHand from "@/components/layout/FloatingHand";
 import { LANGS } from "@/lib/lang-overrides";
 import type { Lang } from "@/lib/i18n";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://hastrekha.ai";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://hastrekhaai.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),

@@ -115,6 +115,7 @@ export default function Footer() {
               <li><Link href="/about" className="hover:text-white">{t.nav.about}</Link></li>
               <li><Link href="/contact" className="hover:text-white">{t.nav.contact}</Link></li>
               <li><Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-white">Terms of Service</Link></li>
               <li><Link href="/disclaimer" className="hover:text-white">Disclaimer</Link></li>
             </ul>
           </div>
@@ -123,6 +124,7 @@ export default function Footer() {
           <p>© {year} {t.brand}. {t.footer.rights}</p>
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <Link href="/privacy-policy" className="hover:text-gold-300">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-gold-300">Terms</Link>
             <Link href="/disclaimer" className="hover:text-gold-300">Disclaimer</Link>
             <Link href="/about" className="hover:text-gold-300">About</Link>
             <Link href="/contact" className="hover:text-gold-300">Contact</Link>
