@@ -68,7 +68,7 @@ export default function HowItWorks() {
               <ul className="mt-8 space-y-3">
                 {t.how.steps.map((s, i) => (
                   <li key={i} className={cn("flex items-center gap-3 text-sm transition-colors", i === active ? "text-gold-300" : "text-slate-500")}>
-                    <span className={cn("flex h-6 w-6 items-center justify-center rounded-full border text-[11px]", i === active ? "border-gold-400 bg-gold-400/20" : "border-white/15")}>{i + 1}</span>
+                    <span className={cn("flex h-6 w-6 items-center justify-center rounded-full border text-xs", i === active ? "border-gold-400 bg-gold-400/20" : "border-white/15")}>{i + 1}</span>
                     {s.title}
                   </li>
                 ))}

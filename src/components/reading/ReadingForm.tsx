@@ -205,7 +205,7 @@ export default function ReadingForm({ loggedIn }: Props) {
                         <MapPin className="h-4 w-4 text-gold-300" />
                         <span className="text-sm text-white">{c.name}</span>
                         <span className="text-xs text-slate-400">{c.region}</span>
-                        <span className="ml-auto text-[10px] text-slate-500">{tzLabel(c.tz)}</span>
+                        <span className="ml-auto text-xs text-slate-500">{tzLabel(c.tz)}</span>
                       </button>
                     </li>
                   ))}
@@ -249,7 +249,7 @@ export default function ReadingForm({ loggedIn }: Props) {
               {submitting ? t.form.calculating : t.form.submit}
             </Button>
             {serverError && <ErrorText>{serverError}</ErrorText>}
-            <p className="mt-4 text-center text-[11px] text-slate-500">{t.result.disclaimer}</p>
+            <p className="mt-4 text-center text-xs text-slate-500">{t.result.disclaimer}</p>
           </div>
         </motion.div>
       </form>

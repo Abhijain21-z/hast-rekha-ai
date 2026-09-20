@@ -25,12 +25,12 @@ export default function ZodiacShowcase() {
           <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400/90">✦ Rashi Chakra</motion.p>
           <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.05 }} className="mt-3 font-display text-3xl text-white md:text-4xl">{t.zodiac3d.title}</motion.h2>
           <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="mt-3 text-slate-300">{t.zodiac3d.sub}</motion.p>
-          <div className="mt-6 grid grid-cols-4 gap-2 sm:grid-cols-6">
+          <div className="mt-6 grid grid-cols-4 gap-2.5 sm:grid-cols-6 sm:gap-3">
             {RASHIS.map((r, i) => (
               <motion.div key={r.key} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}>
-                <Link href={`/rashi?sign=${r.key}`} className="glass group flex flex-col items-center rounded-2xl px-2 py-3 transition hover:border-gold-400/50">
-                  <span className="text-2xl text-gold-300 transition-transform group-hover:scale-125">{r.symbol}</span>
-                  <span className="mt-1 text-[11px] text-slate-400 group-hover:text-white">{L(r.short)}</span>
+                <Link href={`/rashi?sign=${r.key}`} className="glass group flex flex-col items-center rounded-2xl px-2 py-4 transition hover:border-gold-400/50">
+                  <span className="text-3xl text-gold-300 transition-transform group-hover:scale-125">{r.symbol}</span>
+                  <span className="mt-1.5 text-xs text-slate-400 group-hover:text-white">{L(r.short)}</span>
                 </Link>
               </motion.div>
             ))}

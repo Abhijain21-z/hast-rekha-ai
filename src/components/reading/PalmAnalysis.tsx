@@ -61,7 +61,7 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cosmic-950/45 via-transparent to-cosmic-950/15" />
             <PalmSvg overlay active={active} onSelect={setActive} strengths={strengths} className="absolute inset-0 h-full w-full" />
           </div>
-          <p className="mt-2 text-center text-[11px] text-slate-500">{t.palmSection.tap}</p>
+          <p className="mt-2 text-center text-xs text-slate-500">{t.palmSection.tap}</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="space-y-4">
@@ -92,9 +92,9 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="flex items-center gap-2 font-display text-lg text-white"><span className="h-3 w-3 rounded-full" style={{ background: color, boxShadow: `0 0 10px ${color}` }} /> {L(def.name)}</p>
-                  <p className="mt-1 text-[11px] text-slate-500">{L(def.location)}</p>
+                  <p className="mt-1 text-xs text-slate-500">{L(def.location)}</p>
                 </div>
-                <span className="shrink-0 rounded-full border px-3 py-1 text-[11px]" style={{ borderColor: `${color}66`, color }}>{L(variant.label)}</span>
+                <span className="shrink-0 rounded-full border px-3 py-1 text-xs" style={{ borderColor: `${color}66`, color }}>{L(variant.label)}</span>
               </div>
               <div className="mt-3"><Meter value={strength} label={t.report.strength} color={color} /></div>
               <p className="mt-3 text-xs text-slate-400">{L(def.meaning)}</p>
@@ -112,7 +112,7 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
             <Gauge value={strength} label={L(variant.label)} size={92} color="#c084fc" />
             <div className="min-w-0">
               <p className="font-display text-base text-white">{L(def.name)}</p>
-              <p className="mt-1 text-[11px] text-slate-500">{L(def.meaning)}</p>
+              <p className="mt-1 text-xs text-slate-500">{L(def.meaning)}</p>
               <p className="mt-2 text-xs leading-relaxed text-slate-200">{L(variant.text)}</p>
             </div>
           </motion.div>

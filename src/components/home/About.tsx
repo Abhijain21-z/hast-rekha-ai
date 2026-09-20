@@ -21,7 +21,7 @@ export function RashiStrip() {
             <motion.div key={r.key} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}>
               <Link href={`/rashi?sign=${r.key}`} className="glass group flex flex-col items-center rounded-2xl px-2 py-3 transition hover:border-gold-400/50">
                 <span className="text-2xl text-gold-300 transition-transform group-hover:scale-125">{r.symbol}</span>
-                <span className="mt-1 text-[11px] text-slate-400 group-hover:text-white">{L(r.short)}</span>
+                <span className="mt-1 text-xs text-slate-400 group-hover:text-white">{L(r.short)}</span>
               </Link>
             </motion.div>
           ))}

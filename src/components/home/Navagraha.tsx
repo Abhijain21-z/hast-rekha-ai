@@ -118,12 +118,12 @@ export default function Navagraha() {
                 <div className="relative" style={{ width: p.size, height: p.size }}>
                   <div className="planet h-full w-full" style={{ background: p.bg, boxShadow: p.glow ? `${p.glow}, inset -6px -6px 12px rgba(0,0,0,.65)` : undefined }} />
                   {p.glyph && p.i > 6 && (
-                    <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[11px] font-bold text-white/80">{p.glyph}</span>
+                    <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-xs font-bold text-white/80">{p.glyph}</span>
                   )}
                   {p.i === 4 && <span className="pointer-events-none absolute left-[58%] top-[54%] h-[9px] w-[13px] rounded-[50%] bg-[#b8462a]/80 blur-[0.3px]" />}
                 </div>
               )}
-              <span className="mt-1 whitespace-nowrap text-[10px] font-medium tracking-wide text-gold-200/90 drop-shadow">{t.navagraha.planets[p.i]}</span>
+              <span className="mt-1 whitespace-nowrap text-xs font-medium tracking-wide text-gold-200/90 drop-shadow">{t.navagraha.planets[p.i]}</span>
             </div>
           </div>
         );
@@ -160,12 +160,12 @@ export default function Navagraha() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            <p className="-mt-1 text-center text-[10px] text-gold-200/90">{CENTER_IMAGES[idx].label(t)}</p>
+            <p className="-mt-1 text-center text-xs text-gold-200/90">{CENTER_IMAGES[idx].label(t)}</p>
           </div>
         </div>
       </div>
 
-      <p className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-[11px] uppercase tracking-[0.3em] text-gold-400/70">{t.navagraha.title}</p>
+      <p className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs uppercase tracking-[0.3em] text-gold-400/70">{t.navagraha.title}</p>
     </div>
   );
 }

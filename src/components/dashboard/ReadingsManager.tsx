@@ -122,7 +122,7 @@ export default function ReadingsManager({ initial }: { initial: ReadingSummaryDT
                       )}
                       <p className="mt-0.5 truncate text-sm text-slate-300">{r.fullName}</p>
                       <p className="text-xs text-slate-500">{formatDate(r.birthDate, cl)} · {r.timeUnknown ? "~12:00" : r.birthTime} · {r.placeName.split(",")[0]}</p>
-                      <div className="mt-3 flex flex-wrap gap-1.5 text-[11px]">
+                      <div className="mt-3 flex flex-wrap gap-1.5 text-xs">
                         <span className="rounded-full bg-white/6 px-2.5 py-1 text-slate-200">☽ {L(rs.short)}</span>
                         <span className="rounded-full bg-white/6 px-2.5 py-1 text-slate-200">✦ {L(nk.name)}</span>
                         <span className="rounded-full bg-white/6 px-2.5 py-1 text-slate-200">↑ {L(lg.short)}</span>

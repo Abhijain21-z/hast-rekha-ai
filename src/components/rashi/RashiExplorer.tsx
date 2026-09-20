@@ -56,10 +56,10 @@ export default function RashiExplorer() {
             <p className="mt-4 font-display text-lg text-white">{L(r.short)}</p>
             <p className="text-xs text-slate-400">{lang === "hi" ? r.name.en.split(" ")[0] : r.name.hi.split(" ")[0]}</p>
             <div className="mt-3 flex flex-wrap gap-1.5">
-              <span className={cn("rounded-full bg-gradient-to-r px-2.5 py-0.5 text-[11px]", ELEMENT_COLORS[r.element.en])}>{L(r.element)}</span>
-              <span className="rounded-full bg-white/6 px-2.5 py-0.5 text-[11px] text-slate-300">{L(r.lord)}</span>
+              <span className={cn("rounded-full bg-gradient-to-r px-2.5 py-0.5 text-xs", ELEMENT_COLORS[r.element.en])}>{L(r.element)}</span>
+              <span className="rounded-full bg-white/6 px-2.5 py-0.5 text-xs text-slate-300">{L(r.lord)}</span>
             </div>
-            <p className="mt-3 text-[11px] text-slate-500">{r.dates}</p>
+            <p className="mt-3 text-xs text-slate-500">{r.dates}</p>
           </motion.button>
         ))}
       </div>
@@ -108,7 +108,7 @@ export default function RashiExplorer() {
               </svg>
               <div className="text-center">
                 <p className="font-display text-3xl font-bold text-white">{match.score}%</p>
-                <p className="text-[10px] uppercase tracking-wider text-slate-400">{t.rashiPage.score}</p>
+                <p className="text-xs uppercase tracking-wider text-slate-400">{t.rashiPage.score}</p>
               </div>
             </div>
             <div className="text-center sm:text-left">
@@ -176,7 +176,7 @@ export default function RashiExplorer() {
                 [t.result.mantra, open.lucky.mantra],
               ].map(([k, v]) => (
                 <div key={k} className="rounded-xl bg-white/5 p-3">
-                  <p className="text-[10px] uppercase tracking-wider text-slate-500">{k}</p>
+                  <p className="text-xs uppercase tracking-wider text-slate-500">{k}</p>
                   <p className="mt-1 text-slate-100">{v}</p>
                 </div>
               ))}

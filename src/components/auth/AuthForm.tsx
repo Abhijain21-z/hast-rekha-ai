@@ -91,7 +91,7 @@ export default function AuthForm({ mode }: { mode: "login" | "register" }) {
           className="mt-4 w-full rounded-2xl border border-dashed border-gold-400/30 bg-gold-400/5 px-4 py-3 text-left text-xs text-slate-300 hover:bg-gold-400/10"
         >
           <span className="font-semibold text-gold-300">{t.auth.demo}</span> — demo@hastrekha.ai / demo1234
-          <span className="mt-0.5 block text-[11px] text-slate-500">{t.auth.demoFill} →</span>
+          <span className="mt-0.5 block text-xs text-slate-500">{t.auth.demoFill} →</span>
         </button>
       )}
 

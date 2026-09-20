@@ -51,9 +51,9 @@ export default function RishisSection() {
                 <button onClick={() => setOpen(isOpen ? null : s.name.en)} className="flex-1 text-left" aria-expanded={isOpen}>
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-mystic-600/20 text-mystic-400"><ScrollText className="h-4 w-4" /></span>
                   <p className="mt-3 font-display text-xl text-white">{L(s.name)}</p>
-                  <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold-400/80">{L(s.role)}</p>
+                  <p className="mt-0.5 text-xs font-semibold uppercase tracking-[0.2em] text-gold-400/80">{L(s.role)}</p>
                   <p className="mt-1.5 flex-1 text-xs leading-relaxed text-slate-400">{L(s.work)}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-medium text-gold-300">
+                  <span className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-gold-300">
                     {isOpen ? (
                       <>{L({ en: "Show less", hi: "कम देखें" })} <ChevronDown className="h-3.5 w-3.5 rotate-180 transition" /></>
                     ) : (

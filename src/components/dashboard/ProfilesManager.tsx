@@ -124,7 +124,7 @@ export default function ProfilesManager({ initial }: { initial: ProfileDTO[] }) 
                   <Avatar name={p.name} size={46} />
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-display text-lg text-white">{p.name}</p>
-                    <span className="rounded-full bg-gold-400/10 px-2.5 py-0.5 text-[11px] text-gold-200">{t.dash.relations[p.relation as Relation] ?? p.relation}</span>
+                    <span className="rounded-full bg-gold-400/10 px-2.5 py-0.5 text-xs text-gold-200">{t.dash.relations[p.relation as Relation] ?? p.relation}</span>
                   </div>
                   <div className="flex gap-1">
                     <button onClick={() => openEdit(p)} className="rounded-full p-2 text-slate-400 hover:bg-white/10 hover:text-white" title={t.dash.edit}><Pencil className="h-4 w-4" /></button>

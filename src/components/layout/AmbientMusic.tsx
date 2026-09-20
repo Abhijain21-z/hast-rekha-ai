@@ -99,7 +99,7 @@ export default function AmbientMusic() {
       </button>
       <AnimatePresence>
         {armed && !playing && (
-          <motion.span initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} className="glass rounded-full px-3 py-1.5 text-[11px] text-gold-200">
+          <motion.span initial={{ opacity: 0, x: -6 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} className="glass rounded-full px-3 py-1.5 text-xs text-gold-200">
             <Music className="mr-1 inline h-3 w-3" /> {t.top.tapMusic}
           </motion.span>
         )}

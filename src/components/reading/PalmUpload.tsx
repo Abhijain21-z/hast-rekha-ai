@@ -102,7 +102,7 @@ export default function PalmUpload({ value, onChange, hand, onHandChange, compac
             <p className="mt-1 text-xs text-slate-400">
               {t.form.palmOr} <span className="text-gold-300 underline">{t.form.palmBrowse}</span>
             </p>
-            <p className="mt-3 text-[11px] text-slate-500">{t.form.palmHint}</p>
+            <p className="mt-3 text-xs text-slate-500">{t.form.palmHint}</p>
           </motion.div>
         )}
       </AnimatePresence>

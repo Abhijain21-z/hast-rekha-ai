@@ -132,9 +132,9 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
           [t.result.moonPhase, `${Math.round(r.moonPhase * 100)}%`],
         ].map(([k, v, s]) => (
           <div key={k} className="glass rounded-2xl px-4 py-3">
-            <p className="text-[10px] uppercase tracking-wider text-slate-500">{k}</p>
+            <p className="text-xs uppercase tracking-wider text-slate-500">{k}</p>
             <p className="mt-1 text-sm font-medium text-white">{v}</p>
-            {s && <p className="text-[11px] text-slate-400">{s}</p>}
+            {s && <p className="text-xs text-slate-400">{s}</p>}
           </div>
         ))}
       </motion.div>
@@ -142,7 +142,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       {/* Section navigator */}
       <div className="no-print sticky top-[110px] z-30 mt-8 -mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
         <div className="glass-strong flex w-max min-w-full items-center gap-1 rounded-full p-1.5 sm:w-full">
-          <span className="hidden shrink-0 px-3 text-[11px] uppercase tracking-wider text-slate-400 lg:inline">{t.report.nav}</span>
+          <span className="hidden shrink-0 px-3 text-xs uppercase tracking-wider text-slate-400 lg:inline">{t.report.nav}</span>
           {nav.map((n) => (
             <a key={n.id} href={`#${n.id}`} className="flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-xs text-slate-200 transition hover:bg-gold-400/15 hover:text-gold-200">
               <n.icon className="h-3.5 w-3.5 text-gold-300" /> {n.label}
@@ -180,7 +180,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
           <LifeGraph points={report.graph} luckyAges={report.timing.luckyAges} turning={report.timing.turning.map((tp) => ({ age: tp.age, label: L(tp.label) }))} currentAge={report.age} birthYear={report.birthYear} nowLabel={t.report.now} ageLabel={t.report.age} />
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl bg-white/5 p-4">
-              <p className="text-[10px] uppercase tracking-wider text-slate-500">{t.report.luckyYears}</p>
+              <p className="text-xs uppercase tracking-wider text-slate-500">{t.report.luckyYears}</p>
               <div className="mt-2 flex flex-wrap gap-2">
                 {report.timing.luckyAges.map((a) => (
                   <span key={a} className="rounded-full border border-gold-400/40 bg-gold-400/10 px-3 py-1 text-sm text-gold-100">★ {report.birthYear + a} <span className="text-xs text-slate-400">({a})</span></span>
@@ -188,7 +188,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
               </div>
             </div>
             <div className="rounded-2xl bg-white/5 p-4">
-              <p className="text-[10px] uppercase tracking-wider text-slate-500">{t.report.turning}</p>
+              <p className="text-xs uppercase tracking-wider text-slate-500">{t.report.turning}</p>
               <div className="mt-2 space-y-1.5">
                 {report.timing.turning.map((tp) => (
                   <p key={tp.age} className="text-sm text-slate-200"><span className="text-mystic-400">◆</span> {report.birthYear + tp.age}–{report.birthYear + tp.age + 1} · {L(tp.label)} <span className="text-xs text-slate-500">({tp.age}–{tp.age + 1})</span></p>
@@ -232,12 +232,12 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
                   [t.result.gem, L(rashi.lucky.gem)],
                 ].map(([k, v]) => (
                   <div key={k} className="rounded-xl bg-white/5 p-3">
-                    <p className="text-[10px] uppercase tracking-wider text-slate-500">{k}</p>
+                    <p className="text-xs uppercase tracking-wider text-slate-500">{k}</p>
                     <p className="mt-0.5 text-sm text-white">{v}</p>
                   </div>
                 ))}
                 <div className="col-span-2 rounded-xl bg-white/5 p-3">
-                  <p className="text-[10px] uppercase tracking-wider text-slate-500">{t.result.mantra}</p>
+                  <p className="text-xs uppercase tracking-wider text-slate-500">{t.result.mantra}</p>
                   <p className="mt-0.5 text-sm text-gold-200">{rashi.lucky.mantra}</p>
                 </div>
               </div>
@@ -279,7 +279,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
         <AnimatePresence>
           {tech && (
             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-              <div className="mt-3 grid grid-cols-2 gap-2 rounded-2xl border border-white/8 bg-black/30 p-4 font-mono text-[11px] text-slate-300 sm:grid-cols-4">
+              <div className="mt-3 grid grid-cols-2 gap-2 rounded-2xl border border-white/8 bg-black/30 p-4 font-mono text-xs text-slate-300 sm:grid-cols-4">
                 <span>JD: {r.julianDay}</span>
                 <span>Ayanamsa: {r.ayanamsa}°</span>
                 <span>GAST: {r.siderealTime}°</span>

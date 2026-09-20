@@ -64,7 +64,7 @@ export default function Hero() {
             {stats.map((s) => (
               <div key={s.l} className="glass rounded-2xl px-3 py-3 text-center">
                 <p className="font-display text-2xl font-semibold text-gold-300">{s.v}</p>
-                <p className="mt-0.5 text-[11px] uppercase tracking-wider text-slate-400">{s.l}</p>
+                <p className="mt-0.5 text-xs uppercase tracking-wider text-slate-400">{s.l}</p>
               </div>
             ))}
           </motion.div>

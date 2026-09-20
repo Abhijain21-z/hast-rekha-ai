@@ -44,7 +44,7 @@ export default function PalmLines() {
                 className="absolute inset-0 h-full w-full"
               />
             </div>
-            <p className="mt-3 text-center text-[11px] text-slate-400">{t.palmSection.tap}</p>
+            <p className="mt-3 text-center text-xs text-slate-400">{t.palmSection.tap}</p>
           </motion.div>
 
           <div>
@@ -56,12 +56,12 @@ export default function PalmLines() {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2.5">
               {(tab === "lines" ? ANATOMY.lines : ANATOMY.mounts).map((x) => {
                 const c = PALM_LINES.find((l) => l.key === x.key)?.color ?? "#c084fc";
                 const on = active === x.key;
                 return (
-                  <button key={x.key} onClick={() => setActive(x.key)} className={cn("flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs transition", on ? "border-gold-400/70 bg-gold-400/15 text-white" : "border-white/10 bg-white/5 text-slate-300 hover:border-white/30")}>
+                  <button key={x.key} onClick={() => setActive(x.key)} className={cn("flex items-center gap-2 rounded-full border px-4 py-2 text-xs transition", on ? "border-gold-400/70 bg-gold-400/15 text-white" : "border-white/10 bg-white/5 text-slate-300 hover:border-white/30")}>
                     <span className="h-2.5 w-2.5 rounded-full" style={{ background: c, boxShadow: on ? `0 0 8px ${c}` : undefined }} />
                     {L(x.name)}
                   </button>

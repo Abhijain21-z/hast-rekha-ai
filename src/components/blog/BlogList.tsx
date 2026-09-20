@@ -49,23 +49,23 @@ export default function BlogList() {
         <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {results.map((b, i) => (
             <motion.article key={b.slug} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}>
-              <Link href={`/blog/${b.slug}`} className="glass group flex h-full flex-col overflow-hidden rounded-3xl transition hover:border-gold-400/50">
+              <Link href={`/blog/${b.slug}`} className="glass group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 transition duration-300 hover:-translate-y-1 hover:border-gold-400/50 hover:shadow-xl hover:shadow-gold-400/10">
                 <div className="relative aspect-[16/9] overflow-hidden">
                   <Image src={CAT_META[b.cat].image} alt={L(b.title)} fill sizes="(max-width:640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-cosmic-950/80 via-transparent to-transparent" />
-                  <span className="absolute left-3 top-3 rounded-full border border-gold-400/40 bg-cosmic-950/70 px-3 py-1 text-[11px] text-gold-200 backdrop-blur">{L(CAT_META[b.cat].label)}</span>
+                  <span className="absolute left-3 top-3 rounded-full border border-gold-400/40 bg-cosmic-950/70 px-3 py-1 text-xs text-gold-200 backdrop-blur">{L(CAT_META[b.cat].label)}</span>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <h2 className="font-display text-lg leading-snug text-white group-hover:text-gold-200">{L(b.title)}</h2>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">{L(b.excerpt)}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {b.tags[cl].slice(0, 3).map((tag) => (
-                      <span key={tag} className="rounded-full bg-white/6 px-2.5 py-0.5 text-[10px] text-slate-300">#{tag}</span>
+                      <span key={tag} className="rounded-full bg-white/6 px-2.5 py-1 text-xs text-slate-300">#{tag}</span>
                     ))}
                   </div>
                   <div className="mt-4 flex items-center justify-between border-t border-white/8 pt-3 text-xs text-slate-500">
-                    <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {b.mins} {t.blog.minRead} · {new Date(b.date).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { month: "short", year: "numeric" })}</span>
-                    <span className="inline-flex items-center gap-1 text-gold-300">{t.blog.read} <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" /></span>
+                    <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {b.mins} {t.blog.minRead} · {new Date(b.date).toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { month: "short", year: "numeric" })}</span>
+                    <span className="inline-flex items-center gap-1 text-gold-300">{t.blog.read} <ArrowRight className="h-3.5 w-3.5 self-center transition-transform group-hover:translate-x-1" /></span>
                   </div>
                 </div>
               </Link>
@@ -77,7 +77,7 @@ export default function BlogList() {
       {results.length === BLOGS.length && (
         <div className="mt-10 flex flex-wrap gap-2">
           {BLOGS.flatMap((b) => b.tags[cl]).slice(0, 24).map((tag, i) => (
-            <button key={`${tag}-${i}`} onClick={() => setQ(tag.split(" ")[0])} className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-slate-400 transition hover:border-gold-400/40 hover:text-gold-200">#{tag}</button>
+            <button key={`${tag}-${i}`} onClick={() => setQ(tag.split(" ")[0])} className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400 transition hover:border-gold-400/40 hover:text-gold-200">#{tag}</button>
           ))}
         </div>
       )}

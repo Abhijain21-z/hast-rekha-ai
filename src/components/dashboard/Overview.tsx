@@ -123,7 +123,7 @@ export default function Overview({ userName, memberSince, stats, recent }: Props
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-medium text-white">{r.title}</p>
                       <p className="truncate text-xs text-slate-400">{r.fullName} · {L(rs.short)} · {L(nk.name)}</p>
-                      <p className="text-[11px] text-slate-500">{formatDate(r.birthDate, cl)} · {r.placeName.split(",")[0]}</p>
+                      <p className="text-xs text-slate-500">{formatDate(r.birthDate, cl)} · {r.placeName.split(",")[0]}</p>
                     </div>
                     {r.isFavorite && <Star className="h-4 w-4 fill-gold-400 text-gold-400" />}
                   </Link>

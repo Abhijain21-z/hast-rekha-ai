@@ -30,7 +30,7 @@ export default function PastSection({ items }: { items: Bi[] }) {
               <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="glass flex shrink-0 items-center gap-3 rounded-2xl px-4 py-3">
                 <ShieldCheck className="h-6 w-6 text-emerald-300" />
                 <div>
-                  <p className="text-[10px] uppercase tracking-wider text-slate-400">{t.report.accuracy}</p>
+                  <p className="text-xs uppercase tracking-wider text-slate-400">{t.report.accuracy}</p>
                   <p className="font-display text-2xl text-white"><CountUp key={accuracy} to={accuracy} suffix="%" duration={0.6} /> <span className="text-xs text-slate-400">· {yes}/{items.length} {t.report.matches}</span></p>
                 </div>
               </motion.div>
@@ -53,10 +53,10 @@ export default function PastSection({ items }: { items: Bi[] }) {
                   <div className="flex-1">
                     <p className="text-sm leading-relaxed text-slate-100">{L(p)}</p>
                     <div className="mt-2 flex gap-2">
-                      <button onClick={() => setMarks({ ...marks, [i]: true })} className={cn("inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] transition", m === true ? "border-emerald-400/60 bg-emerald-400/20 text-emerald-200" : "border-white/10 text-slate-400 hover:border-emerald-400/40 hover:text-emerald-200")}>
+                      <button onClick={() => setMarks({ ...marks, [i]: true })} className={cn("inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs transition", m === true ? "border-emerald-400/60 bg-emerald-400/20 text-emerald-200" : "border-white/10 text-slate-400 hover:border-emerald-400/40 hover:text-emerald-200")}>
                         <Check className="h-3 w-3" /> {t.report.yes}
                       </button>
-                      <button onClick={() => setMarks({ ...marks, [i]: false })} className={cn("inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] transition", m === false ? "border-rose-400/50 bg-rose-400/15 text-rose-200" : "border-white/10 text-slate-400 hover:border-rose-400/40 hover:text-rose-200")}>
+                      <button onClick={() => setMarks({ ...marks, [i]: false })} className={cn("inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs transition", m === false ? "border-rose-400/50 bg-rose-400/15 text-rose-200" : "border-white/10 text-slate-400 hover:border-rose-400/40 hover:text-rose-200")}>
                         <X className="h-3 w-3" /> {t.report.no}
                       </button>
                     </div>

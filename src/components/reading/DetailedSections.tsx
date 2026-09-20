@@ -44,7 +44,7 @@ export default function DetailedSections({ report, rashi }: { report: PalmReport
                           <Icon className="h-5 w-5" />
                         </span>
                         <div>
-                          <p className="text-[10px] uppercase tracking-[0.3em] text-slate-500">{t.report.section} 4.{idx + 1}</p>
+                          <p className="text-xs uppercase tracking-[0.3em] text-slate-500">{t.report.section} 4.{idx + 1}</p>
                           <h3 className="font-display text-xl text-white sm:text-2xl">{L(def.title)}</h3>
                         </div>
                       </div>
@@ -56,7 +56,7 @@ export default function DetailedSections({ report, rashi }: { report: PalmReport
                         ))}
                         {rashiKey && (
                           <div className="mt-4 rounded-2xl border border-gold-400/20 bg-gold-400/5 p-4">
-                            <p className="text-[11px] font-semibold uppercase tracking-wider text-gold-300">{t.report.byRashi} · {rashi.symbol} {L(rashi.short)}</p>
+                            <p className="text-xs font-semibold uppercase tracking-wider text-gold-300">{t.report.byRashi} · {rashi.symbol} {L(rashi.short)}</p>
                             <p className="mt-1.5 text-sm leading-relaxed text-slate-200">{L(rashi.predictions[rashiKey])}</p>
                           </div>
                         )}
@@ -81,13 +81,13 @@ export default function DetailedSections({ report, rashi }: { report: PalmReport
                             <div className="grid grid-cols-2 gap-3 pt-1">
                               {report.mounts.filter((m) => m.def.area === def.area).slice(0, 2).map((m) => (
                                 <div key={m.def.key} className="rounded-xl bg-white/5 p-3">
-                                  <p className="text-[10px] text-slate-400">{L(m.def.name)}</p>
+                                  <p className="text-xs text-slate-400">{L(m.def.name)}</p>
                                   <p className="font-display text-lg text-white">{m.strength}%</p>
                                 </div>
                               ))}
                               {report.lines.filter((l) => l.def.area === def.area).slice(0, 2).map((l) => (
                                 <div key={l.def.key} className="rounded-xl bg-white/5 p-3">
-                                  <p className="text-[10px] text-slate-400">{L(l.def.name)}</p>
+                                  <p className="text-xs text-slate-400">{L(l.def.name)}</p>
                                   <p className="font-display text-lg text-white">{l.strength}%</p>
                                 </div>
                               ))}
@@ -106,7 +106,7 @@ export default function DetailedSections({ report, rashi }: { report: PalmReport
                         <div>
                           <p className="mb-2 text-xs text-slate-400">{t.report.wealthDecades}</p>
                           <DecadeBars data={report.decades} ageLabel={t.report.age} />
-                          <div className="mt-4 grid grid-cols-3 gap-2 text-center text-[11px]">
+                          <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
                             <div className="rounded-xl bg-white/5 p-2"><p className="text-slate-400">{t.report.moneyStart}</p><p className="text-gold-200">{rangeLabel(timing.moneyStart)}</p></div>
                             <div className="rounded-xl bg-white/5 p-2"><p className="text-slate-400">{t.report.peak} 1</p><p className="text-gold-200">{rangeLabel(timing.peak1)}</p></div>
                             <div className="rounded-xl bg-white/5 p-2"><p className="text-slate-400">{t.report.peak} 2</p><p className="text-gold-200">{rangeLabel(timing.peak2)}</p></div>

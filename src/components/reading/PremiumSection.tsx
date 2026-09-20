@@ -74,7 +74,7 @@ function PayModal({ open, onClose, readingId, onUnlocked }: { open: boolean; onC
         <div className="w-full space-y-3">
           <div className="flex items-center justify-between gap-2 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-4 py-3">
             <div>
-              <p className="text-[10px] uppercase tracking-wider text-slate-400">{t.premium.upiId}</p>
+              <p className="text-xs uppercase tracking-wider text-slate-400">{t.premium.upiId}</p>
               <p className="font-mono text-base text-gold-100">{UPI_ID}</p>
               <p className="text-xs text-slate-400">{UPI_ID.split("@")[0]} · ₹{PREMIUM_PRICE}</p>
             </div>
@@ -85,7 +85,7 @@ function PayModal({ open, onClose, readingId, onUnlocked }: { open: boolean; onC
           <a href={deepLink} className="btn-gold flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
             <ExternalLink className="h-4 w-4" /> {t.premium.openUpi}
           </a>
-          <p className="text-center text-[11px] text-slate-500">GPay · PhonePe · Paytm · BHIM</p>
+          <p className="text-center text-xs text-slate-500">GPay · PhonePe · Paytm · BHIM</p>
         </div>
       </div>
       <div className="mt-5 border-t border-white/10 pt-5">
@@ -95,7 +95,7 @@ function PayModal({ open, onClose, readingId, onUnlocked }: { open: boolean; onC
         <Button className="mt-4 w-full" loading={busy} onClick={unlock} icon={<Crown className="h-4 w-4" />}>
           {busy ? t.premium.verifying : t.premium.confirmPay}
         </Button>
-        <p className="mt-3 text-center text-[10px] text-slate-500">{t.premium.or} — {t.premium.paySub}</p>
+        <p className="mt-3 text-center text-xs text-slate-500">{t.premium.or} — {t.premium.paySub}</p>
       </div>
     </Modal>
   );
@@ -139,7 +139,7 @@ export default function PremiumSection({ reading }: { reading: ReadingDTO }) {
               <Button size="lg" className="mt-5 w-full" onClick={() => setPayOpen(true)} icon={<Crown className="h-5 w-5" />}>
                 {t.premium.get}
               </Button>
-              <p className="mt-3 flex items-center gap-1 text-[10px] text-slate-500"><Sparkles className="h-3 w-3 text-gold-300" /> UPI · QR · {UPI_ID}</p>
+              <p className="mt-3 flex items-center gap-1 text-xs text-slate-500"><Sparkles className="h-3 w-3 text-gold-300" /> UPI · QR · {UPI_ID}</p>
             </div>
           </div>
         </motion.div>
@@ -182,7 +182,7 @@ export default function PremiumSection({ reading }: { reading: ReadingDTO }) {
                         { icon: rowIcons[4], label: t.premium.stotra, text: L(y.stotra), cls: "text-gold-100" },
                       ].map((b) => (
                         <div key={b.label} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
-                          <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400"><b.icon className="h-3.5 w-3.5 text-gold-300" /> {b.label}</p>
+                          <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400"><b.icon className="h-3.5 w-3.5 text-gold-300" /> {b.label}</p>
                           <p className={cn("mt-2 text-sm leading-relaxed", b.cls)}>{b.text}</p>
                         </div>
                       ))}

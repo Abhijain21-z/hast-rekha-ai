@@ -30,7 +30,7 @@ export default async function ContactPage() {
               <div key={i} className="glass flex items-center gap-4 rounded-2xl p-4">
                 <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-gold-400/30 bg-gold-400/10 text-gold-300"><Icon className="h-5 w-5" /></span>
                 <div>
-                  <p className="text-[11px] uppercase tracking-wider text-slate-500">{L(c.label)}</p>
+                  <p className="text-xs uppercase tracking-wider text-slate-500">{L(c.label)}</p>
                   <p className="font-medium text-white">{typeof c.value === "string" ? c.value : L(c.value)}</p>
                 </div>
               </div>

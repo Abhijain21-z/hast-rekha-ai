@@ -225,11 +225,11 @@ export function DecadeBars({ data, ageLabel }: { data: { label: string; value: n
             >
               <span className="absolute -top-2 left-0 h-4 w-full rounded-[50%] bg-[#fbeab8]" />
             </motion.div>
-            <span className="mt-2 text-[11px] text-slate-300">{d.label}</span>
+            <span className="mt-2 text-xs text-slate-300">{d.label}</span>
           </div>
         ))}
       </div>
-      <p className="mt-1 text-center text-[10px] text-slate-500">{ageLabel}</p>
+      <p className="mt-1 text-center text-xs text-slate-500">{ageLabel}</p>
     </div>
   );
 }
@@ -242,16 +242,16 @@ export function AgeRange({ ranges, currentAge, birthYear, min = 15, max = 65, no
       <div className="relative h-3 w-full rounded-full bg-white/10">
         {ranges.map((r, i) => (
           <motion.div key={r.label} className="absolute top-0 h-full rounded-full" style={{ left: pct(r.from), background: r.color ?? "linear-gradient(90deg,#a855f7,#f5c242)", boxShadow: "0 0 12px rgba(245,194,66,0.5)" }} initial={{ width: 0 }} whileInView={{ width: `calc(${pct(r.to)} - ${pct(r.from)})` }} viewport={{ once: true }} transition={{ duration: 1, delay: i * 0.2 }}>
-            <span className="absolute -top-6 left-0 whitespace-nowrap text-[10px] text-gold-200">{r.label}</span>
+            <span className="absolute -top-6 left-0 whitespace-nowrap text-xs text-gold-200">{r.label}</span>
           </motion.div>
         ))}
         {currentAge >= min && currentAge <= max && (
           <div className="absolute -top-1.5 h-6 w-0.5 bg-white" style={{ left: pct(currentAge) }}>
-            <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] text-white">{nowLabel}</span>
+            <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs text-white">{nowLabel}</span>
           </div>
         )}
       </div>
-      <div className="mt-6 flex justify-between text-[10px] text-slate-500">
+      <div className="mt-6 flex justify-between text-xs text-slate-500">
         {[min, 25, 35, 45, 55, max].map((a) => (
           <span key={a}>{a}<br />{birthYear + a}</span>
         ))}

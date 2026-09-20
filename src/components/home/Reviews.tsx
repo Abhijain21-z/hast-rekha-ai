@@ -103,7 +103,7 @@ export default function Reviews() {
                         <p className="text-sm font-semibold text-white">{r.name}</p>
                         <p className="text-xs text-slate-400">{L(r.location)}</p>
                       </div>
-                      <span className="ml-auto inline-flex items-center gap-1 text-[10px] text-emerald-300">
+                      <span className="ml-auto inline-flex items-center gap-1 text-xs text-emerald-300">
                         {r.user ? <Users className="h-3.5 w-3.5" /> : <BadgeCheck className="h-3.5 w-3.5" />} {r.user ? t.reviews.community : t.reviews.verified}
                       </span>
                     </div>

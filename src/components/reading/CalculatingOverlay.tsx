@@ -54,7 +54,7 @@ export default function CalculatingOverlay({ progress }: { progress: number | nu
                   const current = i === stepIndex && p < 100;
                   return (
                     <li key={s} className={cn("flex items-center gap-2.5 text-sm transition-colors", done ? "text-emerald-300" : current ? "text-gold-200" : "text-slate-500")}>
-                      <span className={cn("flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[10px]", done ? "border-emerald-400/60 bg-emerald-400/15" : current ? "border-gold-400/60 bg-gold-400/15" : "border-white/15")}>
+                      <span className={cn("flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-xs", done ? "border-emerald-400/60 bg-emerald-400/15" : current ? "border-gold-400/60 bg-gold-400/15" : "border-white/15")}>
                         {done ? <Check className="h-3 w-3" /> : current ? <Loader2 className="h-3 w-3 animate-spin" /> : i + 1}
                       </span>
                       {s}

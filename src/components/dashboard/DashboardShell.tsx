@@ -74,7 +74,7 @@ export default function DashboardShell({ user, children }: { user: ShellUser; ch
           <Avatar name={user.name} size={38} />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-white">{user.name}</p>
-            <p className="truncate text-[11px] text-slate-400">{user.email}</p>
+            <p className="truncate text-xs text-slate-400">{user.email}</p>
           </div>
           <button onClick={logout} className="rounded-full p-2 text-slate-400 hover:bg-rose-500/15 hover:text-rose-300" title={t.nav.logout}>
             <LogOut className="h-4 w-4" />

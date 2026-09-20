@@ -41,7 +41,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <Image src={CAT_META[blog.cat].image} alt={L(blog.title)} fill priority sizes="(max-width:896px) 100vw, 896px" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-cosmic-950/90 via-cosmic-950/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-          <span className="rounded-full border border-gold-400/40 bg-cosmic-950/70 px-3 py-1 text-[11px] text-gold-200 backdrop-blur">{L(CAT_META[blog.cat].label)}</span>
+          <span className="rounded-full border border-gold-400/40 bg-cosmic-950/70 px-3 py-1 text-xs text-gold-200 backdrop-blur">{L(CAT_META[blog.cat].label)}</span>
           <h1 className="mt-3 font-display text-2xl leading-tight text-white sm:text-4xl">{L(blog.title)}</h1>
           <p className="mt-2 flex items-center gap-3 text-xs text-slate-300">
             <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {blog.mins} {t.blog.minRead}</span>
@@ -53,7 +53,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <div className="mt-4 flex flex-wrap gap-1.5">
         {blog.tags[cl].map((tag) => (
-          <span key={tag} className="rounded-full bg-white/6 px-3 py-1 text-[11px] text-slate-300">#{tag}</span>
+          <span key={tag} className="rounded-full bg-white/6 px-3 py-1 text-xs text-slate-300">#{tag}</span>
         ))}
       </div>
 

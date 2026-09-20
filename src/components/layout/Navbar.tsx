@@ -52,7 +52,7 @@ export function LangToggle({ compact }: { compact?: boolean }) {
                   className={cn("flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition", lang === l.code ? "bg-gold-400/20 text-gold-100" : "text-slate-200 hover:bg-white/8")}
                 >
                   <span>{l.native}</span>
-                  <span className="text-[10px] text-slate-500">{l.english}</span>
+                  <span className="text-xs text-slate-500">{l.english}</span>
                 </button>
               </li>
             ))}
@@ -72,7 +72,7 @@ export function Logo({ className }: { className?: string }) {
       </span>
       <span className="flex flex-col leading-none">
         <span className="font-display text-lg font-semibold tracking-wide text-white">{t.brand}</span>
-        <span className="hidden text-[10px] uppercase tracking-[0.25em] text-gold-400/80 xl:block">{t.tagline}</span>
+        <span className="hidden text-xs uppercase tracking-[0.25em] text-gold-400/80 xl:block">{t.tagline}</span>
       </span>
     </Link>
   );
@@ -116,7 +116,7 @@ export default function Navbar({ user }: { user: NavUser }) {
     <header className={cn("fixed inset-x-0 top-0 z-50 transition-all duration-300", scrolled || open ? "glass-strong shadow-lg shadow-black/30" : "bg-cosmic-950/40 backdrop-blur-sm")}>
       {/* Top language bar — always visible so users can switch the whole site's language */}
       <div className="border-b border-gold-400/20 bg-gradient-to-r from-mystic-700/40 via-cosmic-800/60 to-mystic-700/40">
-        <div className="mx-auto flex h-[34px] max-w-7xl items-center justify-center gap-3 px-4 text-[11px] sm:justify-between sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-[34px] max-w-7xl items-center justify-center gap-3 px-4 text-xs sm:justify-between sm:px-6 lg:px-8">
           <span className="hidden text-gold-200/90 sm:inline">ॐ श्री गणेशाय नमः · {t.tagline}</span>
           <div className="flex items-center gap-2">
             <Globe className="h-3.5 w-3.5 text-gold-300" />

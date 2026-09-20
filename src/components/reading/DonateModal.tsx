@@ -66,7 +66,7 @@ export default function DonateModal({ open, onClose }: { open: boolean; onClose:
           <a href={deepLink} className="btn-gold flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm"><ExternalLink className="h-4 w-4" /> {t.donate.pay}</a>
         </div>
       </div>
-      <p className="mt-4 text-center text-[11px] text-slate-500">{t.donate.thanks}</p>
+      <p className="mt-4 text-center text-xs text-slate-500">{t.donate.thanks}</p>
     </Modal>
   );
 }
