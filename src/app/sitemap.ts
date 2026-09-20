@@ -6,7 +6,7 @@ const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://hastrekhaai.online";
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const staticPages = [
-    "", "/rashi", "/reading", "/blog", "/about", "/contact", "/privacy-policy", "/terms", "/disclaimer", "/login", "/register",
+    "", "/rashi", "/reading", "/blog", "/upay", "/about", "/contact", "/privacy-policy", "/terms", "/disclaimer", "/login", "/register",
   ].map((p) => ({
     url: `${BASE}${p}`,
     lastModified: now,

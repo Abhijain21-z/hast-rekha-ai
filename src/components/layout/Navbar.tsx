@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Sparkles, LayoutDashboard, LogOut, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, Sparkles, LayoutDashboard, LogOut, Globe, ChevronDown, Heart } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { LANGS } from "@/lib/lang-overrides";
 import { Avatar, cn } from "@/components/ui";
@@ -101,10 +101,12 @@ export default function Navbar({ user }: { user: NavUser }) {
     { href: home ? "#how-it-works" : "/#how-it-works", label: t.nav.how },
     { href: home ? "#reviews" : "/#reviews", label: t.nav.reviews },
     { href: "/rashi", label: t.nav.rashi },
+    { href: "/upay", label: t.nav.upay ?? "उपाय" },
     { href: "/blog", label: t.nav.blog },
     { href: "/about", label: t.nav.about },
     { href: "/contact", label: t.nav.contact },
   ];
+  const donateLink = { href: "/#pricing", label: t.nav.donate };
 
   async function logout() {
     await fetch("/api/auth/logout", { method: "POST" });
@@ -145,6 +147,9 @@ export default function Navbar({ user }: { user: NavUser }) {
         </ul>
 
         <div className="hidden items-center gap-2.5 lg:flex xl:gap-3">
+          <Link href={donateLink.href} className="flex items-center gap-1.5 rounded-full border border-rose-300/30 px-4 py-2 text-sm text-rose-200 transition hover:border-rose-300/60 hover:bg-rose-400/10">
+            <Heart className="h-3.5 w-3.5" /> {donateLink.label}
+          </Link>
           {user ? (
             <>
               <Link href="/dashboard" className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 py-1 pl-1 pr-4 text-sm text-slate-100 hover:bg-white/10">
@@ -206,6 +211,9 @@ export default function Navbar({ user }: { user: NavUser }) {
                     {t.nav.login} / {t.nav.register}
                   </Link>
                 )}
+                <Link href={donateLink.href} onClick={() => setOpen(false)} className="flex items-center justify-center gap-1.5 rounded-full border border-rose-300/30 px-5 py-3 text-center text-sm text-rose-200 hover:bg-rose-400/10">
+                  <Heart className="h-3.5 w-3.5" /> {donateLink.label}
+                </Link>
                 <Link href="/reading" className="btn-gold rounded-full px-5 py-3 text-center text-sm">
                   {t.nav.getReading}
                 </Link>

@@ -16,6 +16,7 @@ import DetailedSections from "./DetailedSections";
 import PalmAnalysis from "./PalmAnalysis";
 import PremiumSection from "./PremiumSection";
 import { DonateReminder, PrintGate } from "./DonateReminder";
+import UpayBookPromo from "@/components/upay/UpayBookPromo";
 
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.55 } };
 const AREA_COLORS = ["#fbbf24", "#fb7185", "#34d399", "#f5c242", "#60a5fa", "#c084fc", "#22d3ee", "#f97316"];
@@ -265,6 +266,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
             ))}
           </ol>
         </motion.div>
+        <UpayBookPromo />
       </section>
 
       {/* 7. Premium 5-year report */}

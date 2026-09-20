@@ -14,10 +14,16 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://hastrekhaai.online";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
-  title: "हस्तरेखा AI — Hast Rekha AI | वैदिक ज्योतिष व हस्तरेखा",
+  title: "हस्तरेखा AI — Palmistry, Hath Ki Rekha & Kundali Vishleshan | Hast Rekha AI",
   description:
-    "स्वागत है आपका हस्तरेखा AI के संसार में — जानिए आपके हाथों की रेखाएं क्या कहती हैं आपके भविष्य के बारे में। राशि, नक्षत्र, लग्न और विस्तृत हस्तरेखा रिपोर्ट, हिंदी व English में, तुरंत।",
-  keywords: ["hast rekha", "हस्तरेखा", "kundli", "rashi", "nakshatra", "lagna", "palmistry", "vedic astrology", "राशिफल", "हथेली की रेखाएं", "hast rekha shastra", "palm lines meaning"],
+    "Palmistry और हस्तरेखा से जानें अपना भविष्य — हाथ की रेखा (hath ki rekha) का सटीक विश्लेषण, मेरे हाथ की रेखा, हस्त रेखा पढ़े, साथ में कुंडली का सटीक विश्लेषण — राशि, नक्षत्र, लग्न और विस्तृत रिपोर्ट, हिंदी व English में, तुरंत और निःशुल्क।",
+  keywords: [
+    "palmistry", "hast rekha", "हस्तरेखा", "हथ की रेखा", "hath ki rekha", "हाथ की रेखा से जाने अपना भविष्य",
+    "मेरे हाथ की रेखा", "हस्त रेखा पढे", "हस्तरेखा शास्त्र", "hast rekha shastra", "palm lines meaning",
+    "palm reading", "hand lines", "kundali", "कुंडली", "kundli vishleshan", "कुंडली का सटीक विश्लेषण",
+    "राशिफल", "rashi", "nakshatra", "lagna", "jyotish", "vedic astrology", "हस्तरेखा से भविष्य",
+    "palmistry in hindi", "हथेली की रेखाएं", "heart line", "life line", "भविष्य जाने",
+  ],
   alternates: { languages: { hi: "/", en: "/" } },
   openGraph: {
     type: "website",
