@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Copy, Printer, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, History, BarChart3, TrendingUp, Orbit, ScrollText, Hand, ListChecks } from "lucide-react";
+import { ChevronDown, Copy, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, History, BarChart3, TrendingUp, Orbit, ScrollText, Hand, ListChecks } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Badge, Card, cn } from "@/components/ui";
 import { nakshatraAt, rashiAt, PANCHANG, tithiName } from "@/lib/content";
@@ -15,6 +15,7 @@ import PastSection from "./PastSection";
 import DetailedSections from "./DetailedSections";
 import PalmAnalysis from "./PalmAnalysis";
 import PremiumSection from "./PremiumSection";
+import { DonateReminder, PrintGate } from "./DonateReminder";
 
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.55 } };
 const AREA_COLORS = ["#fbbf24", "#fb7185", "#34d399", "#f5c242", "#60a5fa", "#c084fc", "#22d3ee", "#f97316"];
@@ -78,9 +79,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
             <button onClick={copyLink} className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 hover:border-gold-400/50">
               {copied ? <Check className="h-4 w-4 text-emerald-300" /> : <Copy className="h-4 w-4" />} {copied ? t.result.copied : t.result.share}
             </button>
-            <button onClick={() => window.print()} className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 hover:border-gold-400/50">
-              <Printer className="h-4 w-4" /> {t.result.print}
-            </button>
+            <PrintGate readingName={reading.fullName} />
             <Link href={backHref ?? "/reading"} className="btn-gold inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
               {backHref ? t.result.backDash : t.result.newReading} <ArrowRight className="h-4 w-4" />
             </Link>
@@ -299,6 +298,8 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       </div>
 
       <p className="mt-8 text-center text-xs italic text-slate-500">{t.result.disclaimer}</p>
+
+      <DonateReminder enabled />
     </div>
   );
 }

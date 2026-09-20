@@ -47,6 +47,8 @@ const en = {
   },
   features: { title: "Everything You Need", sub: "A complete Jyotish toolkit built for Indian users — fast, private and free." },
   reviews: { title: "Loved Across India", sub: "Real stories from people who found clarity in their charts.", verified: "Verified reading", write: "Write a review", yourName: "Your name", yourText: "Your experience with Hast Rekha AI…", rating: "Your rating", submit: "Save review", saved: "Thank you! Your review is live.", errText: "Please write at least 10 characters.", community: "Community", guest: "Guest" },
+  donateReminder: { title: "Donate — Satisfied?", body: "If you are satisfied with this prediction, you may offer a voluntary dakshina. This small support helps us improve this platform further.", btn: "Donate", later: "Later" },
+  printGate: { title: "Download PDF Report", body: "Pay \u20B951 to download your complete prediction as a beautifully formatted PDF report. The download unlocks right after payment.", btn: "Pay \u20B951 \u2014 Get PDF", later: "Cancel", paid: "Payment received \u2014 download your PDF now" },
   donate: { title: "Donate for Improvement", sub: "Love Hast Rekha AI? A small optional donation keeps it free, fast and growing. 100% voluntary.", btn: "Donate", thanks: "Dhanyavaad! Your support improves the site for everyone.", optional: "optional", amount: "Choose an amount", custom: "or enter amount", pay: "Pay via UPI" },
   rishis: { title: "", sub: "" },
   about: {
@@ -419,7 +421,7 @@ const hi: Dict = {
     login: "लॉगिन",
     register: "साइन अप",
     dashboard: "डैशबोर्ड",
-    getReading: "अपनी रीडिंग पाएँ",
+    getReading: "अपनी हस्तरेखा जानें",
     logout: "लॉगआउट",
   },
   hero: {
@@ -427,7 +429,7 @@ const hi: Dict = {
     title1: "स्वागत है आपका",
     title2: "हस्तरेखा AI के संसार में",
     sub: "जानिए आपके हाथों की रेखाएं क्या कहती हैं आपके भविष्य के बारे में — राशि, नक्षत्र, लग्न और हस्तरेखा का संपूर्ण विश्लेषण, तुरंत और निःशुल्क।",
-    cta: "अपनी रीडिंग पाएँ",
+    cta: "अपनी हस्तरेखा जानें",
     cta2: "12 राशियाँ देखें",
     stat1: "राशियाँ",
     stat2: "नक्षत्र",
@@ -447,7 +449,9 @@ const hi: Dict = {
   },
   features: { title: "सब कुछ जो आपको चाहिए", sub: "भारतीय उपयोगकर्ताओं के लिए बना संपूर्ण ज्योतिष टूलकिट — तेज़, निजी और निःशुल्क।" },
   reviews: { title: "पूरे भारत में पसंद किया गया", sub: "उन लोगों की सच्ची कहानियाँ जिन्हें अपनी कुंडली में स्पष्टता मिली।", verified: "सत्यापित रीडिंग", write: "समीक्षा लिखें", yourName: "आपका नाम", yourText: "हस्तरेखा AI के साथ आपका अनुभव…", rating: "आपकी रेटिंग", submit: "समीक्षा सहेजें", saved: "धन्यवाद! आपकी समीक्षा लाइव है।", errText: "कृपया कम से कम 10 अक्षर लिखें।", community: "समुदाय", guest: "अतिथि" },
-  donate: { title: "सुधार हेतु दान करें", sub: "हस्तरेखा AI प्रिय है? एक छोटा वैकल्पिक दान इसे निःशुल्क, तेज़ और बढ़ता रखता है। 100% स्वैच्छिक।", btn: "दान करें", thanks: "धन्यवाद! आपका सहयोग सभी के लिए साइट बेहतर बनाता है।", optional: "वैकल्पिक", amount: "राशि चुनें", custom: "या राशि लिखें", pay: "UPI से भुगतान करें" },
+  donateReminder: { title: "\u0926\u093E\u0928 \u0915\u0930\u0947\u0902 \u2014 \u0938\u0902\u0924\u0941\u0937\u094D\u091F \u0939\u0941\u090F?", body: "\u092F\u0926\u093F \u0906\u092A \u0907\u0938 prediction \u0938\u0947 \u0938\u0902\u0924\u0941\u0937\u094D\u091F \u0939\u0948\u0902 \u0924\u094B \u0936\u094D\u0930\u0926\u094D\u0927\u093E \u0938\u0947 \u0926\u0915\u094D\u0937\u093F\u0923\u093E \u0930\u0942\u092A \u0926\u093E\u0928 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964 \u092F\u0939 \u091B\u094B\u091F\u093E \u0938\u093E \u0938\u0939\u092F\u094B\u0917 \u0907\u0938 platform \u0915\u094B \u0914\u0930 \u0905\u0927\u093F\u0915 \u0938\u0941\u0927\u093E\u0930\u0928\u0947 \u092E\u0947\u0902 \u092E\u0939\u0924\u094D\u0935\u092A\u0942\u0930\u094D\u0923 \u0938\u093F\u0926\u094D\u0927 \u0939\u094B\u0917\u093E\u0964", btn: "\u0926\u093E\u0928 \u0915\u0930\u0947\u0902", later: "\u092C\u093E\u0926 \u092E\u0947\u0902" },
+  printGate: { title: "PDF \u0930\u093F\u092A\u094B\u0930\u094D\u091F \u0921\u093E\u0909\u0928\u0932\u094B\u0921 \u0915\u0930\u0947\u0902", body: "\u0906\u092A\u0915\u0940 \u092A\u0942\u0930\u0940 prediction \u0915\u0940 \u0938\u0941\u0902\u0926\u0930 PDF \u0930\u093F\u092A\u094B\u0930\u094D\u091F \u0921\u093E\u0909\u0928\u0932\u094B\u0921 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F \u20B951 \u0915\u093E \u092D\u0941\u0917\u0924\u093E\u0928 \u0915\u0930\u0947\u0902\u0964 \u092D\u0941\u0917\u0924\u093E\u0928 \u0915\u0947 \u0924\u0941\u0930\u0902\u0924 \u092C\u093E\u0926 \u0930\u093F\u092A\u094B\u0930\u094D\u091F \u0921\u093E\u0909\u0928\u0932\u094B\u0921 \u0939\u094B \u091C\u093E\u090F\u0917\u0940\u0964", btn: "\u20B951 \u092D\u0941\u0917\u0924\u093E\u0928 \u0915\u0930\u0947\u0902 \u2014 PDF \u092A\u093E\u090F\u0901", later: "\u0930\u0926\u094D\u0926 \u0915\u0930\u0947\u0902", paid: "\u092D\u0941\u0917\u0924\u093E\u0928 \u0939\u0941\u0906 \u2014 \u0905\u092C PDF \u0921\u093E\u0909\u0928\u0932\u094B\u0921 \u0915\u0930\u0947\u0902" },
+  donate: { title: "\u0938\u0941\u0927\u093E\u0930 \u0939\u0947\u0924\u0941 \u0926\u093E\u0928 \u0915\u0930\u0947\u0902", sub: "हस्तरेखा AI प्रिय है? एक छोटा वैकल्पिक दान इसे निःशुल्क, तेज़ और बढ़ता रखता है। 100% स्वैच्छिक।", btn: "दान करें", thanks: "धन्यवाद! आपका सहयोग सभी के लिए साइट बेहतर बनाता है।", optional: "वैकल्पिक", amount: "राशि चुनें", custom: "या राशि लिखें", pay: "UPI से भुगतान करें" },
   rishis: { title: "", sub: "" },
   about: {
     title: "हस्त रेखा AI के बारे में",
@@ -479,7 +483,7 @@ const hi: Dict = {
     made: "भारत में ❤️ से निर्मित",
   },
   form: {
-    title: "अपनी रीडिंग पाएँ",
+    title: "अपनी हस्तरेखा जानें",
     sub: "अपना जन्म विवरण दर्ज करें। सब कुछ तुरंत गणना होता है।",
     fullName: "पूरा नाम",
     fullNamePh: "जैसे आरव शर्मा",
