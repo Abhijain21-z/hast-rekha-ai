@@ -1,424 +1,2965 @@
 [
-  {
-    "slug": "hast-rekha-shastra-kya-hai",
-    "cat": "palm",
-    "title": { "en": "What is Hast Rekha Shastra? The Complete Beginner's Guide", "hi": "हस्तरेखा शास्त्र क्या है? संपूर्ण शुरुआती गाइड" },
-    "excerpt": { "en": "Palmistry (Samudrika Shastra) reads personality and destiny from the lines, mounts and shape of the hand. Learn its history, scientific approach and how to start reading your own palm.", "hi": "हस्तरेखा शास्त्र (समुद्रिक शास्त्र) हाथ की रेखाओं, पर्वतों और आकार से व्यक्तित्व व भाग्य पढ़ता है। जानें इसका इतिहास, दृष्टिकोण और अपनी हथेली पढ़ना कैसे शुरू करें।" },
-    "tags": { "en": ["palmistry", "hast rekha", "samudrika shastra", "beginner guide", "palm lines"], "hi": ["हस्तरेखा", "समुद्रिक शास्त्र", "हथेली की रेखाएं", "शुरुआती गाइड"] },
-    "date": "2026-09-01", "mins": 7,
-    "intro": [
-      { "en": "Hast Rekha Shastra — known in the West as palmistry and in our scriptures as a branch of Samudrika Shastra — is the art of reading a person's character, health, relationships and destiny from the map of their palm. Ancient rishis observed that the hands, like the birth chart, carry the imprint of past karma and the blueprint of coming years.", "hi": "हस्तरेखा शास्त्र — जिसे पाश्चात्य देशों में पामिस्ट्री और हमारे ग्रंथों में समुद्रिक शास्त्र की शाखा कहा गया है — हथेली के नक्शे से व्यक्ति के चरित्र, स्वास्थ्य, संबंधों और भाग्य को पढ़ने की कला है। प्राचीन ऋषियों ने देखा कि हाथ, जन्म कुंडली की भांति, पूर्व कर्मों की छाप और आने वाले वर्षों का नक्शा साथ लिए होते हैं।" },
-      { "en": "The beautiful part is that you need no instrument — your palms are always with you, changing slowly as you change. In this guide we walk through the foundations so that by the end you can identify every major line on your own hand.", "hi": "सुंदर बात यह है कि इसके लिए किसी यंत्र की आवश्यकता नहीं — आपकी हथेलियाँ सदा आपके साथ हैं और आपके बदलने के साथ धीरे-धीरे बदलती हैं। इस गाइड में हम नींव से चलेंगे ताकि अंत तक आप अपने हाथ की हर प्रमुख रेखा पहचान सकें।" }
-    ],
-    "sections": [
-      { "h": { "en": "A 5,000-year-old science", "hi": "पाँच हज़ार वर्ष पुराना ज्ञान" }, "p": [
-        { "en": "References to palm reading appear in the Valmiki Ramayana, in the teachings of sage Bhrigu, and in classical texts like the Samudrika Shastra. Parallel traditions grew in China, Egypt and Greece; today palmistry is practised worldwide as a tool of self-awareness.", "hi": "हस्तरेखा के प्रमाण वाल्मीकि रामायण, भृगु मुनि की शिक्षाओं और समुद्रिक शास्त्र जैसे प्राचीन ग्रंथों में मिलते हैं। चीन, मिस्र और यूनान में समानांतर परंपराएँ पनपीं; आज यह विश्व भर में आत्म-जागरूकता के साधन के रूप में प्रचलित है।" },
-        { "en": "Unlike fortune-telling, classical hast rekha is observational: it studies fixed markers (lines, mounts, marks) and relates them to temperament and timing, much like a doctor reads the body.", "hi": "भाग्य बताने की अपेक्षा शास्त्रीय हस्तरेखा अवलोकन-आधारित है: यह स्थिर चिह्नों (रेखाओं, पर्वतों, निशानों) का अध्ययन कर स्वभाव और समय से जोड़ती है, जैसे वैद्य शरीर को पढ़ता है।" }
-      ] },
-      { "h": { "en": "Which hand to read?", "hi": "कौन सा हाथ पढ़ें?" }, "p": [
-        { "en": "The dominant hand (usually the right) shows what you are making of your life — your present and earned destiny. The non-dominant hand shows inherited potential and past-life impressions. Serious palmists compare both.", "hi": "प्रमुख हाथ (प्रायः दायाँ) दिखाता है कि आप अपने जीवन का क्या बना रहे हैं — वर्तमान और अर्जित भाग्य। अप्रमुख हाथ जन्मजात क्षमता और पूर्व जन्म की छाप दिखाता है। गंभीर हस्तरेखा शास्त्री दोनों की तुलना करते हैं।" },
-        { "en": "Read in soft daylight with the hand relaxed and open. A tense palm hides its lines.", "hi": "हथेली को कोमल दिन की रोशनी में, शिथिल और खुली अवस्था में पढ़ें। तनी हुई हथेली अपनी रेखाएँ छिपा लेती है।" }
-      ] },
-      { "h": { "en": "The four pillars of a reading", "hi": "रीडिंग के चार स्तंभ" }, "p": [
-        { "en": "1) Lines — life, head, heart and fate. 2) Mounts — the padded areas under fingers and thumb (Venus to Moon). 3) Shape and texture — the four elemental hand types. 4) Signs — stars, crosses, triangles, tridents and islands.", "hi": "1) रेखाएँ — जीवन, मस्तिष्क, हृदय और भाग्य। 2) पर्वत — उंगलियों और अंगूठे के नीचे के गद्देदार भाग (शुक्र से चंद्र)। 3) आकार व बनावट — चार तत्व-प्रकार के हस्त। 4) चिह्न — तारा, क्रॉस, त्रिभुज, त्रिशूल और द्वीप।" },
-        { "en": "A complete reading blends all four with the birth chart; that is exactly how Hast Rekha AI combines astronomy with palmistry.", "hi": "एक पूर्ण रीडिंग चारों को जन्म कुंडली से मिलाती है; हस्तरेखा AI ठीक इसी तरह खगोल विज्ञान को हस्तरेखा से जोड़ता है।" }
-      ] },
-      { "h": { "en": "How to practise safely and ethically", "hi": "सुरक्षित व नैतिक अभ्यास" }, "p": [
-        { "en": "Palmistry is a mirror for self-reflection, not a replacement for medical or financial advice. Read with kindness; never frighten a beginner with 'bad lines' — every warning sign has a remedy.", "hi": "हस्तरेखा आत्मचिंतन का दर्पण है, चिकित्सा या वित्तीय सलाह का विकल्प नहीं। दया से पढ़ें; नए पाठक को 'बुरी रेखाओं' से कभी न डराएँ — हर सावधानी-चिह्न का उपाय होता है।" },
-        { "en": "Re-check the same palm every year. Lines that deepen show growth; lines that fade show lessons already learned.", "hi": "हर वर्ष वही हथेली दोबारा देखें। गहरी होती रेखाएँ विकास दिखाती हैं; फीकी पड़ती रेखाएँ सीखी जा चुकी पाठ।" }
-      ] }
-    ],
-    "tip": { "en": "Start with your life line — the easiest to see — and compare both hands before drawing conclusions.", "hi": "जीवन रेखा से शुरू करें — जो सबसे आसानी से दिखती है — और निष्कर्ष से पहले दोनों हाथों की तुलना करें।" }
+ {
+  "slug": "hast-rekha-shastra-kya-hai",
+  "cat": "palm",
+  "title": {
+   "en": "What is Hast Rekha Shastra? The Complete Beginner's Guide",
+   "hi": "हस्तरेखा शास्त्र क्या है? संपूर्ण शुरुआती गाइड"
   },
-  {
-    "slug": "jeevan-rekha-ke-rahasya",
-    "cat": "palm",
-    "title": { "en": "10 Secrets of the Life Line (Jeevan Rekha)", "hi": "जीवन रेखा के 10 रहस्य" },
-    "excerpt": { "en": "Deep or faint, broken or chained — the life line tells far more than lifespan. Ten secrets every palm reader should know, with remedies for weak markings.", "hi": "गहरी या हल्की, टूटी या श्रृंखलाबद्ध — जीवन रेखा आयु से कहीं अधिक बताती है। हर हस्तरेखा पाठक को जाने चाहिए ऐसे 10 रहस्य, कमज़ोर चिह्नों के उपाय सहित।" },
-    "tags": { "en": ["life line", "jeevan rekha", "vitality", "health", "longevity", "palmistry secrets"], "hi": ["जीवन रेखा", "आयु", "स्वास्थ्य", "जीवन शक्ति", "हस्तरेखा रहस्य"] },
-    "date": "2026-09-03", "mins": 8,
-    "intro": [
-      { "en": "The life line curves from between the thumb and index finger around the Mount of Venus. Most people believe it shows how long they will live — but classical palmistry says otherwise: it shows the quality, vigour and major turns of your vitality.", "hi": "जीवन रेखा अंगूठे और तर्जनी के बीच से शुरू होकर शुक्र पर्वत के चारों ओर घूमती है। अधिकांश लोग मानते हैं कि यह आयु बताती है — पर शास्त्रीय हस्तरेखा कुछ और कहती है: यह आपकी जीवन शक्ति की गुणवत्ता, तेज और बड़े मोड़ दिखाती है।" }
-    ],
-    "sections": [
-      { "h": { "en": "Depth, length and curve", "hi": "गहराई, लंबाई और घुमाव" }, "p": [
-        { "en": "A deep, long, wide-curving line shows abundant stamina and courage; a short line does not mean a short life — it means life is less ruled by physical vitality and more by mind. A narrow curve indicates a reserved, home-loving nature.", "hi": "गहरी, लंबी, चौड़े घुमाव वाली रेखा प्रचुर सहनशक्ति और साहस दिखाती है; छोटी रेखा का अर्थ छोटी आयु नहीं — इसका अर्थ है जीवन शारीरिक शक्ति से कम और मन से अधिक चलता है। संकरा घुमाव संकोची, घर-प्रेमी स्वभाव दर्शाता है।" }
-      ] },
-      { "h": { "en": "Breaks, islands and chains", "hi": "टूट, द्वीप और श्रृंखला" }, "p": [
-        { "en": "A clean break protected by a parallel 'sister line' shows a danger escaped — often an accident or surgery survived. An unprotected break marks a phase of upheaval. Islands show periods of worry or illness; chains at the start show a delicate childhood.", "hi": "समानांतर 'सहायक रेखा' से सुरक्षित साफ़ टूट बचे हुए संकट को दिखाती है — प्रायः दुर्घटना या सर्जरी से बचाव। असुरक्षित टूट उथल-पुथल का दौर दर्शाती है। द्वीप चिंता या बीमारी के काल दिखाते हैं; आरंभ की श्रृंखला नाज़ुक बचपन दर्शाती है।" },
-        { "en": "Remedy: for islands or chains, classical texts advise Surya Namaskar, early dinners and wearing a ruby only after consultation.", "hi": "उपाय: द्वीप या श्रृंखला के लिए शास्त्र सूर्य नमस्कार, जल्दी रात्रि भोजन और परामर्श के बाद ही माणिक धारण की सलाह देते हैं।" }
-      ] },
-      { "h": { "en": "Branches and the travel fork", "hi": "शाखाएँ और यात्रा-कांटा" }, "p": [
-        { "en": "Upward branches are marks of ambition and success at that age. A fork at the end — one branch toward the Mount of Moon — is the famous travel sign; such a person settles or prospers far from the birthplace.", "hi": "ऊपर की शाखाएँ उस आयु की महत्वाकांक्षा व सफलता के चिह्न हैं। अंत में कांटा — जिसकी एक शाखा चंद्र पर्वत की ओर हो — प्रसिद्ध यात्रा-चिह्न है; ऐसा व्यक्ति जन्मस्थान से दूर बसता या फलता-फूलता है।" }
-      ] },
-      { "h": { "en": "The protective square and Mars line", "hi": "रक्षक वर्ग और मंगल रेखा" }, "p": [
-        { "en": "A square cutting across a break is the 'mark of preservation' — divine protection in danger. An inner parallel line (Mars line) shows an invisible shield and strong family backing.", "hi": "टूट पर काटता वर्ग 'रक्षा चिह्न' है — संकट में दैवी सुरक्षा। भीतर की समानांतर रेखा (मंगल रेखा) अदृश्य कवच और प्रबल पारिवारिक सहयोग दर्शाती है।" }
-      ] }
-    ],
-    "tip": { "en": "Your life line can literally deepen within months of starting a disciplined routine of sleep, walk and sunlight.", "hi": "नींद, सैर और धूप की अनुशासित दिनचर्या शुरू करने से महीनों में आपकी जीवन रेखा वास्तव में गहरी हो सकती है।" }
+  "excerpt": {
+   "en": "Palmistry (Samudrika Shastra) reads personality and destiny from the lines, mounts and shape of the hand. Learn its history, scientific approach and how to start reading your own palm.",
+   "hi": "हस्तरेखा शास्त्र (समुद्रिक शास्त्र) हाथ की रेखाओं, पर्वतों और आकार से व्यक्तित्व व भाग्य पढ़ता है। जानें इसका इतिहास, दृष्टिकोण और अपनी हथेली पढ़ना कैसे शुरू करें।"
   },
-  {
-    "slug": "hridaya-rekha-prem-vivah",
-    "cat": "palm",
-    "title": { "en": "Heart Line & Love Marriage: What Your Palm Reveals", "hi": "हृदय रेखा और प्रेम विवाह: आपकी हथेली क्या बताती है" },
-    "excerpt": { "en": "Where your heart line ends decides your style of love. Learn to read marriage timing from affection lines and the famous cross of love marriage on Jupiter.", "hi": "आपकी हृदय रेखा जहाँ समाप्त होती है वही आपके प्रेम की शैली तय करती है। जानें स्नेह रेखाओं से विवाह का समय और गुरु पर्वत पर प्रेम विवाह का प्रसिद्ध क्रॉस।" },
-    "tags": { "en": ["heart line", "love line", "love marriage", "marriage timing", "relationships"], "hi": ["हृदय रेखा", "प्रेम विवाह", "विवाह रेखा", "विवाह का समय", "संबंध"] },
-    "date": "2026-09-05", "mins": 7,
-    "intro": [
-      { "en": "The heart line runs across the top of the palm and is the truest map of your emotional world — how you love, how you get hurt, and how you heal. Combined with the small marriage lines on the edge of the palm, it gives surprisingly accurate timing of commitment.", "hi": "हृदय रेखा हथेली के ऊपरी भाग में चलती है और आपकी भावनात्मक दुनिया का सबसे सच्चा नक्शा है — आप कैसे प्रेम करते हैं, कैसे आहत होते हैं और कैसे उबरते हैं। हथेली के किनारे की छोटी विवाह रेखाओं के साथ यह प्रतिबद्धता का आश्चर्यजनक सटीक समय बताती है।" }
-    ],
-    "sections": [
-      { "h": { "en": "Three endings, three hearts", "hi": "तीन अंत, तीन हृदय" }, "p": [
-        { "en": "Ending under the index finger (Jupiter): idealistic, devoted, expects loyalty. Ending between index and middle: balanced, sensible love. Ending under the middle finger (Saturn): independent, physical attraction matters, slow to commit.", "hi": "तर्जनी (गुरु) के नीचे समाप्त: आदर्शवादी, समर्पित, वफ़ादारी चाहने वाला। तर्जनी-मध्यमा के बीच: संतुलित, व्यावहारिक प्रेम। मध्यमा (शनि) के नीचे: स्वतंत्र, शारीरिक आकर्षण महत्वपूर्ण, प्रतिबद्धता में धीमा।" }
-      ] },
-      { "h": { "en": "Reading marriage timing", "hi": "विवाह का समय पढ़ना" }, "p": [
-        { "en": "The space between the heart line and the base of the little finger is divided into thirds: lower third (early marriage, ~18–25), middle (~25–35), upper (~35+). The deepest line marks the most significant union.", "hi": "हृदय रेखा और कनिष्ठा के आधार के बीच की जगह तीन भागों में बँटी है: निचला तिहाई (शीघ्र विवाह, ~18–25), मध्य (~25–35), ऊपरी (~35+)। सबसे गहरी रेखा सबसे महत्वपूर्ण बंधन दर्शाती है।" }
-      ] },
-      { "h": { "en": "The love-marriage cross", "hi": "प्रेम विवाह का क्रॉस" }, "p": [
-        { "en": "A clear cross on the Mount of Jupiter, or a heart line that sends a strong branch up to Jupiter, is the classic combination of love marriage or a deeply chosen partnership. A triangle here adds blessings of elders.", "hi": "गुरु पर्वत पर स्पष्ट क्रॉस, या हृदय रेखा की गुरु की ओर जाती प्रबल शाखा — यह प्रेम विवाह या स्वयं चुनी साझेदारी का शास्त्रीय संयोजन है। यहाँ त्रिभुब हो तो बड़ों का आशीर्वाद जुड़ता है।" }
-      ] },
-      { "h": { "en": "Broken or forked heart line", "hi": "टूटी या द्विशाखित हृदय रेखा" }, "p": [
-        { "en": "A fork at the start shows empathy that can become self-sacrifice; a fork at the end shows love shared between partner and career. A break that reconnects shows heartbreak healed into wisdom. Remedy: chanting of Shri Sukta and expressing one feeling aloud daily.", "hi": "आरंभ में कांटा सहानुभूति दिखाता है जो आत्म-त्याग बन सकती है; अंत में कांटा प्रेम का बँटवारा साथी और करियर में दर्शाता है। जुड़ती टूट हृदय-भंग को ज्ञान में बदलना दिखाती है। उपाय: श्री सूक्त पाठ और प्रतिदिन एक भावना शब्दों में कहना।" }
-      ] }
-    ],
-    "tip": { "en": "If your heart line is faint, do not worry — it simply means you guard your emotions; trust grows slowly but permanently.", "hi": "यदि हृदय रेखा हल्की है तो चिंता न करें — इसका अर्थ है आप भावनाएँ सहेजते हैं; विश्वास धीरे बनता है पर स्थायी रहता है।" }
+  "tags": {
+   "en": [
+    "palmistry",
+    "hast rekha",
+    "samudrika shastra",
+    "beginner guide",
+    "palm lines"
+   ],
+   "hi": [
+    "हस्तरेखा",
+    "समुद्रिक शास्त्र",
+    "हथेली की रेखाएं",
+    "शुरुआती गाइड"
+   ]
   },
-  {
-    "slug": "mastishk-rekha-se-career",
-    "cat": "palm",
-    "title": { "en": "Head Line & Career: Find Your True Field of Work", "hi": "मस्तिष्क रेखा और करियर: अपना सही कार्य-क्षेत्र जानें" },
-    "excerpt": { "en": "Straight, sloping, forked or short — the head line reveals whether you are built for analysis, creativity, business or leadership, and when career success peaks.", "hi": "सीधी, ढलान वाली, द्विशाखित या छोटी — मस्तिष्क रेखा बताती है कि आप विश्लेषण, रचनात्मकता, व्यापार या नेतृत्व के लिए बने हैं, और करियर सफलता कब चरम पर होगी।" },
-    "tags": { "en": ["head line", "career", "intellect", "writer's fork", "business", "job change"], "hi": ["मस्तिष्क रेखा", "करियर", "बुद्धि", "व्यापार", "नौकरी परिवर्तन"] },
-    "date": "2026-09-07", "mins": 7,
-    "intro": [
-      { "en": "The head line crosses the middle of the palm and maps the mind: how you learn, decide and earn. Palmists combine it with the fate line to pinpoint the field and the decade of professional rise.", "hi": "मस्तिष्क रेखा हथेली के मध्य से गुज़रती है और मन का नक्शा बनाती है: आप कैसे सीखते, निर्णय लेते और कमाते हैं। हस्तरेखा शास्त्री इसे भाग्य रेखा से जोड़कर क्षेत्र और व्यावसायिक उत्थान का दशक बताते हैं।" }
-    ],
-    "sections": [
-      { "h": { "en": "Straight vs sloping", "hi": "सीधी बनाम ढलान" }, "p": [
-        { "en": "A straight, level head line shows a logical, practical mind suited to engineering, accounts, administration and law. A line sloping toward the Mount of Moon shows imagination — writers, designers, musicians and marketers carry it.", "hi": "सीधी, समतल मस्तिष्क रेखा तार्किक, व्यावहारिक मन दर्शाती है — इंजीनियरिंग, लेखा, प्रशासन और क़ानून के अनुकूल। चंद्र पर्वत की ओर ढलान कल्पना दिखाती है — लेखक, डिज़ाइनर, संगीतकार और मार्केटर इसे धारण करते हैं।" }
-      ] },
-      { "h": { "en": "The writer's fork", "hi": "लेखक का कांटा" }, "p": [
-        { "en": "A small fork at the end balances realism with creativity — the sign of excellent communicators, teachers and consultants who can see both sides of a problem.", "hi": "अंत में छोटा कांटा यथार्थ और रचनात्मकता में संतुलन बनाता है — यह उत्कृष्ट संवादकर्ताओं, शिक्षकों और सलाहकारों का चिह्न है जो समस्या के दोनों पक्ष देख सकते हैं।" }
-      ] },
-      { "h": { "en": "Joined or separate from the life line", "hi": "जीवन रेखा से जुड़ी या अलग" }, "p": [
-        { "en": "Joined at the start: cautious, family-guided decisions, success through steady institutions. Separated at the start: independent, impulsive, entrepreneurial from youth; such people leave home early and build their own path.", "hi": "आरंभ में जुड़ी: सावधान, परिवार-निर्देशित निर्णय, स्थिर संस्थानों से सफलता। आरंभ में अलग: स्वतंत्र, आवेगी, युवावस्था से उद्यमी; ऐसे लोग जल्दी घर छोड़कर अपना मार्ग बनाते हैं।" }
-      ] },
-      { "h": { "en": "Timing your peak", "hi": "शिखर का समय" }, "p": [
-        { "en": "Divide the head line into three: the first third matures by ~35, the middle by ~50, the end beyond. A clear deepening or a star in a section marks the peak decade — align major career moves with it.", "hi": "मस्तिष्क रेखा को तीन भागों में बाँटें: पहला तिहाई ~35 तक परिपक्व, मध्य ~50 तक, अंत उसके बाद। किसी भाग में गहराई या तारा शिखर दशक चिह्नित करता है — बड़े करियर कदम उसी से मिलाएँ।" }
-      ] }
-    ],
-    "tip": { "en": "A short head line is not a weakness — it shows quick decision-making, the mark of surgeons, traders and field commanders.", "hi": "छोटी मस्तिष्क रेखा कमज़ोरी नहीं — यह त्वरित निर्णय दर्शाती है, सर्जनों, व्यापारियों और फ़ील्ड कमांडरों का चिह्न।" }
-  },
-  {
-    "slug": "bhagya-rekha-dhan-lakshmi",
-    "cat": "palm",
-    "title": { "en": "Fate Line, Money Lines & the Wealth Triangle", "hi": "भाग्य रेखा, धन रेखाएँ और धन त्रिभुज" },
-    "excerpt": { "en": "When will money start flowing? Read the fate line's origin, the vertical money lines under the ring finger and the closed wealth triangle that decides whether money stays.", "hi": "धन कब से बहेगा? पढ़ें भाग्य रेखा का उद्गम, अनामिका के नीचे की खड़ी धन रेखाएँ और बंद धन त्रिभुज जो तय करता है कि धन टिकेगा या नहीं।" },
-    "tags": { "en": ["fate line", "money lines", "wealth triangle", "sun line", "property", "financial success"], "hi": ["भाग्य रेखा", "धन रेखा", "धन त्रिभुज", "सूर्य रेखा", "संपत्ति", "आर्थिक सफलता"] },
-    "date": "2026-09-09", "mins": 8,
-    "intro": [
-      { "en": "The fate line (bhagya rekha) rises from the base of the palm toward the middle finger. Together with the Sun line, Mercury line and the money triangle it forms the complete financial map of the hand.", "hi": "भाग्य रेखा हथेली के आधार से मध्यमा की ओर उठती है। सूर्य रेखा, बुध रेखा और धन त्रिभुज के साथ यह हाथ का संपूर्ण आर्थिक नक्शा बनाती है।" }
-    ],
-    "sections": [
-      { "h": { "en": "Where your fate line begins", "hi": "भाग्य रेखा कहाँ से शुरू होती है" }, "p": [
-        { "en": "From the wrist: destiny-driven, support from outside forces. From the life line: self-made, success through personal effort. From the Mount of Moon: success through public, travel or foreign connection. No fate line: freedom to reinvent yourself many times.", "hi": "कलाई से: भाग्य-निर्देशित, बाहरी शक्तियों का सहयोग। जीवन रेखा से: स्वयं-निर्मित, निजी प्रयास से सफलता। चंद्र पर्वत से: जनता, यात्रा या विदेशी संबंध से सफलता। भाग्य रेखा न होना: स्वयं को बार-बार नए सिरे से गढ़ने की स्वतंत्रता।" }
-      ] },
-      { "h": { "en": "The Sun line and fame money", "hi": "सूर्य रेखा और यश-धन" }, "p": [
-        { "en": "A clear Sun line under the ring finger converts work into recognition and recognition into wealth. Its absence does not deny money — it denies fame; such people earn quietly and steadily.", "hi": "अनामिका के नीचे स्पष्ट सूर्य रेखा कार्य को पहचान और पहचान को धन में बदलती है। इसका अभाव धन नहीं रोकता — यश रोकता है; ऐसे लोग चुपचाप और स्थिर कमाते हैं।" }
-      ] },
-      { "h": { "en": "Money lines and the triangle", "hi": "धन रेखाएँ और त्रिभुज" }, "p": [
-        { "en": "Vertical strokes under the ring and little fingers are money lines; more and deeper means multiple income streams. The wealth triangle is formed where head, fate and Mercury lines enclose a space — if fully closed, money accumulates; an open corner shows generosity or leaks.", "hi": "अनामिका और कनिष्ठा के नीचे खड़ी रेखाएँ धन रेखाएँ हैं; अधिक और गहरी = आय के कई स्रोत। धन त्रिभुज वहाँ बनता है जहाँ मस्तिष्क, भाग्य व बुध रेखाएँ एक स्थान घेरती हैं — पूरी बंद हो तो धन संचित होता है; खुला कोना उदारता या रिसाव दर्शाता है।" }
-      ] },
-      { "h": { "en": "Remedies for a weak wealth zone", "hi": "कमज़ोर धन क्षेत्र के उपाय" }, "p": [
-        { "en": "Classical remedies: keep the nails clean and the palm moisturised, wear a yellow thread on Thursday, donate food on Saturdays, and start automatic savings on a waxing-moon day to symbolically 'close' the triangle.", "hi": "शास्त्रीय उपाय: नाखून साफ़ और हथेली कोमल रखें, गुरुवार को पीला धागा धारण करें, शनिवार को अन्नदान करें, और शुक्ल पक्ष के दिन स्वचालित बचत शुरू कर प्रतीकात्मक रूप से त्रिभुज 'बंद' करें।" }
-      ] }
-    ],
-    "tip": { "en": "Press the Mount of Venus for five seconds: if colour returns instantly, your financial vitality is strong.", "hi": "शुक्र पर्वत को पाँच सेकंड दबाएँ: रंग तुरंत लौटे तो आपकी आर्थिक जीवन शक्ति प्रबल है।" }
-  },
-  {
-    "slug": "navagraha-prabhav",
-    "cat": "graha",
-    "title": { "en": "Navagraha: How the Nine Planets Shape Your Life", "hi": "नवग्रह: नौ ग्रह आपके जीवन को कैसे आकार देते हैं" },
-    "excerpt": { "en": "Sun to Ketu — each graha rules specific areas of body, mind and destiny. Understand their nature, friendships and what strengthens or weakens them in your chart.", "hi": "सूर्य से केतु तक — हर ग्रह शरीर, मन और भाग्य के विशेष क्षेत्रों का स्वामी है। जानें उनका स्वभाव, मित्रता और कुंडली में क्या उन्हें बल देता या घटाता है।" },
-    "tags": { "en": ["navagraha", "nine planets", "surya", "chandra", "mangal", "budh", "guru", "shukra", "shani", "rahu", "ketu"], "hi": ["नवग्रह", "सूर्य", "चंद्र", "मंगल", "बुध", "गुरु", "शुक्र", "शनि", "राहु", "केतु"] },
-    "date": "2026-09-10", "mins": 9,
-    "intro": [
-      { "en": "Vedic astrology works with nine grahas — two of them (Rahu and Ketu) are mathematical shadow points, yet their effects are as real as the physical planets. Every horoscope is essentially a story of how these nine energies distribute their gifts and tests.", "hi": "वैदिक ज्योतिष नौ ग्रहों से कार्य करता है — जिनमें दो (राहु-केतु) गणितीय छाया-बिंदु हैं, फिर भी उनका प्रभाव भौतिक ग्रहों जितना वास्तविक है। हर कुंडली मूलतः इसी की कथा है कि ये नऊ ऊर्जाएँ अपने वरदान और परीक्षाएँ कैसे बाँटती हैं।" }
-    ],
-    "sections": [
-      { "h": { "en": "The luminaries and the ministers", "hi": "प्रकाशक और मंत्री" }, "p": [
-        { "en": "Sun (soul, father, authority), Moon (mind, mother, emotions), Mars (courage, siblings, land), Mercury (speech, trade, intellect), Jupiter (wisdom, children, wealth), Venus (love, comfort, arts), Saturn (karma, discipline, longevity).", "hi": "सूर्य (आत्मा, पिता, अधिकार), चंद्र (मन, माता, भावना), मंगल (साहस, भाई-बहन, भूमि), बुध (वाणी, व्यापार, बुद्धि), गुरु (ज्ञान, संतान, धन), शुक्र (प्रेम, सुख, कला), शनि (कर्म, अनुशासन, आयु)।" }
-      ] },
-      { "h": { "en": "Rahu and Ketu — the karmic axis", "hi": "राहु-केतु — कर्मिक अक्ष" }, "p": [
-        { "en": "Rahu gives obsession, foreign things and sudden rise; Ketu gives detachment, intuition and moksha. Where they sit shows the karmic homework of this birth; their 18-year periods shake then reshape life.", "hi": "राहु आसक्ति, विदेशी वस्तुएँ और आकस्मिक उन्नति देता है; केतु वैराग्य, अंतर्ज्ञान और मोक्ष देता है। जहाँ वे बैठते हैं वहाँ इस जन्म का कर्मिक पाठ दिखता है; उनकी 18 वर्ष की दशाएँ जीवन को हिलाकर नया रूप देती हैं।" }
-      ] },
-      { "h": { "en": "Friends and enemies", "hi": "मित्र और शत्रु" }, "p": [
-        { "en": "Grahas have natural friendships: Sun-Moon-Mars-Jupiter are mutual friends; Venus opposes Sun and Moon; Mercury is neutral and adaptable. A planet seated with a friend gives results with ease; with an enemy, after struggle.", "hi": "ग्रहों की स्वाभाविक मित्रताएँ हैं: सूर्य-चंद्र-मंगल-गुरु परस्पर मित्र; शुक्र सूर्य-चंद्र का विरोधी; बुध तटस्थ और अनुकूलनशील। मित्र के साथ बैठा ग्रह सुगमता से फल देता है; शत्रु के साथ, संघर्ष के बाद।" }
-      ] },
-      { "h": { "en": "Simple strengthening remedies", "hi": "सरल बलवर्धक उपाय" }, "p": [
-        { "en": "Sun: water offering at sunrise. Moon: white food donation on Mondays. Mars: Hanuman Chalisa on Tuesdays. Mercury: feed green grass to cows. Jupiter: respect teachers. Venus: keep surroundings beautiful. Saturn: serve the elderly. Rahu/Ketu: charity in darkness and meditation.", "hi": "सूर्य: प्रातः जलार्पण। चंद्र: सोमवार को श्वेत अन्नदान। मंगल: मंगलवार को हनुमान चालीसा। बुध: गाय को हरा घास। गुरु: गुरुजनों का सम्मान। शुक्र: वातावरण सुंदर रखें। शनि: बुज़ुर्गों की सेवा। राहु/केतु: अंधेरे में दान और ध्यान।" }
-      ] }
-    ],
-    "tip": { "en": "Your Moon sign (Rashi) is the most important single point for daily predictions — it is the mind's home.", "hi": "दैनिक भविष्यवाणी के लिए आपकी चंद्र राशि सबसे महत्वपूर्ण एकल बिंदु है — वह मन का घर है।" }
-  },
-  {
-    "slug": "sade-sati-upay",
-    "cat": "graha",
-    "title": { "en": "Sade Sati: Myths, Truths and Practical Remedies", "hi": "साढ़े साती: भ्रांतियाँ, सत्य और व्यावहारिक उपाय" },
-    "excerpt": { "en": "Saturn's 7.5-year transit over the Moon sign is feared far more than it deserves. Understand its three phases, what it actually tests, and the remedies that truly help.", "hi": "चंद्र राशि पर शनि की साढ़े सात वर्ष की गोचर आवश्यकता से अधिक भयभीत करती है। समझें इसके तीन चरण, यह वास्तव में क्या परखती है, और कौन से उपाय सचमुच काम आते हैं।" },
-    "tags": { "en": ["sade sati", "shani", "saturn transit", "dhaiya", "remedies", "karma"], "hi": ["साढ़े साती", "शनि", "शनि गोचर", "ढैया", "उपाय", "कर्म"] },
-    "date": "2026-09-11", "mins": 9,
-    "intro": [
-      { "en": "Sade Sati begins when Saturn enters the 12th house from your Moon, peaks over the Moon sign, and ends after crossing the 2nd house — roughly 7.5 years. It is not a curse; it is an audit of karma that rewards discipline and exposes shortcuts.", "hi": "साढ़े साती तब आरंभ होती है जब शनि चंद्र से बारहवें भाव में प्रवेश करता है, चंद्र राशि पर शिखर पर होता है, और दूसरे भाव से निकलकर समाप्त होता है — लगभग साढ़े सात वर्ष। यह अभिशाप नहीं; यह कर्म की लेखा-परीक्षा है जो अनुशासन को पुरस्कृत और शॉर्टकट उजागर करती है।" }
-    ],
-    "sections": [
-      { "h": { "en": "The three phases", "hi": "तीन चरण" }, "p": [
-        { "en": "Phase 1 (12th house): expenses, isolation, health of elders. Phase 2 (Moon sign): identity pressure, career restructuring, emotional maturity. Phase 3 (2nd house): rebuilding finances and family equations. Each phase lasts ~2.5 years.", "hi": "चरण 1 (बारहवाँ भाव): व्यय, अलगाव, बड़ों का स्वास्थ्य। चरण 2 (चंद्र राशि): पहचान का दबाव, करियर पुनर्गठन, भावनात्मक परिपक्वता। चरण 3 (दूसरा भाव): वित्त और पारिवारिक समीकरणों का पुनर्निर्माण। हर चरण ~साढ़े दो वर्ष।" }
-      ] },
-      { "h": { "en": "Myths to reject", "hi": "त्याज्य भ्रांतियाँ" }, "p": [
-        { "en": "Sade Sati does not automatically bring death, divorce or ruin. A strong Saturn or benefic aspects can make these years the most productive of life — many leaders rise during sade sati because Saturn loves responsibility.", "hi": "साढ़े साती स्वतः मृत्यु, तलाक या विनाश नहीं लाती। प्रबल शनि या शुभ दृष्टि इन वर्षों को जीवन के सर्वाधिक उत्पादक बना सकती है — कई नेता साढ़े साती में ही उठते हैं क्योंकि शनि ज़िम्मेदारी प्रेम करता है।" }
-      ] },
-      { "h": { "en": "Remedies that work", "hi": "कारगर उपाय" }, "p": [
-        { "en": "Serve the working class and the elderly; never exploit subordinates. Saturdays: mustard-oil lamp under Peepal, black-til donation, Hanuman Chalisa. Wear dark-blue or black on Saturdays. Avoid lending and guarantees.", "hi": "श्रमिकों व बुज़ुर्गों की सेवा करें; अधीनस्थों का शोषण न करें। शनिवार: पीपल नीचे सरसों तेल का दीपक, काले तिल दान, हनुमान चालीसा। शनिवार को गहरा नीला/काला पहनें। उधार व गारंटी से बचें।" }
-      ] },
-      { "h": { "en": "Small dhaiya too", "hi": "छोटी ढैया भी" }, "p": [
-        { "en": "When Saturn transits the 4th or 8th from the Moon it gives 'dhaiya' — a milder 2.5-year test of home (4th) or transformation (8th). The same remedies apply, with extra care to property papers and health check-ups.", "hi": "जब शनि चंद्र से चौथे या आठवें में गोचर करता है तो 'ढैया' देता है — घर (चौथा) या आमूल परिवर्तन (आठवाँ) की हल्की साढ़े दो वर्ष की परीक्षा। यही उपाय लागू, साथ ही संपत्ति कागज़ों और स्वास्थ्य जाँच का विशेष ध्यान।" }
-      ] }
-    ],
-    "tip": { "en": "Keep a small iron nail or a piece of coal in your wallet during sade sati — a traditional symbolic shield against sudden loss.", "hi": "साढ़े साती में बटुए में छोटी लोहे की कील या कोयले का टुकड़ा रखें — आकस्मिक हानि से पारंपरिक प्रतीकात्मक कवच।" }
-  },
-  {
-    "slug": "rahu-ketu-bhram-mukti",
-    "cat": "graha",
-    "title": { "en": "Rahu–Ketu: Confusion, Obsession and the Path to Freedom", "hi": "राहु–केतु: भ्रम, आसक्ति और मुक्ति का मार्ग" },
-    "excerpt": { "en": "The shadow planets create sudden events, foreign connections, illusions and spiritual awakenings. Learn where they help, where they trap, and how to calm them.", "hi": "छाया ग्रह आकस्मिक घटनाएँ, विदेशी संबंध, भ्रम और आध्यात्मिक जागृति बनाते हैं। जानें कहाँ वे मदद करते हैं, कहाँ फँसाते हैं, और कैसे शांत होते हैं।" },
-    "tags": { "en": ["rahu", "ketu", "shadow planets", "kala sarpa", "illusion", "spirituality"], "hi": ["राहु", "केतु", "छाया ग्रह", "काल सर्प", "भ्रम", "आध्यात्मिकता"] },
-    "date": "2026-09-12", "mins": 8,
-    "intro": [
-      { "en": "Rahu and Ketu are the head and tail of the celestial dragon — points where the Sun-Moon path crosses. They own no sign, yet they amplify whatever they touch, for good or for obsession.", "hi": "राहु और केतु आकाशीय नाग के मुख और पुच्छ हैं — जहाँ सूर्य-चंद्र मार्ग काटते हैं। इनकी कोई राशि नहीं, फिर भी जो इनके स्पर्श में आता है उसे वे बढ़ा देते हैं — शुभ के लिए या आसक्ति के लिए।" }
-    ],
-    "sections": [
-      { "h": { "en": "Rahu: the amplifier", "hi": "राहु: वर्धक" }, "p": [
-        { "en": "Rahu gives hunger for the new: technology, foreign lands, unconventional careers, mass media. Well placed it makes pioneers; afflicted it creates anxiety, addictions and smoke-and-mirror people around you.", "hi": "राहु नवीन की भूख देता है: तकनीक, विदेश, अपरंपरागत करियर, जन-मीडिया। शुभ हो तो अग्रणी बनाता है; पीड़ित हो तो चिंता, लत और आपके चारों ओर मायावी लोग पैदा करता है।" }
-      ] },
-      { "h": { "en": "Ketu: the liberator", "hi": "केतु: मुक्तिदाता" }, "p": [
-        { "en": "Ketu dissolves: attachments, fears, even identity. It grants research depth, coding-like precision, occult interest and sudden moksha-like releases. Its periods feel lonely but end with clarity.", "hi": "केतु विसर्जित करता है: आसक्ति, भय, पहचान तक। यह गहन शोध, कोडिंग जैसी सटीकता, गूढ़ विद्याओं में रुचि और अचानक मोक्ष-सी मुक्ति देता है। इसकी दशाएँ एकाकी लगती हैं पर स्पष्टता पर समाप्त होती हैं।" }
-      ] },
-      { "h": { "en": "Kala Sarpa and its relief", "hi": "काल सर्प और उसकी शांति" }, "p": [
-        { "en": "When all planets sit between Rahu and Ketu, the chart forms Kala Sarpa yoga — life feels pushed by unseen forces. Relief: Naga worship, regular meditation, and honest, non-exploitative dealing; fear of this yoga is often worse than the yoga.", "hi": "जब सारे ग्रह राहु-केतु के बीच हों तो काल सर्प योग बनता है — जीवन अदृश्य बलों से धकेला लगता है। शांति: नाग पूजा, नियमित ध्यान, ईमानदार व अ-शोषक व्यवहार; इस योग का भय प्रायः योग से बदतर होता है।" }
-      ] },
-      { "h": { "en": "Practical calming remedies", "hi": "व्यावहारिक शांति उपाय" }, "p": [
-        { "en": "Rahu: feed stray dogs, keep silver, avoid grey-market deals, chant Durga Kavach. Ketu: offer flowers at Ganesha temples, practise breath meditation, keep a gomed only after expert advice.", "hi": "राहु: आवारा कुत्तों को भोजन, चांदी रखें, गैर-कानूनी सौदों से बचें, दुर्गा कवच पाठ। केतु: गणेश मंदिर में पुष्प अर्पण, श्वास ध्यान, विशेषज्ञ सलाह के बाद ही गोमेद।" }
-      ] }
-    ],
-    "tip": { "en": "Rahu fears discipline and Ketu fears attachment — the two remedies are literally opposites, like the two nodes.", "hi": "राहु अनुशासन से और केतु आसक्ति से डरता है — दोनों उपाय शाब्दिक रूप से विपरीत हैं, जैसे दोनों नोड।" }
-  },
-  {
-    "slug": "ratna-vigyan-sahi-ratna",
-    "cat": "ratna",
-    "title": { "en": "Gemstone Science: Which Ratna Suits Which Planet", "hi": "रत्न विज्ञान: कौन सा रत्न किस ग्रह के लिए" },
-    "excerpt": { "en": "Ruby, pearl, red coral, emerald, yellow sapphire, diamond, blue sapphire, hessonite, cat's eye — the nine planetary gems, when to wear them and when to avoid them.", "hi": "माणिक, मोती, मूंगा, पन्ना, पुखराज, हीरा, नीलम, गोमेद, लहसुनिया — नौ ग्रह रत्न, कब धारण करें और कब बचें।" },
-    "tags": { "en": ["gemstones", "ratna", "ruby", "emerald", "yellow sapphire", "blue sapphire", "pearl", "planetary gems"], "hi": ["रत्न", "माणिक", "पन्ना", "पुखराज", "नीलम", "मोती", "ग्रह रत्न"] },
-    "date": "2026-09-13", "mins": 8,
-    "intro": [
-      { "en": "In Jyotish a gemstone is a tuned antenna: it amplifies the ray of its planet. Worn for a friendly, well-placed planet it uplifts; worn blindly for a malefic it can amplify trouble. Hence the golden rule — test before you invest.", "hi": "ज्योतिष में रत्न एक समस्वरित एंटीना है: यह अपने ग्रह की किरण को वर्धित करता है। मित्रवत, सुस्थित ग्रह के लिए धारण किया जाए तो उन्नति; अशुभ ग्रह के लिए अंधाधुंध धारण करें तो समस्या वर्धित। अतः स्वर्णिम नियम — निवेश से पहले परीक्षण।" }
-    ],
-    "sections": [
-      { "h": { "en": "The nine gems", "hi": "नौ रत्न" }, "p": [
-        { "en": "Sun–ruby, Moon–pearl, Mars–red coral, Mercury–emerald, Jupiter–yellow sapphire, Venus–diamond/opal, Saturn–blue sapphire, Rahu–hessonite, Ketu–cat's eye. Each must be natural, untreated and clear.", "hi": "सूर्य–माणिक, चंद्र–मोती, मंगल–मूंगा, बुध–पन्ना, गुरु–पुखराज, शुक्र–हीरा/ओपल, शनि–नीलम, राहु–गोमेद, केतु–लहसुनिया। हर रत्न प्राकृतिक, अनुपचारित और स्वच्छ होना चाहिए।" }
-      ] },
-      { "h": { "en": "The trial method", "hi": "परीक्षण विधि" }, "p": [
-        { "en": "Keep the stone wrapped in the recommended cloth near your pillow for three nights. If sleep, mood and small events improve, the stone suits you; if restlessness or quarrels rise, return it.", "hi": "रत्न को अनुशंसित वस्त्र में लपेटकर तीन रात तक तकिए के पास रखें। नींद, मनोदशा और छोटी घटनाएँ सुधरें तो रत्न अनुकूल है; बेचैनी या कलह बढ़े तो लौटा दें।" }
-      ] },
-      { "h": { "en": "Blue sapphire warning", "hi": "नीलम चेतावनी" }, "p": [
-        { "en": "Neelam is the fastest and fiercest gem — it can give results in days, good or bad. Never wear it on recommendation alone; only after a qualified astrologer confirms Saturn is benefic for your chart.", "hi": "नीलम सबसे तेज़ और उग्र रत्न है — दिनों में फल देता है, शुभ या अशुभ। केवल सलाह पर कभी न धारण करें; योग्य ज्योतिषी शनि को लाभकारी पुष्टि करे तभी।" }
-      ] },
-      { "h": { "en": "Substitutes and budget", "hi": "विकल्प और बजट" }, "p": [
-        { "en": "Up-ratnas work gently: red spinel for ruby, moonstone for pearl, carnelian for coral, green tourmaline for emerald, citrine for yellow sapphire, white sapphire for diamond, amethyst for blue sapphire.", "hi": "उप-रत्न कोमलता से काम करते हैं: माणिक हेतु लाल स्पिनेल, मोती हेतु मूनस्टोन, मूंगा हेतु कार्नेलियन, पन्ना हेतु ग्रीन टूरमलीन, पुखराज हेतु सिट्रीन, हीरा हेतु श्वेत नीलम, नीलम हेतु एमेथिस्ट।" }
-      ] }
-    ],
-    "tip": { "en": "A gem works through faith and routine: chant its mantra daily, or it becomes mere jewellery.", "hi": "रत्न श्रद्धा और दिनचर्या से काम करता है: इसके मंत्र का नित्य जप करें, वरना वह केवल आभूषण रह जाएगा।" }
-  },
-  {
-    "slug": "ratna-dharan-vidhi",
-    "cat": "ratna",
-    "title": { "en": "The Exact Method of Wearing a Gemstone (Dharan Vidhi)", "hi": "रत्न धारण की सही विधि" },
-    "excerpt": { "en": "Day, metal, finger, weight and mantra — the complete classical procedure to energise and wear a ratna, plus common mistakes that make gems ineffective.", "hi": "वार, धातु, उंगली, भार और मंत्र — रत्न को अभिमंत्रित कर धारण करने की संपूर्ण शास्त्रीय विधि, साथ ही वे सामान्य भूलें जो रत्न को निष्फल कर देती हैं।" },
-    "tags": { "en": ["gemstone wearing", "dharan vidhi", "mantra", "metal", "finger", "energising"], "hi": ["रत्न धारण", "धारण विधि", "मंत्र", "धातु", "उंगली", "अभिमंत्रण"] },
-    "date": "2026-09-14", "mins": 6,
-    "intro": [
-      { "en": "A gem worn without vidhi is like an unplugged appliance. The classical texts specify the day, metal, finger, minimum weight and the mantra count that 'switch it on'.", "hi": "विधि के बिना धारण रत्न बिना प्लग के यंत्र जैसा है। शास्त्र वार, धातु, उंगली, न्यूनतम भार और मंत्र संख्या निर्दिष्ट करते हैं जो इसे 'चालू' करते हैं।" }
-    ],
-    "sections": [
-      { "h": { "en": "Day, metal and finger", "hi": "वार, धातु और उंगली" }, "p": [
-        { "en": "Ruby–Sunday–gold/copper–ring finger. Pearl–Monday–silver–little finger. Red coral–Tuesday–copper–ring finger. Emerald–Wednesday–gold–little finger. Yellow sapphire–Thursday–gold–index finger. Diamond–Friday–silver/platinum–ring or middle finger. Blue sapphire–Saturday–gold/panchdhatu–middle finger.", "hi": "माणिक–रविवार–स्वर्ण/ताम्र–अनामिका। मोती–सोमवार–रजत–कनिष्ठा। मूंगा–मंगलवार–ताम्र–अनामिका। पन्ना–बुधवार–स्वर्ण–कनिष्ठा। पुखराज–गुरुवार–स्वर्ण–तर्जनी। हीरा–शुक्रवार–रजत/प्लेटिनम–अनामिका/मध्यमा। नीलम–शनिवार–स्वर्ण/पंचधातु–मध्यमा।" }
-      ] },
-      { "h": { "en": "Weight and timing", "hi": "भार और समय" }, "p": [
-        { "en": "General rule: at least 1 ratti (≈0.9 carat) per 10 kg body weight, rounded up. Wear during Shukla Paksha in the planet's hora, ideally at sunrise of the prescribed day.", "hi": "सामान्य नियम: कम से कम 1 रत्ती (≈0.9 कैरेट) प्रति 10 किलो शरीर भार, ऊपर की ओर। शुक्ल पक्ष में ग्रह की होरा में, आदर्शतः निर्दिष्ट वार के सूर्योदय पर धारण करें।" }
-      ] },
-      { "h": { "en": "Energising ritual", "hi": "अभिमंत्रण विधि" }, "p": [
-        { "en": "Soak overnight in raw milk and gangajal, rinse at dawn, chant the bija mantra 108 times while holding the ring, wear it touching the skin, and donate something in the planet's colour the same day.", "hi": "रात भर कच्चे दूध व गंगाजल में भिगोएँ, प्रातः धोएँ, अंगूठी धारण कर बीज मंत्र 108 बार जपें, त्वचा के स्पर्श में पहनें, और उसी दिन ग्रह के रंग की वस्तु दान करें।" }
-      ] },
-      { "h": { "en": "Mistakes to avoid", "hi": "त्याज्य भूलें" }, "p": [
-        { "en": "Wearing an enemy gem together (e.g. diamond with blue sapphire without chart support), reusing a stone from an unlucky owner, or wearing cracked stones. When in doubt, wear the gem only on its day and remove at night for the first 40 days.", "hi": "शत्रु रत्न एक साथ धारण (जैसे कुंडली समर्थन बिना हीरा व नीलम), अभागे स्वामी का रत्न पुनः उपयोग, या टूटा रत्न। संदेह हो तो पहले 40 दिन केवल उसके वार पर पहनें और रात में उतार दें।" }
-      ] }
-    ],
-    "tip": { "en": "Record your mood and events for 40 days after wearing — your own diary is the best proof of a gem's effect.", "hi": "धारण के बाद 40 दिन अपनी मनोदशा व घटनाएँ लिखें — रत्न के प्रभाव का सर्वोत्तम प्रमाण आपकी अपनी डायरी है।" }
-  },
-  {
-    "slug": "dainik-upay-deep-dan-jap",
-    "cat": "upay",
-    "title": { "en": "Daily Upay: Diya, Daan and Jap That Change Your Week", "hi": "दैनिक उपाय: दीप, दान और जप जो आपका सप्ताह बदल दें" },
-    "excerpt": { "en": "Small, consistent remedies beat big occasional rituals. A day-by-day guide of lamps, donations and chants aligned with the seven weekdays.", "hi": "छोटे, निरंतर उपाय बड़े कभी-कभी के अनुष्ठानों से श्रेष्ठ। सात वारों के अनुसार दीप, दान और जप की दिन-प्रतिदिन गाइड।" },
-    "tags": { "en": ["daily remedies", "upay", "diya", "daan", "weekday rituals", "gratitude"], "hi": ["दैनिक उपाय", "दीप", "दान", "वार अनुसार अनुष्ठान", "कृतज्ञता"] },
-    "date": "2026-09-15", "mins": 6,
-    "intro": [
-      { "en": "Each weekday vibrates with one planet. A five-minute remedy on the right day works like compound interest on your karma — invisible daily, enormous over months.", "hi": "हर वार एक ग्रह से कंपन करता है। सही वार का पाँच मिनट का उपाय आपके कर्म पर चक्रवृद्धि ब्याज जैसा काम करता है — प्रतिदिन अदृश्य, महीनों में विशाल।" }
-    ],
-    "sections": [
-      { "h": { "en": "Monday to Wednesday", "hi": "सोमवार से बुधवार" }, "p": [
-        { "en": "Monday: offer water to a Shiva lingam or a Peepal root; donate milk/white food. Tuesday: Hanuman Chalisa; feed jaggery-gram to a monkey or cow. Wednesday: feed green fodder to cows; keep a tulsi leaf in your water.", "hi": "सोमवार: शिवलिंग या पीपल मूल में जल; दूध/श्वेत अन्न दान। मंगलवार: हनुमान चालीसा; बंदर या गाय को गुड़-चना। बुधवार: गाय को हरा चारा; जल में तुलसी दल।" }
-      ] },
-      { "h": { "en": "Thursday to Sunday", "hi": "गुरुवार से रविवार" }, "p": [
-        { "en": "Thursday: respect teachers, donate chana dal and yellow cloth. Friday: light a ghee diya for the Divine Mother; offer sweets to girls. Saturday: mustard-oil diya under Peepal; serve the elderly. Sunday: Surya Arghya at sunrise; offer water with a copper vessel.", "hi": "गुरुवार: गुरुजनों का सम्मान, चना दाल व पीला वस्त्र दान। शुक्रवार: देवी हेतु घी का दीप; बालिकाओं को मिष्ठान। शनिवार: पीपल नीचे सरसों तेल का दीप; बुज़ुर्गों की सेवा। रविवार: सूर्योदय पर सूर्य अर्घ्य; ताम्र पात्र से जल।" }
-      ] },
-      { "h": { "en": "The diya science", "hi": "दीप विज्ञान" }, "p": [
-        { "en": "A lamp combines earth (vessel), water/oil, fire, air (wick smoke) and ether (light) — lighting one harmonises the five elements in the home. Face east for wisdom, north for wealth.", "hi": "दीप पाँच तत्वों को जोड़ता है — मिट्टी (पात्र), जल/तेल, अग्नि, वायु (बाती धुआँ) और आकाश (प्रकाश)। एक दीप जलाना घर के पंचतत्व सामंजस्य देता है। ज्ञान हेतु पूर्व, धन हेतु उत्तर मुख।" }
-      ] },
-      { "h": { "en": "Daan without ego", "hi": "निर्मम दान" }, "p": [
-        { "en": "Donation works only when anonymous and proportionate — 1 to 2.5% of a gain, given without announcement, to someone who cannot return it. Public charity feeds the ego; quiet charity feeds the stars.", "hi": "दान तभी फलता है जब गुप्त और अनुपात में हो — लाभ का 1 से 2.5%, बिना घोषणा, ऐसे व्यक्ति को जो लौटा न सके। प्रचारित दान अहं को पोषित करता है; मौन दान ग्रहों को।" }
-      ] }
-    ],
-    "tip": { "en": "Choose only two remedies and do them every week for 90 days — consistency beats intensity.", "hi": "केवल दो उपाय चुनें और 90 दिन हर सप्ताह करें — निरंतरता तीव्रता को मात देती है।" }
-  },
-  {
-    "slug": "stotra-mantra-shakti",
-    "cat": "upay",
-    "title": { "en": "Stotras & Mantras: Sound as a Remedy", "hi": "स्तोत्र और मंत्र: ध्वनि रूपी उपाय" },
-    "excerpt": { "en": "From Gayatri to Hanuman Chalisa, Mahamrityunjaya to Shri Sukta — which stotra addresses which life area, and how to chant with correct rhythm and faith.", "hi": "गायत्री से हनुमान चालीसा, महामृत्युंजय से श्री सूक्त तक — कौन सा स्तोत्र किस जीवन क्षेत्र को संबोधित करता है, और सही लय व श्रद्धा से जप कैसे करें।" },
-    "tags": { "en": ["stotra", "mantra", "gayatri", "hanuman chalisa", "mahamrityunjaya", "shri sukta", "chanting"], "hi": ["स्तोत्र", "मंत्र", "गायत्री", "हनुमान चालीसा", "महामृत्युंजय", "श्री सूक्त", "जप"] },
-    "date": "2026-09-16", "mins": 7,
-    "intro": [
-      { "en": "A mantra is a precise sound structure; a stotra is a hymn that describes a deity's qualities and thereby invokes them. Both work on breath, rhythm and attention — the oldest biofeedback technology.", "hi": "मंत्र एक सटीक ध्वनि संरचना है; स्तोत्र एक स्तुति है जो देवता के गुणों का वर्णन कर उन्हें आवाहित करती है। दोनों श्वास, लय और एकाग्रता पर काम करते हैं — सबसे प्राचीन बायोफीडबैक तकनीक।" }
-    ],
-    "sections": [
-      { "h": { "en": "Match the stotra to the need", "hi": "आवश्यकता अनुसार स्तोत्र" }, "p": [
-        { "en": "Health & fear: Mahamrityunjaya. Intellect & students: Gayatri, Saraswati Vandana. Obstacles & courage: Hanuman Chalisa, Ganesh Atharvashirsha. Wealth & harmony: Shri Sukta, Kanakadhara. Career & justice: Shani Stotra, Vishnu Sahasranama. Peace: Shanti Mantra.", "hi": "स्वास्थ्य व भय: महामृत्युंजय। बुद्धि व विद्यार्थी: गायत्री, सरस्वती वंदना। बाधा व साहस: हनुमान चालीसा, गणेश अथर्वशीर्ष। धन व सामंजस्य: श्री सूक्त, कनकधारा। करियर व न्याय: शनि स्तोत्र, विष्णु सहस्रनाम। शांति: शांति मंत्र।" }
-      ] },
-      { "h": { "en": "The 108 logic", "hi": "108 का तर्क" }, "p": [
-        { "en": "108 connects the Sun-Earth-Moon distances and the body's 108 marma points. Counting on a mala slows the breath to ~5 per minute — the coherence state where the nervous system resets.", "hi": "108 सूर्य-पृथ्वी-चंद्र दूरियों और शरीर के 108 मर्म बिंदुओं को जोड़ता है। माला पर गिनती श्वास को ~5 प्रति मिनट मंद करती है — वह सुसंगत अवस्था जहाँ तंत्रिका तंत्र पुनः सेट होता है।" }
-      ] },
-      { "h": { "en": "Rhythm and pronunciation", "hi": "लय और उच्चारण" }, "p": [
-        { "en": "Chant audibly enough to hear yourself, slowly enough to feel each syllable. A correctly slow Gayatri outperforms a hurried thousand. Learn from a recording of a traditional reciter, not a ringtone version.", "hi": "इतना स्पष्ट जपें कि स्वयं सुन सकें, इतना धीमा कि हर अक्षर महसूस हो। सही धीमी गायत्री जल्दबाज़ी के हज़ार से श्रेष्ठ। पारंपरिक पाठक की रिकॉर्डिंग से सीखें, रिंगटोन संस्करण से नहीं।" }
-      ] },
-      { "h": { "en": "Sankalpa — the intention", "hi": "संकल्प — इच्छा-बीज" }, "p": [
-        { "en": "Begin with one clear sankalpa in your own words; end by dedicating the merit to all beings. Selfish chanting narrows the mind; dedicated chanting expands it and returns multiplied.", "hi": "अपने शब्दों में एक स्पष्ट संकल्प से आरंभ करें; अंत में पुण्य सबको समर्पित करें। स्वार्थी जप मन को संकीर्ण करता है; समर्पित जप विस्तार देता है और गुणा होकर लौटता है।" }
-      ] }
-    ],
-    "tip": { "en": "Same stotra, same time, 40 days — the repetition itself becomes the remedy.", "hi": "वही स्तोत्र, वही समय, 40 दिन — पुनरावृत्ति स्वयं उपाय बन जाती है।" }
-  },
-  {
-    "slug": "barah-rashiyon-ka-swabhav",
-    "cat": "rashi",
-    "title": { "en": "The Nature of the 12 Rashis in One Read", "hi": "12 राशियों का स्वभाव एक नज़र में" },
-    "excerpt": { "en": "Mesha to Meena — element, lord, strengths and shadow side of every Moon sign, so you can read your family at the dinner table.", "hi": "मेष से मीन तक — हर चंद्र राशि का तत्व, स्वामी, शक्तियाँ और छाया-पक्ष, ताकि आप भोजन की मेज़ पर ही परिवार को पढ़ सकें।" },
-    "tags": { "en": ["12 rashis", "zodiac personality", "moon sign", "elements", "mesha", "meena"], "hi": ["12 राशियाँ", "राशि स्वभाव", "चंद्र राशि", "तत्व", "मेष", "मीन"] },
-    "date": "2026-09-17", "mins": 10,
-    "intro": [
-      { "en": "Your Moon sign colours the mind more than the Sun sign colours the ego. Grouped by element, the twelve signs reveal four temperaments — and knowing them turns every conversation into a gentle reading.", "hi": "आपकी चंद्र राशि मन को रंगती है, जितना सूर्य राशि अहं को नहीं। तत्व से वर्गीकृत बारह राशियाँ चार स्वभाव प्रकट करती हैं — और इन्हें जानना हर संवाद को कोमल रीडिंग बना देता है।" }
-    ],
-    "sections": [
-      { "h": { "en": "Fire: Mesha, Simha, Dhanu", "hi": "अग्नि: मेष, सिंह, धनु" }, "p": [
-        { "en": "Initiators. Mesha charges first, Simha leads visibly, Dhanu teaches while moving. Shadow: impatience, pride, over-promising. Gift: they restart where others quit.", "hi": "पहलकर्ता। मेष पहले कूदता है, सिंह दृश्यमान नेतृत्व करता है, धनु चलते-चलते सिखाता है। छाया: अधीरता, अहं, अधिक वादा। वरदान: जहाँ दूसरे छोड़ें, वे पुनः आरंभ करते हैं।" }
-      ] },
-      { "h": { "en": "Earth: Vrishabha, Kanya, Makara", "hi": "पृथ्वी: वृषभ, कन्या, मकर" }, "p": [
-        { "en": "Builders. Vrishabha accumulates comfort, Kanya perfects detail, Makara climbs decades-long ladders. Shadow: stubbornness, worry, workaholism. Gift: their word is a contract.", "hi": "निर्माता। वृषभ सुख संचित करता है, कन्या बारीकी परिष्कृत करती है, मकर दशकों की सीढ़ी चढ़ता है। छाया: हठ, चिंता, कार्य-व्यसन। वरदान: उनका वचन ही अनुबंध है।" }
-      ] },
-      { "h": { "en": "Air: Mithuna, Tula, Kumbha", "hi": "वायु: मिथुन, तुला, कुंभ" }, "p": [
-        { "en": "Connectors. Mithuna talks, Tula balances, Kumbha reimagines society. Shadow: restlessness, indecision, detachment. Gift: ideas travel fastest through them.", "hi": "संयोजक। मिथुन बोलता है, तुला संतुलित करती है, कुंभ समाज की पुनः कल्पना करता है। छाया: चंचलता, अनिर्णय, निर्लिप्तता। वरदान: विचार सबसे तेज़ इन्हीं से गुज़रते हैं।" }
-      ] },
-      { "h": { "en": "Water: Karka, Vrishchika, Meena", "hi": "जल: कर्क, वृश्चिक, मीन" }, "p": [
-        { "en": "Feelers. Karka nurtures, Vrishchika transforms, Meena dissolves into compassion. Shadow: moodiness, secrecy, escapism. Gift: they remember what your heart said years ago.", "hi": "अनुभवकर्ता। कर्क पालन करता है, वृश्चिक रूपांतरित करता है, मीन करुणा में विलीन होती है। छाया: मनोदशा, गोपनीयता, पलायन। वरदान: वर्षों पहले आपके हृदय ने क्या कहा था, वे याद रखते हैं।" }
-      ] }
-    ],
-    "tip": { "en": "In conflict, argue with Fire about goals, with Earth about plans, with Air about ideas, with Water about feelings — never the reverse.", "hi": "विवाद में अग्नि से लक्ष्य, पृथ्वी से योजना, वायु से विचार, जल से भावना पर बात करें — कभी उल्टा नहीं।" }
-  },
-  {
-    "slug": "nakshatra-vyaktitva-naamkaran",
-    "cat": "rashi",
-    "title": { "en": "Nakshatras: Your Star, Your Temperament and Name Letters", "hi": "नक्षत्र: आपका तारा, स्वभाव और नाम के अक्षर" },
-    "excerpt": { "en": "The 27 nakshatras refine the 12 signs into lunar mansions that govern temperament, deity and even the starting letters for naming a child.", "hi": "27 नक्षत्र 12 राशियों को चंद्र-मंडलों में विभाजित करते हैं जो स्वभाव, देवता और बालक के नाम के आरंभिक अक्षर तक नियंत्रित करते हैं।" },
-    "tags": { "en": ["nakshatra", "birth star", "namkaran", "name letters", "lunar mansion", "pada"], "hi": ["नक्षत्र", "जन्म नक्षत्र", "नामकरण", "नाम के अक्षर", "चरण"] },
-    "date": "2026-09-18", "mins": 8,
-    "intro": [
-      { "en": "While the Rashi divides the sky into 12, the Nakshatra divides it into 27 lunar mansions of 13°20' each. Your birth Moon's nakshatra is considered the deepest signature of personality — and its pada gives the sacred letters for naming.", "hi": "जहाँ राशि आकाश को 12 में बाँटती है, नक्षत्र उसे 13°20' के 27 चंद्र-मंडलों में। जन्म समय चंद्र का नक्षत्र व्यक्तित्व की सबसे गहरी छाप माना जाता है — और उसका चरण नामकरण के पवित्र अक्षर देता है।" }
-    ],
-    "sections": [
-      { "h": { "en": "Lords and deities", "hi": "स्वामी और देवता" }, "p": [
-        { "en": "Each nakshatra has a planetary lord (Ketu to Mercury in sequence) and a deity — Ashwini Kumaras heal, Indra commands, Mitra bonds, Varuna governs hidden waters. The deity shows the inner archetype you are learning to embody.", "hi": "हर नक्षत्र का ग्रह स्वामी (क्रम से केतु से बुध) और देवता है — अश्विनी कुमार उपचार, इन्द्र आज्ञा, मित्र बंधन, वरुण गुप्त जल। देवता वह आंतरिक आदिप्ररूप दिखाता है जिसे आप मूर्त करना सीख रहे हैं।" }
-      ] },
-      { "h": { "en": "The four padas", "hi": "चार चरण" }, "p": [
-        { "en": "Each nakshatra splits into four padas of 3°20', mapping to the navamsha chart. The pada refines results: the same Ashwini pada 1 behaves fiery, pada 4 earthy. Hast Rekha AI computes your exact pada from birth time.", "hi": "हर नक्षत्र 3°20' के चार चरणों में बँटता है, जो नवांश कुंडली से मेल खाते हैं। चरण फल को परिष्कृत करता है: वही अश्विनी चरण 1 अग्निमय, चरण 4 पार्थिव। हस्तरेखा AI जन्म समय से आपका सटीक चरण गणना करता है।" }
-      ] },
-      { "h": { "en": "Name letters", "hi": "नाम के अक्षर" }, "p": [
-        { "en": "Classical namkaran uses the pada's syllable: Ashwini (Chu-Che-Cho-La), Rohini (O-Va-Vi-Vu), Pushya (Ha-Hi-Hu-He) and so on. Starting the name with the right sound is believed to tune the child to their star.", "hi": "शास्त्रीय नामकरण चरण के अक्षर से होता है: अश्विनी (चु-चे-चो-ला), रोहिणी (ओ-वा-वी-वू), पुष्य (हा-ही-हू-हे) आदि। सही ध्वनि से नाम आरंभ करना बालक को उसके तार से समस्वरित माना जाता है।" }
-      ] },
-      { "h": { "en": "Nakshatra and compatibility", "hi": "नक्षत्र और अनुकूलता" }, "p": [
-        { "en": "Guna milan's 36 points are computed primarily from the couple's nakshatras — tara, yoni, gana and nadi all derive from them. A high nakshatra match often outweighs a mediocre sign match.", "hi": "गुण मिलान के 36 अंक मुख्यतः युगल के नक्षत्रों से गणित होते हैं — तारा, योनि, गण और नाड़ी सभी इन्हीं से। उच्च नक्षत्र मिलान प्रायः औसत राशि मिलान से भारी पड़ता है।" }
-      ] }
-    ],
-    "tip": { "en": "Meditate on your birth nakshatra's deity on its ruling weekday — the gentlest personal sadhana in Jyotish.", "hi": "अपने जन्म नक्षत्र के देवता का उनके वार पर ध्यान करें — ज्योतिष की सबसे कोमल व्यक्तिगत साधना।" }
-  },
-  {
-    "slug": "guna-milan-vivah-anukoolta",
-    "cat": "rashi",
-    "title": { "en": "Guna Milan & Compatibility: Reading a Match the Vedic Way", "hi": "गुण मिलान व अनुकूलता: वैदिक रीति से मेल पढ़ना" },
-    "excerpt": { "en": "The 36 gunas, manglik dosha, and what truly matters beyond the score — a clear, non-fearful guide to Vedic match-making.", "hi": "36 गुण, मांगलिक दोष, और स्कोर से परे क्या मायने रखता है — वैदिक विवाह-मिलान की स्पष्ट, भय-मुक्त गाइड।" },
-    "tags": { "en": ["guna milan", "kundli matching", "manglik dosha", "marriage compatibility", "36 gunas"], "hi": ["गुण मिलान", "कुंडली मिलान", "मांगलिक दोष", "विवाह अनुकूलता", "36 गुण"] },
-    "date": "2026-09-18", "mins": 9,
-    "intro": [
-      { "en": "Vedic matching compares two Moons across eight categories (ashtakoota) for 36 points. But scriptures repeatedly warn: points guide, they do not decide. Character, family values and mutual respect remain the true kootas.", "hi": "वैदिक मिलान दो चंद्रों की आठ श्रेणियों (अष्टकूट) में 36 अंकों से तुलना करता है। पर शास्त्र बार-बार चेताते हैं: अंक मार्गदर्शन हैं, निर्णय नहीं। चरित्र, पारिवारिक मूल्य और आपसी सम्मान ही सच्चे कूट हैं।" }
-    ],
-    "sections": [
-      { "h": { "en": "The eight kootas", "hi": "आठ कूट" }, "p": [
-        { "en": "Varna (1), Vashya (2), Tara (3), Yoni (4), Graha-maitri (5), Gana (6), Bhakoot (7), Nadi (8). Nadi and Bhakoot carry the heaviest weight — they govern health of progeny and long-term emotional flow.", "hi": "वर्ण (1), वश्य (2), तारा (3), योनि (4), ग्रह-मैत्री (5), गण (6), भकूट (7), नाड़ी (8)। नाड़ी व भकूट सबसे भारी — संतति का स्वास्थ्य और दीर्घकालिक भावनात्मक प्रवाह ये नियंत्रित करते हैं।" }
-      ] },
-      { "h": { "en": "The 18-point myth", "hi": "18 अंक की भ्रांति" }, "p": [
-        { "en": "18/36 is called the minimum, yet many thriving marriages score below when other chart factors compensate, and some 30+ matches fail on character. Read the whole chart: 7th house, its lord, Venus and Jupiter for both partners.", "hi": "18/36 को न्यूनतम कहा जाता है, फिर भी अन्य कुंडली कारक भरपाई करें तो कई सफल विवाह इससे नीचे स्कोर करते हैं, और कुछ 30+ मिलान चरित्र पर असफल। पूरी कुंडली पढ़ें: दोनों के सप्तम भाव, स्वामी, शुक्र व गुरु।" }
-      ] },
-      { "h": { "en": "Manglik dosha honestly", "hi": "मांगलिक दोष ईमानदारी से" }, "p": [
-        { "en": "Mars in 1/4/7/8/12 from Moon or Lagna is Manglik — but cancellation rules are many: Mars in its own/exalted sign, in Leo/Virgo, or aspected by Jupiter. Manglik–Manglik matches nullify the dosha entirely.", "hi": "चंद्र या लग्न से 1/4/7/8/12 में मंगल = मांगलिक — पर भंग के नियम अनेक: मंगल स्व/उच्च राशि में, सिंह/कन्या में, या गुरु-दृष्ट। मांगलिक–मांगलिक मिलान दोष पूर्णतः समाप्त करता है।" }
-      ] },
-      { "h": { "en": "Beyond the score", "hi": "स्कोर से परे" }, "p": [
-        { "en": "Watch Dasha compatibility (are both entering supportive periods?), Moon–Sun harmony and the simple test: do their families' definitions of respect match? A shared value system outlives every dosha.", "hi": "दशा अनुकूलता देखें (क्या दोनों सहायक दशाओं में प्रवेश कर रहे हैं?), चंद्र–सूर्य सामंजस्य, और सरल परीक्षा: क्या दोनों परिवारों की सम्मान की परिभाषाएँ मेल खाती हैं? साझा मूल्य-तंत्र हर दोष से अधिक टिकता है।" }
-      ] }
-    ],
-    "tip": { "en": "Use matching to prepare, not to paralyse: every flagged dosha has classical remedies and conscious behaviour overrides.", "hi": "मिलान का उपयोग तैयारी हेतु करें, पक्षाघात हेतु नहीं: हर चिह्नित दोष के शास्त्रीय उपाय हैं और सचेत व्यवहार उसे पार कर जाता है।" }
-  },
-  {
-    "slug": "hatheli-ke-shubh-chinh",
-    "cat": "palm",
-    "title": { "en": "Auspicious Signs on the Palm: Trident, Fish, Star, Lotus & More", "hi": "हथेली के शुभ चिह्न: त्रिशूल, मत्स्य, तारा, कमल और अन्य" },
-    "excerpt": { "en": "Rare markings like the trishul, matsya, kamal and dhwaj are considered seals of fortune in Samudrika Shastra. See where they appear and what each promises.", "hi": "त्रिशूल, मत्स्य, कमल और ध्वज जैसे दुर्लभ चिह्न समुद्रिक शास्त्र में भाग्य की मुहर माने जाते हैं। देखें कहाँ प्रकट होते हैं और प्रत्येक क्या वचन देता है।" },
-    "tags": { "en": ["auspicious signs", "trishul", "matsya", "kamal", "dhwaj", "shankh", "palm marks"], "hi": ["शुभ चिह्न", "त्रिशूल", "मत्स्य", "कमल", "ध्वज", "शंख", "हथेली के निशान"] },
-    "date": "2026-09-19", "mins": 7,
-    "intro": [
-      { "en": "Beyond the lines, the palm occasionally carries symbolic formations — tiny line-patterns that classical texts describe with almost poetic precision. Finding one on your hand is like finding a watermark on a banknote.", "hi": "रेखाओं से परे, हथेली कभी-कभी प्रतीकात्मक आकृतियाँ धारण करती है — छोटी रेखा-रचनाएँ जिन्हें शास्त्र काव्यमय सटीकता से वर्णित करते हैं। अपने हाथ पर एक पाना नोट पर वाटरमार्क पाने जैसा है।" }
-    ],
-    "sections": [
-      { "h": { "en": "Trishul, Matsya and Kamal", "hi": "त्रिशूल, मत्स्य और कमल" }, "p": [
-        { "en": "Trishul at the end of the fate or life line: triple blessing of dharma, wealth and comfort in later life. Matsya (fish) near the wrist or Venus: prosperity and spiritual merit. Kamal (lotus) on Venus or Moon: artistic soul honoured by society.", "hi": "भाग्य या जीवन रेखा के अंत में त्रिशूल: उत्तरायु में धर्म, धन व सुख का त्रिगुण वरदान। कलाई या शुक्र के पास मत्स्य: समृद्धि व पुण्य। शुक्र या चंद्र पर कमल: समाज द्वारा सम्मानित कलात्मक आत्मा।" }
-      ] },
-      { "h": { "en": "Dhwaj, Shankh and Chakra", "hi": "ध्वज, शंख और चक्र" }, "p": [
-        { "en": "Dhwaj (flag) on Jupiter: leadership and public fame. Shankh (conch) on the Mount of Moon or near the thumb base: protection during travel and water. Chakra (wheel) on Jupiter or Saturn: authority, sometimes spiritual leadership.", "hi": "गुरु पर ध्वज: नेतृत्व व सार्वजनिक यश। चंद्र पर्वत या अंगूठे के आधार के पास शंख: यात्रा व जल में सुरक्षा। गुरु या शनि पर चक्र: अधिकार, कभी-कभी आध्यात्मिक नेतृत्व।" }
-      ] },
-      { "h": { "en": "Star, cross, triangle, square", "hi": "तारा, क्रॉस, त्रिभुज, वर्ग" }, "p": [
-        { "en": "Star: sudden brilliance on the mount it sits. Cross on Jupiter: love marriage or divine protection. Triangle on Mercury or Saturn: research and occult talent. Square over a break: the preserver's mark.", "hi": "तारा: जिस पर्वत पर हो वहाँ आकस्मिक तेज। गुरु पर क्रॉस: प्रेम विवाह या दैवी सुरक्षा। बुध/शनि पर त्रिभुज: शोध व गूढ़ प्रतिभा। टूट पर वर्ग: रक्षक चिह्न।" }
-      ] },
-      { "h": { "en": "Reading them responsibly", "hi": "ज़िम्मेदारी से पढ़ना" }, "p": [
-        { "en": "Signs modify, they do not override, the main lines. A trishul cannot rescue a shattered fate line, and an absent matsya does not deny wealth earned by a strong money triangle. Read the whole hand.", "hi": "चिह्न मुख्य रेखाओं को संशोधित करते हैं, अधिलिखित नहीं। त्रिशूल टूटी भाग्य रेखा को नहीं बचा सकता, और अनुपस्थित मत्स्य प्रबल धन त्रिभुज से अर्जित धन को नहीं रोकता। पूरा हाथ पढ़ें।" }
-      ] }
-    ],
-    "tip": { "en": "Examine your palm under side-light with a magnifier once a month — subtle signs appear and fade with your life phase.", "hi": "माह में एक बार तिरछी रोशनी में भिंग काँच से हथेली देखें — सूक्ष्म चिह्न जीवन-चरण के साथ प्रकट व विलीन होते हैं।" }
+  "date": "2026-09-01",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "Hast Rekha Shastra — known in the West as palmistry and in our scriptures as a branch of Samudrika Shastra — is the art of reading a person's character, health, relationships and destiny from the map of their palm. Ancient rishis observed that the hands, like the birth chart, carry the imprint of past karma and the blueprint of coming years.",
+    "hi": "हस्तरेखा शास्त्र — जिसे पाश्चात्य देशों में पामिस्ट्री और हमारे ग्रंथों में समुद्रिक शास्त्र की शाखा कहा गया है — हथेली के नक्शे से व्यक्ति के चरित्र, स्वास्थ्य, संबंधों और भाग्य को पढ़ने की कला है। प्राचीन ऋषियों ने देखा कि हाथ, जन्म कुंडली की भांति, पूर्व कर्मों की छाप और आने वाले वर्षों का नक्शा साथ लिए होते हैं।"
+   },
+   {
+    "en": "The beautiful part is that you need no instrument — your palms are always with you, changing slowly as you change. In this guide we walk through the foundations so that by the end you can identify every major line on your own hand.",
+    "hi": "सुंदर बात यह है कि इसके लिए किसी यंत्र की आवश्यकता नहीं — आपकी हथेलियाँ सदा आपके साथ हैं और आपके बदलने के साथ धीरे-धीरे बदलती हैं। इस गाइड में हम नींव से चलेंगे ताकि अंत तक आप अपने हाथ की हर प्रमुख रेखा पहचान सकें।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "A 5,000-year-old science",
+     "hi": "पाँच हज़ार वर्ष पुराना ज्ञान"
+    },
+    "p": [
+     {
+      "en": "References to palm reading appear in the Valmiki Ramayana, in the teachings of sage Bhrigu, and in classical texts like the Samudrika Shastra. Parallel traditions grew in China, Egypt and Greece; today palmistry is practised worldwide as a tool of self-awareness.",
+      "hi": "हस्तरेखा के प्रमाण वाल्मीकि रामायण, भृगु मुनि की शिक्षाओं और समुद्रिक शास्त्र जैसे प्राचीन ग्रंथों में मिलते हैं। चीन, मिस्र और यूनान में समानांतर परंपराएँ पनपीं; आज यह विश्व भर में आत्म-जागरूकता के साधन के रूप में प्रचलित है।"
+     },
+     {
+      "en": "Unlike fortune-telling, classical hast rekha is observational: it studies fixed markers (lines, mounts, marks) and relates them to temperament and timing, much like a doctor reads the body.",
+      "hi": "भाग्य बताने की अपेक्षा शास्त्रीय हस्तरेखा अवलोकन-आधारित है: यह स्थिर चिह्नों (रेखाओं, पर्वतों, निशानों) का अध्ययन कर स्वभाव और समय से जोड़ती है, जैसे वैद्य शरीर को पढ़ता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Which hand to read?",
+     "hi": "कौन सा हाथ पढ़ें?"
+    },
+    "p": [
+     {
+      "en": "The dominant hand (usually the right) shows what you are making of your life — your present and earned destiny. The non-dominant hand shows inherited potential and past-life impressions. Serious palmists compare both.",
+      "hi": "प्रमुख हाथ (प्रायः दायाँ) दिखाता है कि आप अपने जीवन का क्या बना रहे हैं — वर्तमान और अर्जित भाग्य। अप्रमुख हाथ जन्मजात क्षमता और पूर्व जन्म की छाप दिखाता है। गंभीर हस्तरेखा शास्त्री दोनों की तुलना करते हैं।"
+     },
+     {
+      "en": "Read in soft daylight with the hand relaxed and open. A tense palm hides its lines.",
+      "hi": "हथेली को कोमल दिन की रोशनी में, शिथिल और खुली अवस्था में पढ़ें। तनी हुई हथेली अपनी रेखाएँ छिपा लेती है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The four pillars of a reading",
+     "hi": "रीडिंग के चार स्तंभ"
+    },
+    "p": [
+     {
+      "en": "1) Lines — life, head, heart and fate. 2) Mounts — the padded areas under fingers and thumb (Venus to Moon). 3) Shape and texture — the four elemental hand types. 4) Signs — stars, crosses, triangles, tridents and islands.",
+      "hi": "1) रेखाएँ — जीवन, मस्तिष्क, हृदय और भाग्य। 2) पर्वत — उंगलियों और अंगूठे के नीचे के गद्देदार भाग (शुक्र से चंद्र)। 3) आकार व बनावट — चार तत्व-प्रकार के हस्त। 4) चिह्न — तारा, क्रॉस, त्रिभुज, त्रिशूल और द्वीप।"
+     },
+     {
+      "en": "A complete reading blends all four with the birth chart; that is exactly how Hast Rekha AI combines astronomy with palmistry.",
+      "hi": "एक पूर्ण रीडिंग चारों को जन्म कुंडली से मिलाती है; हस्तरेखा AI ठीक इसी तरह खगोल विज्ञान को हस्तरेखा से जोड़ता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "How to practise safely and ethically",
+     "hi": "सुरक्षित व नैतिक अभ्यास"
+    },
+    "p": [
+     {
+      "en": "Palmistry is a mirror for self-reflection, not a replacement for medical or financial advice. Read with kindness; never frighten a beginner with 'bad lines' — every warning sign has a remedy.",
+      "hi": "हस्तरेखा आत्मचिंतन का दर्पण है, चिकित्सा या वित्तीय सलाह का विकल्प नहीं। दया से पढ़ें; नए पाठक को 'बुरी रेखाओं' से कभी न डराएँ — हर सावधानी-चिह्न का उपाय होता है।"
+     },
+     {
+      "en": "Re-check the same palm every year. Lines that deepen show growth; lines that fade show lessons already learned.",
+      "hi": "हर वर्ष वही हथेली दोबारा देखें। गहरी होती रेखाएँ विकास दिखाती हैं; फीकी पड़ती रेखाएँ सीखी जा चुकी पाठ।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Start with your life line — the easiest to see — and compare both hands before drawing conclusions.",
+   "hi": "जीवन रेखा से शुरू करें — जो सबसे आसानी से दिखती है — और निष्कर्ष से पहले दोनों हाथों की तुलना करें।"
   }
+ },
+ {
+  "slug": "jeevan-rekha-ke-rahasya",
+  "cat": "palm",
+  "title": {
+   "en": "10 Secrets of the Life Line (Jeevan Rekha)",
+   "hi": "जीवन रेखा के 10 रहस्य"
+  },
+  "excerpt": {
+   "en": "Deep or faint, broken or chained — the life line tells far more than lifespan. Ten secrets every palm reader should know, with remedies for weak markings.",
+   "hi": "गहरी या हल्की, टूटी या श्रृंखलाबद्ध — जीवन रेखा आयु से कहीं अधिक बताती है। हर हस्तरेखा पाठक को जाने चाहिए ऐसे 10 रहस्य, कमज़ोर चिह्नों के उपाय सहित।"
+  },
+  "tags": {
+   "en": [
+    "life line",
+    "jeevan rekha",
+    "vitality",
+    "health",
+    "longevity",
+    "palmistry secrets"
+   ],
+   "hi": [
+    "जीवन रेखा",
+    "आयु",
+    "स्वास्थ्य",
+    "जीवन शक्ति",
+    "हस्तरेखा रहस्य"
+   ]
+  },
+  "date": "2026-09-03",
+  "mins": 8,
+  "intro": [
+   {
+    "en": "The life line curves from between the thumb and index finger around the Mount of Venus. Most people believe it shows how long they will live — but classical palmistry says otherwise: it shows the quality, vigour and major turns of your vitality.",
+    "hi": "जीवन रेखा अंगूठे और तर्जनी के बीच से शुरू होकर शुक्र पर्वत के चारों ओर घूमती है। अधिकांश लोग मानते हैं कि यह आयु बताती है — पर शास्त्रीय हस्तरेखा कुछ और कहती है: यह आपकी जीवन शक्ति की गुणवत्ता, तेज और बड़े मोड़ दिखाती है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Depth, length and curve",
+     "hi": "गहराई, लंबाई और घुमाव"
+    },
+    "p": [
+     {
+      "en": "A deep, long, wide-curving line shows abundant stamina and courage; a short line does not mean a short life — it means life is less ruled by physical vitality and more by mind. A narrow curve indicates a reserved, home-loving nature.",
+      "hi": "गहरी, लंबी, चौड़े घुमाव वाली रेखा प्रचुर सहनशक्ति और साहस दिखाती है; छोटी रेखा का अर्थ छोटी आयु नहीं — इसका अर्थ है जीवन शारीरिक शक्ति से कम और मन से अधिक चलता है। संकरा घुमाव संकोची, घर-प्रेमी स्वभाव दर्शाता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Breaks, islands and chains",
+     "hi": "टूट, द्वीप और श्रृंखला"
+    },
+    "p": [
+     {
+      "en": "A clean break protected by a parallel 'sister line' shows a danger escaped — often an accident or surgery survived. An unprotected break marks a phase of upheaval. Islands show periods of worry or illness; chains at the start show a delicate childhood.",
+      "hi": "समानांतर 'सहायक रेखा' से सुरक्षित साफ़ टूट बचे हुए संकट को दिखाती है — प्रायः दुर्घटना या सर्जरी से बचाव। असुरक्षित टूट उथल-पुथल का दौर दर्शाती है। द्वीप चिंता या बीमारी के काल दिखाते हैं; आरंभ की श्रृंखला नाज़ुक बचपन दर्शाती है।"
+     },
+     {
+      "en": "Remedy: for islands or chains, classical texts advise Surya Namaskar, early dinners and wearing a ruby only after consultation.",
+      "hi": "उपाय: द्वीप या श्रृंखला के लिए शास्त्र सूर्य नमस्कार, जल्दी रात्रि भोजन और परामर्श के बाद ही माणिक धारण की सलाह देते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Branches and the travel fork",
+     "hi": "शाखाएँ और यात्रा-कांटा"
+    },
+    "p": [
+     {
+      "en": "Upward branches are marks of ambition and success at that age. A fork at the end — one branch toward the Mount of Moon — is the famous travel sign; such a person settles or prospers far from the birthplace.",
+      "hi": "ऊपर की शाखाएँ उस आयु की महत्वाकांक्षा व सफलता के चिह्न हैं। अंत में कांटा — जिसकी एक शाखा चंद्र पर्वत की ओर हो — प्रसिद्ध यात्रा-चिह्न है; ऐसा व्यक्ति जन्मस्थान से दूर बसता या फलता-फूलता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The protective square and Mars line",
+     "hi": "रक्षक वर्ग और मंगल रेखा"
+    },
+    "p": [
+     {
+      "en": "A square cutting across a break is the 'mark of preservation' — divine protection in danger. An inner parallel line (Mars line) shows an invisible shield and strong family backing.",
+      "hi": "टूट पर काटता वर्ग 'रक्षा चिह्न' है — संकट में दैवी सुरक्षा। भीतर की समानांतर रेखा (मंगल रेखा) अदृश्य कवच और प्रबल पारिवारिक सहयोग दर्शाती है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Your life line can literally deepen within months of starting a disciplined routine of sleep, walk and sunlight.",
+   "hi": "नींद, सैर और धूप की अनुशासित दिनचर्या शुरू करने से महीनों में आपकी जीवन रेखा वास्तव में गहरी हो सकती है।"
+  }
+ },
+ {
+  "slug": "hridaya-rekha-prem-vivah",
+  "cat": "palm",
+  "title": {
+   "en": "Heart Line & Love Marriage: What Your Palm Reveals",
+   "hi": "हृदय रेखा और प्रेम विवाह: आपकी हथेली क्या बताती है"
+  },
+  "excerpt": {
+   "en": "Where your heart line ends decides your style of love. Learn to read marriage timing from affection lines and the famous cross of love marriage on Jupiter.",
+   "hi": "आपकी हृदय रेखा जहाँ समाप्त होती है वही आपके प्रेम की शैली तय करती है। जानें स्नेह रेखाओं से विवाह का समय और गुरु पर्वत पर प्रेम विवाह का प्रसिद्ध क्रॉस।"
+  },
+  "tags": {
+   "en": [
+    "heart line",
+    "love line",
+    "love marriage",
+    "marriage timing",
+    "relationships"
+   ],
+   "hi": [
+    "हृदय रेखा",
+    "प्रेम विवाह",
+    "विवाह रेखा",
+    "विवाह का समय",
+    "संबंध"
+   ]
+  },
+  "date": "2026-09-05",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "The heart line runs across the top of the palm and is the truest map of your emotional world — how you love, how you get hurt, and how you heal. Combined with the small marriage lines on the edge of the palm, it gives surprisingly accurate timing of commitment.",
+    "hi": "हृदय रेखा हथेली के ऊपरी भाग में चलती है और आपकी भावनात्मक दुनिया का सबसे सच्चा नक्शा है — आप कैसे प्रेम करते हैं, कैसे आहत होते हैं और कैसे उबरते हैं। हथेली के किनारे की छोटी विवाह रेखाओं के साथ यह प्रतिबद्धता का आश्चर्यजनक सटीक समय बताती है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Three endings, three hearts",
+     "hi": "तीन अंत, तीन हृदय"
+    },
+    "p": [
+     {
+      "en": "Ending under the index finger (Jupiter): idealistic, devoted, expects loyalty. Ending between index and middle: balanced, sensible love. Ending under the middle finger (Saturn): independent, physical attraction matters, slow to commit.",
+      "hi": "तर्जनी (गुरु) के नीचे समाप्त: आदर्शवादी, समर्पित, वफ़ादारी चाहने वाला। तर्जनी-मध्यमा के बीच: संतुलित, व्यावहारिक प्रेम। मध्यमा (शनि) के नीचे: स्वतंत्र, शारीरिक आकर्षण महत्वपूर्ण, प्रतिबद्धता में धीमा।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Reading marriage timing",
+     "hi": "विवाह का समय पढ़ना"
+    },
+    "p": [
+     {
+      "en": "The space between the heart line and the base of the little finger is divided into thirds: lower third (early marriage, ~18–25), middle (~25–35), upper (~35+). The deepest line marks the most significant union.",
+      "hi": "हृदय रेखा और कनिष्ठा के आधार के बीच की जगह तीन भागों में बँटी है: निचला तिहाई (शीघ्र विवाह, ~18–25), मध्य (~25–35), ऊपरी (~35+)। सबसे गहरी रेखा सबसे महत्वपूर्ण बंधन दर्शाती है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The love-marriage cross",
+     "hi": "प्रेम विवाह का क्रॉस"
+    },
+    "p": [
+     {
+      "en": "A clear cross on the Mount of Jupiter, or a heart line that sends a strong branch up to Jupiter, is the classic combination of love marriage or a deeply chosen partnership. A triangle here adds blessings of elders.",
+      "hi": "गुरु पर्वत पर स्पष्ट क्रॉस, या हृदय रेखा की गुरु की ओर जाती प्रबल शाखा — यह प्रेम विवाह या स्वयं चुनी साझेदारी का शास्त्रीय संयोजन है। यहाँ त्रिभुब हो तो बड़ों का आशीर्वाद जुड़ता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Broken or forked heart line",
+     "hi": "टूटी या द्विशाखित हृदय रेखा"
+    },
+    "p": [
+     {
+      "en": "A fork at the start shows empathy that can become self-sacrifice; a fork at the end shows love shared between partner and career. A break that reconnects shows heartbreak healed into wisdom. Remedy: chanting of Shri Sukta and expressing one feeling aloud daily.",
+      "hi": "आरंभ में कांटा सहानुभूति दिखाता है जो आत्म-त्याग बन सकती है; अंत में कांटा प्रेम का बँटवारा साथी और करियर में दर्शाता है। जुड़ती टूट हृदय-भंग को ज्ञान में बदलना दिखाती है। उपाय: श्री सूक्त पाठ और प्रतिदिन एक भावना शब्दों में कहना।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "If your heart line is faint, do not worry — it simply means you guard your emotions; trust grows slowly but permanently.",
+   "hi": "यदि हृदय रेखा हल्की है तो चिंता न करें — इसका अर्थ है आप भावनाएँ सहेजते हैं; विश्वास धीरे बनता है पर स्थायी रहता है।"
+  }
+ },
+ {
+  "slug": "mastishk-rekha-se-career",
+  "cat": "palm",
+  "title": {
+   "en": "Head Line & Career: Find Your True Field of Work",
+   "hi": "मस्तिष्क रेखा और करियर: अपना सही कार्य-क्षेत्र जानें"
+  },
+  "excerpt": {
+   "en": "Straight, sloping, forked or short — the head line reveals whether you are built for analysis, creativity, business or leadership, and when career success peaks.",
+   "hi": "सीधी, ढलान वाली, द्विशाखित या छोटी — मस्तिष्क रेखा बताती है कि आप विश्लेषण, रचनात्मकता, व्यापार या नेतृत्व के लिए बने हैं, और करियर सफलता कब चरम पर होगी।"
+  },
+  "tags": {
+   "en": [
+    "head line",
+    "career",
+    "intellect",
+    "writer's fork",
+    "business",
+    "job change"
+   ],
+   "hi": [
+    "मस्तिष्क रेखा",
+    "करियर",
+    "बुद्धि",
+    "व्यापार",
+    "नौकरी परिवर्तन"
+   ]
+  },
+  "date": "2026-09-07",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "The head line crosses the middle of the palm and maps the mind: how you learn, decide and earn. Palmists combine it with the fate line to pinpoint the field and the decade of professional rise.",
+    "hi": "मस्तिष्क रेखा हथेली के मध्य से गुज़रती है और मन का नक्शा बनाती है: आप कैसे सीखते, निर्णय लेते और कमाते हैं। हस्तरेखा शास्त्री इसे भाग्य रेखा से जोड़कर क्षेत्र और व्यावसायिक उत्थान का दशक बताते हैं।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Straight vs sloping",
+     "hi": "सीधी बनाम ढलान"
+    },
+    "p": [
+     {
+      "en": "A straight, level head line shows a logical, practical mind suited to engineering, accounts, administration and law. A line sloping toward the Mount of Moon shows imagination — writers, designers, musicians and marketers carry it.",
+      "hi": "सीधी, समतल मस्तिष्क रेखा तार्किक, व्यावहारिक मन दर्शाती है — इंजीनियरिंग, लेखा, प्रशासन और क़ानून के अनुकूल। चंद्र पर्वत की ओर ढलान कल्पना दिखाती है — लेखक, डिज़ाइनर, संगीतकार और मार्केटर इसे धारण करते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The writer's fork",
+     "hi": "लेखक का कांटा"
+    },
+    "p": [
+     {
+      "en": "A small fork at the end balances realism with creativity — the sign of excellent communicators, teachers and consultants who can see both sides of a problem.",
+      "hi": "अंत में छोटा कांटा यथार्थ और रचनात्मकता में संतुलन बनाता है — यह उत्कृष्ट संवादकर्ताओं, शिक्षकों और सलाहकारों का चिह्न है जो समस्या के दोनों पक्ष देख सकते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Joined or separate from the life line",
+     "hi": "जीवन रेखा से जुड़ी या अलग"
+    },
+    "p": [
+     {
+      "en": "Joined at the start: cautious, family-guided decisions, success through steady institutions. Separated at the start: independent, impulsive, entrepreneurial from youth; such people leave home early and build their own path.",
+      "hi": "आरंभ में जुड़ी: सावधान, परिवार-निर्देशित निर्णय, स्थिर संस्थानों से सफलता। आरंभ में अलग: स्वतंत्र, आवेगी, युवावस्था से उद्यमी; ऐसे लोग जल्दी घर छोड़कर अपना मार्ग बनाते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Timing your peak",
+     "hi": "शिखर का समय"
+    },
+    "p": [
+     {
+      "en": "Divide the head line into three: the first third matures by ~35, the middle by ~50, the end beyond. A clear deepening or a star in a section marks the peak decade — align major career moves with it.",
+      "hi": "मस्तिष्क रेखा को तीन भागों में बाँटें: पहला तिहाई ~35 तक परिपक्व, मध्य ~50 तक, अंत उसके बाद। किसी भाग में गहराई या तारा शिखर दशक चिह्नित करता है — बड़े करियर कदम उसी से मिलाएँ।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "A short head line is not a weakness — it shows quick decision-making, the mark of surgeons, traders and field commanders.",
+   "hi": "छोटी मस्तिष्क रेखा कमज़ोरी नहीं — यह त्वरित निर्णय दर्शाती है, सर्जनों, व्यापारियों और फ़ील्ड कमांडरों का चिह्न।"
+  }
+ },
+ {
+  "slug": "bhagya-rekha-dhan-lakshmi",
+  "cat": "palm",
+  "title": {
+   "en": "Fate Line, Money Lines & the Wealth Triangle",
+   "hi": "भाग्य रेखा, धन रेखाएँ और धन त्रिभुज"
+  },
+  "excerpt": {
+   "en": "When will money start flowing? Read the fate line's origin, the vertical money lines under the ring finger and the closed wealth triangle that decides whether money stays.",
+   "hi": "धन कब से बहेगा? पढ़ें भाग्य रेखा का उद्गम, अनामिका के नीचे की खड़ी धन रेखाएँ और बंद धन त्रिभुज जो तय करता है कि धन टिकेगा या नहीं।"
+  },
+  "tags": {
+   "en": [
+    "fate line",
+    "money lines",
+    "wealth triangle",
+    "sun line",
+    "property",
+    "financial success"
+   ],
+   "hi": [
+    "भाग्य रेखा",
+    "धन रेखा",
+    "धन त्रिभुज",
+    "सूर्य रेखा",
+    "संपत्ति",
+    "आर्थिक सफलता"
+   ]
+  },
+  "date": "2026-09-09",
+  "mins": 8,
+  "intro": [
+   {
+    "en": "The fate line (bhagya rekha) rises from the base of the palm toward the middle finger. Together with the Sun line, Mercury line and the money triangle it forms the complete financial map of the hand.",
+    "hi": "भाग्य रेखा हथेली के आधार से मध्यमा की ओर उठती है। सूर्य रेखा, बुध रेखा और धन त्रिभुज के साथ यह हाथ का संपूर्ण आर्थिक नक्शा बनाती है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Where your fate line begins",
+     "hi": "भाग्य रेखा कहाँ से शुरू होती है"
+    },
+    "p": [
+     {
+      "en": "From the wrist: destiny-driven, support from outside forces. From the life line: self-made, success through personal effort. From the Mount of Moon: success through public, travel or foreign connection. No fate line: freedom to reinvent yourself many times.",
+      "hi": "कलाई से: भाग्य-निर्देशित, बाहरी शक्तियों का सहयोग। जीवन रेखा से: स्वयं-निर्मित, निजी प्रयास से सफलता। चंद्र पर्वत से: जनता, यात्रा या विदेशी संबंध से सफलता। भाग्य रेखा न होना: स्वयं को बार-बार नए सिरे से गढ़ने की स्वतंत्रता।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The Sun line and fame money",
+     "hi": "सूर्य रेखा और यश-धन"
+    },
+    "p": [
+     {
+      "en": "A clear Sun line under the ring finger converts work into recognition and recognition into wealth. Its absence does not deny money — it denies fame; such people earn quietly and steadily.",
+      "hi": "अनामिका के नीचे स्पष्ट सूर्य रेखा कार्य को पहचान और पहचान को धन में बदलती है। इसका अभाव धन नहीं रोकता — यश रोकता है; ऐसे लोग चुपचाप और स्थिर कमाते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Money lines and the triangle",
+     "hi": "धन रेखाएँ और त्रिभुज"
+    },
+    "p": [
+     {
+      "en": "Vertical strokes under the ring and little fingers are money lines; more and deeper means multiple income streams. The wealth triangle is formed where head, fate and Mercury lines enclose a space — if fully closed, money accumulates; an open corner shows generosity or leaks.",
+      "hi": "अनामिका और कनिष्ठा के नीचे खड़ी रेखाएँ धन रेखाएँ हैं; अधिक और गहरी = आय के कई स्रोत। धन त्रिभुज वहाँ बनता है जहाँ मस्तिष्क, भाग्य व बुध रेखाएँ एक स्थान घेरती हैं — पूरी बंद हो तो धन संचित होता है; खुला कोना उदारता या रिसाव दर्शाता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Remedies for a weak wealth zone",
+     "hi": "कमज़ोर धन क्षेत्र के उपाय"
+    },
+    "p": [
+     {
+      "en": "Classical remedies: keep the nails clean and the palm moisturised, wear a yellow thread on Thursday, donate food on Saturdays, and start automatic savings on a waxing-moon day to symbolically 'close' the triangle.",
+      "hi": "शास्त्रीय उपाय: नाखून साफ़ और हथेली कोमल रखें, गुरुवार को पीला धागा धारण करें, शनिवार को अन्नदान करें, और शुक्ल पक्ष के दिन स्वचालित बचत शुरू कर प्रतीकात्मक रूप से त्रिभुज 'बंद' करें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Press the Mount of Venus for five seconds: if colour returns instantly, your financial vitality is strong.",
+   "hi": "शुक्र पर्वत को पाँच सेकंड दबाएँ: रंग तुरंत लौटे तो आपकी आर्थिक जीवन शक्ति प्रबल है।"
+  }
+ },
+ {
+  "slug": "navagraha-prabhav",
+  "cat": "graha",
+  "title": {
+   "en": "Navagraha: How the Nine Planets Shape Your Life",
+   "hi": "नवग्रह: नौ ग्रह आपके जीवन को कैसे आकार देते हैं"
+  },
+  "excerpt": {
+   "en": "Sun to Ketu — each graha rules specific areas of body, mind and destiny. Understand their nature, friendships and what strengthens or weakens them in your chart.",
+   "hi": "सूर्य से केतु तक — हर ग्रह शरीर, मन और भाग्य के विशेष क्षेत्रों का स्वामी है। जानें उनका स्वभाव, मित्रता और कुंडली में क्या उन्हें बल देता या घटाता है।"
+  },
+  "tags": {
+   "en": [
+    "navagraha",
+    "nine planets",
+    "surya",
+    "chandra",
+    "mangal",
+    "budh",
+    "guru",
+    "shukra",
+    "shani",
+    "rahu",
+    "ketu"
+   ],
+   "hi": [
+    "नवग्रह",
+    "सूर्य",
+    "चंद्र",
+    "मंगल",
+    "बुध",
+    "गुरु",
+    "शुक्र",
+    "शनि",
+    "राहु",
+    "केतु"
+   ]
+  },
+  "date": "2026-09-10",
+  "mins": 9,
+  "intro": [
+   {
+    "en": "Vedic astrology works with nine grahas — two of them (Rahu and Ketu) are mathematical shadow points, yet their effects are as real as the physical planets. Every horoscope is essentially a story of how these nine energies distribute their gifts and tests.",
+    "hi": "वैदिक ज्योतिष नौ ग्रहों से कार्य करता है — जिनमें दो (राहु-केतु) गणितीय छाया-बिंदु हैं, फिर भी उनका प्रभाव भौतिक ग्रहों जितना वास्तविक है। हर कुंडली मूलतः इसी की कथा है कि ये नऊ ऊर्जाएँ अपने वरदान और परीक्षाएँ कैसे बाँटती हैं।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "The luminaries and the ministers",
+     "hi": "प्रकाशक और मंत्री"
+    },
+    "p": [
+     {
+      "en": "Sun (soul, father, authority), Moon (mind, mother, emotions), Mars (courage, siblings, land), Mercury (speech, trade, intellect), Jupiter (wisdom, children, wealth), Venus (love, comfort, arts), Saturn (karma, discipline, longevity).",
+      "hi": "सूर्य (आत्मा, पिता, अधिकार), चंद्र (मन, माता, भावना), मंगल (साहस, भाई-बहन, भूमि), बुध (वाणी, व्यापार, बुद्धि), गुरु (ज्ञान, संतान, धन), शुक्र (प्रेम, सुख, कला), शनि (कर्म, अनुशासन, आयु)।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Rahu and Ketu — the karmic axis",
+     "hi": "राहु-केतु — कर्मिक अक्ष"
+    },
+    "p": [
+     {
+      "en": "Rahu gives obsession, foreign things and sudden rise; Ketu gives detachment, intuition and moksha. Where they sit shows the karmic homework of this birth; their 18-year periods shake then reshape life.",
+      "hi": "राहु आसक्ति, विदेशी वस्तुएँ और आकस्मिक उन्नति देता है; केतु वैराग्य, अंतर्ज्ञान और मोक्ष देता है। जहाँ वे बैठते हैं वहाँ इस जन्म का कर्मिक पाठ दिखता है; उनकी 18 वर्ष की दशाएँ जीवन को हिलाकर नया रूप देती हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Friends and enemies",
+     "hi": "मित्र और शत्रु"
+    },
+    "p": [
+     {
+      "en": "Grahas have natural friendships: Sun-Moon-Mars-Jupiter are mutual friends; Venus opposes Sun and Moon; Mercury is neutral and adaptable. A planet seated with a friend gives results with ease; with an enemy, after struggle.",
+      "hi": "ग्रहों की स्वाभाविक मित्रताएँ हैं: सूर्य-चंद्र-मंगल-गुरु परस्पर मित्र; शुक्र सूर्य-चंद्र का विरोधी; बुध तटस्थ और अनुकूलनशील। मित्र के साथ बैठा ग्रह सुगमता से फल देता है; शत्रु के साथ, संघर्ष के बाद।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Simple strengthening remedies",
+     "hi": "सरल बलवर्धक उपाय"
+    },
+    "p": [
+     {
+      "en": "Sun: water offering at sunrise. Moon: white food donation on Mondays. Mars: Hanuman Chalisa on Tuesdays. Mercury: feed green grass to cows. Jupiter: respect teachers. Venus: keep surroundings beautiful. Saturn: serve the elderly. Rahu/Ketu: charity in darkness and meditation.",
+      "hi": "सूर्य: प्रातः जलार्पण। चंद्र: सोमवार को श्वेत अन्नदान। मंगल: मंगलवार को हनुमान चालीसा। बुध: गाय को हरा घास। गुरु: गुरुजनों का सम्मान। शुक्र: वातावरण सुंदर रखें। शनि: बुज़ुर्गों की सेवा। राहु/केतु: अंधेरे में दान और ध्यान।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Your Moon sign (Rashi) is the most important single point for daily predictions — it is the mind's home.",
+   "hi": "दैनिक भविष्यवाणी के लिए आपकी चंद्र राशि सबसे महत्वपूर्ण एकल बिंदु है — वह मन का घर है।"
+  }
+ },
+ {
+  "slug": "sade-sati-upay",
+  "cat": "graha",
+  "title": {
+   "en": "Sade Sati: Myths, Truths and Practical Remedies",
+   "hi": "साढ़े साती: भ्रांतियाँ, सत्य और व्यावहारिक उपाय"
+  },
+  "excerpt": {
+   "en": "Saturn's 7.5-year transit over the Moon sign is feared far more than it deserves. Understand its three phases, what it actually tests, and the remedies that truly help.",
+   "hi": "चंद्र राशि पर शनि की साढ़े सात वर्ष की गोचर आवश्यकता से अधिक भयभीत करती है। समझें इसके तीन चरण, यह वास्तव में क्या परखती है, और कौन से उपाय सचमुच काम आते हैं।"
+  },
+  "tags": {
+   "en": [
+    "sade sati",
+    "shani",
+    "saturn transit",
+    "dhaiya",
+    "remedies",
+    "karma"
+   ],
+   "hi": [
+    "साढ़े साती",
+    "शनि",
+    "शनि गोचर",
+    "ढैया",
+    "उपाय",
+    "कर्म"
+   ]
+  },
+  "date": "2026-09-11",
+  "mins": 9,
+  "intro": [
+   {
+    "en": "Sade Sati begins when Saturn enters the 12th house from your Moon, peaks over the Moon sign, and ends after crossing the 2nd house — roughly 7.5 years. It is not a curse; it is an audit of karma that rewards discipline and exposes shortcuts.",
+    "hi": "साढ़े साती तब आरंभ होती है जब शनि चंद्र से बारहवें भाव में प्रवेश करता है, चंद्र राशि पर शिखर पर होता है, और दूसरे भाव से निकलकर समाप्त होता है — लगभग साढ़े सात वर्ष। यह अभिशाप नहीं; यह कर्म की लेखा-परीक्षा है जो अनुशासन को पुरस्कृत और शॉर्टकट उजागर करती है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "The three phases",
+     "hi": "तीन चरण"
+    },
+    "p": [
+     {
+      "en": "Phase 1 (12th house): expenses, isolation, health of elders. Phase 2 (Moon sign): identity pressure, career restructuring, emotional maturity. Phase 3 (2nd house): rebuilding finances and family equations. Each phase lasts ~2.5 years.",
+      "hi": "चरण 1 (बारहवाँ भाव): व्यय, अलगाव, बड़ों का स्वास्थ्य। चरण 2 (चंद्र राशि): पहचान का दबाव, करियर पुनर्गठन, भावनात्मक परिपक्वता। चरण 3 (दूसरा भाव): वित्त और पारिवारिक समीकरणों का पुनर्निर्माण। हर चरण ~साढ़े दो वर्ष।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Myths to reject",
+     "hi": "त्याज्य भ्रांतियाँ"
+    },
+    "p": [
+     {
+      "en": "Sade Sati does not automatically bring death, divorce or ruin. A strong Saturn or benefic aspects can make these years the most productive of life — many leaders rise during sade sati because Saturn loves responsibility.",
+      "hi": "साढ़े साती स्वतः मृत्यु, तलाक या विनाश नहीं लाती। प्रबल शनि या शुभ दृष्टि इन वर्षों को जीवन के सर्वाधिक उत्पादक बना सकती है — कई नेता साढ़े साती में ही उठते हैं क्योंकि शनि ज़िम्मेदारी प्रेम करता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Remedies that work",
+     "hi": "कारगर उपाय"
+    },
+    "p": [
+     {
+      "en": "Serve the working class and the elderly; never exploit subordinates. Saturdays: mustard-oil lamp under Peepal, black-til donation, Hanuman Chalisa. Wear dark-blue or black on Saturdays. Avoid lending and guarantees.",
+      "hi": "श्रमिकों व बुज़ुर्गों की सेवा करें; अधीनस्थों का शोषण न करें। शनिवार: पीपल नीचे सरसों तेल का दीपक, काले तिल दान, हनुमान चालीसा। शनिवार को गहरा नीला/काला पहनें। उधार व गारंटी से बचें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Small dhaiya too",
+     "hi": "छोटी ढैया भी"
+    },
+    "p": [
+     {
+      "en": "When Saturn transits the 4th or 8th from the Moon it gives 'dhaiya' — a milder 2.5-year test of home (4th) or transformation (8th). The same remedies apply, with extra care to property papers and health check-ups.",
+      "hi": "जब शनि चंद्र से चौथे या आठवें में गोचर करता है तो 'ढैया' देता है — घर (चौथा) या आमूल परिवर्तन (आठवाँ) की हल्की साढ़े दो वर्ष की परीक्षा। यही उपाय लागू, साथ ही संपत्ति कागज़ों और स्वास्थ्य जाँच का विशेष ध्यान।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Keep a small iron nail or a piece of coal in your wallet during sade sati — a traditional symbolic shield against sudden loss.",
+   "hi": "साढ़े साती में बटुए में छोटी लोहे की कील या कोयले का टुकड़ा रखें — आकस्मिक हानि से पारंपरिक प्रतीकात्मक कवच।"
+  }
+ },
+ {
+  "slug": "rahu-ketu-bhram-mukti",
+  "cat": "graha",
+  "title": {
+   "en": "Rahu–Ketu: Confusion, Obsession and the Path to Freedom",
+   "hi": "राहु–केतु: भ्रम, आसक्ति और मुक्ति का मार्ग"
+  },
+  "excerpt": {
+   "en": "The shadow planets create sudden events, foreign connections, illusions and spiritual awakenings. Learn where they help, where they trap, and how to calm them.",
+   "hi": "छाया ग्रह आकस्मिक घटनाएँ, विदेशी संबंध, भ्रम और आध्यात्मिक जागृति बनाते हैं। जानें कहाँ वे मदद करते हैं, कहाँ फँसाते हैं, और कैसे शांत होते हैं।"
+  },
+  "tags": {
+   "en": [
+    "rahu",
+    "ketu",
+    "shadow planets",
+    "kala sarpa",
+    "illusion",
+    "spirituality"
+   ],
+   "hi": [
+    "राहु",
+    "केतु",
+    "छाया ग्रह",
+    "काल सर्प",
+    "भ्रम",
+    "आध्यात्मिकता"
+   ]
+  },
+  "date": "2026-09-12",
+  "mins": 8,
+  "intro": [
+   {
+    "en": "Rahu and Ketu are the head and tail of the celestial dragon — points where the Sun-Moon path crosses. They own no sign, yet they amplify whatever they touch, for good or for obsession.",
+    "hi": "राहु और केतु आकाशीय नाग के मुख और पुच्छ हैं — जहाँ सूर्य-चंद्र मार्ग काटते हैं। इनकी कोई राशि नहीं, फिर भी जो इनके स्पर्श में आता है उसे वे बढ़ा देते हैं — शुभ के लिए या आसक्ति के लिए।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Rahu: the amplifier",
+     "hi": "राहु: वर्धक"
+    },
+    "p": [
+     {
+      "en": "Rahu gives hunger for the new: technology, foreign lands, unconventional careers, mass media. Well placed it makes pioneers; afflicted it creates anxiety, addictions and smoke-and-mirror people around you.",
+      "hi": "राहु नवीन की भूख देता है: तकनीक, विदेश, अपरंपरागत करियर, जन-मीडिया। शुभ हो तो अग्रणी बनाता है; पीड़ित हो तो चिंता, लत और आपके चारों ओर मायावी लोग पैदा करता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Ketu: the liberator",
+     "hi": "केतु: मुक्तिदाता"
+    },
+    "p": [
+     {
+      "en": "Ketu dissolves: attachments, fears, even identity. It grants research depth, coding-like precision, occult interest and sudden moksha-like releases. Its periods feel lonely but end with clarity.",
+      "hi": "केतु विसर्जित करता है: आसक्ति, भय, पहचान तक। यह गहन शोध, कोडिंग जैसी सटीकता, गूढ़ विद्याओं में रुचि और अचानक मोक्ष-सी मुक्ति देता है। इसकी दशाएँ एकाकी लगती हैं पर स्पष्टता पर समाप्त होती हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Kala Sarpa and its relief",
+     "hi": "काल सर्प और उसकी शांति"
+    },
+    "p": [
+     {
+      "en": "When all planets sit between Rahu and Ketu, the chart forms Kala Sarpa yoga — life feels pushed by unseen forces. Relief: Naga worship, regular meditation, and honest, non-exploitative dealing; fear of this yoga is often worse than the yoga.",
+      "hi": "जब सारे ग्रह राहु-केतु के बीच हों तो काल सर्प योग बनता है — जीवन अदृश्य बलों से धकेला लगता है। शांति: नाग पूजा, नियमित ध्यान, ईमानदार व अ-शोषक व्यवहार; इस योग का भय प्रायः योग से बदतर होता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Practical calming remedies",
+     "hi": "व्यावहारिक शांति उपाय"
+    },
+    "p": [
+     {
+      "en": "Rahu: feed stray dogs, keep silver, avoid grey-market deals, chant Durga Kavach. Ketu: offer flowers at Ganesha temples, practise breath meditation, keep a gomed only after expert advice.",
+      "hi": "राहु: आवारा कुत्तों को भोजन, चांदी रखें, गैर-कानूनी सौदों से बचें, दुर्गा कवच पाठ। केतु: गणेश मंदिर में पुष्प अर्पण, श्वास ध्यान, विशेषज्ञ सलाह के बाद ही गोमेद।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Rahu fears discipline and Ketu fears attachment — the two remedies are literally opposites, like the two nodes.",
+   "hi": "राहु अनुशासन से और केतु आसक्ति से डरता है — दोनों उपाय शाब्दिक रूप से विपरीत हैं, जैसे दोनों नोड।"
+  }
+ },
+ {
+  "slug": "ratna-vigyan-sahi-ratna",
+  "cat": "ratna",
+  "title": {
+   "en": "Gemstone Science: Which Ratna Suits Which Planet",
+   "hi": "रत्न विज्ञान: कौन सा रत्न किस ग्रह के लिए"
+  },
+  "excerpt": {
+   "en": "Ruby, pearl, red coral, emerald, yellow sapphire, diamond, blue sapphire, hessonite, cat's eye — the nine planetary gems, when to wear them and when to avoid them.",
+   "hi": "माणिक, मोती, मूंगा, पन्ना, पुखराज, हीरा, नीलम, गोमेद, लहसुनिया — नौ ग्रह रत्न, कब धारण करें और कब बचें।"
+  },
+  "tags": {
+   "en": [
+    "gemstones",
+    "ratna",
+    "ruby",
+    "emerald",
+    "yellow sapphire",
+    "blue sapphire",
+    "pearl",
+    "planetary gems"
+   ],
+   "hi": [
+    "रत्न",
+    "माणिक",
+    "पन्ना",
+    "पुखराज",
+    "नीलम",
+    "मोती",
+    "ग्रह रत्न"
+   ]
+  },
+  "date": "2026-09-13",
+  "mins": 8,
+  "intro": [
+   {
+    "en": "In Jyotish a gemstone is a tuned antenna: it amplifies the ray of its planet. Worn for a friendly, well-placed planet it uplifts; worn blindly for a malefic it can amplify trouble. Hence the golden rule — test before you invest.",
+    "hi": "ज्योतिष में रत्न एक समस्वरित एंटीना है: यह अपने ग्रह की किरण को वर्धित करता है। मित्रवत, सुस्थित ग्रह के लिए धारण किया जाए तो उन्नति; अशुभ ग्रह के लिए अंधाधुंध धारण करें तो समस्या वर्धित। अतः स्वर्णिम नियम — निवेश से पहले परीक्षण।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "The nine gems",
+     "hi": "नौ रत्न"
+    },
+    "p": [
+     {
+      "en": "Sun–ruby, Moon–pearl, Mars–red coral, Mercury–emerald, Jupiter–yellow sapphire, Venus–diamond/opal, Saturn–blue sapphire, Rahu–hessonite, Ketu–cat's eye. Each must be natural, untreated and clear.",
+      "hi": "सूर्य–माणिक, चंद्र–मोती, मंगल–मूंगा, बुध–पन्ना, गुरु–पुखराज, शुक्र–हीरा/ओपल, शनि–नीलम, राहु–गोमेद, केतु–लहसुनिया। हर रत्न प्राकृतिक, अनुपचारित और स्वच्छ होना चाहिए।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The trial method",
+     "hi": "परीक्षण विधि"
+    },
+    "p": [
+     {
+      "en": "Keep the stone wrapped in the recommended cloth near your pillow for three nights. If sleep, mood and small events improve, the stone suits you; if restlessness or quarrels rise, return it.",
+      "hi": "रत्न को अनुशंसित वस्त्र में लपेटकर तीन रात तक तकिए के पास रखें। नींद, मनोदशा और छोटी घटनाएँ सुधरें तो रत्न अनुकूल है; बेचैनी या कलह बढ़े तो लौटा दें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Blue sapphire warning",
+     "hi": "नीलम चेतावनी"
+    },
+    "p": [
+     {
+      "en": "Neelam is the fastest and fiercest gem — it can give results in days, good or bad. Never wear it on recommendation alone; only after a qualified astrologer confirms Saturn is benefic for your chart.",
+      "hi": "नीलम सबसे तेज़ और उग्र रत्न है — दिनों में फल देता है, शुभ या अशुभ। केवल सलाह पर कभी न धारण करें; योग्य ज्योतिषी शनि को लाभकारी पुष्टि करे तभी।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Substitutes and budget",
+     "hi": "विकल्प और बजट"
+    },
+    "p": [
+     {
+      "en": "Up-ratnas work gently: red spinel for ruby, moonstone for pearl, carnelian for coral, green tourmaline for emerald, citrine for yellow sapphire, white sapphire for diamond, amethyst for blue sapphire.",
+      "hi": "उप-रत्न कोमलता से काम करते हैं: माणिक हेतु लाल स्पिनेल, मोती हेतु मूनस्टोन, मूंगा हेतु कार्नेलियन, पन्ना हेतु ग्रीन टूरमलीन, पुखराज हेतु सिट्रीन, हीरा हेतु श्वेत नीलम, नीलम हेतु एमेथिस्ट।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "A gem works through faith and routine: chant its mantra daily, or it becomes mere jewellery.",
+   "hi": "रत्न श्रद्धा और दिनचर्या से काम करता है: इसके मंत्र का नित्य जप करें, वरना वह केवल आभूषण रह जाएगा।"
+  }
+ },
+ {
+  "slug": "ratna-dharan-vidhi",
+  "cat": "ratna",
+  "title": {
+   "en": "The Exact Method of Wearing a Gemstone (Dharan Vidhi)",
+   "hi": "रत्न धारण की सही विधि"
+  },
+  "excerpt": {
+   "en": "Day, metal, finger, weight and mantra — the complete classical procedure to energise and wear a ratna, plus common mistakes that make gems ineffective.",
+   "hi": "वार, धातु, उंगली, भार और मंत्र — रत्न को अभिमंत्रित कर धारण करने की संपूर्ण शास्त्रीय विधि, साथ ही वे सामान्य भूलें जो रत्न को निष्फल कर देती हैं।"
+  },
+  "tags": {
+   "en": [
+    "gemstone wearing",
+    "dharan vidhi",
+    "mantra",
+    "metal",
+    "finger",
+    "energising"
+   ],
+   "hi": [
+    "रत्न धारण",
+    "धारण विधि",
+    "मंत्र",
+    "धातु",
+    "उंगली",
+    "अभिमंत्रण"
+   ]
+  },
+  "date": "2026-09-14",
+  "mins": 6,
+  "intro": [
+   {
+    "en": "A gem worn without vidhi is like an unplugged appliance. The classical texts specify the day, metal, finger, minimum weight and the mantra count that 'switch it on'.",
+    "hi": "विधि के बिना धारण रत्न बिना प्लग के यंत्र जैसा है। शास्त्र वार, धातु, उंगली, न्यूनतम भार और मंत्र संख्या निर्दिष्ट करते हैं जो इसे 'चालू' करते हैं।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Day, metal and finger",
+     "hi": "वार, धातु और उंगली"
+    },
+    "p": [
+     {
+      "en": "Ruby–Sunday–gold/copper–ring finger. Pearl–Monday–silver–little finger. Red coral–Tuesday–copper–ring finger. Emerald–Wednesday–gold–little finger. Yellow sapphire–Thursday–gold–index finger. Diamond–Friday–silver/platinum–ring or middle finger. Blue sapphire–Saturday–gold/panchdhatu–middle finger.",
+      "hi": "माणिक–रविवार–स्वर्ण/ताम्र–अनामिका। मोती–सोमवार–रजत–कनिष्ठा। मूंगा–मंगलवार–ताम्र–अनामिका। पन्ना–बुधवार–स्वर्ण–कनिष्ठा। पुखराज–गुरुवार–स्वर्ण–तर्जनी। हीरा–शुक्रवार–रजत/प्लेटिनम–अनामिका/मध्यमा। नीलम–शनिवार–स्वर्ण/पंचधातु–मध्यमा।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Weight and timing",
+     "hi": "भार और समय"
+    },
+    "p": [
+     {
+      "en": "General rule: at least 1 ratti (≈0.9 carat) per 10 kg body weight, rounded up. Wear during Shukla Paksha in the planet's hora, ideally at sunrise of the prescribed day.",
+      "hi": "सामान्य नियम: कम से कम 1 रत्ती (≈0.9 कैरेट) प्रति 10 किलो शरीर भार, ऊपर की ओर। शुक्ल पक्ष में ग्रह की होरा में, आदर्शतः निर्दिष्ट वार के सूर्योदय पर धारण करें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Energising ritual",
+     "hi": "अभिमंत्रण विधि"
+    },
+    "p": [
+     {
+      "en": "Soak overnight in raw milk and gangajal, rinse at dawn, chant the bija mantra 108 times while holding the ring, wear it touching the skin, and donate something in the planet's colour the same day.",
+      "hi": "रात भर कच्चे दूध व गंगाजल में भिगोएँ, प्रातः धोएँ, अंगूठी धारण कर बीज मंत्र 108 बार जपें, त्वचा के स्पर्श में पहनें, और उसी दिन ग्रह के रंग की वस्तु दान करें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Mistakes to avoid",
+     "hi": "त्याज्य भूलें"
+    },
+    "p": [
+     {
+      "en": "Wearing an enemy gem together (e.g. diamond with blue sapphire without chart support), reusing a stone from an unlucky owner, or wearing cracked stones. When in doubt, wear the gem only on its day and remove at night for the first 40 days.",
+      "hi": "शत्रु रत्न एक साथ धारण (जैसे कुंडली समर्थन बिना हीरा व नीलम), अभागे स्वामी का रत्न पुनः उपयोग, या टूटा रत्न। संदेह हो तो पहले 40 दिन केवल उसके वार पर पहनें और रात में उतार दें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Record your mood and events for 40 days after wearing — your own diary is the best proof of a gem's effect.",
+   "hi": "धारण के बाद 40 दिन अपनी मनोदशा व घटनाएँ लिखें — रत्न के प्रभाव का सर्वोत्तम प्रमाण आपकी अपनी डायरी है।"
+  }
+ },
+ {
+  "slug": "dainik-upay-deep-dan-jap",
+  "cat": "upay",
+  "title": {
+   "en": "Daily Upay: Diya, Daan and Jap That Change Your Week",
+   "hi": "दैनिक उपाय: दीप, दान और जप जो आपका सप्ताह बदल दें"
+  },
+  "excerpt": {
+   "en": "Small, consistent remedies beat big occasional rituals. A day-by-day guide of lamps, donations and chants aligned with the seven weekdays.",
+   "hi": "छोटे, निरंतर उपाय बड़े कभी-कभी के अनुष्ठानों से श्रेष्ठ। सात वारों के अनुसार दीप, दान और जप की दिन-प्रतिदिन गाइड।"
+  },
+  "tags": {
+   "en": [
+    "daily remedies",
+    "upay",
+    "diya",
+    "daan",
+    "weekday rituals",
+    "gratitude"
+   ],
+   "hi": [
+    "दैनिक उपाय",
+    "दीप",
+    "दान",
+    "वार अनुसार अनुष्ठान",
+    "कृतज्ञता"
+   ]
+  },
+  "date": "2026-09-15",
+  "mins": 6,
+  "intro": [
+   {
+    "en": "Each weekday vibrates with one planet. A five-minute remedy on the right day works like compound interest on your karma — invisible daily, enormous over months.",
+    "hi": "हर वार एक ग्रह से कंपन करता है। सही वार का पाँच मिनट का उपाय आपके कर्म पर चक्रवृद्धि ब्याज जैसा काम करता है — प्रतिदिन अदृश्य, महीनों में विशाल।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Monday to Wednesday",
+     "hi": "सोमवार से बुधवार"
+    },
+    "p": [
+     {
+      "en": "Monday: offer water to a Shiva lingam or a Peepal root; donate milk/white food. Tuesday: Hanuman Chalisa; feed jaggery-gram to a monkey or cow. Wednesday: feed green fodder to cows; keep a tulsi leaf in your water.",
+      "hi": "सोमवार: शिवलिंग या पीपल मूल में जल; दूध/श्वेत अन्न दान। मंगलवार: हनुमान चालीसा; बंदर या गाय को गुड़-चना। बुधवार: गाय को हरा चारा; जल में तुलसी दल।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Thursday to Sunday",
+     "hi": "गुरुवार से रविवार"
+    },
+    "p": [
+     {
+      "en": "Thursday: respect teachers, donate chana dal and yellow cloth. Friday: light a ghee diya for the Divine Mother; offer sweets to girls. Saturday: mustard-oil diya under Peepal; serve the elderly. Sunday: Surya Arghya at sunrise; offer water with a copper vessel.",
+      "hi": "गुरुवार: गुरुजनों का सम्मान, चना दाल व पीला वस्त्र दान। शुक्रवार: देवी हेतु घी का दीप; बालिकाओं को मिष्ठान। शनिवार: पीपल नीचे सरसों तेल का दीप; बुज़ुर्गों की सेवा। रविवार: सूर्योदय पर सूर्य अर्घ्य; ताम्र पात्र से जल।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The diya science",
+     "hi": "दीप विज्ञान"
+    },
+    "p": [
+     {
+      "en": "A lamp combines earth (vessel), water/oil, fire, air (wick smoke) and ether (light) — lighting one harmonises the five elements in the home. Face east for wisdom, north for wealth.",
+      "hi": "दीप पाँच तत्वों को जोड़ता है — मिट्टी (पात्र), जल/तेल, अग्नि, वायु (बाती धुआँ) और आकाश (प्रकाश)। एक दीप जलाना घर के पंचतत्व सामंजस्य देता है। ज्ञान हेतु पूर्व, धन हेतु उत्तर मुख।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Daan without ego",
+     "hi": "निर्मम दान"
+    },
+    "p": [
+     {
+      "en": "Donation works only when anonymous and proportionate — 1 to 2.5% of a gain, given without announcement, to someone who cannot return it. Public charity feeds the ego; quiet charity feeds the stars.",
+      "hi": "दान तभी फलता है जब गुप्त और अनुपात में हो — लाभ का 1 से 2.5%, बिना घोषणा, ऐसे व्यक्ति को जो लौटा न सके। प्रचारित दान अहं को पोषित करता है; मौन दान ग्रहों को।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Choose only two remedies and do them every week for 90 days — consistency beats intensity.",
+   "hi": "केवल दो उपाय चुनें और 90 दिन हर सप्ताह करें — निरंतरता तीव्रता को मात देती है।"
+  }
+ },
+ {
+  "slug": "stotra-mantra-shakti",
+  "cat": "upay",
+  "title": {
+   "en": "Stotras & Mantras: Sound as a Remedy",
+   "hi": "स्तोत्र और मंत्र: ध्वनि रूपी उपाय"
+  },
+  "excerpt": {
+   "en": "From Gayatri to Hanuman Chalisa, Mahamrityunjaya to Shri Sukta — which stotra addresses which life area, and how to chant with correct rhythm and faith.",
+   "hi": "गायत्री से हनुमान चालीसा, महामृत्युंजय से श्री सूक्त तक — कौन सा स्तोत्र किस जीवन क्षेत्र को संबोधित करता है, और सही लय व श्रद्धा से जप कैसे करें।"
+  },
+  "tags": {
+   "en": [
+    "stotra",
+    "mantra",
+    "gayatri",
+    "hanuman chalisa",
+    "mahamrityunjaya",
+    "shri sukta",
+    "chanting"
+   ],
+   "hi": [
+    "स्तोत्र",
+    "मंत्र",
+    "गायत्री",
+    "हनुमान चालीसा",
+    "महामृत्युंजय",
+    "श्री सूक्त",
+    "जप"
+   ]
+  },
+  "date": "2026-09-16",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "A mantra is a precise sound structure; a stotra is a hymn that describes a deity's qualities and thereby invokes them. Both work on breath, rhythm and attention — the oldest biofeedback technology.",
+    "hi": "मंत्र एक सटीक ध्वनि संरचना है; स्तोत्र एक स्तुति है जो देवता के गुणों का वर्णन कर उन्हें आवाहित करती है। दोनों श्वास, लय और एकाग्रता पर काम करते हैं — सबसे प्राचीन बायोफीडबैक तकनीक।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Match the stotra to the need",
+     "hi": "आवश्यकता अनुसार स्तोत्र"
+    },
+    "p": [
+     {
+      "en": "Health & fear: Mahamrityunjaya. Intellect & students: Gayatri, Saraswati Vandana. Obstacles & courage: Hanuman Chalisa, Ganesh Atharvashirsha. Wealth & harmony: Shri Sukta, Kanakadhara. Career & justice: Shani Stotra, Vishnu Sahasranama. Peace: Shanti Mantra.",
+      "hi": "स्वास्थ्य व भय: महामृत्युंजय। बुद्धि व विद्यार्थी: गायत्री, सरस्वती वंदना। बाधा व साहस: हनुमान चालीसा, गणेश अथर्वशीर्ष। धन व सामंजस्य: श्री सूक्त, कनकधारा। करियर व न्याय: शनि स्तोत्र, विष्णु सहस्रनाम। शांति: शांति मंत्र।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The 108 logic",
+     "hi": "108 का तर्क"
+    },
+    "p": [
+     {
+      "en": "108 connects the Sun-Earth-Moon distances and the body's 108 marma points. Counting on a mala slows the breath to ~5 per minute — the coherence state where the nervous system resets.",
+      "hi": "108 सूर्य-पृथ्वी-चंद्र दूरियों और शरीर के 108 मर्म बिंदुओं को जोड़ता है। माला पर गिनती श्वास को ~5 प्रति मिनट मंद करती है — वह सुसंगत अवस्था जहाँ तंत्रिका तंत्र पुनः सेट होता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Rhythm and pronunciation",
+     "hi": "लय और उच्चारण"
+    },
+    "p": [
+     {
+      "en": "Chant audibly enough to hear yourself, slowly enough to feel each syllable. A correctly slow Gayatri outperforms a hurried thousand. Learn from a recording of a traditional reciter, not a ringtone version.",
+      "hi": "इतना स्पष्ट जपें कि स्वयं सुन सकें, इतना धीमा कि हर अक्षर महसूस हो। सही धीमी गायत्री जल्दबाज़ी के हज़ार से श्रेष्ठ। पारंपरिक पाठक की रिकॉर्डिंग से सीखें, रिंगटोन संस्करण से नहीं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Sankalpa — the intention",
+     "hi": "संकल्प — इच्छा-बीज"
+    },
+    "p": [
+     {
+      "en": "Begin with one clear sankalpa in your own words; end by dedicating the merit to all beings. Selfish chanting narrows the mind; dedicated chanting expands it and returns multiplied.",
+      "hi": "अपने शब्दों में एक स्पष्ट संकल्प से आरंभ करें; अंत में पुण्य सबको समर्पित करें। स्वार्थी जप मन को संकीर्ण करता है; समर्पित जप विस्तार देता है और गुणा होकर लौटता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Same stotra, same time, 40 days — the repetition itself becomes the remedy.",
+   "hi": "वही स्तोत्र, वही समय, 40 दिन — पुनरावृत्ति स्वयं उपाय बन जाती है।"
+  }
+ },
+ {
+  "slug": "barah-rashiyon-ka-swabhav",
+  "cat": "rashi",
+  "title": {
+   "en": "The Nature of the 12 Rashis in One Read",
+   "hi": "12 राशियों का स्वभाव एक नज़र में"
+  },
+  "excerpt": {
+   "en": "Mesha to Meena — element, lord, strengths and shadow side of every Moon sign, so you can read your family at the dinner table.",
+   "hi": "मेष से मीन तक — हर चंद्र राशि का तत्व, स्वामी, शक्तियाँ और छाया-पक्ष, ताकि आप भोजन की मेज़ पर ही परिवार को पढ़ सकें।"
+  },
+  "tags": {
+   "en": [
+    "12 rashis",
+    "zodiac personality",
+    "moon sign",
+    "elements",
+    "mesha",
+    "meena"
+   ],
+   "hi": [
+    "12 राशियाँ",
+    "राशि स्वभाव",
+    "चंद्र राशि",
+    "तत्व",
+    "मेष",
+    "मीन"
+   ]
+  },
+  "date": "2026-09-17",
+  "mins": 10,
+  "intro": [
+   {
+    "en": "Your Moon sign colours the mind more than the Sun sign colours the ego. Grouped by element, the twelve signs reveal four temperaments — and knowing them turns every conversation into a gentle reading.",
+    "hi": "आपकी चंद्र राशि मन को रंगती है, जितना सूर्य राशि अहं को नहीं। तत्व से वर्गीकृत बारह राशियाँ चार स्वभाव प्रकट करती हैं — और इन्हें जानना हर संवाद को कोमल रीडिंग बना देता है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Fire: Mesha, Simha, Dhanu",
+     "hi": "अग्नि: मेष, सिंह, धनु"
+    },
+    "p": [
+     {
+      "en": "Initiators. Mesha charges first, Simha leads visibly, Dhanu teaches while moving. Shadow: impatience, pride, over-promising. Gift: they restart where others quit.",
+      "hi": "पहलकर्ता। मेष पहले कूदता है, सिंह दृश्यमान नेतृत्व करता है, धनु चलते-चलते सिखाता है। छाया: अधीरता, अहं, अधिक वादा। वरदान: जहाँ दूसरे छोड़ें, वे पुनः आरंभ करते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Earth: Vrishabha, Kanya, Makara",
+     "hi": "पृथ्वी: वृषभ, कन्या, मकर"
+    },
+    "p": [
+     {
+      "en": "Builders. Vrishabha accumulates comfort, Kanya perfects detail, Makara climbs decades-long ladders. Shadow: stubbornness, worry, workaholism. Gift: their word is a contract.",
+      "hi": "निर्माता। वृषभ सुख संचित करता है, कन्या बारीकी परिष्कृत करती है, मकर दशकों की सीढ़ी चढ़ता है। छाया: हठ, चिंता, कार्य-व्यसन। वरदान: उनका वचन ही अनुबंध है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Air: Mithuna, Tula, Kumbha",
+     "hi": "वायु: मिथुन, तुला, कुंभ"
+    },
+    "p": [
+     {
+      "en": "Connectors. Mithuna talks, Tula balances, Kumbha reimagines society. Shadow: restlessness, indecision, detachment. Gift: ideas travel fastest through them.",
+      "hi": "संयोजक। मिथुन बोलता है, तुला संतुलित करती है, कुंभ समाज की पुनः कल्पना करता है। छाया: चंचलता, अनिर्णय, निर्लिप्तता। वरदान: विचार सबसे तेज़ इन्हीं से गुज़रते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Water: Karka, Vrishchika, Meena",
+     "hi": "जल: कर्क, वृश्चिक, मीन"
+    },
+    "p": [
+     {
+      "en": "Feelers. Karka nurtures, Vrishchika transforms, Meena dissolves into compassion. Shadow: moodiness, secrecy, escapism. Gift: they remember what your heart said years ago.",
+      "hi": "अनुभवकर्ता। कर्क पालन करता है, वृश्चिक रूपांतरित करता है, मीन करुणा में विलीन होती है। छाया: मनोदशा, गोपनीयता, पलायन। वरदान: वर्षों पहले आपके हृदय ने क्या कहा था, वे याद रखते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "In conflict, argue with Fire about goals, with Earth about plans, with Air about ideas, with Water about feelings — never the reverse.",
+   "hi": "विवाद में अग्नि से लक्ष्य, पृथ्वी से योजना, वायु से विचार, जल से भावना पर बात करें — कभी उल्टा नहीं।"
+  }
+ },
+ {
+  "slug": "nakshatra-vyaktitva-naamkaran",
+  "cat": "rashi",
+  "title": {
+   "en": "Nakshatras: Your Star, Your Temperament and Name Letters",
+   "hi": "नक्षत्र: आपका तारा, स्वभाव और नाम के अक्षर"
+  },
+  "excerpt": {
+   "en": "The 27 nakshatras refine the 12 signs into lunar mansions that govern temperament, deity and even the starting letters for naming a child.",
+   "hi": "27 नक्षत्र 12 राशियों को चंद्र-मंडलों में विभाजित करते हैं जो स्वभाव, देवता और बालक के नाम के आरंभिक अक्षर तक नियंत्रित करते हैं।"
+  },
+  "tags": {
+   "en": [
+    "nakshatra",
+    "birth star",
+    "namkaran",
+    "name letters",
+    "lunar mansion",
+    "pada"
+   ],
+   "hi": [
+    "नक्षत्र",
+    "जन्म नक्षत्र",
+    "नामकरण",
+    "नाम के अक्षर",
+    "चरण"
+   ]
+  },
+  "date": "2026-09-18",
+  "mins": 8,
+  "intro": [
+   {
+    "en": "While the Rashi divides the sky into 12, the Nakshatra divides it into 27 lunar mansions of 13°20' each. Your birth Moon's nakshatra is considered the deepest signature of personality — and its pada gives the sacred letters for naming.",
+    "hi": "जहाँ राशि आकाश को 12 में बाँटती है, नक्षत्र उसे 13°20' के 27 चंद्र-मंडलों में। जन्म समय चंद्र का नक्षत्र व्यक्तित्व की सबसे गहरी छाप माना जाता है — और उसका चरण नामकरण के पवित्र अक्षर देता है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Lords and deities",
+     "hi": "स्वामी और देवता"
+    },
+    "p": [
+     {
+      "en": "Each nakshatra has a planetary lord (Ketu to Mercury in sequence) and a deity — Ashwini Kumaras heal, Indra commands, Mitra bonds, Varuna governs hidden waters. The deity shows the inner archetype you are learning to embody.",
+      "hi": "हर नक्षत्र का ग्रह स्वामी (क्रम से केतु से बुध) और देवता है — अश्विनी कुमार उपचार, इन्द्र आज्ञा, मित्र बंधन, वरुण गुप्त जल। देवता वह आंतरिक आदिप्ररूप दिखाता है जिसे आप मूर्त करना सीख रहे हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The four padas",
+     "hi": "चार चरण"
+    },
+    "p": [
+     {
+      "en": "Each nakshatra splits into four padas of 3°20', mapping to the navamsha chart. The pada refines results: the same Ashwini pada 1 behaves fiery, pada 4 earthy. Hast Rekha AI computes your exact pada from birth time.",
+      "hi": "हर नक्षत्र 3°20' के चार चरणों में बँटता है, जो नवांश कुंडली से मेल खाते हैं। चरण फल को परिष्कृत करता है: वही अश्विनी चरण 1 अग्निमय, चरण 4 पार्थिव। हस्तरेखा AI जन्म समय से आपका सटीक चरण गणना करता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Name letters",
+     "hi": "नाम के अक्षर"
+    },
+    "p": [
+     {
+      "en": "Classical namkaran uses the pada's syllable: Ashwini (Chu-Che-Cho-La), Rohini (O-Va-Vi-Vu), Pushya (Ha-Hi-Hu-He) and so on. Starting the name with the right sound is believed to tune the child to their star.",
+      "hi": "शास्त्रीय नामकरण चरण के अक्षर से होता है: अश्विनी (चु-चे-चो-ला), रोहिणी (ओ-वा-वी-वू), पुष्य (हा-ही-हू-हे) आदि। सही ध्वनि से नाम आरंभ करना बालक को उसके तार से समस्वरित माना जाता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Nakshatra and compatibility",
+     "hi": "नक्षत्र और अनुकूलता"
+    },
+    "p": [
+     {
+      "en": "Guna milan's 36 points are computed primarily from the couple's nakshatras — tara, yoni, gana and nadi all derive from them. A high nakshatra match often outweighs a mediocre sign match.",
+      "hi": "गुण मिलान के 36 अंक मुख्यतः युगल के नक्षत्रों से गणित होते हैं — तारा, योनि, गण और नाड़ी सभी इन्हीं से। उच्च नक्षत्र मिलान प्रायः औसत राशि मिलान से भारी पड़ता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Meditate on your birth nakshatra's deity on its ruling weekday — the gentlest personal sadhana in Jyotish.",
+   "hi": "अपने जन्म नक्षत्र के देवता का उनके वार पर ध्यान करें — ज्योतिष की सबसे कोमल व्यक्तिगत साधना।"
+  }
+ },
+ {
+  "slug": "guna-milan-vivah-anukoolta",
+  "cat": "rashi",
+  "title": {
+   "en": "Guna Milan & Compatibility: Reading a Match the Vedic Way",
+   "hi": "गुण मिलान व अनुकूलता: वैदिक रीति से मेल पढ़ना"
+  },
+  "excerpt": {
+   "en": "The 36 gunas, manglik dosha, and what truly matters beyond the score — a clear, non-fearful guide to Vedic match-making.",
+   "hi": "36 गुण, मांगलिक दोष, और स्कोर से परे क्या मायने रखता है — वैदिक विवाह-मिलान की स्पष्ट, भय-मुक्त गाइड।"
+  },
+  "tags": {
+   "en": [
+    "guna milan",
+    "kundli matching",
+    "manglik dosha",
+    "marriage compatibility",
+    "36 gunas"
+   ],
+   "hi": [
+    "गुण मिलान",
+    "कुंडली मिलान",
+    "मांगलिक दोष",
+    "विवाह अनुकूलता",
+    "36 गुण"
+   ]
+  },
+  "date": "2026-09-18",
+  "mins": 9,
+  "intro": [
+   {
+    "en": "Vedic matching compares two Moons across eight categories (ashtakoota) for 36 points. But scriptures repeatedly warn: points guide, they do not decide. Character, family values and mutual respect remain the true kootas.",
+    "hi": "वैदिक मिलान दो चंद्रों की आठ श्रेणियों (अष्टकूट) में 36 अंकों से तुलना करता है। पर शास्त्र बार-बार चेताते हैं: अंक मार्गदर्शन हैं, निर्णय नहीं। चरित्र, पारिवारिक मूल्य और आपसी सम्मान ही सच्चे कूट हैं।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "The eight kootas",
+     "hi": "आठ कूट"
+    },
+    "p": [
+     {
+      "en": "Varna (1), Vashya (2), Tara (3), Yoni (4), Graha-maitri (5), Gana (6), Bhakoot (7), Nadi (8). Nadi and Bhakoot carry the heaviest weight — they govern health of progeny and long-term emotional flow.",
+      "hi": "वर्ण (1), वश्य (2), तारा (3), योनि (4), ग्रह-मैत्री (5), गण (6), भकूट (7), नाड़ी (8)। नाड़ी व भकूट सबसे भारी — संतति का स्वास्थ्य और दीर्घकालिक भावनात्मक प्रवाह ये नियंत्रित करते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The 18-point myth",
+     "hi": "18 अंक की भ्रांति"
+    },
+    "p": [
+     {
+      "en": "18/36 is called the minimum, yet many thriving marriages score below when other chart factors compensate, and some 30+ matches fail on character. Read the whole chart: 7th house, its lord, Venus and Jupiter for both partners.",
+      "hi": "18/36 को न्यूनतम कहा जाता है, फिर भी अन्य कुंडली कारक भरपाई करें तो कई सफल विवाह इससे नीचे स्कोर करते हैं, और कुछ 30+ मिलान चरित्र पर असफल। पूरी कुंडली पढ़ें: दोनों के सप्तम भाव, स्वामी, शुक्र व गुरु।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Manglik dosha honestly",
+     "hi": "मांगलिक दोष ईमानदारी से"
+    },
+    "p": [
+     {
+      "en": "Mars in 1/4/7/8/12 from Moon or Lagna is Manglik — but cancellation rules are many: Mars in its own/exalted sign, in Leo/Virgo, or aspected by Jupiter. Manglik–Manglik matches nullify the dosha entirely.",
+      "hi": "चंद्र या लग्न से 1/4/7/8/12 में मंगल = मांगलिक — पर भंग के नियम अनेक: मंगल स्व/उच्च राशि में, सिंह/कन्या में, या गुरु-दृष्ट। मांगलिक–मांगलिक मिलान दोष पूर्णतः समाप्त करता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Beyond the score",
+     "hi": "स्कोर से परे"
+    },
+    "p": [
+     {
+      "en": "Watch Dasha compatibility (are both entering supportive periods?), Moon–Sun harmony and the simple test: do their families' definitions of respect match? A shared value system outlives every dosha.",
+      "hi": "दशा अनुकूलता देखें (क्या दोनों सहायक दशाओं में प्रवेश कर रहे हैं?), चंद्र–सूर्य सामंजस्य, और सरल परीक्षा: क्या दोनों परिवारों की सम्मान की परिभाषाएँ मेल खाती हैं? साझा मूल्य-तंत्र हर दोष से अधिक टिकता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Use matching to prepare, not to paralyse: every flagged dosha has classical remedies and conscious behaviour overrides.",
+   "hi": "मिलान का उपयोग तैयारी हेतु करें, पक्षाघात हेतु नहीं: हर चिह्नित दोष के शास्त्रीय उपाय हैं और सचेत व्यवहार उसे पार कर जाता है।"
+  }
+ },
+ {
+  "slug": "hatheli-ke-shubh-chinh",
+  "cat": "palm",
+  "title": {
+   "en": "Auspicious Signs on the Palm: Trident, Fish, Star, Lotus & More",
+   "hi": "हथेली के शुभ चिह्न: त्रिशूल, मत्स्य, तारा, कमल और अन्य"
+  },
+  "excerpt": {
+   "en": "Rare markings like the trishul, matsya, kamal and dhwaj are considered seals of fortune in Samudrika Shastra. See where they appear and what each promises.",
+   "hi": "त्रिशूल, मत्स्य, कमल और ध्वज जैसे दुर्लभ चिह्न समुद्रिक शास्त्र में भाग्य की मुहर माने जाते हैं। देखें कहाँ प्रकट होते हैं और प्रत्येक क्या वचन देता है।"
+  },
+  "tags": {
+   "en": [
+    "auspicious signs",
+    "trishul",
+    "matsya",
+    "kamal",
+    "dhwaj",
+    "shankh",
+    "palm marks"
+   ],
+   "hi": [
+    "शुभ चिह्न",
+    "त्रिशूल",
+    "मत्स्य",
+    "कमल",
+    "ध्वज",
+    "शंख",
+    "हथेली के निशान"
+   ]
+  },
+  "date": "2026-09-19",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "Beyond the lines, the palm occasionally carries symbolic formations — tiny line-patterns that classical texts describe with almost poetic precision. Finding one on your hand is like finding a watermark on a banknote.",
+    "hi": "रेखाओं से परे, हथेली कभी-कभी प्रतीकात्मक आकृतियाँ धारण करती है — छोटी रेखा-रचनाएँ जिन्हें शास्त्र काव्यमय सटीकता से वर्णित करते हैं। अपने हाथ पर एक पाना नोट पर वाटरमार्क पाने जैसा है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Trishul, Matsya and Kamal",
+     "hi": "त्रिशूल, मत्स्य और कमल"
+    },
+    "p": [
+     {
+      "en": "Trishul at the end of the fate or life line: triple blessing of dharma, wealth and comfort in later life. Matsya (fish) near the wrist or Venus: prosperity and spiritual merit. Kamal (lotus) on Venus or Moon: artistic soul honoured by society.",
+      "hi": "भाग्य या जीवन रेखा के अंत में त्रिशूल: उत्तरायु में धर्म, धन व सुख का त्रिगुण वरदान। कलाई या शुक्र के पास मत्स्य: समृद्धि व पुण्य। शुक्र या चंद्र पर कमल: समाज द्वारा सम्मानित कलात्मक आत्मा।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Dhwaj, Shankh and Chakra",
+     "hi": "ध्वज, शंख और चक्र"
+    },
+    "p": [
+     {
+      "en": "Dhwaj (flag) on Jupiter: leadership and public fame. Shankh (conch) on the Mount of Moon or near the thumb base: protection during travel and water. Chakra (wheel) on Jupiter or Saturn: authority, sometimes spiritual leadership.",
+      "hi": "गुरु पर ध्वज: नेतृत्व व सार्वजनिक यश। चंद्र पर्वत या अंगूठे के आधार के पास शंख: यात्रा व जल में सुरक्षा। गुरु या शनि पर चक्र: अधिकार, कभी-कभी आध्यात्मिक नेतृत्व।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Star, cross, triangle, square",
+     "hi": "तारा, क्रॉस, त्रिभुज, वर्ग"
+    },
+    "p": [
+     {
+      "en": "Star: sudden brilliance on the mount it sits. Cross on Jupiter: love marriage or divine protection. Triangle on Mercury or Saturn: research and occult talent. Square over a break: the preserver's mark.",
+      "hi": "तारा: जिस पर्वत पर हो वहाँ आकस्मिक तेज। गुरु पर क्रॉस: प्रेम विवाह या दैवी सुरक्षा। बुध/शनि पर त्रिभुज: शोध व गूढ़ प्रतिभा। टूट पर वर्ग: रक्षक चिह्न।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Reading them responsibly",
+     "hi": "ज़िम्मेदारी से पढ़ना"
+    },
+    "p": [
+     {
+      "en": "Signs modify, they do not override, the main lines. A trishul cannot rescue a shattered fate line, and an absent matsya does not deny wealth earned by a strong money triangle. Read the whole hand.",
+      "hi": "चिह्न मुख्य रेखाओं को संशोधित करते हैं, अधिलिखित नहीं। त्रिशूल टूटी भाग्य रेखा को नहीं बचा सकता, और अनुपस्थित मत्स्य प्रबल धन त्रिभुज से अर्जित धन को नहीं रोकता। पूरा हाथ पढ़ें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Try It Yourself — Free Reading on Hast Rekha AI",
+     "hi": "स्वयं आज़माएँ — हस्त रेखा AI पर फ्री रीडिंग"
+    },
+    "p": [
+     {
+      "en": "Reading about palmistry is the first step — seeing it in your own hand is the real one. Visit https://hastrekhaai.online for a free, instant reading of your palm lines, rashi, nakshatra and lagna. No sign-up, no payment: https://hastrekhaai.online",
+      "hi": "हस्तरेखा पढ़ना पहला कदम है — अपने हाथ में देखना असली कदम। https://hastrekhaai.online पर जाएँ और पाएँ अपनी हस्तरेखा, राशि, नक्षत्र और लग्न की मुफ्त, तुरंत रीडिंग। न रजिस्ट्रेशन, न भुगतान: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "Examine your palm under side-light with a magnifier once a month — subtle signs appear and fade with your life phase.",
+   "hi": "माह में एक बार तिरछी रोशनी में भिंग काँच से हथेली देखें — सूक्ष्म चिह्न जीवन-चरण के साथ प्रकट व विलीन होते हैं।"
+  }
+ },
+ {
+  "slug": "ai-palmistry-future",
+  "cat": "palm",
+  "title": {
+   "en": "AI Palmistry in 2026: Can Technology Read Your Destiny?",
+   "hi": "AI हस्तरेखा 2026: क्या तकनीक भाग्य पढ़ सकती है?"
+  },
+  "excerpt": {
+   "en": "AI is transforming ancient palmistry — from instant line detection to rule-based Vedic engines. Here's how modern tools read your palm, what they get right, and where human intuition still wins.",
+   "hi": "AI प्राचीन हस्तरेखा को बदल रहा है — तुरंत रेखा-पहचान से लेकर नियम-आधारित वैदिक इंजन तक। जानें आधुनिक टूल्स हाथ कैसे पढ़ते हैं, क्या सही होता है, और कहाँ मानवीय अंतर्ज्ञान अब भी आगे है।"
+  },
+  "tags": {
+   "en": [
+    "ai palmistry",
+    "hast rekha ai",
+    "technology"
+   ],
+   "hi": [
+    "एआई हस्तरेखा",
+    "हस्त रेखा एआई",
+    "तकनीक"
+   ]
+  },
+  "date": "2026-09-19",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "Palmistry is five thousand years old, yet in 2026 it is having a technology moment. AI-powered tools now detect palm lines from a photo in seconds, and rule-based engines turn those measurements into a structured reading. But can a machine really read destiny?",
+    "hi": "हस्तरेखा पाँच हज़ार वर्ष पुरानी है, फिर भी 2026 में इसका तकनीक-युग आ गया है। AI-संचालित टूल्स अब फोटो से सेकंडों में रेखाएँ पहचानते हैं, और नियम-आधारित इंजन उन माप से व्यवस्थित रीडिंग बनाते हैं। पर क्या मशीन सचमुच भाग्य पढ़ सकती है?"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "How AI reads a palm",
+     "hi": "AI हाथ कैसे पढ़ता है"
+    },
+    "p": [
+     {
+      "en": "Modern systems use computer vision to trace the heart, head, life and fate lines, then measure their length, depth and curvature. A rule-based Vedic engine — like the one behind Hast Rekha AI — maps those features to classical Samudrika Shastra interpretations, along with your birth details for the kundli overlay.",
+      "hi": "आधुनिक सिस्टम कंप्यूटर-विज़न से हृदय, मस्तिष्क, जीवन और भाग्य रेखाओं को ट्रेस करते हैं, फिर उनकी लंबाई, गहराई व वक्रता मापते हैं। नियम-आधारित वैदिक इंजन — जैसा हस्त रेखा AI के पीछे है — उन विशेषताओं को शास्त्रीय समुद्रिक शास्त्र की व्याख्याओं से जोड़ता है, और जन्म-विवरण से कुंडली ओवरले बनाता है."
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "What AI gets right — and wrong",
+     "hi": "AI क्या सही करता है — और क्या गलत"
+    },
+    "p": [
+     {
+      "en": "AI is excellent at consistency: the same palm always yields the same analysis, with no mood or bias. Where it falls short is nuance — a human palmist reads skin texture, warmth and the seeker's questions. That is why the best approach is hybrid: let the engine do the maths, use the shastra for meaning.",
+      "hi": "AI निरंतरता में उत्कृष्ट है: एक ही हाथ से हमेशा एक जैसा विश्लेषण निकलता है, बिना मनोदशा या पक्षपात के। जहाँ ये टूटता है वह सूक्ष्मता है — मानव हस्तरेखी त्वचा की बनावट, ऊष्मा और जिज्ञासु के प्रश्न भी पढ़ता है। इसीलिए सर्वोत्तम उपा�य संकर है: गणित इंजन से कराइए, अर्थ शास्त्र से लीजिए।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "numerology-palm-combo",
+  "cat": "graha",
+  "title": {
+   "en": "Numerology + Palmistry: The Destiny Combo",
+   "hi": "अंक ज्योतिष + हस्तरेखा: भाग्य का संयोजन"
+  },
+  "excerpt": {
+   "en": "Your birth number and your palm often tell the same story from two directions. Learn how numerology and hast rekha confirm each other — and what it means when they disagree.",
+   "hi": "आपका जन्म-अंक और आपकी हथेली अक्सर दो दिशाओं से एक ही कथा कहते हैं। जानें अंक ज्योतिष और हस्तरेखा एक-दूसरे की पुष्टि कैसे करते हैं — और असहमति होने पर उसका अर्थ क्या है।"
+  },
+  "tags": {
+   "en": [
+    "numerology",
+    "palmistry",
+    "ank jyotish"
+   ],
+   "hi": [
+    "अंक ज्योतिष",
+    "हस्तरेखा",
+    "अंक विज्ञान"
+   ]
+  },
+  "date": "2026-09-18",
+  "mins": 6,
+  "intro": [
+   {
+    "en": "Numerology reduces your birth date to a single vibration; palmistry reads the map your body carries. When both point the same way, the reading gains real weight.",
+    "hi": "अंक ज्योतिष आपकी जन्म-तिथि को एक स्पंदन में घटाता है; हस्तरेखा शरीर के वहन किए नक्शे को पढ़ती है। दोनों एक दिशा में इशारा करें तो रीडिंग का भार सचमुच बढ़ जाता है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Life number and the fate line",
+     "hi": "मूलांक और भाग्य रेखा"
+    },
+    "p": [
+     {
+      "en": "If your life number (mulank) is 1, 3 or 9 — solar numbers — classical texts expect a strong, unbroken fate line and a prominent Jupiter mount. 2, 7 are lunar: a longer heart line and fuller moon mount fit better. Check both on your own hand at hastrekhaai.online.",
+      "hi": "यदि आपका मूलांक 1, 3 या 9 है — सौर अंक — तो शास्त्रों में अटूट भाग्य रेखा और प्रबल गुरु पर्वत अपेक्षित है। 2, 7 चांद्र हैं: लंबी हृदय रेखा और भरा चंद्र पर्वत अधिक मेल खाता है। दोनों अपने हाथ पर hastrekhaai.online पर जाँचें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "When they disagree",
+     "hi": "जब दोनों असहमत हों"
+    },
+    "p": [
+     {
+      "en": "A mismatch is not a contradiction — it is a crossroads. Numerology shows the potential you were born with; the palm shows how much of it your choices have activated. A weak line under a strong number means untapped potential, and upay can help direct it.",
+      "hi": "बेमेल विरोध नहीं, चौराहा है। अंक ज्योतिष जन्मजात क्षमता दिखाता है; हाथ बताता है कि आपके निर्णयों ने उसमें से कितना जगाया। प्रबल अंक के नीचे कमजोर रेखा अनुत्तेजित क्षमता है — उपाय उसे दिशा दे सकते हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "left-hand-right-hand",
+  "cat": "palm",
+  "title": {
+   "en": "Left Hand vs Right Hand in Palmistry: Which One Matters?",
+   "hi": "हस्तरेखा में बायाँ बनाम दायाँ हाथ: कौन-सा मायने रखता है?"
+  },
+  "excerpt": {
+   "en": "The classic debate, settled: the passive hand shows what you were born with, the dominant hand shows what you made of it. Here is how palmists actually read both.",
+   "hi": "शास्त्रीय बहस का समाधान: स्वाभाविक हाथ वह दिखाता है जो जन्म से मिला, प्रयुक्त हाथ वह जो आपने बनाया। हस्तरेखी दोनों को वास्तव में कैसे पढ़ते हैं, जानिए।"
+  },
+  "tags": {
+   "en": [
+    "left hand",
+    "right hand",
+    "palm reading basics"
+   ],
+   "hi": [
+    "बायाँ हाथ",
+    "दायाँ हाथ",
+    "हस्तरेखा आधार"
+   ]
+  },
+  "date": "2026-09-17",
+  "mins": 5,
+  "intro": [
+   {
+    "en": "Ask any traditional palmist and you will hear the same formula: the hand you do not write with is the inheritance, the one you do is the achievement.",
+    "hi": "किसी भी पारंपरिक हस्तरेखी से पूछिए, एक ही सूत्र मिलेगा: जिस हाथ से नहीं लिखते वह विरासत है, जिससे लिखते हैं वह उपलब्धि।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Two hands, two stories",
+     "hi": "दो हाथ, दो कथा"
+    },
+    "p": [
+     {
+      "en": "The passive hand carries sanchita — your accumulated karma and inborn temperament. The active hand carries kriyamana — what you are doing with it right now. Differences between the two are the most interesting part of any reading: they show growth, or drift.",
+      "hi": "स्वाभाविक हाथ संचित — जन्मजात स्वभाव व कर्म — वहन करता है। प्रयुक्त हाथ क्रियमाण — वर्तमान उपयोग — दिखाता है। दोनों का अंतर किसी भी रीडिंग का सबसे रोचक हिस्सा है: वही विकास या विचलन दिखाता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Practical rules",
+     "hi": "व्यावहारिक नियम"
+    },
+    "p": [
+     {
+      "en": "Read both hands always. If the active hand's life line is stronger, your habits are supporting your health. If the passive hand's heart line is deeper, you have grown guarded. Upload both palms at hastrekhaai.online and compare the two reports side by side.",
+      "hi": "सदा दोनों हाथ पढ़ें। प्रयुक्त हाथ की जीवन रेखा अधिक प्रबल हो तो आपकी आदतें स्वास्थ्य के साथ हैं। स्वाभाविक हाथ की हृदय रेखा गहरी हो तो आपने सावधानी अपनाई है। दोनों हथेलियाँ hastrekhaai.online पर अपलोड करें और दोनों रिपोर्ट साथ-साथ तुलना करें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "saturn-return-2026",
+  "cat": "graha",
+  "title": {
+   "en": "Saturn Return 2026: Why Your Late 20s Feel So Heavy",
+   "hi": "शनि की वापसी 2026: 20 के अंत का दौर इतना भारी क्यों लगता है"
+  },
+  "excerpt": {
+   "en": "Saturn returns to its birth position roughly every 29 years — and 2026 is a big Saturn year. What this transit asks of you, and the classical upay that soften it.",
+   "hi": "शनि लगभग हर 29 वर्ष में अपने जन्म-स्थान पर लौटता है — और 2026 बड़ा शनि-वर्ष है। यह गोचर आपसे क्या माँगता है, और शास्त्रीय उपाय जो इसे सुहाते हैं।"
+  },
+  "tags": {
+   "en": [
+    "saturn return",
+    "shani gochar",
+    "transit 2026"
+   ],
+   "hi": [
+    "शनि वापसी",
+    "शनि गोचर",
+    "गोचर 2026"
+   ]
+  },
+  "date": "2026-09-16",
+  "mins": 8,
+  "intro": [
+   {
+    "en": "Between ages 27 and 31, Saturn comes home to where it sat when you were born. Careers wobble, relationships get serious, and everyone suddenly wants a five-year plan. This is not a curse — it is an audit.",
+    "hi": "27 से 31 की आयु के बीच शनि अपने जन्म-स्थान पर लौटता है। करियर डगमगाता है, रिश्ते गंभीर होते हैं, और सब पाँच-वर्षीय योजना माँगने लगते हैं। यह शाप नहीं — ऑडिट है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "What Saturn actually audits",
+     "hi": "शनि वास्तव में क्या जाँचता है"
+    },
+    "p": [
+     {
+      "en": "Saturn is the rishi of consequences. Its return tests whatever you built on borrowed foundations — the career chosen for status, the relationship kept out of habit. What survives this transit is genuinely yours; what falls was scaffolding.",
+      "hi": "शनि परिणामों के ऋषि हैं। उनकी वापसी उसी की परीक्षा लेती है जो उधार नींव पर खड़ा किया — प्रतिष्ठा के लिए चुना करियर, आदत से निभाया रिश्ता। जो इस गोचर में टिकता है वह सचमुच आपका है; जो गिरता है वह पटड़ी थी।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Classical upay for Shani",
+     "hi": "शनि के शास्त्रीय उपाय"
+    },
+    "p": [
+     {
+      "en": "The tradition prescribes service (especially to elders and labourers), Saturday discipline, sesame-oil lamp on Saturdays, and the Shani mantra 'Om Sham Shanicharaya Namah' — 108 repetitions. Discipline, not fear, is the response Saturn rewards. For your personal Saturn placement, get a free kundli at hastrekhaai.online.",
+      "hi": "परंपरा सेवा (विशेषकर वृद्धों व श्रमिकों की), शनिवार-अनुशासन, शनिवार को तिल-तेल का दीप, और शनि मंत्र 'ॐ शं शनैश्चराय नमः' — 108 जप — सुझाती है। शनि अनुशासन को पुरस्कृत करते हैं, भय को नहीं। अपनी शनि-स्थिति के लिए hastrekhaai.online पर मुफ्त कुंडली बनाइए।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "marriage-line-timing",
+  "cat": "palm",
+  "title": {
+   "en": "Marriage Line: When Will You Marry? Reading the Timing",
+   "hi": "विवाह रेखा: विवाह कब? समय पढ़ने की विधि"
+  },
+  "excerpt": {
+   "en": "Palmists time marriage from the marriage lines on the percussion — position, depth and branches all carry meaning. A practical guide to what the shastra actually says.",
+   "hi": "हस्तरेखी विवाह-रेखाओं की स्थिति, गहराई व शाखाओं से समय निकालते हैं। शास्त्र वास्तव में क्या कहता है — एक व्यावहारिक मार्गदर्शन।"
+  },
+  "tags": {
+   "en": [
+    "marriage line",
+    "vivah rekha",
+    "marriage timing"
+   ],
+   "hi": [
+    "विवाह रेखा",
+    "विवाह समय",
+    "हस्तरेखा"
+   ]
+  },
+  "date": "2026-09-15",
+  "mins": 6,
+  "intro": [
+   {
+    "en": "The small horizontal lines on the edge of the palm between the heart line and little finger are the marriage lines — and they are the most-asked-about feature in any reading.",
+    "hi": "हृदय रेखा और कनिष्ठा के बीच हथेली के किनारे की छोटी आड़ी रेखाएँ विवाह रेखाएँ हैं — और रीडिंग में सबसे अधिक पूछी जाने वाली विशेषता यही हैं।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Position = timing",
+     "hi": "स्थिति = समय"
+    },
+    "p": [
+     {
+      "en": "Classical method: divide the distance from heart line to little-finger base into thirds. A line in the upper third suggests early marriage (before ~25), the middle third around 25–34, and the lower third later in life. Depth shows the strength of the bond; a fork at the start shows a long courtship.",
+      "hi": "शास्त्रीय विधि: हृदय रेखा से कनिष्ठा-आधार तक की दूरी को तीन भागों में बाँटिए। ऊपरी तिहाई में रेखा शीघ्र विवाह (~25 से पहले) संकेतित करती है, मध्य तिहाई लगभग 25–34, और निचली तिहाई जीवन का विलंब। गहराई बंधन की मजबूती दिखाती है; आरंभ का काँटा लंबी प्रेम-यात्रा दिखाता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "What branches and islands mean",
+     "hi": "शाखाएँ और द्वीप का अर्थ"
+    },
+    "p": [
+     {
+      "en": "An upward branch from the marriage line is read as growth through partnership; a downward branch flags a period of strain. An island suggests a phase of separation or ill health of the spouse. Remember — these are tendencies, not verdicts. Check your own lines free at hastrekhaai.online.",
+      "hi": "विवाह रेखा से ऊपर की शाखा साझेदारी से विकास पढ़ी जाती है; नीचे की शाखा तनाव-काल दिखाती है। द्वीप जीवनसाथी के स्वास्थ्य या पृथक्काल का संकेत है। स्मरण रहे — ये प्रवृत्तियाँ हैं, निर्णय नहीं। अपनी रेखाएँ hastrekhaai.online पर मुफ्त देखें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "mangal-dosh-truth",
+  "cat": "graha",
+  "title": {
+   "en": "Mangal Dosh: Myths, Facts and the Real Remedy",
+   "hi": "मंगल दोष: मिथक, तथ्य और वास्तविक उपाय"
+  },
+  "excerpt": {
+   "en": "Mangal dosh (Kuja dosha) scares more people than it should. What the classical texts actually require, when it truly matters, and the authentic upay.",
+   "hi": "मंगल दोष (कुज दोष) का डर जितना होना चाहिए, उससे अधिक है। शास्त्र वास्तव में क्या कहते हैं, यह कब महत्वपूर्ण होता है, और प्रामाणिक उपाय क्या है।"
+  },
+  "tags": {
+   "en": [
+    "mangal dosh",
+    "kuja dosha",
+    "marriage astrology"
+   ],
+   "hi": [
+    "मंगल दोष",
+    "कुज दोष",
+    "विवाह ज्योतिष"
+   ]
+  },
+  "date": "2026-09-14",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "Ask 'mangli ho?' in any arranged-marriage conversation and the room changes temperature. But the classical rules for Mangal dosh are far narrower than popular fear suggests.",
+    "hi": "अरेंज्ड-मैरिज की किसी भी बातचीत में 'मांगलिक हो?' पूछ दीजिए, कमरा बदल जाता है। पर मंगल दोष के शास्त्रीय नियम लोक-भय की तुलना में बहुत संकुचित हैं।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "What actually counts",
+     "hi": "वास्तव में क्या गिना जाता है"
+    },
+    "p": [
+     {
+      "en": "Mangal dosh is considered when Mars sits in the 1st, 4th, 7th, 8th or 12th house from the lagna. But tradition applies many cancellations: Mars in own sign (Aries/Scorpio), Mars aspected by Jupiter, Mars past 28 years of age by dasha, and — most importantly — matching Mangal in both charts neutralises it entirely.",
+      "hi": "लग्न से मंगल 1, 4, 7, 8 या 12 भाव में हो तो मंगल दोष माना जाता है। पर परंपरा अनेक परिहार बताती है: मंगल स्वगृही (मेष/वृश्चिक), गुरु की दृष्टि में मंगल, 28 वर्ष से अधिक आयु में दशा-प्रभाव, और — सबसे महत्वपूर्ण — दोनों कुंडलियों में मेल तो दोष पूर्णतः निरस्त।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "The real remedy",
+     "hi": "वास्तविक उपाय"
+    },
+    "p": [
+     {
+      "en": "Tuesday Hanuman worship, red lentils donated on Tuesdays, and the mangal mantra 'Om Kram Kreem Kraum Sah Bhaumaya Namah' are the classical prescriptions. But the deepest remedy is matching: get both charts read free at hastrekhaai.online before drawing any conclusion.",
+      "hi": "मंगलवार हनुमान उपासना, मंगलवार अरहर-दान, और मंगल मंत्र 'ॐ क्रां क्रीं क्रौं सः भौमाय नमः' — शास्त्रीय उपाय ये हैं। पर सबसे गहरा उपाय मिलान है: कोई निष्कर्ष निकालने से पहले दोनों कुंडलियाँ hastrekhaai.online पर मुफ्त पढ़वाइए।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "money-lines-palm",
+  "cat": "palm",
+  "title": {
+   "en": "Money Lines in Your Palm: The Wealth Signs",
+   "hi": "हथेली की धन रेखाएँ: संपत्ति के संकेत"
+  },
+  "excerpt": {
+   "en": "From the money triangle to the sun line to Mercury mounts — where classical palmistry looks for wealth signatures, and what a strong one actually promises.",
+   "hi": "धन त्रिभुज से सूर्य रेखा और बुध पर्वत तक — शास्त्रीय हस्तरेखा संपत्ति के चिह्न कहाँ खोजती है, और प्रबल चिह्न वास्तव में क्या वादा करता है।"
+  },
+  "tags": {
+   "en": [
+    "money line",
+    "wealth palmistry",
+    "dhan rekha"
+   ],
+   "hi": [
+    "धन रेखा",
+    "धन हस्तरेखा",
+    "संपत्ति संकेत"
+   ]
+  },
+  "date": "2026-09-13",
+  "mins": 6,
+  "intro": [
+   {
+    "en": "Wealth in hast rekha is never one line — it is a pattern. The money triangle, the sun line, the Mercury line and the Jupiter mount all contribute to what classical palmists call the 'wealth signature'.",
+    "hi": "हस्तरेखा में धन कभी एक रेखा नहीं — पैटर्न है। धन त्रिभुज, सूर्य रेखा, बुध रेखा और गुरु पर्वत मिलकर वह बनाते हैं जिसे शास्त्रीय हस्तरेखी 'धन-हस्ताक्षर' कहते हैं।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "The money triangle",
+     "hi": "धन त्रिभुज"
+    },
+    "p": [
+     {
+      "en": "Formed where the head line and life line meet with a third connecting line. A clear, unbroken triangle indicates steady accumulation; breaks suggest money flowing through, not staying. A star on the Apollo line is read as sudden fame-linked fortune.",
+      "hi": "जहाँ मस्तिष्क रेखा और जीवन रेखा मिलती हैं और तीसरी जोड़ने वाली रेखा बनती है, वह धन त्रिभुज है। स्पष्ट, अटूट त्रिभुज स्थिर संचय दिखाता है; विच्छेद धन के आना-जाना। अपोलो रेखा पर तारा कीर्ति-संबद्ध अचानक भाग्य पढ़ा जाता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Sun line and Mercury line",
+     "hi": "सूर्य रेखा और बुध रेखा"
+    },
+    "p": [
+     {
+      "en": "A deep sun line under the ring finger promises recognition-based prosperity — wealth that follows reputation. A clear Mercury line adds business acumen. Find your wealth signature instantly at hastrekhaai.online with a free palm scan.",
+      "hi": "अनामिका के नीचे गहरी सूर्य रेखा प्रतिष्ठा-जन्य समृद्धि का वादा करती है — नाम के पीछे चलता धन। स्पष्ट बुध रेखा व्यापारिक बुद्धि जोड़ती है। अपना धन-हस्ताक्षर hastrekhaai.online पर मुफ्त पाम-स्कैन से तुरंत जानिए।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "retrograde-planets-2026",
+  "cat": "graha",
+  "title": {
+   "en": "Retrograde Planets 2026: What Vakri Grah Really Mean",
+   "hi": "वक्री ग्रह 2026: रेट्रोग्रेड का वास्तविक अर्थ"
+  },
+  "excerpt": {
+   "en": "Mercury retrograde memes aside, what does vakri actually mean in Jyotish? The real effects on dasha results, plus the 2026 retrograde calendar.",
+   "hi": "मर्करी रेट्रोग्रेड के मीम्स छोड़िए — ज्योतिष में वक्री का वास्तविक अर्थ क्या है? दशा-फल पर असर, और 2026 का वक्री कैलेंडर।"
+  },
+  "tags": {
+   "en": [
+    "retrograde",
+    "vakri grah",
+    "mercury retrograde 2026"
+   ],
+   "hi": [
+    "वक्री ग्रह",
+    "रेट्रोग्रेड 2026",
+    "बुध वक्री"
+   ]
+  },
+  "date": "2026-09-12",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "Every few months the internet declares Mercury retrograde responsible for everything from lost keys to breakups. Jyotish has a subtler — and more useful — view of vakri planets.",
+    "hi": "हर कुछ महीनों में इंटरनेट मर्करी रेट्रोग्रेड को खोई चाबियों से ब्रेकअप तक सबका कारण बताता है। ज्योतिष का वक्री ग्रहों पर दृष्टिकोण सूक्ष्मतर — और अधिक उपयोगी — है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "What vakri means in Jyotish",
+     "hi": "ज्योतिष में वक्री का अर्थ"
+    },
+    "p": [
+     {
+      "en": "A retrograde planet is read as strong (cheshta bala — high effort-motivation) but inward-facing. Its dasha results arrive with revisiting: past projects resurface, old contacts return, unfinished karma demands completion. Retrograde malefics turn their intensity inward — self-doubt, rework.",
+      "hi": "वक्री ग्रह बलवान (चेष्टा बल — उच्च प्रयास-ऊर्जा) पर अंतर्मुखी पढ़ा जाता है। उसकी दशा के फल पुनरावृत्ति के साथ आते हैं: पुराने प्रोजेक्ट लौटते हैं, पुराने संपर्क जुड़ते हैं, अधूरा कर्म पूर्णता माँगता है। वक्री पाप ग्रह तीव्रता भीतर मोड़ते हैं — आत्म-संदेह, दोहराव।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Surviving the 2026 retrogrades",
+     "hi": "2026 की वक्री अवधि"
+    },
+    "p": [
+     {
+      "en": "Practical rule: during a retrograde dasha or transit, review rather than launch, reconcile rather than decide. Get your personal dasha calendar free at hastrekhaai.online to see exactly when your vakri periods fall in 2026.",
+      "hi": "व्यावहारिक नियम: वक्री दशा या गोचर में शुभारंभ नहीं, समीक्षा; निर्णय नहीं, सुलह। अपनी व्यक्तिगत दशा-कैलेंडर hastrekhaai.online पर मुफ्त देखिए और जानिए 2026 में आपकी वक्री अवधियाँ कब हैं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "life-line-longevity-myth",
+  "cat": "palm",
+  "title": {
+   "en": "Does a Short Life Line Mean a Short Life? The Myth Busted",
+   "hi": "छोटी जीवन रेखा का अर्थ कम आयु नहीं — मिथक का खंडन"
+  },
+  "excerpt": {
+   "en": "The most misunderstood line in palmistry. Why length is not lifespan, what the life line actually measures, and what to read instead.",
+   "hi": "हस्तरेखा की सबसे गलत समझी जाने वाली रेखा। लंबाई आयु क्यों नहीं है, जीवन रेखा वास्तव में क्या मापती है, और इसके बजाय क्या पढ़ें।"
+  },
+  "tags": {
+   "en": [
+    "life line",
+    "longevity",
+    "palm myths"
+   ],
+   "hi": [
+    "जीवन रेखा",
+    "आयु",
+    "हस्तरेखा मिथक"
+   ]
+  },
+  "date": "2026-09-11",
+  "mins": 5,
+  "intro": [
+   {
+    "en": "Nothing frightens a first-time palm-reading client like a short life line. And nothing is further from the classical teaching.",
+    "hi": "पहली बार हाथ पढ़वाने वाले को छोटी जीवन रेखा सबसे अधिक डराती है। और शास्त्रीय शिक्षा से उतना दूर और कुछ नहीं।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "What the life line measures",
+     "hi": "जीवन रेखा क्या मापती है"
+    },
+    "p": [
+     {
+      "en": "The life line circles the Jupiter mount and Venus mount — it maps vitality, recovery power and life-quality, not years. Classical texts read longevity primarily from the thumb, the overall hand strength and the taurus (thumb base), with the life line as one supporting factor among many.",
+      "hi": "जीवन रेखा गुरु पर्वत और शुक्र पर्वत के चारों ओर घेरती है — यह जीवनी, रोग-प्रतिरोध और जीवन-गुणवत्ता का नक्शा है, वर्षों का नहीं। शास्त्र आयु मुख्यतः अंगूठे, समग्र हस्त-बल और कंठ से पढ़ते हैं; जीवन रेखा अनेक सहायक कारकों में एक है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "What actually matters more",
+     "hi": "वास्तव में क्या अधिक मायने रखता है"
+    },
+    "p": [
+     {
+      "en": "A deep, clear, unbroken line of any length beats a long but chained one. Branches upward show achievement; downward ones flag energy drains. Scan your life line free at hastrekhaai.online and read the honest interpretation — not the fear version.",
+      "hi": "किसी भी लंबाई की गहरी, स्पष्ट, अटूट रेखा लंबी पर जंजीरयुक्त रेखा से बेहतर है। ऊपर की शाखाएँ उपलब्धि; नीचे की ऊर्जा-हानि। अपनी जीवन रेखा hastrekhaai.online पर मुफ्त स्कैन करें और ईमानदार व्याख्या पढ़ें — डर वाली नहीं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "nakshatra-based-naming",
+  "cat": "rashi",
+  "title": {
+   "en": "Naming Your Baby by Nakshatra: The 2026 Guide",
+   "hi": "नक्षत्र से बच्चे का नाम: 2026 मार्गदर्शिका"
+  },
+  "excerpt": {
+   "en": "The classical naming system links each nakshatra pada to a starting syllable. Complete syllable chart, plus how to find your baby's nakshatra in minutes.",
+   "hi": "शास्त्रीय नामकरण प्रणाली हर नक्षत्र-पद को आरंभिक अक्षर से जोड़ती है। पूर्ण अक्षर-तालिका, और बच्चे का नक्षत्र मिनटों में ज्ञात करने की विधि।"
+  },
+  "tags": {
+   "en": [
+    "nakshatra naming",
+    "baby names 2026",
+    "namakarana"
+   ],
+   "hi": [
+    "नक्षत्र नामकरण",
+    "बच्चे के नाम 2026",
+    "नामकरण"
+   ]
+  },
+  "date": "2026-09-10",
+  "mins": 6,
+  "intro": [
+   {
+    "en": "Namakarana — the naming ceremony — is one of the sixteen samskaras, and the classical method starts from the moon's nakshatra at birth, not from a trending name list.",
+    "hi": "नामकरण — षोडश संस्कारों में से एक — की शास्त्रीय विधि ट्रेंडिंग नाम-सूची से नहीं, जन्म के समय चंद्र के नक्षत्र से आरंभ होती है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "How the syllable system works",
+     "hi": "अक्षर-प्रणाली कैसे काम करती है"
+    },
+    "p": [
+     {
+      "en": "Each of the 27 nakshatras has four padas, and each pada maps to a syllable — Ashwini's padas begin चु, चे, चो, ला; Rohini's ओ, वा, वी, वू; and so on. The syllable carries the nakshatra's vibration into daily use. The full 108-syllable chart is built into Hast Rekha AI's kundli output.",
+      "hi": "27 नक्षत्रों में से प्रत्येक के चार पद हैं, और हर पद एक अक्षर से जुड़ा है — अश्विनी के पद चु, चे, चो, ला से; रोहिणी के ओ, वा, वी, वू से; आगे इसी प्रकार। अक्षर नक्षत्र का स्पंदन दैनिक उपयोग में वहन करता है। पूर्ण 108-अक्षर तालिका हस्त रेखा AI की कुंडली में निहित है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Finding the nakshatra fast",
+     "hi": "नक्षत्र शीघ्र ज्ञात करें"
+    },
+    "p": [
+     {
+      "en": "Enter the birth date, time and place at hastrekhaai.online — the engine computes the moon's sidereal longitude and returns the nakshatra, pada and recommended syllables instantly, free. Then pick a modern name starting with that syllable.",
+      "hi": "hastrekhaai.online पर जन्म-तिथि, समय और स्थान दर्ज करें — इंजन चंद्र का सायन रेखांश निकालकर नक्षत्र, पद और अनुशंसित अक्षर तुरंत, मुफ्त देता है। फिर उसी अक्षर से आधुनिक नाम चुन लीजिए।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "mercury-line-career",
+  "cat": "palm",
+  "title": {
+   "en": "The Mercury Line: Your Hidden Business Talent",
+   "hi": "बुध रेखा: आपकी छिपी व्यापारिक प्रतिभा"
+  },
+  "excerpt": {
+   "en": "Rare but powerful — the Mercury line (health line) reveals business instinct, healing ability and communication gifts when present.",
+   "hi": "दुर्लभ पर प्रभावशाली — बुध रेखा (स्वास्थ्य रेखा) होने पर व्यापार-बुद्धि, चिकित्सा-क्षमता और संवाद-प्रतिभा प्रकट करती है।"
+  },
+  "tags": {
+   "en": [
+    "mercury line",
+    "business palmistry",
+    "health line"
+   ],
+   "hi": [
+    "बुध रेखा",
+    "व्यापार हस्तरेखा",
+    "स्वास्थ्य रेखा"
+   ]
+  },
+  "date": "2026-09-09",
+  "mins": 5,
+  "intro": [
+   {
+    "en": "Most palms don't have a clear Mercury line — and that itself is information. When present, it runs from the life line's base toward the Mercury mount under the little finger.",
+    "hi": "अधिकांश हथेलियों में स्पष्ट बुध रेखा नहीं होती — और यही जानकारी है। होने पर यह जीवन रेखा के आधार से कनिष्ठा के नीचे बुध पर्वत की ओर चलती है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "What a strong Mercury line promises",
+     "hi": "प्रबल बुध रेखा क्या वादा करती है"
+    },
+    "p": [
+     {
+      "en": "Classical readings tie it to three gifts: commercial instinct (buying, selling, negotiation), healing hands (medicine, therapy, hospitality) and persuasive communication. Entrepreneurs and doctors alike are found to carry it. A broken line warns of overwork affecting health.",
+      "hi": "शास्त्रीय व्याख्या इसे तीन प्रतिभाओं से जोड़ती है: व्यापारिक सूझ (क्रय-विक्रय, सौदेबाजी), चिकित्सक हस्त (चिकित्सा, उपचार, आतिथ्य) और प्रभावी संवाद। उद्यमी और चिकित्सक — दोनों में यह मिलती है। टूटी रेखा अति-श्रम से स्वास्थ्य-प्रभाव की चेतावनी है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Developing the gift",
+     "hi": "प्रतिभा का विकास"
+    },
+    "p": [
+     {
+      "en": "A faint Mercury line strengthens with use — the shastra links Budha to Vishnu worship on Wednesdays and green moong donations. Check whether you carry this line at hastrekhaai.online — the free scan flags it automatically.",
+      "hi": "हल्की बुध रेखा उपयोग से प्रबल होती है — शास्त्र बुध को बुधवार विष्णु-उपासना और हरे मूंग-दान से जोड़ते हैं। जाँचिए कि यह रेखा आपमें है या नहीं — hastrekhaai.online का मुफ्त स्कैन इसे स्वतः दिखाता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "palm-reading-guide-beginners",
+  "cat": "palm",
+  "title": {
+   "en": "How to Read Your Own Palm: A 10-Minute Beginner's Method",
+   "hi": "अपनी हथेली स्वयं कैसे पढ़ें: 10-मिनट की शुरुआती विधि"
+  },
+  "excerpt": {
+   "en": "A structured first reading you can do tonight: hand shape, then the three major lines, then mounts. No jargon, no fear — just the classical order.",
+   "hi": "आज रात ही कर सकते हैं एक व्यवस्थित पहली रीडिंग: हाथ की बनावट, फिर तीन प्रमुख रेखाएँ, फिर पर्वत। न शब्दजाल, न डर — बस शास्त्रीय क्रम।"
+  },
+  "tags": {
+   "en": [
+    "palm reading guide",
+    "beginner palmistry",
+    "self reading"
+   ],
+   "hi": [
+    "हस्तरेखा गाइड",
+    "शुरुआती हस्तरेखा",
+    "स्वयं रीडिंग"
+   ]
+  },
+  "date": "2026-09-08",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "Professional readings follow an order — shape, lines, mounts, marks — and you can borrow that structure tonight with nothing but good light and ten minutes.",
+    "hi": "पेशेवर रीडिंग एक क्रम रखती है — आकार, रेखाएँ, पर्वत, चिह्न — और आप वह ढाँचा आज रात, बस अच्छी रोशनी और दस मिनट में अपना सकते हैं।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Step 1 — hand shape; Step 2 — the three lines",
+     "hi": "चरण 1 — हाथ का आकार; चरण 2 — तीन रेखाएँ"
+    },
+    "p": [
+     {
+      "en": "Earth hands (square, heavy) value stability; air hands (square, long fingers) live in ideas; water hands (oval, soft) feel everything; fire hands (rectangular, short fingers) act fast. Then read the three majors: heart line (feeling style), head line (thinking style), life line (energy style).",
+      "hi": "मृदा हस्त (वर्गाकार, भारी) स्थिरता चाहते हैं; वायु हस्त (वर्गाकार, लंबी उँगलियाँ) विचारों में जीते हैं; जल हस्त (अंडाकार, कोमल) सब महसूस करते हैं; अग्नि हस्त (आयताकार, छोटी उँगलियाँ) तुरंत करते हैं। फिर तीन प्रमुख पढ़ें: हृदय रेखा (भाव-शैली), मस्तिष्क रेखा (विचार-शैली), जीवन रेखा (ऊर्जा-शैली)।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Step 3 — mounts and the shortcut",
+     "hi": "चरण 3 — पर्वत और शॉर्टकट"
+    },
+    "p": [
+     {
+      "en": "Press each mount lightly: a springy Jupiter mount shows leadership appetite; a full Venus mount shows warmth and vitality. Or skip the manual work — upload your palm photo at hastrekhaai.online and get all of this analysed free in under a minute.",
+      "hi": "हर पर्वत को हल्का दबाइए: स्प्रिंग-जैसा गुरु पर्वत नेतृत्व-लालसा दिखाता है; भरा शुक्र पर्वत ऊष्मा व जीवनी। या मेहनत छोड़िए — hastrekhaai.online पर हथेली की फोटो अपलोड करें और यह सब एक मिनट से कम में मुफ्त विश्लेषण पाएँ।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "gemini-season-2026-rashi",
+  "cat": "rashi",
+  "title": {
+   "en": "Rashi Predictions 2026: The Year's Second Half, Sign by Sign",
+   "hi": "राशिफल 2026: वर्ष का दूसरा अर्ध, राशि-दर-राशि"
+  },
+  "excerpt": {
+   "en": "Jupiter, Saturn and Rahu shift the second half of 2026 differently for each moon sign. A compact per-rashi outlook — find yours and plan the quarter.",
+   "hi": "गुरु, शनि और राहु 2026 का दूसरा अर्ध हर चंद्र-राशि के लिए अलग रूप से बदलते हैं। प्रति-राशि संक्षिप्त दृष्टिकोण — अपनी राशि देखें और तिमाही की योजना बनाएँ।"
+  },
+  "tags": {
+   "en": [
+    "rashifal 2026",
+    "horoscope 2026",
+    "rashi predictions"
+   ],
+   "hi": [
+    "राशिफल 2026",
+    "भविष्यफल 2026",
+    "राशि अनुमान"
+   ]
+  },
+  "date": "2026-09-07",
+  "mins": 8,
+  "intro": [
+   {
+    "en": "Half-year outlooks work because the slow planets — Jupiter and Saturn — set the theme while faster ones colour it. Here is the compact 2026-H2 picture per moon sign.",
+    "hi": "अर्ध-वार्षिक दृष्टिकोण इसलिए काम करता है कि धीमे ग्रह — गुरु और शनि — विषय-वस्तु तय करते हैं, तीव्र ग्रह उसे रंगते हैं। प्रति चंद्र-राशि 2026-द्वितीयार्ध का संक्षिप्त चित्र यह है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Fire and earth signs",
+     "hi": "अग्नि और मृदा राशियाँ"
+    },
+    "p": [
+     {
+      "en": "Aries: Jupiter's aspect on career houses favors bold moves after September. Leo: recognition rises but guard the heart-line expenses. Sagittarius: travel and teaching open doors. Taurus: property and family matters finalize. Virgo: health routines finally stick. Capricorn: Saturn's own return tests structures — delegate more.",
+      "hi": "मेष: सितंबर के बाद गुरु की करियर-भाव पर दृष्टि साहसिक कदम को अनुकूल। सिंह: मान-वृद्धि पर हृदय-रेखा खर्चों पर रोक। धनु: यात्रा और शिक्षा द्वार खोलेंगे। वृष: संपत्ति व परिवार के प्रश्न निपटेंगे। कन्या: स्वास्थ्य-दिनचर्या अब टिकेगी। मकर: शनि की अपनी वापसी ढाँचे की जाँच लेगी — कार्य बाँटिए।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Air and water signs",
+     "hi": "वायु और जल राशियाँ"
+    },
+    "p": [
+     {
+      "en": "Gemini: Mercury's long stay makes Q4 the year's best for launches. Libra: partnerships get formalized — shaadi or shastra (contracts). Aquarius: research pays; avoid shortcuts. Cancer: home and mother need attention; a gentle upay — white sweets on Mondays. Scorpio: transformation completes; the fog lifts after October. Pisces: guru-blessed travel; give back through teaching.",
+      "hi": "मिथुन: बुध का दीर्घ वास चौथी तिमाही को वर्ष का सर्वश्रेष्ठ शुभारंभ-काल बनाता है। तुला: साझेदारी रूप लेगी — विवाह या अनुबंध। कुम्भ: अनुसंधान फलदायी; शॉर्टकट से बचें। कर्क: घर व माता को ध्यान चाहिए; सौम्य उपाय — सोमवार सफेद मिठाई दान। वृश्चिक: परिवर्तन पूर्ण; अक्टूबर के बाद कोहरा उठेगा। मीन: गुरु-अनुग्रह यात्रा; शिक्षण देकर ऋण चुकाएँ।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get your personal version",
+     "hi": "अपना व्यक्तिगत विवरण पाएँ"
+    },
+    "p": [
+     {
+      "en": "Generic sun-sign lists can only sketch. Your moon's exact nakshatra, lagna and dasha change everything — compute them free at hastrekhaai.online and read your own 2026, not everyone's.",
+      "hi": "सामान्य सूर्य-राशि सूची केवल रेखाचित्र है। आपके चंद्र का ठीक नक्षत्र, लग्न और दशा सब बदल देते हैं — hastrekhaai.online पर मुफ्त गणना करें और सबका नहीं, अपना 2026 पढ़ें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "simian-line-rare-mark",
+  "cat": "palm",
+  "title": {
+   "en": "The Simian Line: One of the Rarest Palm Marks",
+   "hi": "सिमियन रेखा: हथेली का अत्यंत दुर्लभ चिह्न"
+  },
+  "excerpt": {
+   "en": "When heart and head lines merge into one, you get the simian crease — found in barely 1–3% of hands. What classical palmistry reads into it.",
+   "hi": "जब हृदय और मस्तिष्क रेखा एक हो जाएँ, तो सिमियन रेखा बनती है — केवल 1–3% हाथों में। शास्त्रीय हस्तरेखा इससे क्या पढ़ती है।"
+  },
+  "tags": {
+   "en": [
+    "simian line",
+    "rare palm marks",
+    "single crease"
+   ],
+   "hi": [
+    "सिमियन रेखा",
+    "दुर्लभ हस्त चिह्न",
+    "एकल रेखा"
+   ]
+  },
+  "date": "2026-09-06",
+  "mins": 5,
+  "intro": [
+   {
+    "en": "Run a finger across your palm: most people feel two creases under the fingers. A few feel one. That single-crease hand — the simian line — is among the rarest features a palmist encounters.",
+    "hi": "हथेली पर उँगली फेरिए: अधिकांश लोगों को उँगलियों के नीचे दो रेखाएँ मिलेंगी। कुछ को एक। वह एकल-रेखा वाला हाथ — सिमियन रेखा — हस्तरेखी के सामने आने वाले दुर्लभतम लक्षणों में है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "What it traditionally means",
+     "hi": "परंपरागत अर्थ"
+    },
+    "p": [
+     {
+      "en": "Classical palmistry reads the simian line as fusion of feeling and thinking — the person processes emotion through logic and logic through emotion. The traditional virtues: extraordinary focus and all-or-nothing commitment. The caution: difficulty switching off. It is intensity, never a defect.",
+      "hi": "शास्त्रीय हस्तरेखा सिमियन रेखा को भाव और विचार के मेल के रूप में पढ़ती है — ऐसा व्यक्ति भावना को तर्क से और तर्क को भावना से संसाधित करता है। पारंपरिक गुण: असाधारण एकाग्रता और सर्व-या-कुछ नहीं प्रतिबद्धता। सावधानी: बंद करना कठिन। यह तीव्रता है, दोष कदापि नहीं।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Living with intensity",
+     "hi": "तीव्रता के साथ जीवन"
+    },
+    "p": [
+     {
+      "en": "Simian-line holders thrive with one deep pursuit rather than five scattered ones. If you suspect you have this rare line, verify it free at hastrekhaai.online — the analysis detects single-crease hands and adjusts the whole reading accordingly.",
+      "hi": "सिमियन रेखा वाले एक गहरी तपस्या में फलते-फूलते हैं, पाँच बिखरी चीज़ों में नहीं। संदेह हो कि यह दुर्लभ रेखा आपमें है — hastrekhaai.online पर मुफ्त जाँचें; विश्लेषण एकल-रेखा पहचानकर पूरी रीडिंग उसी अनुरूप ढालता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "astrology-podcast-trend-2026",
+  "cat": "upay",
+  "title": {
+   "en": "India's Astrology Boom 2026: Why Gen Z Is Checking Kundlis Again",
+   "hi": "भारत का ज्योतिष-उन्माद 2026: जेन Z फिर कुंडली क्यों देख रही है"
+  },
+  "excerpt": {
+   "en": "Short-form astrology reels, nakshatra-based dating and AI kundli apps — the ancient science is trending with 18–25s. What's driving it, and how to engage sanely.",
+   "hi": "शॉर्ट-फॉर्म ज्योतिष रील्स, नक्षत्र-आधारित डेटिंग और AI कुंडली ऐप्स — प्राचीन विज्ञान 18–25 आयुवर्ग में ट्रेंड कर रहा है। इसके कारण, और संयमित जुड़ाव कैसे हो।"
+  },
+  "tags": {
+   "en": [
+    "astrology trend 2026",
+    "gen z astrology",
+    "kundli app"
+   ],
+   "hi": [
+    "ज्योतिष ट्रेंड 2026",
+    "जेन Z ज्योतिष",
+    "कुंडली ऐप"
+   ]
+  },
+  "date": "2026-09-05",
+  "mins": 6,
+  "intro": [
+   {
+    "en": "Astrology content in India has exploded among Gen Z — but this generation consumes it differently: 30-second reels, AI-generated readings, and nakshatra-compatibility filters on dating apps.",
+    "hi": "भारत में ज्योतिष-सामग्री जेन Z के बीच विस्फोटक रूप से फैली है — पर यह पीढ़ी इसे नए ढंग से लेती है: 30-सेकंड रील्स, AI-जनित रीडिंग्स, और डेटिंग ऐप्स पर नक्षत्र-अनुकूलता फ़िल्टर।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "What's driving the boom",
+     "hi": "उन्माद के पीछे क्या है"
+    },
+    "p": [
+     {
+      "en": "Three forces: vernacular AI tools made Jyotish accessible in Hindi and regional languages; algorithm feeds reward daily-use formats (raashifal reels); and post-pandemic uncertainty keeps people seeking frameworks. The risk is skimming — depth lost to dopamine.",
+      "hi": "तीन शक्तियाँ: देशी-भाषा AI टूल्स ने ज्योतिष को हिंदी-क्षेत्रीय भाषाओं में सुलभ बनाया; एल्गोरिद्म-फ़ीड दैनिक-उपयोग फॉर्मेट (राशिफल रील्स) को पुरस्कृत करते हैं; और महामारी-उत्तर अनिश्चितता ढाँचों की खोज बढ़ाती है। जोखिम है ऊपरी-ऊपर पढ़ना — गहराई स्पंदन-सुख की कीमत पर।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Engaging sanely",
+     "hi": "संयमित जुड़ाव"
+    },
+    "p": [
+     {
+      "en": "Use reels as doorways, not destinations. One structured kundli or palm reading — like the free one at hastrekhaai.online — teaches more than a hundred skimmable clips, because it is computed from your actual birth data. Depth is the trend that never expires.",
+      "hi": "रील्स को द्वार बनाइए, गंतव्य नहीं। एक व्यवस्थित कुंडली या हस्तरेखा रीडिंग — जैसी hastrekhaai.online पर मुफ्त मिलती है — सैकड़ों झलकियों से अधिक सिखाती है, क्योंकि वह आपके वास्तविक जन्म-आँकड़ों से गणित होती है। गहराई ही वह ट्रेंड है जो कभी समाप्त नहीं होता।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "heart-line-relationship-style",
+  "cat": "palm",
+  "title": {
+   "en": "Your Heart Line Reveals Your Relationship Style",
+   "hi": "हृदय रेखा बताती है आपकी रिश्तों की शैली"
+  },
+  "excerpt": {
+   "en": "Curved or straight, long or short, ending under Jupiter or Saturn — the heart line is a map of how you love. Find your type and what it predicts.",
+   "hi": "वक्र या सीधी, लंबी या छोटी, गुरु या शनि के नीचे समाप्त — हृदय रेखा आपके प्रेम का नक्शा है। अपना प्रकार और उसका अनुमान जानिए।"
+  },
+  "tags": {
+   "en": [
+    "heart line",
+    "relationship palmistry",
+    "love line"
+   ],
+   "hi": [
+    "हृदय रेखा",
+    "रिश्ते हस्तरेखा",
+    "प्रेम रेखा"
+   ]
+  },
+  "date": "2026-09-04",
+  "mins": 5,
+  "intro": [
+   {
+    "en": "The top-most major line on the palm is the heart line — and classical palmistry divides it into distinct types, each describing a relationship style.",
+    "hi": "हथेली की सबसे ऊपरी प्रमुख रेखा हृदय रेखा है — और शास्त्रीय हस्तरेखा इसे विशिष्ट प्रकारों में बाँटती है, हर प्रकार एक रिश्ता-शैली वर्णित करता है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "The four classical types",
+     "hi": "चार शास्त्रीय प्रकार"
+    },
+    "p": [
+     {
+      "en": "Curving up to Jupiter: idealistic lover — devoted, expects the same. Ending under Saturn: guarded realist — loyalty shown by acts, not words. Reaching the Mercury side: expressive communicator — needs verbal affection. Short and deep: intense but private. A chained line flags emotional sensitivity; islands, periods of grief.",
+      "hi": "गुरु तक ऊपर वक्र: आदर्शवादी प्रेमी — समर्पित, वैसा ही अपेक्षित। शनि के नीचे समाप्त: संयत यथार्थवादी — भक्ति कर्म से, वाणी से नहीं। बुध-पार्श्व तक पहुँचे: भावप्रकाशक संवादी — वाचिक स्नेह अपेक्षित। छोटी व गहरी: तीव्र पर निजी। जंजीरयुक्त रेखा भाव-संवेदनशीलता; द्वीप शोक-काल।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Compatibility short-cuts",
+     "hi": "अनुकूलता के शॉर्टकट"
+    },
+    "p": [
+     {
+      "en": "Jupiter-type with Saturn-type balances beautifully — dreamer and anchor. Two Jupiter-types create romance and chaos together. Check both heart lines free at hastrekhaai.online and get the pair analysis in one report.",
+      "hi": "गुरु-प्रकार और शनि-प्रकार का मेल सुंदर संतुलन — स्वप्नद्रष्टा और भार। दो गुरु-प्रकार साथ रोमांच और अराजकता दोनों। दोनों हृदय रेखाएँ hastrekhaai.online पर मुफ्त जाँचें — एक रिपोर्ट में जोड़ी-विश्लेषण पाएँ।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ },
+ {
+  "slug": "rahu-ketu-karmic-axis",
+  "cat": "graha",
+  "title": {
+   "en": "Rahu-Ketu: The Karmic Axis Explained Simply",
+   "hi": "राहु-केतु: कार्मिक अक्ष की सरल व्याख्या"
+  },
+  "excerpt": {
+   "en": "The shadow planets have no body — yet they shape obsession, phobia and liberation more than any visible graha. A clear guide to the Rahu-Ketu axis in your chart.",
+   "hi": "छाया ग्रहों का शरीर नहीं — फिर भी वे मोह, भय और मोक्ष को किसी दृश्य ग्रह से अधिक आकार देते हैं। आपकी कुंडली में राहु-केतु अक्ष की स्पष्ट मार्गदर्शिका।"
+  },
+  "tags": {
+   "en": [
+    "rahu ketu",
+    "karmic axis",
+    "shadow planets"
+   ],
+   "hi": [
+    "राहु केतु",
+    "कार्मिक अक्ष",
+    "छाया ग्रह"
+   ]
+  },
+  "date": "2026-09-03",
+  "mins": 7,
+  "intro": [
+   {
+    "en": "Every chart has two points that are not planets at all — Rahu, the head of the serpent, and Ketu, its tail. Where they sit is where your soul signed its most unusual contract.",
+    "hi": "हर कुंडली में दो बिंदु हैं जो ग्रह बिल्कुल नहीं — राहु, सर्प-शिर, और केतु, सर्प-पुच्छ। जहाँ वे बैठते हैं, वहीं आपकी आत्मा ने अपना सबसे विचित्र अनुबंध किया है।"
+   }
+  ],
+  "sections": [
+   {
+    "h": {
+     "en": "Rahu: hunger; Ketu: mastery",
+     "hi": "राहु: तृष्णा; केतु: निपुणता"
+    },
+    "p": [
+     {
+      "en": "Rahu's house is where you endlessly want more — recognition, wealth, foreign lands, experience. Ketu's house is where you are already expert but feel detached — past-life mastery that no longer excites. Classical reading: feed Rahu consciously, honour Ketu's gifts without clinging.",
+      "hi": "राहु का भाव वहाँ है जहाँ आप अनंत अधिक चाहते हैं — मान, धन, विदेश, अनुभव। केतु का भाव वहाँ जहाँ आप निपुण हैं पर अलग-सा महसूस करते हैं — पूर्वजन्म-कौशल जो अब रुचिकर नहीं। शास्त्रीय पाठ: राहु को सचेत पोषित करें, केतु की देन का सम्मान करें, आसक्त हुए बिना।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Upay for the axis",
+     "hi": "अक्ष के उपाय"
+    },
+    "p": [
+     {
+      "en": "Rahu: coconut donation on Saturdays, 'Om Ram Rahave Namah' 108 times. Ketu: 'Om Kem Ketave Namah', feeding dogs, and keeping a flag in the home shrine. For your exact Rahu-Ketu houses, generate your kundli free at hastrekhaai.online — the axis is computed with Lahiri ayanamsa precision.",
+      "hi": "राहु: शनिवार नारियल-दान, 'ॐ रां राहवे नमः' 108 बार। केतु: 'ॐ कें केतवे नमः', कुत्तों को भोजन, घर के पूजा-स्थल में ध्वज। अपने ठीक राहु-केतु भाव हेतु hastrekhaai.online पर मुफ्त कुंडली बनाइए — अक्ष लाहिड़ी अयनांश परिशुद्धता से गणित होता है।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Get Your Free Reading on Hast Rekha AI",
+     "hi": "हस्त रेखा AI पर अपनी फ्री रीडिंग पाएँ"
+    },
+    "p": [
+     {
+      "en": "Ready to see what your own palm says? Visit https://hastrekhaai.online and get a complete free reading — palm lines, rashi, nakshatra and lagna — computed with rule-based Vedic methods, instantly and without sign-up. Try it now at https://hastrekhaai.online.",
+      "hi": "अपनी हथेली क्या कहती है, जानने को तैयार हैं? https://hastrekhaai.online पर जाएँ और पाएँ संपूर्ण फ्री रीडिंग — हस्तरेखा, राशि, नक्षत्र और लग्न — नियम-आधारित वैदिक विधि से, तुरंत और बिना रजिस्ट्रेशन। अभी विज़िट करें: https://hastrekhaai.online"
+     }
+    ]
+   }
+  ],
+  "tip": {
+   "en": "This article is general Vedic guidance, not a substitute for professional advice.",
+   "hi": "यह लेख सामान्य वैदिक मार्गदर्शन है, पेशेवर सलाह का विकल्प नहीं।"
+  }
+ }
 ]
