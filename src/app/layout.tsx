@@ -81,6 +81,13 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang={lang} data-lang={lang} dir={lang === "ur" ? "rtl" : "ltr"} suppressHydrationWarning>
       <head>
+        {/* Google AdSense — site verification + ads */}
+        <meta name="google-adsense-account" content="ca-pub-1067207431102415" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1067207431102415"
+          crossOrigin="anonymous"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

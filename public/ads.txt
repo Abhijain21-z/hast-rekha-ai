@@ -1,3 +1,1 @@
-# Google AdSense authorization file.
-# After AdSense approval, replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID:
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+google.com, pub-1067207431102415, DIRECT, f08c47fec0942fa0
