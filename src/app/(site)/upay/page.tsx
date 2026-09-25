@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import UpayBookPromo from "@/components/upay/UpayBookPromo";
 import { BOOK_PROMO } from "@/lib/flags";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "उपाय — धनदायक तांत्रिक प्रयोग गुप्त पुस्तक | Upay — Hast Rekha AI",
   description:
