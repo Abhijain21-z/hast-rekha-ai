@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Sparkles, LayoutDashboard, LogOut, Globe, ChevronDown, Heart } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { LANGS } from "@/lib/lang-overrides";
+import { BOOK_PROMO } from "@/lib/flags";
 import { Avatar, cn } from "@/components/ui";
 
 export type NavUser = { name: string; email: string } | null;
@@ -101,7 +102,7 @@ export default function Navbar({ user }: { user: NavUser }) {
     { href: home ? "#how-it-works" : "/#how-it-works", label: t.nav.how },
     { href: home ? "#reviews" : "/#reviews", label: t.nav.reviews },
     { href: "/rashi", label: t.nav.rashi },
-    { href: "/upay", label: t.nav.upay ?? "उपाय" },
+    ...(BOOK_PROMO ? [{ href: "/upay", label: t.nav.upay ?? "उपाय" }] : []),
     { href: "/blog", label: t.nav.blog },
     { href: "/about", label: t.nav.about },
     { href: "/contact", label: t.nav.contact },

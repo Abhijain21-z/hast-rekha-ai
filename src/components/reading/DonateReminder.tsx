@@ -6,6 +6,7 @@ import { HandHeart, Printer, X } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, cn } from "@/components/ui";
 import DonateModal from "./DonateModal";
+import { BOOK_PROMO } from "@/lib/flags";
 
 /** Suggests a voluntary donation 8 minutes after the prediction appears (once per session). */
 export function DonateReminder({ enabled }: { enabled: boolean }) {
@@ -76,6 +77,18 @@ export function PrintGate({ readingName }: { readingName: string }) {
   const { t } = useLang();
   const [open, setOpen] = useState(false);
   const [paid, setPaid] = useState(false);
+
+  // While the ₹51 gate is disabled (e.g. during AdSense review) printing is free.
+  if (!BOOK_PROMO) {
+    return (
+      <button
+        onClick={() => window.print()}
+        className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 hover:border-gold-400/50"
+      >
+        <Printer className="h-4 w-4" /> {t.result.print}
+      </button>
+    );
+  }
 
   function startPrint() {
     setOpen(false);

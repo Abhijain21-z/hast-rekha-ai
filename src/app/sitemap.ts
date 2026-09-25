@@ -1,12 +1,13 @@
 import type { MetadataRoute } from "next";
 import { BLOGS } from "@/lib/blogs";
+import { BOOK_PROMO } from "@/lib/flags";
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://hastrekhaai.online";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const staticPages = [
-    "", "/rashi", "/reading", "/blog", "/upay", "/about", "/contact", "/privacy-policy", "/terms", "/disclaimer", "/login", "/register",
+    "", "/rashi", "/reading", "/blog", ...(BOOK_PROMO ? ["/upay"] : []), "/about", "/contact", "/privacy-policy", "/terms", "/disclaimer", "/login", "/register",
   ].map((p) => ({
     url: `${BASE}${p}`,
     lastModified: now,

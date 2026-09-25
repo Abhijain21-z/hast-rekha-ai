@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import UpayBookPromo from "@/components/upay/UpayBookPromo";
+import { BOOK_PROMO } from "@/lib/flags";
 
 export const metadata: Metadata = {
   title: "उपाय — धनदायक तांत्रिक प्रयोग गुप्त पुस्तक | Upay — Hast Rekha AI",
@@ -18,6 +20,8 @@ const PROBLEMS = [
 ];
 
 export default function UpayPage() {
+  // Book promo is disabled during AdSense review — send visitors home instead of a dead page.
+  if (!BOOK_PROMO) redirect("/");
   return (
     <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
       <div className="text-center">

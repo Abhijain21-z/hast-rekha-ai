@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Clock, Lightbulb, Sparkles } from "lucide-react"
 import { cookies } from "next/headers";
 import { CAT_META, getBlog, relatedBlogs } from "@/lib/blogs";
 import { dictionaries, pick, type Lang } from "@/lib/i18n";
+import { BOOK_PROMO } from "@/lib/flags";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const L = (v: { en: string; hi: string }) => pick(lang, v);
   const cl = lang === "hi" ? "hi" : "en";
   const related = relatedBlogs(blog);
+  // Hide the affiliate book-promo section while it's disabled (AdSense review).
+  const sections = BOOK_PROMO
+    ? blog.sections
+    : blog.sections.filter((s) => !/धनदायक तांत्रिक|Dhandayak Tantrik/i.test(`${s.h?.hi ?? ""} ${s.h?.en ?? ""}`));
 
   return (
     <article className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
@@ -64,7 +69,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </div>
 
       <div className="mt-10 space-y-10">
-        {blog.sections.map((s, i) => (
+        {sections.map((s, i) => (
           <section key={i}>
             <h2 className="flex items-center gap-3 font-display text-xl text-white sm:text-2xl">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gold-400/15 font-display text-sm text-gold-300">{i + 1}</span>
@@ -82,7 +87,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {blog.extra && (
         <section className="mt-10">
           <h2 className="flex items-center gap-3 font-display text-xl text-white sm:text-2xl">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gold-400/15 font-display text-sm text-gold-300">{blog.sections.length + 1}</span>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gold-400/15 font-display text-sm text-gold-300">{sections.length + 1}</span>
             {L(blog.extra.h)}
           </h2>
           <div className="mt-3 space-y-3">
