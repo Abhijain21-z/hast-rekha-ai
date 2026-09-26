@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
+import Link from "next/link";
 import UpayBookPromo from "@/components/upay/UpayBookPromo";
 import { BOOK_PROMO } from "@/lib/flags";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "उपाय — धनदायक तांत्रिक प्रयोग गुप्त पुस्तक | Upay — Hast Rekha AI",
-  description:
-    "धन, कर्ज मुक्ति, व्यापार वृद्धि, नौकरी, विवाह और जीवन की समस्याओं से जुड़े पारंपरिक तांत्रिक प्रयोग और साधना-विधियों का विशेष संकलन — गुप्त खजाना पुस्तक।",
-  keywords: ["उपाय", "upay", "तांत्रिक प्रयोग", "धन प्राप्ति उपाय", "कर्ज मुक्ति", "व्यापार वृद्धि", "साधना विधि", "गुप्त खजाना", "tantrik prayog", "dhan prapti upay"],
-};
+// Metadata is served per BOOK_PROMO: while the book promo is disabled (AdSense
+// review) we must not leak the promotional title/keywords into <head> either.
+export const metadata: Metadata = BOOK_PROMO
+  ? {
+      title: "उपाय — धनदायक तांत्रिक प्रयोग गुप्त पुस्तक | Upay — Hast Rekha AI",
+      description:
+        "धन, कर्ज मुक्ति, व्यापार वृद्धि, नौकरी, विवाह और जीवन की समस्याओं से जुड़े पारंपरिक तांत्रिक प्रयोग और साधना-विधियों का विशेष संकलन — गुप्त खजाना पुस्तक।",
+      keywords: ["उपाय", "upay", "तांत्रिक प्रयोग", "धन प्राप्ति उपाय", "कर्ज मुक्ति", "व्यापार वृद्धि", "साधना विधि", "गुप्त खजाना", "tantrik prayog", "dhan prapti upay"],
+    }
+  : {
+      title: "Hast Rekha AI",
+      description: "हस्तरेखा और वैदिक ज्योतिष पर आधारित AI विश्लेषण।",
+      robots: { index: false, follow: false },
+    };
 
 const PROBLEMS = [
   { t: "अटका हुआ धन", d: "किसी से धन वापस नहीं मिल रहा, धन आते ही निकल जाता है, बचत नहीं हो पा रही।" },
@@ -22,8 +30,29 @@ const PROBLEMS = [
 ];
 
 export default function UpayPage() {
-  // Book promo is disabled during AdSense review — send visitors home instead of a dead page.
-  if (!BOOK_PROMO) redirect("/");
+  // Book promo is disabled during AdSense review. Render a clean, non-promotional
+  // placeholder instead of redirect() — redirect() did not fire reliably on the
+  // live deploy, so we hide deterministically at the render level.
+  if (!BOOK_PROMO) {
+    return (
+      <div className="mx-auto max-w-2xl px-4 py-24 text-center sm:px-6">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400/90">✦ हस्तरेखा AI</p>
+        <h1 className="mt-3 font-display text-3xl text-white sm:text-4xl">यह पृष्ठ अभी उपलब्ध नहीं है</h1>
+        <p className="mx-auto mt-4 max-w-lg text-slate-300">
+          अपनी हस्तरेखा और राशि का निःशुल्क AI विश्लेषण पाने के लिए नीचे दिए बटन पर जाएँ।
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <Link href="/reading" className="btn-gold rounded-full px-6 py-3 text-sm">
+            निःशुल्क विश्लेषण पाएँ
+          </Link>
+          <Link href="/" className="rounded-full border border-white/15 px-6 py-3 text-sm text-slate-200 hover:border-gold-400/50">
+            होम पर जाएँ
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 lg:px-8">
       <div className="text-center">
