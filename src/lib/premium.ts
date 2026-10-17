@@ -7,13 +7,15 @@ import type { Bi, Lang } from "./i18n";
 import type { PalmReport } from "./palm";
 import { hashString, rashiAt } from "./content";
 import type { AstroResult } from "./astrology";
-import { PDF_PRICE } from "./flags";
+import { PDF_PRICE, ULTRA_PRICE } from "./flags";
 
 interface YearBlock { theme: Bi; events: Bi; mistakes: Bi; upay: Bi; stotra: Bi }
 interface PremiumContent {
   title: Bi;
   sub: Bi;
   perks: Bi[];
+  book: BookCopy;
+  bookPerks: Bi[];
   fields: Record<string, Bi>;
   years: YearBlock[];
   gemVidhi: Bi;
@@ -31,6 +33,17 @@ export const UPI_ID = "9522333669@jio";
 export const UPI_PAYEE_NAME = "Hast Rekha AI";
 /** Single source of truth for the ₹51 price — defined in `flags.ts`. */
 export const PREMIUM_PRICE = PDF_PRICE;
+
+/** Copy shown on the Ultra Pro book card. */
+export interface BookCopy {
+  title: Bi;
+  sub: Bi;
+  cta: Bi;
+  opening: Bi;
+  private: Bi;
+  soon: Bi;
+  err: Bi;
+}
 
 export interface PremiumYear {
   calendarYear: number;
@@ -53,13 +66,14 @@ function fill(t: Bi, vars: Record<Lang, Record<string, string>>): Bi {
   return { en: rep(t.en, "en"), hi: rep(t.hi, "hi") };
 }
 
-export function upiDeepLink(readingId: string) {
+export function upiDeepLink(readingId: string, amount: number = PREMIUM_PRICE) {
+  const plan = amount >= ULTRA_PRICE ? "Ultra Pro" : "Pro Report";
   const params = new URLSearchParams({
     pa: UPI_ID,
     pn: UPI_PAYEE_NAME,
-    am: PREMIUM_PRICE.toFixed(2),
+    am: amount.toFixed(2),
     cu: "INR",
-    tn: `Premium 5-Year Report ${readingId.slice(0, 8)}`,
+    tn: `${plan} ${readingId.slice(0, 8)}`,
   });
   return `upi://pay?${params.toString()}`;
 }
@@ -118,4 +132,7 @@ export function buildPremiumReport(input: { result: AstroResult; seed: number; f
 }
 
 export const PREMIUM_PERKS = C.perks;
+/** The two extra lines Ultra Pro adds on top of `PREMIUM_PERKS`. */
+export const BOOK_PERKS = C.bookPerks;
+export const BOOK_COPY = C.book;
 export const PREMIUM_SEED = hashString;

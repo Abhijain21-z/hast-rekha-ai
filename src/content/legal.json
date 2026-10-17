@@ -164,6 +164,36 @@
    "en": "Hast Rekha AI was born from a simple wish: that every Indian family — from a grandmother in Varanasi to a developer in Bengaluru — should be able to read their own hands and stars in the language they love, without paying consultants or trusting black-box AI.",
    "hi": "हस्तरेखा AI एक सरल इच्छा से जन्मा: कि हर भारतीय परिवार — वाराणसी की दादी से लेकर बेंगलुरु के डेवलपर तक — अपनी पसंदीदा भाषा में अपने हाथ और सितारे पढ़ सके, बिना सलाहकारों को भुगतान किए या ब्लैक-बॉक्स AI पर भरोसा किए।"
   },
+  "founders": [
+   {
+    "role": {
+     "en": "Founder",
+     "hi": "संस्थापक"
+    },
+    "name": {
+     "en": "Sachin Jain",
+     "hi": "सचिन जैन"
+    },
+    "note": {
+     "en": "Founder of Hast Rekha AI — the vision, the classical palmistry knowledge and the content behind every reading.",
+     "hi": "हस्तरेखा AI के संस्थापक — हर रीडिंग के पीछे की दृष्टि, शास्त्रीय हस्तरेखा ज्ञान और सामग्री।"
+    }
+   },
+   {
+    "role": {
+     "en": "CEO",
+     "hi": "सीईओ"
+    },
+    "name": {
+     "en": "Abhishek Jain",
+     "hi": "अभिषेक जैन"
+    },
+    "note": {
+     "en": "CEO of Hast Rekha AI — product, technology and day-to-day operations of the website.",
+     "hi": "हस्तरेखा AI के सीईओ — वेबसाइट का उत्पाद, तकनीक और दैनिक संचालन।"
+    }
+   }
+  ],
   "sections": [
    {
     "h": {
@@ -172,8 +202,8 @@
     },
     "p": [
      {
-      "en": "Hast Rekha AI was created by Sachin Jain. The purpose of this website is simple: to let anyone read their own palm lines and birth chart together — Rashi, Nakshatra, Lagna, life predictions and lucky years — instantly and free, in easy Hindi and English, without visiting an astrologer. AI tools were used as a helping hand to build and design this website. The astrological predictions themselves are based on classical rules and real astronomical calculations, not on a random AI guess.",
-      "hi": "हस्तरेखा AI को सचिन जैन द्वारा बनाया गया है। इस वेबसाइट का उद्देश्य सरल है: कोई भी व्यक्ति अपने हाथ की रेखाएँ और जन्म कुंडली एक साथ पढ़ सके — राशि, नक्षत्र, लग्न, जीवन की भविष्यवाणियाँ और शुभ वर्ष — तुरंत और निःशुल्क, आसान हिंदी और अंग्रेज़ी में, बिना किसी ज्योतिषी के पास जाए। इस वेबसाइट को बनाने और डिज़ाइन करने में मदद के लिए AI टूल्स का उपयोग किया गया है। ज्योतिषीय भविष्यवाणियाँ स्वयं शास्त्रीय नियमों और वास्तविक खगोलीय गणनाओं पर आधारित हैं, किसी रैंडम AI अंदाज़े पर नहीं।"
+      "en": "Hast Rekha AI was created by our Founder Sachin Jain and our CEO Abhishek Jain. The purpose of this website is simple: to let anyone read their own palm lines and birth chart together — Rashi, Nakshatra, Lagna, life predictions and lucky years — instantly and free, in easy Hindi and English, without visiting an astrologer. AI tools were used as a helping hand to build and design this website. The astrological predictions themselves are based on classical rules and real astronomical calculations, not on a random AI guess.",
+      "hi": "हस्तरेखा AI को हमारे संस्थापक (Founder) सचिन जैन और हमारे सीईओ (CEO) अभिषेक जैन द्वारा बनाया गया है। इस वेबसाइट का उद्देश्य सरल है: कोई भी व्यक्ति अपने हाथ की रेखाएँ और जन्म कुंडली एक साथ पढ़ सके — राशि, नक्षत्र, लग्न, जीवन की भविष्यवाणियाँ और शुभ वर्ष — तुरंत और निःशुल्क, आसान हिंदी और अंग्रेज़ी में, बिना किसी ज्योतिषी के पास जाए। इस वेबसाइट को बनाने और डिज़ाइन करने में मदद के लिए AI टूल्स का उपयोग किया गया है। ज्योतिषीय भविष्यवाणियाँ स्वयं शास्त्रीय नियमों और वास्तविक खगोलीय गणनाओं पर आधारित हैं, किसी रैंडम AI अंदाज़े पर नहीं।"
      }
     ]
    },

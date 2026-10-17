@@ -23,6 +23,8 @@ export interface ReadingDTO {
   isFavorite: boolean;
   premium: boolean;
   premiumUtr: string | null;
+  /** Ultra Pro: Pro plus the Dhandayak book link. */
+  ultra: boolean;
   createdAt: string;
   updatedAt: string;
 }

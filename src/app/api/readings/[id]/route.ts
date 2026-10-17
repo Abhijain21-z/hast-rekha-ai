@@ -25,6 +25,8 @@ export async function PATCH(req: Request, { params }: Ctx) {
     palmImage?: string | null;
     palmHand?: string | null;
     premiumUtr?: string;
+    /** Which plan the UPI reference was paid for. Defaults to Pro (₹51). */
+    plan?: "pro" | "ultra";
   };
 
   // Premium activation by UPI reference — available to the reading owner and to guests
@@ -32,7 +34,14 @@ export async function PATCH(req: Request, { params }: Ctx) {
   if (typeof body.premiumUtr === "string" && /^\d{8,20}$/.test(body.premiumUtr.trim())) {
     const [row] = await db
       .update(readings)
-      .set({ premium: true, premiumUtr: body.premiumUtr.trim(), premiumAt: new Date(), updatedAt: new Date() })
+      .set({
+        premium: true,
+        // Never downgrade an Ultra (₹351) unlock back to Pro.
+        ...(body.plan === "ultra" ? { ultra: true } : {}),
+        premiumUtr: body.premiumUtr.trim(),
+        premiumAt: new Date(),
+        updatedAt: new Date(),
+      })
       .where(eq(readings.id, id))
       .returning();
     if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 });

@@ -6,8 +6,8 @@ import QRCode from "qrcode";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { useToast } from "@/components/providers/ToastProvider";
 import { Button, Input, Label, Modal, cn } from "@/components/ui";
-import { PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID, upiDeepLink } from "@/lib/premium";
-import { PDF_PRICE_ANCHOR, PRO_PAY_MODE } from "@/lib/flags";
+import { PREMIUM_PERKS, BOOK_PERKS, PREMIUM_PRICE, UPI_ID, upiDeepLink } from "@/lib/premium";
+import { PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
 
 /** Fill `{placeholders}` in a translated template. */
 function tpl(text: string, vars: Record<string, string | number>) {
@@ -19,20 +19,30 @@ function printReport() {
   window.setTimeout(() => window.print(), 350);
 }
 
+/** The two plans the paywall offers: ₹51 Pro, ₹351 Ultra Pro (adds the book). */
+export type ProPlan = "pro" | "ultra";
+
 /**
- * The single ₹51 "Pro" paywall. Every download/print button and the premium
+ * The single ₹51 / ₹351 paywall. Every download/print button and the premium
  * upsell open this same offer, so the price anchor and perks stay consistent.
+ *
+ * Callers pass the plan they want pre-selected together with a `key` that
+ * changes whenever the modal re-opens, so each open starts on the plan the
+ * visitor actually clicked (a fresh mount rather than state syncing).
  */
 export function ProPaywallModal({
   open,
   onClose,
   readingId,
   onUnlocked,
+  defaultPlan = "pro",
 }: {
   open: boolean;
   onClose: () => void;
   readingId: string;
   onUnlocked: () => void;
+  /** Pre-selects a plan, e.g. when the visitor came from the ₹351 Ultra card. */
+  defaultPlan?: ProPlan;
 }) {
   const { t, L } = useLang();
   const { toast } = useToast();
@@ -41,7 +51,11 @@ export function ProPaywallModal({
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
   const [copied, setCopied] = useState(false);
-  const deepLink = useMemo(() => upiDeepLink(readingId), [readingId]);
+  const [plan, setPlan] = useState<ProPlan>(defaultPlan);
+
+  const price = plan === "ultra" ? ULTRA_PRICE : PREMIUM_PRICE;
+  const perks = plan === "ultra" ? [...PREMIUM_PERKS, ...BOOK_PERKS] : PREMIUM_PERKS;
+  const deepLink = useMemo(() => upiDeepLink(readingId, price), [readingId, price]);
 
   const saved = PDF_PRICE_ANCHOR - PREMIUM_PRICE;
   const percentOff = Math.round((1 - PREMIUM_PRICE / PDF_PRICE_ANCHOR) * 100);
@@ -71,7 +85,7 @@ export function ProPaywallModal({
     const res = await fetch(`/api/readings/${readingId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ premiumUtr: utr.trim() }),
+      body: JSON.stringify({ premiumUtr: utr.trim(), plan }),
     });
     setBusy(false);
     if (res.ok) {
@@ -87,29 +101,69 @@ export function ProPaywallModal({
     <Modal open={open} onClose={onClose} title={t.pro.title} wide>
       <p className="text-sm leading-relaxed text-slate-300">{t.pro.sub}</p>
 
-      {/* Price anchor: struck-through report price next to the ₹51 offer. */}
-      <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-5 py-4">
-        <div>
-          <p className="text-xs uppercase tracking-wider text-slate-400">{t.pro.was}</p>
-          <p className="font-display text-2xl text-slate-400 line-through decoration-rose-400/80 decoration-2">₹{PDF_PRICE_ANCHOR}</p>
-        </div>
-        <div>
-          <p className="font-display text-4xl gold-text">₹{PREMIUM_PRICE}</p>
-          <p className="text-xs text-slate-400">{t.pro.once}</p>
-        </div>
-        <div className="ml-auto flex flex-col items-end gap-1">
-          <span className="rounded-full bg-rose-500/20 px-3 py-1 text-xs font-semibold text-rose-200">
-            {tpl(t.pro.offPct, { p: percentOff })}
-          </span>
-          <span className="text-xs text-emerald-300">{tpl(t.pro.saveAmt, { a: saved })}</span>
-        </div>
+      {/* Plan switch — ₹51 Pro report, or ₹351 Ultra Pro which adds the book. */}
+      <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.pro.planTitle}</p>
+      <div className="mt-2 grid gap-3 sm:grid-cols-2">
+        {(["pro", "ultra"] as const).map((key) => {
+          const active = plan === key;
+          return (
+            <button
+              key={key}
+              type="button"
+              onClick={() => setPlan(key)}
+              aria-pressed={active}
+              className={cn(
+                "rounded-2xl border px-4 py-3 text-left transition",
+                active ? "border-gold-400/70 bg-gold-400/10" : "border-white/10 bg-white/[0.03] hover:border-white/25",
+              )}
+            >
+              <span className="flex items-center justify-between gap-2">
+                <span className="font-display text-lg text-white">
+                  {key === "pro" ? `${t.pricing.prem} · ₹${PREMIUM_PRICE}` : `${t.pricing.ultra} · ₹${ULTRA_PRICE}`}
+                </span>
+                {active ? <Check className="h-4 w-4 shrink-0 text-gold-300" /> : <span className="h-4 w-4 shrink-0 rounded-full border border-white/25" />}
+              </span>
+              <span className="mt-1 block text-xs leading-relaxed text-slate-300">{key === "pro" ? t.pro.planPro : t.pro.planUltra}</span>
+            </button>
+          );
+        })}
       </div>
+
+      {plan === "pro" ? (
+        /* Price anchor: struck-through report price next to the ₹51 offer. */
+        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-5 py-4">
+          <div>
+            <p className="text-xs uppercase tracking-wider text-slate-400">{t.pro.was}</p>
+            <p className="font-display text-2xl text-slate-400 line-through decoration-rose-400/80 decoration-2">₹{PDF_PRICE_ANCHOR}</p>
+          </div>
+          <div>
+            <p className="font-display text-4xl gold-text">₹{PREMIUM_PRICE}</p>
+            <p className="text-xs text-slate-400">{t.pro.once}</p>
+          </div>
+          <div className="ml-auto flex flex-col items-end gap-1">
+            <span className="rounded-full bg-rose-500/20 px-3 py-1 text-xs font-semibold text-rose-200">
+              {tpl(t.pro.offPct, { p: percentOff })}
+            </span>
+            <span className="text-xs text-emerald-300">{tpl(t.pro.saveAmt, { a: saved })}</span>
+          </div>
+        </div>
+      ) : (
+        /* Ultra Pro has no struck-through anchor — it is simply the plan with the book. */
+        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-5 py-4">
+          <div>
+            <p className="text-xs uppercase tracking-wider text-slate-400">{t.pricing.ultra}</p>
+            <p className="font-display text-4xl gold-text">₹{ULTRA_PRICE}</p>
+            <p className="text-xs text-slate-400">{t.pro.once}</p>
+          </div>
+          <span className="ml-auto rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200">{t.pro.ultraTag}</span>
+        </div>
+      )}
 
       <p className="mt-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-300">
         <Crown className="h-3.5 w-3.5" /> {t.pro.perksTitle}
       </p>
       <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-        {PREMIUM_PERKS.map((p) => (
+        {perks.map((p) => (
           <li key={p.en} className="flex items-start gap-2 text-sm text-slate-100">
             <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" /> {L(p)}
           </li>
@@ -140,7 +194,7 @@ export function ProPaywallModal({
                     <p className="text-xs uppercase tracking-wider text-slate-400">{t.premium.upiId}</p>
                     <p className="font-mono text-base text-gold-100">{UPI_ID}</p>
                     <p className="text-xs text-slate-400">
-                      {UPI_ID.split("@")[0]} · ₹{PREMIUM_PRICE}
+                      {UPI_ID.split("@")[0]} · ₹{price}
                     </p>
                   </div>
                   <Button variant="outline" size="sm" onClick={copyUpi} icon={copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}>
@@ -165,7 +219,7 @@ export function ProPaywallModal({
         ) : (
           <>
             <button onClick={() => toast(t.pro.soon)} className="btn-gold flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
-              <Crown className="h-4 w-4" /> {t.pro.pay}
+              <Crown className="h-4 w-4" /> {tpl(t.pro.pay, { p: price })}
             </button>
             <p className="mt-3 text-center text-xs text-slate-500">{t.pro.soonNote}</p>
           </>
@@ -192,6 +246,7 @@ export function ProGateButton({
   label,
   icon = "download",
   className,
+  defaultPlan = "pro",
 }: {
   readingId: string;
   unlocked: boolean;
@@ -199,6 +254,7 @@ export function ProGateButton({
   label: string;
   icon?: "download" | "print";
   className?: string;
+  defaultPlan?: ProPlan;
 }) {
   const [open, setOpen] = useState(false);
   const ActionIcon = icon === "print" ? Printer : Download;
@@ -217,9 +273,11 @@ export function ProGateButton({
         {label}
       </button>
       <ProPaywallModal
+        key={open ? `open-${defaultPlan}` : "closed"}
         open={open}
         onClose={() => setOpen(false)}
         readingId={readingId}
+        defaultPlan={defaultPlan}
         onUnlocked={() => {
           onUnlocked();
           setOpen(false);

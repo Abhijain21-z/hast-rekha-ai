@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS readings (
   premium boolean NOT NULL DEFAULT false,
   premium_utr text,
   premium_at timestamptz,
+  ultra boolean NOT NULL DEFAULT false, -- Ultra Pro: Pro + the Dhandayak book
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()
 );

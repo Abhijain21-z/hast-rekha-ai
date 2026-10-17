@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Scale } from "lucide-react";
+import { Scale, Users } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import type { Bi } from "@/lib/i18n";
 
@@ -9,6 +9,8 @@ export interface LegalDoc {
   title: Bi;
   updated?: Bi;
   intro: Bi;
+  /** Optional "who runs this" cards, e.g. on the About page. */
+  founders?: { role: Bi; name: Bi; note?: Bi }[];
   sections: { h: Bi; p: Bi[] }[];
 }
 
@@ -24,6 +26,27 @@ export default function LegalPage({ doc, eyebrow }: { doc: LegalDoc; eyebrow?: s
         {doc.updated && <p className="mt-2 text-xs text-slate-500">{L(doc.updated)}</p>}
         <p className="mt-5 text-base leading-relaxed text-slate-200">{L(doc.intro)}</p>
       </motion.div>
+
+      {doc.founders && doc.founders.length > 0 && (
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {doc.founders.map((f, i) => (
+            <motion.div
+              key={`${f.role.en}-${f.name.en}`}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ delay: i * 0.08 }}
+              className="glass rounded-3xl border border-gold-400/25 p-5"
+            >
+              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-gold-400/90">
+                <Users className="h-3.5 w-3.5" /> {L(f.role)}
+              </p>
+              <p className="mt-2 font-display text-2xl text-white">{L(f.name)}</p>
+              {f.note && <p className="mt-2 text-sm leading-relaxed text-slate-300">{L(f.note)}</p>}
+            </motion.div>
+          ))}
+        </div>
+      )}
 
       <div className="mt-10 space-y-8">
         {doc.sections.map((s, i) => (

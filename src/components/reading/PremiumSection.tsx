@@ -6,17 +6,19 @@ import { AlertTriangle, Briefcase, CalendarDays, Check, Crown, Flame, Gem, Heart
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, cn } from "@/components/ui";
 import { buildPremiumReport, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID } from "@/lib/premium";
-import { PDF_PRICE_ANCHOR, PRO_PAY_MODE } from "@/lib/flags";
+import { PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
 import { buildPartnerReport, prefersDevanagari } from "@/lib/partner";
 import type { ReadingDTO } from "@/lib/dto";
 import { byLang } from "@/lib/i18n";
-import { ProGateButton, ProPaywallModal } from "./ProPaywall";
+import BookCard from "./BookCard";
+import { ProGateButton, ProPaywallModal, type ProPlan } from "./ProPaywall";
 
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.55 } };
 
 export default function PremiumSection({ reading, unlocked, onUnlocked }: { reading: ReadingDTO; unlocked: boolean; onUnlocked: () => void }) {
   const { t, L, cl } = useLang();
-  const [payOpen, setPayOpen] = useState(false);
+  // null = closed; which plan to pre-select when the paywall opens.
+  const [payOpen, setPayOpen] = useState<ProPlan | null>(null);
 
   const report = useMemo(
     () => buildPremiumReport({ result: reading.result, seed: reading.result.julianDay * 1000 + reading.fullName.length, fullName: reading.fullName, birthYear: Number(reading.birthDate.slice(0, 4)) }),
@@ -62,9 +64,16 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
               <p className="mt-3 text-sm text-slate-400 line-through decoration-rose-400/70 decoration-2">₹{PDF_PRICE_ANCHOR}</p>
               <p className="font-display text-5xl gold-text">₹{PREMIUM_PRICE}</p>
               <p className="text-xs text-slate-400">{t.premium.once}</p>
-              <Button size="lg" className="mt-5 w-full" onClick={() => setPayOpen(true)} icon={<Crown className="h-5 w-5" />}>
+              <Button size="lg" className="mt-5 w-full" onClick={() => setPayOpen("pro")} icon={<Crown className="h-5 w-5" />}>
                 {t.premium.get}
               </Button>
+              <button
+                type="button"
+                onClick={() => setPayOpen("ultra")}
+                className="mt-3 w-full rounded-full border border-gold-400/40 px-4 py-2.5 text-xs font-medium text-gold-200 transition hover:border-gold-400/70 hover:bg-gold-400/10"
+              >
+                {t.pricing.ultra} · ₹{ULTRA_PRICE} · {t.pro.ultraTag}
+              </button>
               {PRO_PAY_MODE === "upi" && (
                 <p className="mt-3 flex items-center gap-1 text-xs text-slate-500"><Sparkles className="h-3 w-3 text-gold-300" /> UPI · QR · {UPI_ID}</p>
               )}
@@ -180,12 +189,25 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-6 rounded-2xl bg-white/5 p-4 text-center text-sm italic text-slate-300">
                 {L(report.closing)}
               </motion.p>
+
+              {/* Ultra Pro readings also carry the Dhandayak book. */}
+              {reading.ultra && <BookCard readingId={reading.id} />}
             </div>
           </motion.div>
         </div>
       )}
 
-      <ProPaywallModal open={payOpen} onClose={() => setPayOpen(false)} readingId={reading.id} onUnlocked={onUnlocked} />
+      <ProPaywallModal
+        key={payOpen ?? "closed"}
+        open={payOpen !== null}
+        onClose={() => setPayOpen(null)}
+        readingId={reading.id}
+        defaultPlan={payOpen ?? "pro"}
+        onUnlocked={() => {
+          setPayOpen(null);
+          onUnlocked();
+        }}
+      />
     </section>
   );
 }

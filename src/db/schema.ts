@@ -60,6 +60,8 @@ export const readings = pgTable(
     premium: boolean("premium").notNull().default(false),
     premiumUtr: text("premium_utr"),
     premiumAt: timestamp("premium_at", { withTimezone: true }),
+    /** Ultra Pro (₹351): Pro + the Dhandayak book. */
+    ultra: boolean("ultra").notNull().default(false),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },

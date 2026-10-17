@@ -12,6 +12,19 @@
     { "en": "Printable full report", "hi": "प्रिंट करने योग्य संपूर्ण रिपोर्ट" },
     { "en": "Print & download the complete premium report", "hi": "प्रीमियम रिपोर्ट प्रिंट व डाउनलोड" }
   ],
+  "book": {
+    "title": { "en": "Dhandayak Book (Gupt Khazana) — full access", "hi": "धनदायक पुस्तक (गुप्त खजाना) — पूरी एक्सेस" },
+    "sub": { "en": "धनदायक तांत्रिक प्रयोग — stuck money, debt freedom and business growth: the traditional book, included with Ultra Pro.", "hi": "धनदायक तांत्रिक प्रयोग — अटका धन, कर्ज मुक्ति और व्यापार वृद्धि: पारंपरिक पुस्तक, अल्ट्रा प्रो के साथ शामिल।" },
+    "cta": { "en": "Open the book", "hi": "पुस्तक खोलें" },
+    "opening": { "en": "Opening…", "hi": "खुल रहा है…" },
+    "private": { "en": "Private link — visible only on an Ultra Pro reading.", "hi": "प्राइवेट लिंक — सिर्फ़ अल्ट्रा प्रो रीडिंग पर दिखता है।" },
+    "soon": { "en": "The book link is being added right now and will appear on this page. Your Ultra Pro unlock is already saved.", "hi": "पुस्तक का लिंक अभी जोड़ा जा रहा है और इसी पेज पर दिखने लगेगा। आपका अल्ट्रा प्रो अनलॉक सुरक्षित है।" },
+    "err": { "en": "Could not fetch the link just now — please try again in a moment.", "hi": "लिंक अभी नहीं मिल सका — कृपया थोड़ी देर बाद प्रयास करें।" }
+  },
+  "bookPerks": [
+    { "en": "The complete Dhandayak (Gupt Khazana) book — access included", "hi": "पूरी धनदायक (गुप्त खजाना) पुस्तक — एक्सेस शामिल" },
+    { "en": "The book link stays private to Ultra Pro readers", "hi": "पुस्तक का लिंक सिर्फ़ अल्ट्रा प्रो पाठकों के लिए प्राइवेट" }
+  ],
   "fields": {
     "Fire": { "en": "leadership, defence, sports, surgery, entrepreneurship, energy & engineering", "hi": "नेतृत्व, रक्षा, खेल, सर्जरी, उद्यमिता, ऊर्जा व इंजीनियरिंग" },
     "Earth": { "en": "banking, finance, real estate, agriculture, construction, administration", "hi": "बैंकिंग, वित्त, रियल एस्टेट, कृषि, निर्माण, प्रशासन" },

@@ -28,9 +28,20 @@ export const PDF_PRICE_ANCHOR = 901;
  *   close button) but the pay button only reports that payment options are
  *   being set up. Nothing is charged and nothing unlocks.
  * - `"upi"` — shows the UPI QR + reference-number (UTR) form and unlocks the
- *   reading (premium roadmap + PDF printing) once a reference is submitted.
+ *   reading (premium roadmap + PDF printing, or the book too for Ultra Pro)
+ *   once a reference is submitted.
  *
- * Flip this to `"upi"` to start collecting ₹51, or swap the pay panel for a
+ * Flip this to `"upi"` to start collecting, or swap the pay panel for a
  * gateway panel when one is available.
  */
 export const PRO_PAY_MODE: "coming-soon" | "upi" = "coming-soon";
+
+/**
+ * One-time price of the Ultra Pro plan, in INR: everything in Pro plus the
+ * "धनदायक तांत्रिक प्रयोग" book.
+ *
+ * The book link itself never sits in the client bundle — it lives in the
+ * server-only `ULTRA_BOOK_URL` environment variable and is handed out by
+ * /api/readings/[id]/book only when that reading is Ultra-unlocked.
+ */
+export const ULTRA_PRICE = 351;

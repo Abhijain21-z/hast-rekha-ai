@@ -123,6 +123,7 @@ export default function Footer() {
         </div>
         <div className="flex flex-col items-center justify-between gap-3 border-t border-white/8 py-6 text-xs text-slate-500 sm:flex-row">
           <p>© {year} {t.brand}. {t.footer.rights}</p>
+          <p className="text-slate-400">{t.footer.makers}</p>
           <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <Link href="/privacy-policy" className="hover:text-gold-300">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-gold-300">Terms</Link>
