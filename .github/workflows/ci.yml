@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      # The build only needs a syntactically valid URL; dynamic routes are not
+      # queried at build time, so no database is contacted.
+      DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/app_db
+      NEXT_PUBLIC_SITE_URL: https://www.hastrekhaai.online
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint
+      - name: Tests
+        run: npm test
+      - name: Build
+        run: npm run build
