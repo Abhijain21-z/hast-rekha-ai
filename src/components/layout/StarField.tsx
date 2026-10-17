@@ -9,6 +9,9 @@ export default function StarField() {
 
   useEffect(() => {
     const count = window.innerWidth < 640 ? 70 : 140;
+    // Client-only random stars generated after mount so the server HTML stays stable
+    // (a lazy initial value would cause a hydration mismatch on this decorative layer).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStars(
       Array.from({ length: count }, () => ({
         x: Math.random() * 100,

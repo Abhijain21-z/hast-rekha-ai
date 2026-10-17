@@ -15,13 +15,14 @@ export default function FloatingHand() {
   const show = !pathname.startsWith("/dashboard") && !pathname.startsWith("/login") && !pathname.startsWith("/register");
   const { scrollYProgress } = useScroll();
   const p = useSpring(scrollYProgress, { stiffness: 60, damping: 20, mass: 0.6 });
-  if (!show) return null;
 
   const top = useTransform(p, [0, 1], ["10vh", "70vh"]);
   const left = useTransform(p, (v) => `${50 + Math.sin(v * Math.PI * 4) * 38}%`);
   const rotate = useTransform(p, (v) => Math.sin(v * Math.PI * 4 + Math.PI / 2) * 16);
   const scale = useTransform(p, (v) => 0.8 + Math.abs(Math.sin(v * Math.PI * 4)) * 0.25);
   const opacity = useTransform(p, [0, 0.04, 0.96, 1], [0, 0.9, 0.9, 0]);
+
+  if (!show) return null;
 
   return (
     <motion.div

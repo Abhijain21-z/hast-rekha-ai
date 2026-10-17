@@ -51,12 +51,13 @@ export default function Reviews() {
   }, []);
 
   const max = Math.max(0, items.length - visible);
+  // Clamp for display so a shrinking list (resize / new item) never shows an out-of-range slide.
+  const idx = Math.min(index, max);
   useEffect(() => {
     if (paused) return;
     const id = setInterval(() => setIndex((i) => (i >= max ? 0 : i + 1)), 4500);
     return () => clearInterval(id);
   }, [max, paused]);
-  useEffect(() => { if (index > max) setIndex(max); }, [max, index]);
 
   const go = (d: number) => setIndex((i) => Math.min(max, Math.max(0, i + d)));
 
@@ -86,7 +87,7 @@ export default function Reviews() {
 
         <div className="relative" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
           <div className="overflow-hidden">
-            <motion.div className="flex" animate={{ x: `-${(index * 100) / visible}%` }} transition={{ type: "spring", stiffness: 120, damping: 22 }}>
+            <motion.div className="flex" animate={{ x: `-${(idx * 100) / visible}%` }} transition={{ type: "spring", stiffness: 120, damping: 22 }}>
               {items.map((r, i) => (
                 <div key={`${r.name}-${i}`} className="w-full shrink-0 px-2.5 sm:w-1/2 lg:w-1/3">
                   <div className="glass relative flex h-full flex-col rounded-3xl p-7">
@@ -114,13 +115,13 @@ export default function Reviews() {
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-4">
-            <button onClick={() => go(-1)} disabled={index === 0} className="rounded-full border border-white/10 p-2.5 text-slate-200 transition hover:border-gold-400/50 hover:text-gold-300 disabled:opacity-30" aria-label="Previous"><ChevronLeft className="h-5 w-5" /></button>
+            <button onClick={() => go(-1)} disabled={idx === 0} className="rounded-full border border-white/10 p-2.5 text-slate-200 transition hover:border-gold-400/50 hover:text-gold-300 disabled:opacity-30" aria-label="Previous"><ChevronLeft className="h-5 w-5" /></button>
             <div className="flex max-w-[50vw] gap-2 overflow-hidden">
               {Array.from({ length: max + 1 }).map((_, i) => (
-                <button key={i} onClick={() => setIndex(i)} className={cn("h-2 shrink-0 rounded-full transition-all", i === index ? "w-7 bg-gold-400" : "w-2 bg-white/20 hover:bg-white/40")} aria-label={`Go to ${i + 1}`} />
+                <button key={i} onClick={() => setIndex(i)} className={cn("h-2 shrink-0 rounded-full transition-all", i === idx ? "w-7 bg-gold-400" : "w-2 bg-white/20 hover:bg-white/40")} aria-label={`Go to ${i + 1}`} />
               ))}
             </div>
-            <button onClick={() => go(1)} disabled={index === max} className="rounded-full border border-white/10 p-2.5 text-slate-200 transition hover:border-gold-400/50 hover:text-gold-300 disabled:opacity-30" aria-label="Next"><ChevronRight className="h-5 w-5" /></button>
+            <button onClick={() => go(1)} disabled={idx === max} className="rounded-full border border-white/10 p-2.5 text-slate-200 transition hover:border-gold-400/50 hover:text-gold-300 disabled:opacity-30" aria-label="Next"><ChevronRight className="h-5 w-5" /></button>
           </div>
         </div>
       </div>

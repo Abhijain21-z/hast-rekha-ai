@@ -26,6 +26,9 @@ export default function RashiExplorer() {
 
   useEffect(() => {
     const s = params.get("sign");
+    // Sync the ?sign= deep-link into local state after mount (useSearchParams is empty
+    // during prerender, so it cannot be a lazy initial value without a hydration mismatch).
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (s && RASHIS.some((r) => r.key === s)) setOpenKey(s);
   }, [params]);
 

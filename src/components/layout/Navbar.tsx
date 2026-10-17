@@ -93,8 +93,6 @@ export default function Navbar({ user }: { user: NavUser }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => setOpen(false), [pathname]);
-
   const home = pathname === "/";
   const links = [
     { href: "/", label: t.nav.home },
@@ -200,22 +198,22 @@ export default function Navbar({ user }: { user: NavUser }) {
               <div className="mt-3 flex flex-col gap-2 border-t border-white/10 pt-4">
                 {user ? (
                   <>
-                    <Link href="/dashboard" className="flex items-center gap-2 rounded-xl px-4 py-3 text-slate-100 hover:bg-white/6">
+                    <Link href="/dashboard" onClick={() => setOpen(false)} className="flex items-center gap-2 rounded-xl px-4 py-3 text-slate-100 hover:bg-white/6">
                       <LayoutDashboard className="h-4 w-4 text-gold-300" /> {t.nav.dashboard}
                     </Link>
-                    <button onClick={logout} className="flex items-center gap-2 rounded-xl px-4 py-3 text-left text-slate-300 hover:bg-white/6">
+                    <button onClick={() => { setOpen(false); void logout(); }} className="flex items-center gap-2 rounded-xl px-4 py-3 text-left text-slate-300 hover:bg-white/6">
                       <LogOut className="h-4 w-4" /> {t.nav.logout}
                     </button>
                   </>
                 ) : (
-                  <Link href="/login" className="rounded-xl px-4 py-3 text-slate-100 hover:bg-white/6">
+                  <Link href="/login" onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-slate-100 hover:bg-white/6">
                     {t.nav.login} / {t.nav.register}
                   </Link>
                 )}
                 <Link href={donateLink.href} onClick={() => setOpen(false)} className="flex items-center justify-center gap-1.5 rounded-full border border-rose-300/30 px-5 py-3 text-center text-sm text-rose-200 hover:bg-rose-400/10">
                   <Heart className="h-3.5 w-3.5" /> {donateLink.label}
                 </Link>
-                <Link href="/reading" className="btn-gold rounded-full px-5 py-3 text-center text-sm">
+                <Link href="/reading" onClick={() => setOpen(false)} className="btn-gold rounded-full px-5 py-3 text-center text-sm">
                   {t.nav.getReading}
                 </Link>
               </div>

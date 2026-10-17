@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { LayoutDashboard, BookOpen, PlusCircle, Users, Settings, LogOut, Menu, X, Sparkles, Home } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
@@ -16,8 +16,6 @@ export default function DashboardShell({ user, children }: { user: ShellUser; ch
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
-
-  useEffect(() => setOpen(false), [pathname]);
 
   const nav = [
     { href: "/dashboard", label: t.dash.overview, icon: LayoutDashboard, exact: true },
@@ -52,6 +50,7 @@ export default function DashboardShell({ user, children }: { user: ShellUser; ch
             <Link
               key={n.href}
               href={n.href}
+              onClick={() => setOpen(false)}
               className={cn(
                 "group relative flex items-center gap-3 rounded-2xl px-4 py-3 text-sm transition-all",
                 active ? "bg-gradient-to-r from-gold-400/20 to-transparent text-gold-200" : "text-slate-300 hover:bg-white/5 hover:text-white",
@@ -63,7 +62,7 @@ export default function DashboardShell({ user, children }: { user: ShellUser; ch
             </Link>
           );
         })}
-        <Link href="/" className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm text-slate-400 hover:bg-white/5 hover:text-white">
+        <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm text-slate-400 hover:bg-white/5 hover:text-white">
           <Home className="h-[18px] w-[18px]" /> {t.nav.home}
         </Link>
       </nav>

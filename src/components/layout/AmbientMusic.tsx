@@ -20,6 +20,9 @@ export default function AmbientMusic() {
     const engine = new AmbientEngine();
     engineRef.current = engine;
     if (!engine.supported) {
+      // One-shot client-only capability check after mount (SSR always renders the button,
+      // so this cannot be a lazy initial value without a hydration mismatch).
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSupported(false);
       return;
     }
