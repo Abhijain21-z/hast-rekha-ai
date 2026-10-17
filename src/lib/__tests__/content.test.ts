@@ -24,9 +24,7 @@ import {
   NAKSHATRAS,
   PANCHANG,
   DAILY,
-  CITIES,
   compatibility,
-  searchCities,
   dailyHoroscope,
   analysePalm,
   hashString,
@@ -34,6 +32,7 @@ import {
   nakshatraAt,
   tithiName,
 } from "@/lib/content";
+import { CITIES, searchCities } from "@/lib/cities";
 
 describe("content engine", () => {
   it("loads the core reference data", () => {
@@ -131,6 +130,72 @@ describe("content localization", () => {
       collectUntranslated(PANCHANG, "panchang", missing, code);
       collectUntranslated(DAILY, "daily", missing, code);
       expect(missing, `untranslated "${code}" strings`).toEqual([]);
+    }
+  });
+});
+
+describe("city autocomplete dataset", () => {
+  const INDIA_REGIONS = [
+    "Andaman & Nicobar, India",
+    "Andhra Pradesh, India",
+    "Arunachal Pradesh, India",
+    "Assam, India",
+    "Bihar, India",
+    "Chandigarh, India",
+    "Chhattisgarh, India",
+    "Dadra & Nagar Haveli, India",
+    "Daman & Diu, India",
+    "Delhi, India",
+    "Goa, India",
+    "Gujarat, India",
+    "Haryana, India",
+    "Himachal Pradesh, India",
+    "Jammu & Kashmir, India",
+    "Jharkhand, India",
+    "Karnataka, India",
+    "Kerala, India",
+    "Ladakh, India",
+    "Lakshadweep, India",
+    "Madhya Pradesh, India",
+    "Maharashtra, India",
+    "Manipur, India",
+    "Meghalaya, India",
+    "Mizoram, India",
+    "Nagaland, India",
+    "Odisha, India",
+    "Puducherry, India",
+    "Punjab, India",
+    "Rajasthan, India",
+    "Sikkim, India",
+    "Tamil Nadu, India",
+    "Telangana, India",
+    "Tripura, India",
+    "Uttar Pradesh, India",
+    "Uttarakhand, India",
+    "West Bengal, India",
+  ];
+
+  it("has no duplicate rows and only sane coordinates", () => {
+    const seen = new Set<string>();
+    for (const c of CITIES) {
+      expect(Math.abs(c.lat), `${c.name} latitude`).toBeLessThanOrEqual(90);
+      expect(Math.abs(c.lng), `${c.name} longitude`).toBeLessThanOrEqual(180);
+      expect(Number.isFinite(c.tz), `${c.name} timezone`).toBe(true);
+      const key = `${c.name}|${c.region}`.toLowerCase();
+      expect(seen.has(key), `duplicate city row ${key}`).toBe(false);
+      seen.add(key);
+    }
+  });
+
+  it("covers every Indian state and union territory", () => {
+    const regions = new Set(CITIES.map((c) => c.region));
+    const missing = INDIA_REGIONS.filter((r) => !regions.has(r));
+    expect(missing, `missing states/UTs: ${missing.join(", ")}`).toEqual([]);
+  });
+
+  it("finds every Indian district, not just the big metros", () => {
+    for (const district of ["Betul", "Chhindwara", "Khandwa", "Shivpuri", "Barwani"]) {
+      expect(searchCities(district).some((c) => c.name === district), `${district} not found`).toBe(true);
     }
   });
 });

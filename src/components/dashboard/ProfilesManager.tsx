@@ -7,7 +7,8 @@ import { Users, Plus, Pencil, Trash2, Sparkles, MapPin } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { useToast } from "@/components/providers/ToastProvider";
 import { Avatar, Button, EmptyState, ErrorText, Input, Label, Modal, Select } from "@/components/ui";
-import { searchCities, type City } from "@/lib/content";
+import type { City } from "@/lib/cities";
+import { useCitySearch } from "@/lib/use-city-search";
 import { formatDate, formatTime12, tzLabel, type ProfileDTO } from "@/lib/dto";
 import { RELATIONS, type Relation } from "@/lib/validation";
 
@@ -26,7 +27,7 @@ export default function ProfilesManager({ initial }: { initial: ProfileDTO[] }) 
   const [showSug, setShowSug] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
 
-  const suggestions = useMemo(() => (showSug ? searchCities(form.placeName) : []), [form.placeName, showSug]);
+  const { results: suggestions, ensure: ensureCityData } = useCitySearch(form.placeName, showSug);
 
   function openNew() {
     setEditing(null);
@@ -168,7 +169,7 @@ export default function ProfilesManager({ initial }: { initial: ProfileDTO[] }) 
           </div>
           <div className="relative">
             <Label hint={t.form.placeHint}>{t.form.place}</Label>
-            <Input value={form.placeName} onChange={(e) => { setForm({ ...form, placeName: e.target.value, latitude: "", longitude: "" }); setShowSug(true); }} onFocus={() => setShowSug(true)} onBlur={() => setTimeout(() => setShowSug(false), 150)} placeholder={t.form.placePh} autoComplete="off" />
+            <Input value={form.placeName} onChange={(e) => { setForm({ ...form, placeName: e.target.value, latitude: "", longitude: "" }); setShowSug(true); ensureCityData(); }} onFocus={() => { setShowSug(true); ensureCityData(); }} onBlur={() => setTimeout(() => setShowSug(false), 150)} placeholder={t.form.placePh} autoComplete="off" />
             {suggestions.length > 0 && (
               <ul className="glass-strong absolute z-20 mt-2 max-h-52 w-full overflow-auto rounded-2xl p-1.5 shadow-2xl">
                 {suggestions.map((c) => (

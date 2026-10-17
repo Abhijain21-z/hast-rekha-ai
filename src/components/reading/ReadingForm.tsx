@@ -9,7 +9,8 @@ import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, Input, Label, Select, ErrorText, cn } from "@/components/ui";
 import PalmUpload from "./PalmUpload";
 import CalculatingOverlay from "./CalculatingOverlay";
-import { searchCities, type City } from "@/lib/content";
+import type { City } from "@/lib/cities";
+import { useCitySearch } from "@/lib/use-city-search";
 import { tzLabel } from "@/lib/dto";
 
 interface Props { loggedIn: boolean }
@@ -76,7 +77,9 @@ export default function ReadingForm({ loggedIn }: Props) {
     rafRef.current = requestAnimationFrame(tick);
   }
 
-  const suggestions = useMemo(() => (city && placeQuery === `${city.name}${city.region ? ", " + city.region : ""}` ? [] : searchCities(placeQuery)), [placeQuery, city]);
+  const cityLabel = city ? `${city.name}${city.region ? ", " + city.region : ""}` : "";
+  const searching = !!placeQuery.trim() && placeQuery !== cityLabel;
+  const { results: suggestions, ensure: ensureCityData } = useCitySearch(placeQuery, searching);
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => { if (boxRef.current && !boxRef.current.contains(e.target as Node)) setShowSug(false); };
@@ -213,8 +216,8 @@ export default function ReadingForm({ loggedIn }: Props) {
               <MapPin className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <Input
                 value={placeQuery}
-                onChange={(e) => { setPlaceQuery(e.target.value); setCity(null); setShowSug(true); }}
-                onFocus={() => setShowSug(true)}
+                onChange={(e) => { setPlaceQuery(e.target.value); setCity(null); setShowSug(true); ensureCityData(); }}
+                onFocus={() => { setShowSug(true); ensureCityData(); }}
                 placeholder={t.form.placePh}
                 className="pl-10"
                 autoComplete="off"

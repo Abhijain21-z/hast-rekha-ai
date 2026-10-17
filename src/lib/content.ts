@@ -7,7 +7,6 @@ import nakshatrasJson from "@/content/nakshatras.json";
 import panchangJson from "@/content/panchang.json";
 import palmistryJson from "@/content/palmistry.json";
 import dailyJson from "@/content/daily.json";
-import citiesJson from "@/content/cities.json";
 import { byLang, type Bi, type Lang } from "./i18n";
 import { localize } from "@/content/locales";
 import type { AstroResult } from "./astrology";
@@ -28,7 +27,7 @@ export interface Rashi {
 }
 export interface Nakshatra { key: string; name: Bi; lord: Bi; deity: Bi; symbol: Bi; trait: Bi }
 export interface PalmLine { key: string; name: Bi; location: Bi; meaning: Bi; variants: { label: Bi; text: Bi }[] }
-export interface City { name: string; region: string; lat: number; lng: number; tz: number }
+// The city autocomplete list lives in `./cities` so pages can load it lazily.
 
 export const RASHIS = localize(rashisJson, "rashis") as Rashi[];
 export const NAKSHATRAS = localize(nakshatrasJson, "nakshatras") as Nakshatra[];
@@ -45,9 +44,6 @@ export const PALMISTRY = localize(palmistryJson, "palmistry") as {
   tips: { en: string[]; hi: string[] };
 };
 export const DAILY = localize(dailyJson, "daily") as { messages: Bi[]; moods: Bi[] };
-export const CITIES: City[] = (citiesJson as [string, string, number, number, number][]).map(
-  ([name, region, lat, lng, tz]) => ({ name, region, lat, lng, tz }),
-);
 
 export const rashiAt = (i: number) => RASHIS[((i % 12) + 12) % 12];
 export const nakshatraAt = (i: number) => NAKSHATRAS[((i % 27) + 27) % 27];
@@ -57,16 +53,6 @@ export function tithiName(tithi: number, lang: Lang): string {
   if (tithi === 15) return list[14];
   if (tithi === 30) return list[15];
   return list[(tithi - 1) % 15];
-}
-
-export function searchCities(q: string, limit = 8): City[] {
-  const s = q.trim().toLowerCase();
-  if (!s) return [];
-  const starts = CITIES.filter((c) => c.name.toLowerCase().startsWith(s));
-  const contains = CITIES.filter(
-    (c) => !c.name.toLowerCase().startsWith(s) && (c.name.toLowerCase().includes(s) || c.region.toLowerCase().includes(s)),
-  );
-  return [...starts, ...contains].slice(0, limit);
 }
 
 /** Small deterministic hash so palm "variants" are stable for the same person. */
