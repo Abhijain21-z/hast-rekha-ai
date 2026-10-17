@@ -27,6 +27,8 @@ interface Body {
   tzOffset?: number;
   palmImage?: string | null;
   palmHand?: string | null;
+  gender?: string | null;
+  married?: boolean | null;
   title?: string;
 }
 
@@ -55,6 +57,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Invalid place" }, { status: 400 });
   const palmImage = typeof body.palmImage === "string" && body.palmImage.startsWith("data:image/") && body.palmImage.length < 2_500_000 ? body.palmImage : null;
   const palmHand = body.palmHand === "left" || body.palmHand === "right" ? body.palmHand : null;
+  const gender = body.gender === "male" || body.gender === "female" || body.gender === "trans" ? body.gender : null;
+  const married = typeof body.married === "boolean" ? body.married : null;
 
   let result;
   try {
@@ -80,6 +84,8 @@ export async function POST(req: Request) {
       result,
       palmImage,
       palmHand,
+      gender,
+      married,
     })
     .returning();
 

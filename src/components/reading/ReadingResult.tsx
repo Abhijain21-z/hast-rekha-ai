@@ -37,6 +37,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
   );
   const [copied, setCopied] = useState(false);
   const [tech, setTech] = useState(false);
+  const GENDER_LABEL: Record<string, string> = { male: t.form.male, female: t.form.female, trans: t.form.trans };
 
   async function copyLink() {
     try {
@@ -76,6 +77,8 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
               <Badge>{tzLabel(reading.tzOffset)}</Badge>
               <Badge>{reading.latitude.toFixed(2)}, {reading.longitude.toFixed(2)}</Badge>
               <Badge>{L(report.shape.name)}</Badge>
+              {reading.gender && <Badge>{GENDER_LABEL[reading.gender]}</Badge>}
+              {reading.married !== null && <Badge>{reading.married ? t.form.marriedYes : t.form.marriedNo}</Badge>}
             </div>
           </div>
           <div className="no-print flex flex-wrap gap-2">

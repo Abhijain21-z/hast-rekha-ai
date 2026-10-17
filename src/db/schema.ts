@@ -52,6 +52,9 @@ export const readings = pgTable(
     result: jsonb("result").$type<AstroResult>().notNull(),
     palmImage: text("palm_image"), // data URL (downscaled on client)
     palmHand: varchar("palm_hand", { length: 10 }),
+    // Optional profile details captured in the form; shown back on the report.
+    gender: varchar("gender", { length: 10 }), // "male" | "female" | "trans"
+    married: boolean("married"), // null when the visitor skipped the question
     notes: text("notes"),
     isFavorite: boolean("is_favorite").notNull().default(false),
     premium: boolean("premium").notNull().default(false),

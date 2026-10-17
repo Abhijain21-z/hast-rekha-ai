@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { MapPin, Sparkles, Clock, CalendarDays, UserRound, LogIn } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
-import { Button, Input, Label, ErrorText, cn } from "@/components/ui";
+import { Button, Input, Label, Select, ErrorText, cn } from "@/components/ui";
 import PalmUpload from "./PalmUpload";
 import CalculatingOverlay from "./CalculatingOverlay";
 import { searchCities, type City } from "@/lib/content";
@@ -23,6 +23,8 @@ export default function ReadingForm({ loggedIn }: Props) {
   const [birthDate, setBirthDate] = useState(params.get("dob") ?? "");
   const [birthTime, setBirthTime] = useState(params.get("tob") ?? "");
   const [timeUnknown, setTimeUnknown] = useState(false);
+  const [gender, setGender] = useState<"" | "male" | "female" | "trans">("");
+  const [married, setMarried] = useState<"" | "yes" | "no">("");
   const [placeQuery, setPlaceQuery] = useState(params.get("place") ?? "");
   const [city, setCity] = useState<City | null>(() => {
     const lat = params.get("lat"), lng = params.get("lng");
@@ -127,6 +129,8 @@ export default function ReadingForm({ loggedIn }: Props) {
         tzOffset: Number.isNaN(tzN) ? 5.5 : tzN,
         palmImage: palm,
         palmHand: palm ? hand : null,
+        gender: gender || null,
+        married: married === "" ? null : married === "yes",
       }),
     }).then(async (res) => {
       if (!res.ok) throw new Error("request failed");
@@ -182,6 +186,26 @@ export default function ReadingForm({ loggedIn }: Props) {
             <input type="checkbox" checked={timeUnknown} onChange={(e) => setTimeUnknown(e.target.checked)} className="h-4 w-4 accent-[#f5c242]" />
             {t.form.unknownTime}
           </label>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div>
+              <Label hint={t.common.optional}>{t.form.gender}</Label>
+              <Select value={gender} onChange={(e) => setGender(e.target.value as "" | "male" | "female" | "trans")}>
+                <option value="">{t.form.preferNot}</option>
+                <option value="male">{t.form.male}</option>
+                <option value="female">{t.form.female}</option>
+                <option value="trans">{t.form.trans}</option>
+              </Select>
+            </div>
+            <div>
+              <Label hint={t.common.optional}>{t.form.married}</Label>
+              <Select value={married} onChange={(e) => setMarried(e.target.value as "" | "yes" | "no")}>
+                <option value="">{t.form.preferNot}</option>
+                <option value="yes">{t.form.marriedYes}</option>
+                <option value="no">{t.form.marriedNo}</option>
+              </Select>
+            </div>
+          </div>
 
           <div ref={boxRef} className="relative">
             <Label hint={t.form.placeHint}>{t.form.place}</Label>

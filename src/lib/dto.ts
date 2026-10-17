@@ -17,6 +17,8 @@ export interface ReadingDTO {
   result: AstroResult;
   palmImage: string | null;
   palmHand: string | null;
+  gender: string | null;
+  married: boolean | null;
   notes: string | null;
   isFavorite: boolean;
   premium: boolean;
