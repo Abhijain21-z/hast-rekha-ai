@@ -167,6 +167,18 @@
   "sections": [
    {
     "h": {
+     "en": "Who made this website",
+     "hi": "यह वेबसाइट किसने बनाई"
+    },
+    "p": [
+     {
+      "en": "Hast Rekha AI was created by Sachin Jain. The purpose of this website is simple: to let anyone read their own palm lines and birth chart together — Rashi, Nakshatra, Lagna, life predictions and lucky years — instantly and free, in easy Hindi and English, without visiting an astrologer. AI tools were used as a helping hand to build and design this website. The astrological predictions themselves are based on classical rules and real astronomical calculations, not on a random AI guess.",
+      "hi": "हस्तरेखा AI को सचिन जैन द्वारा बनाया गया है। इस वेबसाइट का उद्देश्य सरल है: कोई भी व्यक्ति अपने हाथ की रेखाएँ और जन्म कुंडली एक साथ पढ़ सके — राशि, नक्षत्र, लग्न, जीवन की भविष्यवाणियाँ और शुभ वर्ष — तुरंत और निःशुल्क, आसान हिंदी और अंग्रेज़ी में, बिना किसी ज्योतिषी के पास जाए। इस वेबसाइट को बनाने और डिज़ाइन करने में मदद के लिए AI टूल्स का उपयोग किया गया है। ज्योतिषीय भविष्यवाणियाँ स्वयं शास्त्रीय नियमों और वास्तविक खगोलीय गणनाओं पर आधारित हैं, किसी रैंडम AI अंदाज़े पर नहीं।"
+     }
+    ]
+   },
+   {
+    "h": {
      "en": "What we do",
      "hi": "हम क्या करते हैं"
     },
@@ -184,8 +196,8 @@
     },
     "p": [
      {
-      "en": "Transparency: every report shows the exact degrees and ayanamsa behind it. Privacy: your data stays with you. Bilingual first: Hindi and English, written by humans. No fear-mongering: every caution is paired with a remedy. Affordability: the complete free report costs nothing; the premium 5-year roadmap is a one-time ₹51.",
-      "hi": "पारदर्शिता: हर रिपोर्ट अपने पीछे के सटीक अंश व अयनांश दिखाती है। गोपनीयता: आपका डेटा आपके पास रहता है। द्विभाषी सर्वप्रथम: हिंदी व अंग्रेज़ी, मनुष्यों द्वारा लिखित। भय न फैलाना: हर सावधानी के साथ उपाय। किफ़ायत: संपूर्ण निःशुल्क रिपोर्ट का कोई शुल्क नहीं; प्रीमियम 5-वर्षीय रोडमैप एक बार का ₹51।"
+      "en": "Transparency: every report shows the exact degrees and ayanamsa behind it, and we openly state that AI helped build this website. Privacy: your data stays with you. Bilingual first: Hindi and English, carefully reviewed by humans. No fear-mongering: every caution is paired with a remedy. Affordability: the complete free report costs nothing; the premium 5-year roadmap is a one-time ₹51.",
+      "hi": "पारदर्शिता: हर रिपोर्ट अपने पीछे के सटीक अंश व अयनांश दिखाती है, और हम खुलकर बताते हैं कि इस वेबसाइट को बनाने में AI की मदद ली गई है। गोपनीयता: आपका डेटा आपके पास रहता है। द्विभाषी सर्वप्रथम: हिंदी व अंग्रेज़ी, मनुष्यों द्वारा सावधानी से जाँची गई। भय न फैलाना: हर सावधानी के साथ उपाय। किफ़ायत: संपूर्ण निःशुल्क रिपोर्ट का कोई शुल्क नहीं; प्रीमियम 5-वर्षीय रोडमैप एक बार का ₹51।"
      }
     ]
    },
@@ -268,8 +280,8 @@
    "hi": "अंतिम अद्यतन: 20 सितंबर 2026"
   },
   "intro": {
-   "en": "Welcome to Hast Rekha AI (https://hastrekhaai.online). By using this website, you agree to these Terms of Service. Please read them carefully before using our astrology and palmistry services.",
-   "hi": "हस्त रेखा AI (https://hastrekhaai.online) में आपका स्वागत है। इस वेबसाइट का उपयोग करके आप इन सेवा शर्तों से सहमत होते हैं। कृपया हमारी ज्योतिष और हस्तरेखा सेवाओं का उपयोग करने से पहले इन्हें ध्यानपूर्वक पढ़ें।"
+   "en": "Welcome to Hast Rekha AI (https://www.hastrekhaai.online). By using this website, you agree to these Terms of Service. Please read them carefully before using our astrology and palmistry services.",
+   "hi": "हस्त रेखा AI (https://www.hastrekhaai.online) में आपका स्वागत है। इस वेबसाइट का उपयोग करके आप इन सेवा शर्तों से सहमत होते हैं। कृपया हमारी ज्योतिष और हस्तरेखा सेवाओं का उपयोग करने से पहले इन्हें ध्यानपूर्वक पढ़ें।"
   },
   "sections": [
    {
@@ -391,8 +403,8 @@
     },
     "p": [
      {
-      "en": "For questions about these Terms, contact us at abhijain.technical@gmail.com or through the contact page at https://hastrekhaai.online/contact.",
-      "hi": "इन शर्तों के बारे में प्रश्नों के लिए abhijain.technical@gmail.com पर या https://hastrekhaai.online/contact संपर्क पृष्ठ के माध्यम से हमसे संपर्क करें।"
+      "en": "For questions about these Terms, contact us at abhijain.technical@gmail.com or through the contact page at https://www.hastrekhaai.online/contact.",
+      "hi": "इन शर्तों के बारे में प्रश्नों के लिए abhijain.technical@gmail.com पर या https://www.hastrekhaai.online/contact संपर्क पृष्ठ के माध्यम से हमसे संपर्क करें।"
      }
     ]
    }

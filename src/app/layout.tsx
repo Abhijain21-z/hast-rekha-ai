@@ -8,9 +8,13 @@ import StarField from "@/components/layout/StarField";
 import AmbientMusic from "@/components/layout/AmbientMusic";
 import FloatingHand from "@/components/layout/FloatingHand";
 import { LANGS } from "@/lib/lang-overrides";
+import { SITE_URL } from "@/lib/site";
 import type { Lang } from "@/lib/i18n";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://hastrekhaai.online";
+// Canonical host is www — Vercel 308-redirects the apex to www, so every
+// canonical/sitemap/OG URL must use www or Search Console reports
+// "Duplicate without user-selected canonical". See src/lib/site.ts.
+const SITE = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),

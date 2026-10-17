@@ -5,6 +5,7 @@ import ZodiacShowcase from "@/components/home/ZodiacShowcase";
 import Features from "@/components/home/Features";
 import Pricing from "@/components/home/Pricing";
 import Reviews from "@/components/home/Reviews";
+import FAQ from "@/components/home/FAQ";
 import About from "@/components/home/About";
 import RishisSection from "@/components/home/RishisSection";
 import ConstellationBackdrop from "@/components/layout/Constellations";
@@ -23,6 +24,7 @@ export default function HomePage() {
         <Features />
         <Pricing />
         <Reviews />
+        <FAQ />
         <About />
       </div>
     </div>

@@ -1,12 +1,15 @@
 import type { MetadataRoute } from "next";
-
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://hastrekhaai.online";
+import { SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: ["/dashboard", "/api/", "/login", "/register"] },
+      // /login and /register are intentionally NOT disallowed: they are linked in
+      // the navbar, so a robots.txt block just makes Search Console report
+      // "Blocked by robots.txt". They carry `robots: noindex` instead.
+      { userAgent: "*", allow: "/", disallow: ["/dashboard", "/api/"] },
     ],
-    sitemap: `${BASE}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

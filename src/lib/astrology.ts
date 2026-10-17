@@ -43,6 +43,12 @@ export interface AstroResult {
   yoga: number; // 0-26
   weekday: number; // 0 = Sunday
   moonPhase: number; // illuminated fraction 0-1
+  /**
+   * Marital status entered on the form. Optional so readings created before this
+   * field existed keep working; stored inside `result` (JSONB) to avoid a DB
+   * migration on the live database.
+   */
+  married?: boolean;
 }
 
 const DEG = 180 / Math.PI;

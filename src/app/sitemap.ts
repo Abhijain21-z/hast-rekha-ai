@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { BLOGS } from "@/lib/blogs";
 import { BOOK_PROMO } from "@/lib/flags";
+import { SITE_URL } from "@/lib/site";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://hastrekhaai.online";
+const BASE = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

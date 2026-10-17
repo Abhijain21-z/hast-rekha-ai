@@ -1,56 +1,83 @@
 [
   {
-    "name": "Priya Sharma",
+    "name": "नीरज प्रजापति",
+    "location": { "en": "Indore, Madhya Pradesh", "hi": "इंदौर, मध्य प्रदेश" },
+    "rating": 5,
+    "quote": {
+      "en": "I checked my own reading just to test it, and the Lagna and Rashi came out exactly like the kundli at home. The career part matched my job switch this year. Honestly did not expect this from a free website.",
+      "hi": "बस टेस्ट करने के लिए अपनी रीडिंग देखी थी, पर लग्न और राशि बिल्कुल वैसे ही निकले जैसे घर की कुंडली में हैं। करियर वाला हिस्सा इस साल की जॉब चेंज से मैच कर गया। सच में एक फ्री वेबसाइट से इतनी उम्मीद नहीं थी।"
+    }
+  },
+  {
+    "name": "सूरज प्रजापति",
+    "location": { "en": "Ujjain, Madhya Pradesh", "hi": "उज्जैन, मध्य प्रदेश" },
+    "rating": 5,
+    "quote": {
+      "en": "The palm reading part explained my heart line and fate line in such simple words that even my father understood it. We read it together in Hindi. Clean and easy to use.",
+      "hi": "हस्तरेखा वाले हिस्से ने मेरी हृदय रेखा और भाग्य रेखा इतने आसान शब्दों में समझाई कि पापा को भी समझ आ गई। हमने साथ बैठकर हिंदी में पढ़ा। साफ-सुथरी और इस्तेमाल में आसान है।"
+    }
+  },
+  {
+    "name": "संजय सूर्यवंशी",
+    "location": { "en": "Bhopal, Madhya Pradesh", "hi": "भोपाल, मध्य प्रदेश" },
+    "rating": 4,
+    "quote": {
+      "en": "Being from a technical background I was doubtful at first, but the report shows the actual degrees and Lahiri ayanamsa. Nothing is hidden. I liked that it does not try to scare you.",
+      "hi": "टेक्निकल बैकग्राउंड से हूँ तो पहले शक था, पर रिपोर्ट में असली अंश और लाहिड़ी अयनांश दिखते हैं। कुछ छिपाया नहीं जाता। अच्छा लगा कि ये डराने की कोशिश नहीं करती।"
+    }
+  },
+  {
+    "name": "योगिता जैन",
     "location": { "en": "Jaipur, Rajasthan", "hi": "जयपुर, राजस्थान" },
     "rating": 5,
     "quote": {
-      "en": "The Nakshatra and Lagna matched exactly with the kundli my family pandit made years ago. The Hindi predictions felt like they were written just for me.",
-      "hi": "नक्षत्र और लग्न बिल्कुल वही निकले जो वर्षों पहले हमारे पंडित जी ने कुंडली में बताए थे। हिंदी में भविष्यवाणियाँ ऐसी लगीं जैसे मेरे लिए ही लिखी गई हों।"
+      "en": "I was worried about marriage timing and the predictions gave me a calm, clear direction instead of fear. The remedies are simple ones anybody can follow. Shared it with my whole family.",
+      "hi": "शादी के समय को लेकर परेशान थी, पर भविष्यवाणियों ने डर की जगह एक शांत, स्पष्ट दिशा दी। उपाय भी ऐसे सरल हैं जो कोई भी कर सकता है। पूरे परिवार के साथ शेयर की।"
     }
   },
   {
-    "name": "Rahul Verma",
-    "location": { "en": "Lucknow, Uttar Pradesh", "hi": "लखनऊ, उत्तर प्रदेश" },
+    "name": "प्रियंका जैन",
+    "location": { "en": "Ratlam, Madhya Pradesh", "hi": "रतलाम, मध्य प्रदेश" },
     "rating": 5,
     "quote": {
-      "en": "I was changing jobs and the career section described my situation with scary accuracy. Instant results, no waiting, no hidden charges.",
-      "hi": "मैं नौकरी बदल रहा था और करियर वाले हिस्से ने मेरी स्थिति को अद्भुत सटीकता से बताया। तुरंत परिणाम, कोई इंतज़ार नहीं, कोई छिपा शुल्क नहीं।"
+      "en": "The best part for me is the Hindi. Everything is written in such easy language that I did not need anyone to explain it. Got my full reading in less than a minute.",
+      "hi": "मेरे लिए सबसे अच्छी बात हिंदी है। सब कुछ इतनी आसान भाषा में लिखा है कि किसी से समझने की ज़रूरत नहीं पड़ी। एक मिनट से भी कम में पूरी रीडिंग मिल गई।"
     }
   },
   {
-    "name": "Ananya Iyer",
-    "location": { "en": "Chennai, Tamil Nadu", "hi": "चेन्नई, तमिलनाडु" },
+    "name": "प्रणव जैन",
+    "location": { "en": "Dewas, Madhya Pradesh", "hi": "देवास, मध्य प्रदेश" },
+    "rating": 5,
+    "quote": {
+      "en": "I took the ₹51 premium five-year report and it was worth it. Year by year it tells what to focus on and what mistakes to avoid. Downloaded the PDF and keep it saved on my phone.",
+      "hi": "मैंने ₹51 वाली पाँच-साल की प्रीमियम रिपोर्ट ली और ये पैसे वसूल रही। साल-दर-साल बताती है किस पर ध्यान दें और कौन सी गलती से बचें। PDF डाउनलोड करके फोन में सेव रखी है।"
+    }
+  },
+  {
+    "name": "रुपेश अग्रवाल",
+    "location": { "en": "Kota, Rajasthan", "hi": "कोटा, राजस्थान" },
     "rating": 4,
     "quote": {
-      "en": "Loved the palm reading guide — it explained each line so clearly that I finally understood what my grandmother used to say about my heart line.",
-      "hi": "हस्तरेखा मार्गदर्शिका बहुत पसंद आई — हर रेखा को इतनी स्पष्टता से समझाया कि आख़िरकार मुझे समझ आया कि दादी मेरी हृदय रेखा के बारे में क्या कहती थीं।"
+      "en": "Used it before taking a business decision. The lucky years and turning points section gave me something practical to think about. Loads fast even on my old phone.",
+      "hi": "एक बिज़नेस फैसले से पहले इस्तेमाल किया। शुभ वर्ष और टर्निंग पॉइंट वाले हिस्से ने सोचने के लिए कुछ काम की बात दी। मेरे पुराने फोन पर भी जल्दी खुल जाती है।"
     }
   },
   {
-    "name": "Vikram Singh",
-    "location": { "en": "Chandigarh", "hi": "चंडीगढ़" },
+    "name": "नितेश सूर्यवंशी",
+    "location": { "en": "Gwalior, Madhya Pradesh", "hi": "ग्वालियर, मध्य प्रदेश" },
     "rating": 5,
     "quote": {
-      "en": "As an engineer I was sceptical, but the calculations are transparent — real astronomical positions, Lahiri ayanamsa, everything shown in degrees.",
-      "hi": "एक इंजीनियर होने के नाते मुझे संदेह था, पर गणनाएँ पारदर्शी हैं — वास्तविक खगोलीय स्थितियाँ, लाहिड़ी अयनांश, सब कुछ अंशों में दिखाया गया।"
+      "en": "No login forced, no hidden charges, result comes instantly. I have tried many astrology apps and most just ask for money. This one actually gives the full reading free.",
+      "hi": "ना ज़बरदस्ती लॉगिन, ना कोई छिपा शुल्क, रिज़ल्ट तुरंत आ जाता है। कई ज्योतिष ऐप आज़माए हैं, ज़्यादातर बस पैसे माँगते हैं। ये सच में पूरी रीडिंग फ्री देती है।"
     }
   },
   {
-    "name": "Meera Patel",
-    "location": { "en": "Ahmedabad, Gujarat", "hi": "अहमदाबाद, गुजरात" },
+    "name": "पूनम गुप्ता",
+    "location": { "en": "Nagpur, Maharashtra", "hi": "नागपुर, महाराष्ट्र" },
     "rating": 5,
     "quote": {
-      "en": "I saved readings for my whole family in the dashboard. Switching between Hindi and English for my parents is a blessing.",
-      "hi": "मैंने डैशबोर्ड में पूरे परिवार की रीडिंग सहेज ली हैं। माता-पिता के लिए हिंदी और अंग्रेज़ी के बीच स्विच करना वरदान जैसा है।"
-    }
-  },
-  {
-    "name": "Arjun Nair",
-    "location": { "en": "Kochi, Kerala", "hi": "कोच्चि, केरल" },
-    "rating": 4,
-    "quote": {
-      "en": "Beautiful design and the 3D zodiac wheel is mesmerising. The daily horoscope has become part of my morning routine.",
-      "hi": "सुंदर डिज़ाइन और 3D राशि चक्र मंत्रमुग्ध कर देता है। दैनिक राशिफल मेरी सुबह की दिनचर्या का हिस्सा बन गया है।"
+      "en": "I made readings for my kids and parents and saved them all in the dashboard. Being able to switch between Hindi and English for different family members is really helpful.",
+      "hi": "मैंने अपने बच्चों और माता-पिता की रीडिंग बनाई और सब डैशबोर्ड में सेव कर लीं। अलग-अलग परिवार वालों के लिए हिंदी और अंग्रेज़ी में बदल पाना बहुत काम का है।"
     }
   }
 ]

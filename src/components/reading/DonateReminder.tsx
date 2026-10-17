@@ -6,7 +6,7 @@ import { HandHeart, Printer, X } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, cn } from "@/components/ui";
 import DonateModal from "./DonateModal";
-import { BOOK_PROMO } from "@/lib/flags";
+import { PDF_PAID, PDF_PRICE } from "@/lib/flags";
 
 /** Suggests a voluntary donation 8 minutes after the prediction appears (once per session). */
 export function DonateReminder({ enabled }: { enabled: boolean }) {
@@ -79,7 +79,7 @@ export function PrintGate({ readingName }: { readingName: string }) {
   const [paid, setPaid] = useState(false);
 
   // While the ₹51 gate is disabled (e.g. during AdSense review) printing is free.
-  if (!BOOK_PROMO) {
+  if (!PDF_PAID) {
     return (
       <button
         onClick={() => window.print()}
@@ -129,7 +129,7 @@ export function PrintGate({ readingName }: { readingName: string }) {
               </div>
               <h3 className="mt-4 font-display text-2xl text-white">{t.printGate.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-300">{t.printGate.body}</p>
-              <p className="mt-2 text-xs text-slate-500">{readingName} · ₹51</p>
+              <p className="mt-2 text-xs text-slate-500">{readingName} · ₹{PDF_PRICE}</p>
               <div className="mt-6 flex gap-3">
                 <button
                   onClick={() => { setPaid(true); setTimeout(startPrint, 600); }}
