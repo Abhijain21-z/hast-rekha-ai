@@ -24,7 +24,7 @@ export default function StarField() {
   }, []);
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div aria-hidden className="starfield pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <div className="absolute -left-40 top-[-10%] h-[520px] w-[520px] rounded-full bg-mystic-600/25 blur-[140px] animate-float" />
       <div className="absolute -right-40 top-[30%] h-[460px] w-[460px] rounded-full bg-gold-500/10 blur-[140px] animate-float [animation-delay:-3s]" />
       <div className="absolute bottom-[-10%] left-[30%] h-[420px] w-[420px] rounded-full bg-mystic-700/25 blur-[140px] animate-float [animation-delay:-5s]" />

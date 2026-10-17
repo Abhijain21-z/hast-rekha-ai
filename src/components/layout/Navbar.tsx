@@ -9,6 +9,9 @@ import { useLang } from "@/components/providers/LanguageProvider";
 import { LANGS } from "@/lib/lang-overrides";
 import { BOOK_PROMO } from "@/lib/flags";
 import { Avatar, cn } from "@/components/ui";
+import ThemeToggle from "@/components/layout/ThemeToggle";
+import ShareButton from "@/components/layout/ShareButton";
+import PwaInstall from "@/components/layout/PwaInstall";
 
 export type NavUser = { name: string; email: string } | null;
 
@@ -106,6 +109,7 @@ export default function Navbar({ user }: { user: NavUser }) {
     { href: home ? "#features" : "/#features", label: t.nav.features },
     { href: home ? "#how-it-works" : "/#how-it-works", label: t.nav.how },
     { href: home ? "#reviews" : "/#reviews", label: t.nav.reviews },
+    { href: "/reviews", label: t.nav.publicReviews },
     { href: "/rashi", label: t.nav.rashi },
     ...(BOOK_PROMO ? [{ href: "/upay", label: t.nav.upay ?? "उपाय" }] : []),
     { href: "/blog", label: t.nav.blog },
@@ -124,12 +128,17 @@ export default function Navbar({ user }: { user: NavUser }) {
     <header className={cn("fixed inset-x-0 top-0 z-50 transition-all duration-300", scrolled || open ? "glass-strong shadow-lg shadow-black/30" : "bg-cosmic-950/40 backdrop-blur-sm")}>
       {/* Top language bar — always visible so users can switch the whole site's language */}
       <div className="border-b border-gold-400/20 bg-gradient-to-r from-mystic-700/40 via-cosmic-800/60 to-mystic-700/40">
-        <div className="mx-auto flex h-[34px] max-w-7xl items-center justify-center gap-3 px-4 text-xs sm:justify-between sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-[34px] max-w-7xl items-center justify-center gap-2 px-4 text-xs sm:justify-between sm:gap-3 sm:px-6 lg:px-8">
           <span className="hidden text-gold-200/90 sm:inline">ॐ श्री गणेशाय नमः · {t.tagline}</span>
-          <div className="flex items-center gap-2">
-            <Globe className="h-3.5 w-3.5 text-gold-300" />
-            <span className="text-slate-200">{t.top.choose}:</span>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="hidden items-center gap-1.5 sm:flex">
+              <Globe className="h-3.5 w-3.5 text-gold-300" />
+              <span className="text-slate-200">{t.top.choose}:</span>
+            </span>
             <LangToggle compact />
+            <ThemeToggle compact />
+            <ShareButton compact />
+            <PwaInstall />
           </div>
         </div>
       </div>

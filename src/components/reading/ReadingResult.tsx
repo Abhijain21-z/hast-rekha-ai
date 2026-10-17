@@ -17,6 +17,7 @@ import DetailedSections from "./DetailedSections";
 import PalmAnalysis from "./PalmAnalysis";
 import PremiumSection from "./PremiumSection";
 import { DonateReminder } from "./DonateReminder";
+import ReadingReview from "./ReadingReview";
 import { PdfDividerButton, ProGateButton } from "./ProPaywall";
 import UpayBookPromo from "@/components/upay/UpayBookPromo";
 import { BOOK_PROMO } from "@/lib/flags";
@@ -321,6 +322,9 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       </div>
 
       <p className="mt-8 text-center text-xs italic text-slate-500">{t.result.disclaimer}</p>
+
+      {/* 8. Review ask — feeds the home carousel and Public Reviews */}
+      <ReadingReview defaultName={reading.fullName} />
 
       <DonateReminder enabled />
     </div>

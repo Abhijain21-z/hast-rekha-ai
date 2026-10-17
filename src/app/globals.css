@@ -185,8 +185,143 @@ body {
 .perspective-1000 { perspective: 1000px; }
 .preserve-3d { transform-style: preserve-3d; }
 
+/* =========================================================================
+   Light theme
+   -------------------------------------------------------------------------
+   The whole UI is authored against Tailwind palette tokens (white / slate /
+   cosmic / gold), and Tailwind v4 emits those as CSS variables that the
+   utility classes read at runtime (e.g. .text-white { color: var(--color-white) }
+   and .bg-white\/5 { background-color: color-mix(in oklab, var(--color-white) 5%, transparent) }).
+   So re-declaring the tokens on html[data-theme="light"] flips the whole
+   site to a light, high-contrast palette without touching a single component.
+   Dark stays the default ([data-theme="dark"] or no attribute).
+   ========================================================================= */
+html[data-theme="light"] {
+  color-scheme: light;
+
+  /* "white" becomes the ink colour: text-white -> dark, bg-white/5 -> a soft grey wash. */
+  --color-white: #1a1330;
+
+  /* Slate scale inverted (high numbers were dark surfaces, now light ones). */
+  --color-slate-100: #0c0820;
+  --color-slate-200: #1c1638;
+  --color-slate-300: #2f2a4d;
+  --color-slate-400: #565173;
+  --color-slate-500: #736d8d;
+  --color-slate-600: #a49dbd;
+  --color-slate-700: #cdc7de;
+  --color-slate-800: #e6e2f1;
+  --color-slate-900: #f2eff8;
+  --color-slate-950: #f8f6fc;
+
+  /* Cosmic surfaces become paper. */
+  --color-cosmic-950: #f7f5fd;
+  --color-cosmic-900: #ffffff;
+  --color-cosmic-800: #f3effb;
+  --color-cosmic-700: #eae3f7;
+  --color-cosmic-600: #dcd3f1;
+
+  /* Gold kept, but darkened enough to read on white. */
+  --color-gold-200: #6f5110;
+  --color-gold-300: #7d5c10;
+  --color-gold-400: #9a7412;
+  --color-gold-500: #8a6410;
+  --color-gold-600: #6b4e0e;
+
+  /* Mystic purple: dark enough as text, light enough as a soft gradient wash. */
+  --color-mystic-400: #7c3aed;
+  --color-mystic-500: #6d28d9;
+  --color-mystic-600: #5b21b6;
+  --color-mystic-700: #c9bcf5;
+
+  /* Accent text shades (the -100/-200/-300 steps) darkened for contrast on paper. */
+  --color-rose-100: #881337;
+  --color-rose-200: #a3123f;
+  --color-rose-300: #be123c;
+  --color-emerald-200: #047857;
+  --color-emerald-300: #047857;
+  --color-amber-100: #92400e;
+  --color-amber-300: #b45309;
+  --color-sky-200: #0369a1;
+  --color-cyan-100: #0e7490;
+  --color-orange-200: #9a3412;
+  --color-blue-200: #1e40af;
+  --color-indigo-300: #4338ca;
+  --color-teal-200: #0f766e;
+  --color-lime-200: #3f6212;
+  --color-pink-200: #be185d;
+  --color-purple-200: #6b21a8;
+  --color-violet-200: #5b21b6;
+  --color-fuchsia-200: #a21caf;
+}
+
+html[data-theme="light"] body {
+  background: radial-gradient(ellipse at top, #fdfbff 0%, #f6f2fd 45%, #efeaf9 100%) fixed;
+  color: #221a3d;
+}
+
+html[data-theme="light"] ::selection { background: rgba(245, 194, 66, 0.45); color: #1a1330; }
+html[data-theme="light"] ::-webkit-scrollbar-track { background: #efeaf9; }
+html[data-theme="light"] ::-webkit-scrollbar-thumb { background: #c6bce4; }
+
+html[data-theme="light"] .glass {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.78));
+  border-color: rgba(26, 19, 48, 0.1);
+  box-shadow: 0 8px 26px -18px rgba(44, 26, 92, 0.35);
+}
+html[data-theme="light"] .glass-strong {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(248, 244, 255, 0.96));
+  border-color: rgba(180, 132, 26, 0.26);
+  box-shadow: 0 12px 32px -18px rgba(44, 26, 92, 0.4);
+}
+
+html[data-theme="light"] .gold-text {
+  background: linear-gradient(120deg, #8a6410 0%, #b3841a 35%, #d4a12a 55%, #8a6410 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html[data-theme="light"] .input-dark {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(26, 19, 48, 0.16);
+  color: #1a1330;
+}
+html[data-theme="light"] .input-dark::placeholder { color: rgba(34, 26, 61, 0.42); }
+html[data-theme="light"] .input-dark:focus { background: #ffffff; border-color: rgba(180, 132, 26, 0.65); }
+html[data-theme="light"] .input-dark::-webkit-calendar-picker-indicator { filter: none; }
+html[data-theme="light"] select.input-dark option { background: #ffffff; color: #1a1330; }
+
+html[data-theme="light"] .skeleton {
+  background: linear-gradient(90deg, rgba(26, 19, 48, 0.05) 25%, rgba(26, 19, 48, 0.11) 50%, rgba(26, 19, 48, 0.05) 75%);
+  background-size: 200% 100%;
+}
+
+html[data-theme="light"] .gold-glow { box-shadow: 0 0 28px -14px rgba(212, 161, 42, 0.55); }
+html[data-theme="light"] .mystic-glow { box-shadow: 0 0 40px -20px rgba(124, 58, 237, 0.4); }
+html[data-theme="light"] .mandala-bg { opacity: 0.7; }
+
+/* Night-sky decorations have no place on paper. */
+html[data-theme="light"] .starfield,
+html[data-theme="light"] .cosmic-backdrop { display: none !important; }
+
+/* Modal / overlay scrims stay dark so dialogs still read as "above" the page. */
+html[data-theme="light"] .fixed[class*="bg-black/70"],
+html[data-theme="light"] .fixed[class*="bg-black/50"],
+html[data-theme="light"] .fixed[class*="bg-cosmic-950/70"],
+html[data-theme="light"] .fixed[class*="bg-cosmic-950/90"] {
+  background-color: rgba(23, 14, 48, 0.45) !important;
+}
+/* Small "inset" panels that were a dark wash become a light wash. */
+html[data-theme="light"] [class*="bg-black/20"],
+html[data-theme="light"] [class*="bg-black/30"] {
+  background-color: rgba(26, 19, 48, 0.045) !important;
+}
+
 @media print {
   body { background: #fff !important; color: #111 !important; }
   .no-print { display: none !important; }
   .glass, .glass-strong { background: #fff !important; border-color: #ddd !important; color: #111 !important; }
+  .starfield, .cosmic-backdrop { display: none !important; }
 }

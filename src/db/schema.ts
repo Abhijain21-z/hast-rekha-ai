@@ -96,6 +96,10 @@ export const reviews = pgTable(
     rating: real("rating").notNull().default(5),
     text: text("text").notNull(),
     lang: varchar("lang", { length: 2 }).notNull().default("hi"),
+    /** How the visitor rated the interface: great | good | okay | poor. */
+    interfaceRating: varchar("interface_rating", { length: 20 }),
+    /** Did the prediction feel accurate to them? null = not answered. */
+    agrees: boolean("agrees"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index("reviews_created_idx").on(t.createdAt)],

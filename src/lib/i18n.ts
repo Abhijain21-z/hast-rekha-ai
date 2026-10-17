@@ -28,6 +28,7 @@ const en = {
     features: "Features",
     how: "How It Works",
     reviews: "Reviews",
+    publicReviews: "Public Reviews",
     rashi: "Rashi",
     upay: "Upay",
     blog: "Blog",
@@ -64,7 +65,7 @@ const en = {
     ],
   },
   features: { title: "Everything You Need", sub: "A complete Jyotish toolkit built for Indian users — fast, private and free." },
-  reviews: { title: "Loved Across India", sub: "Real stories from people who found clarity in their charts.", verified: "Verified reading", write: "Write a review", yourName: "Your name", yourText: "Your experience with Hast Rekha AI…", rating: "Your rating", submit: "Save review", saved: "Thank you! Your review is live.", errText: "Please write at least 10 characters.", community: "Community", guest: "Guest" },
+  reviews: { title: "Loved Across India", sub: "Real stories from people who found clarity in their charts.", verified: "Verified reading", write: "Write a review", yourName: "Your name", yourText: "Your experience with Hast Rekha AI…", rating: "Your rating", submit: "Save review", saved: "Thank you! Your review is live.", errText: "Please write at least 10 characters.", community: "Community", guest: "Guest", qInterface: "How did you find the interface?", ifGreat: "Excellent", ifGood: "Good", ifOkay: "Average", ifPoor: "Needs improvement", qAgree: "Do you agree with this website's prediction?", agreeYes: "Yes, it matched", agreeNo: "No, it did not", qText: "Write your review", qTextPh: "How was the website for you? How accurate or off was the prediction?", qStars: "Give a 5-star rating", errName: "Please enter your name (at least 2 characters).", postTitle: "How was your reading?", postSub: "Answer 4 quick questions — your review then appears on the home page and on Public Reviews.", allTitle: "Public Reviews", allSub: "Every review submitted by our visitors, newest first.", allEmpty: "No reviews yet — be the first to write one.", seeAll: "See all public reviews", count: "reviews" },
   donateReminder: { title: "Donate — Satisfied?", body: "If you are satisfied with this prediction, you may offer a voluntary dakshina. This small support helps us improve this platform further.", btn: "Donate", later: "Later" },
   printGate: { title: "Download PDF Report", body: "Pay \u20B951 to download your complete prediction as a beautifully formatted PDF report. The download unlocks right after payment.", btn: "Pay \u20B951 \u2014 Get PDF", later: "Cancel", paid: "Payment received \u2014 download your PDF now" },
   donate: { title: "Donate for Improvement", sub: "Love Hast Rekha AI? A small optional donation keeps it free, fast and growing. 100% voluntary.", btn: "Donate", thanks: "Dhanyavaad! Your support improves the site for everyone.", optional: "optional", amount: "Choose an amount", custom: "or enter amount", pay: "Pay via UPI" },
@@ -284,7 +285,7 @@ const en = {
     dates: "Sun-sign dates",
     verdicts: ["A challenging pair that grows through patience and understanding.", "A workable match — differences bring balance if respected.", "A warm, supportive pairing with natural understanding.", "An excellent, harmonious match blessed by shared elements."],
   },
-  top: { choose: "Choose language", music: "Music", musicOn: "Music on", musicOff: "Music off", tapMusic: "Tap for calm music", beta: "Beta", betaNote: "Beta languages show the reading text in English for now." },
+  top: { choose: "Choose language", music: "Music", musicOn: "Music on", musicOff: "Music off", tapMusic: "Tap for calm music", beta: "Beta", betaNote: "Beta languages show the reading text in English for now.", themeToLight: "Light mode", themeToDark: "Dark mode", share: "Share", shareText: "Amazing! Hast Rekha AI told me things about myself that were spot on — and it is completely free. Based on both palmistry and astrology, its predictions are 99% accurate. Do try it once — you may also find answers to the questions in your own life.", shareCopied: "Link copied — share it with your friends!", install: "Install App", installTitle: "Install Hast Rekha AI", installIntro: "Add Hast Rekha AI to your phone's home screen. It then opens like a normal app — even offline.", installAndroid: "Open the browser menu (\u22EE at the top right)\nTap \"Add to Home screen\" or \"Install app\"\nConfirm by tapping \"Install\"", installIos: "Tap the Share button at the bottom of Safari\nScroll down and tap \"Add to Home Screen\"\nTap \"Add\" at the top right", installDesktop: "Click the install icon in your browser's address bar\nOr open the browser menu and choose \"Install Hast Rekha AI\"\nConfirm to finish" },
   pricing: {
     eyebrow: "✦ Pricing",
     title: "Simple, Honest Pricing",
@@ -443,6 +444,7 @@ const en = {
     langToggle: "हिंदी",
     seeMore: "See more",
     guest: "Guest",
+    ok: "OK",
   },
 };
 
@@ -456,6 +458,7 @@ const hi: Dict = {
     features: "विशेषताएँ",
     how: "कैसे काम करता है",
     reviews: "समीक्षाएँ",
+    publicReviews: "सार्वजनिक समीक्षाएँ",
     rashi: "राशियाँ",
     upay: "उपाय",
     blog: "ब्लॉग",
@@ -492,7 +495,7 @@ const hi: Dict = {
     ],
   },
   features: { title: "सब कुछ जो आपको चाहिए", sub: "भारतीय उपयोगकर्ताओं के लिए बना संपूर्ण ज्योतिष टूलकिट — तेज़, निजी और निःशुल्क।" },
-  reviews: { title: "पूरे भारत में पसंद किया गया", sub: "उन लोगों की सच्ची कहानियाँ जिन्हें अपनी कुंडली में स्पष्टता मिली।", verified: "सत्यापित रीडिंग", write: "समीक्षा लिखें", yourName: "आपका नाम", yourText: "हस्तरेखा AI के साथ आपका अनुभव…", rating: "आपकी रेटिंग", submit: "समीक्षा सहेजें", saved: "धन्यवाद! आपकी समीक्षा लाइव है।", errText: "कृपया कम से कम 10 अक्षर लिखें।", community: "समुदाय", guest: "अतिथि" },
+  reviews: { title: "पूरे भारत में पसंद किया गया", sub: "उन लोगों की सच्ची कहानियाँ जिन्हें अपनी कुंडली में स्पष्टता मिली।", verified: "सत्यापित रीडिंग", write: "समीक्षा लिखें", yourName: "आपका नाम", yourText: "हस्तरेखा AI के साथ आपका अनुभव…", rating: "आपकी रेटिंग", submit: "समीक्षा सहेजें", saved: "धन्यवाद! आपकी समीक्षा लाइव है।", errText: "कृपया कम से कम 10 अक्षर लिखें।", community: "समुदाय", guest: "अतिथि", qInterface: "आपको वेबसाइट का इंटरफ़ेस कैसा लगा?", ifGreat: "बहुत बढ़िया", ifGood: "अच्छा", ifOkay: "ठीक-ठाक", ifPoor: "सुधार चाहिए", qAgree: "क्या आप इस वेबसाइट की भविष्यवाणी से सहमत हैं?", agreeYes: "हाँ, सही मिली", agreeNo: "नहीं, मेल नहीं खाई", qText: "अपनी समीक्षा लिखें", qTextPh: "वेबसाइट आपको कैसी लगी? भविष्यवाणी कितनी सही या गलत रही?", qStars: "5 स्टार रेटिंग दें", errName: "कृपया अपना नाम लिखें (कम से कम 2 अक्षर)।", postTitle: "आपकी रीडिंग कैसी रही?", postSub: "4 छोटे सवालों के जवाब दें — आपकी समीक्षा होम पेज और सार्वजनिक समीक्षाओं में दिखेगी।", allTitle: "सार्वजनिक समीक्षाएँ", allSub: "हमारे विज़िटर्स की सभी समीक्षाएँ, सबसे नई पहले।", allEmpty: "अभी कोई समीक्षा नहीं — पहली समीक्षा आप लिखें।", seeAll: "सभी समीक्षाएँ देखें", count: "समीक्षाएँ" },
   donateReminder: { title: "\u0926\u093E\u0928 \u0915\u0930\u0947\u0902 \u2014 \u0938\u0902\u0924\u0941\u0937\u094D\u091F \u0939\u0941\u090F?", body: "\u092F\u0926\u093F \u0906\u092A \u0907\u0938 prediction \u0938\u0947 \u0938\u0902\u0924\u0941\u0937\u094D\u091F \u0939\u0948\u0902 \u0924\u094B \u0936\u094D\u0930\u0926\u094D\u0927\u093E \u0938\u0947 \u0926\u0915\u094D\u0937\u093F\u0923\u093E \u0930\u0942\u092A \u0926\u093E\u0928 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964 \u092F\u0939 \u091B\u094B\u091F\u093E \u0938\u093E \u0938\u0939\u092F\u094B\u0917 \u0907\u0938 platform \u0915\u094B \u0914\u0930 \u0905\u0927\u093F\u0915 \u0938\u0941\u0927\u093E\u0930\u0928\u0947 \u092E\u0947\u0902 \u092E\u0939\u0924\u094D\u0935\u092A\u0942\u0930\u094D\u0923 \u0938\u093F\u0926\u094D\u0927 \u0939\u094B\u0917\u093E\u0964", btn: "\u0926\u093E\u0928 \u0915\u0930\u0947\u0902", later: "\u092C\u093E\u0926 \u092E\u0947\u0902" },
   printGate: { title: "PDF \u0930\u093F\u092A\u094B\u0930\u094D\u091F \u0921\u093E\u0909\u0928\u0932\u094B\u0921 \u0915\u0930\u0947\u0902", body: "\u0906\u092A\u0915\u0940 \u092A\u0942\u0930\u0940 prediction \u0915\u0940 \u0938\u0941\u0902\u0926\u0930 PDF \u0930\u093F\u092A\u094B\u0930\u094D\u091F \u0921\u093E\u0909\u0928\u0932\u094B\u0921 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093F\u090F \u20B951 \u0915\u093E \u092D\u0941\u0917\u0924\u093E\u0928 \u0915\u0930\u0947\u0902\u0964 \u092D\u0941\u0917\u0924\u093E\u0928 \u0915\u0947 \u0924\u0941\u0930\u0902\u0924 \u092C\u093E\u0926 \u0930\u093F\u092A\u094B\u0930\u094D\u091F \u0921\u093E\u0909\u0928\u0932\u094B\u0921 \u0939\u094B \u091C\u093E\u090F\u0917\u0940\u0964", btn: "\u20B951 \u092D\u0941\u0917\u0924\u093E\u0928 \u0915\u0930\u0947\u0902 \u2014 PDF \u092A\u093E\u090F\u0901", later: "\u0930\u0926\u094D\u0926 \u0915\u0930\u0947\u0902", paid: "\u092D\u0941\u0917\u0924\u093E\u0928 \u0939\u0941\u0906 \u2014 \u0905\u092C PDF \u0921\u093E\u0909\u0928\u0932\u094B\u0921 \u0915\u0930\u0947\u0902" },
   donate: { title: "\u0938\u0941\u0927\u093E\u0930 \u0939\u0947\u0924\u0941 \u0926\u093E\u0928 \u0915\u0930\u0947\u0902", sub: "हस्तरेखा AI प्रिय है? एक छोटा वैकल्पिक दान इसे निःशुल्क, तेज़ और बढ़ता रखता है। 100% स्वैच्छिक।", btn: "दान करें", thanks: "धन्यवाद! आपका सहयोग सभी के लिए साइट बेहतर बनाता है।", optional: "वैकल्पिक", amount: "राशि चुनें", custom: "या राशि लिखें", pay: "UPI से भुगतान करें" },
@@ -712,7 +715,7 @@ const hi: Dict = {
     dates: "सूर्य राशि तिथियाँ",
     verdicts: ["एक चुनौतीपूर्ण जोड़ी जो धैर्य और समझ से आगे बढ़ती है।", "एक व्यवहार्य मेल — मतभेद सम्मान मिलने पर संतुलन लाते हैं।", "स्वाभाविक समझ वाली एक स्नेही, सहयोगी जोड़ी।", "साझा तत्वों से धन्य एक उत्कृष्ट, सामंजस्यपूर्ण मेल।"],
   },
-  top: { choose: "भाषा चुनें", music: "संगीत", musicOn: "संगीत चालू", musicOff: "संगीत बंद", tapMusic: "शांत संगीत के लिए टैप करें", beta: "बीटा", betaNote: "बीटा भाषाओं में रिपोर्ट का पाठ अभी अंग्रेज़ी में दिखेगा।" },
+  top: { choose: "भाषा चुनें", music: "संगीत", musicOn: "संगीत चालू", musicOff: "संगीत बंद", tapMusic: "शांत संगीत के लिए टैप करें", beta: "बीटा", betaNote: "बीटा भाषाओं में रिपोर्ट का पाठ अभी अंग्रेज़ी में दिखेगा।", themeToLight: "लाइट थीम", themeToDark: "डार्क थीम", share: "शेयर करें", shareText: "गजब! हस्तरेखा AI ने तो मेरे बारे में बिल्कुल सटीक जानकारी दी, वो भी बिल्कुल फ्री में। यहाँ हस्तरेखा और ज्योतिष दोनों की गणना के आधार पर 99% सटीक भविष्यवाणी मिल रही है। एक बार तुम भी ट्राई करके देखो, शायद तुम्हें भी अपने जीवन से जुड़े प्रश्नों के उत्तर मिल जाएँ।", shareCopied: "लिंक कॉपी हो गया — अपने दोस्तों को शेयर करें!", install: "ऐप इंस्टॉल करें", installTitle: "Hast Rekha AI इंस्टॉल करें", installIntro: "Hast Rekha AI को अपने फ़ोन की होम स्क्रीन पर जोड़ें। फिर यह एक सामान्य ऐप की तरह खुलेगा — ऑफ़लाइन भी।", installAndroid: "ब्राउज़र मेन्यू खोलें (ऊपर दाईं ओर \u22EE)\n\"Add to Home screen\" या \"Install app\" पर टैप करें\n\"Install\" दबाकर पुष्टि करें", installIos: "Safari में नीचे Share बटन पर टैप करें\nनीचे स्क्रॉल करके \"Add to Home Screen\" पर टैप करें\nऊपर दाईं ओर \"Add\" दबाएँ", installDesktop: "ब्राउज़र के एड्रेस बार में इंस्टॉल आइकन पर क्लिक करें\nया ब्राउज़र मेन्यू से \"Install Hast Rekha AI\" चुनें\nपूरा करने के लिए पुष्टि करें" },
   pricing: {
     eyebrow: "✦ मूल्य",
     title: "सरल, ईमानदार मूल्य",
@@ -871,6 +874,7 @@ const hi: Dict = {
     langToggle: "English",
     seeMore: "और देखें",
     guest: "अतिथि",
+    ok: "ठीक है",
   },
 };
 

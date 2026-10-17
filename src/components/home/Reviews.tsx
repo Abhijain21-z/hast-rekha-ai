@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Quote, BadgeCheck, PenLine, Users } from "lucide-react";
 import testimonialsJson from "@/content/testimonials.json";
 import { useLang } from "@/components/providers/LanguageProvider";
-import { useToast } from "@/components/providers/ToastProvider";
-import { Avatar, Button, Input, Label, Modal, SectionHeading, Textarea, cn } from "@/components/ui";
+import { Avatar, Button, Modal, SectionHeading, cn } from "@/components/ui";
+import ReviewForm, { type ReviewRow } from "@/components/reviews/ReviewForm";
 import type { Bi } from "@/lib/i18n";
 
 interface ReviewItem { name: string; location: Bi; rating: number; quote: Bi; user?: boolean }
@@ -14,16 +15,12 @@ interface ReviewItem { name: string; location: Bi; rating: number; quote: Bi; us
 const SEED = testimonialsJson as { name: string; location: Bi; rating: number; quote: Bi }[];
 
 export default function Reviews() {
-  const { t, L, lang } = useLang();
-  const { toast } = useToast();
+  const { t, L } = useLang();
   const [items, setItems] = useState<ReviewItem[]>(SEED);
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(1);
   const [paused, setPaused] = useState(false);
   const [writeOpen, setWriteOpen] = useState(false);
-  const [form, setForm] = useState({ name: "", rating: 5, text: "" });
-  const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState("");
 
   useEffect(() => {
     fetch("/api/reviews")
@@ -61,20 +58,13 @@ export default function Reviews() {
 
   const go = (d: number) => setIndex((i) => Math.min(max, Math.max(0, i + d)));
 
-  async function submit(e: FormEvent) {
-    e.preventDefault();
-    setErr("");
-    if (form.text.trim().length < 10) return setErr(t.reviews.errText);
-    setBusy(true);
-    const res = await fetch("/api/reviews", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, lang }) });
-    setBusy(false);
-    if (!res.ok) return setErr(t.common.error);
-    const { review } = (await res.json()) as { review: { name: string; rating: number; text: string } };
-    setItems((all) => [{ name: review.name, rating: review.rating, user: true, location: { en: t.reviews.community, hi: t.reviews.community }, quote: { en: review.text, hi: review.text } }, ...all]);
+  function onSaved(review: ReviewRow) {
+    setItems((all) => [
+      { name: review.name, rating: review.rating, user: true, location: { en: t.reviews.community, hi: t.reviews.community }, quote: { en: review.text, hi: review.text } },
+      ...all,
+    ]);
     setIndex(0);
     setWriteOpen(false);
-    setForm({ name: "", rating: 5, text: "" });
-    toast(t.reviews.saved);
   }
 
   return (
@@ -123,35 +113,17 @@ export default function Reviews() {
             </div>
             <button onClick={() => go(1)} disabled={idx === max} className="rounded-full border border-white/10 p-2.5 text-slate-200 transition hover:border-gold-400/50 hover:text-gold-300 disabled:opacity-30" aria-label="Next"><ChevronRight className="h-5 w-5" /></button>
           </div>
+
+          <div className="mt-6 text-center">
+            <Link href="/reviews" className="text-sm text-gold-300 transition hover:text-gold-200 hover:underline">
+              {t.reviews.seeAll} →
+            </Link>
+          </div>
         </div>
       </div>
 
       <Modal open={writeOpen} onClose={() => setWriteOpen(false)} title={t.reviews.write}>
-        <form onSubmit={submit} className="space-y-4">
-          <div>
-            <Label>{t.reviews.yourName}</Label>
-            <Input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Priya Sharma" maxLength={80} />
-          </div>
-          <div>
-            <Label>{t.reviews.rating}</Label>
-            <div className="flex gap-1.5">
-              {[1, 2, 3, 4, 5].map((s) => (
-                <button type="button" key={s} onClick={() => setForm({ ...form, rating: s })} aria-label={`${s} stars`}>
-                  <Star className={cn("h-7 w-7 transition", s <= form.rating ? "fill-gold-400 text-gold-400" : "text-slate-600 hover:text-slate-400")} />
-                </button>
-              ))}
-            </div>
-          </div>
-          <div>
-            <Label>{t.reviews.yourText}</Label>
-            <Textarea required value={form.text} onChange={(e) => setForm({ ...form, text: e.target.value })} maxLength={1200} />
-            {err && <p className="mt-1.5 text-xs text-rose-300">{err}</p>}
-          </div>
-          <div className="flex justify-end gap-2">
-            <Button type="button" variant="ghost" onClick={() => setWriteOpen(false)}>{t.dash.cancel}</Button>
-            <Button type="submit" loading={busy}>{t.reviews.submit}</Button>
-          </div>
-        </form>
+        <ReviewForm onSaved={onSaved} />
       </Modal>
     </section>
   );

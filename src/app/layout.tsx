@@ -9,6 +9,7 @@ import AmbientMusic from "@/components/layout/AmbientMusic";
 import FloatingHand from "@/components/layout/FloatingHand";
 import { LANGS } from "@/lib/lang-overrides";
 import { SITE_URL } from "@/lib/site";
+import { DEFAULT_THEME, THEME_COOKIE, isTheme } from "@/lib/theme";
 import type { Lang } from "@/lib/i18n";
 
 // Canonical host is www — Vercel 308-redirects the apex to www, so every
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
     "palmistry in hindi", "हथेली की रेखाएं", "heart line", "life line", "भविष्य जाने",
   ],
   alternates: { languages: { hi: "/", en: "/" } },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     siteName: "Hast Rekha AI",
@@ -52,6 +54,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const lang: Lang = cookieLang && (cookieLang === "en" || cookieLang === "hi" || LANGS.some((l) => l.code === cookieLang)) ? cookieLang : "hi";
   const langMeta = LANGS.find((l) => l.code === lang);
   const extraFont = langMeta?.font && langMeta.font !== "Noto Sans Devanagari" ? `&family=${langMeta.font.replace(/ /g, "+")}:wght@400;500;600;700` : "";
+  // Theme is a cookie so the server-rendered HTML already carries the right
+  // palette (no flash of the wrong theme on first paint).
+  const cookieTheme = store.get(THEME_COOKIE)?.value;
+  const theme = isTheme(cookieTheme) ? cookieTheme : DEFAULT_THEME;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -83,7 +89,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   };
 
   return (
-    <html lang={lang} data-lang={lang} dir={lang === "ur" ? "rtl" : "ltr"} suppressHydrationWarning>
+    <html lang={lang} data-lang={lang} data-theme={theme} dir={lang === "ur" ? "rtl" : "ltr"} suppressHydrationWarning>
       <head>
         {/* Google AdSense — site verification + ads */}
         <meta name="google-adsense-account" content="ca-pub-1067207431102415" />
