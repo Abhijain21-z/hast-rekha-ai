@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { dictionaries, pick, type Bi } from "@/lib/i18n";
-import { LANGS, OVERRIDES, deepMerge, FULL_CONTENT_LANGS } from "@/lib/lang-overrides";
+import { dictionaries, pick, byLang, type Bi } from "@/lib/i18n";
+import { LANGS, OVERRIDES, deepMerge } from "@/lib/lang-overrides";
+import { CONTENT_LANGS, CONTENT_LOCALES, localize } from "@/content/locales";
 
 /** Collect every leaf key path so we can compare dictionary shapes. */
 function keyPaths(value: unknown, prefix = ""): string[] {
@@ -40,10 +41,14 @@ describe("i18n", () => {
     }
   });
 
-  it("marks exactly the non-full languages as beta", () => {
-    const full = FULL_CONTENT_LANGS as readonly string[];
+  it("keeps Hindi and English out of beta and every overlay language registered", () => {
     for (const meta of LANGS) {
-      expect(Boolean(meta.beta), `beta flag for "${meta.code}"`).toBe(!full.includes(meta.code));
+      if (meta.code === "hi" || meta.code === "en") {
+        expect(Boolean(meta.beta), `"${meta.code}" must not be beta`).toBe(false);
+      }
+    }
+    for (const code of Object.keys(CONTENT_LOCALES)) {
+      expect(LANGS.some((l) => l.code === code), `overlay "${code}" is not a registered language`).toBe(true);
     }
   });
 
@@ -54,5 +59,25 @@ describe("i18n", () => {
 
     const extended: Bi = { en: "Wealth", hi: "धन", mr: "संपत्ती" };
     expect(pick("mr", extended)).toBe("संपत्ती");
+  });
+
+  it("indexes by language with a fallback instead of returning undefined", () => {
+    expect(byLang<string>({ en: "Hand", hi: "हाथ" }, "mr")).toBe("Hand");
+    expect(byLang<string>({ en: "Hand", hi: "हाथ", mr: "हात" }, "mr")).toBe("हात");
+    expect(byLang<string[]>({ en: ["a"], hi: ["क"] }, "te")).toEqual(["a"]);
+    expect(byLang<string>(null, "en")).toBeUndefined();
+  });
+
+  it("localizes content into every overlay language with an English fallback", () => {
+    const source = {
+      name: { en: "Ashwini", hi: "अश्विनी" },
+      traits: { en: ["Hand", "Untranslated"], hi: ["हाथ", "अनूदित"] },
+    };
+    const out = localize(source, "demo") as typeof source & { name: Record<string, string>; traits: Record<string, string[]> };
+    expect(out.name.mr).toBe("अश्विनी");
+    expect(out.traits.mr[0]).toBe("हात");
+    // Unknown English strings keep the source text — never undefined.
+    expect(out.traits.mr[1]).toBe("Untranslated");
+    expect(CONTENT_LANGS).toContain("mr");
   });
 });

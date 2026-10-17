@@ -9,6 +9,17 @@ export type Bi = { en: string; hi: string; [lang: string]: string };
 /** Resolve a localised value for `lang`, falling back to the English baseline. */
 export const pick = (lang: Lang, v: Bi | undefined | null): string => (v ? v[lang] ?? v.en : "");
 
+/**
+ * Index a localised value (string or array shaped) by `lang`, falling back to
+ * English then Hindi. Used where content may not yet carry the active language
+ * key, so the UI never renders `undefined`.
+ */
+export function byLang<T>(v: unknown, lang: Lang): T {
+  const rec = v as Record<string, T> | undefined | null;
+  if (!rec) return undefined as unknown as T;
+  return (rec[lang] ?? rec.en ?? rec.hi) as T;
+}
+
 const en = {
   brand: "Hast Rekha AI",
   tagline: "Vedic Astrology × Palmistry",

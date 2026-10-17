@@ -7,6 +7,7 @@ import { Hand, Fingerprint, Star, AlertTriangle, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import type { PalmReport } from "@/lib/palm";
 import { PALMISTRY } from "@/lib/content";
+import { byLang } from "@/lib/i18n";
 import PalmSvg, { PALM_LINES } from "@/components/palm/PalmSvg";
 import { Card } from "@/components/ui";
 import { Gauge, Meter } from "./ReportCharts";
@@ -49,7 +50,7 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
               <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gold-400/30 bg-gold-400/10 text-gold-300"><Hand className="h-7 w-7" /></div>
               <p className="mt-4 text-sm text-slate-300">{t.result.noPalm}</p>
               <ul className="mt-4 space-y-1 text-left text-xs text-slate-500">
-                {PALMISTRY.tips[cl].map((tip) => <li key={tip}>• {tip}</li>)}
+                {byLang<string[]>(PALMISTRY.tips, cl).map((tip) => <li key={tip}>• {tip}</li>)}
               </ul>
             </div>
           )}

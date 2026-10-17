@@ -8,6 +8,7 @@ import { Search, Clock, ArrowRight } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Input, cn } from "@/components/ui";
 import { BLOGS, CAT_META, searchBlogs, type BlogCat } from "@/lib/blogs";
+import { byLang } from "@/lib/i18n";
 
 const CATS: (BlogCat | "all")[] = ["all", "palm", "graha", "ratna", "upay", "rashi"];
 
@@ -59,7 +60,7 @@ export default function BlogList() {
                   <h2 className="font-display text-lg leading-snug text-white group-hover:text-gold-200">{L(b.title)}</h2>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">{L(b.excerpt)}</p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
-                    {b.tags[cl].slice(0, 3).map((tag) => (
+                    {byLang<string[]>(b.tags, cl).slice(0, 3).map((tag) => (
                       <span key={tag} className="rounded-full bg-white/6 px-2.5 py-1 text-xs text-slate-300">#{tag}</span>
                     ))}
                   </div>
@@ -76,7 +77,7 @@ export default function BlogList() {
 
       {results.length === BLOGS.length && (
         <div className="mt-10 flex flex-wrap gap-2">
-          {BLOGS.flatMap((b) => b.tags[cl]).slice(0, 24).map((tag, i) => (
+          {BLOGS.flatMap((b) => byLang<string[]>(b.tags, cl)).slice(0, 24).map((tag, i) => (
             <button key={`${tag}-${i}`} onClick={() => setQ(tag.split(" ")[0])} className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-400 transition hover:border-gold-400/40 hover:text-gold-200">#{tag}</button>
           ))}
         </div>

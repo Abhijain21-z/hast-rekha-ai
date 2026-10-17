@@ -9,6 +9,7 @@ import { useToast } from "@/components/providers/ToastProvider";
 import { Button, Input, Label, Modal, cn } from "@/components/ui";
 import { buildPremiumReport, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID, upiDeepLink } from "@/lib/premium";
 import type { ReadingDTO } from "@/lib/dto";
+import { byLang } from "@/lib/i18n";
 
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.55 } };
 
@@ -160,7 +161,7 @@ export default function PremiumSection({ reading }: { reading: ReadingDTO }) {
               </div>
 
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-5 rounded-2xl border border-gold-400/25 bg-gold-400/10 px-4 py-3 text-sm text-gold-100">
-                <Gem className="mr-2 inline h-4 w-4" />{report.fieldNote[cl]}
+                <Gem className="mr-2 inline h-4 w-4" />{byLang<string>(report.fieldNote, cl)}
               </motion.p>
 
               <div className="mt-6 space-y-5">
@@ -194,11 +195,11 @@ export default function PremiumSection({ reading }: { reading: ReadingDTO }) {
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border border-emerald-400/25 bg-emerald-400/10 p-5">
                   <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-200"><Briefcase className="h-4 w-4" /> {t.premium.fieldWork}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-100">{report.fieldNote[cl]}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-100">{byLang<string>(report.fieldNote, cl)}</p>
                 </div>
                 <div className="rounded-2xl border border-gold-400/25 bg-gold-400/10 p-5">
                   <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-200"><Gem className="h-4 w-4" /> {t.premium.gem}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-100">{report.gemNote[cl]}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-100">{byLang<string>(report.gemNote, cl)}</p>
                 </div>
               </motion.div>
 

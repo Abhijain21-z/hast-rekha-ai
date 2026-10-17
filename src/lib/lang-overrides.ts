@@ -4,8 +4,9 @@ import type { Dict } from "./i18n";
  * Language registry. Hindi and English are fully translated in i18n.ts; the
  * languages marked `beta` localise the visible UI chrome (navigation, hero,
  * main headings) and fall back to English for the rest of the copy until their
- * content translation lands. A language becomes "full" by adding translated
- * keys to the `Bi` content values and dropping its `beta` flag.
+ * content translation lands. Content translation is tracked separately by
+ * `CONTENT_LOCALES` in `@/content/locales`; drop a language's `beta` flag once
+ * its overlay covers the reading experience.
  */
 export type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K] };
 
@@ -34,9 +35,6 @@ export const LANGS: LangMeta[] = [
   { code: "ta", native: "தமிழ்", english: "Tamil", font: "Noto Sans Tamil", beta: true },
   { code: "ur", native: "اردو", english: "Urdu", dir: "rtl", font: "Noto Nastaliq Urdu", beta: true },
 ];
-
-/** Language codes with a complete content translation (not just UI chrome). */
-export const FULL_CONTENT_LANGS = ["hi", "en"] as const;
 
 export const OVERRIDES: Record<string, DeepPartial<Dict>> = {
   mr: {

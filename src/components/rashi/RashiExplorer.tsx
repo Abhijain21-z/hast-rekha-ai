@@ -8,6 +8,7 @@ import { Briefcase, Heart, Activity, Coins, Sparkles, ArrowRight } from "lucide-
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Modal, SectionHeading, Select, Label, Badge, cn } from "@/components/ui";
 import { RASHIS, compatibility, dailyHoroscope, type PredictionKey } from "@/lib/content";
+import { byLang } from "@/lib/i18n";
 
 const PRED_ICONS = { career: Briefcase, love: Heart, health: Activity, finance: Coins };
 const ELEMENT_COLORS: Record<string, string> = {
@@ -145,7 +146,7 @@ export default function RashiExplorer() {
             </div>
 
             <div className="mt-6 flex flex-wrap gap-2">
-              {open.traits[cl].map((tr) => (
+              {byLang<string[]>(open.traits, cl).map((tr) => (
                 <span key={tr} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-200">{tr}</span>
               ))}
             </div>

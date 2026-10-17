@@ -8,7 +8,8 @@ import panchangJson from "@/content/panchang.json";
 import palmistryJson from "@/content/palmistry.json";
 import dailyJson from "@/content/daily.json";
 import citiesJson from "@/content/cities.json";
-import type { Bi, Lang } from "./i18n";
+import { byLang, type Bi, type Lang } from "./i18n";
+import { localize } from "@/content/locales";
 import type { AstroResult } from "./astrology";
 
 export type PredictionKey = "career" | "love" | "health" | "finance";
@@ -29,21 +30,21 @@ export interface Nakshatra { key: string; name: Bi; lord: Bi; deity: Bi; symbol:
 export interface PalmLine { key: string; name: Bi; location: Bi; meaning: Bi; variants: { label: Bi; text: Bi }[] }
 export interface City { name: string; region: string; lat: number; lng: number; tz: number }
 
-export const RASHIS = rashisJson as Rashi[];
-export const NAKSHATRAS = nakshatrasJson as Nakshatra[];
-export const PANCHANG = panchangJson as {
+export const RASHIS = localize(rashisJson, "rashis") as Rashi[];
+export const NAKSHATRAS = localize(nakshatrasJson, "nakshatras") as Nakshatra[];
+export const PANCHANG = localize(panchangJson, "panchang") as {
   tithis: { en: string[]; hi: string[] };
   paksha: { shukla: Bi; krishna: Bi };
   yogas: { en: string[]; hi: string[] };
   weekdays: { en: string[]; hi: string[] };
 };
-export const PALMISTRY = palmistryJson as {
+export const PALMISTRY = localize(palmistryJson, "palmistry") as {
   intro: Bi;
   lines: PalmLine[];
   summaryTemplates: Bi[];
   tips: { en: string[]; hi: string[] };
 };
-export const DAILY = dailyJson as { messages: Bi[]; moods: Bi[] };
+export const DAILY = localize(dailyJson, "daily") as { messages: Bi[]; moods: Bi[] };
 export const CITIES: City[] = (citiesJson as [string, string, number, number, number][]).map(
   ([name, region, lat, lng, tz]) => ({ name, region, lat, lng, tz }),
 );
@@ -52,7 +53,7 @@ export const rashiAt = (i: number) => RASHIS[((i % 12) + 12) % 12];
 export const nakshatraAt = (i: number) => NAKSHATRAS[((i % 27) + 27) % 27];
 
 export function tithiName(tithi: number, lang: Lang): string {
-  const list = PANCHANG.tithis[lang === "hi" ? "hi" : "en"];
+  const list = byLang<string[]>(PANCHANG.tithis, lang);
   if (tithi === 15) return list[14];
   if (tithi === 30) return list[15];
   return list[(tithi - 1) % 15];

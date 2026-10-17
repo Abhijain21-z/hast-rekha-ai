@@ -7,6 +7,7 @@ import { ChevronDown, Copy, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, 
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Badge, Card, cn } from "@/components/ui";
 import { nakshatraAt, rashiAt, PANCHANG, tithiName } from "@/lib/content";
+import { byLang } from "@/lib/i18n";
 import { formatDegree } from "@/lib/astrology";
 import { formatDate, formatTime12, tzLabel, type ReadingDTO } from "@/lib/dto";
 import { buildPalmReport, AREAS } from "@/lib/palm";
@@ -128,8 +129,8 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
           [t.result.sunVedic, `${sunV.symbol} ${L(sunV.short)}`],
           [t.result.sunWestern, `${sunW.symbol} ${L(sunW.short)}`],
           [t.result.tithi, tithiName(r.tithi, cl), L(PANCHANG.paksha[r.paksha])],
-          [t.result.yoga, PANCHANG.yogas[cl][r.yoga]],
-          [t.result.weekday, PANCHANG.weekdays[cl][r.weekday]],
+          [t.result.yoga, byLang<string[]>(PANCHANG.yogas, cl)[r.yoga]],
+          [t.result.weekday, byLang<string[]>(PANCHANG.weekdays, cl)[r.weekday]],
           [t.result.moonPhase, `${Math.round(r.moonPhase * 100)}%`],
         ].map(([k, v, s]) => (
           <div key={k} className="glass rounded-2xl px-4 py-3">
@@ -207,7 +208,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
             <Card className="h-full p-6">
               <p className="text-xs font-semibold uppercase tracking-wider text-gold-300">{t.result.traits}</p>
               <div className="mt-4 flex flex-wrap gap-2">
-                {rashi.traits[cl].map((tr) => (
+                {byLang<string[]>(rashi.traits, cl).map((tr) => (
                   <span key={tr} className="rounded-full border border-gold-400/25 bg-gold-400/10 px-3.5 py-1.5 text-sm text-gold-100">{tr}</span>
                 ))}
               </div>

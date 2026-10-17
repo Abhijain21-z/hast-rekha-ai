@@ -2,6 +2,9 @@ import { describe, it, expect } from "vitest";
 import { computeChart } from "@/lib/astrology";
 import {
   RASHIS,
+  NAKSHATRAS,
+  PANCHANG,
+  DAILY,
   CITIES,
   compatibility,
   searchCities,
@@ -76,5 +79,26 @@ describe("content engine", () => {
     expect(a.lines.length).toBeGreaterThan(0);
     expect(a.summary.en).toContain("Aarav");
     expect(analysePalm("seed-2", "Aarav Sharma", chart).summary.en).toBeTruthy();
+  });
+});
+
+describe("content localization", () => {
+  it("serves Marathi content with an English fallback", () => {
+    expect(tithiName(1, "mr")).toBe("प्रतिपदा");
+    expect(NAKSHATRAS[0].name.mr).toBe("अश्विनी");
+    expect(DAILY.messages[0].mr).toContain("संवाद");
+    // English stays available for every localized value.
+    expect(tithiName(1, "en")).toBe("Pratipada");
+  });
+
+  it("resolves per-path overrides before the shared translation", () => {
+    // Same English word "Brahma": the yoga is ब्रह्म, the deity is ब्रह्मा.
+    expect((PANCHANG.yogas as Record<string, string[]>).mr[24]).toBe("ब्रह्म");
+    expect(NAKSHATRAS[3].deity.mr).toBe("ब्रह्मा");
+  });
+
+  it("leaves Hindi untouched by the overlays", () => {
+    expect(tithiName(1, "hi")).toBe("प्रतिपदा");
+    expect(NAKSHATRAS[0].name.hi).toBe("अश्विनी");
   });
 });

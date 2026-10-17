@@ -2,11 +2,12 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { dictionaries, pick, type Bi, type Dict, type Lang } from "@/lib/i18n";
+import { CONTENT_LANGS } from "@/content/locales";
 
 interface LangCtx {
   lang: Lang;
-  /** Content language for Hindi/English authored data: "hi" or "en". */
-  cl: "hi" | "en";
+  /** Language code to read authored content with (a full content language, or hi/en). */
+  cl: Lang;
   t: Dict;
   setLang: (l: Lang) => void;
   toggle: () => void;
@@ -28,9 +29,11 @@ export function LanguageProvider({ children, initial = "hi" }: { children: React
 
   const setLang = useCallback((l: Lang) => setLangState(l in dictionaries ? l : "en"), []);
   const toggle = useCallback(() => setLangState((p) => (p === "hi" ? "en" : "hi")), []);
-  const L = useCallback((v: Bi | undefined | null) => pick(lang, v), [lang]);
 
-  const cl: "hi" | "en" = lang === "hi" ? "hi" : "en";
+  // Full content languages read their own content; others fall back to hi/en.
+  const cl: Lang = CONTENT_LANGS.includes(lang) ? lang : lang === "hi" ? "hi" : "en";
+  const L = useCallback((v: Bi | undefined | null) => pick(cl, v), [cl]);
+
   const value = useMemo<LangCtx>(() => ({ lang, cl, t: dictionaries[lang] ?? dictionaries.en, setLang, toggle, L }), [lang, cl, setLang, toggle, L]);
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

@@ -1,5 +1,6 @@
 import type { BirthProfile, Reading } from "@/db/schema";
 import type { AstroResult } from "./astrology";
+import type { Lang } from "./i18n";
 
 export interface ReadingDTO {
   id: string;
@@ -58,10 +59,11 @@ export const toProfileDTO = (p: BirthProfile): ProfileDTO => ({
   updatedAt: p.updatedAt.toISOString(),
 });
 
-export function formatDate(iso: string, lang: "en" | "hi" = "en") {
+export function formatDate(iso: string, lang: Lang = "en") {
   const [y, m, d] = iso.split("-").map(Number);
   const date = new Date(Date.UTC(y, (m || 1) - 1, d || 1));
-  return date.toLocaleDateString(lang === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+  const locale = lang === "hi" ? "hi-IN" : lang === "en" ? "en-IN" : `${lang}-IN`;
+  return date.toLocaleDateString(locale, { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }
 
 export function formatTime12(hhmm: string) {
