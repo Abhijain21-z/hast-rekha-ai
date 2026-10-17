@@ -21,11 +21,11 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
       .limit(1);
 
     if (!row || !row.premium || !row.ultra) {
-      return NextResponse.json({ error: "Locked" }, { status: 403 });
+      return NextResponse.json({ error: "Locked" }, { status: 403, headers: { "Cache-Control": "no-store" } });
     }
 
     const url = process.env.ULTRA_BOOK_URL?.trim();
-    return NextResponse.json({ url: url ? url : null });
+    return NextResponse.json({ url: url ? url : null }, { headers: { "Cache-Control": "no-store" } });
   } catch {
     // Missing column / database hiccup: the card falls back to its note.
     return NextResponse.json({ error: "Unavailable" }, { status: 503 });

@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
-import { and, eq } from "drizzle-orm";
+import { and, eq, ne } from "drizzle-orm";
 import { db } from "@/db";
 import { readings } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { toReadingDTO } from "@/lib/dto";
+import { PRO_PAY_MODE } from "@/lib/flags";
 
 export const dynamic = "force-dynamic";
 
@@ -32,13 +33,30 @@ export async function PATCH(req: Request, { params }: Ctx) {
   // Premium activation by UPI reference — available to the reading owner and to guests
   // who hold the reading link (the id is an unguessable UUID).
   if (typeof body.premiumUtr === "string" && /^\d{8,20}$/.test(body.premiumUtr.trim())) {
+    // Payments closed (₹51 Pro / ₹351 Ultra are still being set up): nothing may
+    // unlock, so the Ultra book can never be handed out for free by a hand-made
+    // request that skips the paywall UI.
+    if (PRO_PAY_MODE !== "upi") {
+      return NextResponse.json({ error: "Payments are not open yet" }, { status: 403 });
+    }
+
+    const utr = body.premiumUtr.trim();
+    // One UPI reference = one payment = one reading. Stops a single ₹351 payment
+    // (or a reference passed around) from unlocking the book on many readings.
+    const [used] = await db
+      .select({ id: readings.id })
+      .from(readings)
+      .where(and(eq(readings.premiumUtr, utr), ne(readings.id, id)))
+      .limit(1);
+    if (used) return NextResponse.json({ error: "This UPI reference was already used" }, { status: 409 });
+
     const [row] = await db
       .update(readings)
       .set({
         premium: true,
         // Never downgrade an Ultra (₹351) unlock back to Pro.
         ...(body.plan === "ultra" ? { ultra: true } : {}),
-        premiumUtr: body.premiumUtr.trim(),
+        premiumUtr: utr,
         premiumAt: new Date(),
         updatedAt: new Date(),
       })
