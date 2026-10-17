@@ -19,7 +19,7 @@ export default function PricingPage() {
     <div className="relative">
       <section className="mx-auto max-w-4xl px-4 pt-16 text-center sm:px-6 lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400/90">{t.pricing.eyebrow}</p>
-        <h1 className="mt-3 font-display text-4xl font-semibold text-white sm:text-5xl">{t.pricing.title}</h1>
+        <h1 className="mt-3 font-display text-4xl font-semibold text-white sm:text-5xl">{t.pricing.h1}</h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-slate-300/90">{t.pricing.sub}</p>
       </section>
 

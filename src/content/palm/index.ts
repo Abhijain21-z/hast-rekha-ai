@@ -3,6 +3,9 @@ import type { PalmLineKey, PalmPage } from "./types";
 import { PILLAR } from "./pillar";
 import { LINE_PAGES } from "./lines";
 import { EXTRA_LINE_PAGES } from "./lines-extra";
+import { MORE_LINE_PAGES } from "./lines-more";
+import { GUIDE_PAGES } from "./guides";
+import { GUIDE_EXTRA_PAGES } from "./guides-extra";
 
 export type { PalmPage, PalmFaq, PalmSection, PalmKind, PalmLineKey } from "./types";
 
@@ -35,7 +38,14 @@ export const PALM_PLANNED_SLUGS = [
 ];
 
 /** Pages that exist today, in the order they appear in listings. */
-export const PALM_PAGES: PalmPage[] = [PILLAR, ...LINE_PAGES, ...EXTRA_LINE_PAGES];
+export const PALM_PAGES: PalmPage[] = [
+  PILLAR,
+  ...LINE_PAGES,
+  ...EXTRA_LINE_PAGES,
+  ...MORE_LINE_PAGES,
+  ...GUIDE_PAGES,
+  ...GUIDE_EXTRA_PAGES,
+];
 
 /** ISO date the guides were last reviewed — shown to readers and in schema. */
 export const PALM_UPDATED = "2026-10-17";
@@ -73,6 +83,6 @@ export const PILLAR_LINK: PalmLink | undefined = palmLinks(["hast-rekha-palmistr
 const LINE_ORDER: PalmLineKey[] = ["life", "head", "heart", "fate", "sun", "money", "marriage", "health", "children"];
 
 export const LINE_GUIDE_LINKS: PalmLink[] = LINE_ORDER.flatMap((key) => {
-  const line = LINE_PAGES.find((p) => p.diagram?.line === key && p.kind === "line");
+  const line = PALM_PAGES.find((p) => p.diagram?.line === key && p.kind === "line");
   return line ? [{ slug: line.slug, label: line.crumb }] : [];
 });

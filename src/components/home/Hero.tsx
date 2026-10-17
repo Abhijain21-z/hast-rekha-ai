@@ -7,7 +7,7 @@ import { useLang } from "@/components/providers/LanguageProvider";
 import Navagraha from "./Navagraha";
 
 export default function Hero() {
-  const { t } = useLang();
+  const { t, L } = useLang();
   const { scrollY } = useScroll();
   // Gentle parallax on the mandala only — the welcome text must stay crisp while scrolling.
   const yScene = useTransform(scrollY, [0, 600], [0, -60]);
@@ -18,6 +18,15 @@ export default function Hero() {
     { v: "27", l: t.hero.stat2 },
     { v: "2", l: t.hero.stat3 },
     { v: "0", l: t.hero.stat4 },
+  ];
+
+  // Keyword-bearing entry points so a first-time visitor (and a crawler) can
+  // reach the deep guides straight from the hero.
+  const guides = [
+    { href: "/hast-rekha-palmistry", label: L({ en: "Hast Rekha Palmistry guide", hi: "हस्तरेखा पामिस्ट्री गाइड" }) },
+    { href: "/life-line", label: L({ en: "Life Line", hi: "जीवन रेखा" }) },
+    { href: "/palm-signs", label: L({ en: "Palm Signs", hi: "हाथ के शुभ चिह्न" }) },
+    { href: "/learn-palmistry", label: L({ en: "Learn Palmistry", hi: "हस्तरेखा पढ़ना सीखें" }) },
   ];
 
   return (
@@ -63,6 +72,23 @@ export default function Hero() {
               {t.hero.cta2}
             </Link>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="mt-6 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-400 sm:text-sm"
+          >
+            <span className="text-slate-500">{L({ en: "New here? Start with:", hi: "नए हैं? पहले पढ़ें:" })}</span>
+            {guides.map((g, i) => (
+              <span key={g.href} className="inline-flex items-center gap-2">
+                {i > 0 && <span aria-hidden className="text-slate-600">·</span>}
+                <Link href={g.href} className="text-gold-300 underline-offset-4 hover:underline">
+                  {g.label}
+                </Link>
+              </span>
+            ))}
+          </motion.p>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.6 }} className="mt-10 grid grid-cols-4 gap-3 sm:max-w-md">
             {stats.map((s) => (

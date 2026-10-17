@@ -55,7 +55,12 @@ export const PALM_FOOTER_LINKS: { slug: string; label: Bi }[] = [
   { slug: "life-line", label: { en: "Life Line (Jeevan Rekha)", hi: "जीवन रेखा (Life Line)" } },
   { slug: "heart-line", label: { en: "Heart Line (Hriday Rekha)", hi: "हृदय रेखा (Heart Line)" } },
   { slug: "fate-line", label: { en: "Fate Line (Bhagya Rekha)", hi: "भाग्य रेखा (Fate Line)" } },
+  { slug: "sun-line", label: { en: "Sun Line (Surya Rekha)", hi: "सूर्य रेखा (Sun Line)" } },
   { slug: "marriage-line", label: { en: "Marriage Line (Vivah Rekha)", hi: "विवाह रेखा (Marriage Line)" } },
   { slug: "money-line", label: { en: "Money Line (Dhan Rekha)", hi: "धन रेखा (Money Line)" } },
+  { slug: "health-line", label: { en: "Health Line (Sehat Rekha)", hi: "स्वास्थ्य रेखा (Health Line)" } },
+  { slug: "palm-signs", label: { en: "Palm Signs (Shubh Chinh)", hi: "हाथ के शुभ चिह्न" } },
+  { slug: "which-hand-to-read", label: { en: "Which Hand To Read?", hi: "कौन सा हाथ पढ़ें?" } },
   { slug: "learn-palmistry", label: { en: "Learn Palmistry", hi: "हस्तरेखा पढ़ना सीखें" } },
+  { slug: "best-palmistry-india", label: { en: "Best Palmistry In India", hi: "बेस्ट पामिस्ट्री इंडिया" } },
 ];

@@ -44,9 +44,9 @@ const en = {
   hero: {
     badge: "Palmistry · Rule-based Vedic calculations · No paid AI",
     freeBadge: "100% absolutely FREE — no charges, no login, no card",
-    title1: "Welcome to the World of",
-    title2: "Hast Rekha AI — Palmistry",
-    sub: "A free website that reads your palm lines and birth chart together. Just enter your birth details and instantly get your Rashi, Nakshatra, Lagna, life predictions and lucky years — in easy Hindi and English.",
+    title1: "Hastrekha Palmistry (Hast Rekha AI)",
+    title2: "Palm Lines & Kundli — Free, Instant",
+    sub: "A free website that reads your palm lines (hath ki rekha) and birth chart together. Just enter your birth details and instantly get your Rashi, Nakshatra, Lagna, 12 life-area predictions and lucky years — in easy Hindi and English.",
     cta: "Get Your Reading",
     cta2: "Explore 12 Rashis",
     stat1: "Rashis",
@@ -291,6 +291,7 @@ const en = {
   top: { choose: "Choose language", music: "Music", musicOn: "Music on", musicOff: "Music off", tapMusic: "Tap for calm music", beta: "Beta", betaNote: "Beta languages show the reading text in English for now.", themeToLight: "Light mode", themeToDark: "Dark mode", share: "Share", shareText: "Amazing! Hast Rekha AI told me things about myself that were spot on — and it is completely free. Based on both palmistry and astrology, its predictions are 99% accurate. Do try it once — you may also find answers to the questions in your own life.", shareCopied: "Link copied — share it with your friends!", install: "Install App", installTitle: "Install Hast Rekha AI", installIntro: "Add Hast Rekha AI to your phone's home screen. It then opens like a normal app — even offline.", installAndroid: "Open the browser menu (\u22EE at the top right)\nTap \"Add to Home screen\" or \"Install app\"\nConfirm by tapping \"Install\"", installIos: "Tap the Share button at the bottom of Safari\nScroll down and tap \"Add to Home Screen\"\nTap \"Add\" at the top right", installDesktop: "Click the install icon in your browser's address bar\nOr open the browser menu and choose \"Install Hast Rekha AI\"\nConfirm to finish" },
   pricing: {
     eyebrow: "✦ Pricing",
+    h1: "Hast Rekha Price — Free Palm Check & ₹51 Pro Report",
     title: "Simple, Honest Pricing",
     sub: "Everything you see — Rashi, Nakshatra, Lagna, palm analysis, 12-area predictions, charts and printing — is free forever. The optional Premium adds a five-year roadmap.",
     free: "Free",
@@ -492,9 +493,9 @@ const hi: Dict = {
   hero: {
     badge: "Palmistry · नियम-आधारित वैदिक गणना · कोई पेड AI नहीं",
     freeBadge: "100% बिल्कुल फ्री में — कोई शुल्क नहीं, कोई लॉगिन नहीं, कोई कार्ड नहीं",
-    title1: "स्वागत है आपका",
-    title2: "हस्तरेखा AI — Palmistry के संसार में",
-    sub: "आपके हाथ की रेखाएँ और जन्म कुंडली एक साथ पढ़ने वाली निःशुल्क वेबसाइट। बस अपना जन्म विवरण डालें और तुरंत पाएँ अपनी राशि, नक्षत्र, लग्न, जीवन की भविष्यवाणियाँ और शुभ वर्ष — आसान हिंदी और अंग्रेज़ी में।",
+    title1: "हस्तरेखा पामिस्ट्री (Hastrekha Palmistry)",
+    title2: "हाथ की रेखा और कुंडली — फ्री, तुरंत",
+    sub: "हाथ की रेखा (hath ki rekha) और जन्म कुंडली एक साथ पढ़ने वाली निःशुल्क वेबसाइट। जन्म विवरण भरें और तुरंत पाएँ राशि, नक्षत्र, लग्न, 12 जीवन-क्षेत्र की भविष्यवाणियाँ और शुभ वर्ष — आसान हिंदी और English में।",
     cta: "अपनी हस्तरेखा जानें",
     cta2: "12 राशियाँ देखें",
     stat1: "राशियाँ",
@@ -739,6 +740,7 @@ const hi: Dict = {
   top: { choose: "भाषा चुनें", music: "संगीत", musicOn: "संगीत चालू", musicOff: "संगीत बंद", tapMusic: "शांत संगीत के लिए टैप करें", beta: "बीटा", betaNote: "बीटा भाषाओं में रिपोर्ट का पाठ अभी अंग्रेज़ी में दिखेगा।", themeToLight: "लाइट थीम", themeToDark: "डार्क थीम", share: "शेयर करें", shareText: "गजब! हस्तरेखा AI ने तो मेरे बारे में बिल्कुल सटीक जानकारी दी, वो भी बिल्कुल फ्री में। यहाँ हस्तरेखा और ज्योतिष दोनों की गणना के आधार पर 99% सटीक भविष्यवाणी मिल रही है। एक बार तुम भी ट्राई करके देखो, शायद तुम्हें भी अपने जीवन से जुड़े प्रश्नों के उत्तर मिल जाएँ।", shareCopied: "लिंक कॉपी हो गया — अपने दोस्तों को शेयर करें!", install: "ऐप इंस्टॉल करें", installTitle: "Hast Rekha AI इंस्टॉल करें", installIntro: "Hast Rekha AI को अपने फ़ोन की होम स्क्रीन पर जोड़ें। फिर यह एक सामान्य ऐप की तरह खुलेगा — ऑफ़लाइन भी।", installAndroid: "ब्राउज़र मेन्यू खोलें (ऊपर दाईं ओर \u22EE)\n\"Add to Home screen\" या \"Install app\" पर टैप करें\n\"Install\" दबाकर पुष्टि करें", installIos: "Safari में नीचे Share बटन पर टैप करें\nनीचे स्क्रॉल करके \"Add to Home Screen\" पर टैप करें\nऊपर दाईं ओर \"Add\" दबाएँ", installDesktop: "ब्राउज़र के एड्रेस बार में इंस्टॉल आइकन पर क्लिक करें\nया ब्राउज़र मेन्यू से \"Install Hast Rekha AI\" चुनें\nपूरा करने के लिए पुष्टि करें" },
   pricing: {
     eyebrow: "✦ मूल्य",
+    h1: "हस्त रेखा Price — फ्री चेक और ₹51 प्रो रिपोर्ट",
     title: "सरल, ईमानदार मूल्य",
     sub: "आप जो देखते हैं — राशि, नक्षत्र, लग्न, हस्तरेखा विश्लेषण, 12-क्षेत्र भविष्यवाणियाँ, ग्राफ़ और प्रिंटिंग — सदा निःशुल्क। वैकल्पिक प्रीमियम पाँच-वर्षीय रोडमैप जोड़ता है।",
     free: "निःशुल्क",
