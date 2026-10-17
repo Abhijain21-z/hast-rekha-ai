@@ -112,15 +112,41 @@ body {
   width: 100%;
   border-radius: 0.875rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.04);
   padding: 0.8rem 1rem;
   color: #f4f0ff;
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 .input-dark::placeholder { color: rgba(233, 228, 245, 0.35); }
-.input-dark:focus { border-color: rgba(245, 194, 66, 0.6); box-shadow: 0 0 0 4px rgba(245, 194, 66, 0.12); background: rgba(255, 255, 255, 0.06); }
+.input-dark:focus { border-color: rgba(245, 194, 66, 0.6); box-shadow: 0 0 0 4px rgba(245, 194, 66, 0.12); background-color: rgba(255, 255, 255, 0.06); }
 .input-dark::-webkit-calendar-picker-indicator { filter: invert(0.8) sepia(1) saturate(3) hue-rotate(5deg); cursor: pointer; }
+
+/* Appearance is stripped for the dark look, so draw our own chevron — without
+   it a select reads as a plain text field and the choices stay hidden. */
+select.input-dark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9c2e6' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.95rem;
+  padding-right: 2.6rem;
+  cursor: pointer;
+}
+select.input-dark:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f5c242' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.95rem;
+}
+
+/* The open list of a native <select> is painted by the OS, not by the page.
+   Without an explicit colour the options inherit the field's light ink and
+   land on a white popup — the choices then look blank. */
+select.input-dark option {
+  background: #150f2b;
+  color: #f4f0ff;
+}
+select.input-dark option:disabled { color: rgba(233, 228, 245, 0.4); }
 
 .skeleton {
   background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.04) 75%);
@@ -184,6 +210,14 @@ body {
 .mask-fade { -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 72%); mask-image: radial-gradient(circle, #000 52%, transparent 72%); }
 .perspective-1000 { perspective: 1000px; }
 .preserve-3d { transform-style: preserve-3d; }
+
+/* Dark is the default theme: tell the browser so native widgets (select
+   popups, date pickers, scrollbars) are painted dark as well. The light
+   block below overrides this with color-scheme: light. */
+html[data-theme="dark"],
+html:not([data-theme]) {
+  color-scheme: dark;
+}
 
 /* =========================================================================
    Light theme
@@ -284,13 +318,28 @@ html[data-theme="light"] .gold-text {
 }
 
 html[data-theme="light"] .input-dark {
-  background: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
   border-color: rgba(26, 19, 48, 0.16);
   color: #1a1330;
 }
 html[data-theme="light"] .input-dark::placeholder { color: rgba(34, 26, 61, 0.42); }
-html[data-theme="light"] .input-dark:focus { background: #ffffff; border-color: rgba(180, 132, 26, 0.65); }
+html[data-theme="light"] .input-dark:focus { background-color: #ffffff; border-color: rgba(180, 132, 26, 0.65); }
 html[data-theme="light"] .input-dark::-webkit-calendar-picker-indicator { filter: none; }
+html[data-theme="light"] select.input-dark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23565173' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.95rem;
+}
+html[data-theme="light"] select.input-dark:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239a7412' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 0.95rem;
+}
+html[data-theme="light"] select.input-dark:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239a7412' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
 html[data-theme="light"] select.input-dark option { background: #ffffff; color: #1a1330; }
 
 html[data-theme="light"] .skeleton {
