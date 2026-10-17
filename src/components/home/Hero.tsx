@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronDown, Gift, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import Navagraha from "./Navagraha";
 
@@ -31,7 +31,11 @@ export default function Hero() {
         </motion.div>
 
         <motion.div className="relative z-10 order-2 lg:order-1">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="flex flex-wrap items-center gap-2.5">
+            {/* The first thing a visitor reads: the reading is free. */}
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/50 bg-emerald-400/15 px-4 py-2 text-sm font-semibold text-emerald-100 shadow-[0_0_28px_-8px] shadow-emerald-400/60">
+              <Gift className="h-4 w-4 text-emerald-300" /> {t.hero.freeBadge}
+            </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-gold-400/30 bg-gold-400/10 px-4 py-1.5 text-xs font-medium text-gold-300">
               <Sparkles className="h-3.5 w-3.5" /> {t.hero.badge}
             </span>

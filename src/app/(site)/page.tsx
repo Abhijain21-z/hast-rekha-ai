@@ -6,6 +6,7 @@ import Features from "@/components/home/Features";
 import Pricing from "@/components/home/Pricing";
 import Reviews from "@/components/home/Reviews";
 import FAQ from "@/components/home/FAQ";
+import FaqJsonLd from "@/components/home/FaqJsonLd";
 import About from "@/components/home/About";
 import RishisSection from "@/components/home/RishisSection";
 import ConstellationBackdrop from "@/components/layout/Constellations";
@@ -25,6 +26,7 @@ export default function HomePage() {
         <Pricing />
         <Reviews />
         <FAQ />
+        <FaqJsonLd />
         <About />
       </div>
     </div>
