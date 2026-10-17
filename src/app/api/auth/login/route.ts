@@ -3,8 +3,12 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { users } from "@/db/schema";
 import { createSession, SESSION_COOKIE, sessionCookieOptions, toSafeUser, verifyPassword } from "@/lib/auth";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export async function POST(req: Request) {
+  const limit = rateLimit(`login:${clientIp(req)}`, 10, 10 * 60_000);
+  if (!limit.ok) return NextResponse.json({ error: "rate_limited" }, { status: 429, headers: { "Retry-After": String(limit.retryAfter) } });
+
   const body = (await req.json().catch(() => ({}))) as { email?: string; password?: string };
   const email = (body.email ?? "").trim().toLowerCase();
   const password = body.password ?? "";

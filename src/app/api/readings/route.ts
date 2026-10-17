@@ -5,6 +5,7 @@ import { readings } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { computeChart } from "@/lib/astrology";
 import { toReadingSummary } from "@/lib/dto";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,9 @@ interface Body {
 }
 
 export async function POST(req: Request) {
+  const limit = rateLimit(`readings:${clientIp(req)}`, 20, 10 * 60_000);
+  if (!limit.ok) return NextResponse.json({ error: "rate_limited" }, { status: 429, headers: { "Retry-After": String(limit.retryAfter) } });
+
   let body: Body;
   try {
     body = (await req.json()) as Body;
