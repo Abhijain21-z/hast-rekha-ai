@@ -1,7 +1,12 @@
 import { describe, it, expect } from "vitest";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { dictionaries, pick, byLang, type Bi } from "@/lib/i18n";
 import { LANGS, OVERRIDES, deepMerge } from "@/lib/lang-overrides";
 import { CONTENT_LANGS, CONTENT_LOCALES, localize } from "@/content/locales";
+
+const LOCALES_DIR = fileURLToPath(new URL("../../content/locales/", import.meta.url));
 
 /** Collect every leaf key path so we can compare dictionary shapes. */
 function keyPaths(value: unknown, prefix = ""): string[] {
@@ -79,5 +84,30 @@ describe("i18n", () => {
     // Unknown English strings keep the source text — never undefined.
     expect(out.traits.mr[1]).toBe("Untranslated");
     expect(CONTENT_LANGS).toContain("mr");
+    expect(CONTENT_LANGS).toContain("te");
+    expect(CONTENT_LANGS).toContain("gu");
+  });
+
+  it("has no duplicate keys in any locale overlay", () => {
+    // JSON.parse silently keeps only the last duplicate key, so a repeated key
+    // would hide a translation without any error. Scan the raw text instead.
+    const files = readdirSync(LOCALES_DIR).filter((f) => f.endsWith(".json"));
+    expect(files.length).toBeGreaterThan(0);
+    for (const file of files) {
+      const text = readFileSync(join(LOCALES_DIR, file), "utf8");
+      const keys: string[] = [];
+      for (const line of text.split(/\r?\n/)) {
+        const match = /^ {2}"((?:[^"\\]|\\.)*)":/.exec(line);
+        if (match) keys.push(match[1]);
+      }
+      const seen = new Set<string>();
+      const duplicates: string[] = [];
+      for (const key of keys) {
+        if (seen.has(key)) duplicates.push(key);
+        seen.add(key);
+      }
+      expect(duplicates, `duplicate keys in ${file}`).toEqual([]);
+      expect(keys.length, `${file} has no translation entries`).toBeGreaterThan(0);
+    }
   });
 });

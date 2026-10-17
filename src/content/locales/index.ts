@@ -11,9 +11,13 @@
  * language without ever hitting `undefined`.
  */
 import mr from "./mr.json";
+import te from "./te.json";
+import gu from "./gu.json";
 
 export const CONTENT_LOCALES: Record<string, Record<string, string>> = {
   mr: mr as Record<string, string>,
+  te: te as Record<string, string>,
+  gu: gu as Record<string, string>,
 };
 
 /** Language codes that have a content overlay. Hindi and English are the baseline. */
