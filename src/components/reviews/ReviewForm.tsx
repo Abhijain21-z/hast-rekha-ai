@@ -67,7 +67,7 @@ export default function ReviewForm({
           lang,
         }),
       });
-      if (!res.ok) throw new Error("failed");
+      if (!res.ok) throw new Error(res.status === 503 ? t.reviews.errSave : "failed");
       const { review } = (await res.json()) as { review: ReviewRow };
       toast(t.reviews.saved);
       setName(defaultName);
@@ -76,8 +76,8 @@ export default function ReviewForm({
       setRating(5);
       setText("");
       onSaved?.(review);
-    } catch {
-      setErr(t.common.error);
+    } catch (e) {
+      setErr(e instanceof Error && e.message !== "failed" ? e.message : t.common.error);
     } finally {
       setBusy(false);
     }

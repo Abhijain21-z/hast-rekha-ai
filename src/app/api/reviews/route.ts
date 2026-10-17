@@ -14,12 +14,18 @@ export async function GET(req: Request) {
   // The home carousel only needs the newest handful; the Public Reviews page
   // asks for the full list.
   const full = new URL(req.url).searchParams.get("all") === "1";
-  const rows = await db
-    .select()
-    .from(reviews)
-    .orderBy(desc(reviews.createdAt))
-    .limit(full ? 200 : 50);
-  return NextResponse.json({ reviews: rows });
+  try {
+    const rows = await db
+      .select()
+      .from(reviews)
+      .orderBy(desc(reviews.createdAt))
+      .limit(full ? 200 : 50);
+    return NextResponse.json({ reviews: rows });
+  } catch {
+    // A database hiccup must not take the page down with a raw 500 — the UI
+    // simply shows its empty state.
+    return NextResponse.json({ reviews: [], error: "unavailable" }, { status: 200 });
+  }
 }
 
 export async function POST(req: Request) {
@@ -44,18 +50,24 @@ export async function POST(req: Request) {
   const interfaceRating = body.interfaceRating && INTERFACE.has(body.interfaceRating) ? body.interfaceRating : null;
   const agrees = typeof body.agrees === "boolean" ? body.agrees : null;
 
-  const user = await getCurrentUser();
-  const [row] = await db
-    .insert(reviews)
-    .values({
-      userId: user?.id ?? null,
-      name: name.slice(0, 80),
-      rating,
-      text: text.slice(0, 1200),
-      lang: body.lang === "en" ? "en" : "hi",
-      interfaceRating,
-      agrees,
-    })
-    .returning();
-  return NextResponse.json({ review: row }, { status: 201 });
+  try {
+    const user = await getCurrentUser();
+    const [row] = await db
+      .insert(reviews)
+      .values({
+        userId: user?.id ?? null,
+        name: name.slice(0, 80),
+        rating,
+        text: text.slice(0, 1200),
+        lang: body.lang === "en" ? "en" : "hi",
+        interfaceRating,
+        agrees,
+      })
+      .returning();
+    return NextResponse.json({ review: row }, { status: 201 });
+  } catch {
+    // Storage problem (e.g. a database that cannot store the script). Answer
+    // with a clean error the form can show instead of a stack trace.
+    return NextResponse.json({ error: "could_not_save" }, { status: 503 });
+  }
 }

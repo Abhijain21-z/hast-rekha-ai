@@ -40,7 +40,6 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
       <div className="text-center">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gold-400/90">✦ {t.reviews.count}</p>
         <h1 className="font-display text-3xl font-semibold text-white md:text-4xl lg:text-5xl">{t.reviews.allTitle}</h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-slate-300/90">{t.reviews.allSub}</p>
         <div className="mt-6 flex justify-center">
@@ -54,7 +53,7 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
         <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-4">
           <div className="glass rounded-2xl p-4 text-center">
             <p className="font-display text-2xl text-gold-300 sm:text-3xl">{stats.avg}</p>
-            <p className="mt-1 text-xs text-slate-400">★ {t.reviews.rating}</p>
+            <p className="mt-1 text-xs text-slate-400">{t.reviews.avgRating}</p>
           </div>
           <div className="glass rounded-2xl p-4 text-center">
             <p className="font-display text-2xl text-gold-300 sm:text-3xl">{stats.count}</p>
@@ -62,7 +61,7 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
           </div>
           <div className="glass rounded-2xl p-4 text-center">
             <p className="font-display text-2xl text-emerald-200 sm:text-3xl">{stats.agreePct === null ? "—" : `${stats.agreePct}%`}</p>
-            <p className="mt-1 text-xs text-slate-400">{t.reviews.agreeYes}</p>
+            <p className="mt-1 text-xs text-slate-400">{t.reviews.agreeLabel}</p>
           </div>
         </div>
       )}
@@ -83,7 +82,7 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
               <div className="mt-4 flex flex-wrap gap-2">
                 {r.interfaceRating && IFACE_LABEL[r.interfaceRating] && (
                   <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-300">
-                    {t.reviews.qInterface} {t.reviews[IFACE_LABEL[r.interfaceRating]]}
+                    {t.reviews[IFACE_LABEL[r.interfaceRating]]}
                   </span>
                 )}
                 {typeof r.agrees === "boolean" && (

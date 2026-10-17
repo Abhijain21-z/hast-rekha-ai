@@ -2,11 +2,12 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, Briefcase, CalendarDays, Check, Crown, Flame, Gem, Lock, ScrollText, Sparkles } from "lucide-react";
+import { AlertTriangle, Briefcase, CalendarDays, Check, Crown, Flame, Gem, HeartHandshake, Lock, ScrollText, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, cn } from "@/components/ui";
 import { buildPremiumReport, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID } from "@/lib/premium";
 import { PDF_PRICE_ANCHOR, PRO_PAY_MODE } from "@/lib/flags";
+import { buildPartnerReport, prefersDevanagari } from "@/lib/partner";
 import type { ReadingDTO } from "@/lib/dto";
 import { byLang } from "@/lib/i18n";
 import { ProGateButton, ProPaywallModal } from "./ProPaywall";
@@ -20,6 +21,14 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
   const report = useMemo(
     () => buildPremiumReport({ result: reading.result, seed: reading.result.julianDay * 1000 + reading.fullName.length, fullName: reading.fullName, birthYear: Number(reading.birthDate.slice(0, 4)) }),
     [reading.result, reading.fullName, reading.birthDate],
+  );
+
+  // Only readers who explicitly told us they are unmarried get the partner
+  // prediction (null = unanswered, so we stay quiet rather than guess).
+  const unmarried = reading.married === false || reading.result.married === false;
+  const partner = useMemo(
+    () => (unmarried ? buildPartnerReport({ result: reading.result, seed: reading.result.julianDay * 1000 + reading.fullName.length }) : null),
+    [unmarried, reading.result, reading.fullName],
   );
 
   const rowIcons = [CalendarDays, AlertTriangle, Briefcase, Flame, ScrollText];
@@ -42,6 +51,11 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
                   </li>
                 ))}
               </ul>
+              {unmarried && (
+                <p className="mt-4 flex items-start gap-2 rounded-2xl border border-mystic-400/35 bg-mystic-600/15 px-4 py-3 text-sm text-slate-100">
+                  <HeartHandshake className="mt-0.5 h-4 w-4 shrink-0 text-mystic-400" /> {t.partner.teaser}
+                </p>
+              )}
             </div>
             <div className="glass-strong flex flex-col items-center rounded-3xl p-7 text-center">
               <Lock className="h-8 w-8 text-gold-300" />
@@ -120,6 +134,48 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
                   <p className="mt-2 text-sm leading-relaxed text-slate-100">{byLang<string>(report.gemNote, cl)}</p>
                 </div>
               </motion.div>
+
+              {unmarried && partner && (
+                <motion.div {...reveal} className="mt-6 rounded-[2rem] border-2 border-mystic-400/45 bg-gradient-to-br from-mystic-600/20 via-cosmic-800/60 to-gold-400/10 p-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mystic-400">✦ {t.partner.eyebrow}</p>
+                  <h3 className="mt-2 font-display text-2xl text-white">
+                    <HeartHandshake className="mr-2 inline h-6 w-6 text-mystic-400" />
+                    {t.partner.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-200">{t.partner.sub}</p>
+
+                  <div className="mt-5 rounded-2xl border border-mystic-400/30 bg-mystic-600/10 p-4">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-mystic-400">{t.partner.name}</p>
+                    <p className="mt-2 font-display text-2xl tracking-wide text-gold-300">
+                      {(prefersDevanagari(cl) ? partner.syllablesDev : partner.syllablesRom).join(" · ")}
+                    </p>
+                    <p className="mt-2 text-xs leading-relaxed text-slate-300">{L(partner.nameHint)}</p>
+                  </div>
+
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {[
+                      { label: t.partner.when, text: partner.age },
+                      { label: t.partner.nature, text: partner.nature },
+                      { label: t.partner.looks, text: partner.looks },
+                      { label: t.partner.wealth, text: partner.wealth },
+                      { label: t.partner.career, text: partner.career },
+                      { label: t.partner.direction, text: partner.direction },
+                      { label: t.partner.meeting, text: partner.meeting },
+                      { label: t.partner.recognition, text: partner.recognition },
+                    ].map((b) => (
+                      <div key={b.label} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-mystic-400">{b.label}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-100">{L(b.text)}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="mt-4 rounded-2xl border border-gold-400/25 bg-gold-400/10 p-4 text-center text-sm leading-relaxed text-gold-100">
+                    {L(partner.rashiNote)}
+                  </p>
+                  <p className="mt-3 text-center text-xs italic text-slate-400">{L(partner.note)}</p>
+                </motion.div>
+              )}
 
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-6 rounded-2xl bg-white/5 p-4 text-center text-sm italic text-slate-300">
                 {L(report.closing)}

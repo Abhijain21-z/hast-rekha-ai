@@ -1,0 +1,198 @@
+{
+  "note": {
+    "en": "This is a guideline drawn from the classical rules of Jyotish and palmistry. The final outcome always rests on your own karma and effort.",
+    "hi": "यह भविष्यवाणी शास्त्र के शास्त्रीय नियमों पर आधारित संकेत है — अंतिम फल सदैव आपके कर्म और पुरुषार्थ पर निर्भर है।"
+  },
+  "nameHint": {
+    "en": "As per the pada of your birth nakshatra, your partner's name may begin with one of these syllables.",
+    "hi": "आपके जन्म नक्षत्र के पद के अनुसार आपके जीवनसाथी का नाम इनमें से किसी एक अक्षर से शुरू हो सकता है।"
+  },
+  "age": [
+    {
+      "en": "The strongest window for marriage is within the next 1 to 3 years.",
+      "hi": "विवाह का योग अगले 1 से 3 वर्ष में सबसे प्रबल है।"
+    },
+    {
+      "en": "Within the next 2 to 4 years, favourable transits of Guru, Mangal or Shukra open the marriage window.",
+      "hi": "अगले 2 से 4 वर्षों में गुरु, मंगल या शुक्र के अनुकूल गोचर से विवाह के योग बनेंगे।"
+    },
+    {
+      "en": "Marriage may be slightly delayed, but the partner will be a mature and responsible person.",
+      "hi": "विवाह में थोड़ा विलंब है, पर जीवनसाथी परिपक्व और ज़िम्मेदार मिलेगा।"
+    },
+    {
+      "en": "Do not rush into an early marriage; within about two years a clearly suitable match appears.",
+      "hi": "विवाह की जल्दबाज़ी न करें — लगभग दो वर्ष के भीतर उपयुक्त अवसर स्वयं आ जाएगा।"
+    }
+  ],
+  "nature": [
+    {
+      "en": "Calm, patient and sociable by nature — slow to anger and quick to understand you.",
+      "hi": "स्वभाव से शांत, धैर्यवान और मिलनसार — गुस्सा जल्दी नहीं करते और समझाने पर मान जाते हैं।"
+    },
+    {
+      "en": "Ambitious and full of self-belief — knows how to work hard for a goal.",
+      "hi": "महत्वाकांक्षी और आत्मविश्वास से भरे — लक्ष्य के लिए मेहनत करना जानते हैं।"
+    },
+    {
+      "en": "Emotional and family-oriented — loves from the heart and notices the little things about you.",
+      "hi": "भावुक और परिवार से जुड़े — रिश्ते दिल से निभाते हैं और छोटी-छोटी बातों का ख्याल रखते हैं।"
+    },
+    {
+      "en": "Cheerful and lively — brings happiness and movement into your life.",
+      "hi": "हँसमुख और ज़िंदादिल — आपकी ज़िंदगी में खुशियाँ और चहल-पहल लेकर आएँगे।"
+    },
+    {
+      "en": "Disciplined and a little serious — plans every step and spends money carefully.",
+      "hi": "अनुशासित और थोड़े गंभीर — हर काम योजना से करते हैं और पैसा संभालकर खर्च करते हैं।"
+    },
+    {
+      "en": "Brave and willing to take risks — not afraid of starting something new.",
+      "hi": "साहसी और जोखिम लेने वाले — नया काम शुरू करने में हिचकते नहीं।"
+    },
+    {
+      "en": "Simple, honest and dependable — they mean exactly what they say.",
+      "hi": "सरल, सच्चे और भरोसेमंद — जो कहते हैं वही करते हैं।"
+    },
+    {
+      "en": "Intelligent and artistic — likely to excel in study, art or a creative field.",
+      "hi": "बुद्धिमान और कलात्मक — पढ़ाई, कला या रचनात्मक काम में आगे रहेंगे।"
+    }
+  ],
+  "looks": [
+    {
+      "en": "Medium height, fair complexion and an attractive personality — they impress at the first meeting.",
+      "hi": "मध्यम कद, गोरा रंग और आकर्षक व्यक्तित्व — पहली मुलाक़ात में ही प्रभावित कर देंगे।"
+    },
+    {
+      "en": "Wheatish complexion, a sturdy frame and sharp eyes — a bright, commanding face.",
+      "hi": "साँवला रंग, बलिष्ठ शरीर और तेज़ आँखें — चेहरे पर तेज साफ़ दिखता है।"
+    },
+    {
+      "en": "A well-built body, round face and smiling eyes — gentle to look at.",
+      "hi": "भरे-पूरे शरीर वाले, गोल चेहरे और मुस्कुराती आँखें — देखने में सौम्य।"
+    },
+    {
+      "en": "Tall, slim and well-proportioned — likely connected with sport, travel or the outdoors.",
+      "hi": "लंबा कद, पतला-दुबला शरीर और सुडौल चेहरा — खेल या यात्रा से जुड़ाव रहेगा।"
+    },
+    {
+      "en": "Striking eyes and an innocent face — height close to yours, slightly shorter or equal.",
+      "hi": "आँखों में असाधारण आकर्षण और चेहरे पर मासूमियत — कद आपसे थोड़ा कम या बराबर।"
+    },
+    {
+      "en": "Fine features, deep-set eyes and beautiful hands — the kind that draws attention easily.",
+      "hi": "तेज़ नैन-नक्श, गहरी आँखें और सुंदर हाथ — किसी का भी ध्यान आसानी से खींच लेंगे।"
+    }
+  ],
+  "wealth": [
+    {
+      "en": "Financially this grows stronger with time — property or a settled home within 3 to 5 years of marriage.",
+      "hi": "आर्थिक स्थिति समय के साथ मज़बूत होगी — विवाह के 3 से 5 वर्ष में संपत्ति या स्थायी घर के योग हैं।"
+    },
+    {
+      "en": "Starts modestly and builds good money through their own effort; also a little thrifty.",
+      "hi": "साधारण शुरुआत से अपनी मेहनत से अच्छा धन बनाएँगे — थोड़े कंजूस भी होंगे।"
+    },
+    {
+      "en": "Support comes from ancestral property or the family business — strong land and house yogas.",
+      "hi": "पैतृक संपत्ति या पारिवारिक कारोबार से सहयोग मिलेगा — ज़मीन-मकान के योग प्रबल हैं।"
+    },
+    {
+      "en": "Income will be good but expenses large — the habit of saving has to be built deliberately.",
+      "hi": "आय अच्छी रहेगी पर खर्च भी बड़ा — बचत की आदत जानबूझकर डालनी पड़ेगी।"
+    },
+    {
+      "en": "Saves well and will try to give you every comfort within their means.",
+      "hi": "धन संचय अच्छा करेंगे और अपनी सामर्थ्य के अनुसार आपको हर सुख-सुविधा देने का प्रयास करेंगे।"
+    }
+  ],
+  "career": [
+    {
+      "en": "Business or self-employment — starting small and expanding steadily.",
+      "hi": "बिज़नेस या खुद का काम — छोटे व्यापार से शुरू करके धीरे-धीरे बड़ा विस्तार करेंगे।"
+    },
+    {
+      "en": "Yogas for both job and business — a mentor helps at work, business comes in a later phase.",
+      "hi": "नौकरी और व्यवसाय दोनों के योग — काम में गुरु का साथ मिलेगा, व्यापार दूसरे चरण में आएगा।"
+    },
+    {
+      "en": "A salaried, steady temperament — association with a government or a large company.",
+      "hi": "नौकरीपेशा और स्थिर प्रवृत्ति — सरकारी या बड़ी कंपनी का साथ रहेगा।"
+    },
+    {
+      "en": "Independent work in a technical or creative field — freelance or consulting.",
+      "hi": "तकनीकी या कला के क्षेत्र में स्वतंत्र काम — फ्रीलांस या कंसल्टिंग का योग।"
+    }
+  ],
+  "direction": [
+    {
+      "en": "The connection may come from the north or east of you.",
+      "hi": "रिश्ता आपसे उत्तर या पूर्व दिशा से आने के संकेत हैं।"
+    },
+    {
+      "en": "A match with a family living to the south of your city.",
+      "hi": "आपके शहर से दक्षिण दिशा में रहने वाले परिवार से मिलान होगा।"
+    },
+    {
+      "en": "Signs point to the west or north-west direction.",
+      "hi": "पश्चिम या उत्तर-पश्चिम दिशा से रिश्ता आने के संकेत हैं।"
+    },
+    {
+      "en": "A distant connection, possibly another state — often met during travel.",
+      "hi": "कोई दूर का संबंध, संभवतः दूसरे राज्य से — अकसर यात्रा के दौरान मुलाक़ात होती है।"
+    },
+    {
+      "en": "Very close by, or within relatives — a family you already know.",
+      "hi": "बहुत पास से या रिश्तेदारी में — उसी परिवार से जिसे आप पहले से जानते हैं।"
+    },
+    {
+      "en": "Connected to your workplace or place of study.",
+      "hi": "आपके कार्यक्षेत्र या पढ़ाई की जगह से जुड़ा रिश्ता आएगा।"
+    }
+  ],
+  "meeting": [
+    {
+      "en": "The first meeting happens suddenly at a celebration or an auspicious function — one conversation opens the heart.",
+      "hi": "मुलाक़ात किसी शुभ कार्यक्रम या उत्सव में अचानक होगी — पहली बातचीत ही दिल खोल देगी।"
+    },
+    {
+      "en": "Introduction through family members or a relative.",
+      "hi": "घर वालों या किसी रिश्तेदार के माध्यम से परिचय होगा।"
+    },
+    {
+      "en": "You meet in a friend's circle or a group event; it starts as friendship.",
+      "hi": "मित्रों की महफ़िल या सामूहिक कार्यक्रम में मिलेंगे, दोस्ती से शुरुआत होगी।"
+    },
+    {
+      "en": "Work, the internet or travel is the most likely setting for the first meeting.",
+      "hi": "काम, इंटरनेट या सफ़र के दौरान मुलाक़ात की संभावना सबसे प्रबल है।"
+    },
+    {
+      "en": "The first introduction stays ordinary; the real connection is felt at the second meeting.",
+      "hi": "पहला परिचय सामान्य रहेगा, दूसरी मुलाक़ात में ही असली जुड़ाव महसूस होगा।"
+    }
+  ],
+  "recognition": [
+    {
+      "en": "They listen carefully and remember your small habits — that is the sign.",
+      "hi": "वे आपकी बात ध्यान से सुनते हैं और आपकी छोटी-छोटी आदतें याद रखते हैं — यही पहचान है।"
+    },
+    {
+      "en": "They step forward to help you again and again without asking for anything in return.",
+      "hi": "बिना कुछ माँगे बार-बार आपकी मदद के लिए आगे आएँगे — यही उनकी निशानी है।"
+    },
+    {
+      "en": "Their eyes do not waver while talking, and there may be a special mark (mole, line or ring) on the hand.",
+      "hi": "बात करते समय उनकी आँखें नहीं हटतीं, और हाथ पर कोई विशेष चिह्न (तिल, रेखा या अंगूठी) हो सकता है।"
+    },
+    {
+      "en": "After the introduction they respect your family's feelings — that is how a true life partner behaves.",
+      "hi": "परिचय के बाद वे आपके परिवार की भावना का सम्मान करेंगे — यही सच्चे जीवनसाथी की पहचान है।"
+    },
+    {
+      "en": "After the first meeting they look for an excuse to reach out again — treat that as the signal.",
+      "hi": "पहली मुलाक़ात के बाद वे फिर संपर्क करने का बहाना ढूँढ़ेंगे — इसी संकेत को हाँ मानें।"
+    }
+  ]
+}

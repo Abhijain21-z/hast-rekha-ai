@@ -83,7 +83,7 @@ export function Logo({ className }: { className?: string }) {
       </span>
       <span className="flex flex-col leading-none">
         <span className="font-display text-lg font-semibold tracking-wide text-white">{t.brand}</span>
-        <span className="hidden text-xs uppercase tracking-[0.25em] text-gold-400/80 xl:block">{t.tagline}</span>
+        <span className="hidden text-xs uppercase tracking-[0.25em] text-gold-400/80 2xl:block">{t.tagline}</span>
       </span>
     </Link>
   );
@@ -145,7 +145,7 @@ export default function Navbar({ user }: { user: NavUser }) {
       <nav className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-1 xl:flex">
           {links.map((l) => (
             <li key={l.href}>
               <Link
@@ -161,7 +161,7 @@ export default function Navbar({ user }: { user: NavUser }) {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-2.5 lg:flex xl:gap-3">
+        <div className="hidden items-center gap-2.5 xl:flex xl:gap-3">
           <Link href={donateLink.href} className="flex items-center gap-1.5 rounded-full border border-rose-300/30 px-4 py-2 text-sm text-rose-200 transition hover:border-rose-300/60 hover:bg-rose-400/10">
             <Heart className="h-3.5 w-3.5" /> {donateLink.label}
           </Link>
@@ -187,7 +187,7 @@ export default function Navbar({ user }: { user: NavUser }) {
           )}
         </div>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <button onClick={() => setOpen((o) => !o)} className="rounded-full p-2 text-slate-200 hover:bg-white/10" aria-label="Menu">
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -201,7 +201,7 @@ export default function Navbar({ user }: { user: NavUser }) {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-white/10 lg:hidden"
+            className="overflow-hidden border-t border-white/10 xl:hidden"
           >
             <div className="space-y-1 px-4 py-4">
               {links.map((l, i) => (

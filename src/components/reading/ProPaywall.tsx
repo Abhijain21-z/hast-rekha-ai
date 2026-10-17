@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, Copy, Crown, Download, ExternalLink, Lock, Printer, QrCode } from "lucide-react";
+import { Check, Copy, Crown, Download, ExternalLink, HeartHandshake, Lock, Printer, QrCode } from "lucide-react";
 import QRCode from "qrcode";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { useToast } from "@/components/providers/ToastProvider";
@@ -115,6 +115,10 @@ export function ProPaywallModal({
           </li>
         ))}
       </ul>
+
+      <p className="mt-4 flex items-start gap-2 rounded-2xl border border-mystic-400/35 bg-mystic-600/15 px-4 py-3 text-sm leading-relaxed text-slate-100">
+        <HeartHandshake className="mt-0.5 h-4 w-4 shrink-0 text-mystic-400" /> {t.partner.paywallLine}
+      </p>
 
       <div className="mt-5 border-t border-white/10 pt-5">
         {PRO_PAY_MODE === "upi" ? (
