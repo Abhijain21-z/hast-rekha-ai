@@ -1,5 +1,23 @@
 import { describe, it, expect } from "vitest";
 import { computeChart } from "@/lib/astrology";
+
+/** Record every `{ en, hi, mr }` value whose Marathi text still equals the English source. */
+function collectUntranslated(value: unknown, path: string, out: string[]): void {
+  if (Array.isArray(value)) {
+    value.forEach((v, i) => collectUntranslated(v, `${path}[${i}]`, out));
+    return;
+  }
+  if (value && typeof value === "object") {
+    const obj = value as Record<string, unknown>;
+    if (typeof obj.en === "string" && obj.mr === obj.en) out.push(`${path} (string)`);
+    if (Array.isArray(obj.en) && Array.isArray(obj.mr)) {
+      (obj.en as string[]).forEach((s, i) => {
+        if ((obj.mr as string[])[i] === s) out.push(`${path}[${i}] (array)`);
+      });
+    }
+    for (const [k, v] of Object.entries(obj)) collectUntranslated(v, path ? `${path}.${k}` : k, out);
+  }
+}
 import {
   RASHIS,
   NAKSHATRAS,
@@ -100,5 +118,16 @@ describe("content localization", () => {
   it("leaves Hindi untouched by the overlays", () => {
     expect(tithiName(1, "hi")).toBe("प्रतिपदा");
     expect(NAKSHATRAS[0].name.hi).toBe("अश्विनी");
+  });
+
+  it("has no untranslated strings left in the Marathi horoscope core", () => {
+    // A missing overlay entry still resolves (to English) so the UI never breaks,
+    // but it silently degrades the translation. This guards against regressions.
+    const missing: string[] = [];
+    collectUntranslated(RASHIS, "rashis", missing);
+    collectUntranslated(NAKSHATRAS, "nakshatras", missing);
+    collectUntranslated(PANCHANG, "panchang", missing);
+    collectUntranslated(DAILY, "daily", missing);
+    expect(missing).toEqual([]);
   });
 });
