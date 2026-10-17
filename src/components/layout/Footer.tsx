@@ -7,6 +7,7 @@ import { Globe, MessageCircle, Share2, Mail, Send, Sparkles } from "lucide-react
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, Input, Textarea, Label, SectionHeading } from "@/components/ui";
 import { DonateButton } from "@/components/reading/DonateModal";
+import { PALM_FOOTER_LINKS, PALM_UI } from "@/content/palm/ui";
 
 function ContactForm() {
   const { t } = useLang();
@@ -54,7 +55,7 @@ function ContactForm() {
 }
 
 export default function Footer() {
-  const { t } = useLang();
+  const { t, L } = useLang();
   const year = new Date().getFullYear();
 
   return (
@@ -84,7 +85,7 @@ export default function Footer() {
 
       <div className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="section-divider" />
-        <div className="grid gap-10 py-14 md:grid-cols-4">
+        <div className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-5">
           <div className="md:col-span-2">
             <p className="font-display text-2xl text-white">{t.brand}</p>
             <p className="mt-1 text-xs uppercase tracking-[0.25em] text-gold-400/80">{t.tagline}</p>
@@ -106,6 +107,16 @@ export default function Footer() {
               <li><Link href="/reviews" className="hover:text-white">{t.nav.reviews}</Link></li>
               <li><Link href="/blog" className="hover:text-white">{t.nav.blog}</Link></li>
               <li><Link href="/rashi" className="hover:text-white">{t.nav.rashi}</Link></li>
+            </ul>
+          </div>
+          <div>
+            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold-300">{L(PALM_UI.breadcrumbGuides)}</p>
+            <ul className="space-y-2.5 text-sm text-slate-400">
+              {PALM_FOOTER_LINKS.map((l) => (
+                <li key={l.slug}>
+                  <Link href={`/${l.slug}`} className="hover:text-white">{L(l.label)}</Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>

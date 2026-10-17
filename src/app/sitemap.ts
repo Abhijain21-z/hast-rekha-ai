@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { BLOGS } from "@/lib/blogs";
+import { PALM_PAGES, PALM_UPDATED } from "@/content/palm";
 import { BOOK_PROMO } from "@/lib/flags";
 import { SITE_URL } from "@/lib/site";
 
@@ -21,5 +22,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
-  return [...staticPages, ...blogPages];
+  // Palmistry guides: hreflang points at the same URL plus its ?lang=en twin.
+  const palmPages = PALM_PAGES.map((p) => ({
+    url: `${BASE}/${p.slug}`,
+    lastModified: new Date(PALM_UPDATED),
+    changeFrequency: "monthly" as const,
+    priority: p.kind === "pillar" ? 0.9 : 0.8,
+    alternates: {
+      languages: {
+        hi: `${BASE}/${p.slug}`,
+        en: `${BASE}/${p.slug}?lang=en`,
+      },
+    },
+  }));
+  return [...staticPages, ...palmPages, ...blogPages];
 }
