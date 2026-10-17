@@ -102,7 +102,8 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm text-slate-400">
               <li><Link href="/" className="hover:text-white">{t.nav.home}</Link></li>
               <li><Link href="/#features" className="hover:text-white">{t.nav.features}</Link></li>
-              <li><Link href="/#pricing" className="hover:text-white">{t.pricing.title}</Link></li>
+              <li><Link href="/pricing" className="hover:text-white">{t.nav.pricing}</Link></li>
+              <li><Link href="/reviews" className="hover:text-white">{t.nav.reviews}</Link></li>
               <li><Link href="/blog" className="hover:text-white">{t.nav.blog}</Link></li>
               <li><Link href="/rashi" className="hover:text-white">{t.nav.rashi}</Link></li>
             </ul>

@@ -8,13 +8,13 @@ import { SITE_URL } from "@/lib/site";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Public Reviews — Hast Rekha AI | सार्वजनिक समीक्षाएँ",
+  title: "Reviews — Hast Rekha AI | समीक्षाएँ",
   description:
     "हस्तरेखा AI पर दिए गए सभी पाठकों के रिव्यू और रेटिंग एक जगह — देखें कि लोगों को इंटरफ़ेस और भविष्यवाणी कैसी लगी, और अपनी समीक्षा भी लिखें।",
   alternates: { canonical: `${SITE_URL}/reviews` },
 };
 
-export default async function PublicReviewsPage() {
+export default async function ReviewsPage() {
   let initial: {
     id: string;
     name: string;

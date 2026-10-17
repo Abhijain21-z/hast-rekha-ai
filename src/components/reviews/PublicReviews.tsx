@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { BadgeCheck, PenLine, Quote, Star, ThumbsDown, ThumbsUp, Users } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
-import { Button, Modal, cn } from "@/components/ui";
+import { cn } from "@/components/ui";
 import ReviewForm, { type ReviewRow } from "./ReviewForm";
 
 const IFACE_LABEL: Record<string, "ifGreat" | "ifGood" | "ifOkay" | "ifPoor"> = {
@@ -16,7 +16,6 @@ const IFACE_LABEL: Record<string, "ifGreat" | "ifGood" | "ifOkay" | "ifPoor"> = 
 export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
   const { t } = useLang();
   const [items, setItems] = useState<ReviewRow[]>(initial);
-  const [writeOpen, setWriteOpen] = useState(false);
 
   // Server-rendered list first, then refresh from the API (so a review written
   // in another tab shows up without a hard reload).
@@ -42,11 +41,6 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
       <div className="text-center">
         <h1 className="font-display text-3xl font-semibold text-white md:text-4xl lg:text-5xl">{t.reviews.allTitle}</h1>
         <p className="mx-auto mt-4 max-w-2xl text-base text-slate-300/90">{t.reviews.allSub}</p>
-        <div className="mt-6 flex justify-center">
-          <Button variant="outline" onClick={() => setWriteOpen(true)} icon={<PenLine className="h-4 w-4" />}>
-            {t.reviews.write}
-          </Button>
-        </div>
       </div>
 
       {stats && (
@@ -65,6 +59,17 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
           </div>
         </div>
       )}
+
+      {/* Write + read in one place: this page is the single reviews home. */}
+      <div className="glass-strong mt-10 rounded-3xl p-6 sm:p-8">
+        <h2 className="flex items-center gap-2 font-display text-xl text-white">
+          <PenLine className="h-4 w-4 text-gold-300" /> {t.reviews.write}
+        </h2>
+        <p className="mt-1.5 text-sm text-slate-400">{t.reviews.postSub}</p>
+        <div className="mt-6">
+          <ReviewForm onSaved={(review) => setItems((all) => [review as ReviewRow, ...all])} />
+        </div>
+      </div>
 
       {items.length === 0 ? (
         <p className="glass mt-10 rounded-3xl p-10 text-center text-sm text-slate-400">{t.reviews.allEmpty}</p>
@@ -111,15 +116,6 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
           ))}
         </div>
       )}
-
-      <Modal open={writeOpen} onClose={() => setWriteOpen(false)} title={t.reviews.write}>
-        <ReviewForm
-          onSaved={(review) => {
-            setItems((all) => [review as ReviewRow, ...all]);
-            setWriteOpen(false);
-          }}
-        />
-      </Modal>
     </div>
   );
 }

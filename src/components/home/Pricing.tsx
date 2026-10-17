@@ -6,12 +6,12 @@ import { Check, Crown, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { SectionHeading, Badge } from "@/components/ui";
 
-export default function Pricing() {
+export default function Pricing({ heading = true }: { heading?: boolean }) {
   const { t } = useLang();
   return (
     <section id="pricing" className="relative scroll-mt-24 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading eyebrow={t.pricing.eyebrow} title={t.pricing.title} sub={t.pricing.sub} />
+        {heading && <SectionHeading eyebrow={t.pricing.eyebrow} title={t.pricing.title} sub={t.pricing.sub} />}
         <div className="grid gap-6 md:grid-cols-2">
           {/* Free */}
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6 }} className="glass flex flex-col rounded-3xl p-7 sm:p-8">

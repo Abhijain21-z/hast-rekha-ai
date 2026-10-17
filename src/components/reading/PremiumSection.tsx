@@ -136,7 +136,7 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
               </motion.div>
 
               {unmarried && partner && (
-                <motion.div {...reveal} className="mt-6 rounded-[2rem] border-2 border-mystic-400/45 bg-gradient-to-br from-mystic-600/20 via-cosmic-800/60 to-gold-400/10 p-6">
+                <motion.div {...reveal} className="mt-6 rounded-[2rem] border-2 border-mystic-400/45 bg-cosmic-950/75 bg-gradient-to-br from-mystic-600/20 via-cosmic-800/60 to-gold-400/10 p-6 backdrop-blur-md">
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-mystic-400">✦ {t.partner.eyebrow}</p>
                   <h3 className="mt-2 font-display text-2xl text-white">
                     <HeartHandshake className="mr-2 inline h-6 w-6 text-mystic-400" />
