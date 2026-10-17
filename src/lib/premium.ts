@@ -7,6 +7,7 @@ import type { Bi, Lang } from "./i18n";
 import type { PalmReport } from "./palm";
 import { hashString, rashiAt } from "./content";
 import type { AstroResult } from "./astrology";
+import { PDF_PRICE } from "./flags";
 
 interface YearBlock { theme: Bi; events: Bi; mistakes: Bi; upay: Bi; stotra: Bi }
 interface PremiumContent {
@@ -28,7 +29,8 @@ const C = premiumJson as PremiumContent;
 
 export const UPI_ID = "9522333669@jio";
 export const UPI_PAYEE_NAME = "Hast Rekha AI";
-export const PREMIUM_PRICE = 51;
+/** Single source of truth for the ₹51 price — defined in `flags.ts`. */
+export const PREMIUM_PRICE = PDF_PRICE;
 
 export interface PremiumYear {
   calendarYear: number;

@@ -6,12 +6,25 @@ import { useLang } from "@/components/providers/LanguageProvider";
 import type { PalmReport } from "@/lib/palm";
 import type { Rashi } from "@/lib/content";
 import { AgeRange, DecadeBars, LifeGraph, Meter, RadarChart, Tilt } from "./ReportCharts";
+import { PdfDividerButton } from "./ProPaywall";
 
 const ICONS: Record<string, LucideIcon> = { UserRound, Heart, Gem, Coins, Briefcase, Activity, Plane, Users, Sparkles, Landmark, Flame };
 const AREA_COLORS: Record<string, string> = { career: "#fbbf24", love: "#fb7185", health: "#34d399", wealth: "#f5c242", family: "#60a5fa", spirituality: "#c084fc", travel: "#22d3ee", fame: "#f97316" };
 const RASHI_KEY: Record<string, "career" | "love" | "health" | "finance"> = { career: "career", love: "love", health: "health", wealth: "finance" };
 
-export default function DetailedSections({ report, rashi }: { report: PalmReport; rashi: Rashi }) {
+export default function DetailedSections({
+  report,
+  rashi,
+  readingId,
+  unlocked,
+  onUnlocked,
+}: {
+  report: PalmReport;
+  rashi: Rashi;
+  readingId: string;
+  unlocked: boolean;
+  onUnlocked: () => void;
+}) {
   const { t, L } = useLang();
   const { timing, birthYear, age } = report;
   const yr = (a: number) => birthYear + a;
@@ -28,11 +41,11 @@ export default function DetailedSections({ report, rashi }: { report: PalmReport
       </div>
 
       <div className="space-y-6">
-        {report.sections.map(({ def, paragraphs }, idx) => {
+        {report.sections.flatMap(({ def, paragraphs }, idx) => {
           const Icon = ICONS[def.icon] ?? Sparkles;
           const color = def.area ? AREA_COLORS[def.area] : "#f5c242";
           const rashiKey = RASHI_KEY[def.key];
-          return (
+          const node = (
             <motion.div key={def.key} initial={{ opacity: 0, y: 40, rotateX: 10 }} whileInView={{ opacity: 1, y: 0, rotateX: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.65, ease: "easeOut" }} style={{ transformPerspective: 1200 }}>
               <Tilt max={3}>
                 <div className="glass relative overflow-hidden rounded-3xl p-6 sm:p-8">
@@ -129,6 +142,10 @@ export default function DetailedSections({ report, rashi }: { report: PalmReport
               </Tilt>
             </motion.div>
           );
+          // "Download Complete PDF" gate sits in the gap between every section box.
+          return idx < report.sections.length - 1
+            ? [node, <PdfDividerButton key={`pdf-${def.key}`} readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} />]
+            : [node];
         })}
       </div>
     </section>

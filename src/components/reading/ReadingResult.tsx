@@ -16,7 +16,8 @@ import PastSection from "./PastSection";
 import DetailedSections from "./DetailedSections";
 import PalmAnalysis from "./PalmAnalysis";
 import PremiumSection from "./PremiumSection";
-import { DonateReminder, PrintGate } from "./DonateReminder";
+import { DonateReminder } from "./DonateReminder";
+import { PdfDividerButton, ProGateButton } from "./ProPaywall";
 import UpayBookPromo from "@/components/upay/UpayBookPromo";
 import { BOOK_PROMO } from "@/lib/flags";
 
@@ -37,6 +38,9 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
   );
   const [copied, setCopied] = useState(false);
   const [tech, setTech] = useState(false);
+  // ₹51 "Pro" unlock: gates the PDF download/print buttons and the 5-year roadmap.
+  const [pro, setPro] = useState(reading.premium);
+  const unlockPro = () => setPro(true);
   const GENDER_LABEL: Record<string, string> = { male: t.form.male, female: t.form.female, trans: t.form.trans };
 
   async function copyLink() {
@@ -85,7 +89,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
             <button onClick={copyLink} className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm text-slate-200 hover:border-gold-400/50">
               {copied ? <Check className="h-4 w-4 text-emerald-300" /> : <Copy className="h-4 w-4" />} {copied ? t.result.copied : t.result.share}
             </button>
-            <PrintGate readingName={reading.fullName} />
+            <ProGateButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} label={t.result.print} icon="print" />
             <Link href={backHref ?? "/reading"} className="btn-gold inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
               {backHref ? t.result.backDash : t.result.newReading} <ArrowRight className="h-4 w-4" />
             </Link>
@@ -159,6 +163,8 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       {/* 1. Past */}
       <div className="mt-10"><PastSection items={report.past} /></div>
 
+      <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
+
       {/* 2. Scores */}
       <section id="sec-scores" className="mt-14 scroll-mt-28">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400/90">✦ {t.report.section} 2</p>
@@ -175,6 +181,8 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
           </motion.div>
         </div>
       </section>
+
+      <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* 3. Life graph */}
       <section id="sec-graph" className="mt-14 scroll-mt-28">
@@ -203,6 +211,8 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
           </div>
         </motion.div>
       </section>
+
+      <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* Rashi insights */}
       <section id="sec-rashi" className="mt-14 scroll-mt-28">
@@ -251,11 +261,17 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
         </div>
       </section>
 
+      <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
+
       {/* 4. Detailed sections */}
-      <div className="mt-14"><DetailedSections report={report} rashi={rashi} /></div>
+      <div className="mt-14"><DetailedSections report={report} rashi={rashi} readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} /></div>
+
+      <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* 5. Palm analysis */}
       <div className="mt-14"><PalmAnalysis report={report} palmImage={reading.palmImage} palmHand={reading.palmHand} /></div>
+
+      <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* 6. Suggestions */}
       <section id="sec-suggest" className="mt-14 scroll-mt-28">
@@ -275,7 +291,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       </section>
 
       {/* 7. Premium 5-year report */}
-      <div className="mt-14"><PremiumSection reading={reading} /></div>
+      <div className="mt-14"><PremiumSection reading={reading} unlocked={pro} onUnlocked={unlockPro} /></div>
 
       {/* Technical */}
       <div className="mt-10">

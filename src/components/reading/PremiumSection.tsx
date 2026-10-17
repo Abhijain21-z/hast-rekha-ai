@@ -1,111 +1,21 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Crown, Lock, Check, Copy, QrCode, ExternalLink, Printer, Flame, Gem, ScrollText, AlertTriangle, Briefcase, CalendarDays, Sparkles } from "lucide-react";
-import QRCode from "qrcode";
+import { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { AlertTriangle, Briefcase, CalendarDays, Check, Crown, Flame, Gem, Lock, ScrollText, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
-import { useToast } from "@/components/providers/ToastProvider";
-import { Button, Input, Label, Modal, cn } from "@/components/ui";
-import { buildPremiumReport, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID, upiDeepLink } from "@/lib/premium";
+import { Button, cn } from "@/components/ui";
+import { buildPremiumReport, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID } from "@/lib/premium";
+import { PDF_PRICE_ANCHOR, PRO_PAY_MODE } from "@/lib/flags";
 import type { ReadingDTO } from "@/lib/dto";
 import { byLang } from "@/lib/i18n";
+import { ProGateButton, ProPaywallModal } from "./ProPaywall";
 
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.55 } };
 
-function PayModal({ open, onClose, readingId, onUnlocked }: { open: boolean; onClose: () => void; readingId: string; onUnlocked: () => void }) {
-  const { t } = useLang();
-  const { toast } = useToast();
-  const [qr, setQr] = useState<string | null>(null);
-  const [utr, setUtr] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState("");
-  const [copied, setCopied] = useState(false);
-  const deepLink = useMemo(() => upiDeepLink(readingId), [readingId]);
-
-  useEffect(() => {
-    if (!open) return;
-    QRCode.toDataURL(deepLink, { width: 420, margin: 1, color: { dark: "#1a1030", light: "#fbeab8" } })
-      .then(setQr)
-      .catch(() => setQr(null));
-  }, [open, deepLink]);
-
-  async function copyUpi() {
-    try {
-      await navigator.clipboard.writeText(UPI_ID);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch {}
-  }
-
-  async function unlock() {
-    setErr("");
-    if (!/^\d{8,20}$/.test(utr.trim())) {
-      setErr(t.premium.errUtr);
-      return;
-    }
-    setBusy(true);
-    const res = await fetch(`/api/readings/${readingId}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ premiumUtr: utr.trim() }),
-    });
-    setBusy(false);
-    if (res.ok) {
-      toast(t.premium.unlocked);
-      onUnlocked();
-      onClose();
-    } else {
-      setErr(t.premium.errUnlock);
-    }
-  }
-
-  return (
-    <Modal open={open} onClose={onClose} title={t.premium.payTitle}>
-      <p className="text-sm text-slate-300">{t.premium.paySub}</p>
-      <div className="mt-5 flex flex-col items-center gap-5 sm:flex-row sm:items-start">
-        <div className="shrink-0 rounded-2xl bg-[#fbeab8] p-3 gold-glow">
-          {qr ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={qr} alt="UPI QR" className="h-44 w-44 rounded-lg" />
-          ) : (
-            <div className="flex h-44 w-44 items-center justify-center rounded-lg bg-[#fbeab8]"><QrCode className="h-10 w-10 text-[#1a1030]" /></div>
-          )}
-        </div>
-        <div className="w-full space-y-3">
-          <div className="flex items-center justify-between gap-2 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-4 py-3">
-            <div>
-              <p className="text-xs uppercase tracking-wider text-slate-400">{t.premium.upiId}</p>
-              <p className="font-mono text-base text-gold-100">{UPI_ID}</p>
-              <p className="text-xs text-slate-400">{UPI_ID.split("@")[0]} · ₹{PREMIUM_PRICE}</p>
-            </div>
-            <Button variant="outline" size="sm" onClick={copyUpi} icon={copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}>
-              {copied ? t.premium.copied : t.premium.copy}
-            </Button>
-          </div>
-          <a href={deepLink} className="btn-gold flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
-            <ExternalLink className="h-4 w-4" /> {t.premium.openUpi}
-          </a>
-          <p className="text-center text-xs text-slate-500">GPay · PhonePe · Paytm · BHIM</p>
-        </div>
-      </div>
-      <div className="mt-5 border-t border-white/10 pt-5">
-        <Label>{t.premium.utrLabel}</Label>
-        <Input value={utr} onChange={(e) => setUtr(e.target.value)} placeholder={t.premium.utrPh} inputMode="numeric" maxLength={20} />
-        {err && <p className="mt-1.5 text-xs text-rose-300">{err}</p>}
-        <Button className="mt-4 w-full" loading={busy} onClick={unlock} icon={<Crown className="h-4 w-4" />}>
-          {busy ? t.premium.verifying : t.premium.confirmPay}
-        </Button>
-        <p className="mt-3 text-center text-xs text-slate-500">{t.premium.or} — {t.premium.paySub}</p>
-      </div>
-    </Modal>
-  );
-}
-
-export default function PremiumSection({ reading }: { reading: ReadingDTO }) {
-  const { t, L, lang, cl } = useLang();
+export default function PremiumSection({ reading, unlocked, onUnlocked }: { reading: ReadingDTO; unlocked: boolean; onUnlocked: () => void }) {
+  const { t, L, cl } = useLang();
   const [payOpen, setPayOpen] = useState(false);
-  const [premium, setPremium] = useState(reading.premium);
 
   const report = useMemo(
     () => buildPremiumReport({ result: reading.result, seed: reading.result.julianDay * 1000 + reading.fullName.length, fullName: reading.fullName, birthYear: Number(reading.birthDate.slice(0, 4)) }),
@@ -116,7 +26,7 @@ export default function PremiumSection({ reading }: { reading: ReadingDTO }) {
 
   return (
     <section id="sec-premium" className="mt-14 scroll-mt-28">
-      {!premium ? (
+      {!unlocked ? (
         <motion.div {...reveal} className="relative overflow-hidden rounded-[2rem] border-2 border-gold-400/50 bg-gradient-to-br from-gold-400/15 via-cosmic-800/60 to-mystic-700/20 p-6 sm:p-10 gold-glow">
           <div className="mandala-bg pointer-events-none absolute inset-0 opacity-50" />
           <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-gold-400/20 blur-3xl" />
@@ -135,12 +45,15 @@ export default function PremiumSection({ reading }: { reading: ReadingDTO }) {
             </div>
             <div className="glass-strong flex flex-col items-center rounded-3xl p-7 text-center">
               <Lock className="h-8 w-8 text-gold-300" />
-              <p className="mt-3 font-display text-5xl gold-text">{t.premium.price}</p>
+              <p className="mt-3 text-sm text-slate-400 line-through decoration-rose-400/70 decoration-2">₹{PDF_PRICE_ANCHOR}</p>
+              <p className="font-display text-5xl gold-text">₹{PREMIUM_PRICE}</p>
               <p className="text-xs text-slate-400">{t.premium.once}</p>
               <Button size="lg" className="mt-5 w-full" onClick={() => setPayOpen(true)} icon={<Crown className="h-5 w-5" />}>
                 {t.premium.get}
               </Button>
-              <p className="mt-3 flex items-center gap-1 text-xs text-slate-500"><Sparkles className="h-3 w-3 text-gold-300" /> UPI · QR · {UPI_ID}</p>
+              {PRO_PAY_MODE === "upi" && (
+                <p className="mt-3 flex items-center gap-1 text-xs text-slate-500"><Sparkles className="h-3 w-3 text-gold-300" /> UPI · QR · {UPI_ID}</p>
+              )}
             </div>
           </div>
         </motion.div>
@@ -155,9 +68,14 @@ export default function PremiumSection({ reading }: { reading: ReadingDTO }) {
                   <h2 className="mt-2 font-display text-3xl text-white sm:text-4xl"><Crown className="mr-2 inline h-7 w-7 text-gold-300" />{t.premium.title ?? ""}</h2>
                   <p className="mt-2 max-w-2xl text-sm text-slate-200">{t.premium.sub}</p>
                 </div>
-                <button onClick={() => window.print()} className="btn-gold no-print inline-flex items-center gap-2 self-start rounded-full px-5 py-2.5 text-sm">
-                  <Printer className="h-4 w-4" /> {t.premium.printFull}
-                </button>
+                <ProGateButton
+                  readingId={reading.id}
+                  unlocked
+                  onUnlocked={onUnlocked}
+                  label={t.premium.printFull}
+                  icon="print"
+                  className="self-start px-5 py-2.5"
+                />
               </div>
 
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-5 rounded-2xl border border-gold-400/25 bg-gold-400/10 px-4 py-3 text-sm text-gold-100">
@@ -211,7 +129,7 @@ export default function PremiumSection({ reading }: { reading: ReadingDTO }) {
         </div>
       )}
 
-      <PayModal open={payOpen} onClose={() => setPayOpen(false)} readingId={reading.id} onUnlocked={() => setPremium(true)} />
+      <ProPaywallModal open={payOpen} onClose={() => setPayOpen(false)} readingId={reading.id} onUnlocked={onUnlocked} />
     </section>
   );
 }
