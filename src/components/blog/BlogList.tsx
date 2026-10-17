@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Search, Clock, ArrowRight } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Input, cn } from "@/components/ui";
-import { BLOGS, CAT_META, searchBlogs, type BlogCat } from "@/lib/blogs";
+import { BLOGS, blogImage, CAT_META, searchBlogs, type BlogCat } from "@/lib/blogs";
 import { byLang } from "@/lib/i18n";
 
 const CATS: (BlogCat | "all")[] = ["all", "palm", "graha", "ratna", "upay", "rashi"];
@@ -52,7 +52,7 @@ export default function BlogList() {
             <motion.article key={b.slug} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}>
               <Link href={`/blog/${b.slug}`} className="glass group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 transition duration-300 hover:-translate-y-1 hover:border-gold-400/50 hover:shadow-xl hover:shadow-gold-400/10">
                 <div className="relative aspect-[16/9] overflow-hidden">
-                  <Image src={CAT_META[b.cat].image} alt={L(b.title)} fill sizes="(max-width:640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <Image src={blogImage(b)} alt={L(b.title)} fill sizes="(max-width:640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-cosmic-950/80 via-transparent to-transparent" />
                   <span className="absolute left-3 top-3 rounded-full border border-gold-400/40 bg-cosmic-950/70 px-3 py-1 text-xs text-gold-200 backdrop-blur">{L(CAT_META[b.cat].label)}</span>
                 </div>

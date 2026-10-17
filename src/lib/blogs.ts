@@ -1,5 +1,6 @@
 import blogsJson from "@/content/blogs.json";
 import extraJson from "@/content/blogs-extra.json";
+import { BLOG_ART } from "./blog-art";
 import type { Bi } from "./i18n";
 
 export type BlogCat = "palm" | "graha" | "ratna" | "upay" | "rashi";
@@ -32,6 +33,20 @@ export const CAT_META: Record<BlogCat, { label: Bi; image: string }> = {
 
 export function getBlog(slug: string) {
   return BLOGS.find((b) => b.slug === slug);
+}
+
+/**
+ * Hero artwork for a blog — a title-matched illustration when one exists,
+ * otherwise the category illustration so a freshly added blog never renders
+ * a broken image.
+ */
+export function blogImage(blog: Blog): string {
+  return BLOG_ART[blog.slug]?.hero ?? CAT_META[blog.cat].image;
+}
+
+/** Lighter in-article illustration, same fallback rule as {@link blogImage}. */
+export function blogInlineImage(blog: Blog): string {
+  return BLOG_ART[blog.slug]?.inline ?? CAT_META[blog.cat].image;
 }
 
 export function searchBlogs(query: string, cat: BlogCat | "all"): Blog[] {
