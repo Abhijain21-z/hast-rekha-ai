@@ -13,7 +13,7 @@ import { Avatar, cn } from "@/components/ui";
 export type NavUser = { name: string; email: string } | null;
 
 export function LangToggle({ compact }: { compact?: boolean }) {
-  const { lang, setLang } = useLang();
+  const { lang, setLang, t } = useLang();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -32,6 +32,7 @@ export function LangToggle({ compact }: { compact?: boolean }) {
       >
         <Globe className="h-3.5 w-3.5 text-gold-300" />
         <span className="max-w-[72px] truncate">{current.native}</span>
+        {current.beta && <span className="rounded bg-white/10 px-1 py-0.5 text-[9px] uppercase tracking-wide text-slate-300">{t.top.beta}</span>}
         <ChevronDown className={cn("h-3 w-3 text-slate-400 transition-transform", open && "rotate-180")} />
       </button>
       <AnimatePresence>
@@ -52,11 +53,17 @@ export function LangToggle({ compact }: { compact?: boolean }) {
                   onClick={() => { setLang(l.code); setOpen(false); }}
                   className={cn("flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition", lang === l.code ? "bg-gold-400/20 text-gold-100" : "text-slate-200 hover:bg-white/8")}
                 >
-                  <span>{l.native}</span>
+                  <span className="flex items-center gap-2">
+                    {l.native}
+                    {l.beta && <span className="rounded bg-white/10 px-1 py-0.5 text-[9px] uppercase tracking-wide text-slate-400">{t.top.beta}</span>}
+                  </span>
                   <span className="text-xs text-slate-500">{l.english}</span>
                 </button>
               </li>
             ))}
+            {current.beta && (
+              <li className="border-t border-white/10 px-3 py-2 text-[11px] leading-snug text-slate-400">{t.top.betaNote}</li>
+            )}
           </motion.ul>
         )}
       </AnimatePresence>

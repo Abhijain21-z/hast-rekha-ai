@@ -1,10 +1,11 @@
 import type { Dict } from "./i18n";
 
 /**
- * Extra language shells. Hindi and English are fully translated in i18n.ts;
- * these languages localise the visible UI chrome (navigation, hero, main
- * headings) and gracefully fall back to English for the rest of the copy,
- * while all astrological content stays available in Hindi ⇄ English.
+ * Language registry. Hindi and English are fully translated in i18n.ts; the
+ * languages marked `beta` localise the visible UI chrome (navigation, hero,
+ * main headings) and fall back to English for the rest of the copy until their
+ * content translation lands. A language becomes "full" by adding translated
+ * keys to the `Bi` content values and dropping its `beta` flag.
  */
 export type DeepPartial<T> = { [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K] };
 
@@ -14,23 +15,28 @@ export interface LangMeta {
   english: string;
   dir?: "rtl";
   font?: string;
+  /** true when only the UI chrome is translated and content falls back to English. */
+  beta?: boolean;
 }
 
 export const LANGS: LangMeta[] = [
   { code: "hi", native: "हिन्दी", english: "Hindi", font: "Noto Sans Devanagari" },
   { code: "en", native: "English", english: "English" },
-  { code: "mr", native: "मराठी", english: "Marathi", font: "Noto Sans Devanagari" },
-  { code: "sa", native: "संस्कृतम्", english: "Sanskrit", font: "Noto Sans Devanagari" },
-  { code: "gu", native: "ગુજરાતી", english: "Gujarati", font: "Noto Sans Gujarati" },
-  { code: "pa", native: "ਪੰਜਾਬੀ", english: "Punjabi", font: "Noto Sans Gurmukhi" },
-  { code: "bn", native: "বাংলা", english: "Bengali", font: "Noto Sans Bengali" },
-  { code: "or", native: "ଓଡ଼ିଆ", english: "Odia", font: "Noto Sans Oriya" },
-  { code: "te", native: "తెలుగు", english: "Telugu", font: "Noto Sans Telugu" },
-  { code: "kn", native: "ಕನ್ನಡ", english: "Kannada", font: "Noto Sans Kannada" },
-  { code: "ml", native: "മലയാളം", english: "Malayalam", font: "Noto Sans Malayalam" },
-  { code: "ta", native: "தமிழ்", english: "Tamil", font: "Noto Sans Tamil" },
-  { code: "ur", native: "اردو", english: "Urdu", dir: "rtl", font: "Noto Nastaliq Urdu" },
+  { code: "mr", native: "मराठी", english: "Marathi", font: "Noto Sans Devanagari", beta: true },
+  { code: "sa", native: "संस्कृतम्", english: "Sanskrit", font: "Noto Sans Devanagari", beta: true },
+  { code: "gu", native: "ગુજરાતી", english: "Gujarati", font: "Noto Sans Gujarati", beta: true },
+  { code: "pa", native: "ਪੰਜਾਬੀ", english: "Punjabi", font: "Noto Sans Gurmukhi", beta: true },
+  { code: "bn", native: "বাংলা", english: "Bengali", font: "Noto Sans Bengali", beta: true },
+  { code: "or", native: "ଓଡ଼ିଆ", english: "Odia", font: "Noto Sans Oriya", beta: true },
+  { code: "te", native: "తెలుగు", english: "Telugu", font: "Noto Sans Telugu", beta: true },
+  { code: "kn", native: "ಕನ್ನಡ", english: "Kannada", font: "Noto Sans Kannada", beta: true },
+  { code: "ml", native: "മലയാളം", english: "Malayalam", font: "Noto Sans Malayalam", beta: true },
+  { code: "ta", native: "தமிழ்", english: "Tamil", font: "Noto Sans Tamil", beta: true },
+  { code: "ur", native: "اردو", english: "Urdu", dir: "rtl", font: "Noto Nastaliq Urdu", beta: true },
 ];
+
+/** Language codes with a complete content translation (not just UI chrome). */
+export const FULL_CONTENT_LANGS = ["hi", "en"] as const;
 
 export const OVERRIDES: Record<string, DeepPartial<Dict>> = {
   mr: {

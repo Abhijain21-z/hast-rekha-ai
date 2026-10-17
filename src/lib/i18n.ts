@@ -1,8 +1,13 @@
 export type Lang = string;
-export type Bi = { en: string; hi: string };
+/**
+ * Localised content. Hindi and English are the authored baseline and are always
+ * required; extra language codes may be added as keys (e.g. `{ en, hi, mr }`).
+ * `pick()` falls back to English when the requested language is missing.
+ */
+export type Bi = { en: string; hi: string; [lang: string]: string };
 
-/** Content is authored in Hindi + English; every other UI language falls back to English copy. */
-export const pick = (lang: Lang, v: Bi | undefined | null): string => (v ? (lang === "hi" ? v.hi : v.en) : "");
+/** Resolve a localised value for `lang`, falling back to the English baseline. */
+export const pick = (lang: Lang, v: Bi | undefined | null): string => (v ? v[lang] ?? v.en : "");
 
 const en = {
   brand: "Hast Rekha AI",
@@ -260,7 +265,7 @@ const en = {
     dates: "Sun-sign dates",
     verdicts: ["A challenging pair that grows through patience and understanding.", "A workable match — differences bring balance if respected.", "A warm, supportive pairing with natural understanding.", "An excellent, harmonious match blessed by shared elements."],
   },
-  top: { choose: "Choose language", music: "Music", musicOn: "Music on", musicOff: "Music off", tapMusic: "Tap for calm music" },
+  top: { choose: "Choose language", music: "Music", musicOn: "Music on", musicOff: "Music off", tapMusic: "Tap for calm music", beta: "Beta", betaNote: "Beta languages show the reading text in English for now." },
   pricing: {
     eyebrow: "✦ Pricing",
     title: "Simple, Honest Pricing",
@@ -664,7 +669,7 @@ const hi: Dict = {
     dates: "सूर्य राशि तिथियाँ",
     verdicts: ["एक चुनौतीपूर्ण जोड़ी जो धैर्य और समझ से आगे बढ़ती है।", "एक व्यवहार्य मेल — मतभेद सम्मान मिलने पर संतुलन लाते हैं।", "स्वाभाविक समझ वाली एक स्नेही, सहयोगी जोड़ी।", "साझा तत्वों से धन्य एक उत्कृष्ट, सामंजस्यपूर्ण मेल।"],
   },
-  top: { choose: "भाषा चुनें", music: "संगीत", musicOn: "संगीत चालू", musicOff: "संगीत बंद", tapMusic: "शांत संगीत के लिए टैप करें" },
+  top: { choose: "भाषा चुनें", music: "संगीत", musicOn: "संगीत चालू", musicOff: "संगीत बंद", tapMusic: "शांत संगीत के लिए टैप करें", beta: "बीटा", betaNote: "बीटा भाषाओं में रिपोर्ट का पाठ अभी अंग्रेज़ी में दिखेगा।" },
   pricing: {
     eyebrow: "✦ मूल्य",
     title: "सरल, ईमानदार मूल्य",

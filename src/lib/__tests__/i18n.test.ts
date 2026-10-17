@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { dictionaries, pick, type Bi } from "@/lib/i18n";
-import { LANGS, OVERRIDES, deepMerge } from "@/lib/lang-overrides";
+import { LANGS, OVERRIDES, deepMerge, FULL_CONTENT_LANGS } from "@/lib/lang-overrides";
 
 /** Collect every leaf key path so we can compare dictionary shapes. */
 function keyPaths(value: unknown, prefix = ""): string[] {
@@ -38,5 +38,21 @@ describe("i18n", () => {
       const merged = deepMerge(dictionaries.en, patch);
       expect(keyPaths(merged).sort(), `override "${code}" broke the shape`).toEqual(base);
     }
+  });
+
+  it("marks exactly the non-full languages as beta", () => {
+    const full = FULL_CONTENT_LANGS as readonly string[];
+    for (const meta of LANGS) {
+      expect(Boolean(meta.beta), `beta flag for "${meta.code}"`).toBe(!full.includes(meta.code));
+    }
+  });
+
+  it("falls back to English when a language has no content key", () => {
+    const bilingual: Bi = { en: "Wealth", hi: "धन" };
+    expect(pick("mr", bilingual)).toBe("Wealth");
+    expect(pick("hi", bilingual)).toBe("धन");
+
+    const extended: Bi = { en: "Wealth", hi: "धन", mr: "संपत्ती" };
+    expect(pick("mr", extended)).toBe("संपत्ती");
   });
 });
