@@ -93,7 +93,7 @@ export function ProPaywallModal({
       onUnlocked();
       onClose();
     } else {
-      setErr(t.premium.errUnlock);
+      setErr(res.status === 409 ? t.premium.errUsed : t.premium.errUnlock);
     }
   }
 

@@ -5,8 +5,8 @@ import type { Bi } from "@/lib/i18n";
  *
  * Kept next to the other pricing UI so the visible FAQ block, the FAQPage
  * structured data and any future edit all read from one list. Answers state the
- * current reality plainly: the reading is free, payments are still being set
- * up, and nothing is a guarantee.
+ * current reality plainly: the reading is free, premium payment runs on UPI
+ * (QR + UTR) right now, and nothing is a guarantee.
  */
 
 export interface PricingFaqItem {
@@ -41,8 +41,8 @@ export const PRICING_FAQS: PricingFaqItem[] = [
       hi: "क्या पेड रिपोर्ट अभी ख़रीदी जा सकती है?",
     },
     a: {
-      en: "Online payment is being set up right now — the premium button currently shows a coming-soon state and no money is being taken. When it opens, the report page itself will show a UPI QR and a payment-reference (UTR) form, and your report will unlock on the same page after verification. Until then, enjoy the complete free reading.",
-      hi: "फिलहाल ऑनलाइन भुगतान सुविधा तैयार की जा रही है — प्रीमियम बटन अभी 'जल्द आ रहा है' दिखाता है और कोई शुल्क नहीं लिया जाता। सुविधा शुरू होते ही रिपोर्ट पेज पर ही UPI QR और भुगतान-संदर्भ (UTR) फ़ॉर्म आएगा, और सत्यापन के बाद वही रिपोर्ट उसी पेज पर खुल जाएगी। तब तक पूरी फ्री रीडिंग का भरपूर फ़ायदा लें।",
+      en: "Yes — UPI payment is open now. Open any report page and tap the premium button: you will see a UPI QR code and the official UPI ID, pay ₹51 (Pro) or ₹351 (Ultra Pro), then enter the reference number (UTR) from your UPI app. The same report unlocks on that page. More payment options are being added, but UPI works today.",
+      hi: "हाँ — UPI भुगतान अब खुल चुका है। किसी भी रिपोर्ट पेज पर प्रीमियम बटन दबाएँ: UPI QR कोड और आधिकारिक UPI ID दिखेंगी, ₹51 (प्रो) या ₹351 (अल्ट्रा प्रो) भेजें और अपने UPI ऐप से रेफ़रेंस नंबर (UTR) दर्ज करें। वही रिपोर्ट उसी पेज पर अनलॉक हो जाएगी। और भुगतान विकल्प जुड़ रहे हैं, पर UPI आज से चालू है।",
     },
   },
   {
@@ -83,8 +83,8 @@ export const PRICING_FAQ_UI = {
   breadcrumbPricing: { en: "Pricing", hi: "मूल्य" } as Bi,
   faqTitle: { en: "Pricing questions, answered straight", hi: "मूल्य से जुड़े सवाल — सीधे जवाब" } as Bi,
   faqSub: {
-    en: "What is free, what the paid plans add, and how payment will work — without the fine-print games.",
-    hi: "क्या फ्री है, पेड प्लान क्या जोड़ते हैं और भुगतान कैसे होगा — बिना छोटे अक्षरों वाले खेल के।",
+    en: "What is free, what the paid plans add, and how payment works — without the fine-print games.",
+    hi: "क्या फ्री है, पेड प्लान क्या जोड़ते हैं और भुगतान कैसे करें — बिना छोटे अक्षरों वाले खेल के।",
   } as Bi,
   guidesTitle: { en: "Check us before you pay", hi: "पैसे देने से पहले ख़ुद जाँचें" } as Bi,
   guidesSub: {

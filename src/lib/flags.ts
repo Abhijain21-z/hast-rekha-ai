@@ -24,17 +24,17 @@ export const PDF_PRICE_ANCHOR = 901;
 /**
  * How the ₹51 Pro gate collects payment.
  *
- * - `"coming-soon"` — the paywall shows the full offer (anchor price, perks,
- *   close button) but the pay button only reports that payment options are
- *   being set up. Nothing is charged and nothing unlocks.
  * - `"upi"` — shows the UPI QR + reference-number (UTR) form and unlocks the
  *   reading (premium roadmap + PDF printing, or the book too for Ultra Pro)
  *   once a reference is submitted.
+ * - `"coming-soon"` — the paywall shows the full offer (anchor price, perks,
+ *   close button) but the pay button only reports that payment options are
+ *   being set up. Nothing is charged and nothing unlocks.
  *
- * Flip this to `"upi"` to start collecting, or swap the pay panel for a
- * gateway panel when one is available.
+ * UPI is live. When a payment gateway (e.g. Cashfree) goes live, swap the pay
+ * panel for a gateway panel and retire this flag branch.
  */
-export const PRO_PAY_MODE: "coming-soon" | "upi" = "coming-soon";
+export const PRO_PAY_MODE: "coming-soon" | "upi" = "upi";
 
 /**
  * One-time price of the Ultra Pro plan, in INR: everything in Pro plus the
