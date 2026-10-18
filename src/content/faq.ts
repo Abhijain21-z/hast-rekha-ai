@@ -100,8 +100,8 @@ export const FAQS: FaqItem[] = [
   {
     q: { en: "How do I pay for the premium report?", hi: "प्रीमियम रिपोर्ट का भुगतान कैसे करें?" },
     a: {
-      en: "The report page shows a UPI QR code and UPI id. Pay ₹51 (or ₹351 for Ultra Pro) from any UPI app — GPay, PhonePe, Paytm, BHIM — then enter the reference (UTR) number. The report unlocks immediately.",
-      hi: "रिपोर्ट पेज पर UPI QR कोड और UPI आईडी दिखती है। किसी भी UPI ऐप — GPay, PhonePe, Paytm, BHIM — से ₹51 (या अल्ट्रा प्रो के ₹351) भेजें, फिर उसका रेफ़रेंस (UTR) नंबर भर दें। रिपोर्ट तुरंत अनलॉक हो जाती है।",
+      en: "The report page shows a UPI QR code and UPI id. Pay ₹51 (or ₹351 for Ultra Pro) from any UPI app — GPay, PhonePe, Paytm, BHIM — and confirm on the same page: the report unlocks immediately. (Ultra Pro asks for the payment reference number for the book.)",
+      hi: "रिपोर्ट पेज पर UPI QR कोड और UPI आईडी दिखती है। किसी भी UPI ऐप — GPay, PhonePe, Paytm, BHIM — से ₹51 (या अल्ट्रा प्रो के ₹351) भेजें और उसी पेज पर पुष्टि करें: रिपोर्ट तुरंत अनलॉक हो जाती है। (अल्ट्रा प्रो में पुस्तक के लिए भुगतान का रेफ़रेंस नंबर माँगा जाता है।)",
     },
   },
   {

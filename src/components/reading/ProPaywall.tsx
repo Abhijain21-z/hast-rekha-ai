@@ -56,6 +56,9 @@ export function ProPaywallModal({
   const price = plan === "ultra" ? ULTRA_PRICE : PREMIUM_PRICE;
   const perks = plan === "ultra" ? [...PREMIUM_PERKS, ...BOOK_PERKS] : PREMIUM_PERKS;
   const deepLink = useMemo(() => upiDeepLink(readingId, price), [readingId, price]);
+  // Pro unlocks on the buyer's confirmation (no UTR). Ultra still asks for the
+  // UPI reference so the book link can be issued safely.
+  const needsUtr = plan === "ultra";
 
   const saved = PDF_PRICE_ANCHOR - PREMIUM_PRICE;
   const percentOff = Math.round((1 - PREMIUM_PRICE / PDF_PRICE_ANCHOR) * 100);
@@ -77,7 +80,7 @@ export function ProPaywallModal({
 
   async function unlock() {
     setErr("");
-    if (!/^\d{8,20}$/.test(utr.trim())) {
+    if (needsUtr && !/^\d{8,20}$/.test(utr.trim())) {
       setErr(t.premium.errUtr);
       return;
     }
@@ -85,7 +88,7 @@ export function ProPaywallModal({
     const res = await fetch(`/api/readings/${readingId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ premiumUtr: utr.trim(), plan }),
+      body: JSON.stringify(needsUtr ? { premiumUtr: utr.trim(), plan } : { confirmPaid: true, plan: "pro" }),
     });
     setBusy(false);
     if (res.ok) {
@@ -208,11 +211,15 @@ export function ProPaywallModal({
               </div>
             </div>
             <div className="mt-5 border-t border-white/10 pt-5">
-              <Label>{t.premium.utrLabel}</Label>
-              <Input value={utr} onChange={(e) => setUtr(e.target.value)} placeholder={t.premium.utrPh} inputMode="numeric" maxLength={20} />
+              {needsUtr && (
+                <>
+                  <Label>{t.premium.utrLabel}</Label>
+                  <Input value={utr} onChange={(e) => setUtr(e.target.value)} placeholder={t.premium.utrPh} inputMode="numeric" maxLength={20} />
+                </>
+              )}
               {err && <p className="mt-1.5 text-xs text-rose-300">{err}</p>}
               <Button className="mt-4 w-full" loading={busy} onClick={unlock} icon={<Crown className="h-4 w-4" />}>
-                {busy ? t.premium.verifying : t.premium.confirmPay}
+                {busy ? t.premium.verifying : tpl(t.premium.confirmPay, { p: price })}
               </Button>
             </div>
           </>

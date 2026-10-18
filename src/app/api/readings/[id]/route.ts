@@ -26,9 +26,27 @@ export async function PATCH(req: Request, { params }: Ctx) {
     palmImage?: string | null;
     palmHand?: string | null;
     premiumUtr?: string;
+    /** Pro unlock by confirmation — the paywall asks for no UTR (₹51). */
+    confirmPaid?: boolean;
     /** Which plan the UPI reference was paid for. Defaults to Pro (₹51). */
     plan?: "pro" | "ultra";
   };
+
+  // Pro unlock by confirmation (no UTR): the paywall shows the UPI QR/ID and the
+  // buyer taps "I have paid". Trust-based until a gateway verifies payments —
+  // Ultra is excluded on purpose so the book still needs a payment reference.
+  if (body.confirmPaid === true && body.plan !== "ultra") {
+    if (PRO_PAY_MODE !== "upi") {
+      return NextResponse.json({ error: "Payments are not open yet" }, { status: 403 });
+    }
+    const [row] = await db
+      .update(readings)
+      .set({ premium: true, premiumAt: new Date(), updatedAt: new Date() })
+      .where(eq(readings.id, id))
+      .returning();
+    if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    return NextResponse.json({ reading: toReadingDTO(row) });
+  }
 
   // Premium activation by UPI reference — available to the reading owner and to guests
   // who hold the reading link (the id is an unguessable UUID).

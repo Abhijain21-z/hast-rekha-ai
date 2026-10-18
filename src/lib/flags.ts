@@ -24,9 +24,9 @@ export const PDF_PRICE_ANCHOR = 901;
 /**
  * How the ₹51 Pro gate collects payment.
  *
- * - `"upi"` — shows the UPI QR + reference-number (UTR) form and unlocks the
- *   reading (premium roadmap + PDF printing, or the book too for Ultra Pro)
- *   once a reference is submitted.
+ * - `"upi"` — shows the UPI QR + UPI ID with a one-tap confirm unlock for the
+ *   ₹51 Pro report (no UTR), and the reference-number (UTR) form for the ₹351
+ *   Ultra Pro plan so the book link is only issued against a payment reference.
  * - `"coming-soon"` — the paywall shows the full offer (anchor price, perks,
  *   close button) but the pay button only reports that payment options are
  *   being set up. Nothing is charged and nothing unlocks.

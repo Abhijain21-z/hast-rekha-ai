@@ -6,7 +6,8 @@ import type { Bi } from "@/lib/i18n";
  * Kept next to the other pricing UI so the visible FAQ block, the FAQPage
  * structured data and any future edit all read from one list. Answers state the
  * current reality plainly: the reading is free, premium payment runs on UPI
- * (QR + UTR) right now, and nothing is a guarantee.
+ * (QR + one-tap confirm; UTR only for the Ultra book), and nothing is a
+ * guarantee.
  */
 
 export interface PricingFaqItem {
@@ -41,8 +42,8 @@ export const PRICING_FAQS: PricingFaqItem[] = [
       hi: "क्या पेड रिपोर्ट अभी ख़रीदी जा सकती है?",
     },
     a: {
-      en: "Yes — UPI payment is open now. Open any report page and tap the premium button: you will see a UPI QR code and the official UPI ID, pay ₹51 (Pro) or ₹351 (Ultra Pro), then enter the reference number (UTR) from your UPI app. The same report unlocks on that page. More payment options are being added, but UPI works today.",
-      hi: "हाँ — UPI भुगतान अब खुल चुका है। किसी भी रिपोर्ट पेज पर प्रीमियम बटन दबाएँ: UPI QR कोड और आधिकारिक UPI ID दिखेंगी, ₹51 (प्रो) या ₹351 (अल्ट्रा प्रो) भेजें और अपने UPI ऐप से रेफ़रेंस नंबर (UTR) दर्ज करें। वही रिपोर्ट उसी पेज पर अनलॉक हो जाएगी। और भुगतान विकल्प जुड़ रहे हैं, पर UPI आज से चालू है।",
+      en: "Yes — UPI payment is open now. Open any report page and tap the premium button: you will see a UPI QR code and the official UPI ID. Pay ₹51 (Pro) or ₹351 (Ultra Pro) from any UPI app, confirm on the same page, and the report unlocks right there. More payment options are being added, but UPI works today.",
+      hi: "हाँ — UPI भुगतान अब खुल चुका है। किसी भी रिपोर्ट पेज पर प्रीमियम बटन दबाएँ: UPI QR कोड और आधिकारिक UPI ID दिखेंगी। किसी भी UPI ऐप से ₹51 (प्रो) या ₹351 (अल्ट्रा प्रो) भेजें, उसी पेज पर पुष्टि करें — रिपोर्ट वहीं तुरंत अनलॉक हो जाती है। और भुगतान विकल्प जुड़ रहे हैं, पर UPI आज से चालू है।",
     },
   },
   {
@@ -61,8 +62,8 @@ export const PRICING_FAQS: PricingFaqItem[] = [
       hi: "भुगतान के बाद रिपोर्ट unlock कैसे होती है?",
     },
     a: {
-      en: "You enter the UPI reference number (UTR) on the same report page. After verification, that report page becomes Pro or Ultra — no separate app, email or WhatsApp needed. The report keeps its own private page, so you can open it again any time on the same phone or any other device with the link.",
-      hi: "आप वही UPI रेफ़रेंस नंबर (UTR) उसी रिपोर्ट पेज पर दर्ज करते हैं। सत्यापन के बाद वही रिपोर्ट पेज प्रो या अल्ट्रा बन जाता है — कोई अलग ऐप, ईमेल या WhatsApp ज़रूरी नहीं। रिपोर्ट का अपना निजी पेज रहता है, इसलिए आप उसे उसी फ़ोन या किसी भी डिवाइस पर बाद में फिर खोल सकते हैं।",
+      en: "For the ₹51 Pro report, tap “I have paid” on the report page right after the UPI transfer — it unlocks on the spot. Ultra Pro (₹351) additionally asks for your UPI reference number (UTR) so the book link can be issued safely. No separate app, email or WhatsApp needed; the report keeps its own private page, so you can open it again any time on any device with the link.",
+      hi: "₹51 वाली प्रो रिपोर्ट के लिए UPI ट्रांसफ़र के तुरंत बाद रिपोर्ट पेज पर “मैंने भेज दिए” दबाएँ — वहीं अनलॉक हो जाती है। अल्ट्रा प्रो (₹351) में इसके साथ आपका UPI रेफ़रेंस नंबर (UTR) भी माँगा जाता है, ताकि पुस्तक का लिंक सुरक्षित तरीके से जारी हो सके। कोई अलग ऐप, ईमेल या WhatsApp ज़रूरी नहीं; रिपोर्ट का अपना निजी पेज रहता है, जिसे आप लिंक के साथ किसी भी डिवाइस पर बाद में फिर खोल सकते हैं।",
     },
   },
   {
