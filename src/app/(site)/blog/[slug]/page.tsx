@@ -6,17 +6,35 @@ import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, Clock, Lightbulb, Sparkles } from "lucide-react";
 import { cookies } from "next/headers";
 import BlogJsonLd from "@/components/blog/BlogJsonLd";
-import { blogImage, blogInlineImage, CAT_META, getBlog, relatedBlogs } from "@/lib/blogs";
+import { BLOGS, blogImage, blogInlineImage, CAT_META, getBlog, relatedBlogs } from "@/lib/blogs";
 import { blogDeepLinks } from "@/lib/blog-links";
 import { dictionaries, pick, type Lang } from "@/lib/i18n";
 import { BOOK_PROMO } from "@/lib/flags";
 
-export const dynamic = "force-dynamic";
+/**
+ * The post slugs are a fixed build-time list. `dynamicParams = false` fences the
+ * route to exactly that list, so an unknown slug is answered by the router
+ * before the (site)/loading.tsx Suspense boundary can stream a 200 shell — the
+ * old soft 404 that Google logged as "Excluded by 'noindex'".
+ *
+ * No `dynamic = "force-dynamic"` here: the page reads the language cookie, so
+ * rendering is already per-request dynamic, and force-dynamic would bypass the
+ * param fence above.
+ */
+export async function generateStaticParams() {
+  return BLOGS.map((blog) => ({ slug: blog.slug }));
+}
+
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const blog = getBlog(slug);
-  if (!blog) return { title: "Blog — Hast Rekha AI" };
+  // Unknown slug: throw notFound() here, not only in the page component. Metadata
+  // resolves before the shell is streamed, so the response carries a real 404
+  // status instead of the 200 "soft 404" the (site)/loading.tsx boundary would
+  // produce (which Google logs as "Excluded by 'noindex'").
+  if (!blog) notFound();
   const title = `${blog.title.hi} | ${blog.title.en}`;
   const description = `${blog.excerpt.hi} ${blog.excerpt.en}`;
   const image = blogImage(blog);
