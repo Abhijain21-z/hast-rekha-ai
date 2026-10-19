@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, Copy, Crown, Download, ExternalLink, HeartHandshake, Lock, Printer, QrCode } from "lucide-react";
+import { Check, Copy, Crown, Download, ExternalLink, HeartHandshake, Lock, Printer, QrCode, X } from "lucide-react";
 import QRCode from "qrcode";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { useToast } from "@/components/providers/ToastProvider";
@@ -63,6 +63,17 @@ export function ProPaywallModal({
   const saved = PDF_PRICE_ANCHOR - PREMIUM_PRICE;
   const percentOff = Math.round((1 - PREMIUM_PRICE / PDF_PRICE_ANCHOR) * 100);
 
+  // Free vs ₹51 vs ₹351, row by row — mirrors the perks lists so the free
+  // reader can see exactly what stays free and what the paid plans add.
+  const cmpRows = [
+    { label: t.premium.cmpR1, free: true, pro: true, ultra: true },
+    { label: t.premium.cmpR2, free: false, pro: true, ultra: true },
+    { label: t.premium.cmpR3, free: false, pro: true, ultra: true },
+    { label: t.premium.cmpR4, free: false, pro: true, ultra: true },
+    { label: t.premium.cmpR5, free: false, pro: true, ultra: true },
+    { label: t.premium.cmpR6, free: false, pro: false, ultra: true },
+  ];
+
   useEffect(() => {
     if (!open || PRO_PAY_MODE !== "upi") return;
     QRCode.toDataURL(deepLink, { width: 420, margin: 1, color: { dark: "#1a1030", light: "#fbeab8" } })
@@ -103,6 +114,39 @@ export function ProPaywallModal({
   return (
     <Modal open={open} onClose={onClose} title={t.pro.title} wide>
       <p className="text-sm leading-relaxed text-slate-300">{t.pro.sub}</p>
+
+      {/* Three-way comparison: what Free gets, what ₹51 adds, what ₹351 adds. */}
+      <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.premium.cmpTitle}</p>
+      <div className="mt-2 overflow-hidden rounded-2xl border border-white/10">
+        <table className="w-full text-left">
+          <thead>
+            <tr className="bg-white/[0.05] text-[11px] uppercase tracking-wider text-slate-400">
+              <th className="px-3 py-2.5 font-medium">{t.premium.cmpFeature}</th>
+              <th className="px-2 py-2.5 text-center font-medium">{t.premium.cmpFree}</th>
+              <th className="px-2 py-2.5 text-center font-medium text-gold-200">
+                {t.premium.cmpPro}
+                <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{PREMIUM_PRICE}</span>
+              </th>
+              <th className="px-2 py-2.5 text-center font-medium text-gold-200">
+                {t.premium.cmpUltra}
+                <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{ULTRA_PRICE}</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {cmpRows.map((row) => (
+              <tr key={row.label} className="border-t border-white/10 text-xs text-slate-200">
+                <td className="px-3 py-2.5 leading-relaxed">{row.label}</td>
+                {[row.free, row.pro, row.ultra].map((has, i) => (
+                  <td key={i} className="px-2 py-2.5 text-center align-middle">
+                    {has ? <Check className="mx-auto h-4 w-4 text-gold-300" /> : <X className="mx-auto h-3.5 w-3.5 text-slate-500" />}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Plan switch — ₹51 Pro report, or ₹351 Ultra Pro which adds the book. */}
       <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.pro.planTitle}</p>
@@ -205,7 +249,7 @@ export function ProPaywallModal({
                   </Button>
                 </div>
                 <a href={deepLink} className="btn-gold flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
-                  <ExternalLink className="h-4 w-4" /> {t.premium.openUpi}
+                  <ExternalLink className="h-4 w-4" /> {tpl(t.premium.openUpi, { p: price })}
                 </a>
                 <p className="text-center text-xs text-slate-500">GPay · PhonePe · Paytm · BHIM</p>
               </div>
