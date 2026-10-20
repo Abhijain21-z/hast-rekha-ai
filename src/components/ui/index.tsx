@@ -48,9 +48,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
 });
 
 /* ---------- Inputs ---------- */
-export function Label({ children, hint }: { children: ReactNode; hint?: string }) {
+export function Label({ children, hint, htmlFor }: { children: ReactNode; hint?: string; htmlFor?: string }) {
   return (
-    <label className="mb-1.5 flex items-baseline justify-between text-sm font-medium text-slate-200">
+    <label htmlFor={htmlFor} className="mb-1.5 flex items-baseline justify-between text-sm font-medium text-slate-200">
       <span>{children}</span>
       {hint && <span className="text-xs font-normal text-slate-400">{hint}</span>}
     </label>

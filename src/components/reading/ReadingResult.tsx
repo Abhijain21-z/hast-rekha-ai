@@ -16,6 +16,7 @@ import { Gauge, LifeGraph, RadarChart, Tilt } from "./ReportCharts";
 import PastSection from "./PastSection";
 import DetailedSections from "./DetailedSections";
 import PalmAnalysis from "./PalmAnalysis";
+import MantraSection from "./MantraSection";
 import PremiumSection from "./PremiumSection";
 import { DonateReminder } from "./DonateReminder";
 import ReadingReview from "./ReadingReview";
@@ -69,6 +70,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
     { id: "sec-detailed", label: t.report.detailed, icon: ScrollText },
     { id: "sec-palm", label: t.report.palmFull, icon: Hand },
     { id: "sec-suggest", label: t.report.suggestions, icon: ListChecks },
+    { id: "sec-mantra", label: t.mantra.nav, icon: Sparkles },
   ];
 
   return (
@@ -300,7 +302,10 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
         {BOOK_PROMO && <UpayBookPromo />}
       </section>
 
-      {/* 7. Premium 5-year report */}
+      {/* 7. Pro-only secret mantra + gupt prayog (hidden until unlocked) */}
+      <MantraSection reading={reading} unlocked={pro} onUnlocked={unlockPro} />
+
+      {/* 8. Premium 5-year report */}
       <div className="mt-14"><PremiumSection reading={reading} unlocked={pro} onUnlocked={unlockPro} /></div>
 
       {/* Technical */}

@@ -9,6 +9,7 @@ import AmbientMusic from "@/components/layout/AmbientMusic";
 import FloatingHand from "@/components/layout/FloatingHand";
 import { LANGS } from "@/lib/lang-overrides";
 import { SITE_URL } from "@/lib/site";
+import { CASHFREE_ENABLED } from "@/lib/flags";
 import { DEFAULT_THEME, THEME_COOKIE, isTheme } from "@/lib/theme";
 import type { Lang } from "@/lib/i18n";
 
@@ -100,6 +101,15 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {CASHFREE_ENABLED && (
+          <>
+            {/* Warm the gateway connection before the visitor taps Pay. */}
+            <link rel="preconnect" href="https://sdk.cashfree.com" />
+            <link rel="dns-prefetch" href="https://sdk.cashfree.com" />
+            <link rel="preconnect" href="https://payments.cashfree.com" />
+            <link rel="dns-prefetch" href="https://payments.cashfree.com" />
+          </>
+        )}
         <link
           href={`https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600;700${extraFont}&display=swap`}
           rel="stylesheet"

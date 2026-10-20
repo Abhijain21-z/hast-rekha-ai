@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, Copy, Crown, Download, ExternalLink, HeartHandshake, Lock, Printer, QrCode, ShieldCheck, X } from "lucide-react";
 import QRCode from "qrcode";
 import { useLang } from "@/components/providers/LanguageProvider";
@@ -22,6 +22,16 @@ function printReport() {
 
 /** The two plans the paywall offers: ₹51 Pro, ₹351 Ultra Pro (adds the book). */
 export type ProPlan = "pro" | "ultra";
+
+type CashfreeOrderResult = {
+  ok: boolean;
+  paymentSessionId?: string;
+  orderId?: string;
+  error?: string;
+};
+
+/** Reuse a prefetched order for 10 minutes, then ask the server for a fresh one. */
+const ORDER_TTL_MS = 10 * 60 * 1000;
 
 /**
  * The single ₹51 / ₹351 paywall. Every download/print button and the premium
@@ -54,6 +64,8 @@ export function ProPaywallModal({
   const [copied, setCopied] = useState(false);
   const [plan, setPlan] = useState<ProPlan>(defaultPlan);
   const [cfBusy, setCfBusy] = useState(false);
+  const [phone, setPhone] = useState("");
+  const prefetchRef = useRef<{ key: string; at: number; promise: Promise<CashfreeOrderResult> } | null>(null);
 
   const price = plan === "ultra" ? ULTRA_PRICE : PREMIUM_PRICE;
   const perks = plan === "ultra" ? [...PREMIUM_PERKS, ...BOOK_PERKS] : PREMIUM_PERKS;
@@ -85,6 +97,13 @@ export function ProPaywallModal({
       .catch(() => setQr(null));
   }, [open, deepLink, manualUpi]);
 
+  // Warm up Cashfree's checkout script while the visitor is choosing a plan and
+  // typing their number, so tapping Pay opens the gateway immediately.
+  useEffect(() => {
+    if (!open || !CASHFREE_ENABLED) return;
+    getCashfree(CASHFREE_MODE).catch(() => {});
+  }, [open]);
+
   async function copyUpi() {
     try {
       await navigator.clipboard.writeText(UPI_ID);
@@ -115,6 +134,37 @@ export function ProPaywallModal({
     }
   }
 
+  function fetchOrder(planKey: ProPlan, phoneDigits: string): Promise<CashfreeOrderResult> {
+    return fetch("/api/payments/cashfree/order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ readingId, plan: planKey, phone: phoneDigits }),
+    })
+      .then(async (res) => {
+        const data = (await res.json().catch(() => ({}))) as { paymentSessionId?: string; orderId?: string; error?: string };
+        return { ok: res.ok, ...data };
+      })
+      .catch(() => ({ ok: false }));
+  }
+
+  /** The key is plan + phone, because the server prices the order by plan. */
+  function orderKey(planKey: ProPlan, phoneDigits: string) {
+    return `${planKey}:${phoneDigits}`;
+  }
+
+  /**
+   * Kick off order creation as soon as a valid 10-digit number is typed. The
+   * click handler below awaits the same promise, so most visitors skip the
+   * server round-trip entirely.
+   */
+  function prefetchOrder(planKey: ProPlan, phoneDigits: string) {
+    if (!CASHFREE_ENABLED || !/^[6-9]\d{9}$/.test(phoneDigits)) return;
+    const key = orderKey(planKey, phoneDigits);
+    const cached = prefetchRef.current;
+    if (cached?.key === key && Date.now() - cached.at < ORDER_TTL_MS) return;
+    prefetchRef.current = { key, at: Date.now(), promise: fetchOrder(planKey, phoneDigits) };
+  }
+
   /**
    * Cashfree checkout. The server creates the order (price is resolved there),
    * the SDK opens the secure Cashfree UI, and the reading unlocks only after the
@@ -122,15 +172,21 @@ export function ProPaywallModal({
    */
   async function payWithCashfree() {
     setErr("");
+    const phoneDigits = phone.replace(/\D/g, "");
+    if (!/^[6-9]\d{9}$/.test(phoneDigits)) {
+      setErr(t.pro.cfPhoneErr);
+      return;
+    }
     setCfBusy(true);
+    const key = orderKey(plan, phoneDigits);
     try {
-      const res = await fetch("/api/payments/cashfree/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ readingId, plan }),
-      });
-      const data = (await res.json().catch(() => ({}))) as { paymentSessionId?: string; orderId?: string; error?: string };
-      if (!res.ok || !data.paymentSessionId || !data.orderId) {
+      const cached = prefetchRef.current;
+      const request =
+        cached?.key === key && Date.now() - cached.at < ORDER_TTL_MS ? cached.promise : fetchOrder(plan, phoneDigits);
+      prefetchRef.current = { key, at: Date.now(), promise: request };
+      const data = await request;
+      if (!data.ok || !data.paymentSessionId || !data.orderId) {
+        if (prefetchRef.current?.key === key) prefetchRef.current = null;
         setErr(data.error || t.pro.cfError);
         return;
       }
@@ -165,39 +221,6 @@ export function ProPaywallModal({
   return (
     <Modal open={open} onClose={onClose} title={t.pro.title} wide>
       <p className="text-sm leading-relaxed text-slate-300">{t.pro.sub}</p>
-
-      {/* Three-way comparison: what Free gets, what ₹51 adds, what ₹351 adds. */}
-      <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.premium.cmpTitle}</p>
-      <div className="mt-2 overflow-hidden rounded-2xl border border-white/10">
-        <table className="w-full text-left">
-          <thead>
-            <tr className="bg-white/[0.05] text-[11px] uppercase tracking-wider text-slate-400">
-              <th className="px-3 py-2.5 font-medium">{t.premium.cmpFeature}</th>
-              <th className="px-2 py-2.5 text-center font-medium">{t.premium.cmpFree}</th>
-              <th className="px-2 py-2.5 text-center font-medium text-gold-200">
-                {t.premium.cmpPro}
-                <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{PREMIUM_PRICE}</span>
-              </th>
-              <th className="px-2 py-2.5 text-center font-medium text-gold-200">
-                {t.premium.cmpUltra}
-                <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{ULTRA_PRICE}</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {cmpRows.map((row) => (
-              <tr key={row.label} className="border-t border-white/10 text-xs text-slate-200">
-                <td className="px-3 py-2.5 leading-relaxed">{row.label}</td>
-                {[row.free, row.pro, row.ultra].map((has, i) => (
-                  <td key={i} className="px-2 py-2.5 text-center align-middle">
-                    {has ? <Check className="mx-auto h-4 w-4 text-gold-300" /> : <X className="mx-auto h-3.5 w-3.5 text-slate-500" />}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
 
       {/* Plan switch — ₹51 Pro report, or ₹351 Ultra Pro which adds the book. */}
       <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.pro.planTitle}</p>
@@ -257,24 +280,26 @@ export function ProPaywallModal({
         </div>
       )}
 
-      <p className="mt-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-300">
-        <Crown className="h-3.5 w-3.5" /> {t.pro.perksTitle}
-      </p>
-      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-        {perks.map((p) => (
-          <li key={p.en} className="flex items-start gap-2 text-sm text-slate-100">
-            <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" /> {L(p)}
-          </li>
-        ))}
-      </ul>
-
-      <p className="mt-4 flex items-start gap-2 rounded-2xl border border-mystic-400/35 bg-mystic-600/15 px-4 py-3 text-sm leading-relaxed text-slate-100">
-        <HeartHandshake className="mt-0.5 h-4 w-4 shrink-0 text-mystic-400" /> {t.partner.paywallLine}
-      </p>
-
       <div className="mt-5 border-t border-white/10 pt-5">
         {CASHFREE_ENABLED && (
           <div>
+            <div className="mb-3">
+              <Label htmlFor="cf-phone">{t.pro.cfPhoneLabel}</Label>
+              <Input
+                id="cf-phone"
+                value={phone}
+                onChange={(e) => {
+                  const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
+                  setPhone(digits);
+                  if (digits.length === 10) prefetchOrder(plan, digits);
+                }}
+                placeholder={t.pro.cfPhonePh}
+                inputMode="numeric"
+                autoComplete="tel"
+                maxLength={10}
+              />
+              <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{t.pro.cfPhoneHint}</p>
+            </div>
             <Button className="w-full" size="lg" loading={cfBusy} onClick={payWithCashfree} icon={<ShieldCheck className="h-4 w-4" />}>
               {cfBusy ? t.pro.cfStarting : tpl(t.pro.cfPay, { p: price })}
             </Button>
@@ -342,6 +367,54 @@ export function ProPaywallModal({
           </>
         ) : null}
       </div>
+
+      {/* Three-way comparison: what Free gets, what ₹51 adds, what ₹351 adds. */}
+      <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.premium.cmpTitle}</p>
+      <div className="mt-2 overflow-hidden rounded-2xl border border-white/10">
+        <table className="w-full text-left">
+          <thead>
+            <tr className="bg-white/[0.05] text-[11px] uppercase tracking-wider text-slate-400">
+              <th className="px-3 py-2.5 font-medium">{t.premium.cmpFeature}</th>
+              <th className="px-2 py-2.5 text-center font-medium">{t.premium.cmpFree}</th>
+              <th className="px-2 py-2.5 text-center font-medium text-gold-200">
+                {t.premium.cmpPro}
+                <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{PREMIUM_PRICE}</span>
+              </th>
+              <th className="px-2 py-2.5 text-center font-medium text-gold-200">
+                {t.premium.cmpUltra}
+                <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{ULTRA_PRICE}</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {cmpRows.map((row) => (
+              <tr key={row.label} className="border-t border-white/10 text-xs text-slate-200">
+                <td className="px-3 py-2.5 leading-relaxed">{row.label}</td>
+                {[row.free, row.pro, row.ultra].map((has, i) => (
+                  <td key={i} className="px-2 py-2.5 text-center align-middle">
+                    {has ? <Check className="mx-auto h-4 w-4 text-gold-300" /> : <X className="mx-auto h-3.5 w-3.5 text-slate-500" />}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p className="mt-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-300">
+        <Crown className="h-3.5 w-3.5" /> {t.pro.perksTitle}
+      </p>
+      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+        {perks.map((p) => (
+          <li key={p.en} className="flex items-start gap-2 text-sm text-slate-100">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" /> {L(p)}
+          </li>
+        ))}
+      </ul>
+
+      <p className="mt-4 flex items-start gap-2 rounded-2xl border border-mystic-400/35 bg-mystic-600/15 px-4 py-3 text-sm leading-relaxed text-slate-100">
+        <HeartHandshake className="mt-0.5 h-4 w-4 shrink-0 text-mystic-400" /> {t.partner.paywallLine}
+      </p>
 
       <div className="mt-5 flex justify-center">
         <button onClick={onClose} className="rounded-full border border-white/15 px-5 py-2.5 text-sm text-slate-300 hover:border-white/30">

@@ -34,6 +34,8 @@ export interface CashfreeCreateOrderInput {
   orderId: string;
   amount: number;
   customerId: string;
+  /** The payer's own number — Cashfree shows it in checkout and sends UPI requests to it. */
+  customerPhone: string;
   customerName?: string | null;
   customerEmail?: string | null;
   returnUrl: string;
@@ -64,9 +66,7 @@ export async function createCashfreeOrder(input: CashfreeCreateOrderInput): Prom
       order_currency: "INR",
       customer_details: {
         customer_id: input.customerId,
-        // Cashfree requires a phone on every order; the checkout collects the
-        // payment details itself, so this is only a booking reference.
-        customer_phone: "9999999999",
+        customer_phone: input.customerPhone,
         customer_name: input.customerName || "Hast Rekha guest",
         customer_email: input.customerEmail || "guest@hastrekhaai.online",
       },

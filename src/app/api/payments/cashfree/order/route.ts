@@ -28,11 +28,18 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Too many attempts. Please wait a minute." }, { status: 429 });
   }
 
-  const body = (await req.json().catch(() => ({}))) as { readingId?: unknown; plan?: unknown };
+  const body = (await req.json().catch(() => ({}))) as { readingId?: unknown; plan?: unknown; phone?: unknown };
   const readingId = typeof body.readingId === "string" ? body.readingId : "";
   const plan: Plan | null = body.plan === "ultra" ? "ultra" : body.plan === "pro" ? "pro" : null;
   if (!plan || !UUID_RE.test(readingId)) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+  }
+
+  // Cashfree requires the payer's phone on every order. It powers the checkout
+  // header and the UPI app request, so it must be the visitor's real number.
+  const phone = typeof body.phone === "string" ? body.phone.replace(/\D/g, "") : "";
+  if (!/^[6-9]\d{9}$/.test(phone)) {
+    return NextResponse.json({ error: "Enter a valid 10-digit mobile number" }, { status: 400 });
   }
 
   const [reading] = await db.select().from(readings).where(eq(readings.id, readingId)).limit(1);
@@ -59,6 +66,7 @@ export async function POST(req: Request) {
       orderId,
       amount,
       customerId: reading.id,
+      customerPhone: phone,
       customerName: reading.fullName,
       customerEmail: user?.email ?? null,
       returnUrl,
