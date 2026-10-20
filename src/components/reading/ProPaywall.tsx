@@ -7,7 +7,7 @@ import { useLang } from "@/components/providers/LanguageProvider";
 import { useToast } from "@/components/providers/ToastProvider";
 import { Button, Input, Label, Modal, cn } from "@/components/ui";
 import { PREMIUM_PERKS, BOOK_PERKS, PREMIUM_PRICE, UPI_ID, upiDeepLink } from "@/lib/premium";
-import { CASHFREE_ENABLED, CASHFREE_MODE, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
+import { CASHFREE_ENABLED, CASHFREE_MODE, MANUAL_UPI_ENABLED, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
 import { getCashfree } from "@/lib/cashfree-client";
 
 /** Fill `{placeholders}` in a translated template. */
@@ -58,9 +58,11 @@ export function ProPaywallModal({
   const price = plan === "ultra" ? ULTRA_PRICE : PREMIUM_PRICE;
   const perks = plan === "ultra" ? [...PREMIUM_PERKS, ...BOOK_PERKS] : PREMIUM_PERKS;
   const deepLink = useMemo(() => upiDeepLink(readingId, price), [readingId, price]);
-  // Pro unlocks on the buyer's confirmation (no UTR). Ultra still asks for the
-  // UPI reference so the book link can be issued safely.
+  // Pro unlocked on the buyer's confirmation (no UTR) and Ultra asked for a UPI
+  // reference — both belong to the manual panel, which is on hold while the
+  // gateway is live.
   const needsUtr = plan === "ultra";
+  const manualUpi = MANUAL_UPI_ENABLED && PRO_PAY_MODE === "upi";
 
   const saved = PDF_PRICE_ANCHOR - PREMIUM_PRICE;
   const percentOff = Math.round((1 - PREMIUM_PRICE / PDF_PRICE_ANCHOR) * 100);
@@ -77,11 +79,11 @@ export function ProPaywallModal({
   ];
 
   useEffect(() => {
-    if (!open || PRO_PAY_MODE !== "upi") return;
+    if (!open || !manualUpi) return;
     QRCode.toDataURL(deepLink, { width: 420, margin: 1, color: { dark: "#1a1030", light: "#fbeab8" } })
       .then(setQr)
       .catch(() => setQr(null));
-  }, [open, deepLink]);
+  }, [open, deepLink, manualUpi]);
 
   async function copyUpi() {
     try {
@@ -277,15 +279,17 @@ export function ProPaywallModal({
               {cfBusy ? t.pro.cfStarting : tpl(t.pro.cfPay, { p: price })}
             </Button>
             <p className="mt-2 text-center text-xs leading-relaxed text-slate-500">{t.pro.cfNote}</p>
-            <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-wider text-slate-500">
-              <span className="h-px flex-1 bg-white/10" />
-              {t.pro.cfOr}
-              <span className="h-px flex-1 bg-white/10" />
-            </div>
+            {manualUpi && (
+              <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-wider text-slate-500">
+                <span className="h-px flex-1 bg-white/10" />
+                {t.pro.cfOr}
+                <span className="h-px flex-1 bg-white/10" />
+              </div>
+            )}
           </div>
         )}
         {err && <p className="mb-3 mt-3 text-center text-xs text-rose-300">{err}</p>}
-        {PRO_PAY_MODE === "upi" ? (
+        {manualUpi ? (
           <>
             <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start">
               <div className="shrink-0 rounded-2xl bg-[#fbeab8] p-3 gold-glow">
@@ -329,14 +333,14 @@ export function ProPaywallModal({
               </Button>
             </div>
           </>
-        ) : (
+        ) : !CASHFREE_ENABLED ? (
           <>
             <button onClick={() => toast(t.pro.soon)} className="btn-gold flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
               <Crown className="h-4 w-4" /> {tpl(t.pro.pay, { p: price })}
             </button>
             <p className="mt-3 text-center text-xs text-slate-500">{t.pro.soonNote}</p>
           </>
-        )}
+        ) : null}
       </div>
 
       <div className="mt-5 flex justify-center">

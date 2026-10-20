@@ -48,6 +48,15 @@ export const CASHFREE_MODE: "production" | "sandbox" =
   process.env.NEXT_PUBLIC_CASHFREE_MODE === "sandbox" ? "sandbox" : "production";
 
 /**
+ * Manual UPI collection (the direct Jio ID) for report unlocks is on hold while
+ * the gateway handles payments. It is disabled whenever Cashfree is live, both
+ * in the paywall UI and in the server-side unlock route, so a paid report can
+ * never be opened by a hand-made "I have paid" request. Turning the gateway off
+ * brings the manual fallback back for emergencies.
+ */
+export const MANUAL_UPI_ENABLED = !CASHFREE_ENABLED;
+
+/**
  * One-time price of the Ultra Pro plan, in INR: everything in Pro plus the
  * "धनदायक तांत्रिक प्रयोग" book.
  *

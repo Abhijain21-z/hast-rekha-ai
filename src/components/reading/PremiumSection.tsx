@@ -6,7 +6,7 @@ import { AlertTriangle, Briefcase, CalendarDays, Check, Crown, Flame, Gem, Heart
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, cn } from "@/components/ui";
 import { buildPremiumReport, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID } from "@/lib/premium";
-import { PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
+import { MANUAL_UPI_ENABLED, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
 import { buildPartnerReport, prefersDevanagari } from "@/lib/partner";
 import type { ReadingDTO } from "@/lib/dto";
 import { byLang } from "@/lib/i18n";
@@ -74,7 +74,7 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
               >
                 {t.pricing.ultra} · ₹{ULTRA_PRICE} · {t.pro.ultraTag}
               </button>
-              {PRO_PAY_MODE === "upi" && (
+              {MANUAL_UPI_ENABLED && PRO_PAY_MODE === "upi" && (
                 <p className="mt-3 flex items-center gap-1 text-xs text-slate-500"><Sparkles className="h-3 w-3 text-gold-300" /> UPI · QR · {UPI_ID}</p>
               )}
             </div>

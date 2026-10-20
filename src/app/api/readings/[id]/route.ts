@@ -4,7 +4,7 @@ import { db } from "@/db";
 import { readings } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { toReadingDTO } from "@/lib/dto";
-import { PRO_PAY_MODE } from "@/lib/flags";
+import { MANUAL_UPI_ENABLED, PRO_PAY_MODE } from "@/lib/flags";
 
 export const dynamic = "force-dynamic";
 
@@ -32,12 +32,12 @@ export async function PATCH(req: Request, { params }: Ctx) {
     plan?: "pro" | "ultra";
   };
 
-  // Pro unlock by confirmation (no UTR): the paywall shows the UPI QR/ID and the
-  // buyer taps "I have paid". Trust-based until a gateway verifies payments —
-  // Ultra is excluded on purpose so the book still needs a payment reference.
+  // Pro unlock by confirmation (no UTR) belonged to the manual UPI panel. That
+  // panel is on hold while Cashfree is live, so this path stays closed — Ultra
+  // was always excluded so the book needs a payment reference.
   if (body.confirmPaid === true && body.plan !== "ultra") {
-    if (PRO_PAY_MODE !== "upi") {
-      return NextResponse.json({ error: "Payments are not open yet" }, { status: 403 });
+    if (!MANUAL_UPI_ENABLED || PRO_PAY_MODE !== "upi") {
+      return NextResponse.json({ error: "Manual UPI is disabled" }, { status: 403 });
     }
     const [row] = await db
       .update(readings)
@@ -51,11 +51,10 @@ export async function PATCH(req: Request, { params }: Ctx) {
   // Premium activation by UPI reference — available to the reading owner and to guests
   // who hold the reading link (the id is an unguessable UUID).
   if (typeof body.premiumUtr === "string" && /^\d{8,20}$/.test(body.premiumUtr.trim())) {
-    // Payments closed (₹51 Pro / ₹351 Ultra are still being set up): nothing may
-    // unlock, so the Ultra book can never be handed out for free by a hand-made
-    // request that skips the paywall UI.
-    if (PRO_PAY_MODE !== "upi") {
-      return NextResponse.json({ error: "Payments are not open yet" }, { status: 403 });
+    // Manual UPI is on hold while the gateway is live: nothing may unlock from a
+    // hand-made request that skips the verified checkout.
+    if (!MANUAL_UPI_ENABLED || PRO_PAY_MODE !== "upi") {
+      return NextResponse.json({ error: "Manual UPI is disabled" }, { status: 403 });
     }
 
     const utr = body.premiumUtr.trim();
