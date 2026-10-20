@@ -300,6 +300,48 @@
    }
   ]
  },
+ "refunds": {
+  "title": { "en": "Refund & Cancellation Policy", "hi": "रिफंड और रद्दीकरण नीति" },
+  "updated": { "en": "Last updated: 20 October 2026", "hi": "अंतिम अद्यतन: 20 अक्टूबर 2026" },
+  "intro": {
+   "en": "This policy explains refunds and cancellations for the paid digital reports on Hast Rekha AI (https://www.hastrekhaai.online): the ₹51 Pro report and the ₹351 Ultra Pro report (which includes the Dhandayak book). All payments are one-time — there is no subscription.",
+   "hi": "यह नीति हस्त रेखा AI (https://www.hastrekhaai.online) की सशुल्क डिजिटल रिपोर्ट्स — ₹51 प्रो रिपोर्ट और ₹351 अल्ट्रा प्रो रिपोर्ट (धनदायक पुस्तक सहित) — के रिफंड और रद्दीकरण के बारे में बताती है। सभी भुगतान एक बार के हैं — कोई सब्सक्रिप्शन नहीं है।"
+  },
+  "sections": [
+   {
+    "h": { "en": "Instant digital delivery", "hi": "तुरंत डिजिटल डिलीवरी" },
+    "p": [
+     { "en": "Payment unlocks the report in your browser immediately. Because the product is digital and delivered instantly, it cannot be returned like a physical item.", "hi": "भुगतान के साथ रिपोर्ट आपके ब्राउज़र में तुरंत अनलॉक हो जाती है। उत्पाद डिजिटल है और तुरंत मिलता है, इसलिए इसे किसी भौतिक वस्तु की तरह वापस नहीं किया जा सकता।" }
+    ]
+   },
+   {
+    "h": { "en": "When we refund", "hi": "हम कब रिफंड देते हैं" },
+    "p": [
+     { "en": "If money was deducted but your report did not unlock, or you were charged twice for the same report, we will refund the affected payment. Write to abhijain.technical@gmail.com within 24 hours of the payment with the order ID or UTR and the phone/email you paid from.", "hi": "अगर पैसे कट गए हों पर आपकी रिपोर्ट अनलॉक नहीं हुई, या एक ही रिपोर्ट के लिए दो बार भुगतान हो गया हो, तो हम प्रभावित भुगतान का रिफंड करते हैं। भुगतान के 24 घंटे के भीतर ऑर्डर ID या UTR तथा जिस नंबर/ईमेल से भुगतान किया हो, उसके साथ abhijain.technical@gmail.com पर लिखें।" },
+     { "en": "We verify the payment with our payment provider and, when it qualifies, refund it to the original payment method.", "hi": "हम भुगतान की पुष्टि अपने पेमेंट प्रोवाइडर से करते हैं और पात्र होने पर उसे उसी भुगतान विधि में वापस करते हैं।" }
+    ]
+   },
+   {
+    "h": { "en": "When we do not refund", "hi": "हम कब रिफंड नहीं देते" },
+    "p": [
+     { "en": "Once a report has unlocked successfully, the digital product is delivered and is generally non-refundable. Refunds are not given for a change of mind, or because you disagree with the predictions — readings are for entertainment and self-reflection (see our Disclaimer).", "hi": "रिपोर्ट सफलतापूर्वक अनलॉक होने के बाद डिजिटल उत्पाद मिल चुका होता है और सामान्यतः गैर-वापसी योग्य है। मन बदलने या भविष्यवाणियों से सहमत न होने पर रिफंड नहीं दिया जाता — रीडिंग मनोरंजन और आत्म-चिंतन के लिए हैं (हमारा डिस्क्लेमर देखें)।" },
+     { "en": "Optional donations are voluntary and non-refundable.", "hi": "वैकल्पिक दान स्वैच्छिक हैं और गैर-वापसी योग्य हैं।" }
+    ]
+   },
+   {
+    "h": { "en": "Cancellation", "hi": "रद्दीकरण" },
+    "p": [
+     { "en": "There is nothing to cancel: each report is a one-time purchase, not a recurring plan. If you start a payment and do not complete it, no money is taken and the order simply expires.", "hi": "रद्द करने के लिए कुछ नहीं है: हर रिपोर्ट एक बार की खरीद है, कोई आवर्ती प्लान नहीं। अगर आप भुगतान शुरू करके पूरा नहीं करते, तो कोई पैसा नहीं कटता और ऑर्डर स्वयं समाप्त हो जाता है।" }
+    ]
+   },
+   {
+    "h": { "en": "Contact", "hi": "संपर्क" },
+    "p": [
+     { "en": "For any payment or refund question, email abhijain.technical@gmail.com or use the contact page at https://www.hastrekhaai.online/contact.", "hi": "भुगतान या रिफंड से जुड़े किसी भी प्रश्न के लिए abhijain.technical@gmail.com पर ईमेल करें या https://www.hastrekhaai.online/contact पर संपर्क करें।" }
+    ]
+   }
+  ]
+ },
  "terms": {
   "title": {
    "en": "Terms of Service",

@@ -4,13 +4,14 @@ import { useState } from "react";
 import { HeartHandshake } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import ReviewForm from "@/components/reviews/ReviewForm";
+import { reviewAskedKey } from "./ReviewPrompt";
 
 /**
  * The review ask that appears at the end of a prediction: 4 quick questions
  * (interface, agreement, text, stars) whose answers feed the home-page carousel
  * and the Public Reviews page.
  */
-export default function ReadingReview({ defaultName }: { defaultName?: string }) {
+export default function ReadingReview({ defaultName, readingId }: { defaultName?: string; readingId?: string }) {
   const { t } = useLang();
   const [done, setDone] = useState(false);
 
@@ -30,7 +31,19 @@ export default function ReadingReview({ defaultName }: { defaultName?: string })
           {done ? (
             <p className="rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">{t.reviews.saved}</p>
           ) : (
-            <ReviewForm defaultName={defaultName} onSaved={() => setDone(true)} />
+            <ReviewForm
+              defaultName={defaultName}
+              onSaved={() => {
+                setDone(true);
+                // The inline form already collected the review — keep the
+                // popup from asking the same visitor again on this reading.
+                if (readingId) {
+                  try {
+                    window.localStorage.setItem(reviewAskedKey(readingId), "1");
+                  } catch {}
+                }
+              }}
+            />
           )}
         </div>
       </div>

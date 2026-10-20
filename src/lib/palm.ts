@@ -81,6 +81,16 @@ function mulberry32(seed: number) {
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   };
 }
+
+/** Fisher–Yates shuffle driven by a seeded rng — stable for a seed, varies per reading. */
+function seededShuffle<T>(items: T[], rng: () => number) {
+  const a = [...items];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, n));
 const gauss = (x: number, s: number) => Math.exp(-(x * x) / (2 * s * s));
 
@@ -213,10 +223,10 @@ export function buildPalmReport(input: PalmInput): PalmReport {
   const knuckles = ANATOMY.knuckles[rng() < 0.55 ? 0 : 1];
   const thumb = ANATOMY.thumb[scores.career >= 82 ? 0 : rng() < 0.5 ? 1 : 2];
 
-  const shuffled = [...SIGNS.positive].sort(() => rng() - 0.5);
+  const shuffled = seededShuffle([...SIGNS.positive], rng);
   const signs = shuffled.slice(0, 3);
   if (!signs.some((s) => s.key === "square")) signs[2] = SIGNS.positive.find((s) => s.key === "square")!;
-  const cautions = [...SIGNS.caution].sort(() => rng() - 0.5).slice(0, rng() < 0.5 ? 1 : 2);
+  const cautions = seededShuffle([...SIGNS.caution], rng).slice(0, rng() < 0.5 ? 1 : 2);
 
   // ---- sections -----------------------------------------------------------
   const sections = SECTIONS.sections.map((def) => {
@@ -229,8 +239,13 @@ export function buildPalmReport(input: PalmInput): PalmReport {
   const suggestions = SECTIONS.suggestions.map((s) => fill(s, vars));
 
   // ---- past ---------------------------------------------------------------
-  const optional = [...PAST.optional].sort(() => rng() - 0.5).slice(0, 3);
-  const past = [...PAST.always, ...optional].map((p) => fill(p, vars));
+  // Ten past-event guesses the reader confirms with yes/no. Picked and ordered
+  // with a private deterministic rng stream (stable across server and client,
+  // and per reading), so the same statement never sits at the same number for
+  // every visitor — while a given reading keeps its own order.
+  const rngPast = mulberry32((seed ^ 0x9e3779b9) >>> 0);
+  const optional = seededShuffle([...PAST.optional], rngPast).slice(0, 3);
+  const past = seededShuffle([...PAST.always, ...optional].map((p) => fill(p, vars)), rngPast);
 
   // ---- graph --------------------------------------------------------------
   const mid = ([a, b]: [number, number]) => (a + b) / 2;

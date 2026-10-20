@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Check, Copy, Crown, Download, ExternalLink, HeartHandshake, Lock, Printer, QrCode, X } from "lucide-react";
+import { Check, Copy, Crown, Download, ExternalLink, HeartHandshake, Lock, Printer, QrCode, ShieldCheck, X } from "lucide-react";
 import QRCode from "qrcode";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { useToast } from "@/components/providers/ToastProvider";
 import { Button, Input, Label, Modal, cn } from "@/components/ui";
 import { PREMIUM_PERKS, BOOK_PERKS, PREMIUM_PRICE, UPI_ID, upiDeepLink } from "@/lib/premium";
-import { PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
+import { CASHFREE_ENABLED, CASHFREE_MODE, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
+import { getCashfree } from "@/lib/cashfree-client";
 
 /** Fill `{placeholders}` in a translated template. */
 function tpl(text: string, vars: Record<string, string | number>) {
@@ -52,6 +53,7 @@ export function ProPaywallModal({
   const [err, setErr] = useState("");
   const [copied, setCopied] = useState(false);
   const [plan, setPlan] = useState<ProPlan>(defaultPlan);
+  const [cfBusy, setCfBusy] = useState(false);
 
   const price = plan === "ultra" ? ULTRA_PRICE : PREMIUM_PRICE;
   const perks = plan === "ultra" ? [...PREMIUM_PERKS, ...BOOK_PERKS] : PREMIUM_PERKS;
@@ -108,6 +110,53 @@ export function ProPaywallModal({
       onClose();
     } else {
       setErr(res.status === 409 ? t.premium.errUsed : t.premium.errUnlock);
+    }
+  }
+
+  /**
+   * Cashfree checkout. The server creates the order (price is resolved there),
+   * the SDK opens the secure Cashfree UI, and the reading unlocks only after the
+   * backend re-verifies the order as PAID. Closing the modal is not a failure.
+   */
+  async function payWithCashfree() {
+    setErr("");
+    setCfBusy(true);
+    try {
+      const res = await fetch("/api/payments/cashfree/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ readingId, plan }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { paymentSessionId?: string; orderId?: string; error?: string };
+      if (!res.ok || !data.paymentSessionId || !data.orderId) {
+        setErr(data.error || t.pro.cfError);
+        return;
+      }
+      const cashfree = await getCashfree(CASHFREE_MODE);
+      const result = await cashfree.checkout({ paymentSessionId: data.paymentSessionId, redirectTarget: "_modal" });
+
+      if (result.error) {
+        // A dismissed modal also lands here — it is not a failed payment.
+        toast(t.pro.cfNotDone);
+        return;
+      }
+      if (result.redirect) return; // Browser is heading to Cashfree; the return page verifies.
+      if (result.paymentDetails) {
+        const verified = (await fetch(`/api/payments/cashfree/verify?order_id=${encodeURIComponent(data.orderId)}`)
+          .then((r) => r.json().catch(() => null))
+          .catch(() => null)) as { status?: string } | null;
+        if (verified?.status === "PAID") {
+          toast(t.pro.unlocked);
+          onUnlocked();
+          onClose();
+          return;
+        }
+        toast(t.pro.cfVerifying);
+      }
+    } catch {
+      setErr(t.pro.cfError);
+    } finally {
+      setCfBusy(false);
     }
   }
 
@@ -222,6 +271,20 @@ export function ProPaywallModal({
       </p>
 
       <div className="mt-5 border-t border-white/10 pt-5">
+        {CASHFREE_ENABLED && (
+          <div>
+            <Button className="w-full" size="lg" loading={cfBusy} onClick={payWithCashfree} icon={<ShieldCheck className="h-4 w-4" />}>
+              {cfBusy ? t.pro.cfStarting : tpl(t.pro.cfPay, { p: price })}
+            </Button>
+            <p className="mt-2 text-center text-xs leading-relaxed text-slate-500">{t.pro.cfNote}</p>
+            <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-wider text-slate-500">
+              <span className="h-px flex-1 bg-white/10" />
+              {t.pro.cfOr}
+              <span className="h-px flex-1 bg-white/10" />
+            </div>
+          </div>
+        )}
+        {err && <p className="mb-3 mt-3 text-center text-xs text-rose-300">{err}</p>}
         {PRO_PAY_MODE === "upi" ? (
           <>
             <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start">
@@ -261,7 +324,6 @@ export function ProPaywallModal({
                   <Input value={utr} onChange={(e) => setUtr(e.target.value)} placeholder={t.premium.utrPh} inputMode="numeric" maxLength={20} />
                 </>
               )}
-              {err && <p className="mt-1.5 text-xs text-rose-300">{err}</p>}
               <Button className="mt-4 w-full" loading={busy} onClick={unlock} icon={<Crown className="h-4 w-4" />}>
                 {busy ? t.premium.verifying : tpl(t.premium.confirmPay, { p: price })}
               </Button>

@@ -7,19 +7,22 @@ import { Modal } from "@/components/ui";
 import ReviewForm from "@/components/reviews/ReviewForm";
 
 /**
- * How long the visitor reads the prediction before we quietly ask for a review.
- * `NEXT_PUBLIC_REVIEW_PROMPT_MS` exists so the delay can be shortened while
- * testing the flow; production leaves it unset and waits five minutes.
+ * The review popup. It waits until the visitor has actually finished the
+ * prediction: the ask opens only after the page has been scrolled to the end,
+ * so it never cuts a reading short. Fires at most once per reading (the flag
+ * is written as soon as it opens), and closing is always one click away.
  */
-const DELAY_MS = Number(process.env.NEXT_PUBLIC_REVIEW_PROMPT_MS ?? "") > 0 ? Number(process.env.NEXT_PUBLIC_REVIEW_PROMPT_MS) : 5 * 60 * 1000;
-const askKey = (readingId: string) => `hr_review_asked_${readingId}`;
+export const reviewAskedKey = (readingId: string) => `hr_review_asked_${readingId}`;
+/** Distance (px) from the page end that counts as "finished reading". */
+const END_GAP = 360;
+/** Small pause after reaching the end, so the last section is actually read. */
+const SETTLE_MS = 2500;
 
-/**
- * The review popup that opens by itself five minutes after a prediction is on
- * screen. It fires at most once per reading (the flag is written as soon as it
- * opens), so nobody gets nagged, and it never blocks the report — closing it is
- * always one click away.
- */
+/** Any open app modal (all Modal overlays share this z-layer) delays the ask. */
+function anyModalOpen() {
+  return !!document.querySelector('[class*="z-[9"]');
+}
+
 export default function ReviewPrompt({ readingId, defaultName }: { readingId?: string; defaultName?: string }) {
   const { t } = useLang();
   const [open, setOpen] = useState(false);
@@ -27,18 +30,47 @@ export default function ReviewPrompt({ readingId, defaultName }: { readingId?: s
 
   useEffect(() => {
     if (!readingId) return;
+    const id: string = readingId;
     try {
-      if (window.localStorage.getItem(askKey(readingId))) return;
+      if (window.localStorage.getItem(reviewAskedKey(id))) return;
     } catch {
       // Private mode / storage disabled: fall through and show it once per visit.
     }
-    const timer = window.setTimeout(() => {
+    let fired = false;
+    let settle: number | undefined;
+    let tick: number | undefined;
+
+    function ask() {
+      if (fired || anyModalOpen()) return;
+      // Never interrupt someone who is typing (e.g. the inline review form).
+      const el = document.activeElement;
+      if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.tagName === "SELECT")) return;
+      fired = true;
+      if (settle !== undefined) window.clearTimeout(settle);
+      if (tick !== undefined) window.clearInterval(tick);
       try {
-        window.localStorage.setItem(askKey(readingId), "1");
+        window.localStorage.setItem(reviewAskedKey(id), "1");
       } catch {}
       setOpen(true);
-    }, DELAY_MS);
-    return () => window.clearTimeout(timer);
+    }
+
+    function onScroll() {
+      if (fired || settle !== undefined) return;
+      const doc = document.documentElement;
+      const atEnd = window.innerHeight + window.scrollY >= doc.scrollHeight - END_GAP;
+      if (!atEnd) return;
+      // Reached the end of the report — ask shortly after, once nothing else is open.
+      settle = window.setTimeout(ask, SETTLE_MS);
+      tick = window.setInterval(ask, 2500);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (settle !== undefined) window.clearTimeout(settle);
+      if (tick !== undefined) window.clearInterval(tick);
+    };
   }, [readingId]);
 
   if (!readingId) return null;

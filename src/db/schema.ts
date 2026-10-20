@@ -68,6 +68,33 @@ export const readings = pgTable(
   (t) => [index("readings_user_idx").on(t.userId)],
 );
 
+/**
+ * Cashfree payment attempts. One row per created order; the reading unlocks only
+ * after Cashfree reports the order as PAID (webhook or server-side verify).
+ */
+export const payments = pgTable(
+  "payments",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    readingId: uuid("reading_id")
+      .notNull()
+      .references(() => readings.id, { onDelete: "cascade" }),
+    /** Cashfree order id — unique so one payment can never unlock two readings. */
+    orderId: text("order_id").notNull().unique(),
+    plan: varchar("plan", { length: 10 }).notNull(), // "pro" | "ultra"
+    amount: real("amount").notNull(),
+    /** created | paid | failed | expired */
+    status: varchar("status", { length: 20 }).notNull().default("created"),
+    cfOrderId: text("cf_order_id"),
+    cfPaymentId: text("cf_payment_id"),
+    paymentMethod: text("payment_method"),
+    raw: jsonb("raw"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("payments_reading_idx").on(t.readingId)],
+);
+
 export const birthProfiles = pgTable(
   "birth_profiles",
   {
@@ -122,3 +149,5 @@ export type NewReading = typeof readings.$inferInsert;
 export type BirthProfile = typeof birthProfiles.$inferSelect;
 export type NewBirthProfile = typeof birthProfiles.$inferInsert;
 export type ContactMessage = typeof contactMessages.$inferSelect;
+export type Payment = typeof payments.$inferSelect;
+export type NewPayment = typeof payments.$inferInsert;

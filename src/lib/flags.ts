@@ -37,6 +37,17 @@ export const PDF_PRICE_ANCHOR = 901;
 export const PRO_PAY_MODE: "coming-soon" | "upi" = "upi";
 
 /**
+ * Cashfree payment gateway — the primary checkout (UPI, cards, net banking).
+ * The manual UPI QR + UTR panel stays underneath as a fallback.
+ *
+ * `NEXT_PUBLIC_*` because the paywall renders the gateway button on the client;
+ * the server keys (CASHFREE_APP_ID / CASHFREE_SECRET_KEY) stay server-only.
+ */
+export const CASHFREE_ENABLED = process.env.NEXT_PUBLIC_CASHFREE_ENABLED === "1";
+export const CASHFREE_MODE: "production" | "sandbox" =
+  process.env.NEXT_PUBLIC_CASHFREE_MODE === "sandbox" ? "sandbox" : "production";
+
+/**
  * One-time price of the Ultra Pro plan, in INR: everything in Pro plus the
  * "धनदायक तांत्रिक प्रयोग" book.
  *

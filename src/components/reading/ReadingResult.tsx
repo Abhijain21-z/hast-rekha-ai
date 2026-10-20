@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Copy, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, History, BarChart3, TrendingUp, Orbit, ScrollText, Hand, ListChecks } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
@@ -19,6 +20,7 @@ import PremiumSection from "./PremiumSection";
 import { DonateReminder } from "./DonateReminder";
 import ReadingReview from "./ReadingReview";
 import ReviewPrompt from "./ReviewPrompt";
+import ScrollPrompts from "./ScrollPrompts";
 import { PdfDividerButton, ProGateButton } from "./ProPaywall";
 import UpayBookPromo from "@/components/upay/UpayBookPromo";
 import { BOOK_PROMO } from "@/lib/flags";
@@ -28,6 +30,7 @@ const AREA_COLORS = ["#fbbf24", "#fb7185", "#34d399", "#f5c242", "#60a5fa", "#c0
 
 export default function ReadingResult({ reading, guest, backHref }: { reading: ReadingDTO; guest?: boolean; backHref?: string }) {
   const { t, L, lang, cl } = useLang();
+  const router = useRouter();
   const r = reading.result;
   const rashi = rashiAt(r.moonRashi);
   const nak = nakshatraAt(r.nakshatra);
@@ -42,7 +45,12 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
   const [tech, setTech] = useState(false);
   // ₹51 "Pro" unlock: gates the PDF download/print buttons and the 5-year roadmap.
   const [pro, setPro] = useState(reading.premium);
-  const unlockPro = () => setPro(true);
+  // Refresh the server props after an unlock, so an Ultra purchase reveals the
+  // book card and the scroll asks stop for good.
+  const unlockPro = () => {
+    setPro(true);
+    router.refresh();
+  };
   const GENDER_LABEL: Record<string, string> = { male: t.form.male, female: t.form.female, trans: t.form.trans };
 
   async function copyLink() {
@@ -325,10 +333,13 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       <p className="mt-8 text-center text-xs italic text-slate-500">{t.result.disclaimer}</p>
 
       {/* 8. Review ask — feeds the home carousel and the Reviews page */}
-      <ReadingReview defaultName={reading.fullName} />
+      <ReadingReview defaultName={reading.fullName} readingId={reading.id} />
 
-      {/* 9. Five minutes after the prediction is on screen, ask once, gently. */}
+      {/* 9. Once the whole prediction has been read (page end), ask gently — never mid-read. */}
       <ReviewPrompt readingId={reading.id} defaultName={reading.fullName} />
+
+      {/* 10. Scroll asks — the complete PDF after every 4th scroll, the book once after the 6th. */}
+      <ScrollPrompts readingId={reading.id} unlocked={pro} ultra={reading.ultra} onUnlocked={unlockPro} />
 
       <DonateReminder enabled />
     </div>
