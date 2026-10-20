@@ -1,3 +1,4 @@
+import { after } from "next/server";
 import { and, eq, ne } from "drizzle-orm";
 import { db } from "@/db";
 import { payments } from "@/db/schema";
@@ -37,35 +38,38 @@ export async function POST(req: Request) {
     return new Response("OK");
   }
 
-  try {
-    if (payload.type === "PAYMENT_SUCCESS_WEBHOOK" && payload.data?.payment?.payment_status === "SUCCESS") {
-      const orderId = payload.data?.order?.order_id;
-      if (orderId) {
-        const [payment] = await db.select().from(payments).where(eq(payments.orderId, orderId)).limit(1);
-        if (payment && payment.status !== "paid") {
-          const order = await getCashfreeOrder(orderId);
-          if (order?.order_status === "PAID" && Math.abs(Number(order.order_amount) - payment.amount) <= 0.01) {
-            await fulfillCashfreePayment(orderId, {
-              cfPaymentId: payload.data?.payment?.cf_payment_id != null ? String(payload.data.payment.cf_payment_id) : null,
-              method: payload.data?.payment?.payment_group ?? null,
-              raw: payload,
-            });
+  // Acknowledge immediately — Cashfree's dashboard test expects a fast 200 —
+  // then verify the order and fulfil in the background.
+  after(async () => {
+    try {
+      if (payload.type === "PAYMENT_SUCCESS_WEBHOOK" && payload.data?.payment?.payment_status === "SUCCESS") {
+        const orderId = payload.data?.order?.order_id;
+        if (orderId) {
+          const [payment] = await db.select().from(payments).where(eq(payments.orderId, orderId)).limit(1);
+          if (payment && payment.status !== "paid") {
+            const order = await getCashfreeOrder(orderId);
+            if (order?.order_status === "PAID" && Math.abs(Number(order.order_amount) - payment.amount) <= 0.01) {
+              await fulfillCashfreePayment(orderId, {
+                cfPaymentId: payload.data?.payment?.cf_payment_id != null ? String(payload.data.payment.cf_payment_id) : null,
+                method: payload.data?.payment?.payment_group ?? null,
+                raw: payload,
+              });
+            }
           }
         }
+      } else if (payload.type === "PAYMENT_FAILED_WEBHOOK") {
+        const orderId = payload.data?.order?.order_id;
+        if (orderId) {
+          await db
+            .update(payments)
+            .set({ status: "failed", updatedAt: new Date() })
+            .where(and(eq(payments.orderId, orderId), ne(payments.status, "paid")));
+        }
       }
-    } else if (payload.type === "PAYMENT_FAILED_WEBHOOK") {
-      const orderId = payload.data?.order?.order_id;
-      if (orderId) {
-        await db
-          .update(payments)
-          .set({ status: "failed", updatedAt: new Date() })
-          .where(and(eq(payments.orderId, orderId), ne(payments.status, "paid")));
-      }
+    } catch (error) {
+      console.error("[cashfree] webhook handling failed:", error instanceof Error ? error.message : error);
     }
-  } catch (error) {
-    // Verified webhook: still answer 200 so Cashfree does not retry forever.
-    console.error("[cashfree] webhook handling failed:", error instanceof Error ? error.message : error);
-  }
+  });
 
   return new Response("OK");
 }
