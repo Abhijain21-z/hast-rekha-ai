@@ -417,6 +417,14 @@ const en = {
     prayogSub: "Start on {day} and continue daily for {days} days.",
     unlockedNote: "Personalised for {name} · {rashi} · {nakshatra}",
   },
+  paymentHelp: {
+    title: "Payment not completed?",
+    body: "If you are facing any technical problem while paying — UPI failed, the page got stuck, or money was deducted but the report is still locked — message our team directly on WhatsApp. We will send you a QR code or payment link and help you complete it.",
+    cta: "Chat with our team on WhatsApp",
+    note: "Direct help from the Hast Rekha AI team",
+    always: "Payment problem? Chat with our team on WhatsApp",
+    orderId: "Order ID",
+  },
   payReturn: {
     title: "Payment status",
     checking: "Verifying your payment…",
@@ -954,6 +962,14 @@ const hi: Dict = {
     prayogTitle: "विशेष गुप्त प्रयोग",
     prayogSub: "{day} से शुरू करके {days} दिन तक रोज़ करें।",
     unlockedNote: "{name} · {rashi} · {nakshatra} के लिए व्यक्तिगत",
+  },
+  paymentHelp: {
+    title: "भुगतान पूरा नहीं हुआ?",
+    body: "अगर payment के समय कोई technical problem आ रही है — UPI fail, page stuck, या पैसे कट गए लेकिन report unlock नहीं हुई — तो सीधे WhatsApp पर हमारी team को message करें। हम QR या payment link भेजकर मदद करेंगे।",
+    cta: "WhatsApp पर team से बात करें",
+    note: "Hast Rekha AI team से सीधी मदद",
+    always: "Payment में दिक्कत? WhatsApp पर team से बात करें",
+    orderId: "ऑर्डर ID",
   },
   payReturn: {
     title: "भुगतान की स्थिति",

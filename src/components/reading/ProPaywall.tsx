@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Check, Copy, Crown, Download, ExternalLink, HeartHandshake, Lock, Printer, QrCode, ShieldCheck, X } from "lucide-react";
+import { Check, Copy, Crown, Download, ExternalLink, HeartHandshake, Lock, MessageCircle, Printer, QrCode, ShieldCheck, X } from "lucide-react";
 import QRCode from "qrcode";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { useToast } from "@/components/providers/ToastProvider";
@@ -9,6 +9,7 @@ import { Button, Input, Label, Modal, cn } from "@/components/ui";
 import { PREMIUM_PERKS, BOOK_PERKS, PREMIUM_PRICE, UPI_ID, upiDeepLink } from "@/lib/premium";
 import { CASHFREE_ENABLED, CASHFREE_MODE, MANUAL_UPI_ENABLED, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
 import { getCashfree } from "@/lib/cashfree-client";
+import { PaymentHelpModal } from "./PaymentHelp";
 
 /** Fill `{placeholders}` in a translated template. */
 function tpl(text: string, vars: Record<string, string | number>) {
@@ -70,6 +71,9 @@ export function ProPaywallModal({
     return saved && /^[6-9]\d{9}$/.test(saved) ? saved : "";
   });
   const [waOptIn, setWaOptIn] = useState(false);
+  const [helpOpen, setHelpOpen] = useState(false);
+  const [helpIssue, setHelpIssue] = useState<"checkout_closed" | "not_unlocked">("checkout_closed");
+  const [lastOrderId, setLastOrderId] = useState<string | null>(null);
   const prefetchRef = useRef<{ key: string; at: number; promise: Promise<CashfreeOrderResult> } | null>(null);
 
   const price = plan === "ultra" ? ULTRA_PRICE : PREMIUM_PRICE;
@@ -175,10 +179,12 @@ export function ProPaywallModal({
   /**
    * Cashfree checkout. The server creates the order (price is resolved there),
    * the SDK opens the secure Cashfree UI, and the reading unlocks only after the
-   * backend re-verifies the order as PAID. Closing the modal is not a failure.
+   * backend re-verifies the order as PAID. Closing the modal is not a failed
+   * payment, but it is a drop-off, so we immediately offer direct WhatsApp help.
    */
   async function payWithCashfree() {
     setErr("");
+    setHelpOpen(false);
     const phoneDigits = phone.replace(/\D/g, "");
     if (!/^[6-9]\d{9}$/.test(phoneDigits)) {
       setErr(t.pro.cfPhoneErr);
@@ -195,14 +201,19 @@ export function ProPaywallModal({
       if (!data.ok || !data.paymentSessionId || !data.orderId) {
         if (prefetchRef.current?.key === key) prefetchRef.current = null;
         setErr(data.error || t.pro.cfError);
+        setHelpIssue("checkout_closed");
+        setHelpOpen(true);
         return;
       }
+      setLastOrderId(data.orderId);
       const cashfree = await getCashfree(CASHFREE_MODE);
       const result = await cashfree.checkout({ paymentSessionId: data.paymentSessionId, redirectTarget: "_modal" });
 
       if (result.error) {
-        // A dismissed modal also lands here — it is not a failed payment.
+        // A dismissed modal also lands here — not a failed payment, but a drop.
         toast(t.pro.cfNotDone);
+        setHelpIssue("checkout_closed");
+        setHelpOpen(true);
         return;
       }
       if (result.redirect) return; // Browser is heading to Cashfree; the return page verifies.
@@ -211,23 +222,29 @@ export function ProPaywallModal({
           .then((r) => r.json().catch(() => null))
           .catch(() => null)) as { status?: string } | null;
         if (verified?.status === "PAID") {
+          setHelpOpen(false);
           toast(t.pro.unlocked);
           onUnlocked();
           onClose();
           return;
         }
         toast(t.pro.cfVerifying);
+        setHelpIssue("not_unlocked");
+        setHelpOpen(true);
       }
     } catch {
       setErr(t.pro.cfError);
+      setHelpIssue("checkout_closed");
+      setHelpOpen(true);
     } finally {
       setCfBusy(false);
     }
   }
 
   return (
-    <Modal open={open} onClose={onClose} title={t.pro.title} wide>
-      <p className="text-sm leading-relaxed text-slate-300">{t.pro.sub}</p>
+    <>
+      <Modal open={open} onClose={onClose} title={t.pro.title} wide>
+        <p className="text-sm leading-relaxed text-slate-300">{t.pro.sub}</p>
 
       {/* Plan switch — ₹51 Pro report, or ₹351 Ultra Pro which adds the book. */}
       <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.pro.planTitle}</p>
@@ -326,6 +343,17 @@ export function ProPaywallModal({
               {cfBusy ? t.pro.cfStarting : tpl(t.pro.cfPay, { p: price })}
             </Button>
             <p className="mt-2 text-center text-xs leading-relaxed text-slate-500">{t.pro.cfNote}</p>
+            <button
+              type="button"
+              onClick={() => {
+                setHelpIssue("checkout_closed");
+                setHelpOpen(true);
+              }}
+              className="mx-auto mt-3 flex items-center justify-center gap-1.5 text-xs font-medium text-emerald-300 underline-offset-4 hover:text-emerald-200 hover:underline"
+            >
+              <MessageCircle className="h-3.5 w-3.5" />
+              {t.paymentHelp.always}
+            </button>
             {manualUpi && (
               <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-wider text-slate-500">
                 <span className="h-px flex-1 bg-white/10" />
@@ -443,7 +471,18 @@ export function ProPaywallModal({
           {t.pro.close}
         </button>
       </div>
-    </Modal>
+      </Modal>
+      <PaymentHelpModal
+        open={helpOpen}
+        onClose={() => setHelpOpen(false)}
+        readingId={readingId}
+        plan={plan}
+        amount={price}
+        orderId={lastOrderId}
+        phone={phone.replace(/\D/g, "") || null}
+        issue={helpIssue}
+      />
+    </>
   );
 }
 

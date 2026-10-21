@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CheckCircle2, Clock3, Loader2, XCircle } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button } from "@/components/ui";
+import { PaymentHelpButton } from "@/components/reading/PaymentHelp";
 
 interface VerifyResponse {
   status?: string;
@@ -100,16 +101,27 @@ export default function PaymentReturnClient({ orderId }: { orderId: string }) {
             </p>
             <div className="mt-7 flex flex-col items-center gap-3">
               {!checking && (
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    polls.current = 0;
-                    setChecking(true);
-                    void check();
-                  }}
-                >
-                  {t.payReturn.again}
-                </Button>
+                <>
+                  <PaymentHelpButton
+                    className="max-w-sm"
+                    details={{
+                      readingId: result?.readingId,
+                      plan: result?.plan,
+                      orderId,
+                      issue: "return_page",
+                    }}
+                  />
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      polls.current = 0;
+                      setChecking(true);
+                      void check();
+                    }}
+                  >
+                    {t.payReturn.again}
+                  </Button>
+                </>
               )}
               <Link href="/" className="text-sm text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline">
                 {t.payReturn.home}
