@@ -68,7 +68,9 @@ export async function createCashfreeOrder(input: CashfreeCreateOrderInput): Prom
         customer_id: input.customerId,
         customer_phone: input.customerPhone,
         customer_name: input.customerName || "Hast Rekha guest",
-        customer_email: input.customerEmail || "guest@hastrekhaai.online",
+        // Cashfree treats email as optional. Only send a real logged-in user's
+        // email; never invent a placeholder that looks like a customer address.
+        ...(input.customerEmail ? { customer_email: input.customerEmail } : {}),
       },
       order_meta: {
         return_url: input.returnUrl,
