@@ -39,14 +39,14 @@ export function paymentHelpUrl(details: PaymentHelpDetails = {}) {
 
   const lines = [
     "Namaste Hast Rekha AI team 🙏",
-    "Mujhe payment me technical problem aa rahi hai.",
+    "Mera payment safaltapoorvak nahi ho paya, lekin meri premium kundali/report taiyar hai.",
     issue,
     planLabel ? `Plan: ${planLabel}` : "",
     typeof details.amount === "number" ? `Amount: ₹${details.amount}` : "",
     details.readingId ? `Reading: ${SITE_URL}/reading/${details.readingId}` : "",
     details.orderId ? `Order ID: ${details.orderId}` : "",
     details.phone ? `Mera WhatsApp number: ${details.phone}` : "",
-    "Kripya payment QR/link bhejkar madad karein. Main abhi pay karna chahta hoon.",
+    "Kripya meri premium kundali/report unlock karne me madad karein. Main abhi pay karna chahta hoon.",
   ].filter(Boolean);
 
   return `https://wa.me/${SUPPORT_WHATSAPP}?text=${encodeURIComponent(lines.join("\n"))}`;
