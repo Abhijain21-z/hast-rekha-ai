@@ -99,7 +99,8 @@ export default function ReadingForm({ loggedIn }: Props) {
   async function submit(e: FormEvent) {
     e.preventDefault();
     const errs: Record<string, string> = {};
-    if (!fullName.trim()) errs.fullName = t.form.errName;
+    const cleanName = fullName.trim();
+    if (cleanName.length < 2 || cleanName.length > 80) errs.fullName = t.form.errName;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) errs.birthDate = t.form.errDate;
     const latN = Number(lat), lngN = Number(lng), tzN = Number(tz);
     // Free-text places are accepted: if no lat/lng are known, fall back to Delhi (28.61, 77.21, IST).
@@ -114,7 +115,12 @@ export default function ReadingForm({ loggedIn }: Props) {
       setTz(tz || "5.5");
     }
     setErrors(errs);
-    if (Object.keys(errs).length) return;
+    if (Object.keys(errs).length) {
+      // Put the cursor on the first missing field instead of leaving the visitor
+      // at the bottom of a long form with only a small inline error.
+      if (errs.fullName) document.getElementById("full-name")?.focus();
+      return;
+    }
 
     setSubmitting(true);
     setServerError("");
@@ -122,7 +128,7 @@ export default function ReadingForm({ loggedIn }: Props) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        fullName: fullName.trim(),
+        fullName: cleanName,
         birthDate,
         birthTime: timeUnknown || !birthTime ? "12:00" : birthTime,
         timeUnknown: timeUnknown || !birthTime,
@@ -160,10 +166,24 @@ export default function ReadingForm({ loggedIn }: Props) {
       <form onSubmit={submit} className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="glass-strong space-y-5 rounded-3xl p-6 sm:p-8">
           <div>
-            <Label>{t.form.fullName}</Label>
+            <Label htmlFor="full-name">
+              {t.form.fullName} <span className="text-rose-300" aria-hidden="true">*</span>
+            </Label>
             <div className="relative">
               <UserRound className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
-              <Input value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder={t.form.fullNamePh} className="pl-10" autoComplete="name" />
+              <Input
+                id="full-name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder={t.form.fullNamePh}
+                className="pl-10"
+                autoComplete="name"
+                required
+                minLength={2}
+                maxLength={80}
+                aria-required="true"
+                aria-invalid={!!errors.fullName}
+              />
             </div>
             <ErrorText>{errors.fullName}</ErrorText>
           </div>
