@@ -28,9 +28,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Too many attempts. Please wait a minute." }, { status: 429 });
   }
 
-  const body = (await req.json().catch(() => ({}))) as { readingId?: unknown; plan?: unknown; phone?: unknown };
+  const body = (await req.json().catch(() => ({}))) as { readingId?: unknown; plan?: unknown; phone?: unknown; whatsappOptIn?: unknown };
   const readingId = typeof body.readingId === "string" ? body.readingId : "";
   const plan: Plan | null = body.plan === "ultra" ? "ultra" : body.plan === "pro" ? "pro" : null;
+  const whatsappOptIn = body.whatsappOptIn === true;
   if (!plan || !UUID_RE.test(readingId)) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
@@ -81,6 +82,9 @@ export async function POST(req: Request) {
       amount,
       status: "created",
       cfOrderId: order.cf_order_id ?? null,
+      customerPhone: phone,
+      whatsappOptIn,
+      whatsappOptInAt: whatsappOptIn ? new Date() : null,
     });
 
     return NextResponse.json({

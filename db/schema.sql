@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS readings (
   result jsonb NOT NULL,
   palm_image text,            -- data URL, downscaled on the client
   palm_hand varchar(10),
+  whatsapp_phone text,        -- optional number captured for payment/report updates
   gender varchar(10),         -- "male" | "female" | "trans"
   married boolean,            -- null when the visitor skipped the question
   notes text,
@@ -98,6 +99,11 @@ CREATE TABLE IF NOT EXISTS payments (
   cf_order_id text,
   cf_payment_id text,
   payment_method text,
+  customer_phone text,
+  whatsapp_opt_in boolean NOT NULL DEFAULT false,
+  whatsapp_opt_in_at timestamptz,
+  reminder_count integer NOT NULL DEFAULT 0,
+  last_reminder_at timestamptz,
   raw jsonb,
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()

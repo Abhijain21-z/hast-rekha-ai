@@ -64,7 +64,12 @@ export function ProPaywallModal({
   const [copied, setCopied] = useState(false);
   const [plan, setPlan] = useState<ProPlan>(defaultPlan);
   const [cfBusy, setCfBusy] = useState(false);
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState(() => {
+    if (typeof window === "undefined") return "";
+    const saved = window.localStorage.getItem("hr-whatsapp");
+    return saved && /^[6-9]\d{9}$/.test(saved) ? saved : "";
+  });
+  const [waOptIn, setWaOptIn] = useState(false);
   const prefetchRef = useRef<{ key: string; at: number; promise: Promise<CashfreeOrderResult> } | null>(null);
 
   const price = plan === "ultra" ? ULTRA_PRICE : PREMIUM_PRICE;
@@ -104,6 +109,8 @@ export function ProPaywallModal({
     getCashfree(CASHFREE_MODE).catch(() => {});
   }, [open]);
 
+
+
   async function copyUpi() {
     try {
       await navigator.clipboard.writeText(UPI_ID);
@@ -134,11 +141,11 @@ export function ProPaywallModal({
     }
   }
 
-  function fetchOrder(planKey: ProPlan, phoneDigits: string): Promise<CashfreeOrderResult> {
+  function fetchOrder(planKey: ProPlan, phoneDigits: string, optIn: boolean): Promise<CashfreeOrderResult> {
     return fetch("/api/payments/cashfree/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ readingId, plan: planKey, phone: phoneDigits }),
+      body: JSON.stringify({ readingId, plan: planKey, phone: phoneDigits, whatsappOptIn: optIn }),
     })
       .then(async (res) => {
         const data = (await res.json().catch(() => ({}))) as { paymentSessionId?: string; orderId?: string; error?: string };
@@ -147,9 +154,9 @@ export function ProPaywallModal({
       .catch(() => ({ ok: false }));
   }
 
-  /** The key is plan + phone, because the server prices the order by plan. */
-  function orderKey(planKey: ProPlan, phoneDigits: string) {
-    return `${planKey}:${phoneDigits}`;
+  /** The key is plan + phone + consent, because each one changes the order row. */
+  function orderKey(planKey: ProPlan, phoneDigits: string, optIn: boolean) {
+    return `${planKey}:${phoneDigits}:${optIn ? "wa" : "no-wa"}`;
   }
 
   /**
@@ -157,12 +164,12 @@ export function ProPaywallModal({
    * click handler below awaits the same promise, so most visitors skip the
    * server round-trip entirely.
    */
-  function prefetchOrder(planKey: ProPlan, phoneDigits: string) {
+  function prefetchOrder(planKey: ProPlan, phoneDigits: string, optIn: boolean) {
     if (!CASHFREE_ENABLED || !/^[6-9]\d{9}$/.test(phoneDigits)) return;
-    const key = orderKey(planKey, phoneDigits);
+    const key = orderKey(planKey, phoneDigits, optIn);
     const cached = prefetchRef.current;
     if (cached?.key === key && Date.now() - cached.at < ORDER_TTL_MS) return;
-    prefetchRef.current = { key, at: Date.now(), promise: fetchOrder(planKey, phoneDigits) };
+    prefetchRef.current = { key, at: Date.now(), promise: fetchOrder(planKey, phoneDigits, optIn) };
   }
 
   /**
@@ -178,11 +185,11 @@ export function ProPaywallModal({
       return;
     }
     setCfBusy(true);
-    const key = orderKey(plan, phoneDigits);
+    const key = orderKey(plan, phoneDigits, waOptIn);
     try {
       const cached = prefetchRef.current;
       const request =
-        cached?.key === key && Date.now() - cached.at < ORDER_TTL_MS ? cached.promise : fetchOrder(plan, phoneDigits);
+        cached?.key === key && Date.now() - cached.at < ORDER_TTL_MS ? cached.promise : fetchOrder(plan, phoneDigits, waOptIn);
       prefetchRef.current = { key, at: Date.now(), promise: request };
       const data = await request;
       if (!data.ok || !data.paymentSessionId || !data.orderId) {
@@ -291,7 +298,10 @@ export function ProPaywallModal({
                 onChange={(e) => {
                   const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
                   setPhone(digits);
-                  if (digits.length === 10) prefetchOrder(plan, digits);
+                  if (digits.length === 10) {
+                    window.localStorage.setItem("hr-whatsapp", digits);
+                    prefetchOrder(plan, digits, waOptIn);
+                  }
                 }}
                 placeholder={t.pro.cfPhonePh}
                 inputMode="numeric"
@@ -299,6 +309,18 @@ export function ProPaywallModal({
                 maxLength={10}
               />
               <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{t.pro.cfPhoneHint}</p>
+              <label className="mt-3 flex cursor-pointer items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-xs leading-relaxed text-slate-300">
+                <input
+                  type="checkbox"
+                  checked={waOptIn}
+                  onChange={(e) => setWaOptIn(e.target.checked)}
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-[#f5c242]"
+                />
+                <span>
+                  <span className="block font-medium text-slate-100">{t.pro.waOptIn}</span>
+                  <span className="mt-0.5 block text-slate-500">{t.pro.waOptInNote}</span>
+                </span>
+              </label>
             </div>
             <Button className="w-full" size="lg" loading={cfBusy} onClick={payWithCashfree} icon={<ShieldCheck className="h-4 w-4" />}>
               {cfBusy ? t.pro.cfStarting : tpl(t.pro.cfPay, { p: price })}

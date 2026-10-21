@@ -29,6 +29,7 @@ interface Body {
   palmHand?: string | null;
   gender?: string | null;
   married?: boolean | null;
+  whatsappPhone?: string | null;
   title?: string;
 }
 
@@ -59,6 +60,10 @@ export async function POST(req: Request) {
   const palmHand = body.palmHand === "left" || body.palmHand === "right" ? body.palmHand : null;
   const gender = body.gender === "male" || body.gender === "female" || body.gender === "trans" ? body.gender : null;
   const married = typeof body.married === "boolean" ? body.married : null;
+  const whatsappPhone = typeof body.whatsappPhone === "string" ? body.whatsappPhone.replace(/\D/g, "") : "";
+  if (whatsappPhone && !/^[6-9]\d{9}$/.test(whatsappPhone)) {
+    return NextResponse.json({ error: "Invalid WhatsApp number" }, { status: 400 });
+  }
 
   let result;
   try {
@@ -86,6 +91,7 @@ export async function POST(req: Request) {
       palmHand,
       gender,
       married,
+      whatsappPhone: whatsappPhone || null,
     })
     .returning();
 

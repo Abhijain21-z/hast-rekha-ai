@@ -5,8 +5,8 @@
    "hi": "गोपनीयता नीति"
   },
   "updated": {
-   "en": "Last updated: 1 August 2026",
-   "hi": "अंतिम अद्यतन: 1 अगस्त 2026"
+   "en": "Last updated: 21 October 2026",
+   "hi": "अंतिम अद्यतन: 21 अक्टूबर 2026"
   },
   "intro": {
    "en": "Hast Rekha AI (\"we\", \"our\") respects your privacy. This policy explains what we collect, why we collect it, and how you remain in control. By using hastrekha.ai you agree to this policy.",
@@ -20,8 +20,8 @@
     },
     "p": [
      {
-      "en": "Account data: name, email and a hashed password when you register. Reading data: the birth details you enter (name, date, time, place) and any palm photo you upload. Payment data: only the UPI transaction reference (UTR) you voluntarily submit for the ₹51 premium unlock — we never see or store your bank or card details.",
-      "hi": "खाता डेटा: पंजीकरण पर नाम, ईमेल और हैश्ड पासवर्ड। रीडिंग डेटा: आपके दर्ज जन्म विवरण (नाम, तिथि, समय, स्थान) और आपकी अपलोड की गई हथेली की फ़ोटो। भुगतान डेटा: केवल वह UPI लेन-देन संदर्भ (UTR) जो आप प्रीमियम अनलॉक हेतु स्वयं भेजते हैं — हम आपका बैंक या कार्ड विवरण कभी नहीं देखते या सहेजते।"
+      "en": "Account data: name, email and a hashed password when you register. Reading data: the birth details you enter (name, date, time, place) and any palm photo you upload. Payment data: name, mobile/WhatsApp number, Cashfree order and payment IDs, amount, status and payment method. Card numbers, UPI PINs and bank credentials are handled by Cashfree; we never see or store them. We store the WhatsApp number you provide for payment and, if you opt in, the consent time, so we can send payment links, reminders and your report link. Reply STOP or write to us to opt out at any time.",
+      "hi": "खाता डेटा: पंजीकरण पर नाम, ईमेल और हैश्ड पासवर्ड। रीडिंग डेटा: आपके दर्ज जन्म विवरण (नाम, तिथि, समय, स्थान) और आपकी अपलोड की गई हथेली की फ़ोटो। भुगतान डेटा: नाम, मोबाइल/WhatsApp नंबर, Cashfree ऑर्डर व भुगतान ID, राशि, स्थिति और भुगतान विधि। कार्ड नंबर, UPI PIN और बैंक विवरण Cashfree संभालता है; हम उन्हें कभी नहीं देखते या सहेजते। भुगतान के लिए दिया गया WhatsApp नंबर हम सहेजते हैं और सहमति देने पर सहमति का समय भी, ताकि payment link, reminder और report link भेज सकें। कभी भी STOP लिखकर या हमें लिखकर सहमति वापस ले सकते हैं।"
      }
     ]
    },
@@ -72,8 +72,8 @@
     },
     "p": [
      {
-      "en": "Passwords are stored only as bcrypt hashes; sessions are random tokens in httpOnly cookies; premium payment happens directly between your UPI app and our UPI ID — our servers never touch your money.",
-      "hi": "पासवर्ड केवल bcrypt हैश के रूप में सहेजे जाते हैं; सत्र httpOnly कुकीज़ में यादृच्छिक टोकन हैं; प्रीमियम भुगतान सीधे आपके UPI ऐप और हमारी UPI ID के बीच होता है — हमारे सर्वर आपके धन को कभी स्पर्श नहीं करते।"
+      "en": "Passwords are stored only as bcrypt hashes; sessions are random tokens in httpOnly cookies. Premium payments are processed by Cashfree. Our servers never store card numbers, UPI PINs or bank credentials.",
+      "hi": "पासवर्ड केवल bcrypt हैश के रूप में सहेजे जाते हैं; सत्र httpOnly कुकीज़ में यादृच्छिक टोकन हैं। प्रीमियम भुगतान Cashfree संभालता है। हमारे सर्वर कार्ड नंबर, UPI PIN या बैंक विवरण कभी नहीं सहेजते।"
      }
     ]
    },
@@ -97,8 +97,8 @@
    "hi": "अस्वीकरण"
   },
   "updated": {
-   "en": "Last updated: 1 August 2026",
-   "hi": "अंतिम अद्यतन: 1 अगस्त 2026"
+   "en": "Last updated: 21 October 2026",
+   "hi": "अंतिम अद्यतन: 21 अक्टूबर 2026"
   },
   "intro": {
    "en": "Hast Rekha AI is provided for entertainment and self-reflection purposes only.",

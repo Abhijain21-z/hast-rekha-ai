@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { MapPin, Sparkles, Clock, CalendarDays, UserRound, LogIn } from "lucide-react";
+import { MapPin, Sparkles, Clock, CalendarDays, UserRound, LogIn, Phone } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, Input, Label, Select, ErrorText, cn } from "@/components/ui";
 import PalmUpload from "./PalmUpload";
@@ -21,6 +21,7 @@ export default function ReadingForm({ loggedIn }: Props) {
   const params = useSearchParams();
 
   const [fullName, setFullName] = useState(params.get("name") ?? "");
+  const [whatsappPhone, setWhatsappPhone] = useState("");
   const [birthDate, setBirthDate] = useState(params.get("dob") ?? "");
   const [birthTime, setBirthTime] = useState(params.get("tob") ?? "");
   const [timeUnknown, setTimeUnknown] = useState(false);
@@ -47,6 +48,8 @@ export default function ReadingForm({ loggedIn }: Props) {
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); }, []);
+
+
 
   /** Animate 1 → 99% over ~7s; jump to 100% once the server has answered, then navigate. */
   function runProgress(request: Promise<string>) {
@@ -101,6 +104,8 @@ export default function ReadingForm({ loggedIn }: Props) {
     const errs: Record<string, string> = {};
     const cleanName = fullName.trim();
     if (cleanName.length < 2 || cleanName.length > 80) errs.fullName = t.form.errName;
+    const waDigits = whatsappPhone.replace(/\D/g, "");
+    if (waDigits && !/^[6-9]\d{9}$/.test(waDigits)) errs.whatsappPhone = t.form.errWhatsapp;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) errs.birthDate = t.form.errDate;
     const latN = Number(lat), lngN = Number(lng), tzN = Number(tz);
     // Free-text places are accepted: if no lat/lng are known, fall back to Delhi (28.61, 77.21, IST).
@@ -122,6 +127,9 @@ export default function ReadingForm({ loggedIn }: Props) {
       return;
     }
 
+    if (waDigits) window.localStorage.setItem("hr-whatsapp", waDigits);
+    else window.localStorage.removeItem("hr-whatsapp");
+
     setSubmitting(true);
     setServerError("");
     const request = fetch("/api/readings", {
@@ -140,6 +148,7 @@ export default function ReadingForm({ loggedIn }: Props) {
         palmHand: palm ? hand : null,
         gender: gender || null,
         married: married === "" ? null : married === "yes",
+        whatsappPhone: waDigits || null,
       }),
     }).then(async (res) => {
       if (!res.ok) throw new Error("request failed");
@@ -186,6 +195,26 @@ export default function ReadingForm({ loggedIn }: Props) {
               />
             </div>
             <ErrorText>{errors.fullName}</ErrorText>
+          </div>
+
+          <div>
+            <Label htmlFor="wa-phone" hint={t.common.optional}>{t.form.whatsapp}</Label>
+            <div className="relative">
+              <Phone className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
+              <Input
+                id="wa-phone"
+                value={whatsappPhone}
+                onChange={(e) => setWhatsappPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                placeholder={t.pro.cfPhonePh}
+                className="pl-10"
+                inputMode="numeric"
+                autoComplete="tel"
+                maxLength={10}
+                aria-invalid={!!errors.whatsappPhone}
+              />
+            </div>
+            <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{t.form.whatsappHint}</p>
+            <ErrorText>{errors.whatsappPhone}</ErrorText>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2">

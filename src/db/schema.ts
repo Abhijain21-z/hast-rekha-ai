@@ -7,6 +7,7 @@ import {
   jsonb,
   boolean,
   varchar,
+  integer,
   index,
 } from "drizzle-orm/pg-core";
 import type { AstroResult } from "../lib/astrology";
@@ -52,6 +53,8 @@ export const readings = pgTable(
     result: jsonb("result").$type<AstroResult>().notNull(),
     palmImage: text("palm_image"), // data URL (downscaled on client)
     palmHand: varchar("palm_hand", { length: 10 }),
+    /** Optional WhatsApp number captured at the start; never exposed in the public DTO. */
+    whatsappPhone: text("whatsapp_phone"),
     // Optional profile details captured in the form; shown back on the report.
     gender: varchar("gender", { length: 10 }), // "male" | "female" | "trans"
     married: boolean("married"), // null when the visitor skipped the question
@@ -88,6 +91,13 @@ export const payments = pgTable(
     cfOrderId: text("cf_order_id"),
     cfPaymentId: text("cf_payment_id"),
     paymentMethod: text("payment_method"),
+    /** Cashfree's required payer number; also used for WhatsApp reminders when opted in. */
+    customerPhone: text("customer_phone"),
+    whatsappOptIn: boolean("whatsapp_opt_in").notNull().default(false),
+    whatsappOptInAt: timestamp("whatsapp_opt_in_at", { withTimezone: true }),
+    /** Abandoned-payment follow-up state (filled by the reminder cron later). */
+    reminderCount: integer("reminder_count").notNull().default(0),
+    lastReminderAt: timestamp("last_reminder_at", { withTimezone: true }),
     raw: jsonb("raw"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),

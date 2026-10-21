@@ -46,14 +46,19 @@ export interface ProfileDTO {
   updatedAt: string;
 }
 
-export const toReadingDTO = (r: Reading): ReadingDTO => ({
-  ...r,
-  createdAt: r.createdAt.toISOString(),
-  updatedAt: r.updatedAt.toISOString(),
-});
+export const toReadingDTO = (r: Reading): ReadingDTO => {
+  // Contact details are private server-side data; never ship them in a public
+  // reading payload.
+  const { whatsappPhone: _whatsappPhone, ...rest } = r;
+  return {
+    ...rest,
+    createdAt: r.createdAt.toISOString(),
+    updatedAt: r.updatedAt.toISOString(),
+  };
+};
 
 export const toReadingSummary = (r: Reading): ReadingSummaryDTO => {
-  const { palmImage, ...rest } = r;
+  const { palmImage, whatsappPhone: _whatsappPhone, ...rest } = r;
   return { ...rest, hasPalm: !!palmImage, createdAt: r.createdAt.toISOString(), updatedAt: r.updatedAt.toISOString() };
 };
 
