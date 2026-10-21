@@ -185,6 +185,7 @@ export function ProPaywallModal({
   async function payWithCashfree() {
     setErr("");
     setHelpOpen(false);
+    setLastOrderId(null);
     const phoneDigits = phone.replace(/\D/g, "");
     if (!/^[6-9]\d{9}$/.test(phoneDigits)) {
       setErr(t.pro.cfPhoneErr);
