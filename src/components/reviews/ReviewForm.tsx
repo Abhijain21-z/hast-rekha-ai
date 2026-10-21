@@ -16,6 +16,7 @@ export interface ReviewRow {
   interfaceRating?: InterfaceRating | string | null;
   agrees?: boolean | null;
   createdAt?: string;
+  expiresAt?: string | null;
 }
 
 /**

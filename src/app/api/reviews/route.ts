@@ -4,6 +4,12 @@ import { db } from "@/db";
 import { reviews } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import {
+  archiveExpiredNegativeReviews,
+  isNegativeReview,
+  negativeReviewExpiresAt,
+  reviewVisibilityWhere,
+} from "@/lib/reviews";
 
 export const dynamic = "force-dynamic";
 
@@ -15,9 +21,13 @@ export async function GET(req: Request) {
   // asks for the full list.
   const full = new URL(req.url).searchParams.get("all") === "1";
   try {
+    // Move anything whose one-hour negative-review window has ended out of the
+    // public table. A no-op for positive reviews.
+    await archiveExpiredNegativeReviews().catch(() => {});
     const rows = await db
       .select()
       .from(reviews)
+      .where(reviewVisibilityWhere())
       .orderBy(desc(reviews.createdAt))
       .limit(full ? 200 : 50);
     return NextResponse.json({ reviews: rows });
@@ -49,6 +59,7 @@ export async function POST(req: Request) {
   // Answering the survey questions is optional — never reject a review over them.
   const interfaceRating = body.interfaceRating && INTERFACE.has(body.interfaceRating) ? body.interfaceRating : null;
   const agrees = typeof body.agrees === "boolean" ? body.agrees : null;
+  const negative = isNegativeReview(rating);
 
   try {
     const user = await getCurrentUser();
@@ -62,6 +73,8 @@ export async function POST(req: Request) {
         lang: body.lang === "en" ? "en" : "hi",
         interfaceRating,
         agrees,
+        isNegative: negative,
+        expiresAt: negative ? negativeReviewExpiresAt() : null,
       })
       .returning();
     return NextResponse.json({ review: row }, { status: 201 });

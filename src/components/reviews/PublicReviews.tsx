@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { BadgeCheck, PenLine, Quote, Star, ThumbsDown, ThumbsUp, Users } from "lucide-react";
+import { BadgeCheck, CalendarDays, PenLine, Quote, Star, ThumbsDown, ThumbsUp, Users } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { cn } from "@/components/ui";
+import { formatReviewDateTime } from "@/lib/review-date";
 import ReviewForm, { type ReviewRow } from "./ReviewForm";
 
 const IFACE_LABEL: Record<string, "ifGreat" | "ifGood" | "ifOkay" | "ifPoor"> = {
@@ -14,8 +15,9 @@ const IFACE_LABEL: Record<string, "ifGreat" | "ifGood" | "ifOkay" | "ifPoor"> = 
 };
 
 export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [items, setItems] = useState<ReviewRow[]>(initial);
+  const [now, setNow] = useState(() => Date.now());
 
   // Server-rendered list first, then refresh from the API (so a review written
   // in another tab shows up without a hard reload).
@@ -28,13 +30,25 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
       .catch(() => {});
   }, []);
 
+  // A negative review disappears after its one-hour window even if this tab
+  // stays open; the server also archives it on the next request.
+  useEffect(() => {
+    const id = window.setInterval(() => setNow(Date.now()), 60_000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const liveItems = useMemo(
+    () => items.filter((r) => !r.expiresAt || new Date(r.expiresAt).getTime() > now),
+    [items, now],
+  );
+
   const stats = useMemo(() => {
-    if (!items.length) return null;
-    const avg = items.reduce((a, r) => a + (Number(r.rating) || 0), 0) / items.length;
-    const answered = items.filter((r) => typeof r.agrees === "boolean");
+    if (!liveItems.length) return null;
+    const avg = liveItems.reduce((a, r) => a + (Number(r.rating) || 0), 0) / liveItems.length;
+    const answered = liveItems.filter((r) => typeof r.agrees === "boolean");
     const yes = answered.filter((r) => r.agrees).length;
-    return { avg: avg.toFixed(1), count: items.length, agreePct: answered.length ? Math.round((yes / answered.length) * 100) : null };
-  }, [items]);
+    return { avg: avg.toFixed(1), count: liveItems.length, agreePct: answered.length ? Math.round((yes / answered.length) * 100) : null };
+  }, [liveItems]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
@@ -71,17 +85,24 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
         </div>
       </div>
 
-      {items.length === 0 ? (
+      {liveItems.length === 0 ? (
         <p className="glass mt-10 rounded-3xl p-10 text-center text-sm text-slate-400">{t.reviews.allEmpty}</p>
       ) : (
         <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {items.map((r, i) => (
+          {liveItems.map((r, i) => (
             <article key={r.id ?? `${r.name}-${i}`} className="glass relative flex flex-col rounded-3xl p-6">
               <Quote className="absolute right-5 top-5 h-7 w-7 text-gold-400/20" />
-              <div className="flex gap-1">
-                {Array.from({ length: 5 }).map((_, s) => (
-                  <Star key={s} className={cn("h-4 w-4", s < r.rating ? "fill-gold-400 text-gold-400" : "text-slate-600")} />
-                ))}
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div className="flex gap-1">
+                  {Array.from({ length: 5 }).map((_, s) => (
+                    <Star key={s} className={cn("h-4 w-4", s < r.rating ? "fill-gold-400 text-gold-400" : "text-slate-600")} />
+                  ))}
+                </div>
+                {r.createdAt && (
+                  <time dateTime={r.createdAt} className="inline-flex items-center gap-1 text-[11px] text-slate-400">
+                    <CalendarDays className="h-3.5 w-3.5" /> {formatReviewDateTime(r.createdAt, lang)}
+                  </time>
+                )}
               </div>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-200">“{r.text}”</p>
               <div className="mt-4 flex flex-wrap gap-2">

@@ -85,9 +85,29 @@ CREATE TABLE IF NOT EXISTS reviews (
   interface_rating varchar(20),
   -- Did the prediction feel accurate to them? null = not answered.
   agrees boolean,
+  -- Low-star reviews are public for one hour, then archived.
+  is_negative boolean NOT NULL DEFAULT false,
+  expires_at timestamptz,
   created_at timestamptz NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS reviews_created_idx ON reviews (created_at);
+
+-- Owner-only archive. Kept out of every public query and UI.
+CREATE TABLE IF NOT EXISTS review_archive (
+  review_id uuid PRIMARY KEY,
+  user_id uuid,
+  name varchar(80) NOT NULL,
+  rating real NOT NULL,
+  text text NOT NULL,
+  lang varchar(2) NOT NULL DEFAULT 'hi',
+  interface_rating varchar(20),
+  agrees boolean,
+  created_at timestamptz NOT NULL,
+  archived_at timestamptz NOT NULL DEFAULT now(),
+  reason varchar(40) NOT NULL DEFAULT 'negative_auto_hide'
+);
+CREATE INDEX IF NOT EXISTS review_archive_created_idx ON review_archive (created_at);
+CREATE INDEX IF NOT EXISTS review_archive_archived_idx ON review_archive (archived_at);
 
 CREATE TABLE IF NOT EXISTS payments (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),

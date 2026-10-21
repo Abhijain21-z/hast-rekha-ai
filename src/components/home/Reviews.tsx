@@ -1,22 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Star, Quote, BadgeCheck, PenLine, Users } from "lucide-react";
+import { BadgeCheck, CalendarDays, ChevronLeft, ChevronRight, PenLine, Quote, Star, Users } from "lucide-react";
 import testimonialsJson from "@/content/testimonials.json";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Avatar, Button, Modal, SectionHeading, cn } from "@/components/ui";
 import ReviewForm, { type ReviewRow } from "@/components/reviews/ReviewForm";
+import { formatReviewDateTime } from "@/lib/review-date";
 import type { Bi } from "@/lib/i18n";
 
-interface ReviewItem { name: string; location: Bi; rating: number; quote: Bi; user?: boolean }
+interface ReviewItem {
+  name: string;
+  location: Bi;
+  rating: number;
+  quote: Bi;
+  user?: boolean;
+  createdAt?: string;
+  expiresAt?: string | null;
+}
 
 const SEED = testimonialsJson as { name: string; location: Bi; rating: number; quote: Bi }[];
 
 export default function Reviews() {
-  const { t, L } = useLang();
+  const { t, L, lang } = useLang();
   const [items, setItems] = useState<ReviewItem[]>(SEED);
+  const [now, setNow] = useState(() => Date.now());
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(1);
   const [paused, setPaused] = useState(false);
@@ -27,12 +37,16 @@ export default function Reviews() {
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
         if (!d?.reviews) return;
-        const userReviews: ReviewItem[] = (d.reviews as { name: string; rating: number; text: string }[]).map((r) => ({
+        const userReviews: ReviewItem[] = (
+          d.reviews as { name: string; rating: number; text: string; createdAt?: string; expiresAt?: string | null }[]
+        ).map((r) => ({
           name: r.name,
           rating: r.rating,
           user: true,
           location: { en: t.reviews.community, hi: t.reviews.community },
           quote: { en: r.text, hi: r.text },
+          createdAt: r.createdAt,
+          expiresAt: r.expiresAt,
         }));
         setItems([...userReviews, ...SEED]);
       })
@@ -47,7 +61,18 @@ export default function Reviews() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const max = Math.max(0, items.length - visible);
+  useEffect(() => {
+    const id = window.setInterval(() => setNow(Date.now()), 60_000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  // Negative reviews vanish after their one-hour public window.
+  const liveItems = useMemo(
+    () => items.filter((r) => !r.expiresAt || new Date(r.expiresAt).getTime() > now),
+    [items, now],
+  );
+
+  const max = Math.max(0, liveItems.length - visible);
   // Clamp for display so a shrinking list (resize / new item) never shows an out-of-range slide.
   const idx = Math.min(index, max);
   useEffect(() => {
@@ -60,7 +85,15 @@ export default function Reviews() {
 
   function onSaved(review: ReviewRow) {
     setItems((all) => [
-      { name: review.name, rating: review.rating, user: true, location: { en: t.reviews.community, hi: t.reviews.community }, quote: { en: review.text, hi: review.text } },
+      {
+        name: review.name,
+        rating: review.rating,
+        user: true,
+        location: { en: t.reviews.community, hi: t.reviews.community },
+        quote: { en: review.text, hi: review.text },
+        createdAt: review.createdAt,
+        expiresAt: review.expiresAt,
+      },
       ...all,
     ]);
     setIndex(0);
@@ -78,7 +111,7 @@ export default function Reviews() {
         <div className="relative" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
           <div className="overflow-hidden">
             <motion.div className="flex" animate={{ x: `-${(idx * 100) / visible}%` }} transition={{ type: "spring", stiffness: 120, damping: 22 }}>
-              {items.map((r, i) => (
+              {liveItems.map((r, i) => (
                 <div key={`${r.name}-${i}`} className="w-full shrink-0 px-2.5 sm:w-1/2 lg:w-1/3">
                   <div className="glass relative flex h-full flex-col rounded-3xl p-7">
                     <Quote className="absolute right-6 top-6 h-8 w-8 text-gold-400/20" />
@@ -93,6 +126,11 @@ export default function Reviews() {
                       <div>
                         <p className="text-sm font-semibold text-white">{r.name}</p>
                         <p className="text-xs text-slate-400">{L(r.location)}</p>
+                        {r.createdAt && (
+                          <time dateTime={r.createdAt} className="mt-0.5 flex items-center gap-1 text-[11px] text-slate-500">
+                            <CalendarDays className="h-3 w-3" /> {formatReviewDateTime(r.createdAt, lang)}
+                          </time>
+                        )}
                       </div>
                       <span className="ml-auto inline-flex items-center gap-1 text-xs text-emerald-300">
                         {r.user ? <Users className="h-3.5 w-3.5" /> : <BadgeCheck className="h-3.5 w-3.5" />} {r.user ? t.reviews.community : t.reviews.verified}

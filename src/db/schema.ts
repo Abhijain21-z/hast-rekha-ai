@@ -139,9 +139,41 @@ export const reviews = pgTable(
     interfaceRating: varchar("interface_rating", { length: 20 }),
     /** Did the prediction feel accurate to them? null = not answered. */
     agrees: boolean("agrees"),
+    /** Low-star reviews are public briefly, then moved to review_archive. */
+    isNegative: boolean("is_negative").notNull().default(false),
+    /** Public visibility deadline for a negative review; null for positive. */
+    expiresAt: timestamp("expires_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index("reviews_created_idx").on(t.createdAt)],
+  (t) => [
+    index("reviews_created_idx").on(t.createdAt),
+    index("reviews_visibility_idx").on(t.isNegative, t.expiresAt),
+  ],
+);
+
+/**
+ * Owner-only archive for negative reviews removed from the public list.
+ * No UI reads this table; only the protected /api/reviews/archive route.
+ */
+export const reviewArchive = pgTable(
+  "review_archive",
+  {
+    reviewId: uuid("review_id").primaryKey(),
+    userId: uuid("user_id"),
+    name: varchar("name", { length: 80 }).notNull(),
+    rating: real("rating").notNull(),
+    text: text("text").notNull(),
+    lang: varchar("lang", { length: 2 }).notNull().default("hi"),
+    interfaceRating: varchar("interface_rating", { length: 20 }),
+    agrees: boolean("agrees"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull(),
+    archivedAt: timestamp("archived_at", { withTimezone: true }).notNull().defaultNow(),
+    reason: varchar("reason", { length: 40 }).notNull().default("negative_auto_hide"),
+  },
+  (t) => [
+    index("review_archive_created_idx").on(t.createdAt),
+    index("review_archive_archived_idx").on(t.archivedAt),
+  ],
 );
 
 export const contactMessages = pgTable("contact_messages", {

@@ -3,6 +3,7 @@ import { desc } from "drizzle-orm";
 import { db } from "@/db";
 import { reviews } from "@/db/schema";
 import PublicReviews from "@/components/reviews/PublicReviews";
+import { archiveExpiredNegativeReviews, reviewVisibilityWhere } from "@/lib/reviews";
 import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -23,10 +24,17 @@ export default async function ReviewsPage() {
     interfaceRating: string | null;
     agrees: boolean | null;
     createdAt: string | undefined;
+    expiresAt: string | undefined;
   }[] = [];
 
   try {
-    const rows = await db.select().from(reviews).orderBy(desc(reviews.createdAt)).limit(200);
+    await archiveExpiredNegativeReviews().catch(() => {});
+    const rows = await db
+      .select()
+      .from(reviews)
+      .where(reviewVisibilityWhere())
+      .orderBy(desc(reviews.createdAt))
+      .limit(200);
     initial = rows.map((r) => ({
       id: r.id,
       name: r.name,
@@ -35,6 +43,7 @@ export default async function ReviewsPage() {
       interfaceRating: r.interfaceRating ?? null,
       agrees: r.agrees ?? null,
       createdAt: r.createdAt?.toISOString(),
+      expiresAt: r.expiresAt?.toISOString(),
     }));
   } catch {
     // A database hiccup should still render the page (with a friendly empty
