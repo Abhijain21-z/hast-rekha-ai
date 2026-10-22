@@ -99,7 +99,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
     { label: L({ en: "Place of birth", hi: "जन्म स्थान" }), value: reading.placeName },
     { label: L({ en: "Coordinates", hi: "निर्देशांक" }), value: `${reading.latitude.toFixed(2)}, ${reading.longitude.toFixed(2)}` },
     { label: L({ en: "Time zone", hi: "समय क्षेत्र" }), value: tzLabel(reading.tzOffset) },
-    { label: L({ en: "Moon sign", hi: "चंद्र राशि" }), value: `${L(rashi.name)} (${rashi.symbol})` },
+    { label: L({ en: "Moon sign", hi: "चंद्र राशि" }), value: `${L(rashi.name)} (${glyphText(rashi.symbol)})` },
     { label: L({ en: "Nakshatra", hi: "नक्षत्र" }), value: `${L(nak.name)} · ${t.result.pada} ${r.pada}` },
     { label: L({ en: "Ascendant", hi: "लग्न" }), value: L(lagna.name) },
   ];
