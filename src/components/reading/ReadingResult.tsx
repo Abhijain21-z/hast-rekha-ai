@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Copy, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, History, BarChart3, TrendingUp, Orbit, ScrollText, Hand, ListChecks } from "lucide-react";
+import { ChevronDown, Copy, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, History, BarChart3, TrendingUp, Orbit, ScrollText, Hand, ListChecks, CalendarDays } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Badge, Card, cn } from "@/components/ui";
 import { nakshatraAt, rashiAt, PANCHANG, tithiName } from "@/lib/content";
@@ -22,6 +22,7 @@ import { DonateReminder } from "./DonateReminder";
 import ReadingReview from "./ReadingReview";
 import ReviewPrompt from "./ReviewPrompt";
 import ScrollPrompts from "./ScrollPrompts";
+import RashifalPanel from "@/components/rashifal/RashifalPanel";
 import { PdfDividerButton, ProGateButton } from "./ProPaywall";
 import UpayBookPromo from "@/components/upay/UpayBookPromo";
 import { BOOK_PROMO } from "@/lib/flags";
@@ -67,6 +68,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
     { id: "sec-scores", label: t.report.scores, icon: BarChart3 },
     { id: "sec-graph", label: t.report.graph, icon: TrendingUp },
     { id: "sec-rashi", label: t.result.moonSign, icon: Orbit },
+    { id: "sec-rashifal", label: L({ en: "Rashifal", hi: "राशिफल" }), icon: CalendarDays },
     { id: "sec-detailed", label: t.report.detailed, icon: ScrollText },
     { id: "sec-palm", label: t.report.palmFull, icon: Hand },
     { id: "sec-suggest", label: t.report.suggestions, icon: ListChecks },
@@ -271,6 +273,10 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
             </Card>
           </motion.div>
         </div>
+      </section>
+
+      <section id="sec-rashifal" className="mt-14 scroll-mt-28">
+        <RashifalPanel rashiIndex={r.moonRashi} fullName={reading.fullName} showFullLink />
       </section>
 
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />

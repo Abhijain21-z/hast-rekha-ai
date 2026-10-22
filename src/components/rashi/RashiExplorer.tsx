@@ -1,14 +1,15 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Briefcase, Heart, Activity, Coins, Sparkles, ArrowRight } from "lucide-react";
+import { Briefcase, Heart, Activity, Coins, ArrowRight } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Modal, SectionHeading, Select, Label, Badge, cn } from "@/components/ui";
-import { RASHIS, compatibility, dailyHoroscope, type PredictionKey } from "@/lib/content";
+import { RASHIS, compatibility, type PredictionKey } from "@/lib/content";
 import { byLang } from "@/lib/i18n";
+import RashifalPanel from "@/components/rashifal/RashifalPanel";
 
 const PRED_ICONS = { career: Briefcase, love: Heart, health: Activity, finance: Coins };
 const ELEMENT_COLORS: Record<string, string> = {
@@ -35,7 +36,6 @@ export default function RashiExplorer() {
 
   const open = RASHIS.find((r) => r.key === openKey);
   const openIndex = RASHIS.findIndex((r) => r.key === openKey);
-  const daily = useMemo(() => (openIndex >= 0 ? dailyHoroscope(openIndex) : null), [openIndex]);
   const match = compatibility(a, b);
 
   return (
@@ -66,6 +66,12 @@ export default function RashiExplorer() {
             <p className="mt-3 text-xs text-slate-500">{r.dates}</p>
           </motion.button>
         ))}
+      </div>
+
+      <div className="mt-6 flex justify-center">
+        <Link href="/rashifal" className="inline-flex items-center gap-2 rounded-full border border-gold-400/35 bg-gold-400/10 px-5 py-2.5 text-sm text-gold-200 transition hover:border-gold-400/60 hover:bg-gold-400/15">
+          {L({ en: "Today · Tomorrow · This Week", hi: "आज · कल · इस हफ़्ते" })} <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
 
       {/* Compatibility */}
@@ -151,12 +157,8 @@ export default function RashiExplorer() {
               ))}
             </div>
 
-            {daily && (
-              <div className="mt-6 rounded-2xl border border-gold-400/25 bg-gradient-to-r from-gold-400/10 to-mystic-600/10 p-5">
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-300"><Sparkles className="h-3.5 w-3.5" /> {t.dash.today}</p>
-                <p className="mt-2 text-slate-100">{L(daily.message)}</p>
-                <p className="mt-2 text-xs text-slate-400">{t.dash.mood}: {L(daily.mood)} · {t.dash.luckyNumber}: {daily.luckyNumber} · {t.dash.luckyColor}: {L(daily.luckyColor)}</p>
-              </div>
+            {openIndex >= 0 && (
+              <RashifalPanel rashiIndex={openIndex} compact showHeading={false} showFullLink />
             )}
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2">

@@ -73,6 +73,17 @@ export default function Hero() {
             </Link>
           </motion.div>
 
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.5 }}>
+            <Link
+              href="/rashifal"
+              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-gold-300 transition hover:text-gold-200"
+            >
+              <Sparkles className="h-4 w-4" />
+              {L({ en: "Aaj Ka Rashifal — today, tomorrow & this week", hi: "आज का राशिफल — आज, कल और इस हफ़्ते" })}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

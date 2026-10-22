@@ -107,6 +107,7 @@ export default function Footer() {
               <li><Link href="/reviews" className="hover:text-white">{t.nav.reviews}</Link></li>
               <li><Link href="/blog" className="hover:text-white">{t.nav.blog}</Link></li>
               <li><Link href="/rashi" className="hover:text-white">{t.nav.rashi}</Link></li>
+              <li><Link href="/rashifal" className="hover:text-white">{t.nav.rashifal}</Link></li>
             </ul>
           </div>
           <div>

@@ -1,0 +1,110 @@
+{
+  "messages": [
+    {
+      "en": "This week favours clear decisions. Finish one pending task before starting a new one; a calm mind will spot the opportunity others miss.",
+      "hi": "यह सप्ताह स्पष्ट निर्णयों के लिए अनुकूल है। नया काम शुरू करने से पहले एक अधूरा काम पूरा करें; शांत मन वह अवसर देख लेगा जो बाकियों से छूट रहा है।"
+    },
+    {
+      "en": "Money and communication are highlighted. Recheck a payment or document, and keep written records; a short conversation can open a long-awaited door.",
+      "hi": "धन और संवाद इस सप्ताह प्रमुख हैं। किसी भुगतान या दस्तावेज़ को दोबारा जाँचें और लिखित रिकॉर्ड रखें; एक छोटी बातचीत लंबे समय से बंद दरवाज़े खोल सकती है।"
+    },
+    {
+      "en": "Energy is high but scattered. Choose three priorities, protect your mornings, and let physical activity release the extra charge.",
+      "hi": "ऊर्जा अधिक है पर बिखरी हुई। तीन प्राथमिकताएँ चुनें, सुबह का समय सुरक्षित रखें और शारीरिक गतिविधि से अतिरिक्त ऊर्जा निकालें।"
+    },
+    {
+      "en": "A family or property matter moves forward. Listen more than you speak; an elder's advice saves you a wrong turn.",
+      "hi": "परिवार या संपत्ति से जुड़ा कोई मामला आगे बढ़ेगा। बोलने से ज़्यादा सुनें; किसी बड़े की सलाह आपको गलत मोड़ से बचा सकती है।"
+    },
+    {
+      "en": "Love and creativity soften the week. Make time for someone who has been waiting silently; a small gesture carries unusual weight.",
+      "hi": "प्रेम और रचनात्मकता इस सप्ताह कोमलता देंगे। जो व्यक्ति चुपचाप आपका इंतज़ार कर रहा है, उसके लिए समय निकालें; छोटी-सी पहल असामान्य महत्व रखेगी।"
+    },
+    {
+      "en": "Work pressure is manageable if you stop carrying everyone else's tasks. Say no once and watch your own progress accelerate.",
+      "hi": "काम का दबाव संभाला जा सकता है, बस दूसरों के काम अपने सिर मत लें। एक बार मना करें और अपनी प्रगति तेज़ होती देखें।"
+    },
+    {
+      "en": "A financial correction or delayed payment finally clears. Avoid impulsive purchases midweek; save the surplus before it disappears.",
+      "hi": "धन से जुड़ी कोई रुकी हुई राशि या सुधार इस सप्ताह पूरा होगा। सप्ताह के बीच में जल्दबाज़ी की खरीदारी न करें; बचत को हाथ से जाने से पहले सुरक्षित करें।"
+    },
+    {
+      "en": "Travel, study or a new contact brings fresh perspective. Keep your schedule light enough to say yes to an unexpected invitation.",
+      "hi": "यात्रा, अध्ययन या नया संपर्क नई दृष्टि देगा। अपना शेड्यूल इतना हल्का रखें कि अचानक आए निमंत्रण को हाँ कह सकें।"
+    },
+    {
+      "en": "Health needs rhythm, not intensity. Sleep on time, hydrate, and take a short walk when stress rises; your body is asking for consistency.",
+      "hi": "स्वास्थ्य को तीव्रता नहीं, नियम चाहिए। समय पर सोएँ, पानी पिएँ और तनाव बढ़े तो थोड़ी देर टहलें; शरीर निरंतरता माँग रहा है।"
+    },
+    {
+      "en": "A misunderstanding can be healed with one honest sentence. Speak without blame, and give the other person room to respond.",
+      "hi": "एक गलतफहमी एक ईमानदार वाक्य से ठीक हो सकती है। आरोप के बिना बोलिए और सामने वाले को जवाब देने की जगह दीजिए।"
+    },
+    {
+      "en": "Recognition is close, but it comes through teamwork. Share credit, document your work, and let others see your process.",
+      "hi": "पहचान करीब है, पर वह टीमवर्क से मिलेगी। श्रेय बाँटें, अपने काम का रिकॉर्ड रखें और दूसरों को आपकी प्रक्रिया दिखने दें।"
+    },
+    {
+      "en": "This is a week for quiet preparation. Clear clutter, review your goals, and plant one seed that will matter three months from now.",
+      "hi": "यह सप्ताह शांत तैयारी का है। बेकार चीज़ें हटाएँ, लक्ष्य दोबारा देखें और एक ऐसा बीज बोएँ जो तीन महीने बाद मायने रखेगा।"
+    }
+  ],
+  "themes": [
+    { "en": "Career and money", "hi": "करियर और धन" },
+    { "en": "Love and relationships", "hi": "प्रेम और रिश्ते" },
+    { "en": "Health and energy", "hi": "स्वास्थ्य और ऊर्जा" },
+    { "en": "Family and home", "hi": "परिवार और घर" },
+    { "en": "Learning and travel", "hi": "सीखना और यात्रा" },
+    { "en": "Inner peace", "hi": "आंतरिक शांति" }
+  ],
+  "remedies": [
+    {
+      "en": "Offer water to the rising Sun for three mornings.",
+      "hi": "तीन सुबह सूर्योदय के समय सूर्य को जल अर्पित करें।"
+    },
+    {
+      "en": "Keep a few coins in a red or yellow cloth and donate them on Friday.",
+      "hi": "कुछ सिक्के लाल या पीले कपड़े में रखें और शुक्रवार को दान करें।"
+    },
+    {
+      "en": "Write down three priorities before checking your phone.",
+      "hi": "फोन देखने से पहले तीन प्राथमिकताएँ लिखें।"
+    },
+    {
+      "en": "Light a diya near the main entrance in the evening.",
+      "hi": "शाम को मुख्य द्वार के पास दीपक जलाएँ।"
+    },
+    {
+      "en": "Speak one honest appreciation to a family member every day.",
+      "hi": "हर दिन परिवार के किसी सदस्य की एक सच्ची प्रशंसा करें।"
+    },
+    {
+      "en": "Drink water from a copper vessel in the morning.",
+      "hi": "सुबह तांबे के बर्तन में रखा पानी पिएँ।"
+    },
+    {
+      "en": "Feed birds before your first meal one day this week.",
+      "hi": "इस सप्ताह एक दिन पहले भोजन से पहले पक्षियों को दाना डालें।"
+    },
+    {
+      "en": "Tidy your workspace and remove one thing you no longer use.",
+      "hi": "अपना कार्यस्थल साफ़ करें और एक ऐसी चीज़ हटाएँ जिसकी अब ज़रूरत नहीं।"
+    },
+    {
+      "en": "Walk barefoot on grass for ten minutes.",
+      "hi": "दस मिनट घास पर नंगे पैर चलें।"
+    },
+    {
+      "en": "Chant Om Shanti three times before sleeping.",
+      "hi": "सोने से पहले तीन बार ॐ शांति का जाप करें।"
+    },
+    {
+      "en": "Donate a notebook or stationery to a student.",
+      "hi": "किसी विद्यार्थी को नोटबुक या स्टेशनरी दान करें।"
+    },
+    {
+      "en": "Keep a basil leaf in your wallet or purse.",
+      "hi": "अपने बटुए या पर्स में तुलसी का एक पत्ता रखें।"
+    }
+  ]
+}

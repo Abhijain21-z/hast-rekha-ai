@@ -35,9 +35,14 @@ export default function ZodiacShowcase() {
               </motion.div>
             ))}
           </div>
-          <Link href="/rashi" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-gold-300 hover:text-gold-200">
-            {t.hero.cta2} <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Link href="/rashifal" className="btn-gold inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm">
+              {L({ en: "Aaj Ka Rashifal", hi: "आज का राशिफल" })} <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/rashi" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-slate-200 transition hover:border-gold-400/40 hover:text-white">
+              {t.hero.cta2} <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
