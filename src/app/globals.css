@@ -384,7 +384,54 @@ html[data-theme="light"] [class*="bg-black/30"] {
     transform: none !important;
     animation: none !important;
     transition: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
   }
   body.hast-print .fixed,
   body.hast-print .sticky { display: none !important; }
+
+  /* Keep the printed report legible: dark ink on white paper, including the
+     headings and small labels that are light on the dark website theme. */
+  body.hast-print,
+  body.hast-print main,
+  body.hast-print section,
+  body.hast-print article,
+  body.hast-print aside,
+  body.hast-print div,
+  body.hast-print p,
+  body.hast-print span,
+  body.hast-print li,
+  body.hast-print strong,
+  body.hast-print em,
+  body.hast-print h1,
+  body.hast-print h2,
+  body.hast-print h3,
+  body.hast-print h4,
+  body.hast-print h5,
+  body.hast-print h6,
+  body.hast-print a {
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+  }
+
+  body.hast-print [class*="bg-cosmic"],
+  body.hast-print [class*="bg-mystic"],
+  body.hast-print [class*="bg-black"],
+  body.hast-print [class*="bg-slate-9"],
+  body.hast-print [class*="bg-gradient"] {
+    background-color: #fff !important;
+    background-image: none !important;
+  }
+  body.hast-print .glass,
+  body.hast-print .glass-strong {
+    background: #fff !important;
+    border-color: #d7d7d7 !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Icons and chart marks need the same dark treatment as the copy. */
+  body.hast-print svg { color: #111 !important; }
+  body.hast-print svg [fill]:not([fill="none"]) { fill: #222 !important; }
+  body.hast-print svg [stroke]:not([stroke="none"]) { stroke: #222 !important; }
+  body.hast-print svg text { fill: #111 !important; }
 }
