@@ -373,4 +373,18 @@ html[data-theme="light"] [class*="bg-black/30"] {
   .no-print { display: none !important; }
   .glass, .glass-strong { background: #fff !important; border-color: #ddd !important; color: #111 !important; }
   .starfield, .cosmic-backdrop { display: none !important; }
+
+  /* The PDF button and /reading/[id]?print=1 use this class so revealed
+     sections below the fold are not printed at opacity 0. */
+  body.hast-print header,
+  body.hast-print footer { display: none !important; }
+  body.hast-print main { padding: 0 !important; }
+  body.hast-print * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  body.hast-print .fixed,
+  body.hast-print .sticky { display: none !important; }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -45,6 +45,19 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
   );
   const [copied, setCopied] = useState(false);
   const [tech, setTech] = useState(false);
+
+  // A print-open link forces every reveal section visible before the browser
+  // opens the print dialog. Without this, sections below the fold stay at
+  // opacity 0 and the saved PDF comes out half-empty.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("print") !== "1") return;
+    document.body.classList.add("hast-print");
+    const timer = window.setTimeout(() => window.print(), 1200);
+    return () => {
+      window.clearTimeout(timer);
+      document.body.classList.remove("hast-print");
+    };
+  }, []);
   // ₹51 "Pro" unlock: gates the PDF download/print buttons and the 5-year roadmap.
   const [pro, setPro] = useState(reading.premium);
   // Refresh the server props after an unlock, so an Ultra purchase reveals the

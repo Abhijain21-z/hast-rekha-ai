@@ -18,7 +18,11 @@ function tpl(text: string, vars: Record<string, string | number>) {
 
 /** The report prints through the print stylesheet — the browser's "Save as PDF". */
 function printReport() {
-  window.setTimeout(() => window.print(), 350);
+  document.body.classList.add("hast-print");
+  window.setTimeout(() => {
+    window.print();
+    window.setTimeout(() => document.body.classList.remove("hast-print"), 1500);
+  }, 350);
 }
 
 /** The two plans the paywall offers: ₹51 Pro, ₹351 Ultra Pro (adds the book). */
