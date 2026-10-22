@@ -420,6 +420,7 @@ html[data-theme="light"] [class*="bg-black/30"] {
 }
 
 @media print {
+  html,
   body { background: #fff !important; color: #111 !important; }
   .no-print { display: none !important; }
   .print-only { display: block !important; }
