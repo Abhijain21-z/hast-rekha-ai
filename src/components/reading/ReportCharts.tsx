@@ -16,8 +16,8 @@ export function CountUp({ to, suffix = "", duration = 1.4, className }: { to: nu
   }, [inView, to, duration]);
   return (
     <span ref={ref} className={cn("tabular-nums", className)}>
-      {v}
-      {suffix}
+      <span className="no-print">{v}{suffix}</span>
+      <span className="print-only-inline">{to}{suffix}</span>
     </span>
   );
 }
@@ -56,7 +56,14 @@ export function Gauge({ value, label, size = 110, color = "#f5c242" }: { value: 
       <div className="relative" style={{ width: size, height: size }}>
         <svg viewBox="0 0 100 100" className="-rotate-90">
           <circle cx="50" cy="50" r={r} fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="8" />
+          <circle
+            className="print-only"
+            cx="50" cy="50" r={r} fill="none" stroke={color} strokeWidth="8" strokeLinecap="round"
+            strokeDasharray={C}
+            strokeDashoffset={C * (1 - value / 100)}
+          />
           <motion.circle
+            className="no-print"
             cx="50" cy="50" r={r} fill="none" stroke={color} strokeWidth="8" strokeLinecap="round"
             strokeDasharray={C}
             initial={{ strokeDashoffset: C }}
@@ -86,7 +93,8 @@ export function Meter({ value, label, color = "#f5c242" }: { value: number; labe
         </div>
       )}
       <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/10">
-        <motion.div className="h-full rounded-full" style={{ background: `linear-gradient(90deg, ${color}99, ${color})`, boxShadow: `0 0 10px ${color}66` }} initial={{ width: 0 }} whileInView={{ width: `${value}%` }} viewport={{ once: true }} transition={{ duration: 1.2, ease: "easeOut" }} />
+        <div className="print-only h-full rounded-full" style={{ width: `${value}%`, background: `linear-gradient(90deg, ${color}99, ${color})` }} />
+        <motion.div className="no-print h-full rounded-full" style={{ background: `linear-gradient(90deg, ${color}99, ${color})`, boxShadow: `0 0 10px ${color}66` }} initial={{ width: 0 }} whileInView={{ width: `${value}%` }} viewport={{ once: true }} transition={{ duration: 1.2, ease: "easeOut" }} />
       </div>
     </div>
   );
@@ -181,8 +189,10 @@ export function LifeGraph({ points, luckyAges, turning, currentAge, birthYear, n
       {turning.map((tp, i) => (
         <motion.g key={tp.age} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.6 + i * 0.2 }}>
           <line x1={x(tp.age)} x2={x(tp.age)} y1={y(valueAt(tp.age))} y2={mt} stroke="rgba(192,132,252,0.5)" strokeDasharray="3 3" />
-          <rect x={x(tp.age) - 34} y={mt - 18} width="68" height="16" rx="8" fill="rgba(124,58,237,0.6)" />
-          <text x={x(tp.age)} y={mt - 7} textAnchor="middle" fontSize="9" fill="#fff">{tp.label}</text>
+          <g className="no-print">
+            <rect x={x(tp.age) - 34} y={mt - 18} width="68" height="16" rx="8" fill="rgba(124,58,237,0.6)" />
+            <text x={x(tp.age)} y={mt - 7} textAnchor="middle" fontSize="9" fill="#fff">{tp.label}</text>
+          </g>
         </motion.g>
       ))}
 

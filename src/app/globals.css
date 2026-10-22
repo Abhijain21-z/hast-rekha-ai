@@ -375,7 +375,14 @@ html[data-theme="light"] [class*="bg-black/30"] {
    The report is laid out as an A4 document with a cover, running header/
    footer, page numbers, and deliberate page breaks between chapters.
    ========================================================================= */
-.print-only { display: none; }
+.print-only,
+.print-only-inline { display: none; }
+
+/* Zodiac symbols must render as text, not as coloured emoji tiles. */
+.zodiac-glyph {
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", "Poppins", sans-serif;
+  font-variant-emoji: text;
+}
 
 @page report {
   size: A4;
@@ -421,9 +428,17 @@ html[data-theme="light"] [class*="bg-black/30"] {
 
 @media print {
   html,
-  body { background: #fff !important; color: #111 !important; }
+  body {
+    /* Chrome otherwise paints the page margins with its dark color-scheme
+       canvas (#121212), which showed up as a black border around every PDF
+       page. The report must be white edge-to-edge. */
+    color-scheme: light !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
   .no-print { display: none !important; }
   .print-only { display: block !important; }
+  .print-only-inline { display: inline !important; }
   .starfield, .cosmic-backdrop, .mandala-bg { display: none !important; }
 
   body.hast-print {

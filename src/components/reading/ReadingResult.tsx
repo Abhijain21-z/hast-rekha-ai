@@ -39,6 +39,9 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
   const lagna = rashiAt(r.lagna);
   const sunV = rashiAt(r.sunSignVedic);
   const sunW = rashiAt(r.sunSignWestern);
+  // Force text presentation for zodiac glyphs. Windows otherwise renders ♓ as
+  // a purple emoji tile with a black border, which looked wrong in the PDF.
+  const glyphText = (s: string) => `${s.replace(/\uFE0F/g, "")}\uFE0E`;
   const report = useMemo(
     () => buildPalmReport({ fullName: reading.fullName, birthDate: reading.birthDate, birthTime: reading.birthTime, palmImage: reading.palmImage, result: r }),
     [reading.fullName, reading.birthDate, reading.birthTime, reading.palmImage, r],
@@ -203,9 +206,9 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       </div>
       <div className="print-overview mt-8 grid gap-4 md:grid-cols-3">
         {[
-          { label: t.result.moonSign, glyph: rashi.symbol, name: L(rashi.name), sub: `${formatDegree(r.moonDegree)} · ${t.result.lord}: ${L(rashi.lord)}`, extra: `${t.result.element}: ${L(rashi.element)}`, icon: Moon, delay: 0 },
+          { label: t.result.moonSign, glyph: glyphText(rashi.symbol), name: L(rashi.name), sub: `${formatDegree(r.moonDegree)} · ${t.result.lord}: ${L(rashi.lord)}`, extra: `${t.result.element}: ${L(rashi.element)}`, icon: Moon, delay: 0 },
           { label: t.result.nakshatra, glyph: "✦", name: L(nak.name), sub: `${t.result.pada} ${r.pada} · ${t.result.lord}: ${L(nak.lord)}`, extra: `${t.result.deity}: ${L(nak.deity)} · ${t.result.symbol}: ${L(nak.symbol)}`, icon: Star, delay: 0.1 },
-          { label: t.result.lagna, glyph: lagna.symbol, name: L(lagna.name), sub: `${formatDegree(r.lagnaDegree)} · ${t.result.lord}: ${L(lagna.lord)}`, extra: `${t.result.element}: ${L(lagna.element)}`, icon: Sun, delay: 0.2 },
+          { label: t.result.lagna, glyph: glyphText(lagna.symbol), name: L(lagna.name), sub: `${formatDegree(r.lagnaDegree)} · ${t.result.lord}: ${L(lagna.lord)}`, extra: `${t.result.element}: ${L(lagna.element)}`, icon: Sun, delay: 0.2 },
         ].map((c) => (
           <motion.div key={c.label} initial={{ opacity: 0, y: 30, rotateX: 12 }} animate={{ opacity: 1, y: 0, rotateX: 0 }} transition={{ delay: 0.15 + c.delay, duration: 0.6 }} style={{ transformPerspective: 900 }}>
             <Tilt>
@@ -213,7 +216,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
                 <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-mystic-600/20 blur-2xl" />
                 <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400"><c.icon className="h-3.5 w-3.5 text-gold-300" /> {c.label}</p>
                 <div className="mt-4 flex items-center gap-4">
-                  <span className="font-display text-6xl leading-none text-gold-300 drop-shadow-[0_0_16px_rgba(245,194,66,0.55)]">{c.glyph}</span>
+                  <span className="zodiac-glyph font-display text-6xl leading-none text-gold-300 drop-shadow-[0_0_16px_rgba(245,194,66,0.55)]">{c.glyph}</span>
                   <div>
                     <p className="font-display text-2xl text-white">{c.name}</p>
                     <p className="mt-1 text-xs text-slate-300">{c.sub}</p>
@@ -229,8 +232,8 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       {/* Panchang */}
       <motion.div {...reveal} className="print-overview-meta mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
         {[
-          [t.result.sunVedic, `${sunV.symbol} ${L(sunV.short)}`],
-          [t.result.sunWestern, `${sunW.symbol} ${L(sunW.short)}`],
+          [t.result.sunVedic, `${glyphText(sunV.symbol)} ${L(sunV.short)}`],
+          [t.result.sunWestern, `${glyphText(sunW.symbol)} ${L(sunW.short)}`],
           [t.result.tithi, tithiName(r.tithi, cl), L(PANCHANG.paksha[r.paksha])],
           [t.result.yoga, byLang<string[]>(PANCHANG.yogas, cl)[r.yoga]],
           [t.result.weekday, byLang<string[]>(PANCHANG.weekdays, cl)[r.weekday]],
