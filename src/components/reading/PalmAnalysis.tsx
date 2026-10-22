@@ -34,7 +34,7 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
       </div>
 
       {/* image + map + shape */}
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="print-palm-overview grid gap-6 lg:grid-cols-3">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           {palmImage ? (
             <div className="overflow-hidden rounded-3xl border border-gold-400/30 gold-glow">
@@ -49,7 +49,7 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
             <div className="glass flex h-full flex-col items-center justify-center rounded-3xl px-6 py-10 text-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gold-400/30 bg-gold-400/10 text-gold-300"><Hand className="h-7 w-7" /></div>
               <p className="mt-4 text-sm text-slate-300">{t.result.noPalm}</p>
-              <ul className="mt-4 space-y-1 text-left text-xs text-slate-500">
+              <ul className="no-print mt-4 space-y-1 text-left text-xs text-slate-500">
                 {byLang<string[]>(PALMISTRY.tips, cl).map((tip) => <li key={tip}>• {tip}</li>)}
               </ul>
             </div>
@@ -57,15 +57,15 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="glass-strong rounded-3xl p-3">
-          <div className="relative aspect-[280/440] overflow-hidden rounded-[1.4rem] border border-gold-400/25">
+          <div className="print-palm-map relative aspect-[280/440] overflow-hidden rounded-[1.4rem] border border-gold-400/25">
             <Image src="/images/hand.png" alt="Palm map" fill sizes="320px" className="object-cover" />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cosmic-950/45 via-transparent to-cosmic-950/15" />
             <PalmSvg overlay active={active} onSelect={setActive} strengths={strengths} className="absolute inset-0 h-full w-full" />
           </div>
-          <p className="mt-2 text-center text-xs text-slate-500">{t.palmSection.tap}</p>
+          <p className="no-print mt-2 text-center text-xs text-slate-500">{t.palmSection.tap}</p>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="space-y-4">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="print-palm-notes space-y-4">
           <Card strong className="p-5">
             <p className="text-xs font-semibold uppercase tracking-wider text-gold-300">{t.report.shape}</p>
             <p className="mt-2 font-display text-xl text-white">{L(report.shape.name)}</p>

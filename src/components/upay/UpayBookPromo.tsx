@@ -32,7 +32,7 @@ export default function UpayBookPromo({ extra = false }: { extra?: boolean }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5 }}
-      className="group mt-6 block overflow-hidden rounded-3xl border border-gold-400/40 bg-gradient-to-br from-red-950/60 via-cosmic-800/80 to-mystic-700/40 gold-glow transition hover:border-gold-400/70"
+      className="no-print group mt-6 block overflow-hidden rounded-3xl border border-gold-400/40 bg-gradient-to-br from-red-950/60 via-cosmic-800/80 to-mystic-700/40 gold-glow transition hover:border-gold-400/70"
     >
       <div className="grid gap-6 p-6 sm:p-8 md:grid-cols-[1fr_240px] md:items-center">
         <div>

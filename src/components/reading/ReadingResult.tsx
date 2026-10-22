@@ -88,12 +88,35 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
     { id: "sec-mantra", label: t.mantra.nav, icon: Sparkles },
   ];
 
+  // The printed report opens with a proper cover. Only the details the reader
+  // actually supplied (plus the derived birth chart) belong on it.
+  const coverFacts: { label: string; value: string }[] = [
+    { label: L({ en: "Date of birth", hi: "जन्म तिथि" }), value: formatDate(reading.birthDate, cl) },
+    { label: L({ en: "Time of birth", hi: "जन्म समय" }), value: reading.timeUnknown ? "12:00 PM (~)" : formatTime12(reading.birthTime) },
+    { label: L({ en: "Place of birth", hi: "जन्म स्थान" }), value: reading.placeName },
+    { label: L({ en: "Coordinates", hi: "निर्देशांक" }), value: `${reading.latitude.toFixed(2)}, ${reading.longitude.toFixed(2)}` },
+    { label: L({ en: "Time zone", hi: "समय क्षेत्र" }), value: tzLabel(reading.tzOffset) },
+    { label: L({ en: "Moon sign", hi: "चंद्र राशि" }), value: `${L(rashi.name)} (${rashi.symbol})` },
+    { label: L({ en: "Nakshatra", hi: "नक्षत्र" }), value: `${L(nak.name)} · ${t.result.pada} ${r.pada}` },
+    { label: L({ en: "Ascendant", hi: "लग्न" }), value: L(lagna.name) },
+  ];
+  if (reading.gender) {
+    coverFacts.push({ label: L({ en: "Gender", hi: "लिंग" }), value: GENDER_LABEL[reading.gender] ?? reading.gender });
+  }
+  if (reading.married !== null) {
+    coverFacts.push({ label: L({ en: "Marital status", hi: "वैवाहिक स्थिति" }), value: reading.married ? t.form.marriedYes : t.form.marriedNo });
+  }
+  const coverSections = [
+    ...nav.filter((n) => n.id !== "sec-rashifal").map((n) => n.label),
+    t.premium.title || L({ en: "Five-year roadmap", hi: "पाँच वर्षीय रोडमैप" }),
+  ];
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       {/* Header */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-strong relative overflow-hidden rounded-3xl p-6 sm:p-8">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="print-cover glass-strong relative overflow-hidden rounded-3xl p-6 sm:p-8">
         <div className="mandala-bg pointer-events-none absolute inset-0 opacity-60" />
-        <div className="relative flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="screen-cover relative flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400/90">✦ {t.result.title}</p>
             <p className="mt-3 text-sm text-slate-400">{t.result.preparedFor}</p>
@@ -122,6 +145,42 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
             </Link>
           </div>
         </div>
+
+        {/* Print-only cover: clean A4 first page, with the details the reader
+            supplied and a short contents list. Hidden on the website. */}
+        <div className="print-only print-cover-sheet">
+          <p className="print-cover-kicker">HAST REKHA AI · VEDIC ASTROLOGY</p>
+          <p className="print-cover-label">{t.result.preparedFor}</p>
+          <h1 className="print-cover-name">{reading.fullName}</h1>
+          <p className="print-cover-title">✦ {t.result.title}</p>
+          <div className="print-cover-rule" />
+          <dl className="print-cover-details">
+            {coverFacts.map((fact) => (
+              <div key={fact.label}>
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="print-cover-contents">
+            <p className="print-cover-contents-title">{L({ en: "Inside this report", hi: "इस रिपोर्ट में" })}</p>
+            <ol>
+              {coverSections.map((label, i) => (
+                <li key={`${label}-${i}`}>
+                  <span>{String(i + 1).padStart(2, "0")}</span>
+                  {label}
+                </li>
+              ))}
+            </ol>
+          </div>
+          <p className="print-cover-note">
+            {L({
+              en: "Private & confidential · Prepared from the birth details and palm inputs supplied by the reader.",
+              hi: "निजी और गोपनीय · पाठक द्वारा दी गई जन्म जानकारी और हस्तरेखा के आधार पर तैयार।",
+            })}
+          </p>
+          <p className="print-cover-id">Report ID · {reading.id} &nbsp;|&nbsp; Generated · {formatDate(reading.createdAt.slice(0, 10), cl)}</p>
+        </div>
       </motion.div>
 
       {guest && (
@@ -132,7 +191,17 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       )}
 
       {/* Big three */}
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
+      <div className="print-only print-overview-heading">
+        <p className="print-section-kicker">{L({ en: "Your birth chart", hi: "आपकी जन्म कुंडली" })}</p>
+        <h2>{L({ en: "At a glance", hi: "एक नज़र में" })}</h2>
+        <p className="print-section-intro">
+          {L({
+            en: "The three anchors of your reading: your Moon sign, birth Nakshatra, and Ascendant.",
+            hi: "आपकी रीडिंग के तीन आधार: चंद्र राशि, जन्म नक्षत्र और लग्न।",
+          })}
+        </p>
+      </div>
+      <div className="print-overview mt-8 grid gap-4 md:grid-cols-3">
         {[
           { label: t.result.moonSign, glyph: rashi.symbol, name: L(rashi.name), sub: `${formatDegree(r.moonDegree)} · ${t.result.lord}: ${L(rashi.lord)}`, extra: `${t.result.element}: ${L(rashi.element)}`, icon: Moon, delay: 0 },
           { label: t.result.nakshatra, glyph: "✦", name: L(nak.name), sub: `${t.result.pada} ${r.pada} · ${t.result.lord}: ${L(nak.lord)}`, extra: `${t.result.deity}: ${L(nak.deity)} · ${t.result.symbol}: ${L(nak.symbol)}`, icon: Star, delay: 0.1 },
@@ -158,7 +227,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       </div>
 
       {/* Panchang */}
-      <motion.div {...reveal} className="mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+      <motion.div {...reveal} className="print-overview-meta mt-4 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
         {[
           [t.result.sunVedic, `${sunV.symbol} ${L(sunV.short)}`],
           [t.result.sunWestern, `${sunW.symbol} ${L(sunW.short)}`],
@@ -188,7 +257,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       </div>
 
       {/* 1. Past */}
-      <div className="mt-10"><PastSection items={report.past} /></div>
+      <div className="print-section-start mt-10"><PastSection items={report.past} /></div>
 
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
@@ -243,6 +312,16 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
 
       {/* Rashi insights */}
       <section id="sec-rashi" className="mt-14 scroll-mt-28">
+        <div className="print-only print-section-heading">
+          <p className="print-section-kicker">{L({ en: "Moon sign & nakshatra", hi: "चंद्र राशि और नक्षत्र" })}</p>
+          <h2>{L(rashi.name)} · {L(nak.name)}</h2>
+          <p className="print-section-intro">
+            {L({
+              en: "Your emotional signature, birth Nakshatra, and the traditional lucky factors for this Moon sign.",
+              hi: "आपका भावनात्मक स्वभाव, जन्म नक्षत्र और इस चंद्र राशि के पारंपरिक शुभ कारक।",
+            })}
+          </p>
+        </div>
         <div className="grid gap-4 lg:grid-cols-3">
           <motion.div {...reveal}>
             <Card className="h-full p-6">
@@ -295,12 +374,12 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* 4. Detailed sections */}
-      <div className="mt-14"><DetailedSections report={report} rashi={rashi} readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} /></div>
+      <div className="print-section-start mt-14"><DetailedSections report={report} rashi={rashi} readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} /></div>
 
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* 5. Palm analysis */}
-      <div className="mt-14"><PalmAnalysis report={report} palmImage={reading.palmImage} palmHand={reading.palmHand} /></div>
+      <div className="print-section-start mt-14"><PalmAnalysis report={report} palmImage={reading.palmImage} palmHand={reading.palmHand} /></div>
 
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
@@ -325,7 +404,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       <MantraSection reading={reading} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* 8. Premium 5-year report */}
-      <div className="mt-14"><PremiumSection reading={reading} unlocked={pro} onUnlocked={unlockPro} /></div>
+      <div className="print-section-start mt-14"><PremiumSection reading={reading} unlocked={pro} onUnlocked={unlockPro} /></div>
 
       {/* Technical */}
       <div className="mt-10">

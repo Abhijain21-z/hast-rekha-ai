@@ -50,7 +50,7 @@ export default function DetailedSections({
               <Tilt max={3}>
                 <div className="glass relative overflow-hidden rounded-3xl p-6 sm:p-8">
                   <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl" style={{ background: `${color}22` }} />
-                  <div className="relative grid gap-6 lg:grid-cols-[1.35fr_0.85fr]">
+                  <div className="print-detail-grid relative grid gap-6 lg:grid-cols-[1.35fr_0.85fr]">
                     <div>
                       <div className="flex items-center gap-4">
                         <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border" style={{ borderColor: `${color}55`, background: `${color}1f`, color }}>
