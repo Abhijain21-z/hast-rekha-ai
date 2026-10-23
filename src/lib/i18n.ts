@@ -536,8 +536,8 @@ const en = {
     section: "Section",
   },
   asks: {
-    pdfTitle: "Download the complete PDF of your prediction?",
-    pdfSub: "A premium report worth ₹901 — yours for just ₹{p}. Complete printable PDF, 5-year roadmap, rashi-wise secret wealth mantra and personal remedies, all in one Pro plan.",
+    pdfTitle: "Badhai ho — Diwali Vishesh Offer",
+    pdfSub: "₹901 ka Pro plan — complete printable PDF, 5-year roadmap, rashi-wise secret wealth mantra and personal remedies — is being given to you today for just ₹{p}. Would you like to receive the complete PDF?",
     pdfYes: "Yes, I want the PDF",
     pdfNo: "No, keep reading",
     bookTitle: "Would you like the complete book of remedies that frees your life from every problem?",
@@ -1085,8 +1085,8 @@ const hi: Dict = {
     section: "खंड",
   },
   asks: {
-    pdfTitle: "क्या आप अपनी prediction की complete PDF download करना चाहते हैं?",
-    pdfSub: "₹901 की प्रीमियम रिपोर्ट मात्र ₹{p} में — पूरी printable PDF, 5 साल का रोडमैप, राशि-अनुसार गुप्त धन-मंत्र और व्यक्तिगत उपाय, सब एक Pro plan में।",
+    pdfTitle: "बधाई हो — दिपावली विशेष ऑफर",
+    pdfSub: "₹901 का Pro plan — पूरी printable PDF, 5 साल का रोडमैप, राशि-अनुसार गुप्त धन-मंत्र और व्यक्तिगत उपाय — आपको सिर्फ ₹{p} में आज प्रदान किया जा रहा है। क्या आप complete PDF प्राप्त करना चाहते हैं?",
     pdfYes: "हाँ, PDF चाहिए",
     pdfNo: "नहीं, आगे पढ़ें",
     bookTitle: "क्या आप अपने जीवन की सभी समस्याओं से मुक्ति दिलाने वाले उपाय की पुस्तक प्राप्त करना चाहते हैं?",

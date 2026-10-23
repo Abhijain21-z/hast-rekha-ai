@@ -17,9 +17,9 @@ function tpl(text: string, vars: Record<string, string | number>) {
 /**
  * Scroll-triggered asks while the visitor reads the prediction:
  *
- * - after every 4th scroll — "download the complete PDF?" → ₹51 Pro paywall
+ * - after every 10th scroll — "download the complete PDF?" → ₹51 Pro paywall
  *   (stops as soon as the report is unlocked);
- * - once, after the 6th scroll — the Dhandayak book → SuperProfile buy link,
+ * - once, after the 10th scroll — the Dhandayak book → SuperProfile buy link,
  *   with the Ultra Pro alternative (prediction + book) for unpaid visitors.
  *
  * One "scroll" = one continuous finger-swipe / mouse-wheel gesture. A burst of
@@ -27,8 +27,10 @@ function tpl(text: string, vars: Record<string, string | number>) {
  * Counts pause while any popup or paywall is open.
  */
 const BURST_GAP_MS = 380;
-const PDF_EVERY = 4;
-const BOOK_AT = 6;
+const PDF_EVERY = 10;
+const BOOK_AT = 10;
+/** Cap the complete-PDF popup to 3 gentle asks per visit. */
+const MAX_PDF_ASKS = 3;
 
 /** Any open app modal (all Modal overlays share this z-layer) pauses counting. */
 function anyModalOpen() {
@@ -57,7 +59,7 @@ export default function ScrollPrompts({
     latest.current = { unlocked, ultra };
   }, [unlocked, ultra]);
 
-  const asked = useRef({ book: false });
+  const asked = useRef({ book: false, pdf: 0 });
   const counter = useRef({ gestures: 0, inBurst: false, timer: 0 });
 
   useEffect(() => {
@@ -73,7 +75,8 @@ export default function ScrollPrompts({
           if (n >= BOOK_AT && !a.book && !latest.current.ultra) {
             a.book = true;
             setAskBook(true);
-          } else if (n % PDF_EVERY === 0 && !latest.current.unlocked) {
+          } else if (n % PDF_EVERY === 0 && !latest.current.unlocked && a.pdf < MAX_PDF_ASKS) {
+            a.pdf += 1;
             setAskPdf(true);
           }
         }
