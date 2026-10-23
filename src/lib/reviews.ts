@@ -1,9 +1,9 @@
-import { and, eq, gt, inArray, isNull, lte, or } from "drizzle-orm";
+import { and, eq, inArray, isNull, lte, or } from "drizzle-orm";
 import { db } from "@/db";
 import { reviewArchive, reviews } from "@/db/schema";
 
 /** Public lifetime of a negative review before it moves to the archive. */
-export const NEGATIVE_REVIEW_TTL_MS = 60 * 60 * 1000;
+export const NEGATIVE_REVIEW_TTL_MS = 0;
 
 /** 1–3 stars are treated as negative. Change this one number to tune it. */
 export const NEGATIVE_REVIEW_MAX_RATING = 3;
@@ -22,7 +22,7 @@ export function negativeReviewExpiresAt(now = new Date()) {
  * old rows created before this feature existed.
  */
 export function reviewVisibilityWhere(now = new Date()) {
-  return or(eq(reviews.isNegative, false), gt(reviews.expiresAt, now));
+  return eq(reviews.isNegative, false);
 }
 
 /**

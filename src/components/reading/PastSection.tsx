@@ -7,8 +7,9 @@ import { useLang } from "@/components/providers/LanguageProvider";
 import type { Bi } from "@/lib/i18n";
 import { cn } from "@/components/ui";
 import { CountUp } from "./ReportCharts";
+import { ProReadMore, ProText } from "./ProTeaser";
 
-export default function PastSection({ items }: { items: Bi[] }) {
+export default function PastSection({ items, readingId, unlocked, onUnlocked }: { items: Bi[]; readingId: string; unlocked: boolean; onUnlocked: () => void }) {
   const { t, L } = useLang();
   const [marks, setMarks] = useState<Record<number, boolean>>({});
   const answered = Object.keys(marks).length;
@@ -51,7 +52,9 @@ export default function PastSection({ items }: { items: Bi[] }) {
                 >
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold-400/15 font-display text-xs text-gold-300">{i + 1}</span>
                   <div className="flex-1">
-                    <p className="text-sm leading-relaxed text-slate-100">{L(p)}</p>
+                    <p className="text-sm leading-relaxed text-slate-100">
+                      <ProText text={L(p)} unlocked={unlocked} />
+                    </p>
                     <div className="mt-2 flex gap-2">
                       <button onClick={() => setMarks({ ...marks, [i]: true })} className={cn("inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs transition", m === true ? "border-emerald-400/60 bg-emerald-400/20 text-emerald-200" : "border-white/10 text-slate-400 hover:border-emerald-400/40 hover:text-emerald-200")}>
                         <Check className="h-3 w-3" /> {t.report.yes}
@@ -65,6 +68,14 @@ export default function PastSection({ items }: { items: Bi[] }) {
               );
             })}
           </ul>
+          <div className="mt-5 flex items-center justify-center gap-3">
+            <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} />
+            {!unlocked && (
+              <span className="text-xs text-slate-400">
+                {L({ en: "Unlock Pro for the complete picture.", hi: "पूरी जानकारी प्रो प्लान में मिलेगी।" })}
+              </span>
+            )}
+          </div>
           <p className="mt-5 text-center text-xs italic text-gold-200/80">{t.report.pastNote}</p>
         </div>
       </div>

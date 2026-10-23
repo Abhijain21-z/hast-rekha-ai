@@ -24,6 +24,7 @@ import ReviewPrompt from "./ReviewPrompt";
 import ScrollPrompts from "./ScrollPrompts";
 import RashifalPanel from "@/components/rashifal/RashifalPanel";
 import { PdfDividerButton, ProGateButton } from "./ProPaywall";
+import { ProReadMore, ProText } from "./ProTeaser";
 import UpayBookPromo from "@/components/upay/UpayBookPromo";
 import { BOOK_PROMO } from "@/lib/flags";
 
@@ -260,7 +261,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       </div>
 
       {/* 1. Past */}
-      <div className="print-section-start mt-10"><PastSection items={report.past} /></div>
+      <div className="print-section-start mt-10"><PastSection items={report.past} readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} /></div>
 
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
@@ -382,7 +383,7 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* 5. Palm analysis */}
-      <div className="print-section-start mt-14"><PalmAnalysis report={report} palmImage={reading.palmImage} palmHand={reading.palmHand} /></div>
+      <div className="print-section-start mt-14"><PalmAnalysis report={report} palmImage={reading.palmImage} palmHand={reading.palmHand} readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} /></div>
 
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
@@ -395,11 +396,19 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
             {report.suggestions.map((s, i) => (
               <motion.li key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="flex gap-3 rounded-2xl border border-white/8 bg-white/[0.03] p-4">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold-400/15 font-display text-sm text-gold-300">{i + 1}</span>
-                <p className="text-sm leading-relaxed text-slate-100">{L(s)}</p>
+                <p className="text-sm leading-relaxed text-slate-100"><ProText text={L(s)} unlocked={pro} /></p>
               </motion.li>
             ))}
           </ol>
         </motion.div>
+        <div className="mt-5 flex items-center justify-center gap-3">
+          <ProReadMore readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
+          {!pro && (
+            <span className="text-xs text-slate-400">
+              {L({ en: "Unlock Pro for the complete picture.", hi: "पूरी जानकारी प्रो प्लान में मिलेगी।" })}
+            </span>
+          )}
+        </div>
         {BOOK_PROMO && <UpayBookPromo />}
       </section>
 

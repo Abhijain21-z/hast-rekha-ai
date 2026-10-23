@@ -11,19 +11,24 @@ import { byLang } from "@/lib/i18n";
 import PalmSvg, { PALM_LINES } from "@/components/palm/PalmSvg";
 import { Card } from "@/components/ui";
 import { Gauge, Meter } from "./ReportCharts";
+import { ProReadMore, ProText } from "./ProTeaser";
 
 interface Props {
   report: PalmReport;
   palmImage: string | null;
   palmHand: string | null;
+  readingId: string;
+  unlocked: boolean;
+  onUnlocked: () => void;
 }
 
-export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
+export default function PalmAnalysis({ report, palmImage, palmHand, readingId, unlocked, onUnlocked }: Props) {
   const { t, L, lang, cl } = useLang();
   const [active, setActive] = useState<string | null>(null);
   const strengths: Record<string, number> = {};
   report.lines.forEach((l) => (strengths[l.def.key] = l.strength));
   report.mounts.forEach((m) => (strengths[m.def.key] = m.strength));
+  const mountProText = (text: string) => <ProText text={text} unlocked={unlocked} />;
 
   return (
     <section id="sec-palm" className="scroll-mt-28">
@@ -69,14 +74,14 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
           <Card strong className="p-5">
             <p className="text-xs font-semibold uppercase tracking-wider text-gold-300">{t.report.shape}</p>
             <p className="mt-2 font-display text-xl text-white">{L(report.shape.name)}</p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-300">{L(report.shape.text)}</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-300"><ProText text={L(report.shape.text)} unlocked={unlocked} /></p>
           </Card>
           <Card className="p-5">
             <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-300"><Fingerprint className="h-4 w-4" /> {t.report.fingers}</p>
             {[report.fingers, report.knuckles, report.thumb].map((v) => (
               <div key={v.label.en} className="mt-3">
                 <p className="text-sm font-semibold text-white">{L(v.label)}</p>
-                <p className="text-xs leading-relaxed text-slate-400">{L(v.text)}</p>
+                <p className="text-xs leading-relaxed text-slate-400"><ProText text={L(v.text)} unlocked={unlocked} /></p>
               </div>
             ))}
           </Card>
@@ -99,7 +104,12 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
               </div>
               <div className="mt-3"><Meter value={strength} label={t.report.strength} color={color} /></div>
               <p className="mt-3 text-xs text-slate-400">{L(def.meaning)}</p>
-              <p className="mt-2 text-sm leading-relaxed text-slate-100">{L(variant.text)}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-100">
+                <ProText text={L(variant.text)} unlocked={unlocked} />
+              </p>
+              <div className="mt-3">
+                <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} />
+              </div>
             </motion.div>
           );
         })}
@@ -114,7 +124,12 @@ export default function PalmAnalysis({ report, palmImage, palmHand }: Props) {
             <div className="min-w-0">
               <p className="font-display text-base text-white">{L(def.name)}</p>
               <p className="mt-1 text-xs text-slate-500">{L(def.meaning)}</p>
-              <p className="mt-2 text-xs leading-relaxed text-slate-200">{L(variant.text)}</p>
+              <p className="mt-2 text-xs leading-relaxed text-slate-200">
+                {mountProText(L(variant.text))}
+              </p>
+              <div className="mt-3">
+                <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} />
+              </div>
             </div>
           </motion.div>
         ))}
