@@ -63,7 +63,7 @@ export default function DetailedSections({
                         </div>
                       </div>
                       <div className="mt-5 space-y-3">
-                        {paragraphs.map((p, i) => (
+                        {paragraphs.slice(0, -1).map((p, i) => (
                           <motion.p key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + i * 0.08 }} className="text-sm leading-relaxed text-slate-200 sm:text-[15px]">
                             <ProText text={L(p)} unlocked={unlocked} />
                           </motion.p>
@@ -74,14 +74,11 @@ export default function DetailedSections({
                             <p className="mt-1.5 text-sm leading-relaxed text-slate-200">{L(rashi.predictions[rashiKey])}</p>
                           </div>
                         )}
-                        <div className="mt-5 flex items-center gap-3">
-                          <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} />
-                          {!unlocked && (
-                            <span className="text-xs text-slate-400">
-                              {L({ en: "Unlock Pro for the complete picture.", hi: "पूरी जानकारी प्रो प्लान में मिलेगी।" })}
-                            </span>
-                          )}
-                        </div>
+                        {paragraphs.length > 0 && (
+                          <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + paragraphs.length * 0.08 }}>
+                            <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} text={L(paragraphs[paragraphs.length - 1])} className="mt-4" />
+                          </motion.div>
+                        )}
                       </div>
                     </div>
 

@@ -41,6 +41,7 @@ export default function PastSection({ items, readingId, unlocked, onUnlocked }: 
           <ul className="mt-6 grid gap-3 md:grid-cols-2">
             {items.map((p, i) => {
               const m = marks[i];
+              const isLast = i === items.length - 1;
               return (
                 <motion.li
                   key={i}
@@ -52,9 +53,13 @@ export default function PastSection({ items, readingId, unlocked, onUnlocked }: 
                 >
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gold-400/15 font-display text-xs text-gold-300">{i + 1}</span>
                   <div className="flex-1">
-                    <p className="text-sm leading-relaxed text-slate-100">
-                      <ProText text={L(p)} unlocked={unlocked} />
-                    </p>
+                    {isLast ? (
+                      <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} text={L(p)} className="mt-0" />
+                    ) : (
+                      <p className="text-sm leading-relaxed text-slate-100">
+                        <ProText text={L(p)} unlocked={unlocked} />
+                      </p>
+                    )}
                     <div className="mt-2 flex gap-2">
                       <button onClick={() => setMarks({ ...marks, [i]: true })} className={cn("inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs transition", m === true ? "border-emerald-400/60 bg-emerald-400/20 text-emerald-200" : "border-white/10 text-slate-400 hover:border-emerald-400/40 hover:text-emerald-200")}>
                         <Check className="h-3 w-3" /> {t.report.yes}
@@ -68,14 +73,6 @@ export default function PastSection({ items, readingId, unlocked, onUnlocked }: 
               );
             })}
           </ul>
-          <div className="mt-5 flex items-center justify-center gap-3">
-            <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} />
-            {!unlocked && (
-              <span className="text-xs text-slate-400">
-                {L({ en: "Unlock Pro for the complete picture.", hi: "पूरी जानकारी प्रो प्लान में मिलेगी।" })}
-              </span>
-            )}
-          </div>
           <p className="mt-5 text-center text-xs italic text-gold-200/80">{t.report.pastNote}</p>
         </div>
       </div>

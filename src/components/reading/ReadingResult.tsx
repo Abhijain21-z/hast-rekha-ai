@@ -393,22 +393,20 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
         <h2 className="mt-2 font-display text-3xl text-white">{t.report.suggestions}</h2>
         <motion.div {...reveal} className="glass-strong mt-6 rounded-3xl p-6 sm:p-8">
           <ol className="grid gap-3 md:grid-cols-2">
-            {report.suggestions.map((s, i) => (
+            {report.suggestions.slice(0, -1).map((s, i) => (
               <motion.li key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }} className="flex gap-3 rounded-2xl border border-white/8 bg-white/[0.03] p-4">
                 <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold-400/15 font-display text-sm text-gold-300">{i + 1}</span>
                 <p className="text-sm leading-relaxed text-slate-100"><ProText text={L(s)} unlocked={pro} /></p>
               </motion.li>
             ))}
           </ol>
-        </motion.div>
-        <div className="mt-5 flex items-center justify-center gap-3">
-          <ProReadMore readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
-          {!pro && (
-            <span className="text-xs text-slate-400">
-              {L({ en: "Unlock Pro for the complete picture.", hi: "पूरी जानकारी प्रो प्लान में मिलेगी।" })}
-            </span>
+          {report.suggestions.length > 0 && (
+            <div className="mt-3 flex gap-3 rounded-2xl border border-gold-400/20 bg-gold-400/5 p-4">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold-400/15 font-display text-sm text-gold-300">{report.suggestions.length}</span>
+              <ProReadMore readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} text={L(report.suggestions[report.suggestions.length - 1])} className="mt-0 flex-1" />
+            </div>
           )}
-        </div>
+        </motion.div>
         {BOOK_PROMO && <UpayBookPromo />}
       </section>
 

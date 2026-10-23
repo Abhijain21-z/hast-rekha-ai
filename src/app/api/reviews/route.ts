@@ -1,15 +1,9 @@
 import { NextResponse } from "next/server";
-import { desc } from "drizzle-orm";
 import { db } from "@/db";
 import { reviews } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
-import {
-  archiveExpiredNegativeReviews,
-  isNegativeReview,
-  negativeReviewExpiresAt,
-  reviewVisibilityWhere,
-} from "@/lib/reviews";
+import { isNegativeReview, listPublicReviews } from "@/lib/reviews";
 
 export const dynamic = "force-dynamic";
 
@@ -21,15 +15,9 @@ export async function GET(req: Request) {
   // asks for the full list.
   const full = new URL(req.url).searchParams.get("all") === "1";
   try {
-    // Move anything whose one-hour negative-review window has ended out of the
-    // public table. A no-op for positive reviews.
-    await archiveExpiredNegativeReviews().catch(() => {});
-    const rows = await db
-      .select()
-      .from(reviews)
-      .where(reviewVisibilityWhere())
-      .orderBy(desc(reviews.createdAt))
-      .limit(full ? 200 : 50);
+    // Active reviews plus previously archived negative reviews. Nothing is
+    // filtered by rating or expiry anymore.
+    const rows = await listPublicReviews(full ? 200 : 50);
     return NextResponse.json({ reviews: rows });
   } catch {
     // A database hiccup must not take the page down with a raw 500 — the UI
@@ -74,7 +62,9 @@ export async function POST(req: Request) {
         interfaceRating,
         agrees,
         isNegative: negative,
-        expiresAt: negative ? negativeReviewExpiresAt() : null,
+        // Reviews are public permanently; the old negative-review expiry is
+        // intentionally not applied anymore.
+        expiresAt: null,
       })
       .returning();
     return NextResponse.json({ review: row }, { status: 201 });

@@ -28,7 +28,6 @@ export default function PalmAnalysis({ report, palmImage, palmHand, readingId, u
   const strengths: Record<string, number> = {};
   report.lines.forEach((l) => (strengths[l.def.key] = l.strength));
   report.mounts.forEach((m) => (strengths[m.def.key] = m.strength));
-  const mountProText = (text: string) => <ProText text={text} unlocked={unlocked} />;
 
   return (
     <section id="sec-palm" className="scroll-mt-28">
@@ -104,12 +103,7 @@ export default function PalmAnalysis({ report, palmImage, palmHand, readingId, u
               </div>
               <div className="mt-3"><Meter value={strength} label={t.report.strength} color={color} /></div>
               <p className="mt-3 text-xs text-slate-400">{L(def.meaning)}</p>
-              <p className="mt-2 text-sm leading-relaxed text-slate-100">
-                <ProText text={L(variant.text)} unlocked={unlocked} />
-              </p>
-              <div className="mt-3">
-                <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} />
-              </div>
+              <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} text={L(variant.text)} className="mt-2 text-slate-100" />
             </motion.div>
           );
         })}
@@ -124,12 +118,7 @@ export default function PalmAnalysis({ report, palmImage, palmHand, readingId, u
             <div className="min-w-0">
               <p className="font-display text-base text-white">{L(def.name)}</p>
               <p className="mt-1 text-xs text-slate-500">{L(def.meaning)}</p>
-              <p className="mt-2 text-xs leading-relaxed text-slate-200">
-                {mountProText(L(variant.text))}
-              </p>
-              <div className="mt-3">
-                <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} />
-              </div>
+              <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} text={L(variant.text)} className="mt-2" textClassName="text-xs text-slate-200" />
             </div>
           </motion.div>
         ))}

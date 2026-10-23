@@ -17,7 +17,6 @@ const IFACE_LABEL: Record<string, "ifGreat" | "ifGood" | "ifOkay" | "ifPoor"> = 
 export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
   const { t, lang } = useLang();
   const [items, setItems] = useState<ReviewRow[]>(initial);
-  const [now, setNow] = useState(() => Date.now());
 
   // Server-rendered list first, then refresh from the API (so a review written
   // in another tab shows up without a hard reload).
@@ -30,25 +29,15 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
       .catch(() => {});
   }, []);
 
-  // A negative review disappears after its one-hour window even if this tab
-  // stays open; the server also archives it on the next request.
-  useEffect(() => {
-    const id = window.setInterval(() => setNow(Date.now()), 60_000);
-    return () => window.clearInterval(id);
-  }, []);
-
-  const liveItems = useMemo(
-    () => items.filter((r) => !r.expiresAt || new Date(r.expiresAt).getTime() > now),
-    [items, now],
-  );
-
+  // Every review is public now, including old negative reviews restored from
+  // the archive. No client-side expiry filter.
   const stats = useMemo(() => {
-    if (!liveItems.length) return null;
-    const avg = liveItems.reduce((a, r) => a + (Number(r.rating) || 0), 0) / liveItems.length;
-    const answered = liveItems.filter((r) => typeof r.agrees === "boolean");
+    if (!items.length) return null;
+    const avg = items.reduce((a, r) => a + (Number(r.rating) || 0), 0) / items.length;
+    const answered = items.filter((r) => typeof r.agrees === "boolean");
     const yes = answered.filter((r) => r.agrees).length;
-    return { avg: avg.toFixed(1), count: liveItems.length, agreePct: answered.length ? Math.round((yes / answered.length) * 100) : null };
-  }, [liveItems]);
+    return { avg: avg.toFixed(1), count: items.length, agreePct: answered.length ? Math.round((yes / answered.length) * 100) : null };
+  }, [items]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
@@ -85,11 +74,11 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
         </div>
       </div>
 
-      {liveItems.length === 0 ? (
+      {items.length === 0 ? (
         <p className="glass mt-10 rounded-3xl p-10 text-center text-sm text-slate-400">{t.reviews.allEmpty}</p>
       ) : (
         <div className="mt-8 grid gap-4 md:grid-cols-2">
-          {liveItems.map((r, i) => (
+          {items.map((r, i) => (
             <article key={r.id ?? `${r.name}-${i}`} className="glass relative flex flex-col rounded-3xl p-6">
               <Quote className="absolute right-5 top-5 h-7 w-7 text-gold-400/20" />
               <div className="flex flex-wrap items-center justify-between gap-2">
