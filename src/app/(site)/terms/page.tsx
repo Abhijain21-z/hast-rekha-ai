@@ -5,6 +5,7 @@ import LegalPage, { type LegalDoc } from "@/components/legal/LegalPage";
 export const metadata: Metadata = {
   title: "Terms of Service — Hast Rekha AI | सेवा की शर्तें",
   description: "Terms of Service for Hast Rekha AI — rules for using our free astrology and palmistry reading platform.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

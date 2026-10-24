@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, Clock, Lightbulb, Sparkles } from "lucide-react";
 import { cookies } from "next/headers";
 import BlogJsonLd from "@/components/blog/BlogJsonLd";
+import ShareRow from "@/components/layout/ShareRow";
 import { BLOGS, blogImage, blogInlineImage, CAT_META, getBlog, relatedBlogs } from "@/lib/blogs";
 import { blogDeepLinks } from "@/lib/blog-links";
 import { dictionaries, pick, type Lang } from "@/lib/i18n";
@@ -96,6 +97,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <span key={tag} className="rounded-full bg-white/6 px-3 py-1 text-xs text-slate-300">#{tag}</span>
         ))}
       </div>
+
+      <ShareRow className="mt-5" path={`/blog/${slug}`} text={`${L(blog.title)} — Hast Rekha AI`} />
 
       <div className="mt-8 space-y-4">
         {blog.intro.map((p, i) => (

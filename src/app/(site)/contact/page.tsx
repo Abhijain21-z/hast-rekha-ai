@@ -5,7 +5,12 @@ import legal from "@/content/legal.json";
 import { dictionaries, pick, type Bi, type Lang } from "@/lib/i18n";
 import ContactPageForm from "@/components/legal/ContactPageForm";
 
-export const metadata: Metadata = { title: "Contact Us — Hast Rekha AI | संपर्क करें" };
+export const metadata: Metadata = {
+  title: "Contact Us — Hast Rekha AI | संपर्क करें",
+  description:
+    "Contact Hast Rekha AI — support, feedback, refunds aur payment help ke liye email ya message karein. Reply within 2 working days.",
+  alternates: { canonical: "/contact" },
+};
 
 const ICONS = [Mail, IndianRupee, Clock];
 

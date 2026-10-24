@@ -13,10 +13,12 @@ export const metadata: Metadata = BOOK_PROMO
       description:
         "धन, कर्ज मुक्ति, व्यापार वृद्धि, नौकरी, विवाह और जीवन की समस्याओं से जुड़े पारंपरिक तांत्रिक प्रयोग और साधना-विधियों का विशेष संकलन — गुप्त खजाना पुस्तक।",
       keywords: ["उपाय", "upay", "तांत्रिक प्रयोग", "धन प्राप्ति उपाय", "कर्ज मुक्ति", "व्यापार वृद्धि", "साधना विधि", "गुप्त खजाना", "tantrik prayog", "dhan prapti upay"],
+      alternates: { canonical: "/upay" },
     }
   : {
       title: "Hast Rekha AI",
       description: "हस्तरेखा और वैदिक ज्योतिष पर आधारित AI विश्लेषण।",
+      alternates: { canonical: "/upay" },
       robots: { index: false, follow: false },
     };
 

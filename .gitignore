@@ -11,6 +11,11 @@ build/
 Thumbs.db
 .claude/
 
+# Project-local marketing skills and their installer lockfile are tooling, not
+# app code. Keep the strategy notes in .agents/*.md but not the vendored skills.
+.agents/skills/
+skills-lock.json
+
 .vercel
 .env*
 .opencode/skills/cashfree-skills/

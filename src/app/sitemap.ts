@@ -1,20 +1,24 @@
 import type { MetadataRoute } from "next";
 import { BLOGS } from "@/lib/blogs";
 import { PALM_PAGES, PALM_UPDATED } from "@/content/palm";
+import { RASHIS } from "@/lib/content";
 import { BOOK_PROMO } from "@/lib/flags";
 import { SITE_URL } from "@/lib/site";
 
 const BASE = SITE_URL;
+const STATIC_UPDATED = new Date("2026-10-24T00:00:00+05:30");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  // /login and /register are deliberately noindex, so they must not be in the
+  // sitemap (Google reports indexable/noindex conflicts as crawl noise).
   const staticPages = [
-    "", "/rashifal", "/rashi", "/reading", "/pricing", "/blog", "/reviews", ...(BOOK_PROMO ? ["/upay"] : []), "/about", "/contact", "/privacy-policy", "/terms", "/refund-policy", "/disclaimer", "/login", "/register",
+    "", "/rashifal", "/rashi", "/reading", "/pricing", "/diwali-2026", "/blog", "/reviews", ...(BOOK_PROMO ? ["/upay"] : []), "/about", "/contact", "/privacy-policy", "/terms", "/refund-policy", "/disclaimer",
   ].map((p) => ({
     url: `${BASE}${p}`,
-    lastModified: now,
-    changeFrequency: (p === "" || p === "/blog" || p === "/rashifal" ? "daily" : "weekly") as MetadataRoute.Sitemap[number]["changeFrequency"],
-    priority: p === "" ? 1 : p === "/reading" || p === "/blog" || p === "/rashifal" ? 0.9 : 0.7,
+    lastModified: p === "" || p === "/blog" || p === "/rashifal" || p === "/diwali-2026" ? now : STATIC_UPDATED,
+    changeFrequency: (p === "" || p === "/blog" || p === "/rashifal" || p === "/diwali-2026" ? "daily" : "weekly") as MetadataRoute.Sitemap[number]["changeFrequency"],
+    priority: p === "" ? 1 : p === "/diwali-2026" ? 0.95 : p === "/reading" || p === "/blog" || p === "/rashifal" ? 0.9 : 0.7,
   }));
   const blogPages = BLOGS.map((b) => ({
     url: `${BASE}/blog/${b.slug}`,
@@ -35,5 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
   }));
-  return [...staticPages, ...palmPages, ...blogPages];
+  // Evergreen per-sign guides. These target "mesh rashi", "aries rashi" and
+  // "[sign] swabhav" queries that the single /rashi hub cannot rank for.
+  const rashiPages = RASHIS.map((r) => ({
+    url: `${BASE}/rashi/${r.key}`,
+    lastModified: STATIC_UPDATED,
+    changeFrequency: "monthly" as const,
+    priority: 0.82,
+  }));
+  return [...staticPages, ...rashiPages, ...palmPages, ...blogPages];
 }

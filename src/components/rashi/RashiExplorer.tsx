@@ -40,7 +40,7 @@ export default function RashiExplorer() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-      <SectionHeading eyebrow="✦ Rashi" title={t.rashiPage.title} sub={t.rashiPage.sub} />
+      <SectionHeading as="h1" eyebrow="✦ Rashi" title={t.rashiPage.title} sub={t.rashiPage.sub} />
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {RASHIS.map((r, i) => (
@@ -188,9 +188,14 @@ export default function RashiExplorer() {
               ))}
             </div>
 
-            <Link href="/reading" className="btn-gold mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm">
-              {t.nav.getReading} <ArrowRight className="h-4 w-4" />
-            </Link>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href={`/rashi/${open.key}`} className="inline-flex items-center gap-2 rounded-full border border-gold-400/40 px-6 py-3 text-sm text-gold-200 transition hover:border-gold-400/70 hover:text-gold-100">
+                पूरा राशि गाइड पढ़ें <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="/reading" className="btn-gold inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm">
+                {t.nav.getReading} <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         )}
       </Modal>

@@ -88,7 +88,19 @@ export function Badge({ children, className }: { children: ReactNode; className?
 }
 
 /* ---------- Section heading with reveal ---------- */
-export function SectionHeading({ eyebrow, title, sub, align = "center" }: { eyebrow?: string; title: string; sub?: string; align?: "center" | "left" }) {
+export function SectionHeading({
+  eyebrow,
+  title,
+  sub,
+  align = "center",
+  as: Tag = "h2",
+}: {
+  eyebrow?: string;
+  title: string;
+  sub?: string;
+  align?: "center" | "left";
+  as?: "h1" | "h2";
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -98,7 +110,7 @@ export function SectionHeading({ eyebrow, title, sub, align = "center" }: { eyeb
       className={cn("mb-10 md:mb-14", align === "center" ? "text-center mx-auto max-w-2xl" : "text-left")}
     >
       {eyebrow && <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-gold-400/90">{eyebrow}</p>}
-      <h2 className="font-display text-3xl font-semibold leading-tight text-white md:text-4xl lg:text-5xl">{title}</h2>
+      <Tag className="font-display text-3xl font-semibold leading-tight text-white md:text-4xl lg:text-5xl">{title}</Tag>
       {sub && <p className="mt-4 text-base text-slate-300/90 md:text-lg">{sub}</p>}
     </motion.div>
   );

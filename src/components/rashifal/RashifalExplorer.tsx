@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, CalendarDays, Sparkles, Sun } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { SectionHeading, cn } from "@/components/ui";
+import ShareRow from "@/components/layout/ShareRow";
 import { RASHIS } from "@/lib/content";
 import RashifalPanel from "./RashifalPanel";
 
@@ -88,6 +89,13 @@ export default function RashifalExplorer({ initialIndex = 0 }: { initialIndex?: 
 
       <div className="mt-8">
         <RashifalPanel rashiIndex={selected} showHeading={false} showFullLink={false} />
+      </div>
+
+      <div className="mt-5 flex justify-center">
+        <ShareRow
+          path={`/rashifal?sign=${RASHIS[selected].key}`}
+          text={`${RASHIS[selected].short.hi} (${RASHIS[selected].short.en}) ka aaj ka rashifal — Hast Rekha AI`}
+        />
       </div>
 
       <div className="mt-10 grid gap-3 sm:grid-cols-3">

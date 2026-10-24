@@ -25,7 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   if (!UUID.test(id)) notFound();
   if (!(await loadReading(id))) notFound();
-  return {};
+  // A saved reading is personal, user-generated content. Keep it out of the
+  // index so shared links never become thin/duplicate search results.
+  return { robots: { index: false, follow: false } };
 }
 
 export default async function PublicReadingPage({ params }: { params: Promise<{ id: string }> }) {

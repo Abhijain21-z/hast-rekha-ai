@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { cookies } from "next/headers";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { LanguageProvider } from "@/components/providers/LanguageProvider";
 import { ToastProvider } from "@/components/providers/ToastProvider";
@@ -30,7 +31,6 @@ export const metadata: Metadata = {
     "राशिफल", "rashi", "nakshatra", "lagna", "jyotish", "vedic astrology", "हस्तरेखा से भविष्य",
     "palmistry in hindi", "हथेली की रेखाएं", "heart line", "life line", "भविष्य जाने",
   ],
-  alternates: { languages: { hi: "/", en: "/" } },
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
@@ -123,6 +123,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             <FloatingHand />
             <div className="relative z-10">{children}</div>
             <AmbientMusic />
+            <Analytics />
           </ToastProvider>
         </LanguageProvider>
       </body>

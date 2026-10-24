@@ -34,6 +34,10 @@
      {
       "en": "Birth details are used solely to compute your reading on our servers. Palm photos are resized inside your browser and stored only with your reading so you can revisit them. We do not sell, rent or share personal data with third parties, and we use no advertising trackers.",
       "hi": "जन्म विवरण का उपयोग केवल हमारे सर्वर पर आपकी रीडिंग गणना हेतु होता है। हथेली की फ़ोटो आपके ब्राउज़र में छोटी होती है और केवल आपकी रीडिंग के साथ सहेजी जाती है ताकि आप दोबारा देख सकें। हम व्यक्तिगत डेटा किसी तीसरे पक्ष को बेचते, किराए पर देते या साझा करते नहीं, और कोई विज्ञापन ट्रैकर उपयोग नहीं करते।"
+     },
+     {
+      "en": "We use Vercel Analytics to measure aggregate page views and referrers. It is cookieless and does not identify individual visitors.",
+      "hi": "हम aggregate page views और referrer मापने के लिए Vercel Analytics उपयोग करते हैं। यह cookieless है और किसी व्यक्तिगत विज़िटर की पहचान नहीं करता।"
      }
     ]
    },
