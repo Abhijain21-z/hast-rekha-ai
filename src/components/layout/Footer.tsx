@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Globe, MessageCircle, Share2, Mail, Send, Sparkles } from "lucide-react";
+import { MessageCircle, Mail, Send, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, Input, Textarea, Label, SectionHeading } from "@/components/ui";
 import { DonateButton } from "@/components/reading/DonateModal";
@@ -91,11 +91,22 @@ export default function Footer() {
             <p className="mt-1 text-xs uppercase tracking-[0.25em] text-gold-400/80">{t.tagline}</p>
             <p className="mt-5 max-w-md text-sm leading-relaxed text-slate-400">{t.footer.disclaimer}</p>
             <div className="mt-6 flex gap-3">
-              {[Globe, MessageCircle, Share2, Mail].map((Icon, i) => (
-                <a key={i} href="#" aria-label="social" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-slate-300 transition hover:border-gold-400/50 hover:text-gold-300">
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
+              <a
+                href="https://wa.me/919522333669"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat on WhatsApp"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-slate-300 transition hover:border-gold-400/50 hover:text-gold-300"
+              >
+                <MessageCircle className="h-4 w-4" />
+              </a>
+              <a
+                href="mailto:abhijain.technical@gmail.com"
+                aria-label="Email Hast Rekha AI"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-slate-300 transition hover:border-gold-400/50 hover:text-gold-300"
+              >
+                <Mail className="h-4 w-4" />
+              </a>
             </div>
           </div>
           <div>

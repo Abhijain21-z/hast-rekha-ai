@@ -71,6 +71,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         email: "abhijain.technical@gmail.com",
         telephone: "+91-9522333669",
         sameAs: [],
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-9522333669",
+          email: "abhijain.technical@gmail.com",
+          contactType: "customer support",
+          availableLanguage: ["Hindi", "English"],
+          areaServed: "IN",
+        },
       },
       {
         "@type": "WebSite",
