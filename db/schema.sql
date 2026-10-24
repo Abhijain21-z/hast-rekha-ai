@@ -16,8 +16,17 @@ CREATE TABLE IF NOT EXISTS users (
   email text NOT NULL UNIQUE,
   password_hash text NOT NULL,
   preferred_lang varchar(2) NOT NULL DEFAULT 'en',
+  referral_code varchar(12),
+  token_balance integer NOT NULL DEFAULT 0, -- 350 tokens = one Ultra Pro report
   created_at timestamptz NOT NULL DEFAULT now()
 );
+-- On a database created before referrals shipped, `users` already exists, so the
+-- CREATE TABLE above is a no-op. Add the columns before any index needs them.
+ALTER TABLE users ADD COLUMN IF NOT EXISTS referral_code varchar(12);
+ALTER TABLE users ADD COLUMN IF NOT EXISTS token_balance integer NOT NULL DEFAULT 0;
+CREATE UNIQUE INDEX IF NOT EXISTS users_referral_code_idx
+  ON users (referral_code)
+  WHERE referral_code IS NOT NULL;
 
 CREATE TABLE IF NOT EXISTS sessions (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -57,6 +66,41 @@ CREATE TABLE IF NOT EXISTS readings (
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS readings_user_idx ON readings (user_id);
+
+-- One row per successful referral. The unique referred_user_id makes the
+-- 50-token credit idempotent even if the register request is retried.
+CREATE TABLE IF NOT EXISTS referrals (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  referrer_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  referred_user_id uuid NOT NULL UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+  code varchar(12) NOT NULL,
+  tokens_awarded integer NOT NULL DEFAULT 50,
+  credited_at timestamptz NOT NULL DEFAULT now(),
+  created_at timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT referrals_no_self CHECK (referrer_id <> referred_user_id)
+);
+CREATE INDEX IF NOT EXISTS referrals_referrer_idx ON referrals (referrer_id);
+
+-- Append-only token wallet statement.
+CREATE TABLE IF NOT EXISTS token_ledger (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  delta integer NOT NULL,
+  reason varchar(40) NOT NULL, -- referral_signup | ultra_redemption | admin_adjustment
+  referral_id uuid REFERENCES referrals(id) ON DELETE SET NULL,
+  reading_id uuid REFERENCES readings(id) ON DELETE SET NULL,
+  balance_after integer NOT NULL,
+  metadata jsonb,
+  acknowledged_at timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS token_ledger_user_idx ON token_ledger (user_id, created_at DESC);
+CREATE UNIQUE INDEX IF NOT EXISTS token_ledger_referral_once_idx
+  ON token_ledger (referral_id)
+  WHERE referral_id IS NOT NULL;
+CREATE UNIQUE INDEX IF NOT EXISTS token_ledger_ultra_once_idx
+  ON token_ledger (reading_id)
+  WHERE reason = 'ultra_redemption' AND reading_id IS NOT NULL;
 
 -- Explicit daily-rashifal opt-ins. One row per WhatsApp number, so a person
 -- with several readings gets at most one message per day.

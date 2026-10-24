@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Check, Copy, Crown, Download, ExternalLink, HeartHandshake, Lock, MessageCircle, Printer, QrCode, ShieldCheck, X } from "lucide-react";
+import { Check, Copy, Crown, Download, ExternalLink, Gift, HeartHandshake, Lock, MessageCircle, Printer, QrCode, ShieldCheck, Sparkles, X } from "lucide-react";
 import QRCode from "qrcode";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { useToast } from "@/components/providers/ToastProvider";
 import { Button, Input, Label, Modal, cn } from "@/components/ui";
 import { PREMIUM_PERKS, BOOK_PERKS, PREMIUM_PRICE, UPI_ID, upiDeepLink } from "@/lib/premium";
 import { CASHFREE_ENABLED, CASHFREE_MODE, MANUAL_UPI_ENABLED, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
+import { tokenProgress } from "@/lib/token-rules";
 import { getCashfree } from "@/lib/cashfree-client";
 import { PaymentHelpModal } from "./PaymentHelp";
 
@@ -78,6 +79,9 @@ export function ProPaywallModal({
   const [helpOpen, setHelpOpen] = useState(false);
   const [helpIssue, setHelpIssue] = useState<"checkout_closed" | "not_unlocked">("checkout_closed");
   const [lastOrderId, setLastOrderId] = useState<string | null>(null);
+  const [tokenBalance, setTokenBalance] = useState<number | null>(null);
+  const [tokenBusy, setTokenBusy] = useState(false);
+  const [tokenErr, setTokenErr] = useState("");
   const prefetchRef = useRef<{ key: string; at: number; promise: Promise<CashfreeOrderResult> } | null>(null);
 
   const price = plan === "ultra" ? ULTRA_PRICE : PREMIUM_PRICE;
@@ -100,6 +104,7 @@ export function ProPaywallModal({
     { label: t.premium.cmpR3, free: false, pro: true, ultra: true },
     { label: t.premium.cmpR4, free: false, pro: true, ultra: true },
     { label: t.premium.cmpR5, free: false, pro: true, ultra: true },
+    { label: t.premium.cmpR7, free: false, pro: true, ultra: true },
     { label: t.premium.cmpR6, free: false, pro: false, ultra: true },
   ];
 
@@ -116,6 +121,65 @@ export function ProPaywallModal({
     if (!open || !CASHFREE_ENABLED) return;
     getCashfree(CASHFREE_MODE).catch(() => {});
   }, [open]);
+
+  // Token balance is fetched only when the paywall opens, so a visitor who never
+  // reaches it costs nothing. A 401 simply means "not signed in" — no token UI.
+  useEffect(() => {
+    if (!open) return;
+    let alive = true;
+    fetch("/api/tokens", { cache: "no-store" })
+      .then(async (res) => (res.ok ? ((await res.json()) as { balance?: number }) : null))
+      .then((data) => {
+        if (alive && data && typeof data.balance === "number") setTokenBalance(data.balance);
+      })
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, [open]);
+
+  const tokenProg = useMemo(() => tokenProgress(tokenBalance ?? 0), [tokenBalance]);
+
+  /**
+   * 350 tokens = one Ultra Pro report. This is the only token path: the ₹51 Pro
+   * plan is always a real payment, exactly as the owner requires.
+   */
+  async function redeemWithTokens() {
+    setTokenErr("");
+    setTokenBusy(true);
+    try {
+      const res = await fetch("/api/tokens/redeem-ultra", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ readingId }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { balance?: number; message?: string; error?: string };
+      if (res.ok) {
+        if (typeof data.balance === "number") setTokenBalance(data.balance);
+        toast(L({ en: "Ultra Pro unlocked with tokens.", hi: "टोकन से Ultra Pro अनलॉक हो गया।" }));
+        onUnlocked();
+        onClose();
+        return;
+      }
+      if (res.status === 401) {
+        window.location.href = `/login?next=${encodeURIComponent(`/reading/${readingId}`)}`;
+        return;
+      }
+      if (typeof data.balance === "number") setTokenBalance(data.balance);
+      setTokenErr(
+        data.error === "insufficient_tokens"
+          ? L({
+              en: `You need ${tokenProg.cost} tokens. Your balance is ${data.balance ?? tokenProg.balance}.`,
+              hi: `${tokenProg.cost} टोकन चाहिए। आपका बैलेंस ${data.balance ?? tokenProg.balance} है।`,
+            })
+          : L({ en: "Tokens could not be redeemed. Please try again.", hi: "टोकन रिडीम नहीं हुए — दोबारा कोशिश करें।" }),
+      );
+    } catch {
+      setTokenErr(L({ en: "Tokens could not be redeemed. Please try again.", hi: "टोकन रिडीम नहीं हुए — दोबारा कोशिश करें।" }));
+    } finally {
+      setTokenBusy(false);
+    }
+  }
 
 
 
@@ -248,7 +312,7 @@ export function ProPaywallModal({
 
   return (
     <>
-      <Modal open={open} onClose={onClose} title={t.pro.title} wide>
+      <Modal open={open} onClose={() => { setTokenErr(""); onClose(); }} title={t.pro.title} wide>
         <p className="text-sm leading-relaxed text-slate-300">{t.pro.sub}</p>
 
       {/* Plan switch — ₹51 Pro report, or ₹351 Ultra Pro which adds the book. */}
@@ -298,15 +362,53 @@ export function ProPaywallModal({
           </div>
         </div>
       ) : (
-        /* Ultra Pro has no struck-through anchor — it is simply the plan with the book. */
-        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-5 py-4">
-          <div>
-            <p className="text-xs uppercase tracking-wider text-slate-400">{t.pricing.ultra}</p>
-            <p className="font-display text-4xl gold-text">₹{ULTRA_PRICE}</p>
-            <p className="text-xs text-slate-400">{t.pro.once}</p>
+        <>
+          {/* Ultra Pro has no struck-through anchor — it is simply the plan with the book. */}
+          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-5 py-4">
+            <div>
+              <p className="text-xs uppercase tracking-wider text-slate-400">{t.pricing.ultra}</p>
+              <p className="font-display text-4xl gold-text">₹{ULTRA_PRICE}</p>
+              <p className="text-xs text-slate-400">{t.pro.once}</p>
+            </div>
+            <span className="ml-auto rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200">{t.pro.ultraTag}</span>
           </div>
-          <span className="ml-auto rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200">{t.pro.ultraTag}</span>
-        </div>
+
+          {/* Token wallet — 350 tokens = one Ultra Pro. Never valid for ₹51 Pro. */}
+          {tokenBalance !== null && (
+            <div className="mt-3 rounded-2xl border border-gold-400/30 bg-gradient-to-r from-gold-400/12 via-cosmic-900/40 to-mystic-700/20 p-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-200">
+                  <Gift className="h-4 w-4" /> {t.pro.tokenTitle}
+                </p>
+                <span className="rounded-full border border-gold-400/30 bg-black/25 px-2.5 py-1 text-[11px] font-semibold text-gold-100">
+                  {tokenProg.balance}/{tokenProg.cost}
+                </span>
+              </div>
+              <div className="mt-2.5 h-2 overflow-hidden rounded-full bg-white/10">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-gold-500 via-gold-300 to-gold-200 transition-all duration-700"
+                  style={{ width: `${tokenProg.percent}%` }}
+                />
+              </div>
+              <p className="mt-2 text-[11px] leading-relaxed text-slate-300">
+                {tokenProg.ready ? t.pro.tokenReady : t.pro.tokenNeed}
+              </p>
+              {tokenErr && <p className="mt-2 text-[11px] text-rose-300">{tokenErr}</p>}
+              <Button
+                className="mt-3 w-full"
+                size="sm"
+                variant={tokenProg.ready ? "gold" : "outline"}
+                disabled={!tokenProg.ready}
+                loading={tokenBusy}
+                onClick={redeemWithTokens}
+                icon={<Sparkles className="h-4 w-4" />}
+              >
+                {tokenBusy ? t.pro.tokenRedeeming : t.pro.tokenCta}
+              </Button>
+              <p className="mt-2 text-center text-[10px] leading-relaxed text-slate-500">{t.pro.tokenNote}</p>
+            </div>
+          )}
+        </>
       )}
 
       <div className="mt-5 border-t border-white/10 pt-5">

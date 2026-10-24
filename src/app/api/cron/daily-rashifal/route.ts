@@ -1,12 +1,15 @@
 import { NextResponse } from "next/server";
-import { and, eq, isNull, sql } from "drizzle-orm";
+import { and, eq, isNull, notExists, or, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { whatsappDailySends, whatsappSubscribers } from "@/db/schema";
+import { readings, whatsappDailySends, whatsappSubscribers } from "@/db/schema";
 import { RASHIS } from "@/lib/content";
 import {
   buildDailyRashifalUrl,
+  isRashifalDay,
   istDateKey,
+  istWeekday,
   normalizeWhatsAppPhone,
+  rashifalWeekdays,
   sendDailyRashifalTemplate,
   whatsappConfigured,
 } from "@/lib/whatsapp";
@@ -18,12 +21,38 @@ export const maxDuration = 60;
 const DEFAULT_LIMIT = 50;
 // Keeps a single 60-second function invocation comfortably bounded.
 const MAX_LIMIT = 100;
+// The weekday filter runs in JS, so cap how many rows one run may scan.
+const MAX_SCAN = 1000;
 
 /** Cost guard: cap how many marketing messages one cron run can send. */
-function dailyLimit(): number {
-  const raw = Number(process.env.DAILY_WHATSAPP_LIMIT);
+function runLimit(): number {
+  const raw = Number(
+    process.env.RASHIFAL_WHATSAPP_LIMIT ?? process.env.DAILY_WHATSAPP_LIMIT,
+  );
   if (!Number.isFinite(raw) || raw <= 0) return DEFAULT_LIMIT;
   return Math.min(Math.floor(raw), MAX_LIMIT);
+}
+
+/**
+ * Paid readers are never sent the reminder. A reading is the source of truth:
+ * match either the phone saved on the reading or the subscriber's linked
+ * reading, so an old Pro purchase still suppresses the message.
+ */
+function notPaidReader() {
+  return notExists(
+    db
+      .select({ id: readings.id })
+      .from(readings)
+      .where(
+        and(
+          or(
+            eq(readings.whatsappPhone, whatsappSubscribers.phone),
+            eq(readings.id, whatsappSubscribers.readingId),
+          ),
+          or(eq(readings.premium, true), eq(readings.ultra, true)),
+        ),
+      ),
+  );
 }
 
 function isAuthorized(req: Request): boolean {
@@ -42,14 +71,17 @@ function mask(phone: string): string {
 }
 
 /**
- * Daily WhatsApp rashifal cron.
+ * Daily WhatsApp rashifal reminder cron.
  *
- * Vercel Cron calls this at 09:00 IST (03:30 UTC) with
- * `Authorization: Bearer $CRON_SECRET`. The route is inert until the sender
- * credentials and the Meta-approved template exist.
+ * Vercel Cron calls this every day at 09:00 IST (03:30 UTC) with
+ * `Authorization: Bearer $CRON_SECRET`. Each opted-in subscriber is assigned
+ * two fixed weekdays from their subscriber id, so the cohort is spread across
+ * the week and one person never receives more than two messages in a week. The
+ * route is inert until the sender credentials and the Meta-approved template
+ * exist. Readers who bought Pro or Ultra Pro are excluded.
  *
  * Query params (all still require the cron secret):
- *   ?dry=1       list candidates without sending
+ *   ?dry=1       list today's assigned candidates without sending
  *   ?testPhone=  send one test message to the owner's own number
  */
 export async function GET(req: Request) {
@@ -62,7 +94,7 @@ export async function GET(req: Request) {
   }
 
   const url = new URL(req.url);
-  const limit = dailyLimit();
+  const limit = runLimit();
   const sendDate = istDateKey();
 
   const testPhone = url.searchParams.get("testPhone");
@@ -104,25 +136,28 @@ export async function GET(req: Request) {
   if (url.searchParams.get("dry") === "1") {
     const rows = await db
       .select({
-        phone: whatsappSubscribers.phone,
-        name: whatsappSubscribers.name,
-        rashiKey: whatsappSubscribers.rashiKey,
-        lastSentAt: whatsappSubscribers.lastSentAt,
+        subscriber: whatsappSubscribers,
       })
       .from(whatsappSubscribers)
-      .where(eq(whatsappSubscribers.status, "opted_in"))
+      .where(and(eq(whatsappSubscribers.status, "opted_in"), notPaidReader()))
       .orderBy(sql`${whatsappSubscribers.lastSentAt} asc nulls first`)
-      .limit(limit);
+      .limit(MAX_SCAN);
+    const due = rows
+      .filter(({ subscriber }) => isRashifalDay(subscriber.id, sendDate))
+      .slice(0, limit);
     return NextResponse.json({
       ok: true,
       dryRun: true,
       sendDate,
+      weekday: istWeekday(sendDate) + 1,
       limit,
-      candidates: rows.map((row) => ({
-        phone: mask(row.phone),
-        name: firstName(row.name),
-        rashi: row.rashiKey,
-        lastSentAt: row.lastSentAt,
+      scanLimit: MAX_SCAN,
+      candidates: due.map(({ subscriber }) => ({
+        phone: mask(subscriber.phone),
+        name: firstName(subscriber.name),
+        rashi: subscriber.rashiKey,
+        sendDays: rashifalWeekdays(subscriber.id).map((day) => day + 1),
+        lastSentAt: subscriber.lastSentAt,
       })),
     });
   }
@@ -148,16 +183,21 @@ export async function GET(req: Request) {
         eq(whatsappDailySends.sendDate, sendDate),
       ),
     )
-    .where(and(eq(whatsappSubscribers.status, "opted_in"), isNull(whatsappDailySends.id)))
+    .where(and(eq(whatsappSubscribers.status, "opted_in"), isNull(whatsappDailySends.id), notPaidReader()))
     .orderBy(sql`${whatsappSubscribers.lastSentAt} asc nulls first`)
-    .limit(limit);
+    .limit(MAX_SCAN);
+
+  // Only the subscribers whose two assigned weekdays include today.
+  const due = rows
+    .filter(({ subscriber }) => isRashifalDay(subscriber.id, sendDate))
+    .slice(0, limit);
 
   let sent = 0;
   let failed = 0;
   let skipped = 0;
   const errors: { phone: string; error: string }[] = [];
 
-  for (const { subscriber } of rows) {
+  for (const { subscriber } of due) {
     const rashi = RASHIS.find((item) => item.key === subscriber.rashiKey);
     if (!rashi) {
       skipped += 1;
@@ -220,8 +260,9 @@ export async function GET(req: Request) {
   return NextResponse.json({
     ok: true,
     sendDate,
+    weekday: istWeekday(sendDate) + 1,
     limit,
-    candidates: rows.length,
+    candidates: due.length,
     sent,
     failed,
     skipped,

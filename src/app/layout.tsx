@@ -8,6 +8,7 @@ import { ToastProvider } from "@/components/providers/ToastProvider";
 import StarField from "@/components/layout/StarField";
 import AmbientMusic from "@/components/layout/AmbientMusic";
 import FloatingHand from "@/components/layout/FloatingHand";
+import ReferralCapture from "@/components/referral/ReferralCapture";
 import { LANGS } from "@/lib/lang-overrides";
 import { SITE_URL } from "@/lib/site";
 import { CASHFREE_ENABLED } from "@/lib/flags";
@@ -127,6 +128,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <body className="min-h-screen antialiased">
         <LanguageProvider initial={lang}>
           <ToastProvider>
+            <ReferralCapture />
             <StarField />
             <FloatingHand />
             <div className="relative z-10">{children}</div>

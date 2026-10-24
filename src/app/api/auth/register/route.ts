@@ -4,12 +4,20 @@ import { db } from "@/db";
 import { users } from "@/db/schema";
 import { createSession, hashPassword, isValidEmail, SESSION_COOKIE, sessionCookieOptions, toSafeUser } from "@/lib/auth";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { creditReferral, ensureReferralCode, normalizeReferralCode } from "@/lib/tokens";
 
 export async function POST(req: Request) {
   const limit = rateLimit(`register:${clientIp(req)}`, 5, 60 * 60_000);
   if (!limit.ok) return NextResponse.json({ error: "rate_limited" }, { status: 429, headers: { "Retry-After": String(limit.retryAfter) } });
 
-  const body = (await req.json().catch(() => ({}))) as { name?: string; email?: string; password?: string; lang?: string };
+  const body = (await req.json().catch(() => ({}))) as {
+    name?: string;
+    email?: string;
+    password?: string;
+    lang?: string;
+    /** /register?ref=CODE, or a manually typed code. */
+    referralCode?: string;
+  };
   const name = (body.name ?? "").trim();
   const email = (body.email ?? "").trim().toLowerCase();
   const password = body.password ?? "";
@@ -26,8 +34,27 @@ export async function POST(req: Request) {
     .values({ name: name.slice(0, 80), email, passwordHash: await hashPassword(password), preferredLang: body.lang === "hi" ? "hi" : "en" })
     .returning();
 
+  // The referrer's 50 tokens are credited only here — after the referred
+  // account exists. An invalid code is silently ignored, never a signup error.
+  const referralCode = normalizeReferralCode(body.referralCode);
+  const referral = referralCode
+    ? await creditReferral({ code: referralCode, newUserId: user.id, newUserEmail: email })
+    : null;
+
+  // Give the new account its own shareable code immediately, so the dashboard
+  // can show a referral link without a second request.
+  let ownCode = user.referralCode;
+  try {
+    ownCode = (await ensureReferralCode(user.id)) ?? ownCode;
+  } catch (error) {
+    console.error("[referral] code allocation failed:", error instanceof Error ? error.message : error);
+  }
+
   const { token, expiresAt } = await createSession(user.id);
-  const res = NextResponse.json({ user: toSafeUser(user) }, { status: 201 });
+  const res = NextResponse.json(
+    { user: toSafeUser({ ...user, referralCode: ownCode }), referralApplied: Boolean(referral) },
+    { status: 201 },
+  );
   res.cookies.set(SESSION_COOKIE, token, sessionCookieOptions(expiresAt));
   return res;
 }

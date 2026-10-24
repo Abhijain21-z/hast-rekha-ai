@@ -10,17 +10,27 @@ import {
   integer,
   index,
   uniqueIndex,
+  check,
 } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 import type { AstroResult } from "../lib/astrology";
 
-export const users = pgTable("users", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  name: text("name").notNull(),
-  email: text("email").notNull().unique(),
-  passwordHash: text("password_hash").notNull(),
-  preferredLang: varchar("preferred_lang", { length: 2 }).notNull().default("en"),
-  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-});
+export const users = pgTable(
+  "users",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    name: text("name").notNull(),
+    email: text("email").notNull().unique(),
+    passwordHash: text("password_hash").notNull(),
+    preferredLang: varchar("preferred_lang", { length: 2 }).notNull().default("en"),
+    /** Short, shareable code used in /register?ref=CODE. Null until first needed. */
+    referralCode: varchar("referral_code", { length: 12 }),
+    /** Spendable reward balance. 350 tokens = one Ultra Pro report; never Pro. */
+    tokenBalance: integer("token_balance").notNull().default(0),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("users_referral_code_idx").on(t.referralCode).where(sql`${t.referralCode} IS NOT NULL`)],
+);
 
 export const sessions = pgTable(
   "sessions",
@@ -54,7 +64,7 @@ export const readings = pgTable(
     result: jsonb("result").$type<AstroResult>().notNull(),
     palmImage: text("palm_image"), // data URL (downscaled on client)
     palmHand: varchar("palm_hand", { length: 10 }),
-    /** Optional WhatsApp number captured at the start; never exposed in the public DTO. */
+    /** Required for new readings; older rows may still be null. Never exposed in the public DTO. */
     whatsappPhone: text("whatsapp_phone"),
     // Optional profile details captured in the form; shown back on the report.
     gender: varchar("gender", { length: 10 }), // "male" | "female" | "trans"
@@ -70,6 +80,65 @@ export const readings = pgTable(
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index("readings_user_idx").on(t.userId)],
+);
+
+/**
+ * One row per successful referral. `referredUserId` is unique, so a new account
+ * can trigger exactly one reward, even if the register request is retried.
+ */
+export const referrals = pgTable(
+  "referrals",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    referrerId: uuid("referrer_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    referredUserId: uuid("referred_user_id")
+      .notNull()
+      .unique()
+      .references(() => users.id, { onDelete: "cascade" }),
+    /** The code that was used at signup (kept for audit even if it later changes). */
+    code: varchar("code", { length: 12 }).notNull(),
+    tokensAwarded: integer("tokens_awarded").notNull().default(50),
+    creditedAt: timestamp("credited_at", { withTimezone: true }).notNull().defaultNow(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("referrals_referrer_idx").on(t.referrerId),
+    check("referrals_no_self", sql`${t.referrerId} <> ${t.referredUserId}`),
+  ],
+);
+
+/**
+ * Append-only token wallet history. `balanceAfter` lets the UI show a running
+ * statement without re-summing the whole ledger. Positive rows are rewards;
+ * negative rows are redemptions.
+ */
+export const tokenLedger = pgTable(
+  "token_ledger",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    delta: integer("delta").notNull(),
+    /** referral_signup | ultra_redemption | admin_adjustment */
+    reason: varchar("reason", { length: 40 }).notNull(),
+    referralId: uuid("referral_id").references(() => referrals.id, { onDelete: "set null" }),
+    readingId: uuid("reading_id").references(() => readings.id, { onDelete: "set null" }),
+    balanceAfter: integer("balance_after").notNull(),
+    metadata: jsonb("metadata"),
+    /** Set when the referrer has seen the gift popup for this reward. */
+    acknowledgedAt: timestamp("acknowledged_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("token_ledger_user_idx").on(t.userId, t.createdAt),
+    uniqueIndex("token_ledger_referral_once_idx").on(t.referralId).where(sql`${t.referralId} IS NOT NULL`),
+    uniqueIndex("token_ledger_ultra_once_idx")
+      .on(t.readingId)
+      .where(sql`${t.reason} = 'ultra_redemption' AND ${t.readingId} IS NOT NULL`),
+  ],
 );
 
 /**
@@ -256,3 +325,7 @@ export type WhatsAppSubscriber = typeof whatsappSubscribers.$inferSelect;
 export type NewWhatsAppSubscriber = typeof whatsappSubscribers.$inferInsert;
 export type WhatsAppDailySend = typeof whatsappDailySends.$inferSelect;
 export type NewWhatsAppDailySend = typeof whatsappDailySends.$inferInsert;
+export type Referral = typeof referrals.$inferSelect;
+export type NewReferral = typeof referrals.$inferInsert;
+export type TokenLedgerEntry = typeof tokenLedger.$inferSelect;
+export type NewTokenLedgerEntry = typeof tokenLedger.$inferInsert;

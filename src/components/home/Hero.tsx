@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown, Gift, Sparkles } from "lucide-react";
+import { ArrowRight, ChevronDown, Gift, MessageCircle, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import Navagraha from "./Navagraha";
 
@@ -73,13 +73,26 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, delay: 0.5 }}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2"
+          >
             <Link
               href="/rashifal"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-gold-300 transition hover:text-gold-200"
+              className="inline-flex items-center gap-2 text-sm font-medium text-gold-300 transition hover:text-gold-200"
             >
               <Sparkles className="h-4 w-4" />
               {L({ en: "Aaj Ka Rashifal — today, tomorrow & this week", hi: "आज का राशिफल — आज, कल और इस हफ़्ते" })}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href="/chat"
+              className="inline-flex items-center gap-2 text-sm font-medium text-emerald-200 transition hover:text-emerald-100"
+            >
+              <MessageCircle className="h-4 w-4" />
+              {L({ en: "Ask the AI Jyotishi", hi: "AI ज्योतिषी से पूछें" })}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>

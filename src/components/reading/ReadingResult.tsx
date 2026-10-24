@@ -4,14 +4,15 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Copy, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, History, BarChart3, TrendingUp, Orbit, ScrollText, Hand, ListChecks, CalendarDays } from "lucide-react";
+import { ChevronDown, Copy, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, History, BarChart3, TrendingUp, Orbit, ScrollText, Hand, ListChecks, CalendarDays, MessageCircle } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Badge, Card, cn } from "@/components/ui";
 import { nakshatraAt, rashiAt, PANCHANG, tithiName } from "@/lib/content";
 import { byLang } from "@/lib/i18n";
-import { formatDegree } from "@/lib/astrology";
+import { formatDegree } from "@/lib/format-degree";
 import { formatDate, formatTime12, tzLabel, type ReadingDTO } from "@/lib/dto";
 import { buildPalmReport, AREAS } from "@/lib/palm";
+import AdvancedChartPanel from "./AdvancedChart";
 import { Gauge, LifeGraph, RadarChart, Tilt } from "./ReportCharts";
 import PastSection from "./PastSection";
 import DetailedSections from "./DetailedSections";
@@ -23,6 +24,7 @@ import ReadingReview from "./ReadingReview";
 import ReviewPrompt from "./ReviewPrompt";
 import ScrollPrompts from "./ScrollPrompts";
 import RashifalPanel from "@/components/rashifal/RashifalPanel";
+import RashifalTrinity from "@/components/rashifal/RashifalTrinity";
 import WhatsAppDailyOptIn from "./WhatsAppDailyOptIn";
 import { PdfDividerButton, ProGateButton } from "./ProPaywall";
 import { ProReadMore, ProText } from "./ProTeaser";
@@ -96,6 +98,7 @@ export default function ReadingResult({
     { id: "sec-scores", label: t.report.scores, icon: BarChart3 },
     { id: "sec-graph", label: t.report.graph, icon: TrendingUp },
     { id: "sec-rashi", label: t.result.moonSign, icon: Orbit },
+    ...(r.advanced ? [{ id: "sec-kundli", label: L({ en: "Kundli", hi: "कुंडली" }), icon: Orbit }] : []),
     { id: "sec-rashifal", label: L({ en: "Rashifal", hi: "राशिफल" }), icon: CalendarDays },
     { id: "sec-detailed", label: t.report.detailed, icon: ScrollText },
     { id: "sec-palm", label: t.report.palmFull, icon: Hand },
@@ -382,16 +385,51 @@ export default function ReadingResult({
         </div>
       </section>
 
+      {r.advanced && <AdvancedChartPanel chart={r.advanced} timeUnknown={reading.timeUnknown} />}
+
       <section id="sec-rashifal" className="mt-14 scroll-mt-28">
-        <RashifalPanel rashiIndex={r.moonRashi} fullName={reading.fullName} showFullLink />
+        <RashifalTrinity rashiIndex={r.moonRashi} fullName={reading.fullName} />
+        <RashifalPanel
+          rashiIndex={r.moonRashi}
+          fullName={reading.fullName}
+          showHeading={false}
+          showFullLink
+        />
       </section>
 
-      <WhatsAppDailyOptIn
-        readingId={reading.id}
-        rashiLabel={L(rashi.short)}
-        subscribed={whatsappDaily?.subscribed ?? false}
-        maskedPhone={whatsappDaily?.maskedPhone ?? null}
-      />
+      <div className="no-print mt-6 flex flex-col gap-3 rounded-2xl border border-emerald-300/25 bg-gradient-to-r from-emerald-400/10 via-cosmic-800/50 to-mystic-600/10 p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-start gap-3">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-emerald-300/30 bg-emerald-400/10">
+            <MessageCircle className="h-5 w-5 text-emerald-200" />
+          </span>
+          <div>
+            <p className="font-medium text-white">
+              {L({ en: "Ask the AI Jyotishi about this report", hi: "इस रिपोर्ट के बारे में AI ज्योतिषी से पूछें" })}
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-slate-400">
+              {L({
+                en: "Your Moon sign, Nakshatra and Lagna are already attached — ask about career, love or a simple remedy.",
+                hi: "आपकी चंद्र राशि, नक्षत्र और लग्न पहले से जुड़े हैं — करियर, प्रेम या आसान उपाय के बारे में पूछें।",
+              })}
+            </p>
+          </div>
+        </div>
+        <Link
+          href={`/chat?reading=${reading.id}`}
+          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-emerald-300/40 bg-emerald-400/10 px-5 py-2.5 text-sm font-medium text-emerald-100 transition hover:border-emerald-300/70 hover:bg-emerald-400/15"
+        >
+          {L({ en: "Open AI chat", hi: "AI चैट खोलें" })} <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
+
+      {!pro && (
+        <WhatsAppDailyOptIn
+          readingId={reading.id}
+          rashiLabel={L(rashi.short)}
+          subscribed={whatsappDaily?.subscribed ?? false}
+          maskedPhone={whatsappDaily?.maskedPhone ?? null}
+        />
+      )}
 
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 

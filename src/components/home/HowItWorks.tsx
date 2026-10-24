@@ -42,8 +42,10 @@ export default function HowItWorks() {
   const { t } = useLang();
   const [active, setActive] = useState(0);
 
+  // overflow-x-clip contains the slide-in cards' initial x offset without
+  // turning the section into a scroll container, so the sticky panel works.
   return (
-    <section id="how-it-works" className="relative scroll-mt-20 py-20 md:py-28">
+    <section id="how-it-works" className="relative scroll-mt-20 overflow-x-clip py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow="✦ Process" title={t.how.title} sub={t.how.sub} />
 

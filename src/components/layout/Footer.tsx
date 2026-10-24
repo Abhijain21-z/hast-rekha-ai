@@ -119,6 +119,7 @@ export default function Footer() {
               <li><Link href="/blog" className="hover:text-white">{t.nav.blog}</Link></li>
               <li><Link href="/rashi" className="hover:text-white">{t.nav.rashi}</Link></li>
               <li><Link href="/rashifal" className="hover:text-white">{t.nav.rashifal}</Link></li>
+              <li><Link href="/chat" className="hover:text-white">{t.nav.chat}</Link></li>
               <li><Link href="/diwali-2026" className="hover:text-white">Diwali 2026 Rashifal</Link></li>
             </ul>
           </div>

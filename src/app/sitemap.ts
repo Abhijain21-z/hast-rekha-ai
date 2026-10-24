@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // /login and /register are deliberately noindex, so they must not be in the
   // sitemap (Google reports indexable/noindex conflicts as crawl noise).
   const staticPages = [
-    "", "/rashifal", "/rashi", "/reading", "/pricing", "/diwali-2026", "/blog", "/reviews", ...(BOOK_PROMO ? ["/upay"] : []), "/about", "/contact", "/privacy-policy", "/terms", "/refund-policy", "/disclaimer",
+    "", "/rashifal", "/chat", "/rashi", "/reading", "/pricing", "/diwali-2026", "/blog", "/reviews", ...(BOOK_PROMO ? ["/upay"] : []), "/about", "/contact", "/privacy-policy", "/terms", "/refund-policy", "/disclaimer",
   ].map((p) => ({
     url: `${BASE}${p}`,
     lastModified: p === "" || p === "/blog" || p === "/rashifal" || p === "/diwali-2026" ? now : STATIC_UPDATED,

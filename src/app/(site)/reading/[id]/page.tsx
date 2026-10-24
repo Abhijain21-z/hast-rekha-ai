@@ -6,6 +6,7 @@ import { db } from "@/db";
 import { readings } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { toReadingDTO } from "@/lib/dto";
+import { ensureAdvanced } from "@/lib/astro/hydrate";
 import { getWhatsAppDailyStatus } from "@/lib/whatsapp-subscribers";
 import ReadingResult from "@/components/reading/ReadingResult";
 
@@ -39,9 +40,11 @@ export default async function PublicReadingPage({ params }: { params: Promise<{ 
   const user = await getCurrentUser();
   const isOwner = !!user && row.userId === user.id;
   const whatsappDaily = await getWhatsAppDailyStatus(row.whatsappPhone);
+  // Older readings predate the advanced engine; hydrate without a DB backfill.
+  const reading = { ...row, result: ensureAdvanced(row) };
   return (
     <ReadingResult
-      reading={toReadingDTO(row)}
+      reading={toReadingDTO(reading)}
       guest={!user}
       backHref={isOwner ? `/dashboard/readings/${row.id}` : undefined}
       whatsappDaily={whatsappDaily}

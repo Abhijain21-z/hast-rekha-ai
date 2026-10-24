@@ -60,6 +60,8 @@ export async function POST(req: Request) {
       id: readings.id,
       fullName: readings.fullName,
       whatsappPhone: readings.whatsappPhone,
+      premium: readings.premium,
+      ultra: readings.ultra,
       result: readings.result,
     })
     .from(readings)
@@ -68,6 +70,12 @@ export async function POST(req: Request) {
 
   if (!reading) {
     return NextResponse.json({ error: "reading_not_found" }, { status: 404 });
+  }
+
+  // The 3x/week reminder is a free-reader growth offer. Paid readers keep
+  // their report and do not enter the marketing audience.
+  if (reading.premium || reading.ultra) {
+    return NextResponse.json({ error: "paid_reader_excluded" }, { status: 409 });
   }
 
   // If the reading already saved a number, only that number can be opted in.

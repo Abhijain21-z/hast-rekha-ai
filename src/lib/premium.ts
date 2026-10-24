@@ -29,6 +29,22 @@ interface PremiumContent {
 }
 const C = premiumJson as PremiumContent;
 
+/**
+ * One-line flavour for each mahadasha lord, used in the five-year roadmap.
+ * Deliberately practical rather than fatalistic.
+ */
+const DASHA_THEME: Record<string, Bi> = {
+  sun: { en: "visibility, authority and a test of ego", hi: "पहचान, अधिकार और अहं की परीक्षा" },
+  moon: { en: "emotional life, home and public connect", hi: "भावनात्मक जीवन, घर और जन-संपर्क" },
+  mars: { en: "effort, property and decisive action", hi: "परिश्रम, संपत्ति और निर्णायक कदम" },
+  mercury: { en: "learning, trade and communication", hi: "अध्ययन, व्यापार और संवाद" },
+  jupiter: { en: "guidance, expansion and dharma", hi: "मार्गदर्शन, विस्तार और धर्म" },
+  venus: { en: "relationships, comfort and creative income", hi: "रिश्ते, सुख और सृजनात्मक आय" },
+  saturn: { en: "structure, patience and long-term building", hi: "संरचना, धैर्य और दीर्घकालिक निर्माण" },
+  rahu: { en: "ambition, foreign links and unconventional paths", hi: "महत्वाकांक्षा, विदेश संबंध और अपरंपरागत राह" },
+  ketu: { en: "detachment, research and inner work", hi: "वैराग्य, शोध और आंतरिक साधना" },
+};
+
 export const UPI_ID = "9522333669@jio";
 export const UPI_PAYEE_NAME = "Hast Rekha AI";
 /** Single source of truth for the ₹51 price — defined in `flags.ts`. */
@@ -53,6 +69,8 @@ export interface PremiumYear {
   mistakes: Bi;
   upay: Bi;
   stotra: Bi;
+  /** Mahadasha context from the advanced chart, when available. */
+  dashaNote?: Bi;
 }
 export interface PremiumReport {
   years: PremiumYear[];
@@ -102,14 +120,25 @@ export function buildPremiumReport(input: { result: AstroResult; seed: number; f
       en: { month: C.months[monthIdx] },
       hi: { month: C.monthsHi[monthIdx] },
     };
+    const calendarYear = startYear + i;
+    const maha = result.advanced?.dasha.mahadashas.find(
+      (p) => Number(p.start.slice(0, 4)) <= calendarYear && Number(p.end.slice(0, 4)) >= calendarYear,
+    );
+    const theme = maha ? DASHA_THEME[maha.lord] : undefined;
     years.push({
-      calendarYear: startYear + i,
+      calendarYear,
       ageRange: [startAge + i, startAge + i + 1],
       theme: block.theme,
       events: fill(block.events, vars),
       mistakes: block.mistakes,
       upay: block.upay,
       stotra: block.stotra,
+      dashaNote: maha && theme
+        ? {
+            en: `${maha.lordName.en} mahadasha (${maha.start.slice(0, 4)}–${maha.end.slice(0, 4)}) runs through this year — a period of ${theme.en}.`,
+            hi: `${maha.lordName.hi} महादशा (${maha.start.slice(0, 4)}–${maha.end.slice(0, 4)}) इस वर्ष चल रही है — ${theme.hi} का काल।`,
+          }
+        : undefined,
     });
   }
 

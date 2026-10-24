@@ -9,6 +9,7 @@ import anatomyJson from "@/content/palm-anatomy.json";
 import signsJson from "@/content/palm-signs.json";
 import sectionsJson from "@/content/palm-sections.json";
 import pastJson from "@/content/past.json";
+import advancedJson from "@/content/palm-advanced.json";
 import type { AstroResult } from "./astrology";
 import type { Bi, Lang } from "./i18n";
 import { hashString, nakshatraAt, rashiAt } from "./content";
@@ -29,6 +30,9 @@ interface Anatomy {
   thumb: Variant[];
 }
 interface Signs { positive: { key: string; name: Bi; text: Bi }[]; caution: { key: string; name: Bi; text: Bi; remedy: Bi }[] }
+interface MinorLineDef { key: string; area: Area; name: Bi; variants: Variant[] }
+interface FingerDef { key: string; name: Bi; variants: Variant[] }
+interface PalmAdvanced { minorLines: MinorLineDef[]; fingers: FingerDef[]; skin: Variant[]; nails: Variant[] }
 export type Visual = "radar" | "meter" | "range" | "bars" | "graph";
 export interface SectionDef { key: string; icon: string; area: Area | null; visual: Visual; title: Bi; variants: Bi[][] }
 interface Sections { sections: SectionDef[]; elementNotes: Record<string, Record<Element, Bi>>; suggestions: Bi[] }
@@ -38,6 +42,28 @@ export const ANATOMY = anatomyJson as Anatomy;
 const SIGNS = signsJson as Signs;
 const SECTIONS = sectionsJson as Sections;
 const PAST = pastJson as Past;
+const ADVANCED = advancedJson as PalmAdvanced;
+
+/** Classical age spans for the major lines, used by the timing panel. */
+const LINE_TIMING: { key: string; start: number; end: number; peak: number; note: Bi }[] = [
+  { key: "life", start: 0, end: 75, peak: 45, note: { en: "Read downwards from the thumb web; the midpoint is roughly mid-life.", hi: "अंगूठे की जाली से नीचे पढ़ें; मध्य बिंदु लगभग मध्य-आयु है।" } },
+  { key: "head", start: 18, end: 60, peak: 35, note: { en: "A clear run through the 30s favours study and decision-making.", hi: "तीस के दशक में स्पष्ट रेखा अध्ययन और निर्णय के लिए अनुकूल है।" } },
+  { key: "heart", start: 18, end: 55, peak: 38, note: { en: "The middle of the heart line is read as the emotional high tide.", hi: "हृदय रेखा के मध्य को भावनात्मक उभार माना जाता है।" } },
+  { key: "fate", start: 18, end: 65, peak: 45, note: { en: "A steady fate line after 30 usually marks a settled professional identity.", hi: "तीस के बाद स्थिर भाग्य रेखा पेशेवर पहचान के स्थिर होने का संकेत है।" } },
+  { key: "sun", start: 30, end: 55, peak: 42, note: { en: "The sun line is most visible in the years when public work is recognised.", hi: "सूर्य रेखा उन वर्षों में सबसे स्पष्ट होती है जब सार्वजनिक कार्य को पहचान मिलती है।" } },
+  { key: "marriage", start: 22, end: 32, peak: 27, note: { en: "Marriage lines sit on the edge of the palm below the little finger.", hi: "विवाह रेखाएँ कनिष्ठा के नीचे हथेली के किनारे होती हैं।" } },
+  { key: "money", start: 25, end: 60, peak: 40, note: { en: "The wealth triangle is read as a period of accumulating, not sudden windfall.", hi: "धन त्रिकोण संचय का काल दिखाता है, अचानक लॉटरी का नहीं।" } },
+];
+
+export interface PalmTiming { def: LineDef; start: number; end: number; peak: number; note: Bi }
+export interface PalmDetails {
+  minorLines: { def: MinorLineDef; variant: Variant; strength: number }[];
+  fingers: { def: FingerDef; variant: Variant; strength: number }[];
+  skin: Variant;
+  nails: Variant;
+  dominantMounts: { def: MountDef; strength: number }[];
+  timing: PalmTiming[];
+}
 
 export interface PalmReport {
   seed: number;
@@ -48,6 +74,7 @@ export interface PalmReport {
   shape: { name: Bi; text: Bi };
   lines: { def: LineDef; variant: Variant; strength: number }[];
   mounts: { def: MountDef; variant: Variant; strength: number }[];
+  details: PalmDetails;
   fingers: Variant;
   knuckles: Variant;
   thumb: Variant;
@@ -219,6 +246,36 @@ export function buildPalmReport(input: PalmInput): PalmReport {
     const strength = clamp(Math.round(0.5 * scores[def.area] + 50 * rng()), 50, 98);
     return { def, variant: def.variants[strength >= 70 ? 0 : 1], strength };
   });
+
+  // ---- advanced details ---------------------------------------------------
+  // A separate stream keeps these newer readings from shifting the long-standing
+  // line and mount output of readings that already exist.
+  const rngDetails = mulberry32((seed ^ 0x85ebca6b) >>> 0);
+  const minorLines = ADVANCED.minorLines.map((def) => {
+    const strength = clamp(Math.round(0.55 * scores[def.area] + 44 * rngDetails()), 52, 98);
+    return { def, variant: def.variants[strength >= 70 ? 0 : 1], strength };
+  });
+  const fingerReadings = ADVANCED.fingers.map((def) => {
+    const strength = clamp(Math.round(52 + 46 * rngDetails()), 50, 98);
+    return { def, variant: def.variants[strength >= 68 ? 0 : 1], strength };
+  });
+  const pick = (list: Variant[]) => list[Math.min(list.length - 1, Math.floor(rngDetails() * list.length))];
+  const details: PalmDetails = {
+    minorLines,
+    fingers: fingerReadings,
+    skin: pick(ADVANCED.skin),
+    nails: pick(ADVANCED.nails),
+    // The fullest mounts are the ones a palmist would read first.
+    dominantMounts: [...mounts].sort((a, b) => b.strength - a.strength).slice(0, 3),
+    timing: LINE_TIMING.map((t) => ({
+      def: ANATOMY.lines.find((l) => l.key === t.key) ?? ANATOMY.lines[0],
+      start: t.start,
+      end: t.end,
+      peak: t.peak,
+      note: t.note,
+    })),
+  };
+
   const fingers = ANATOMY.fingers[element === "Air" || element === "Water" ? (rng() < 0.7 ? 0 : 1) : rng() < 0.6 ? 2 : 1];
   const knuckles = ANATOMY.knuckles[rng() < 0.55 ? 0 : 1];
   const thumb = ANATOMY.thumb[scores.career >= 82 ? 0 : rng() < 0.5 ? 1 : 2];
@@ -266,7 +323,7 @@ export function buildPalmReport(input: PalmInput): PalmReport {
   });
 
   return {
-    seed, element, age, birthYear, lifePath, shape, lines, mounts, fingers, knuckles, thumb, signs, cautions, scores,
+    seed, element, age, birthYear, lifePath, shape, lines, mounts, details, fingers, knuckles, thumb, signs, cautions, scores,
     timing: { moneyStart, peak1, peak2, marriage, travelAges, luckyAges, turning },
     vars, sections, suggestions, past, graph, decades,
   };

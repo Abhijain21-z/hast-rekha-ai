@@ -32,8 +32,8 @@
     },
     "p": [
      {
-      "en": "Birth details are used solely to compute your reading on our servers. Palm photos are resized inside your browser and stored only with your reading so you can revisit them. We do not sell, rent or share personal data with third parties, and we use no advertising trackers.",
-      "hi": "जन्म विवरण का उपयोग केवल हमारे सर्वर पर आपकी रीडिंग गणना हेतु होता है। हथेली की फ़ोटो आपके ब्राउज़र में छोटी होती है और केवल आपकी रीडिंग के साथ सहेजी जाती है ताकि आप दोबारा देख सकें। हम व्यक्तिगत डेटा किसी तीसरे पक्ष को बेचते, किराए पर देते या साझा करते नहीं, और कोई विज्ञापन ट्रैकर उपयोग नहीं करते।"
+      "en": "Birth details are used solely to compute your reading on our servers. Palm photos are resized inside your browser and stored only with your reading so you can revisit them. We do not sell or rent personal data. We share only what is necessary with the service providers described below: Cashfree for payments, Meta for WhatsApp delivery, our AI provider for the optional chat, and Vercel for hosting and aggregate analytics. We use no advertising trackers of our own.",
+      "hi": "जन्म विवरण का उपयोग केवल हमारे सर्वर पर आपकी रीडिंग गणना हेतु होता है। हथेली की फ़ोटो आपके ब्राउज़र में छोटी होती है और केवल आपकी रीडिंग के साथ सहेजी जाती है ताकि आप दोबारा देख सकें। हम व्यक्तिगत डेटा बेचते या किराए पर नहीं देते। हम केवल आवश्यक जानकारी नीचे बताए सेवा प्रदाताओं के साथ साझा करते हैं: भुगतान के लिए Cashfree, WhatsApp delivery के लिए Meta, वैकल्पिक चैट के लिए हमारा AI provider, और hosting व aggregate analytics के लिए Vercel। हम अपनी ओर से कोई विज्ञापन ट्रैकर उपयोग नहीं करते।"
      },
      {
       "en": "We use Vercel Analytics to measure aggregate page views and referrers. It is cookieless and does not identify individual visitors.",
@@ -43,17 +43,33 @@
    },
    {
     "h": {
-     "en": "Daily WhatsApp rashifal",
-     "hi": "रोज़ का WhatsApp राशिफल"
+     "en": "WhatsApp rashifal reminders (2 days a week)",
+     "hi": "WhatsApp राशिफल reminder (हफ़्ते में 2 दिन)"
     },
     "p": [
      {
-      "en": "The daily rashifal message is optional and requires a separate, explicit opt-in — it is not covered by the payment/report-update consent. When you tick the daily rashifal box, we store the number, your opt-in time and your Moon sign, and send one WhatsApp message each morning with a link to that day's rashifal. Every message includes a STOP instruction. Reply STOP or contact us to opt out; we stop the next daily send and keep a record of the opt-out so you are not messaged again unless you opt in again.",
-      "hi": "रोज़ का WhatsApp राशिफल message वैकल्पिक है और इसके लिए अलग, स्पष्ट सहमति ज़रूरी है — payment/report-update सहमति इसके लिए पर्याप्त नहीं है। जब आप daily rashifal का बॉक्स टिक करते हैं, तो हम नंबर, सहमति का समय और आपकी चंद्र राशि सहेजते हैं, और हर सुबह एक WhatsApp message में उस दिन के राशिफल का link भेजते हैं। हर message में STOP का निर्देश होता है। बंद करने के लिए STOP लिखें या हमसे संपर्क करें; हम अगली daily send रोक देते हैं और opt-out का record रखते हैं ताकि आप दोबारा सहमति देने तक message न आए।"
+      "en": "A WhatsApp number is required to create a new reading: we use it for your report link and payment updates. The marketing reminder is optional and requires a separate, explicit opt-in — it is not covered by the payment/report-update consent. When you tick the reminder box, we store the number, your opt-in time and your Moon sign. We then send up to two WhatsApp messages a week, on two fixed days assigned to your subscription, at 9 AM IST, with a link to today's, tomorrow's and this week's rashifal. The days are spread across the week so the whole audience is not messaged on the same day. Every message includes a STOP instruction. Reply STOP or contact us to opt out; we stop the next send and keep a record of the opt-out so you are not messaged again unless you opt in again.",
+      "hi": "नई रीडिंग बनाने के लिए WhatsApp नंबर आवश्यक है: हम इसे report link और payment updates के लिए उपयोग करते हैं। Marketing reminder वैकल्पिक है और इसके लिए अलग, स्पष्ट सहमति ज़रूरी है — payment/report-update सहमति इसके लिए पर्याप्त नहीं है। जब आप reminder का बॉक्स टिक करते हैं, तो हम नंबर, सहमति का समय और आपकी चंद्र राशि सहेजते हैं। इसके बाद हम हफ़्ते में अधिकतम दो WhatsApp messages, आपकी subscription के लिए तय दो दिनों पर, सुबह 9 बजे IST भेजते हैं, जिनमें आज, कल और इस हफ़्ते के राशिफल का link होता है। दिन पूरे हफ़्ते में इस तरह बाँटे जाते हैं कि सभी लोगों को एक ही दिन message न जाए। हर message में STOP का निर्देश होता है। बंद करने के लिए STOP लिखें या हमसे संपर्क करें; हम अगली send रोक देते हैं और opt-out का record रखते हैं ताकि आप दोबारा सहमति देने तक message न आए।"
      },
      {
-      "en": "We send daily rashifal messages through Meta's WhatsApp Business Platform. Meta processes the delivery. We do not sell or share your number with anyone else, and we do not send daily messages to numbers that have not opted in.",
-      "hi": "हम daily rashifal messages Meta के WhatsApp Business Platform से भेजते हैं। Delivery Meta प्रोसेस करता है। हम आपका नंबर किसी और को बेचते या साझा नहीं करते, और जिन numbers ने सहमति नहीं दी उन्हें daily messages नहीं भेजते।"
+      "en": "We send these reminders through Meta's WhatsApp Business Platform. Meta processes the delivery. Readers who have bought Pro or Ultra Pro are excluded from the reminder audience. We do not sell or share your number with anyone else, and we do not message numbers that have not opted in.",
+      "hi": "हम ये reminders Meta के WhatsApp Business Platform से भेजते हैं। Delivery Meta प्रोसेस करता है। जिन पाठकों ने Pro या Ultra Pro खरीदा है, उन्हें reminder audience से बाहर रखा जाता है। हम आपका नंबर किसी और को बेचते या साझा नहीं करते, और जिन numbers ने सहमति नहीं दी उन्हें message नहीं भेजते।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "AI Jyotishi chat",
+     "hi": "AI ज्योतिषी चैट"
+    },
+    "p": [
+     {
+      "en": "The AI chat is optional. When you use it, we send your current question, the recent messages in that chat, and a limited chart summary (Moon sign, Nakshatra, Lagna, Vedic Sun sign, tithi and yoga) to an OpenAI-compatible AI provider so it can generate a reply. We do not send your name, birth date, birth time, birth place, phone number, payment data or palm photo. The provider processes the text on our behalf; do not type sensitive personal, medical, legal or financial information into the chat.",
+      "hi": "AI चैट वैकल्पिक है। इसका उपयोग करते समय हम आपका वर्तमान सवाल, उस चैट के हाल के messages और सीमित कुंडली सारांश (चंद्र राशि, नक्षत्र, लग्न, वैदिक सूर्य राशि, तिथि व योग) एक OpenAI-compatible AI provider को भेजते हैं ताकि वह उत्तर बना सके। हम आपका नाम, जन्म तिथि, जन्म समय, जन्म स्थान, फ़ोन नंबर, payment data या हथेली की फ़ोटो नहीं भेजते। Provider हमारी ओर से उस text को प्रोसेस करता है; चैट में संवेदनशील व्यक्तिगत, चिकित्सा, कानूनी या वित्तीय जानकारी न लिखें।"
+     },
+     {
+      "en": "Chat messages are not saved in our database; they stay in your browser for the current session and are cleared on refresh. We keep only aggregate rate-limit counters to prevent abuse. AI replies can be wrong and are for reflection and entertainment, not professional advice.",
+      "hi": "चैट messages हमारे database में सहेजे नहीं जाते; वे वर्तमान session तक आपके ब्राउज़र में रहते हैं और refresh पर मिट जाते हैं। दुरुपयोग रोकने के लिए हम केवल aggregate rate-limit counters रखते हैं। AI के उत्तर गलत हो सकते हैं और आत्मचिंतन व मनोरंजन के लिए हैं, पेशेवर सलाह नहीं।"
      }
     ]
    },
@@ -117,8 +133,8 @@
    "hi": "अस्वीकरण"
   },
   "updated": {
-   "en": "Last updated: 21 October 2026",
-   "hi": "अंतिम अद्यतन: 21 अक्टूबर 2026"
+   "en": "Last updated: 24 October 2026",
+   "hi": "अंतिम अद्यतन: 24 अक्टूबर 2026"
   },
   "intro": {
    "en": "Hast Rekha AI is provided for entertainment and self-reflection purposes only.",
@@ -146,6 +162,18 @@
      {
       "en": "Astronomical positions are computed with standard formulas (Lahiri ayanamsa). Results are deterministic and transparent — the technical panel in every report shows the exact numbers. Still, no calculation can guarantee future events.",
       "hi": "खगोलीय स्थितियाँ मानक सूत्रों (लाहिड़ी अयनांश) से गणित हैं। परिणाम नियतात्मक व पारदर्शी हैं — हर रिपोर्ट का तकनीकी पैनल सटीक अंक दिखाता है। फिर भी कोई गणना भविष्य की घटनाओं की गारंटी नहीं दे सकती।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "AI chat answers",
+     "hi": "AI चैट उत्तर"
+    },
+    "p": [
+     {
+      "en": "The AI Jyotishi is a third-party language model. Its replies are generated, not calculated, and can be inaccurate, incomplete or different each time. They are for reflection and entertainment only and must not be used as medical, legal, financial, psychological or safety advice. If you are in distress, contact a qualified professional or a local helpline.",
+      "hi": "AI ज्योतिषी एक तृतीय-पक्ष भाषा मॉडल है। उसके उत्तर गणना से नहीं, generation से बनते हैं और गलत, अपूर्ण या हर बार अलग हो सकते हैं। वे केवल आत्मचिंतन व मनोरंजन के लिए हैं और चिकित्सा, कानूनी, वित्तीय, मनोवैज्ञानिक या सुरक्षा सलाह के रूप में उपयोग नहीं किए जाने चाहिए। यदि आप कठिन दौर से गुज़र रहे हैं, तो योग्य विशेषज्ञ या स्थानीय helpline से संपर्क करें।"
      }
     ]
    },
@@ -322,7 +350,7 @@
  },
  "refunds": {
   "title": { "en": "Refund & Cancellation Policy", "hi": "रिफंड और रद्दीकरण नीति" },
-  "updated": { "en": "Last updated: 20 October 2026", "hi": "अंतिम अद्यतन: 20 अक्टूबर 2026" },
+  "updated": { "en": "Last updated: 24 October 2026", "hi": "अंतिम अद्यतन: 24 अक्टूबर 2026" },
   "intro": {
    "en": "This policy explains refunds and cancellations for the paid digital reports on Hast Rekha AI (https://www.hastrekhaai.online): the ₹51 Pro report and the ₹351 Ultra Pro report (which includes the Dhandayak book). All payments are one-time — there is no subscription.",
    "hi": "यह नीति हस्त रेखा AI (https://www.hastrekhaai.online) की सशुल्क डिजिटल रिपोर्ट्स — ₹51 प्रो रिपोर्ट और ₹351 अल्ट्रा प्रो रिपोर्ट (धनदायक पुस्तक सहित) — के रिफंड और रद्दीकरण के बारे में बताती है। सभी भुगतान एक बार के हैं — कोई सब्सक्रिप्शन नहीं है।"
@@ -345,7 +373,8 @@
     "h": { "en": "When we do not refund", "hi": "हम कब रिफंड नहीं देते" },
     "p": [
      { "en": "Once a report has unlocked successfully, the digital product is delivered and is generally non-refundable. Refunds are not given for a change of mind, or because you disagree with the predictions — readings are for entertainment and self-reflection (see our Disclaimer).", "hi": "रिपोर्ट सफलतापूर्वक अनलॉक होने के बाद डिजिटल उत्पाद मिल चुका होता है और सामान्यतः गैर-वापसी योग्य है। मन बदलने या भविष्यवाणियों से सहमत न होने पर रिफंड नहीं दिया जाता — रीडिंग मनोरंजन और आत्म-चिंतन के लिए हैं (हमारा डिस्क्लेमर देखें)।" },
-     { "en": "Optional donations are voluntary and non-refundable.", "hi": "वैकल्पिक दान स्वैच्छिक हैं और गैर-वापसी योग्य हैं।" }
+     { "en": "Optional donations are voluntary and non-refundable.", "hi": "वैकल्पिक दान स्वैच्छिक हैं और गैर-वापसी योग्य हैं।" },
+     { "en": "Referral token upgrades: when an Ultra Pro report is unlocked with 350 referral tokens, no money is paid, so there is no cash amount to refund. If a redemption fails, the tokens remain in your balance.", "hi": "रेफ़ल टोकन अपग्रेड: जब 350 रेफ़ल टोकन से अल्ट्रा प्रो रिपोर्ट अनलॉक होती है, तो कोई धन नहीं दिया जाता, इसलिए नकद रिफंड की कोई राशि नहीं होती। यदि रिडेम्प्शन विफल हो, तो टोकन आपके बैलेंस में बने रहते हैं।" }
     ]
    },
    {
@@ -368,8 +397,8 @@
    "hi": "सेवा की शर्तें"
   },
   "updated": {
-   "en": "Last updated: 20 September 2026",
-   "hi": "अंतिम अद्यतन: 20 सितंबर 2026"
+   "en": "Last updated: 24 October 2026",
+   "hi": "अंतिम अद्यतन: 24 अक्टूबर 2026"
   },
   "intro": {
    "en": "Welcome to Hast Rekha AI (https://www.hastrekhaai.online). By using this website, you agree to these Terms of Service. Please read them carefully before using our astrology and palmistry services.",
@@ -437,6 +466,30 @@
      {
       "en": "Certain advanced features may require payment. Prices are displayed in Indian Rupees (INR) and are inclusive of applicable taxes. Payments are processed through UPI. All paid reports are delivered digitally and, given their instant nature, are generally non-refundable once generated. If you were charged but did not receive your report, contact us at abhijain.technical@gmail.com and we will resolve it.",
       "hi": "कुछ उन्नत सुविधाओं के लिए भुगतान आवश्यक हो सकता है। कीमतें भारतीय रुपये (INR) में प्रदर्शित होती हैं और लागू कर सहित हैं। भुगतान UPI के माध्यम से किया जाता है। सभी सशुल्क रिपोर्ट डिजिटल रूप से वितरित होती हैं और उनकी त्वरित प्रकृति के कारण एक बार बनने के बाद सामान्यतः गैर-धनवापसी योग्य होती हैं। यदि भुगतान हुआ परंतु रिपोर्ट नहीं मिली, तो abhijain.technical@gmail.com पर संपर्क करें।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Referral Tokens and Ultra Pro Redemption",
+     "hi": "रेफ़ल टोकन और अल्ट्रा प्रो रिडेम्प्शन"
+    },
+    "p": [
+     {
+      "en": "Hast Rekha AI may offer promotional referral tokens. A referrer receives 50 tokens only after the person they referred creates an account using the referral link or code. Opening the link, creating a reading without an account, or registering without the code does not earn tokens. One reward is allowed per new account; self-referrals, duplicate or fake accounts and automated signups are not eligible, and tokens may be reversed if abuse is detected.",
+      "hi": "हस्त रेखा AI प्रचारात्मक रेफ़ल टोकन दे सकता है। रेफ़र करने वाले को 50 टोकन तभी मिलते हैं जब उसका रेफ़र किया गया व्यक्ति रेफ़ल लिंक या कोड से खाता बनाता है। केवल लिंक खोलने, बिना खाते के रीडिंग बनाने या कोड के बिना पंजीकरण करने पर टोकन नहीं मिलते। प्रत्येक नए खाते पर एक ही बार इनाम मिलता है; स्वयं को रेफ़र करना, डुप्लिकेट या फ़र्ज़ी खाते और स्वचालित साइनअप पात्र नहीं हैं, और दुरुपयोग पाए जाने पर टोकन वापस लिए जा सकते हैं।"
+     },
+     {
+      "en": "Tokens have no cash value, cannot be transferred or sold, and cannot be exchanged for cash. 350 tokens may be redeemed once to unlock a single Ultra Pro report (₹351 value). Tokens are not accepted for the ₹51 Pro report; that report is always purchased with real money at checkout.",
+      "hi": "टोकन का कोई नकद मूल्य नहीं है, इन्हें स्थानांतरित या बेचा नहीं जा सकता और नकद में नहीं बदला जा सकता। 350 टोकन एक बार में एक अल्ट्रा प्रो रिपोर्ट (₹351 मूल्य) अनलॉक करने के लिए इस्तेमाल किए जा सकते हैं। ₹51 प्रो रिपोर्ट के लिए टोकन स्वीकार नहीं किए जाते; वह रिपोर्ट हमेशा चेकआउट पर वास्तविक धन से खरीदी जाती है।"
+     },
+     {
+      "en": "A token redemption is final and unlocks the report on the account that redeems it. Because a token upgrade is not a cash payment, no cash refund is available for that upgrade. If a redemption fails, the tokens are not deducted from your balance.",
+      "hi": "टोकन रिडेम्प्शन अंतिम है और रिपोर्ट उसी खाते में अनलॉक होती है जो रिडेम्प्शन करता है। टोकन से किया गया अपग्रेड नकद भुगतान नहीं है, इसलिए उस अपग्रेड के लिए नकद रिफंड उपलब्ध नहीं है। यदि रिडेम्प्शन विफल होता है, तो टोकन आपके बैलेंस से नहीं कटते।"
+     },
+     {
+      "en": "We may change, suspend or end the token programme, or change the number of tokens needed for a reward, by posting notice on this page. Tokens already earned remain usable for the reward value shown at the time they were earned, unless the account has breached these Terms.",
+      "hi": "हम इस पृष्ठ पर सूचना देकर टोकन कार्यक्रम बदल, निलंबित या समाप्त कर सकते हैं, या किसी इनाम के लिए आवश्यक टोकन की संख्या बदल सकते हैं। पहले कमाए गए टोकन उस समय दिखाए गए इनाम मूल्य के लिए तब तक उपयोगी रहेंगे, जब तक खाते ने इन शर्तों का उल्लंघन न किया हो।"
      }
     ]
    },

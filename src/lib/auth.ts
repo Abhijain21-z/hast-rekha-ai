@@ -9,13 +9,18 @@ import { sessions, users, type User } from "@/db/schema";
 export const SESSION_COOKIE = "hr_session";
 const SESSION_DAYS = 30;
 
-export type SafeUser = Pick<User, "id" | "name" | "email" | "preferredLang" | "createdAt">;
+export type SafeUser = Pick<
+  User,
+  "id" | "name" | "email" | "preferredLang" | "referralCode" | "tokenBalance" | "createdAt"
+>;
 
 export const toSafeUser = (u: User): SafeUser => ({
   id: u.id,
   name: u.name,
   email: u.email,
   preferredLang: u.preferredLang,
+  referralCode: u.referralCode,
+  tokenBalance: u.tokenBalance,
   createdAt: u.createdAt,
 });
 

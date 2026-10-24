@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Briefcase, CalendarDays, CheckCircle2, Coins, Heart, Sparkles, Sun } from "lucide-react";
 import DiwaliJsonLd from "@/components/festival/DiwaliJsonLd";
+import DiwaliPujaPromo from "@/components/offers/DiwaliPujaPromo";
 import ShareRow from "@/components/layout/ShareRow";
 import { DIWALI_2026, DIWALI_FAQS, DIWALI_RASHIFAL } from "@/content/diwali";
 import { RASHIS } from "@/lib/content";
@@ -98,6 +99,10 @@ export default function Diwali2026Page() {
           ))}
         </dl>
       </header>
+
+      <section className="mt-12">
+        <DiwaliPujaPromo />
+      </section>
 
       <section id="rashifal" className="mt-16 scroll-mt-28">
         <div className="flex flex-wrap items-end justify-between gap-4">

@@ -1,0 +1,320 @@
+{
+  "minorLines": [
+    {
+      "key": "girdle",
+      "area": "love",
+      "name": { "en": "Girdle of Venus (Shukra Valaya)", "hi": "शुक्र वलय" },
+      "variants": [
+        {
+          "label": { "en": "Clear girdle", "hi": "स्पष्ट वलय" },
+          "text": {
+            "en": "The girdle is clearly marked: you feel a situation before others explain it, and art, music or poetry restore your balance. Keep one creative habit that belongs only to you.",
+            "hi": "वलय स्पष्ट है: आप स्थिति को समझाने से पहले महसूस करते हैं, और कला, संगीत या कविता आपको संतुलित करती है। एक रचनात्मक आदत अपने लिए रखें।"
+          }
+        },
+        {
+          "label": { "en": "Faint girdle", "hi": "हल्का वलय" },
+          "text": {
+            "en": "The girdle is faint: emotions stay private until trust is earned, which protects you in unfamiliar company. Say the appreciative sentence you would normally only think.",
+            "hi": "वलय हल्का है: भरोसा बनने तक भावनाएँ भीतर रहती हैं, जो अनजान लोगों में आपकी रक्षा करती हैं। जो प्रशंसा मन में रहती है, उसे कभी बोल भी दें।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "via-lascivia",
+      "area": "travel",
+      "name": { "en": "Via Lascivia (Kama Rekha)", "hi": "वाया लस्किविया (काम रेखा)" },
+      "variants": [
+        {
+          "label": { "en": "Long diagonal", "hi": "लंबी तिर्यक रेखा" },
+          "text": {
+            "en": "A long diagonal from the Moon mount towards Mercury points to a life enriched by movement — new cities, languages and people. The risk is restlessness, so give each move a three-year purpose.",
+            "hi": "चंद्र पर्वत से बुध की ओर लंबी तिर्यक रेखा यात्रा, नई जगहों, भाषाओं और लोगों से समृद्ध जीवन दिखाती है। जोखिम बेचैनी है, इसलिए हर बदलाव को तीन वर्ष का उद्देश्य दें।"
+          }
+        },
+        {
+          "label": { "en": "Short diagonal", "hi": "छोटी तिर्यक रेखा" },
+          "text": {
+            "en": "The line is short: travel arrives in focused bursts rather than a permanently mobile life. Plan one meaningful trip a year instead of many rushed ones.",
+            "hi": "रेखा छोटी है: यात्रा लगातार बहती ज़िंदगी की बजाय केंद्रित दौरों में आती है। कई जल्दबाज़ी वाली यात्राओं की जगह साल में एक सार्थक यात्रा की योजना बनाएँ।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "intuition",
+      "area": "spirituality",
+      "name": { "en": "Intuition Line (Antarjnana Rekha)", "hi": "अंतर्ज्ञान रेखा" },
+      "variants": [
+        {
+          "label": { "en": "Curved and deep", "hi": "वक्र और गहरी" },
+          "text": {
+            "en": "The intuition line curves toward the Moon mount: quiet time gives you better answers than crowded advice. Ten minutes of silence before a big decision is a practical habit, not a luxury.",
+            "hi": "अंतर्ज्ञान रेखा चंद्र पर्वत की ओर मुड़ती है: शांत समय आपको भीड़ की सलाह से बेहतर उत्तर देता है। बड़े निर्णय से पहले दस मिनट का मौन व्यावहारिक आदत है, विलासिता नहीं।"
+          }
+        },
+        {
+          "label": { "en": "Straight and fine", "hi": "सीधी और महीन" },
+          "text": {
+            "en": "The line runs straight and fine: insight arrives through study and evidence rather than sudden flashes. Keep a notebook for patterns you notice twice.",
+            "hi": "रेखा सीधी और महीन है: अंतर्दृष्टि अचानक चमक की बजाय अध्ययन और प्रमाण से आती है। जो पैटर्न दो बार दिखे, उसे नोटबुक में लिखें।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "children",
+      "area": "family",
+      "name": { "en": "Children Lines (Santan Rekha)", "hi": "संतान रेखा" },
+      "variants": [
+        {
+          "label": { "en": "Clear vertical marks", "hi": "स्पष्ट ऊर्ध्व रेखाएँ" },
+          "text": {
+            "en": "Fine upright marks under the little finger show a strong mentoring instinct. Whether or not you raise children, younger people tend to learn quickly in your company.",
+            "hi": "कनिष्ठा के नीचे महीन ऊर्ध्व रेखाएँ मार्गदर्शन की प्रबल प्रवृत्ति दिखाती हैं। संतान हो या न हो, युवा लोग आपके साथ जल्दी सीखते हैं।"
+          }
+        },
+        {
+          "label": { "en": "Soft marks", "hi": "कोमल चिह्न" },
+          "text": {
+            "en": "The marks are soft: care is expressed through steady support rather than overt control. Ask before advising — it keeps the bond light.",
+            "hi": "चिह्न कोमल हैं: परवरिश स्पष्ट नियंत्रण की बजाय स्थिर सहयोग से व्यक्त होती है। सलाह देने से पहले पूछें — रिश्ता हल्का रहता है।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "ring-solomon",
+      "area": "fame",
+      "name": { "en": "Ring of Solomon (Guru Valaya)", "hi": "सोलोमन वलय (गुरु वलय)" },
+      "variants": [
+        {
+          "label": { "en": "Semi-circle present", "hi": "अर्धवृत्त मौजूद" },
+          "text": {
+            "en": "A partial ring under the index finger marks an aptitude for teaching, arbitration and trusted counsel. Authority suits you best when it is offered rather than seized.",
+            "hi": "तर्जनी के नीचे आंशिक वलय शिक्षण, मध्यस्थता और विश्वसनीय सलाह की योग्यता दिखाता है। अधिकार आपको छीनने से नहीं, सौंपे जाने से शोभता है।"
+          }
+        },
+        {
+          "label": { "en": "Broken ring", "hi": "टूटा वलय" },
+          "text": {
+            "en": "The ring is broken: wisdom comes in phases, usually after a difficult lesson. Writing down what a failure taught you turns it into a qualification.",
+            "hi": "वलय टूटा है: ज्ञान चरणों में आता है, अक्सर कठिन सबक के बाद। असफलता से मिली सीख लिख लेना उसे योग्यता में बदल देता है।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "rascettes",
+      "area": "health",
+      "name": { "en": "Rascettes / Bracelets (Mani Bandh)", "hi": "मणिबंध रेखाएँ" },
+      "variants": [
+        {
+          "label": { "en": "Three clear bands", "hi": "तीन स्पष्ट रेखाएँ" },
+          "text": {
+            "en": "Three clear bracelets at the wrist suggest a sturdy constitution and a good recovery rhythm. Protect it with regular sleep rather than short bursts of extreme effort.",
+            "hi": "कलाई पर तीन स्पष्ट रेखाएँ मजबूत शरीर और अच्छी रिकवरी लय दिखाती हैं। इसे अत्यधिक परिश्रम के छोटे दौरों की बजाय नियमित नींद से बचाएँ।"
+          }
+        },
+        {
+          "label": { "en": "Fine or broken bands", "hi": "महीन या टूटी रेखाएँ" },
+          "text": {
+            "en": "The bracelets are fine: energy is good but runs down quickly when routine slips. A fixed meal and sleep time does more for you than an occasional intense detox.",
+            "hi": "रेखाएँ महीन हैं: ऊर्जा अच्छी है पर दिनचर्या बिगड़ते ही जल्दी घटती है। कभी-कभार कड़े डिटॉक्स से ज़्यादा निश्चित भोजन और नींद का समय लाभ देता है।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "mars-line",
+      "area": "career",
+      "name": { "en": "Mars Line (Mangal Rekha)", "hi": "मंगल रेखा" },
+      "variants": [
+        {
+          "label": { "en": "Inside the life line", "hi": "जीवन रेखा के भीतर" },
+          "text": {
+            "en": "A supporting line inside the life line adds courage under pressure. You perform better with a clear opponent — a deadline, a rival or a difficult goal — than with open-ended time.",
+            "hi": "जीवन रेखा के भीतर सहायक रेखा दबाव में साहस जोड़ती है। खुला समय की बजाय स्पष्ट लक्ष्य, प्रतिद्वंद्वी या समय-सीमा आपको बेहतर करती है।"
+          }
+        },
+        {
+          "label": { "en": "Faint Mars line", "hi": "हल्की मंगल रेखा" },
+          "text": {
+            "en": "The Mars line is faint: competitive fire is selective, not constant. Choose the two battles that genuinely matter each quarter and let the rest pass.",
+            "hi": "मंगल रेखा हल्की है: प्रतिस्पर्धा की आग चुनिंदा है, लगातार नहीं। हर तिमाही दो ऐसी लड़ाइयाँ चुनें जो सचमुच मायने रखें, बाकी जाने दें।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "influence",
+      "area": "love",
+      "name": { "en": "Influence Lines (Prabhav Rekha)", "hi": "प्रभाव रेखाएँ" },
+      "variants": [
+        {
+          "label": { "en": "Several fine lines", "hi": "कई महीन रेखाएँ" },
+          "text": {
+            "en": "Several fine lines near Venus show a life shaped by a few decisive people. Notice who calms you down after a hard day — that person is part of your luck.",
+            "hi": "शुक्र पर्वत के पास कई महीन रेखाएँ बताती हैं कि जीवन कुछ निर्णायक लोगों से बना है। देखें कि कठिन दिन के बाद कौन शांत करता है — वही व्यक्ति आपके भाग्य का हिस्सा है।"
+          }
+        },
+        {
+          "label": { "en": "One strong line", "hi": "एक प्रबल रेखा" },
+          "text": {
+            "en": "One strong influence line points to a single long partnership — a spouse, mentor or friend — that changes your direction. Invest in that bond deliberately.",
+            "hi": "एक प्रबल प्रभाव रेखा एक लंबे साथी — जीवनसाथी, गुरु या मित्र — की ओर इशारा करती है जो आपकी दिशा बदलता है। उस रिश्ते में सचेत निवेश करें।"
+          }
+        }
+      ]
+    }
+  ],
+  "fingers": [
+    {
+      "key": "jupiter",
+      "name": { "en": "Index finger · Jupiter", "hi": "तर्जनी · गुरु" },
+      "variants": [
+        {
+          "label": { "en": "Strong and upright", "hi": "बलवान और सीधी" },
+          "text": {
+            "en": "A firm index finger signals natural authority and a teacher's instinct. Lead by explaining your reasoning, not by pulling rank.",
+            "hi": "दृढ़ तर्जनी स्वाभाविक अधिकार और शिक्षक प्रवृत्ति दिखाती है। अधिकार जताने की बजाय अपना तर्क समझाकर नेतृत्व करें।"
+          }
+        },
+        {
+          "label": { "en": "Supple index", "hi": "लचीली तर्जनी" },
+          "text": {
+            "en": "A supple index finger shows diplomacy and flexibility. You persuade best in one-to-one conversation, not on a stage.",
+            "hi": "लचीली तर्जनी कूटनीति और लचीलापन दिखाती है। आप मंच की बजाय आमने-सामने की बातचीत में बेहतर मनाते हैं।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "saturn",
+      "name": { "en": "Middle finger · Saturn", "hi": "मध्यमा · शनि" },
+      "variants": [
+        {
+          "label": { "en": "Long and steady", "hi": "लंबी और स्थिर" },
+          "text": {
+            "en": "A long middle finger points to patience and a research mind. You outlast clever people when the work needs depth rather than speed.",
+            "hi": "लंबी मध्यमा धैर्य और शोध-बुद्धि दिखाती है। जहाँ गति से ज़्यादा गहराई चाहिए, वहाँ आप चतुर लोगों से आगे टिकते हैं।"
+          }
+        },
+        {
+          "label": { "en": "Balanced middle", "hi": "संतुलित मध्यमा" },
+          "text": {
+            "en": "A balanced middle finger keeps duty and enjoyment in proportion. Guard one unscheduled hour each week so discipline does not turn into rigidity.",
+            "hi": "संतुलित मध्यमा कर्तव्य और आनंद का अनुपात बनाए रखती है। सप्ताह में एक बिना योजना वाला घंटा रखें ताकि अनुशासन कठोरता न बने।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "apollo",
+      "name": { "en": "Ring finger · Sun (Apollo)", "hi": "अनामिका · सूर्य" },
+      "variants": [
+        {
+          "label": { "en": "Prominent ring finger", "hi": "प्रमुख अनामिका" },
+          "text": {
+            "en": "A prominent ring finger carries a visible creative streak. Recognition comes faster when you publish or perform consistently, even in a small circle.",
+            "hi": "प्रमुख अनामिका स्पष्ट रचनात्मकता दिखाती है। नियमित रूप से प्रस्तुत या प्रकाशित करने पर पहचान तेज़ी से मिलती है, चाहे छोटे दायरे में हो।"
+          }
+        },
+        {
+          "label": { "en": "Even ring finger", "hi": "समान अनामिका" },
+          "text": {
+            "en": "An even ring finger shows taste without the need for applause. Build a private body of work; its quality will speak when the moment comes.",
+            "hi": "समान अनामिका तालियों की भूख के बिना सौंदर्य-बोध दिखाती है। निजी काम का संग्रह बनाएँ; सही समय पर उसकी गुणवत्ता बोलेगी।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "mercury",
+      "name": { "en": "Little finger · Mercury", "hi": "कनिष्ठा · बुध" },
+      "variants": [
+        {
+          "label": { "en": "Long little finger", "hi": "लंबी कनिष्ठा" },
+          "text": {
+            "en": "A long little finger marks commercial sense and quick speech. Use it to explain complex things simply — that is your most bankable skill.",
+            "hi": "लंबी कनिष्ठा व्यापारिक समझ और तेज़ वाणी दिखाती है। जटिल बातें सरलता से समझाना आपका सबसे मूल्यवान कौशल है।"
+          }
+        },
+        {
+          "label": { "en": "Short little finger", "hi": "छोटी कनिष्ठा" },
+          "text": {
+            "en": "A shorter little finger suggests you prefer depth over small talk. Written communication and prepared notes will win more trust than improvisation.",
+            "hi": "छोटी कनिष्ठा बताती है कि आप हल्की बातचीत से ज़्यादा गहराई पसंद करते हैं। लिखित संवाद और तैयार नोट्स तुरंत बोलने से अधिक भरोसा जीतेंगे।"
+          }
+        }
+      ]
+    },
+    {
+      "key": "thumb",
+      "name": { "en": "Thumb · will and logic", "hi": "अंगूठा · संकल्प और तर्क" },
+      "variants": [
+        {
+          "label": { "en": "Firm thumb", "hi": "दृढ़ अंगूठा" },
+          "text": {
+            "en": "A firm thumb shows a strong will that needs a worthy goal. Give it a long-term project and it becomes persistence; leave it idle and it becomes stubbornness.",
+            "hi": "दृढ़ अंगूठा प्रबल संकल्प दिखाता है जिसे योग्य लक्ष्य चाहिए। लंबे लक्ष्य के साथ वह दृढ़ता बनता है; खाली छोड़ें तो ज़िद बन जाता है।"
+          }
+        },
+        {
+          "label": { "en": "Flexible thumb", "hi": "लचीला अंगूठा" },
+          "text": {
+            "en": "A flexible thumb shows generosity and easy adjustment. Decide the few things you will not compromise on, so flexibility never becomes drift.",
+            "hi": "लचीला अंगूठा उदारता और सहज समायोजन दिखाता है। कुछ बातें तय करें जिन पर समझौता नहीं करेंगे, ताकि लचीलापन बहाव न बने।"
+          }
+        }
+      ]
+    }
+  ],
+  "skin": [
+    {
+      "label": { "en": "Soft, fine skin", "hi": "कोमल, महीन त्वचा" },
+      "text": {
+        "en": "Fine skin usually accompanies a sensitive nervous system: you register atmosphere quickly. Choose low-noise workspaces and protect the first hour of the morning.",
+        "hi": "महीन त्वचा अक्सर संवेदनशील तंत्रिका तंत्र के साथ होती है: आप वातावरण जल्दी ग्रहण करते हैं। कम शोर वाली जगह चुनें और सुबह का पहला घंटा सुरक्षित रखें।"
+      }
+    },
+    {
+      "label": { "en": "Balanced texture", "hi": "संतुलित बनावट" },
+      "text": {
+        "en": "Balanced skin texture points to steady recovery and adaptable energy. You can handle a demanding week, provided the next one has real rest in it.",
+        "hi": "संतुलित त्वचा स्थिर रिकवरी और अनुकूल ऊर्जा दिखाती है। आप व्यस्त सप्ताह संभाल सकते हैं, बशर्ते अगले सप्ताह में सच्चा विश्राम हो।"
+      }
+    },
+    {
+      "label": { "en": "Dry or textured skin", "hi": "रूखी या खुरदरी त्वचा" },
+      "text": {
+        "en": "A drier texture often accompanies endurance and a tendency to keep going past tiredness. Water, oil and a fixed bedtime are simple maintenance, not indulgences.",
+        "hi": "रूखी बनावट अक्सर सहनशक्ति और थकान के बाद भी चलते रहने की प्रवृत्ति के साथ होती है। पानी, तेल और निश्चित सोने का समय साधारण रखरखाव है, विलासिता नहीं।"
+      }
+    }
+  ],
+  "nails": [
+    {
+      "label": { "en": "Oval nails", "hi": "अंडाकार नाखून" },
+      "text": {
+        "en": "Oval nails are traditionally linked with diplomacy and a calm surface under pressure. Your instinct to smooth things over is useful — as long as you still say the difficult sentence.",
+        "hi": "अंडाकार नाखून परंपरागत रूप से कूटनीति और दबाव में शांत रहने से जुड़े हैं। चीज़ें सुधारने की आपकी प्रवृत्ति उपयोगी है — बशर्ते कठिन बात भी कह दें।"
+      }
+    },
+    {
+      "label": { "en": "Square nails", "hi": "चौकोर नाखून" },
+      "text": {
+        "en": "Square nails suggest practical judgement and a dislike of vagueness. Give people the conclusion first, then the reasoning — it saves everyone time.",
+        "hi": "चौकोर नाखून व्यावहारिक निर्णय और अस्पष्टता से बचने की प्रवृत्ति दिखाते हैं। लोगों को पहले निष्कर्ष दें, फिर तर्क — इससे सबका समय बचता है।"
+      }
+    },
+    {
+      "label": { "en": "Broad nails", "hi": "चौड़े नाखून" },
+      "text": {
+        "en": "Broad nails point to physical stamina and a straightforward manner. Pair that strength with one daily stretch or walk so the body does not pay for the intensity.",
+        "hi": "चौड़े नाखून शारीरिक सहनशक्ति और सीधे स्वभाव दिखाते हैं। इस शक्ति के साथ रोज़ एक स्ट्रेच या सैर जोड़ें ताकि तीव्रता की कीमत शरीर न चुकाए।"
+      }
+    }
+  ]
+}

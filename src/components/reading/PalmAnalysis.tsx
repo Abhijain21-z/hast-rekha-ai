@@ -124,6 +124,94 @@ export default function PalmAnalysis({ report, palmImage, palmHand, readingId, u
         ))}
       </div>
 
+      {/* advanced details */}
+      <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div>
+          <h3 className="flex items-center gap-2 font-display text-2xl text-white"><Star className="h-5 w-5 text-gold-300" /> {L({ en: "Dominant mounts", hi: "प्रबल पर्वत" })}</h3>
+          <p className="mt-1 text-xs text-slate-500">
+            {L({ en: "The three fullest mounts are the ones a palmist reads first.", hi: "सबसे भरे तीन पर्वत पहले पढ़े जाते हैं।" })}
+          </p>
+          <div className="mt-3 space-y-2">
+            {report.details.dominantMounts.map(({ def, strength }, i) => (
+              <motion.div key={def.key} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="glass flex items-center gap-3 rounded-2xl px-4 py-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-400/15 font-display text-sm text-gold-200">{i + 1}</span>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-semibold text-white">{L(def.name)}</p>
+                  <p className="truncate text-[11px] text-slate-500">{L(def.meaning)}</p>
+                </div>
+                <span className="shrink-0 font-mono text-xs text-gold-200">{strength}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          <h3 className="mt-8 font-display text-2xl text-white">{L({ en: "Line timing", hi: "रेखा-काल" })}</h3>
+          <p className="mt-1 text-xs text-slate-500">
+            {L({ en: "Where each major line is read on the age scale.", hi: "हर प्रमुख रेखा आयु-क्रम में कहाँ पढ़ी जाती है।" })}
+          </p>
+          <div className="mt-3 space-y-2">
+            {report.details.timing.map(({ def, start, end, peak, note }) => (
+              <div key={def.key} className="rounded-2xl border border-white/10 bg-white/[0.03] px-3.5 py-2.5">
+                <div className="flex items-baseline justify-between gap-2">
+                  <p className="text-xs font-semibold text-white">{L(def.name)}</p>
+                  <span className="shrink-0 font-mono text-[10px] text-gold-200">{start}–{end}</span>
+                </div>
+                <div className="relative mt-1.5 h-1.5 overflow-hidden rounded-full bg-white/10">
+                  <div className="absolute inset-y-0 rounded-full bg-gradient-to-r from-gold-500/60 via-gold-300 to-gold-500/60" style={{ left: `${(start / 80) * 100}%`, width: `${((end - start) / 80) * 100}%` }} />
+                  <span className="absolute top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full bg-white shadow" style={{ left: `calc(${(peak / 80) * 100}% - 5px)` }} />
+                </div>
+                <p className="mt-1 text-[10px] leading-relaxed text-slate-500">{L(note)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="flex items-center gap-2 font-display text-2xl text-white"><Sparkles className="h-5 w-5 text-gold-300" /> {L({ en: "Minor lines", hi: "गौण रेखाएँ" })}</h3>
+          <p className="mt-1 text-xs text-slate-500">
+            {L({ en: "The finer marks that add detail to the ten main lines.", hi: "वे महीन चिह्न जो दस मुख्य रेखाओं में विवरण जोड़ते हैं।" })}
+          </p>
+          <div className="mt-3 space-y-2">
+            {report.details.minorLines.map(({ def, variant, strength }, i) => (
+              <motion.div key={def.key} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 4) * 0.05 }} className="glass rounded-2xl p-4">
+                <div className="flex items-start justify-between gap-2">
+                  <p className="text-sm font-semibold text-white">{L(def.name)}</p>
+                  <span className="shrink-0 rounded-full border border-gold-400/30 bg-gold-400/10 px-2 py-0.5 text-[10px] text-gold-200">{L(variant.label)}</span>
+                </div>
+                <div className="mt-2"><Meter value={strength} label={t.report.strength} color="#f5c242" /></div>
+                <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} text={L(variant.text)} className="mt-2" textClassName="text-xs text-slate-200" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* fingers, skin, nails */}
+      <h3 className="mt-12 font-display text-2xl text-white">{L({ en: "Fingers, skin and nails", hi: "उँगलियाँ, त्वचा और नाखून" })}</h3>
+      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {report.details.fingers.map(({ def, variant, strength }, i) => (
+          <motion.div key={def.key} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 3) * 0.06 }} className="glass rounded-3xl p-5">
+            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-300"><Hand className="h-4 w-4" /> {L(def.name)}</p>
+            <p className="mt-2 text-sm font-semibold text-white">{L(variant.label)}</p>
+            <div className="mt-2"><Meter value={strength} label={t.report.strength} color="#c084fc" /></div>
+            <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} text={L(variant.text)} className="mt-2" textClassName="text-xs text-slate-200" />
+          </motion.div>
+        ))}
+        {report.details.skin && (
+          <Card className="p-5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gold-300">{L({ en: "Skin texture", hi: "त्वचा" })}</p>
+            <p className="mt-2 text-sm font-semibold text-white">{L(report.details.skin.label)}</p>
+            <p className="mt-1 text-xs leading-relaxed text-slate-400"><ProText text={L(report.details.skin.text)} unlocked={unlocked} /></p>
+          </Card>
+        )}
+        {report.details.nails && (
+          <Card className="p-5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-gold-300">{L({ en: "Nails", hi: "नाखून" })}</p>
+            <p className="mt-2 text-sm font-semibold text-white">{L(report.details.nails.label)}</p>
+            <p className="mt-1 text-xs leading-relaxed text-slate-400"><ProText text={L(report.details.nails.text)} unlocked={unlocked} /></p>
+          </Card>
+        )}
+      </div>
+
       {/* signs */}
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
         <div>

@@ -2,15 +2,17 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, Briefcase, CalendarDays, Check, Crown, Flame, Gem, HeartHandshake, Lock, ScrollText, Sparkles } from "lucide-react";
+import { AlertTriangle, Briefcase, CalendarDays, Check, Crown, Flame, Gem, Gift, HeartHandshake, Lock, Orbit, ScrollText, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, cn } from "@/components/ui";
 import { buildPremiumReport, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID } from "@/lib/premium";
 import { MANUAL_UPI_ENABLED, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
 import { buildPartnerReport, prefersDevanagari } from "@/lib/partner";
 import type { ReadingDTO } from "@/lib/dto";
+import { DIWALI_OFFER } from "@/lib/diwali-offer";
 import { byLang } from "@/lib/i18n";
 import BookCard from "./BookCard";
+import DiwaliPujaCard from "./DiwaliPujaCard";
 import { ProGateButton, ProPaywallModal, type ProPlan } from "./ProPaywall";
 
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.55 } };
@@ -58,6 +60,15 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
                   <HeartHandshake className="mt-0.5 h-4 w-4 shrink-0 text-mystic-400" /> {t.partner.teaser}
                 </p>
               )}
+              <div className="mt-4 flex items-start gap-3 rounded-2xl border border-gold-400/35 bg-gold-400/10 px-4 py-3">
+                <Gift className="mt-0.5 h-5 w-5 shrink-0 text-gold-300" />
+                <div>
+                  <p className="text-sm font-semibold text-gold-100">
+                    {L(DIWALI_OFFER.badge)} · {L(DIWALI_OFFER.title)}
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-slate-200">{L(DIWALI_OFFER.sub)}</p>
+                </div>
+              </div>
             </div>
             <div className="glass-strong flex flex-col items-center rounded-3xl p-7 text-center">
               <Lock className="h-8 w-8 text-gold-300" />
@@ -116,6 +127,11 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
                       </div>
                       <span className="ml-auto hidden font-display text-4xl text-gold-400/30 sm:block">{i + 1}</span>
                     </div>
+                    {y.dashaNote && (
+                      <p className="flex items-start gap-2 border-b border-white/5 bg-white/[0.02] px-5 py-2.5 text-xs leading-relaxed text-slate-300">
+                        <Orbit className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-300" /> {L(y.dashaNote)}
+                      </p>
+                    )}
                     <div className="grid gap-3 p-5 sm:grid-cols-2">
                       {[
                         { icon: rowIcons[0], label: t.premium.events, text: L(y.events), cls: "text-slate-100" },
@@ -189,6 +205,9 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
               <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="mt-6 rounded-2xl bg-white/5 p-4 text-center text-sm italic text-slate-300">
                 {L(report.closing)}
               </motion.p>
+
+              {/* Every Pro reading carries the Diwali Puja PDF. */}
+              <DiwaliPujaCard readingId={reading.id} />
 
               {/* Ultra Pro readings also carry the Dhandayak book. */}
               {reading.ultra && <BookCard readingId={reading.id} />}

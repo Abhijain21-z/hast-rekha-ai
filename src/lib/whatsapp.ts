@@ -6,11 +6,11 @@ import { SITE_URL } from "./site";
  *
  * Sending is intentionally env-gated: nothing leaves the server until both
  * WHATSAPP_ACCESS_TOKEN and WHATSAPP_PHONE_NUMBER_ID are set, and Meta has
- * approved the daily template. The rest of the app can safely ship before
+ * approved the rashifal template. The rest of the app can safely ship before
  * those credentials exist.
  */
 
-export const DAILY_TEMPLATE_NAME = "daily_rashifal";
+export const DAILY_TEMPLATE_NAME = "rashifal_3day";
 export const DAILY_TEMPLATE_LANG = "hi";
 
 export interface WhatsAppConfig {
@@ -58,18 +58,53 @@ export function toIndiaTenDigits(input: string | null | undefined): string | nul
   return extractTenDigits(input);
 }
 
-/** The personalized click-through link used in the daily message. */
+/** The personalized click-through link used in the twice-weekly reminder. */
 export function buildDailyRashifalUrl(rashiKey: string): string {
   const url = new URL("/rashifal", SITE_URL);
   url.searchParams.set("sign", rashiKey);
   url.searchParams.set("utm_source", "whatsapp");
-  url.searchParams.set("utm_medium", "daily");
-  url.searchParams.set("utm_campaign", "daily_rashifal");
+  url.searchParams.set("utm_medium", "weekly");
+  url.searchParams.set("utm_campaign", "rashifal_reminder");
   return url.toString();
 }
 
 /** Today's calendar date in India, matching the rashifal page's date. */
 export { istDateKey } from "./rashifal";
+
+/** Stable 32-bit FNV-1a hash, used only to assign reminder days. */
+function stableHash(value: string): number {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < value.length; i += 1) {
+    hash ^= value.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash >>> 0;
+}
+
+/**
+ * Two reminder weekdays per subscriber, `0 = Monday … 6 = Sunday`.
+ *
+ * The days come from the subscriber id, so they are stable across cron runs:
+ * `d` and `d + 3`. Every reader gets two different days, three or four days
+ * apart, and the cohort is spread evenly across the week (each weekday carries
+ * roughly 2/7 of subscribers).
+ */
+export function rashifalWeekdays(subscriberId: string): [number, number] {
+  const first = stableHash(subscriberId) % 7;
+  return [first, (first + 3) % 7];
+}
+
+/** `0 = Monday … 6 = Sunday` for an India date key (`YYYY-MM-DD`). */
+export function istWeekday(dateKey: string): number {
+  const [year, month, day] = dateKey.split("-").map(Number);
+  return (new Date(Date.UTC(year, month - 1, day)).getUTCDay() + 6) % 7;
+}
+
+/** True when today is one of the subscriber's two assigned reminder days. */
+export function isRashifalDay(subscriberId: string, dateKey: string): boolean {
+  const weekday = istWeekday(dateKey);
+  return rashifalWeekdays(subscriberId).includes(weekday);
+}
 
 /** Recognize the opt-out replies we advertise in the template and privacy page. */
 export function isStopMessage(text: string | null | undefined): boolean {
@@ -158,6 +193,7 @@ export async function sendDailyRashifalTemplate(input: SendDailyRashifalInput): 
 
   const templateName =
     input.templateName?.trim() ||
+    process.env.WHATSAPP_RASHIFAL_TEMPLATE_NAME?.trim() ||
     process.env.WHATSAPP_DAILY_TEMPLATE_NAME?.trim() ||
     DAILY_TEMPLATE_NAME;
   const languageCode =

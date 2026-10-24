@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { MapPin, Sparkles, Clock, CalendarDays, UserRound, LogIn, Phone } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
-import { Button, Input, Label, Select, ErrorText, cn } from "@/components/ui";
+import { Button, Input, Label, ErrorText, cn } from "@/components/ui";
 import PalmUpload from "./PalmUpload";
 import CalculatingOverlay from "./CalculatingOverlay";
 import type { City } from "@/lib/cities";
@@ -106,10 +106,14 @@ export default function ReadingForm({ loggedIn }: Props) {
     const cleanName = fullName.trim();
     if (cleanName.length < 2 || cleanName.length > 80) errs.fullName = t.form.errName;
     const waDigits = whatsappPhone.replace(/\D/g, "");
-    if (dailyRashifal && !/^[6-9]\d{9}$/.test(waDigits)) errs.whatsappPhone = t.form.errDailyWhatsapp;
-    else if (waDigits && !/^[6-9]\d{9}$/.test(waDigits)) errs.whatsappPhone = t.form.errWhatsapp;
+    if (!waDigits) errs.whatsappPhone = t.form.errWhatsappRequired;
+    else if (!/^[6-9]\d{9}$/.test(waDigits)) errs.whatsappPhone = t.form.errWhatsapp;
+    if (!gender) errs.gender = t.form.errGender;
+    if (!married) errs.married = t.form.errMarried;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) errs.birthDate = t.form.errDate;
-    const latN = Number(lat), lngN = Number(lng), tzN = Number(tz);
+    let latN = Number(lat), lngN = Number(lng);
+    let tzN = tz.trim() === "" ? 5.5 : Number(tz);
+    if (!Number.isFinite(tzN)) tzN = 5.5;
     // Free-text places are accepted: if no lat/lng are known, fall back to Delhi (28.61, 77.21, IST).
     // Users who need exact coordinates can open "manual coords" and set them.
     const place = placeQuery.trim();
@@ -117,9 +121,11 @@ export default function ReadingForm({ loggedIn }: Props) {
     if (!place) {
       errs.place = t.form.errPlace;
     } else if (!hasCoords) {
-      setLat("28.6139");
-      setLng("77.209");
-      setTz(tz || "5.5");
+      latN = 28.6139;
+      lngN = 77.209;
+      setLat(String(latN));
+      setLng(String(lngN));
+      setTz(String(tzN));
     }
     setErrors(errs);
     if (Object.keys(errs).length) {
@@ -127,6 +133,8 @@ export default function ReadingForm({ loggedIn }: Props) {
       // at the bottom of a long form with only a small inline error.
       if (errs.fullName) document.getElementById("full-name")?.focus();
       else if (errs.whatsappPhone) document.getElementById("wa-phone")?.focus();
+      else if (errs.gender) document.getElementById("gender-male")?.focus();
+      else if (errs.married) document.getElementById("married-yes")?.focus();
       return;
     }
 
@@ -146,12 +154,12 @@ export default function ReadingForm({ loggedIn }: Props) {
         placeName: placeQuery.trim(),
         latitude: latN,
         longitude: lngN,
-        tzOffset: Number.isNaN(tzN) ? 5.5 : tzN,
+        tzOffset: tzN,
         palmImage: palm,
         palmHand: palm ? hand : null,
-        gender: gender || null,
-        married: married === "" ? null : married === "yes",
-        whatsappPhone: waDigits || null,
+        gender,
+        married: married === "yes",
+        whatsappPhone: waDigits,
         dailyRashifalOptIn: dailyRashifal,
       }),
     }).then(async (res) => {
@@ -202,7 +210,9 @@ export default function ReadingForm({ loggedIn }: Props) {
           </div>
 
           <div>
-            <Label htmlFor="wa-phone" hint={t.common.optional}>{t.form.whatsapp}</Label>
+            <Label htmlFor="wa-phone">
+              {t.form.whatsapp} <span className="text-rose-300" aria-hidden="true">*</span>
+            </Label>
             <div className="relative">
               <Phone className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <Input
@@ -214,6 +224,8 @@ export default function ReadingForm({ loggedIn }: Props) {
                 inputMode="numeric"
                 autoComplete="tel"
                 maxLength={10}
+                required
+                aria-required="true"
                 aria-invalid={!!errors.whatsappPhone}
               />
             </div>
@@ -239,18 +251,18 @@ export default function ReadingForm({ loggedIn }: Props) {
 
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <Label>{t.form.dob}</Label>
+              <Label htmlFor="dob">{t.form.dob}</Label>
               <div className="relative">
                 <CalendarDays className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
-                <Input type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} className="pl-10" max="2100-12-31" min="1800-01-01" />
+                <Input id="dob" type="date" value={birthDate} onChange={(e) => setBirthDate(e.target.value)} className="pl-10" max="2100-12-31" min="1800-01-01" />
               </div>
               <ErrorText>{errors.birthDate}</ErrorText>
             </div>
             <div>
-              <Label>{t.form.tob}</Label>
+              <Label htmlFor="tob">{t.form.tob}</Label>
               <div className="relative">
                 <Clock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
-                <Input type="time" value={timeUnknown ? "12:00" : birthTime} disabled={timeUnknown} onChange={(e) => setBirthTime(e.target.value)} className="pl-10 disabled:opacity-50" />
+                <Input id="tob" type="time" value={timeUnknown ? "12:00" : birthTime} disabled={timeUnknown} onChange={(e) => setBirthTime(e.target.value)} className="pl-10 disabled:opacity-50" />
               </div>
             </div>
           </div>
@@ -261,29 +273,70 @@ export default function ReadingForm({ loggedIn }: Props) {
 
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
-              <Label hint={t.common.optional}>{t.form.gender}</Label>
-              <Select value={gender} onChange={(e) => setGender(e.target.value as "" | "male" | "female" | "trans")}>
-                <option value="">{t.form.preferNot}</option>
-                <option value="male">{t.form.male}</option>
-                <option value="female">{t.form.female}</option>
-                <option value="trans">{t.form.trans}</option>
-              </Select>
+              <Label>
+                {t.form.gender} <span className="text-rose-300" aria-hidden="true">*</span>
+              </Label>
+              <div className="grid grid-cols-3 gap-2" role="group" aria-label={t.form.gender}>
+                {([
+                  { value: "male", label: t.form.male },
+                  { value: "female", label: t.form.female },
+                  { value: "trans", label: t.form.trans },
+                ] as const).map((option) => (
+                  <button
+                    key={option.value}
+                    id={`gender-${option.value}`}
+                    type="button"
+                    aria-pressed={gender === option.value}
+                    onClick={() => setGender(option.value)}
+                    className={cn(
+                      "rounded-xl border px-2 py-2.5 text-sm transition",
+                      gender === option.value
+                        ? "border-gold-400/70 bg-gold-400/15 text-gold-100"
+                        : "border-white/10 bg-white/[0.03] text-slate-300 hover:border-gold-400/40 hover:text-white",
+                    )}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+              <ErrorText>{errors.gender}</ErrorText>
             </div>
             <div>
-              <Label hint={t.common.optional}>{t.form.married}</Label>
-              <Select value={married} onChange={(e) => setMarried(e.target.value as "" | "yes" | "no")}>
-                <option value="">{t.form.preferNot}</option>
-                <option value="yes">{t.form.marriedYes}</option>
-                <option value="no">{t.form.marriedNo}</option>
-              </Select>
+              <Label>
+                {t.form.married} <span className="text-rose-300" aria-hidden="true">*</span>
+              </Label>
+              <div className="grid grid-cols-2 gap-2" role="group" aria-label={t.form.married}>
+                {([
+                  { value: "yes", label: t.form.marriedYes },
+                  { value: "no", label: t.form.marriedNo },
+                ] as const).map((option) => (
+                  <button
+                    key={option.value}
+                    id={`married-${option.value}`}
+                    type="button"
+                    aria-pressed={married === option.value}
+                    onClick={() => setMarried(option.value)}
+                    className={cn(
+                      "rounded-xl border px-3 py-2.5 text-sm transition",
+                      married === option.value
+                        ? "border-gold-400/70 bg-gold-400/15 text-gold-100"
+                        : "border-white/10 bg-white/[0.03] text-slate-300 hover:border-gold-400/40 hover:text-white",
+                    )}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+              <ErrorText>{errors.married}</ErrorText>
             </div>
           </div>
 
           <div ref={boxRef} className="relative">
-            <Label hint={t.form.placeHint}>{t.form.place}</Label>
+            <Label htmlFor="place" hint={t.form.placeHint}>{t.form.place}</Label>
             <div className="relative">
               <MapPin className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
               <Input
+                id="place"
                 value={placeQuery}
                 onChange={(e) => { setPlaceQuery(e.target.value); setCity(null); setShowSug(true); ensureCityData(); }}
                 onFocus={() => { setShowSug(true); ensureCityData(); }}

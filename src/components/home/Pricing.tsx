@@ -6,6 +6,7 @@ import { BookOpen, Check, Crown, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { SectionHeading, Badge } from "@/components/ui";
 import { BOOK_PERKS, PREMIUM_PERKS } from "@/lib/premium";
+import DiwaliPujaPromo from "@/components/offers/DiwaliPujaPromo";
 
 export default function Pricing({ heading = true }: { heading?: boolean }) {
   const { t, L } = useLang();
@@ -85,6 +86,10 @@ export default function Pricing({ heading = true }: { heading?: boolean }) {
             </Link>
             <p className="relative mt-3 text-center text-[12px] text-slate-300">{t.pricing.ultraNote}</p>
           </motion.div>
+        </div>
+
+        <div className="mt-8">
+          <DiwaliPujaPromo compact />
         </div>
       </div>
     </section>

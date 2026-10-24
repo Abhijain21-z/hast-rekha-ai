@@ -32,7 +32,7 @@ interface Body {
   gender?: string | null;
   married?: boolean | null;
   whatsappPhone?: string | null;
-  /** Separate, explicit consent for the daily marketing message. */
+  /** Separate, explicit consent for the 3x/week marketing message. */
   dailyRashifalOptIn?: boolean;
   title?: string;
 }
@@ -63,19 +63,18 @@ export async function POST(req: Request) {
   const palmImage = typeof body.palmImage === "string" && body.palmImage.startsWith("data:image/") && body.palmImage.length < 2_500_000 ? body.palmImage : null;
   const palmHand = body.palmHand === "left" || body.palmHand === "right" ? body.palmHand : null;
   const gender = body.gender === "male" || body.gender === "female" || body.gender === "trans" ? body.gender : null;
+  if (!gender) return NextResponse.json({ error: "Gender is required" }, { status: 400 });
   const married = typeof body.married === "boolean" ? body.married : null;
+  if (married === null) return NextResponse.json({ error: "Marital status is required" }, { status: 400 });
   const whatsappPhone = typeof body.whatsappPhone === "string" ? body.whatsappPhone.replace(/\D/g, "") : "";
-  if (whatsappPhone && !/^[6-9]\d{9}$/.test(whatsappPhone)) {
-    return NextResponse.json({ error: "Invalid WhatsApp number" }, { status: 400 });
+  if (!/^[6-9]\d{9}$/.test(whatsappPhone)) {
+    return NextResponse.json({ error: "WhatsApp number is required" }, { status: 400 });
   }
   const dailyRashifalOptIn = body.dailyRashifalOptIn === true;
-  if (dailyRashifalOptIn && !whatsappPhone) {
-    return NextResponse.json({ error: "WhatsApp number required for daily rashifal" }, { status: 400 });
-  }
 
   let result;
   try {
-    result = computeChart({ date: birthDate, time: birthTime, latitude, longitude, tzOffset });
+    result = computeChart({ date: birthDate, time: birthTime, latitude, longitude, tzOffset }, { fullName });
   } catch {
     return NextResponse.json({ error: "Calculation failed" }, { status: 400 });
   }
@@ -99,7 +98,7 @@ export async function POST(req: Request) {
       palmHand,
       gender,
       married,
-      whatsappPhone: whatsappPhone || null,
+      whatsappPhone,
     })
     .returning();
 

@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { readings } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { toReadingDTO } from "@/lib/dto";
+import { ensureAdvanced } from "@/lib/astro/hydrate";
 import { MANUAL_UPI_ENABLED, PRO_PAY_MODE } from "@/lib/flags";
 
 export const dynamic = "force-dynamic";
@@ -14,7 +15,8 @@ export async function GET(_req: Request, { params }: Ctx) {
   const { id } = await params;
   const [row] = await db.select().from(readings).where(eq(readings.id, id)).limit(1);
   if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 });
-  return NextResponse.json({ reading: toReadingDTO(row) });
+  const reading = { ...row, result: ensureAdvanced(row) };
+  return NextResponse.json({ reading: toReadingDTO(reading) });
 }
 
 export async function PATCH(req: Request, { params }: Ctx) {
