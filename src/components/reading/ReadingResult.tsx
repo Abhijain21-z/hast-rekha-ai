@@ -23,6 +23,7 @@ import ReadingReview from "./ReadingReview";
 import ReviewPrompt from "./ReviewPrompt";
 import ScrollPrompts from "./ScrollPrompts";
 import RashifalPanel from "@/components/rashifal/RashifalPanel";
+import WhatsAppDailyOptIn from "./WhatsAppDailyOptIn";
 import { PdfDividerButton, ProGateButton } from "./ProPaywall";
 import { ProReadMore, ProText } from "./ProTeaser";
 import UpayBookPromo from "@/components/upay/UpayBookPromo";
@@ -31,7 +32,17 @@ import { BOOK_PROMO } from "@/lib/flags";
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-40px" }, transition: { duration: 0.55 } };
 const AREA_COLORS = ["#fbbf24", "#fb7185", "#34d399", "#f5c242", "#60a5fa", "#c084fc", "#22d3ee", "#f97316"];
 
-export default function ReadingResult({ reading, guest, backHref }: { reading: ReadingDTO; guest?: boolean; backHref?: string }) {
+export default function ReadingResult({
+  reading,
+  guest,
+  backHref,
+  whatsappDaily,
+}: {
+  reading: ReadingDTO;
+  guest?: boolean;
+  backHref?: string;
+  whatsappDaily?: { subscribed: boolean; maskedPhone: string | null };
+}) {
   const { t, L, lang, cl } = useLang();
   const router = useRouter();
   const r = reading.result;
@@ -374,6 +385,13 @@ export default function ReadingResult({ reading, guest, backHref }: { reading: R
       <section id="sec-rashifal" className="mt-14 scroll-mt-28">
         <RashifalPanel rashiIndex={r.moonRashi} fullName={reading.fullName} showFullLink />
       </section>
+
+      <WhatsAppDailyOptIn
+        readingId={reading.id}
+        rashiLabel={L(rashi.short)}
+        subscribed={whatsappDaily?.subscribed ?? false}
+        maskedPhone={whatsappDaily?.maskedPhone ?? null}
+      />
 
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 

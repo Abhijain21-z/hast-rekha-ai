@@ -22,6 +22,7 @@ export default function ReadingForm({ loggedIn }: Props) {
 
   const [fullName, setFullName] = useState(params.get("name") ?? "");
   const [whatsappPhone, setWhatsappPhone] = useState("");
+  const [dailyRashifal, setDailyRashifal] = useState(false);
   const [birthDate, setBirthDate] = useState(params.get("dob") ?? "");
   const [birthTime, setBirthTime] = useState(params.get("tob") ?? "");
   const [timeUnknown, setTimeUnknown] = useState(false);
@@ -105,7 +106,8 @@ export default function ReadingForm({ loggedIn }: Props) {
     const cleanName = fullName.trim();
     if (cleanName.length < 2 || cleanName.length > 80) errs.fullName = t.form.errName;
     const waDigits = whatsappPhone.replace(/\D/g, "");
-    if (waDigits && !/^[6-9]\d{9}$/.test(waDigits)) errs.whatsappPhone = t.form.errWhatsapp;
+    if (dailyRashifal && !/^[6-9]\d{9}$/.test(waDigits)) errs.whatsappPhone = t.form.errDailyWhatsapp;
+    else if (waDigits && !/^[6-9]\d{9}$/.test(waDigits)) errs.whatsappPhone = t.form.errWhatsapp;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) errs.birthDate = t.form.errDate;
     const latN = Number(lat), lngN = Number(lng), tzN = Number(tz);
     // Free-text places are accepted: if no lat/lng are known, fall back to Delhi (28.61, 77.21, IST).
@@ -124,6 +126,7 @@ export default function ReadingForm({ loggedIn }: Props) {
       // Put the cursor on the first missing field instead of leaving the visitor
       // at the bottom of a long form with only a small inline error.
       if (errs.fullName) document.getElementById("full-name")?.focus();
+      else if (errs.whatsappPhone) document.getElementById("wa-phone")?.focus();
       return;
     }
 
@@ -149,6 +152,7 @@ export default function ReadingForm({ loggedIn }: Props) {
         gender: gender || null,
         married: married === "" ? null : married === "yes",
         whatsappPhone: waDigits || null,
+        dailyRashifalOptIn: dailyRashifal,
       }),
     }).then(async (res) => {
       if (!res.ok) throw new Error("request failed");
@@ -214,6 +218,22 @@ export default function ReadingForm({ loggedIn }: Props) {
               />
             </div>
             <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{t.form.whatsappHint}</p>
+            <label
+              htmlFor="daily-rashifal"
+              className="mt-3 flex cursor-pointer items-start gap-2.5 rounded-xl border border-gold-400/15 bg-gold-400/[0.04] p-3"
+            >
+              <input
+                id="daily-rashifal"
+                type="checkbox"
+                checked={dailyRashifal}
+                onChange={(e) => setDailyRashifal(e.target.checked)}
+                className="mt-0.5 h-4 w-4 shrink-0 accent-[#f5c242]"
+              />
+              <span className="text-xs leading-relaxed">
+                <span className="font-medium text-slate-200">{t.form.dailyWhatsapp}</span>
+                <span className="mt-0.5 block text-slate-500">{t.form.dailyWhatsappNote}</span>
+              </span>
+            </label>
             <ErrorText>{errors.whatsappPhone}</ErrorText>
           </div>
 

@@ -6,6 +6,7 @@ import { db } from "@/db";
 import { readings } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { toReadingDTO } from "@/lib/dto";
+import { getWhatsAppDailyStatus } from "@/lib/whatsapp-subscribers";
 import ReadingResult from "@/components/reading/ReadingResult";
 
 export const dynamic = "force-dynamic";
@@ -37,5 +38,13 @@ export default async function PublicReadingPage({ params }: { params: Promise<{ 
   if (!row) notFound();
   const user = await getCurrentUser();
   const isOwner = !!user && row.userId === user.id;
-  return <ReadingResult reading={toReadingDTO(row)} guest={!user} backHref={isOwner ? `/dashboard/readings/${row.id}` : undefined} />;
+  const whatsappDaily = await getWhatsAppDailyStatus(row.whatsappPhone);
+  return (
+    <ReadingResult
+      reading={toReadingDTO(row)}
+      guest={!user}
+      backHref={isOwner ? `/dashboard/readings/${row.id}` : undefined}
+      whatsappDaily={whatsappDaily}
+    />
+  );
 }

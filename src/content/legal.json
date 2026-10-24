@@ -5,8 +5,8 @@
    "hi": "गोपनीयता नीति"
   },
   "updated": {
-   "en": "Last updated: 21 October 2026",
-   "hi": "अंतिम अद्यतन: 21 अक्टूबर 2026"
+   "en": "Last updated: 24 October 2026",
+   "hi": "अंतिम अद्यतन: 24 अक्टूबर 2026"
   },
   "intro": {
    "en": "Hast Rekha AI (\"we\", \"our\") respects your privacy. This policy explains what we collect, why we collect it, and how you remain in control. By using hastrekha.ai you agree to this policy.",
@@ -38,6 +38,22 @@
      {
       "en": "We use Vercel Analytics to measure aggregate page views and referrers. It is cookieless and does not identify individual visitors.",
       "hi": "हम aggregate page views और referrer मापने के लिए Vercel Analytics उपयोग करते हैं। यह cookieless है और किसी व्यक्तिगत विज़िटर की पहचान नहीं करता।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Daily WhatsApp rashifal",
+     "hi": "रोज़ का WhatsApp राशिफल"
+    },
+    "p": [
+     {
+      "en": "The daily rashifal message is optional and requires a separate, explicit opt-in — it is not covered by the payment/report-update consent. When you tick the daily rashifal box, we store the number, your opt-in time and your Moon sign, and send one WhatsApp message each morning with a link to that day's rashifal. Every message includes a STOP instruction. Reply STOP or contact us to opt out; we stop the next daily send and keep a record of the opt-out so you are not messaged again unless you opt in again.",
+      "hi": "रोज़ का WhatsApp राशिफल message वैकल्पिक है और इसके लिए अलग, स्पष्ट सहमति ज़रूरी है — payment/report-update सहमति इसके लिए पर्याप्त नहीं है। जब आप daily rashifal का बॉक्स टिक करते हैं, तो हम नंबर, सहमति का समय और आपकी चंद्र राशि सहेजते हैं, और हर सुबह एक WhatsApp message में उस दिन के राशिफल का link भेजते हैं। हर message में STOP का निर्देश होता है। बंद करने के लिए STOP लिखें या हमसे संपर्क करें; हम अगली daily send रोक देते हैं और opt-out का record रखते हैं ताकि आप दोबारा सहमति देने तक message न आए।"
+     },
+     {
+      "en": "We send daily rashifal messages through Meta's WhatsApp Business Platform. Meta processes the delivery. We do not sell or share your number with anyone else, and we do not send daily messages to numbers that have not opted in.",
+      "hi": "हम daily rashifal messages Meta के WhatsApp Business Platform से भेजते हैं। Delivery Meta प्रोसेस करता है। हम आपका नंबर किसी और को बेचते या साझा नहीं करते, और जिन numbers ने सहमति नहीं दी उन्हें daily messages नहीं भेजते।"
      }
     ]
    },

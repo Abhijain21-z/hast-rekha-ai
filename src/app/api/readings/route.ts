@@ -4,8 +4,10 @@ import { db } from "@/db";
 import { readings } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { computeChart } from "@/lib/astrology";
+import { RASHIS } from "@/lib/content";
 import { toReadingSummary } from "@/lib/dto";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { upsertWhatsAppSubscriber } from "@/lib/whatsapp-subscribers";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +32,8 @@ interface Body {
   gender?: string | null;
   married?: boolean | null;
   whatsappPhone?: string | null;
+  /** Separate, explicit consent for the daily marketing message. */
+  dailyRashifalOptIn?: boolean;
   title?: string;
 }
 
@@ -64,6 +68,10 @@ export async function POST(req: Request) {
   if (whatsappPhone && !/^[6-9]\d{9}$/.test(whatsappPhone)) {
     return NextResponse.json({ error: "Invalid WhatsApp number" }, { status: 400 });
   }
+  const dailyRashifalOptIn = body.dailyRashifalOptIn === true;
+  if (dailyRashifalOptIn && !whatsappPhone) {
+    return NextResponse.json({ error: "WhatsApp number required for daily rashifal" }, { status: 400 });
+  }
 
   let result;
   try {
@@ -94,6 +102,27 @@ export async function POST(req: Request) {
       whatsappPhone: whatsappPhone || null,
     })
     .returning();
+
+  if (dailyRashifalOptIn && whatsappPhone) {
+    const rashiKey = RASHIS[result.moonRashi]?.key;
+    if (rashiKey) {
+      try {
+        await upsertWhatsAppSubscriber({
+          phone: whatsappPhone,
+          name: fullName,
+          rashiKey,
+          readingId: row.id,
+          source: "reading_form",
+        });
+      } catch (error) {
+        // The reading itself must not fail because the optional subscription did.
+        console.error(
+          "[whatsapp] daily opt-in save failed:",
+          error instanceof Error ? error.message : error,
+        );
+      }
+    }
+  }
 
   return NextResponse.json({ id: row.id, result }, { status: 201 });
 }

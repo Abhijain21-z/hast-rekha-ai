@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { readings } from "@/db/schema";
 import { requireUser } from "@/lib/auth";
 import { toReadingDTO } from "@/lib/dto";
+import { getWhatsAppDailyStatus } from "@/lib/whatsapp-subscribers";
 import ReadingResult from "@/components/reading/ReadingResult";
 import ReadingEditor from "@/components/dashboard/ReadingEditor";
 
@@ -18,10 +19,11 @@ export default async function DashboardReadingPage({ params }: { params: Promise
   const [row] = await db.select().from(readings).where(and(eq(readings.id, id), eq(readings.userId, user.id))).limit(1);
   if (!row) notFound();
   const dto = toReadingDTO(row);
+  const whatsappDaily = await getWhatsAppDailyStatus(row.whatsappPhone);
   return (
     <div className="-mx-4 sm:-mx-6 lg:-mx-10">
       <ReadingEditor key={dto.updatedAt} reading={dto} />
-      <ReadingResult reading={dto} backHref="/dashboard/readings" />
+      <ReadingResult reading={dto} backHref="/dashboard/readings" whatsappDaily={whatsappDaily} />
     </div>
   );
 }

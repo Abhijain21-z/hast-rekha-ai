@@ -1,3 +1,9 @@
 {
-  "buildCommand": "node scripts/migrate.mjs && next build"
+  "buildCommand": "node scripts/migrate.mjs && next build",
+  "crons": [
+    {
+      "path": "/api/cron/daily-rashifal",
+      "schedule": "30 3 * * *"
+    }
+  ]
 }

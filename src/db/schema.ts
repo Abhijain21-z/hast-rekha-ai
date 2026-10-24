@@ -9,6 +9,7 @@ import {
   varchar,
   integer,
   index,
+  uniqueIndex,
 } from "drizzle-orm/pg-core";
 import type { AstroResult } from "../lib/astrology";
 
@@ -69,6 +70,64 @@ export const readings = pgTable(
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index("readings_user_idx").on(t.userId)],
+);
+
+/**
+ * Explicit daily-rashifal opt-ins. One row per WhatsApp number, so a person
+ * with several readings still gets at most one message per day. `readingId`
+ * points at the latest reading used to derive the moon sign; no reading data
+ * is included in the message.
+ */
+export const whatsappSubscribers = pgTable(
+  "whatsapp_subscribers",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    /** Normalized 10-digit Indian mobile. Unique = one daily message per person. */
+    phone: text("phone").notNull().unique(),
+    name: text("name"),
+    /** Rashi key from RASHIS, e.g. "mesha". */
+    rashiKey: varchar("rashi_key", { length: 20 }).notNull(),
+    readingId: uuid("reading_id").references(() => readings.id, { onDelete: "set null" }),
+    /** reading_form | report_page */
+    source: varchar("source", { length: 30 }).notNull().default("reading_form"),
+    /** opted_in | opted_out */
+    status: varchar("status", { length: 20 }).notNull().default("opted_in"),
+    optedInAt: timestamp("opted_in_at", { withTimezone: true }),
+    optedOutAt: timestamp("opted_out_at", { withTimezone: true }),
+    lastSentAt: timestamp("last_sent_at", { withTimezone: true }),
+    sendCount: integer("send_count").notNull().default(0),
+    lastError: text("last_error"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("whatsapp_subscribers_status_idx").on(t.status)],
+);
+
+/**
+ * One row per attempted daily send. The unique (subscriber, send_date) pair
+ * makes a retried cron run idempotent: a subscriber never gets two messages
+ * for the same India date.
+ */
+export const whatsappDailySends = pgTable(
+  "whatsapp_daily_sends",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    subscriberId: uuid("subscriber_id")
+      .notNull()
+      .references(() => whatsappSubscribers.id, { onDelete: "cascade" }),
+    phone: text("phone").notNull(),
+    /** YYYY-MM-DD in Asia/Kolkata. */
+    sendDate: varchar("send_date", { length: 10 }).notNull(),
+    /** sent | failed */
+    status: varchar("status", { length: 20 }).notNull(),
+    providerMessageId: text("provider_message_id"),
+    error: text("error"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("whatsapp_daily_sends_subscriber_date_idx").on(t.subscriberId, t.sendDate),
+    index("whatsapp_daily_sends_date_idx").on(t.sendDate),
+  ],
 );
 
 /**
@@ -193,3 +252,7 @@ export type NewBirthProfile = typeof birthProfiles.$inferInsert;
 export type ContactMessage = typeof contactMessages.$inferSelect;
 export type Payment = typeof payments.$inferSelect;
 export type NewPayment = typeof payments.$inferInsert;
+export type WhatsAppSubscriber = typeof whatsappSubscribers.$inferSelect;
+export type NewWhatsAppSubscriber = typeof whatsappSubscribers.$inferInsert;
+export type WhatsAppDailySend = typeof whatsappDailySends.$inferSelect;
+export type NewWhatsAppDailySend = typeof whatsappDailySends.$inferInsert;

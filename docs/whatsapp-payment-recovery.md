@@ -1,5 +1,8 @@
 # WhatsApp payment recovery — setup notes
 
+> Daily rashifal messages use a separate explicit opt-in and the same Meta
+> sender. See [`whatsapp-daily-rashifal.md`](./whatsapp-daily-rashifal.md).
+
 ## What is already live in the app
 
 - Name is mandatory on the reading form (2–80 characters, browser + server validation).
