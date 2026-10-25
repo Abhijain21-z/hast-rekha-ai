@@ -19,3 +19,6 @@ skills-lock.json
 .vercel
 .env*
 .opencode/skills/cashfree-skills/
+
+# Local scratch files
+.tmp-*
