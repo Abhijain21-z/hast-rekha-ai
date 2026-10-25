@@ -122,7 +122,7 @@ export const tokenLedger = pgTable(
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     delta: integer("delta").notNull(),
-    /** referral_signup | ultra_redemption | admin_adjustment */
+    /** signup_bonus | referral_signup | chat_time | chat_refund | ultra_redemption | admin_adjustment */
     reason: varchar("reason", { length: 40 }).notNull(),
     referralId: uuid("referral_id").references(() => referrals.id, { onDelete: "set null" }),
     readingId: uuid("reading_id").references(() => readings.id, { onDelete: "set null" }),
@@ -138,6 +138,63 @@ export const tokenLedger = pgTable(
     uniqueIndex("token_ledger_ultra_once_idx")
       .on(t.readingId)
       .where(sql`${t.reason} = 'ultra_redemption' AND ${t.readingId} IS NOT NULL`),
+  ],
+);
+
+/**
+ * Included AI Panditji minutes for Pro readers. One row per subject + plan:
+ *   - `user:<uuid>` for a signed-in reader, or `anon:<uuid>` for a guest.
+ *   - `pro` rows count included minutes (50 with a Pro report).
+ *
+ * Free readers do not use this table; they pay 10 coins per started minute from
+ * their wallet. The `free` plan value stays allowed for older rows.
+ */
+export const chatUsage = pgTable(
+  "chat_usage",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    subject: text("subject").notNull(),
+    plan: varchar("plan", { length: 10 }).notNull().default("free"),
+    used: integer("used").notNull().default(0),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("chat_usage_subject_plan_idx").on(t.subject, t.plan),
+    check("chat_usage_plan_check", sql`${t.plan} IN ('free', 'pro')`),
+    check("chat_usage_used_nonnegative", sql`${t.used} >= 0`),
+  ],
+);
+
+/**
+ * Guest coin wallet. Signed-in readers use `users.token_balance`; a guest gets
+ * a cookie-backed wallet seeded with 50 coins so the chat can be tried without
+ * creating an account first.
+ */
+export const chatWallets = pgTable("chat_wallets", {
+  subject: text("subject").primaryKey(),
+  balance: integer("balance").notNull().default(50),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+/**
+ * Current chat session, used to bill 10 coins per started minute. `startedAt`
+ * is the beginning of the paid conversation and `billedMinutes` is how many
+ * minutes have already been charged.
+ */
+export const chatSessions = pgTable(
+  "chat_sessions",
+  {
+    subject: text("subject").primaryKey(),
+    startedAt: timestamp("started_at", { withTimezone: true }).notNull().defaultNow(),
+    lastSeenAt: timestamp("last_seen_at", { withTimezone: true }).notNull().defaultNow(),
+    billedMinutes: integer("billed_minutes").notNull().default(0),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    check("chat_sessions_billed_nonnegative", sql`${t.billedMinutes} >= 0`),
+    index("chat_sessions_last_seen_idx").on(t.lastSeenAt),
   ],
 );
 
@@ -329,3 +386,7 @@ export type Referral = typeof referrals.$inferSelect;
 export type NewReferral = typeof referrals.$inferInsert;
 export type TokenLedgerEntry = typeof tokenLedger.$inferSelect;
 export type NewTokenLedgerEntry = typeof tokenLedger.$inferInsert;
+export type ChatUsage = typeof chatUsage.$inferSelect;
+export type NewChatUsage = typeof chatUsage.$inferInsert;
+export type ChatWallet = typeof chatWallets.$inferSelect;
+export type ChatSession = typeof chatSessions.$inferSelect;

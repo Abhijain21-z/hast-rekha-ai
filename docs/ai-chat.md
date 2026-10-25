@@ -20,7 +20,26 @@ The API stays dormant without a key:
 - no key → `503 { "error": "chat_not_configured" }`
 - configured → `POST /api/chat` returns `{ "reply": "..." }`
 
-No database migration is needed. Chat history is not persisted.
+Chat history is not persisted. The coin wallet and paid-minute session need
+`db/migrations/2026-10-25_add_chat_coins.sql`, which `npm run build` applies
+automatically.
+
+## Coin billing
+
+- Every new account gets **50 welcome coins**; a guest browser wallet is also
+  seeded with 50.
+- Chat costs **10 coins per started minute** of an active conversation.
+- A Pro/Ultra report includes **50 chat minutes before coins** are charged.
+- A session resets after **2 idle minutes**, so time away is never billed.
+- Coins are reserved before the provider call and refunded with a `chat_refund`
+  ledger row if the provider fails.
+- When the next minute cannot be paid the API returns
+  `402 { "error": "insufficient_coins", "billing": ... }`.
+- `GET /api/chat/quota` returns the live wallet, Pro minutes and session state.
+- `GET /api/tokens/balance` feeds the live coin chip in the header.
+- Chat billing uses `users.token_balance` for signed-in readers and the
+  `chat_wallets` table for `anon:<uuid>` guests. Session state lives in
+  `chat_sessions`; Pro included minutes live in `chat_usage.plan = 'pro'`.
 
 ## Environment variables
 

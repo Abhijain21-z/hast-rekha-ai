@@ -2,7 +2,10 @@
  * Referral rewards + the token wallet.
  *
  * Product rules (owner-confirmed):
+ *   - Every new account starts with 50 coins.
  *   - A referrer earns 50 tokens only after the referred person creates an account.
+ *   - Chat with Panditji costs 10 coins per started minute; a Pro report
+ *     includes 50 minutes before coins are used.
  *   - Tokens are never accepted for the Rs 51 Pro report.
  *   - 350 tokens unlock one Ultra Pro (Rs 351) report.
  *
@@ -18,13 +21,25 @@ import { SITE_URL } from "./site";
 import { REFERRAL_TOKEN_REWARD, ULTRA_PRICE_INR, ULTRA_TOKEN_COST } from "./token-rules";
 
 export { normalizeReferralCode } from "./referral-code";
-export { REFERRAL_TOKEN_REWARD, ULTRA_PRICE_INR, ULTRA_TOKEN_COST, tokenProgress } from "./token-rules";
+export {
+  REFERRAL_TOKEN_REWARD,
+  SIGNUP_TOKEN_BONUS,
+  ULTRA_PRICE_INR,
+  ULTRA_TOKEN_COST,
+  tokenProgress,
+} from "./token-rules";
 
 /** No 0/O/1/I, so a code can be read aloud or typed without confusion. */
 const CODE_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const CODE_LENGTH = 8;
 
-export type TokenLedgerReason = "referral_signup" | "ultra_redemption" | "admin_adjustment";
+export type TokenLedgerReason =
+  | "signup_bonus"
+  | "referral_signup"
+  | "chat_time"
+  | "chat_refund"
+  | "ultra_redemption"
+  | "admin_adjustment";
 
 export interface TokenWallet {
   balance: number;

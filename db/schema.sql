@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS token_ledger (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id uuid NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   delta integer NOT NULL,
-  reason varchar(40) NOT NULL, -- referral_signup | ultra_redemption | admin_adjustment
+  reason varchar(40) NOT NULL, -- signup_bonus | referral_signup | chat_time | chat_refund | ultra_redemption | admin_adjustment
   referral_id uuid REFERENCES referrals(id) ON DELETE SET NULL,
   reading_id uuid REFERENCES readings(id) ON DELETE SET NULL,
   balance_after integer NOT NULL,
@@ -101,6 +101,40 @@ CREATE UNIQUE INDEX IF NOT EXISTS token_ledger_referral_once_idx
 CREATE UNIQUE INDEX IF NOT EXISTS token_ledger_ultra_once_idx
   ON token_ledger (reading_id)
   WHERE reason = 'ultra_redemption' AND reading_id IS NOT NULL;
+
+-- AI Panditji chat: Pro readers get 50 included minutes per subject.
+-- Subjects are `user:<uuid>` for signed-in readers and `anon:<uuid>` for guests.
+CREATE TABLE IF NOT EXISTS chat_usage (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  subject text NOT NULL,
+  plan varchar(10) NOT NULL DEFAULT 'free',
+  used integer NOT NULL DEFAULT 0,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT chat_usage_plan_check CHECK (plan IN ('free', 'pro')),
+  CONSTRAINT chat_usage_used_nonnegative CHECK (used >= 0)
+);
+CREATE UNIQUE INDEX IF NOT EXISTS chat_usage_subject_plan_idx ON chat_usage (subject, plan);
+
+-- Guest coin wallet. Signed-in readers use users.token_balance instead.
+CREATE TABLE IF NOT EXISTS chat_wallets (
+  subject text PRIMARY KEY,
+  balance integer NOT NULL DEFAULT 50,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT chat_wallets_balance_nonnegative CHECK (balance >= 0)
+);
+
+-- Current per-minute chat session (10 coins per started minute).
+CREATE TABLE IF NOT EXISTS chat_sessions (
+  subject text PRIMARY KEY,
+  started_at timestamptz NOT NULL DEFAULT now(),
+  last_seen_at timestamptz NOT NULL DEFAULT now(),
+  billed_minutes integer NOT NULL DEFAULT 0,
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT chat_sessions_billed_nonnegative CHECK (billed_minutes >= 0)
+);
+CREATE INDEX IF NOT EXISTS chat_sessions_last_seen_idx ON chat_sessions (last_seen_at);
 
 -- Explicit daily-rashifal opt-ins. One row per WhatsApp number, so a person
 -- with several readings gets at most one message per day.

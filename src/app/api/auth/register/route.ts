@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
-import { users } from "@/db/schema";
+import { tokenLedger, users } from "@/db/schema";
 import { createSession, hashPassword, isValidEmail, SESSION_COOKIE, sessionCookieOptions, toSafeUser } from "@/lib/auth";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
-import { creditReferral, ensureReferralCode, normalizeReferralCode } from "@/lib/tokens";
+import { creditReferral, ensureReferralCode, normalizeReferralCode, SIGNUP_TOKEN_BONUS } from "@/lib/tokens";
 
 export async function POST(req: Request) {
   const limit = rateLimit(`register:${clientIp(req)}`, 5, 60 * 60_000);
@@ -29,10 +29,29 @@ export async function POST(req: Request) {
   const existing = await db.select({ id: users.id }).from(users).where(eq(users.email, email)).limit(1);
   if (existing.length) return NextResponse.json({ error: "exists" }, { status: 409 });
 
-  const [user] = await db
-    .insert(users)
-    .values({ name: name.slice(0, 80), email, passwordHash: await hashPassword(password), preferredLang: body.lang === "hi" ? "hi" : "en" })
-    .returning();
+  const user = await db.transaction(async (tx) => {
+    const [created] = await tx
+      .insert(users)
+      .values({
+        name: name.slice(0, 80),
+        email,
+        passwordHash: await hashPassword(password),
+        preferredLang: body.lang === "hi" ? "hi" : "en",
+        tokenBalance: SIGNUP_TOKEN_BONUS,
+      })
+      .returning();
+
+    // Every new account starts with 50 coins: enough for five chat minutes or
+    // a head start towards the 350-coin Ultra Pro unlock.
+    await tx.insert(tokenLedger).values({
+      userId: created.id,
+      delta: SIGNUP_TOKEN_BONUS,
+      reason: "signup_bonus",
+      balanceAfter: SIGNUP_TOKEN_BONUS,
+    });
+
+    return created;
+  });
 
   // The referrer's 50 tokens are credited only here — after the referred
   // account exists. An invalid code is silently ignored, never a signup error.

@@ -3,6 +3,8 @@
  * components never import the database driver.
  */
 export const REFERRAL_TOKEN_REWARD = 50;
+/** Welcome coins for every new account, and for a guest's first wallet. */
+export const SIGNUP_TOKEN_BONUS = 50;
 export const ULTRA_TOKEN_COST = 350;
 export const ULTRA_PRICE_INR = 351;
 
