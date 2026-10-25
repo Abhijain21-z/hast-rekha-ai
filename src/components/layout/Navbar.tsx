@@ -10,10 +10,11 @@ import { LANGS } from "@/lib/lang-overrides";
 import { BOOK_PROMO } from "@/lib/flags";
 import { Avatar, cn } from "@/components/ui";
 import ThemeToggle from "@/components/layout/ThemeToggle";
-import ShareButton from "@/components/layout/ShareButton";
+import CoinBalance from "@/components/layout/CoinBalance";
+import ReferEarnButton from "@/components/referral/ReferEarnButton";
 import PwaInstall from "@/components/layout/PwaInstall";
 
-export type NavUser = { name: string; email: string } | null;
+export type NavUser = { name: string; email: string; tokenBalance: number } | null;
 
 export function LangToggle({ compact }: { compact?: boolean }) {
   const { lang, setLang, t } = useLang();
@@ -138,7 +139,8 @@ export default function Navbar({ user }: { user: NavUser }) {
             </span>
             <LangToggle compact />
             <ThemeToggle compact />
-            <ShareButton compact />
+            <CoinBalance signedIn={Boolean(user)} initialBalance={user?.tokenBalance ?? null} />
+            <ReferEarnButton signedIn={Boolean(user)} />
             <PwaInstall />
           </div>
         </div>

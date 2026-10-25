@@ -52,8 +52,8 @@ export default function ReferralCard({
   }
 
   const shareText = L({
-    en: "Get your free palm + kundli reading on Hast Rekha AI. Create your account and I earn 50 tokens.",
-    hi: "Hast Rekha AI पर अपनी मुफ़्त हस्तरेखा + कुंडली रीडिंग लें। अकाउंट बनाइए और मुझे 50 टोकन मिलेंगे।",
+    en: "Get your free palm + kundli reading on Hast Rekha AI. Create your account and you get 50 free coins — I get 50 too.",
+    hi: "Hast Rekha AI पर अपनी मुफ़्त हस्तरेखा + कुंडली रीडिंग लें। अकाउंट बनाइए और 50 मुफ़्त कॉइन पाइए — मुझे भी 50 मिलेंगे।",
   });
 
   const whatsapp = referralLink
@@ -86,10 +86,10 @@ export default function ReferralCard({
               <p className="font-display text-4xl text-white">{balance}</p>
               <p className="pb-1 text-sm text-slate-400">{L({ en: "tokens", hi: "टोकन" })}</p>
             </div>
-            <p className="mt-1 text-xs text-slate-400">
+            <p className="mt-1 text-xs leading-relaxed text-slate-400">
               {L({
-                en: `${REFERRAL_TOKEN_REWARD} tokens per successful referral. ${ULTRA_TOKEN_COST} tokens = one Ultra Pro report (₹${ULTRA_PRICE_INR}).`,
-                hi: `हर सफल रेफरल पर ${REFERRAL_TOKEN_REWARD} टोकन। ${ULTRA_TOKEN_COST} टोकन = एक Ultra Pro रिपोर्ट (₹${ULTRA_PRICE_INR})।`,
+                en: `50 welcome coins on signup (1 token = 1 coin). Every referral adds ${REFERRAL_TOKEN_REWARD} for you and gives your friend 50. Chat costs 10 coins per started minute; ${ULTRA_TOKEN_COST} tokens = one Ultra Pro report (₹${ULTRA_PRICE_INR}).`,
+                hi: `साइनअप पर 50 वेलकम कॉइन (1 टोकन = 1 कॉइन)। हर रेफरल पर आपको ${REFERRAL_TOKEN_REWARD} और आपके दोस्त को 50 मिलते हैं। चैट पर हर शुरू हुए मिनट के 10 कॉइन; ${ULTRA_TOKEN_COST} टोकन = एक Ultra Pro रिपोर्ट (₹${ULTRA_PRICE_INR})।`,
               })}
             </p>
           </div>
@@ -187,11 +187,17 @@ export default function ReferralCard({
               {ledger.slice(0, 5).map((row) => (
                 <li key={row.id} className="flex items-center justify-between gap-3 text-xs">
                   <span className="min-w-0 truncate text-slate-300">
-                    {row.reason === "referral_signup"
-                      ? L({ en: "Referral signup reward", hi: "रेफरल साइनअप रिवॉर्ड" })
-                      : row.reason === "ultra_redemption"
-                        ? L({ en: "Ultra Pro unlock", hi: "Ultra Pro अनलॉक" })
-                        : L({ en: "Token adjustment", hi: "टोकन समायोजन" })}
+                    {row.reason === "signup_bonus"
+                      ? L({ en: "Welcome bonus", hi: "वेलकम बोनस" })
+                      : row.reason === "referral_signup"
+                        ? L({ en: "Referral reward", hi: "रेफरल रिवॉर्ड" })
+                        : row.reason === "chat_time"
+                          ? L({ en: "AI Panditji chat", hi: "AI पंडितजी चैट" })
+                          : row.reason === "chat_refund"
+                            ? L({ en: "Chat refund", hi: "चैट रिफंड" })
+                            : row.reason === "ultra_redemption"
+                              ? L({ en: "Ultra Pro unlock", hi: "Ultra Pro अनलॉक" })
+                              : L({ en: "Token adjustment", hi: "टोकन समायोजन" })}
                     <span className="ml-2 text-slate-500">
                       {new Date(row.createdAt).toLocaleDateString(cl === "hi" ? "hi-IN" : "en-IN", { day: "numeric", month: "short" })}
                     </span>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
+import PanditjiPromo from "@/components/home/PanditjiPromo";
+import PanditjiPopup from "@/components/home/PanditjiPopup";
 import PalmLines from "@/components/home/PalmLines";
 import HowItWorks from "@/components/home/HowItWorks";
 import ZodiacShowcase from "@/components/home/ZodiacShowcase";
@@ -59,6 +61,7 @@ export default function HomePage() {
       <ConstellationBackdrop />
       <div className="relative">
         <Hero />
+        <PanditjiPromo />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="section-divider mt-6" /></div>
         <PalmLines />
         <RishisSection />
@@ -70,6 +73,7 @@ export default function HomePage() {
         <FAQ />
         <FaqJsonLd />
         <About />
+        <PanditjiPopup />
       </div>
     </div>
   );

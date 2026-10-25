@@ -7,7 +7,13 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
   const user = await getCurrentUser();
   return (
     <>
-      <Navbar user={user ? { name: user.name, email: user.email } : null} />
+      <Navbar
+        user={
+          user
+            ? { name: user.name, email: user.email, tokenBalance: user.tokenBalance }
+            : null
+        }
+      />
       <main className="pt-[106px]">{children}</main>
       <Footer />
     </>

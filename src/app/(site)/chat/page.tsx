@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { cookies } from "next/headers";
-import { ArrowRight, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, Crown, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
 import AstrologyChat from "@/components/chat/AstrologyChat";
+import PanditjiAvatar from "@/components/chat/PanditjiAvatar";
 import { getChatConfig } from "@/lib/ai-chat";
+import { PREMIUM_PRICE } from "@/lib/premium";
 import { SITE_URL } from "@/lib/site";
 
 export type ChatSearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -65,13 +67,31 @@ export async function generateMetadata({
 }
 
 const UI = {
-  eyebrow: { en: "AI Jyotishi · Vedic astrology", hi: "AI ज्योतिषी · वैदिक ज्योतिष" },
-  h1: { en: "Ask your kundli, in your own words", hi: "अपनी कुंडली से, अपने शब्दों में पूछें" },
+  eyebrow: { en: "AI Jyotishi · Vedic guidance", hi: "AI ज्योतिषी · वैदिक मार्गदर्शन" },
+  h1: { en: "Chat with Hastrekha Panditji", hi: "हस्तरेखा पंडितजी से चैट करें" },
   sub: {
-    en: "A calm, private chat for the questions that a general rashifal cannot answer. If you open it from your report, the guide reads your Moon sign, Nakshatra and Lagna — not a generic sun-sign feed.",
-    hi: "वे सवाल जो सामान्य राशिफल का जवाब नहीं देता, उनके लिए एक शांत, निजी चैट। रिपोर्ट से खोलें तो मार्गदर्शक आपकी चंद्र राशि, नक्षत्र और लग्न पढ़ता है — कोई सामान्य सूर्य-राशि वाला राशिफल नहीं।",
+    en: "A calm, private chat for the questions that a general rashifal cannot answer. If you open it from your report, Panditji reads your Moon sign, Nakshatra and Lagna — not a generic sun-sign feed.",
+    hi: "वे सवाल जो सामान्य राशिफल का जवाब नहीं देता, उनके लिए एक शांत, निजी चैट। रिपोर्ट से खोलें तो पंडितजी आपकी चंद्र राशि, नक्षत्र और लग्न पढ़ते हैं — कोई सामान्य सूर्य-राशि वाला राशिफल नहीं।",
   },
   readingCta: { en: "Start a free reading first", hi: "पहले मुफ़्त रीडिंग शुरू करें" },
+  planTitle: { en: "Chat pricing", hi: "चैट शुल्क" },
+  freePlan: { en: "Free / guest", hi: "फ्री / गेस्ट" },
+  freePlanValue: { en: "50 free coins", hi: "50 मुफ़्त कॉइन" },
+  freePlanNote: {
+    en: "10 coins per started minute. About 5 free minutes; no payment or card needed.",
+    hi: "हर शुरू हुए मिनट पर 10 कॉइन। लगभग 5 मुफ़्त मिनट; कोई भुगतान या कार्ड नहीं।",
+  },
+  proPlan: { en: "Pro plan", hi: "प्रो प्लान" },
+  proPlanValue: { en: "50 minutes", hi: "50 मिनट" },
+  proPlanNote: {
+    en: `50 chat minutes included with the ₹${PREMIUM_PRICE} Pro report, along with the 5-year roadmap and PDF.`,
+    hi: `₹${PREMIUM_PRICE} की Pro रिपोर्ट के साथ 50 चैट मिनट, 5 साल के रोडमैप और PDF सहित।`,
+  },
+  planSeparate: {
+    en: "Pro minutes are used first. Coins are charged only after them, and idle time is never charged.",
+    hi: "पहले प्रो मिनट इस्तेमाल होते हैं। उनके बाद ही कॉइन कटते हैं, और निष्क्रिय समय का शुल्क नहीं लगता।",
+  },
+  planCta: { en: "See Pro plan", hi: "प्रो प्लान देखें" },
   sideTitle: { en: "What you can ask", hi: "आप क्या पूछ सकते हैं" },
   questions: [
     { en: "What does my Moon sign say about my career?", hi: "मेरी चंद्र राशि करियर के बारे में क्या कहती है?" },
@@ -105,6 +125,12 @@ export default async function ChatPage({ searchParams }: { searchParams: ChatSea
   return (
     <div className="relative">
       <section className="mx-auto max-w-4xl px-4 pt-16 text-center sm:px-6 lg:px-8">
+        <div className="mx-auto mb-5 flex justify-center">
+          <div className="relative">
+            <div className="absolute inset-2 rounded-full bg-gold-400/20 blur-2xl" />
+            <PanditjiAvatar size={124} className="relative drop-shadow-[0_14px_38px_rgba(251,191,36,0.22)]" />
+          </div>
+        </div>
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400/90">
           {L(UI.eyebrow)}
         </p>
@@ -127,6 +153,39 @@ export default async function ChatPage({ searchParams }: { searchParams: ChatSea
           <AstrologyChat readingId={readingId} configured={getChatConfig().configured} />
 
           <aside className="space-y-5">
+            <div className="rounded-3xl border border-gold-400/30 bg-gradient-to-br from-gold-400/12 via-cosmic-900/60 to-mystic-700/20 p-5 sm:p-6">
+              <p className="flex items-center gap-2 text-sm font-semibold text-white">
+                <Crown className="h-4 w-4 text-gold-300" /> {L(UI.planTitle)}
+              </p>
+              <div className="mt-4 space-y-3">
+                <div className="rounded-2xl border border-emerald-300/20 bg-emerald-400/[0.06] p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+                      {L(UI.freePlan)}
+                    </span>
+                    <span className="text-sm font-semibold text-white">{L(UI.freePlanValue)}</span>
+                  </div>
+                  <p className="mt-1 text-[11px] leading-relaxed text-slate-400">{L(UI.freePlanNote)}</p>
+                </div>
+                <div className="rounded-2xl border border-gold-400/25 bg-gold-400/[0.07] p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-gold-200">
+                      {L(UI.proPlan)}
+                    </span>
+                    <span className="text-sm font-semibold text-white">{L(UI.proPlanValue)}</span>
+                  </div>
+                  <p className="mt-1 text-[11px] leading-relaxed text-slate-400">{L(UI.proPlanNote)}</p>
+                </div>
+              </div>
+              <p className="mt-3 text-[11px] leading-relaxed text-slate-400">{L(UI.planSeparate)}</p>
+              <Link
+                href="/pricing"
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-gold-400/40 bg-gold-400/10 px-4 py-2.5 text-sm text-gold-200 transition hover:border-gold-400/70 hover:bg-gold-400/15"
+              >
+                {L(UI.planCta)} <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
             <div className="glass rounded-3xl p-5 sm:p-6">
               <p className="flex items-center gap-2 text-sm font-semibold text-white">
                 <MessageCircle className="h-4 w-4 text-gold-300" /> {L(UI.sideTitle)}

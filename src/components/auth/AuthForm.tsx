@@ -76,8 +76,8 @@ export default function AuthForm({ mode }: { mode: "login" | "register" }) {
           <Gift className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" />
           <span className="flex-1 leading-relaxed">
             {L({
-              en: `Referral code ${referralCode} applied. Your friend gets 50 tokens after you create your account.`,
-              hi: `रेफरल कोड ${referralCode} लग गया। आपका अकाउंट बनते ही आपके दोस्त को 50 टोकन मिल जाएँगे।`,
+              en: `Referral code ${referralCode} applied. Create your account to get 50 welcome coins — your friend also gets 50.`,
+              hi: `रेफरल कोड ${referralCode} लग गया। अकाउंट बनाइए और 50 वेलकम कॉइन पाइए — आपके दोस्त को भी 50 मिलेंगे।`,
             })}
           </span>
           <button

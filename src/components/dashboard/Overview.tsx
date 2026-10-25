@@ -114,7 +114,7 @@ export default function Overview({ userName, memberSince, stats, recent, wallet 
         </motion.div>
       </div>
 
-      <div>
+      <div id="wallet" className="scroll-mt-32">
         <ReferralCard
           balance={wallet.balance}
           referralCode={wallet.referralCode}
