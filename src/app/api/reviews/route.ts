@@ -7,6 +7,17 @@ import { isNegativeReview, listPublicReviews } from "@/lib/reviews";
 
 export const dynamic = "force-dynamic";
 
+/**
+ * The public review list is identical for every visitor and changes only when
+ * someone posts a review. Caching it at the CDN keeps the two database queries
+ * off the hot path — previously every homepage visit ran them.
+ */
+const CACHE_HEADERS = {
+  "Cache-Control": "public, max-age=0, s-maxage=120, stale-while-revalidate=600",
+  "CDN-Cache-Control": "public, s-maxage=120, stale-while-revalidate=600",
+  "Vercel-CDN-Cache-Control": "public, s-maxage=120, stale-while-revalidate=600",
+};
+
 /** Interface rating codes the form can send. */
 const INTERFACE = new Set(["great", "good", "okay", "poor"]);
 
@@ -18,11 +29,15 @@ export async function GET(req: Request) {
     // Active reviews plus previously archived negative reviews. Nothing is
     // filtered by rating or expiry anymore.
     const rows = await listPublicReviews(full ? 200 : 50);
-    return NextResponse.json({ reviews: rows });
+    return NextResponse.json({ reviews: rows }, { headers: CACHE_HEADERS });
   } catch {
     // A database hiccup must not take the page down with a raw 500 — the UI
-    // simply shows its empty state.
-    return NextResponse.json({ reviews: [], error: "unavailable" }, { status: 200 });
+    // simply shows its empty state. Do not cache the failure: the next request
+    // should retry the database.
+    return NextResponse.json(
+      { reviews: [], error: "unavailable" },
+      { status: 200, headers: { "Cache-Control": "no-store" } },
+    );
   }
 }
 
