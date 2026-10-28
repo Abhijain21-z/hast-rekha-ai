@@ -9,25 +9,32 @@ import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, Input, Label, ErrorText, cn } from "@/components/ui";
 import PalmUpload from "./PalmUpload";
 import CalculatingOverlay from "./CalculatingOverlay";
+import FloatingBtn from "./FloatingBtn";
 import type { City } from "@/lib/cities";
 import { useCitySearch } from "@/lib/use-city-search";
 import { tzLabel } from "@/lib/dto";
+import { FOCUS_OPTIONS, isFocusKey } from "@/lib/focus";
 
 interface Props { loggedIn: boolean }
 
 export default function ReadingForm({ loggedIn }: Props) {
-  const { t } = useLang();
+  const { t, L } = useLang();
   const router = useRouter();
   const params = useSearchParams();
 
   const [fullName, setFullName] = useState(params.get("name") ?? "");
   const [whatsappPhone, setWhatsappPhone] = useState("");
-  const [dailyRashifal, setDailyRashifal] = useState(false);
+  const [dailyRashifal, setDailyRashifal] = useState(true);
   const [birthDate, setBirthDate] = useState(params.get("dob") ?? "");
   const [birthTime, setBirthTime] = useState(params.get("tob") ?? "");
   const [timeUnknown, setTimeUnknown] = useState(false);
   const [gender, setGender] = useState<"" | "male" | "female" | "trans">("");
   const [married, setMarried] = useState<"" | "yes" | "no">("");
+  const [focus, setFocus] = useState(() => {
+    const fromUrl = params.get("focus");
+    return isFocusKey(fromUrl) ? fromUrl : "";
+  });
+  const [consent, setConsent] = useState(false);
   const [placeQuery, setPlaceQuery] = useState(params.get("place") ?? "");
   const [city, setCity] = useState<City | null>(() => {
     const lat = params.get("lat"), lng = params.get("lng");
@@ -110,6 +117,7 @@ export default function ReadingForm({ loggedIn }: Props) {
     else if (!/^[6-9]\d{9}$/.test(waDigits)) errs.whatsappPhone = t.form.errWhatsapp;
     if (!gender) errs.gender = t.form.errGender;
     if (!married) errs.married = t.form.errMarried;
+    if (!consent) errs.consent = t.form.errConsent;
     if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) errs.birthDate = t.form.errDate;
     let latN = Number(lat), lngN = Number(lng);
     let tzN = tz.trim() === "" ? 5.5 : Number(tz);
@@ -135,6 +143,7 @@ export default function ReadingForm({ loggedIn }: Props) {
       else if (errs.whatsappPhone) document.getElementById("wa-phone")?.focus();
       else if (errs.gender) document.getElementById("gender-male")?.focus();
       else if (errs.married) document.getElementById("married-yes")?.focus();
+      else if (errs.consent) document.getElementById("consent")?.focus();
       return;
     }
 
@@ -159,6 +168,7 @@ export default function ReadingForm({ loggedIn }: Props) {
         palmHand: palm ? hand : null,
         gender,
         married: married === "yes",
+        focus: focus || null,
         whatsappPhone: waDigits,
         dailyRashifalOptIn: dailyRashifal,
       }),
@@ -168,17 +178,32 @@ export default function ReadingForm({ loggedIn }: Props) {
       return data.id;
     });
     runProgress(request);
+    // Hide floating button after form is submitted
+    window.dispatchEvent(new Event("hr-form-submitted"));
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8 relative">
+      {/* Background video — muted, looping, low opacity, smooth performance */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        className="absolute inset-0 w-full h-full object-cover opacity-[0.08] pointer-events-none select-none z-0"
+        aria-hidden="true"
+      >
+        <source src="/assets/krsn.mp4" type="video/mp4" />
+      </video>
+      <div className="relative z-10">
       <CalculatingOverlay progress={progress} />
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10 text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-400/90">✦ Kundli</p>
         <h1 className="mt-3 font-display text-4xl font-semibold text-white md:text-5xl">{t.form.title}</h1>
         <p className="mt-3 text-slate-300">{t.form.sub}</p>
         {!loggedIn && (
-          <Link href="/login?next=/reading" className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-slate-300 hover:border-gold-400/40 hover:text-gold-200">
+          <Link href="/login?next=/reading" className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs text-slate-300 hover:border-gold-400/50 hover:text-gold-200">
             <LogIn className="h-3.5 w-3.5" /> {t.form.guestNote}
           </Link>
         )}
@@ -243,7 +268,7 @@ export default function ReadingForm({ loggedIn }: Props) {
               />
               <span className="text-xs leading-relaxed">
                 <span className="font-medium text-slate-200">{t.form.dailyWhatsapp}</span>
-                <span className="mt-0.5 block text-slate-500">{t.form.dailyWhatsappNote}</span>
+                {/* Note removed — kept only for reference: हफ़्ते में दो तय दिन, सुबह 9 बजे — दिन आपके opt-in पर तय होते हैं ताकि messages पूरे हफ़्ते में बँट जाएँ। कभी भी STOP लिखकर बंद कर सकते हैं। वैकल्पिक। */}
               </span>
             </label>
             <ErrorText>{errors.whatsappPhone}</ErrorText>
@@ -287,12 +312,18 @@ export default function ReadingForm({ loggedIn }: Props) {
                     id={`gender-${option.value}`}
                     type="button"
                     aria-pressed={gender === option.value}
-                    onClick={() => setGender(option.value)}
+                    onClick={() => {
+                      setGender(option.value);
+                      // Palmistry convention: men read the right hand, women
+                      // the left. The selector stays editable for exceptions.
+                      if (option.value === "male") setHand("right");
+                      else if (option.value === "female") setHand("left");
+                    }}
                     className={cn(
                       "rounded-xl border px-2 py-2.5 text-sm transition",
                       gender === option.value
                         ? "border-gold-400/70 bg-gold-400/15 text-gold-100"
-                        : "border-white/10 bg-white/[0.03] text-slate-300 hover:border-gold-400/40 hover:text-white",
+                        : "border-white/25 bg-white/[0.06] text-slate-300 hover:border-gold-400/50 hover:text-white",
                     )}
                   >
                     {option.label}
@@ -320,7 +351,7 @@ export default function ReadingForm({ loggedIn }: Props) {
                       "rounded-xl border px-3 py-2.5 text-sm transition",
                       married === option.value
                         ? "border-gold-400/70 bg-gold-400/15 text-gold-100"
-                        : "border-white/10 bg-white/[0.03] text-slate-300 hover:border-gold-400/40 hover:text-white",
+                        : "border-white/25 bg-white/[0.06] text-slate-300 hover:border-gold-400/50 hover:text-white",
                     )}
                   >
                     {option.label}
@@ -329,6 +360,23 @@ export default function ReadingForm({ loggedIn }: Props) {
               </div>
               <ErrorText>{errors.married}</ErrorText>
             </div>
+          </div>
+
+          <div>
+            <Label htmlFor="focus" hint={t.form.focusHint}>{t.form.focus}</Label>
+            <select
+              id="focus"
+              value={focus}
+              onChange={(e) => setFocus(e.target.value)}
+              className="mt-1.5 w-full rounded-xl border border-white/25 bg-white/[0.05] px-3.5 py-3 text-sm text-slate-100 outline-none transition focus:border-gold-400/80 focus:ring-2 focus:ring-gold-400/30"
+            >
+              <option value="">{t.form.focusPlaceholder}</option>
+              {FOCUS_OPTIONS.map((option) => (
+                <option key={option.key} value={option.key} className="bg-cosmic-900 text-slate-100">
+                  {L(option.label)}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div ref={boxRef} className="relative">
@@ -394,7 +442,32 @@ export default function ReadingForm({ loggedIn }: Props) {
           </div>
 
           <div className="glass rounded-3xl p-6">
-            <Button type="submit" size="lg" loading={submitting} className={cn("w-full")} icon={<Sparkles className="h-5 w-5" />}>
+            <label htmlFor="consent" className="flex cursor-pointer items-start gap-2.5 text-[12.5px] leading-relaxed text-slate-300">
+              <input
+                id="consent"
+                type="checkbox"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                required
+                aria-required="true"
+                aria-invalid={!!errors.consent}
+                className="mt-0.5 h-4 w-4 shrink-0 accent-[#f5c242]"
+              />
+              <span>
+                {L({ en: "I accept the ", hi: "मैं " })}
+                <Link href="/privacy-policy" className="font-medium text-gold-300 underline underline-offset-2 hover:text-gold-200">
+                  privacy policy
+                </Link>
+                {L({ en: " and ", hi: " and " })}
+                <Link href="/terms" className="font-medium text-gold-300 underline underline-offset-2 hover:text-gold-200">
+                  terms and conditions
+                </Link>
+                {L({ en: "", hi: " accept करता हूँ" })}
+              </span>
+            </label>
+            <ErrorText>{errors.consent}</ErrorText>
+
+            <Button type="submit" size="lg" loading={submitting} className={cn("mt-4 w-full")} icon={<Sparkles className="h-5 w-5" />}>
               {submitting ? t.form.calculating : t.form.submit}
             </Button>
             {serverError && <ErrorText>{serverError}</ErrorText>}
@@ -402,6 +475,8 @@ export default function ReadingForm({ loggedIn }: Props) {
           </div>
         </motion.div>
       </form>
+      <FloatingBtn />
+      </div>
     </div>
   );
 }

@@ -1,14 +1,23 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Check, Copy, Crown, Download, ExternalLink, Gift, HeartHandshake, Lock, MessageCircle, Printer, QrCode, ShieldCheck, Sparkles, X } from "lucide-react";
+import { Check, Copy, Crown, Download, ExternalLink, Gift, HeartHandshake, Lock, MessageCircle, Printer, QrCode, ShieldCheck, X } from "lucide-react";
 import QRCode from "qrcode";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { useToast } from "@/components/providers/ToastProvider";
 import { Button, Input, Label, Modal, cn } from "@/components/ui";
-import { PREMIUM_PERKS, BOOK_PERKS, PREMIUM_PRICE, UPI_ID, upiDeepLink } from "@/lib/premium";
-import { CASHFREE_ENABLED, CASHFREE_MODE, MANUAL_UPI_ENABLED, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
-import { tokenProgress } from "@/lib/token-rules";
+import { PREMIUM_PERKS, BOOK_PERKS, UPI_ID, upiDeepLink } from "@/lib/premium";
+import {
+  BUNDLE_TEST,
+  CASHFREE_ENABLED,
+  CASHFREE_MODE,
+  MANUAL_UPI_ENABLED,
+  PDF_PRICE_ANCHOR,
+  PRO_PAY_MODE,
+  ULTRA_PRICE,
+} from "@/lib/flags";
+import { PLAN_PRICES, type ReportPlan } from "@/lib/plans";
+import type { Bi } from "@/lib/i18n";
 import { getCashfree } from "@/lib/cashfree-client";
 import { PaymentHelpModal } from "./PaymentHelp";
 
@@ -26,8 +35,11 @@ function printReport() {
   }, 350);
 }
 
-/** The two plans the paywall offers: ₹51 Pro, ₹351 Ultra Pro (adds the book). */
-export type ProPlan = "pro" | "ultra";
+/**
+ * Report plans. The ₹351 Ultra Pro stays in the type for existing buyers and
+ * for the flag-off path; new visitors see the ₹199 launch bundle instead.
+ */
+export type ProPlan = ReportPlan;
 
 type CashfreeOrderResult = {
   ok: boolean;
@@ -36,12 +48,48 @@ type CashfreeOrderResult = {
   error?: string;
 };
 
+const DIWALI_PERK: Bi = {
+  en: "Complete Diwali Puja PDF — vidhi, samagri, mantra & aarti",
+  hi: "संपूर्ण दिवाली पूजा PDF — विधि, सामग्री, मंत्र व आरती",
+};
+
+const PLAN_INFO: Record<ProPlan, { title: Bi; sub: Bi }> = {
+  pro: {
+    title: { en: "Pro report", hi: "प्रो रिपोर्ट" },
+    sub: {
+      en: "5-year roadmap, complete PDF, partner report, upay & 50 chat minutes",
+      hi: "5-वर्षीय रोडमैप, पूरी PDF, जीवनसाथी रिपोर्ट, उपाय और 50 चैट मिनट",
+    },
+  },
+  diwali: {
+    title: { en: "Pro + Diwali PDF", hi: "प्रो + दिवाली PDF" },
+    sub: {
+      en: "Everything in Pro plus the complete Diwali Puja PDF",
+      hi: "प्रो की हर चीज़ और संपूर्ण दिवाली पूजा PDF",
+    },
+  },
+  bundle: {
+    title: { en: "Pro + Dhandayak book", hi: "प्रो + धनदायक पुस्तक" },
+    sub: {
+      en: "Everything in Pro plus the complete Dhandayak book",
+      hi: "प्रो की हर चीज़ और पूरी धनदायक पुस्तक",
+    },
+  },
+  ultra: {
+    title: { en: "Ultra Pro", hi: "अल्ट्रा प्रो" },
+    sub: {
+      en: "Everything in Pro plus the complete Dhandayak book",
+      hi: "प्रो की हर चीज़ और पूरी धनदायक पुस्तक",
+    },
+  },
+};
+
 /** Reuse a prefetched order for 10 minutes, then ask the server for a fresh one. */
 const ORDER_TTL_MS = 10 * 60 * 1000;
 
 /**
- * The single ₹51 / ₹351 paywall. Every download/print button and the premium
- * upsell open this same offer, so the price anchor and perks stay consistent.
+ * The single report paywall. Every download/print button and the premium
+ * upsell open this same offer, so the price ladder and perks stay consistent.
  *
  * Callers pass the plan they want pre-selected together with a `key` that
  * changes whenever the modal re-opens, so each open starts on the plan the
@@ -53,13 +101,16 @@ export function ProPaywallModal({
   readingId,
   onUnlocked,
   defaultPlan = "pro",
+  alreadyPro = false,
 }: {
   open: boolean;
   onClose: () => void;
   readingId: string;
   onUnlocked: () => void;
-  /** Pre-selects a plan, e.g. when the visitor came from the ₹351 Ultra card. */
+  /** Pre-selects a plan, e.g. when the visitor came from a specific card. */
   defaultPlan?: ProPlan;
+  /** The reading already has Pro; only add-ons are offered. */
+  alreadyPro?: boolean;
 }) {
   const { t, L } = useLang();
   const { toast } = useToast();
@@ -68,7 +119,15 @@ export function ProPaywallModal({
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
   const [copied, setCopied] = useState(false);
-  const [plan, setPlan] = useState<ProPlan>(defaultPlan);
+
+  const planOptions = useMemo<ProPlan[]>(() => {
+    const base: ProPlan[] = BUNDLE_TEST ? ["pro", "bundle", "diwali"] : ["pro", "ultra", "diwali"];
+    return alreadyPro ? base.filter((key) => key !== "pro") : base;
+  }, [alreadyPro]);
+
+  const [plan, setPlan] = useState<ProPlan>(() =>
+    planOptions.includes(defaultPlan) ? defaultPlan : planOptions[0],
+  );
   const [cfBusy, setCfBusy] = useState(false);
   const [phone, setPhone] = useState(() => {
     if (typeof window === "undefined") return "";
@@ -79,33 +138,84 @@ export function ProPaywallModal({
   const [helpOpen, setHelpOpen] = useState(false);
   const [helpIssue, setHelpIssue] = useState<"checkout_closed" | "not_unlocked">("checkout_closed");
   const [lastOrderId, setLastOrderId] = useState<string | null>(null);
-  const [tokenBalance, setTokenBalance] = useState<number | null>(null);
-  const [tokenBusy, setTokenBusy] = useState(false);
-  const [tokenErr, setTokenErr] = useState("");
   const prefetchRef = useRef<{ key: string; at: number; promise: Promise<CashfreeOrderResult> } | null>(null);
 
-  const price = plan === "ultra" ? ULTRA_PRICE : PREMIUM_PRICE;
-  const perks = plan === "ultra" ? [...PREMIUM_PERKS, ...BOOK_PERKS] : PREMIUM_PERKS;
+  const price = PLAN_PRICES[plan];
+  const perks =
+    plan === "diwali"
+      ? [...PREMIUM_PERKS, DIWALI_PERK]
+      : plan === "pro"
+        ? PREMIUM_PERKS
+        : [...PREMIUM_PERKS, ...BOOK_PERKS];
   const deepLink = useMemo(() => upiDeepLink(readingId, price), [readingId, price]);
-  // Pro unlocked on the buyer's confirmation (no UTR) and Ultra asked for a UPI
-  // reference — both belong to the manual panel, which is on hold while the
-  // gateway is live.
-  const needsUtr = plan === "ultra";
+
+  // The manual UPI panel confirms ₹51 Pro without a reference, so every other
+  // plan needs a UTR to avoid a free unlock. (The panel is off while Cashfree
+  // is live; this keeps the emergency fallback safe.)
+  const needsUtr = plan !== "pro";
   const manualUpi = MANUAL_UPI_ENABLED && PRO_PAY_MODE === "upi";
 
-  const saved = PDF_PRICE_ANCHOR - PREMIUM_PRICE;
-  const percentOff = Math.round((1 - PREMIUM_PRICE / PDF_PRICE_ANCHOR) * 100);
+  const anchor = alreadyPro ? null : plan === "pro" ? PDF_PRICE_ANCHOR : plan === "bundle" ? ULTRA_PRICE : null;
+  const saved = anchor ? anchor - price : 0;
+  const percentOff = anchor ? Math.round((1 - price / anchor) * 100) : 0;
 
-  // Free vs ₹51 vs ₹351, row by row — mirrors the perks lists so the free
-  // reader can see exactly what stays free and what the paid plans add.
-  const cmpRows = [
-    { label: t.premium.cmpR1, free: true, pro: true, ultra: true },
-    { label: t.premium.cmpR2, free: false, pro: true, ultra: true },
-    { label: t.premium.cmpR3, free: false, pro: true, ultra: true },
-    { label: t.premium.cmpR4, free: false, pro: true, ultra: true },
-    { label: t.premium.cmpR5, free: false, pro: true, ultra: true },
-    { label: t.premium.cmpR7, free: false, pro: true, ultra: true },
-    { label: t.premium.cmpR6, free: false, pro: false, ultra: true },
+  const cmpRows: { label: Bi; free: boolean; pro: boolean; bundle: boolean; diwali: boolean }[] = [
+    {
+      label: { en: "Full reading on screen — 12 life areas, kundli & palm analysis", hi: "स्क्रीन पर पूरी रीडिंग — 12 जीवन-क्षेत्र, कुंडली व हस्तरेखा विश्लेषण" },
+      free: true,
+      pro: true,
+      bundle: true,
+      diwali: true,
+    },
+    {
+      label: { en: "Year-by-year predictions for the next 5 years", hi: "आने वाले 5 वर्षों की वर्ष-दर-वर्ष भविष्यवाणी" },
+      free: false,
+      pro: true,
+      bundle: true,
+      diwali: true,
+    },
+    {
+      label: { en: "Future life-partner prediction (if unmarried)", hi: "होने वाले जीवनसाथी की भविष्यवाणी (अविवाहित हैं तो)" },
+      free: false,
+      pro: true,
+      bundle: true,
+      diwali: true,
+    },
+    {
+      label: { en: "Personal upay, stotra & gemstone method", hi: "व्यक्तिगत उपाय, स्तोत्र व रत्न विधि" },
+      free: false,
+      pro: true,
+      bundle: true,
+      diwali: true,
+    },
+    {
+      label: { en: "Complete Pro PDF — print & download", hi: "पूरी प्रो PDF — प्रिंट व डाउनलोड" },
+      free: false,
+      pro: true,
+      bundle: true,
+      diwali: true,
+    },
+    {
+      label: { en: "50 AI Panditji chat minutes", hi: "50 AI पंडितजी चैट मिनट" },
+      free: false,
+      pro: true,
+      bundle: true,
+      diwali: true,
+    },
+    {
+      label: { en: "Complete Diwali Puja PDF", hi: "संपूर्ण दिवाली पूजा PDF" },
+      free: false,
+      pro: false,
+      bundle: false,
+      diwali: true,
+    },
+    {
+      label: { en: "Dhandayak (Gupt Khazana) book", hi: "धनदायक पुस्तक (गुप्त खजाना)" },
+      free: false,
+      pro: false,
+      bundle: true,
+      diwali: false,
+    },
   ];
 
   useEffect(() => {
@@ -121,67 +231,6 @@ export function ProPaywallModal({
     if (!open || !CASHFREE_ENABLED) return;
     getCashfree(CASHFREE_MODE).catch(() => {});
   }, [open]);
-
-  // Token balance is fetched only when the paywall opens, so a visitor who never
-  // reaches it costs nothing. A 401 simply means "not signed in" — no token UI.
-  useEffect(() => {
-    if (!open) return;
-    let alive = true;
-    fetch("/api/tokens", { cache: "no-store" })
-      .then(async (res) => (res.ok ? ((await res.json()) as { balance?: number }) : null))
-      .then((data) => {
-        if (alive && data && typeof data.balance === "number") setTokenBalance(data.balance);
-      })
-      .catch(() => {});
-    return () => {
-      alive = false;
-    };
-  }, [open]);
-
-  const tokenProg = useMemo(() => tokenProgress(tokenBalance ?? 0), [tokenBalance]);
-
-  /**
-   * 350 tokens = one Ultra Pro report. This is the only token path: the ₹51 Pro
-   * plan is always a real payment, exactly as the owner requires.
-   */
-  async function redeemWithTokens() {
-    setTokenErr("");
-    setTokenBusy(true);
-    try {
-      const res = await fetch("/api/tokens/redeem-ultra", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ readingId }),
-      });
-      const data = (await res.json().catch(() => ({}))) as { balance?: number; message?: string; error?: string };
-      if (res.ok) {
-        if (typeof data.balance === "number") setTokenBalance(data.balance);
-        toast(L({ en: "Ultra Pro unlocked with tokens.", hi: "टोकन से Ultra Pro अनलॉक हो गया।" }));
-        onUnlocked();
-        onClose();
-        return;
-      }
-      if (res.status === 401) {
-        window.location.href = `/login?next=${encodeURIComponent(`/reading/${readingId}`)}`;
-        return;
-      }
-      if (typeof data.balance === "number") setTokenBalance(data.balance);
-      setTokenErr(
-        data.error === "insufficient_tokens"
-          ? L({
-              en: `You need ${tokenProg.cost} tokens. Your balance is ${data.balance ?? tokenProg.balance}.`,
-              hi: `${tokenProg.cost} टोकन चाहिए। आपका बैलेंस ${data.balance ?? tokenProg.balance} है।`,
-            })
-          : L({ en: "Tokens could not be redeemed. Please try again.", hi: "टोकन रिडीम नहीं हुए — दोबारा कोशिश करें।" }),
-      );
-    } catch {
-      setTokenErr(L({ en: "Tokens could not be redeemed. Please try again.", hi: "टोकन रिडीम नहीं हुए — दोबारा कोशिश करें।" }));
-    } finally {
-      setTokenBusy(false);
-    }
-  }
-
-
 
   async function copyUpi() {
     try {
@@ -310,274 +359,301 @@ export function ProPaywallModal({
     }
   }
 
+  function planTitle(key: ProPlan) {
+    if (alreadyPro && key === "bundle") return L({ en: "Dhandayak book", hi: "धनदायक पुस्तक" });
+    if (alreadyPro && key === "diwali") return L({ en: "Diwali Puja PDF", hi: "दिवाली पूजा PDF" });
+    return L(PLAN_INFO[key].title);
+  }
+
+  function planSub(key: ProPlan) {
+    if (alreadyPro && key === "bundle")
+      return L({ en: "Add the complete book to this Pro report", hi: "इस प्रो रिपोर्ट में पूरी पुस्तक जोड़ें" });
+    if (alreadyPro && key === "diwali")
+      return L({ en: "Add the complete PDF to this Pro report", hi: "इस प्रो रिपोर्ट में पूरी PDF जोड़ें" });
+    return L(PLAN_INFO[key].sub);
+  }
+
   return (
     <>
-      <Modal open={open} onClose={() => { setTokenErr(""); onClose(); }} title={t.pro.title} wide>
-        <p className="text-sm leading-relaxed text-slate-300">{t.pro.sub}</p>
+      <Modal
+        open={open}
+        onClose={onClose}
+        title={
+          alreadyPro
+            ? L({ en: "Add to your Pro report", hi: "अपनी प्रो रिपोर्ट में जोड़ें" })
+            : t.pro.title
+        }
+        wide
+      >
+        <p className="text-sm leading-relaxed text-slate-300">
+          {alreadyPro
+            ? L({
+                en: "Choose an optional add-on for this report. Nothing here is required.",
+                hi: "इस रिपोर्ट के लिए वैकल्पिक ऐड-ऑन चुनें। इनमें से कुछ भी ज़रूरी नहीं।",
+              })
+            : t.pro.sub}
+        </p>
 
-      {/* Plan switch — ₹51 Pro report, or ₹351 Ultra Pro which adds the book. */}
-      <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.pro.planTitle}</p>
-      <div className="mt-2 grid gap-3 sm:grid-cols-2">
-        {(["pro", "ultra"] as const).map((key) => {
-          const active = plan === key;
-          return (
-            <button
-              key={key}
-              type="button"
-              onClick={() => setPlan(key)}
-              aria-pressed={active}
-              className={cn(
-                "rounded-2xl border px-4 py-3 text-left transition",
-                active ? "border-gold-400/70 bg-gold-400/10" : "border-white/10 bg-white/[0.03] hover:border-white/25",
-              )}
-            >
-              <span className="flex items-center justify-between gap-2">
-                <span className="font-display text-lg text-white">
-                  {key === "pro" ? `${t.pricing.prem} · ₹${PREMIUM_PRICE}` : `${t.pricing.ultra} · ₹${ULTRA_PRICE}`}
-                </span>
-                {active ? <Check className="h-4 w-4 shrink-0 text-gold-300" /> : <span className="h-4 w-4 shrink-0 rounded-full border border-white/25" />}
-              </span>
-              <span className="mt-1 block text-xs leading-relaxed text-slate-300">{key === "pro" ? t.pro.planPro : t.pro.planUltra}</span>
-            </button>
-          );
-        })}
-      </div>
+        {alreadyPro && (
+          <p className="mt-3 flex items-start gap-2 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm leading-relaxed text-emerald-100">
+            <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
+            {L({
+              en: "Pro is already unlocked on this report. These are optional add-ons — nothing here is required.",
+              hi: "इस रिपोर्ट पर प्रो पहले से अनलॉक है। ये वैकल्पिक ऐड-ऑन हैं — इनमें से कुछ भी ज़रूरी नहीं।",
+            })}
+          </p>
+        )}
 
-      {plan === "pro" ? (
-        /* Price anchor: struck-through report price next to the ₹51 offer. */
-        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-5 py-4">
-          <div>
-            <p className="text-xs uppercase tracking-wider text-slate-400">{t.pro.was}</p>
-            <p className="font-display text-2xl text-slate-400 line-through decoration-rose-400/80 decoration-2">₹{PDF_PRICE_ANCHOR}</p>
-          </div>
-          <div>
-            <p className="font-display text-4xl gold-text">₹{PREMIUM_PRICE}</p>
-            <p className="text-xs text-slate-400">{t.pro.once}</p>
-          </div>
-          <div className="ml-auto flex flex-col items-end gap-1">
-            <span className="rounded-full bg-rose-500/20 px-3 py-1 text-xs font-semibold text-rose-200">
-              {tpl(t.pro.offPct, { p: percentOff })}
-            </span>
-            <span className="text-xs text-emerald-300">{tpl(t.pro.saveAmt, { a: saved })}</span>
-          </div>
-        </div>
-      ) : (
-        <>
-          {/* Ultra Pro has no struck-through anchor — it is simply the plan with the book. */}
-          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-5 py-4">
-            <div>
-              <p className="text-xs uppercase tracking-wider text-slate-400">{t.pricing.ultra}</p>
-              <p className="font-display text-4xl gold-text">₹{ULTRA_PRICE}</p>
-              <p className="text-xs text-slate-400">{t.pro.once}</p>
-            </div>
-            <span className="ml-auto rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200">{t.pro.ultraTag}</span>
-          </div>
-
-          {/* Token wallet — 350 tokens = one Ultra Pro. Never valid for ₹51 Pro. */}
-          {tokenBalance !== null && (
-            <div className="mt-3 rounded-2xl border border-gold-400/30 bg-gradient-to-r from-gold-400/12 via-cosmic-900/40 to-mystic-700/20 p-4">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-200">
-                  <Gift className="h-4 w-4" /> {t.pro.tokenTitle}
-                </p>
-                <span className="rounded-full border border-gold-400/30 bg-black/25 px-2.5 py-1 text-[11px] font-semibold text-gold-100">
-                  {tokenProg.balance}/{tokenProg.cost}
-                </span>
-              </div>
-              <div className="mt-2.5 h-2 overflow-hidden rounded-full bg-white/10">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-gold-500 via-gold-300 to-gold-200 transition-all duration-700"
-                  style={{ width: `${tokenProg.percent}%` }}
-                />
-              </div>
-              <p className="mt-2 text-[11px] leading-relaxed text-slate-300">
-                {tokenProg.ready ? t.pro.tokenReady : t.pro.tokenNeed}
-              </p>
-              {tokenErr && <p className="mt-2 text-[11px] text-rose-300">{tokenErr}</p>}
-              <Button
-                className="mt-3 w-full"
-                size="sm"
-                variant={tokenProg.ready ? "gold" : "outline"}
-                disabled={!tokenProg.ready}
-                loading={tokenBusy}
-                onClick={redeemWithTokens}
-                icon={<Sparkles className="h-4 w-4" />}
+        {/* Plan switch — Pro, the bundle, and the Diwali PDF add-on. */}
+        <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.pro.planTitle}</p>
+        <div className={cn("mt-2 grid gap-3", planOptions.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3")}>
+          {planOptions.map((key) => {
+            const active = plan === key;
+            return (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setPlan(key)}
+                aria-pressed={active}
+                className={cn(
+                  "rounded-2xl border px-4 py-3 text-left transition",
+                  active ? "border-gold-400/70 bg-gold-400/10" : "border-white/10 bg-white/[0.03] hover:border-white/25",
+                )}
               >
-                {tokenBusy ? t.pro.tokenRedeeming : t.pro.tokenCta}
-              </Button>
-              <p className="mt-2 text-center text-[10px] leading-relaxed text-slate-500">{t.pro.tokenNote}</p>
+                <span className="flex items-center justify-between gap-2">
+                  <span className="font-display text-base text-white">
+                    {planTitle(key)} · ₹{PLAN_PRICES[key]}
+                  </span>
+                  {active ? <Check className="h-4 w-4 shrink-0 text-gold-300" /> : <span className="h-4 w-4 shrink-0 rounded-full border border-white/25" />}
+                </span>
+                <span className="mt-1 block text-xs leading-relaxed text-slate-300">{planSub(key)}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Price block: the ₹51 and ₹199 offers keep a struck-through anchor. */}
+        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-5 py-4">
+          {anchor && (
+            <div>
+              <p className="text-xs uppercase tracking-wider text-slate-400">{t.pro.was}</p>
+              <p className="font-display text-2xl text-slate-400 line-through decoration-rose-400/80 decoration-2">₹{anchor}</p>
             </div>
           )}
-        </>
-      )}
-
-      <div className="mt-5 border-t border-white/10 pt-5">
-        {CASHFREE_ENABLED && (
           <div>
-            <div className="mb-3">
-              <Label htmlFor="cf-phone">{t.pro.cfPhoneLabel}</Label>
-              <Input
-                id="cf-phone"
-                value={phone}
-                onChange={(e) => {
-                  const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
-                  setPhone(digits);
-                  if (digits.length === 10) {
-                    window.localStorage.setItem("hr-whatsapp", digits);
-                    prefetchOrder(plan, digits, waOptIn);
-                  }
-                }}
-                placeholder={t.pro.cfPhonePh}
-                inputMode="numeric"
-                autoComplete="tel"
-                maxLength={10}
-              />
-              <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{t.pro.cfPhoneHint}</p>
-              <label className="mt-3 flex cursor-pointer items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-xs leading-relaxed text-slate-300">
-                <input
-                  type="checkbox"
-                  checked={waOptIn}
-                  onChange={(e) => setWaOptIn(e.target.checked)}
-                  className="mt-0.5 h-4 w-4 shrink-0 accent-[#f5c242]"
-                />
-                <span>
-                  <span className="block font-medium text-slate-100">{t.pro.waOptIn}</span>
-                  <span className="mt-0.5 block text-slate-500">{t.pro.waOptInNote}</span>
+            <p className="font-display text-4xl gold-text">₹{price}</p>
+            <p className="text-xs text-slate-400">
+              {alreadyPro
+                ? L({ en: "one-time · add-on", hi: "एक बार · ऐड-ऑन" })
+                : t.pro.once}
+            </p>
+          </div>
+          <div className="ml-auto flex flex-col items-end gap-1">
+            {anchor ? (
+              <>
+                <span className="rounded-full bg-rose-500/20 px-3 py-1 text-xs font-semibold text-rose-200">
+                  {tpl(t.pro.offPct, { p: percentOff })}
                 </span>
-              </label>
-            </div>
-            <Button className="w-full" size="lg" loading={cfBusy} onClick={payWithCashfree} icon={<ShieldCheck className="h-4 w-4" />}>
-              {cfBusy ? t.pro.cfStarting : tpl(t.pro.cfPay, { p: price })}
-            </Button>
-            <p className="mt-2 text-center text-xs leading-relaxed text-slate-500">{t.pro.cfNote}</p>
-            <button
-              type="button"
-              onClick={() => {
-                setHelpIssue("checkout_closed");
-                setHelpOpen(true);
-              }}
-              className="mx-auto mt-3 flex items-center justify-center gap-1.5 text-xs font-medium text-emerald-300 underline-offset-4 hover:text-emerald-200 hover:underline"
-            >
-              <MessageCircle className="h-3.5 w-3.5" />
-              {t.paymentHelp.always}
-            </button>
-            {manualUpi && (
-              <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-wider text-slate-500">
-                <span className="h-px flex-1 bg-white/10" />
-                {t.pro.cfOr}
-                <span className="h-px flex-1 bg-white/10" />
-              </div>
+                <span className="text-xs text-emerald-300">{tpl(t.pro.saveAmt, { a: saved })}</span>
+              </>
+            ) : (
+              <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-200">
+                {alreadyPro
+                  ? L({ en: "Add-on", hi: "ऐड-ऑन" })
+                  : plan === "diwali"
+                    ? L({ en: "Pro + PDF", hi: "प्रो + PDF" })
+                    : t.pro.ultraTag}
+              </span>
             )}
           </div>
-        )}
-        {err && <p className="mb-3 mt-3 text-center text-xs text-rose-300">{err}</p>}
-        {manualUpi ? (
-          <>
-            <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start">
-              <div className="shrink-0 rounded-2xl bg-[#fbeab8] p-3 gold-glow">
-                {qr ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={qr} alt="UPI QR" className="h-44 w-44 rounded-lg" />
-                ) : (
-                  <div className="flex h-44 w-44 items-center justify-center rounded-lg bg-[#fbeab8]">
-                    <QrCode className="h-10 w-10 text-[#1a1030]" />
-                  </div>
-                )}
+        </div>
+
+        <div className="mt-5 border-t border-white/10 pt-5">
+          {CASHFREE_ENABLED && (
+            <div>
+              <div className="mb-3">
+                <Label htmlFor="cf-phone">{t.pro.cfPhoneLabel}</Label>
+                <Input
+                  id="cf-phone"
+                  value={phone}
+                  onChange={(e) => {
+                    const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    setPhone(digits);
+                    if (digits.length === 10) {
+                      window.localStorage.setItem("hr-whatsapp", digits);
+                      prefetchOrder(plan, digits, waOptIn);
+                    }
+                  }}
+                  placeholder={t.pro.cfPhonePh}
+                  inputMode="numeric"
+                  autoComplete="tel"
+                  maxLength={10}
+                />
+                <p className="mt-1.5 text-xs leading-relaxed text-slate-500">{t.pro.cfPhoneHint}</p>
+                <label className="mt-3 flex cursor-pointer items-start gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5 text-xs leading-relaxed text-slate-300">
+                  <input
+                    type="checkbox"
+                    checked={waOptIn}
+                    onChange={(e) => setWaOptIn(e.target.checked)}
+                    className="mt-0.5 h-4 w-4 shrink-0 accent-[#f5c242]"
+                  />
+                  <span>
+                    <span className="block font-medium text-slate-100">{t.pro.waOptIn}</span>
+                    <span className="mt-0.5 block text-slate-500">{t.pro.waOptInNote}</span>
+                  </span>
+                </label>
               </div>
-              <div className="w-full space-y-3">
-                <div className="flex items-center justify-between gap-2 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-4 py-3">
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-slate-400">{t.premium.upiId}</p>
-                    <p className="font-mono text-base text-gold-100">{UPI_ID}</p>
-                    <p className="text-xs text-slate-400">
-                      {UPI_ID.split("@")[0]} · ₹{price}
-                    </p>
-                  </div>
-                  <Button variant="outline" size="sm" onClick={copyUpi} icon={copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}>
-                    {copied ? t.premium.copied : t.premium.copy}
-                  </Button>
-                </div>
-                <a href={deepLink} className="btn-gold flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
-                  <ExternalLink className="h-4 w-4" /> {tpl(t.premium.openUpi, { p: price })}
-                </a>
-                <p className="text-center text-xs text-slate-500">GPay · PhonePe · Paytm · BHIM</p>
-              </div>
-            </div>
-            <div className="mt-5 border-t border-white/10 pt-5">
-              {needsUtr && (
-                <>
-                  <Label>{t.premium.utrLabel}</Label>
-                  <Input value={utr} onChange={(e) => setUtr(e.target.value)} placeholder={t.premium.utrPh} inputMode="numeric" maxLength={20} />
-                </>
-              )}
-              <Button className="mt-4 w-full" loading={busy} onClick={unlock} icon={<Crown className="h-4 w-4" />}>
-                {busy ? t.premium.verifying : tpl(t.premium.confirmPay, { p: price })}
+              <Button className="w-full" size="lg" loading={cfBusy} onClick={payWithCashfree} icon={<ShieldCheck className="h-4 w-4" />}>
+                {cfBusy ? t.pro.cfStarting : tpl(t.pro.cfPay, { p: price })}
               </Button>
+              <p className="mt-2 text-center text-xs leading-relaxed text-slate-500">{t.pro.cfNote}</p>
+              <button
+                type="button"
+                onClick={() => {
+                  setHelpIssue("checkout_closed");
+                  setHelpOpen(true);
+                }}
+                className="mx-auto mt-3 flex items-center justify-center gap-1.5 text-xs font-medium text-emerald-300 underline-offset-4 hover:text-emerald-200 hover:underline"
+              >
+                <MessageCircle className="h-3.5 w-3.5" />
+                {t.paymentHelp.always}
+              </button>
+              {manualUpi && (
+                <div className="mt-4 flex items-center gap-3 text-[11px] uppercase tracking-wider text-slate-500">
+                  <span className="h-px flex-1 bg-white/10" />
+                  {t.pro.cfOr}
+                  <span className="h-px flex-1 bg-white/10" />
+                </div>
+              )}
             </div>
-          </>
-        ) : !CASHFREE_ENABLED ? (
-          <>
-            <button onClick={() => toast(t.pro.soon)} className="btn-gold flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
-              <Crown className="h-4 w-4" /> {tpl(t.pro.pay, { p: price })}
-            </button>
-            <p className="mt-3 text-center text-xs text-slate-500">{t.pro.soonNote}</p>
-          </>
-        ) : null}
-      </div>
+          )}
+          {err && <p className="mb-3 mt-3 text-center text-xs text-rose-300">{err}</p>}
+          {manualUpi ? (
+            <>
+              <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start">
+                <div className="shrink-0 rounded-2xl bg-[#fbeab8] p-3 gold-glow">
+                  {qr ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={qr} alt="UPI QR" className="h-44 w-44 rounded-lg" />
+                  ) : (
+                    <div className="flex h-44 w-44 items-center justify-center rounded-lg bg-[#fbeab8]">
+                      <QrCode className="h-10 w-10 text-[#1a1030]" />
+                    </div>
+                  )}
+                </div>
+                <div className="w-full space-y-3">
+                  <div className="flex items-center justify-between gap-2 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-4 py-3">
+                    <div>
+                      <p className="text-xs uppercase tracking-wider text-slate-400">{t.premium.upiId}</p>
+                      <p className="font-mono text-base text-gold-100">{UPI_ID}</p>
+                      <p className="text-xs text-slate-400">
+                        {UPI_ID.split("@")[0]} · ₹{price}
+                      </p>
+                    </div>
+                    <Button variant="outline" size="sm" onClick={copyUpi} icon={copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}>
+                      {copied ? t.premium.copied : t.premium.copy}
+                    </Button>
+                  </div>
+                  <a href={deepLink} className="btn-gold flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
+                    <ExternalLink className="h-4 w-4" /> {tpl(t.premium.openUpi, { p: price })}
+                  </a>
+                  <p className="text-center text-xs text-slate-500">GPay · PhonePe · Paytm · BHIM</p>
+                </div>
+              </div>
+              <div className="mt-5 border-t border-white/10 pt-5">
+                {needsUtr && (
+                  <>
+                    <Label>{t.premium.utrLabel}</Label>
+                    <Input value={utr} onChange={(e) => setUtr(e.target.value)} placeholder={t.premium.utrPh} inputMode="numeric" maxLength={20} />
+                  </>
+                )}
+                <Button className="mt-4 w-full" loading={busy} onClick={unlock} icon={<Crown className="h-4 w-4" />}>
+                  {busy ? t.premium.verifying : tpl(t.premium.confirmPay, { p: price })}
+                </Button>
+              </div>
+            </>
+          ) : !CASHFREE_ENABLED ? (
+            <>
+              <button onClick={() => toast(t.pro.soon)} className="btn-gold flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
+                <Crown className="h-4 w-4" /> {tpl(t.pro.pay, { p: price })}
+              </button>
+              <p className="mt-3 text-center text-xs text-slate-500">{t.pro.soonNote}</p>
+            </>
+          ) : null}
+        </div>
 
-      {/* Three-way comparison: what Free gets, what ₹51 adds, what ₹351 adds. */}
-      <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.premium.cmpTitle}</p>
-      <div className="mt-2 overflow-hidden rounded-2xl border border-white/10">
-        <table className="w-full text-left">
-          <thead>
-            <tr className="bg-white/[0.05] text-[11px] uppercase tracking-wider text-slate-400">
-              <th className="px-3 py-2.5 font-medium">{t.premium.cmpFeature}</th>
-              <th className="px-2 py-2.5 text-center font-medium">{t.premium.cmpFree}</th>
-              <th className="px-2 py-2.5 text-center font-medium text-gold-200">
-                {t.premium.cmpPro}
-                <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{PREMIUM_PRICE}</span>
-              </th>
-              <th className="px-2 py-2.5 text-center font-medium text-gold-200">
-                {t.premium.cmpUltra}
-                <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{ULTRA_PRICE}</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {cmpRows.map((row) => (
-              <tr key={row.label} className="border-t border-white/10 text-xs text-slate-200">
-                <td className="px-3 py-2.5 leading-relaxed">{row.label}</td>
-                {[row.free, row.pro, row.ultra].map((has, i) => (
-                  <td key={i} className="px-2 py-2.5 text-center align-middle">
-                    {has ? <Check className="mx-auto h-4 w-4 text-gold-300" /> : <X className="mx-auto h-3.5 w-3.5 text-slate-500" />}
-                  </td>
-                ))}
+        {/* What each plan adds, side by side. Scrolls on narrow screens. */}
+        <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">
+          {L({ en: "What each plan adds", hi: "हर प्लान में क्या अतिरिक्त मिलता है" })}
+        </p>
+        <div className="mt-2 overflow-x-auto rounded-2xl border border-white/10">
+          <table className="w-full min-w-[540px] text-left">
+            <thead>
+              <tr className="bg-white/[0.05] text-[11px] uppercase tracking-wider text-slate-400">
+                <th className="px-3 py-2.5 font-medium">{t.premium.cmpFeature}</th>
+                <th className="px-2 py-2.5 text-center font-medium">{t.premium.cmpFree}</th>
+                <th className="px-2 py-2.5 text-center font-medium text-gold-200">
+                  {t.premium.cmpPro}
+                  <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{PLAN_PRICES.pro}</span>
+                </th>
+                <th className="px-2 py-2.5 text-center font-medium text-gold-200">
+                  + PDF
+                  <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{PLAN_PRICES.diwali}</span>
+                </th>
+                <th className="px-2 py-2.5 text-center font-medium text-gold-200">
+                  + Book
+                  <span className="block text-[10px] font-normal normal-case tracking-normal text-slate-400">₹{PLAN_PRICES.bundle}</span>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {cmpRows.map((row) => (
+                <tr key={row.label.en} className="border-t border-white/10 text-xs text-slate-200">
+                  <td className="px-3 py-2.5 leading-relaxed">{L(row.label)}</td>
+                  {[row.free, row.pro, row.diwali, row.bundle].map((has, i) => (
+                    <td key={i} className="px-2 py-2.5 text-center align-middle">
+                      {has ? <Check className="mx-auto h-4 w-4 text-gold-300" /> : <X className="mx-auto h-3.5 w-3.5 text-slate-500" />}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-      <p className="mt-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-300">
-        <Crown className="h-3.5 w-3.5" /> {t.pro.perksTitle}
-      </p>
-      <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-        {perks.map((p) => (
-          <li key={p.en} className="flex items-start gap-2 text-sm text-slate-100">
-            <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" /> {L(p)}
-          </li>
-        ))}
-      </ul>
+        <p className="mt-5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gold-300">
+          <Crown className="h-3.5 w-3.5" /> {t.pro.perksTitle}
+        </p>
+        <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+          {perks.map((p) => (
+            <li key={p.en} className="flex items-start gap-2 text-sm text-slate-100">
+              <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" /> {L(p)}
+            </li>
+          ))}
+        </ul>
 
-      <p className="mt-4 flex items-start gap-2 rounded-2xl border border-mystic-400/35 bg-mystic-600/15 px-4 py-3 text-sm leading-relaxed text-slate-100">
-        <HeartHandshake className="mt-0.5 h-4 w-4 shrink-0 text-mystic-400" /> {t.partner.paywallLine}
-      </p>
+        <p className="mt-4 flex items-start gap-2 rounded-2xl border border-mystic-400/35 bg-mystic-600/15 px-4 py-3 text-sm leading-relaxed text-slate-100">
+          <HeartHandshake className="mt-0.5 h-4 w-4 shrink-0 text-mystic-400" /> {t.partner.paywallLine}
+        </p>
 
-      <div className="mt-5 flex justify-center">
-        <button onClick={onClose} className="rounded-full border border-white/15 px-5 py-2.5 text-sm text-slate-300 hover:border-white/30">
-          {t.pro.close}
-        </button>
-      </div>
+        <div className="mt-4 flex items-start gap-2 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-4 py-3 text-xs leading-relaxed text-gold-100">
+          <Gift className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" />
+          <span>
+            {L({
+              en: "Membership: 30 Pro reports in 30 days for ₹1,000, with 5 family profiles. A 30-day pass — it simply expires, nothing to cancel.",
+              hi: "मेंबरशिप: ₹1,000 में 30 दिनों में 10 प्रो रिपोर्ट और 5 पारिवारिक प्रोफ़ाइल। 30-दिन का पास — समय पर ख़त्म, कुछ रद्द करने की ज़रूरत नहीं।",
+            })}{" "}
+            <a href="/membership" className="font-semibold underline underline-offset-4 hover:text-white">
+              {L({ en: "See membership", hi: "मेंबरशिप देखें" })}
+            </a>
+          </span>
+        </div>
+
+        <div className="mt-5 flex justify-center">
+          <button onClick={onClose} className="rounded-full border border-white/15 px-5 py-2.5 text-sm text-slate-300 hover:border-white/30">
+            {t.pro.close}
+          </button>
+        </div>
       </Modal>
       <PaymentHelpModal
         open={helpOpen}

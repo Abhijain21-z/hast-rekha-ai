@@ -17,9 +17,30 @@ export async function PATCH(req: Request, { params }: Ctx) {
   const body = (await req.json().catch(() => ({}))) as Record<string, unknown>;
   const v = validateProfile(body);
   if ("error" in v) return NextResponse.json({ error: v.error }, { status: 400 });
+
+  const [existing] = await db
+    .select({ consentAt: birthProfiles.consentAt })
+    .from(birthProfiles)
+    .where(and(eq(birthProfiles.id, id), eq(birthProfiles.userId, user.id)))
+    .limit(1);
+  if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
+
+  // Profiles saved before consent tracking need one confirmation; after that
+  // the original consent timestamp is kept.
+  if (!existing.consentAt && body.consent !== true) {
+    return NextResponse.json(
+      { error: "Consent is required", code: "consent_required" },
+      { status: 400 },
+    );
+  }
+
   const [row] = await db
     .update(birthProfiles)
-    .set({ ...v.data, updatedAt: new Date() })
+    .set({
+      ...v.data,
+      ...(existing.consentAt ? {} : { consentAt: new Date() }),
+      updatedAt: new Date(),
+    })
     .where(and(eq(birthProfiles.id, id), eq(birthProfiles.userId, user.id)))
     .returning();
   if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 });

@@ -95,6 +95,29 @@ body {
 
 .gold-border { border: 1px solid rgba(245, 194, 66, 0.35); }
 .gold-glow { box-shadow: 0 0 40px -10px rgba(245, 194, 66, 0.45); }
+
+/* Panditji menu item: a slow gold blink that stays readable and never
+   distracts from the report. Motion is disabled for reduced-motion users. */
+@keyframes pandit-blink {
+  0%, 100% {
+    border-color: rgba(245, 194, 66, 0.35);
+    background-color: rgba(245, 194, 66, 0.08);
+    box-shadow: 0 0 0 0 rgba(245, 194, 66, 0);
+  }
+  50% {
+    border-color: rgba(245, 194, 66, 0.9);
+    background-color: rgba(245, 194, 66, 0.22);
+    box-shadow: 0 0 18px 0 rgba(245, 194, 66, 0.35);
+  }
+}
+.pandit-blink { animation: pandit-blink 2.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .pandit-blink {
+    animation: none;
+    border-color: rgba(245, 194, 66, 0.7);
+    background-color: rgba(245, 194, 66, 0.15);
+  }
+}
 .mystic-glow { box-shadow: 0 0 60px -15px rgba(168, 85, 247, 0.6); }
 
 .btn-gold {

@@ -5,9 +5,9 @@ import type { Bi } from "@/lib/i18n";
  *
  * Kept next to the other pricing UI so the visible FAQ block, the FAQPage
  * structured data and any future edit all read from one list. Answers state the
- * current reality plainly: the reading is free, premium payment runs on UPI
- * (QR + one-tap confirm; UTR only for the Ultra book), and nothing is a
- * guarantee.
+ * current reality plainly: the core reading is free, paid plans run through
+ * Cashfree (with a manual UPI fallback), the membership is a 30-day pass, and
+ * nothing is a guarantee.
  */
 
 export interface PricingFaqItem {
@@ -22,8 +22,8 @@ export const PRICING_FAQS: PricingFaqItem[] = [
       hi: "क्या हस्तरेखा AI की रीडिंग सच में फ्री है?",
     },
     a: {
-      en: "Yes. Rashi, Nakshatra, Lagna, the palm-line analysis, 12 life-area predictions, charts and printing are all free — no login, no card, no trial timer. Nothing is cut from the free report. The ₹51 premium simply adds a five-year roadmap on top; see your complete free report first, then decide.",
-      hi: "हाँ। राशि, नक्षत्र, लग्न, हाथ की रेखाओं का विश्लेषण, 12 जीवन-क्षेत्रों की भविष्यवाणियाँ, ग्राफ़ और प्रिंट — सब फ्री है, बिना लॉगिन और बिना कार्ड। फ्री रिपोर्ट में कोई कटौती नहीं की जाती। ₹51 का प्रीमियम उसके ऊपर पाँच साल का रोडमैप जोड़ता है; पहले पूरी फ्री रिपोर्ट देखें, फिर तय करें।",
+      en: "The core reading is free: Rashi, Nakshatra, Lagna, the palm-line analysis, all 12 life-area predictions and charts — no login, no card, no trial timer. The free report is complete for those sections and is read on screen. The ₹51 Pro report is an optional upgrade that adds the five-year roadmap, the partner report, upay and a printable PDF; printing is a Pro feature. See the free reading first, then decide.",
+      hi: "मूल रीडिंग फ्री है: राशि, नक्षत्र, लग्न, हाथ की रेखाओं का विश्लेषण, सभी 12 जीवन-क्षेत्रों की भविष्यवाणियाँ और ग्राफ़ — बिना लॉगिन, बिना कार्ड। इन हिस्सों के लिए फ्री रिपोर्ट पूरी है और स्क्रीन पर पढ़ी जाती है। ₹51 की प्रो रिपोर्ट वैकल्पिक अपग्रेड है, जिसमें पाँच साल का रोडमैप, जीवनसाथी रिपोर्ट, उपाय और प्रिंट करने योग्य PDF जुड़ती है; प्रिंटिंग प्रो सुविधा है। पहले फ्री रीडिंग देखें, फिर तय करें।",
     },
   },
   {
@@ -42,8 +42,8 @@ export const PRICING_FAQS: PricingFaqItem[] = [
       hi: "क्या पेड रिपोर्ट अभी ख़रीदी जा सकती है?",
     },
     a: {
-      en: "Yes — UPI payment is open now. Open any report page and tap the premium button: you will see a UPI QR code and the official UPI ID. Pay ₹51 (Pro) or ₹351 (Ultra Pro) from any UPI app, confirm on the same page, and the report unlocks right there. More payment options are being added, but UPI works today.",
-      hi: "हाँ — UPI भुगतान अब खुल चुका है। किसी भी रिपोर्ट पेज पर प्रीमियम बटन दबाएँ: UPI QR कोड और आधिकारिक UPI ID दिखेंगी। किसी भी UPI ऐप से ₹51 (प्रो) या ₹351 (अल्ट्रा प्रो) भेजें, उसी पेज पर पुष्टि करें — रिपोर्ट वहीं तुरंत अनलॉक हो जाती है। और भुगतान विकल्प जुड़ रहे हैं, पर UPI आज से चालू है।",
+      en: "Yes — secure checkout is live through Cashfree. Open any report and tap the Pro button: you can pay by UPI, card or net banking. Pro is ₹51, Pro + Diwali PDF is ₹99, Pro + Dhandayak book is ₹199, and the 30-day membership is ₹1,000. A manual UPI QR stays available as a fallback. The report unlocks as soon as the payment is confirmed.",
+      hi: "हाँ — Cashfree से सुरक्षित चेकआउट चालू है। कोई भी रिपोर्ट खोलकर प्रो बटन दबाएँ: UPI, कार्ड या नेट बैंकिंग से भुगतान कर सकते हैं। प्रो ₹51, प्रो + दिवाली PDF ₹99, प्रो + धनदायक पुस्तक ₹199, और 30-दिन मेंबरशिप ₹1,000 है। मैन्युअल UPI QR आपातकालीन विकल्प के रूप में उपलब्ध रहता है। भुगतान की पुष्टि होते ही रिपोर्ट अनलॉक हो जाती है।",
     },
   },
   {
@@ -52,8 +52,8 @@ export const PRICING_FAQS: PricingFaqItem[] = [
       hi: "₹351 वाले अल्ट्रा प्रो प्लान में अलग क्या है?",
     },
     a: {
-      en: "Ultra Pro (₹351) includes everything in the ₹51 Pro report plus access to the Dhandayak (also called Gupt Khazana) book. The book download link appears only on an Ultra-unlocked report page, so it is never shared outside a paid unlock. Both plans are one-time, per report — no subscription.",
-      hi: "अल्ट्रा प्रो (₹351) में ₹51 वाली पूरी प्रो रिपोर्ट के साथ धनदायक (गुप्त खज़ाना) पुस्तक की एक्सेस मिलती है। पुस्तक का डाउनलोड लिंक सिर्फ़ अल्ट्रा-अनलॉक रिपोर्ट पेज पर दिखता है, इसलिए वह कभी बिना भुगतान के नहीं बाँटा जाता। दोनों प्लान एक बार के हैं, प्रति रिपोर्ट — कोई सब्सक्रिप्शन नहीं।",
+      en: "Ultra Pro (₹351) includes everything in the Pro report plus access to the Dhandayak (also called Gupt Khazana) book. It is the original book plan, kept for existing buyers; new visitors usually see the ₹199 Pro + book bundle, which delivers the same report and book. The book link appears only on a paid, unlocked report page. All report plans are one-time, per report — no subscription.",
+      hi: "अल्ट्रा प्रो (₹351) में पूरी प्रो रिपोर्ट के साथ धनदायक (गुप्त खज़ाना) पुस्तक की एक्सेस मिलती है। यह मूल पुस्तक प्लान है, मौजूदा खरीदारों के लिए रखा गया; नए विज़िटर को आमतौर पर ₹199 का प्रो + पुस्तक बंडल दिखता है, जिसमें वही रिपोर्ट और पुस्तक मिलती है। पुस्तक का लिंक सिर्फ़ भुगतान वाली अनलॉक रिपोर्ट पर दिखता है। सभी रिपोर्ट प्लान एक बार के हैं, प्रति रिपोर्ट — कोई सब्सक्रिप्शन नहीं।",
     },
   },
   {
@@ -62,8 +62,18 @@ export const PRICING_FAQS: PricingFaqItem[] = [
       hi: "भुगतान के बाद रिपोर्ट unlock कैसे होती है?",
     },
     a: {
-      en: "For the ₹51 Pro report, tap “I have paid” on the report page right after the UPI transfer — it unlocks on the spot. Ultra Pro (₹351) additionally asks for your UPI reference number (UTR) so the book link can be issued safely. No separate app, email or WhatsApp needed; the report keeps its own private page, so you can open it again any time on any device with the link.",
-      hi: "₹51 वाली प्रो रिपोर्ट के लिए UPI ट्रांसफ़र के तुरंत बाद रिपोर्ट पेज पर “मैंने भेज दिए” दबाएँ — वहीं अनलॉक हो जाती है। अल्ट्रा प्रो (₹351) में इसके साथ आपका UPI रेफ़रेंस नंबर (UTR) भी माँगा जाता है, ताकि पुस्तक का लिंक सुरक्षित तरीके से जारी हो सके। कोई अलग ऐप, ईमेल या WhatsApp ज़रूरी नहीं; रिपोर्ट का अपना निजी पेज रहता है, जिसे आप लिंक के साथ किसी भी डिवाइस पर बाद में फिर खोल सकते हैं।",
+      en: "Cashfree confirms the payment and the report unlocks on the same page — usually within seconds. If the gateway window closes before confirmation, the return page re-checks the order and shows the result; you can also reopen the report from your account. No separate app or email is needed, and the report keeps its own private page so you can return to it with the link.",
+      hi: "Cashfree भुगतान की पुष्टि करता है और रिपोर्ट उसी पेज पर अनलॉक हो जाती है — आमतौर पर कुछ सेकंड में। अगर पुष्टि से पहले गेटवे विंडो बंद हो जाए, तो रिटर्न पेज ऑर्डर दोबारा जाँचकर परिणाम दिखाता है; आप अकाउंट से भी रिपोर्ट दोबारा खोल सकते हैं। कोई अलग ऐप या ईमेल ज़रूरी नहीं, और रिपोर्ट का अपना निजी पेज रहता है जिसे आप लिंक से फिर खोल सकते हैं।",
+    },
+  },
+  {
+    q: {
+      en: "Where does the 20% seva contribution go?",
+      hi: "20% की सेवा राशि कहाँ जाती है?",
+    },
+    a: {
+      en: "20% of what you pay for a paid plan — Pro (₹51), Pro + book (₹199), Pro + Diwali PDF (₹99) or the ₹1,000 membership — is set aside for animal welfare and greenery: feed for cows, monkeys and stray animals, and tree planting. It comes out of the plan price, so you pay nothing extra, and the free reading is unaffected. This is a voluntary commitment by the site owner, not a separate charity collection.",
+      hi: "पेड प्लान — प्रो (₹51), प्रो + पुस्तक (₹199), प्रो + दिवाली PDF (₹99) या ₹1,000 की मेंबरशिप — में दी गई राशि का 20% बेज़ुबान जानवरों की सेवा और हरियाली के लिए अलग रखा जाता है: गाय, बंदर और आवारा जानवरों का भोजन, और पेड़-पौधे लगाना। यह प्लान की कीमत में से जाता है, आपको अलग से कुछ नहीं देना है, और फ्री रीडिंग पर इसका कोई असर नहीं। यह साइट मालिक की स्वैच्छिक प्रतिबद्धता है, अलग से कोई चैरिटी वसूली नहीं।",
     },
   },
   {

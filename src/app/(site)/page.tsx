@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import PanditjiPromo from "@/components/home/PanditjiPromo";
-import PanditjiPopup from "@/components/home/PanditjiPopup";
 import PalmLines from "@/components/home/PalmLines";
 import HowItWorks from "@/components/home/HowItWorks";
 import ZodiacShowcase from "@/components/home/ZodiacShowcase";
 import Features from "@/components/home/Features";
 import Pricing from "@/components/home/Pricing";
+import HomePopup from "@/components/home/HomePopup";
 import Reviews from "@/components/home/Reviews";
 import FAQ from "@/components/home/FAQ";
 import FaqJsonLd from "@/components/home/FaqJsonLd";
@@ -61,6 +61,13 @@ export default function HomePage() {
       <ConstellationBackdrop />
       <div className="relative">
         <Hero />
+        <HomePopup />
+        <div className="relative z-10 mx-auto max-w-3xl px-4 text-center mt-1">
+          <p className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-100 inline-flex items-center gap-2 shadow-[0_0_20px_-5px] shadow-emerald-400/20 animate-pulse">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            अभी वेबसाइट की सभी एरर ठीक कर दी गई हैं और बहुत से नए फीचर्स भी डाल दिए गए हैं।
+          </p>
+        </div>
         <PanditjiPromo />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="section-divider mt-6" /></div>
         <PalmLines />
@@ -73,7 +80,16 @@ export default function HomePage() {
         <FAQ />
         <FaqJsonLd />
         <About />
-        <PanditjiPopup />
+        {/* Background video — muted loop, low opacity, smooth scroll */}
+        <section className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-cosmic-900/60 via-[#1a1030]/70 to-mystic-800/40 my-12 mx-4 sm:mx-6 lg:mx-8 p-6 sm:p-12 shadow-2xl shadow-black/20">
+          <video autoPlay loop muted playsInline preload="metadata" className="absolute inset-0 w-full h-full object-cover opacity-[0.12] pointer-events-none select-none z-0" aria-hidden="true">
+            <source src="/assets/krsn.mp4" type="video/mp4" />
+          </video>
+          <div className="relative z-10 text-center">
+            <h2 className="font-display text-2xl sm:text-3xl text-white">हस्तरेखा — अपने भविष्य को जानें</h2>
+            <p className="mt-3 text-slate-300 text-sm max-w-xl mx-auto">अपनी हथेली का फोटो अपलोड करें और अपनी कुंडली, 12 जीवन-क्षेत्र और भविष्य की भविष्यवाणी देखें।</p>
+          </div>
+        </section>
       </div>
     </div>
   );

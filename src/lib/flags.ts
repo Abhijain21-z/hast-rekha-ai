@@ -65,3 +65,25 @@ export const MANUAL_UPI_ENABLED = !CASHFREE_ENABLED;
  * /api/readings/[id]/book only when that reading is Ultra-unlocked.
  */
 export const ULTRA_PRICE = 351;
+
+/** ₹99 add-on: the complete Diwali Puja PDF (Pro report + PDF). */
+export const DIWALI_PRICE = 99;
+
+/** ₹199 launch bundle: Pro report + the Dhandayak book. */
+export const BUNDLE_PRICE = 199;
+
+/**
+ * Show the ₹199 bundle instead of the ₹351 Ultra Pro card. The two offers
+ * overlap, so only one is shown at a time; existing Ultra buyers keep access.
+ */
+export const BUNDLE_TEST = true;
+
+/** ₹1,000 membership: a 30-day pass, not an auto-renewing subscription. */
+export const MEMBERSHIP_PRICE = 1000;
+export const MEMBERSHIP_DAYS = 30;
+/** Fair use: at most this many Pro reports in a rolling 30-day window. */
+export const MEMBERSHIP_REPORT_LIMIT = 30;
+/** Saved profiles: self + four consented family members. */
+export const MEMBERSHIP_PROFILE_LIMIT = 5;
+/** Free accounts can keep a small family list; membership raises the cap. */
+export const FREE_PROFILE_LIMIT = 2;

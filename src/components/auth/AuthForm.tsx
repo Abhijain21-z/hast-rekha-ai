@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { LogIn, UserPlus, Sparkles, Mail, Lock, UserRound, Gift, X } from "lucide-react";
+import { LogIn, UserPlus, Sparkles, Mail, Lock, UserRound } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, Input, Label, ErrorText } from "@/components/ui";
-import { normalizeReferralCode, readReferralCookie } from "@/lib/referral-code";
 
 export default function AuthForm({ mode }: { mode: "login" | "register" }) {
   const { t, L, lang } = useLang();
@@ -19,20 +18,6 @@ export default function AuthForm({ mode }: { mode: "login" | "register" }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const [referralCode, setReferralCode] = useState<string | null>(() =>
-    normalizeReferralCode(params.get("ref") ?? params.get("referral")),
-  );
-
-  // The code may have been captured on an earlier page and stored in a cookie.
-  // Read it after mount so server/client markup stays identical.
-  useEffect(() => {
-    if (mode !== "register" || referralCode) return;
-    const stored = readReferralCookie();
-    // Cookies are only available after mount, so this cannot be a lazy initial
-    // value without a server/client markup mismatch on the applied-code chip.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (stored) setReferralCode(stored);
-  }, [mode, referralCode]);
 
   async function submit(e: FormEvent) {
     e.preventDefault();
@@ -42,9 +27,7 @@ export default function AuthForm({ mode }: { mode: "login" | "register" }) {
       const res = await fetch(`/api/auth/${mode}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(
-          mode === "login" ? { email, password } : { name, email, password, lang, referralCode: referralCode ?? undefined },
-        ),
+        body: JSON.stringify(mode === "login" ? { email, password } : { name, email, password, lang }),
       });
       if (!res.ok) {
         const data = (await res.json().catch(() => ({}))) as { error?: string };
@@ -70,26 +53,6 @@ export default function AuthForm({ mode }: { mode: "login" | "register" }) {
       </Link>
       <h1 className="font-display text-3xl text-white">{isLogin ? t.auth.loginTitle : t.auth.registerTitle}</h1>
       <p className="mt-1 text-sm text-slate-400">{isLogin ? t.auth.loginSub : t.auth.registerSub}</p>
-
-      {!isLogin && referralCode && (
-        <div className="mt-5 flex items-start gap-2 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-3.5 py-3 text-xs text-gold-100">
-          <Gift className="mt-0.5 h-4 w-4 shrink-0 text-gold-300" />
-          <span className="flex-1 leading-relaxed">
-            {L({
-              en: `Referral code ${referralCode} applied. Create your account to get 50 welcome coins — your friend also gets 50.`,
-              hi: `रेफरल कोड ${referralCode} लग गया। अकाउंट बनाइए और 50 वेलकम कॉइन पाइए — आपके दोस्त को भी 50 मिलेंगे।`,
-            })}
-          </span>
-          <button
-            type="button"
-            onClick={() => setReferralCode(null)}
-            className="rounded-full p-1 text-gold-300/70 hover:bg-white/10 hover:text-white"
-            aria-label="Remove referral code"
-          >
-            <X className="h-3.5 w-3.5" />
-          </button>
-        </div>
-      )}
 
       <form onSubmit={submit} className="mt-7 space-y-4">
         {!isLogin && (

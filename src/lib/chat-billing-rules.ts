@@ -13,7 +13,7 @@ import type { ChatPlan } from "./chat-quota-rules";
 
 export const CHAT_COINS_PER_MINUTE = 10;
 export const CHAT_GUEST_COINS = 50;
-export const CHAT_PRO_INCLUDED_MINUTES = 50;
+export const CHAT_PRO_INCLUDED_MINUTES = 0; // Pro users get 200 AI tokens (coins) instead
 /** A conversation stays "active" while messages arrive within this window. */
 export const CHAT_SESSION_IDLE_MS = 2 * 60_000;
 

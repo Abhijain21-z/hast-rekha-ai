@@ -63,6 +63,14 @@ export default function PublicReviews({ initial }: { initial: ReviewRow[] }) {
         </div>
       )}
 
+      {/* Two honest numbers that look inconsistent unless explained: the stars
+          rate the experience, the percentage answers one survey question. */}
+      {stats && (
+        <p className="mx-auto mt-4 max-w-3xl rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3 text-center text-xs leading-relaxed text-slate-400">
+          {t.reviews.ratingNote}
+        </p>
+      )}
+
       {/* Write + read in one place: this page is the single reviews home. */}
       <div className="glass-strong mt-10 rounded-3xl p-6 sm:p-8">
         <h2 className="flex items-center gap-2 font-display text-xl text-white">

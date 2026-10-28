@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { payments } from "@/db/schema";
 import { cashfreeConfigured, getCashfreeOrder } from "@/lib/cashfree";
 import { fulfillCashfreePayment } from "@/lib/payments";
+import type { PaidPlan } from "@/lib/plans";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +20,7 @@ export async function GET(req: Request) {
   const [payment] = await db.select().from(payments).where(eq(payments.orderId, orderId)).limit(1);
   if (!payment) return NextResponse.json({ error: "Order not found" }, { status: 404 });
 
-  const base = { plan: payment.plan as "pro" | "ultra", readingId: payment.readingId };
+  const base = { plan: payment.plan as PaidPlan, readingId: payment.readingId };
 
   if (payment.status === "paid") {
     return NextResponse.json({ status: "PAID", ...base });

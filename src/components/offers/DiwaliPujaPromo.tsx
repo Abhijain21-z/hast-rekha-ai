@@ -33,7 +33,7 @@ export default function DiwaliPujaPromo({
       <div className="relative grid items-center gap-6 lg:grid-cols-[1.25fr_0.75fr]">
         <div>
           <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold-300">
-            <Gift className="h-4 w-4" /> {L(DIWALI_OFFER.badge)}
+            <Gift className="h-4 w-4" /> {L(DIWALI_OFFER.promoBadge)}
             <span className="text-gold-400/60">·</span>
             {L(DIWALI_OFFER.eyebrow)}
           </p>
@@ -46,7 +46,7 @@ export default function DiwaliPujaPromo({
             {L(DIWALI_OFFER.title)}
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-100 sm:text-base">
-            {L(DIWALI_OFFER.sub)}
+            {L(DIWALI_OFFER.promoSub)}
           </p>
           <ul className="mt-4 grid gap-2 sm:grid-cols-3">
             {DIWALI_OFFER.bullets.map((bullet) => (
@@ -59,13 +59,15 @@ export default function DiwaliPujaPromo({
 
         <div className="glass-strong rounded-3xl p-5 text-center">
           <Sparkles className="mx-auto h-7 w-7 text-gold-300" />
-          <p className="mt-2 font-display text-xl text-white">{L(DIWALI_OFFER.badge)}</p>
-          <p className="mt-1 text-xs leading-relaxed text-slate-300">{L(DIWALI_OFFER.locked)}</p>
+          <p className="mt-2 font-display text-xl text-white">{L(DIWALI_OFFER.promoBadge)}</p>
+          <p className="mt-1 text-xs leading-relaxed text-slate-300">
+            {L({ en: "One-time ₹99 · Pro report + PDF", hi: "एक बार ₹99 · प्रो रिपोर्ट + PDF" })}
+          </p>
           <Link
             href="/reading"
             className="btn-gold mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm"
           >
-            {L(DIWALI_OFFER.cta)} <ArrowRight className="h-4 w-4" />
+            {L(DIWALI_OFFER.promoCta)} <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             href="/pricing#pricing"

@@ -19,7 +19,7 @@ const UI = {
   cta: { en: "Chat with Panditji", hi: "पंडितजी से बात करें" },
   reading: { en: "Start a free reading", hi: "मुफ़्त रीडिंग शुरू करें" },
   free: { en: "50 free coins on signup", hi: "साइनअप पर 50 मुफ़्त कॉइन" },
-  pro: { en: "Pro: 50 chat minutes", hi: "प्रो: 50 चैट मिनट" },
+  pro: { en: "Pro: 200 AI tokens", hi: "प्रो: 200 AI टोकन" },
   ai: { en: "AI-powered · private", hi: "AI-powered · निजी" },
   bubble: { en: "Namaste 🙏 Ask me anything", hi: "नमस्ते 🙏 कुछ भी पूछें" },
 };

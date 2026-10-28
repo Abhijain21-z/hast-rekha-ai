@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { BookOpen, Check, Crown, FileText } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, Modal } from "@/components/ui";
-import { ULTRA_PRICE } from "@/lib/flags";
+import { BUNDLE_PRICE, BUNDLE_TEST, ULTRA_PRICE } from "@/lib/flags";
 import { PREMIUM_PRICE } from "@/lib/premium";
 import { UPAY_BOOK_URL } from "@/components/upay/UpayBookPromo";
 import { ProPaywallModal, type ProPlan } from "./ProPaywall";
@@ -20,7 +20,8 @@ function tpl(text: string, vars: Record<string, string | number>) {
  * - after every 10th scroll — "download the complete PDF?" → ₹51 Pro paywall
  *   (stops as soon as the report is unlocked);
  * - once, after the 10th scroll — the Dhandayak book → SuperProfile buy link,
- *   with the Ultra Pro alternative (prediction + book) for unpaid visitors.
+ *   with the Pro + book plan for unpaid visitors. That plan is the ₹199 test
+ *   bundle while BUNDLE_TEST is on, and Ultra Pro (₹351) otherwise.
  *
  * One "scroll" = one continuous finger-swipe / mouse-wheel gesture. A burst of
  * scroll events counts once; bursts are separated by BURST_GAP_MS of silence.
@@ -95,7 +96,7 @@ export default function ScrollPrompts({
 
   return (
     <>
-      {/* The ₹51 / ₹351 paywall, opened by both asks */}
+      {/* The ₹51 / ₹199 / ₹351 paywall, opened by both asks */}
       <ProPaywallModal
         key={payPlan ?? "closed"}
         open={payPlan !== null}
@@ -108,7 +109,7 @@ export default function ScrollPrompts({
         }}
       />
 
-      {/* Every 4th scroll — offer the complete PDF */}
+      {/* After every 10th scroll — offer the complete PDF */}
       <Modal open={askPdf} onClose={() => setAskPdf(false)} title={t.asks.pdfTitle}>
         <p className="text-sm leading-relaxed text-slate-300">{tpl(t.asks.pdfSub, { p: PREMIUM_PRICE })}</p>
         <div className="mt-5 flex flex-col gap-2 sm:flex-row">
@@ -128,7 +129,7 @@ export default function ScrollPrompts({
         </div>
       </Modal>
 
-      {/* 6th scroll — the Dhandayak book, asked once per visit */}
+      {/* 10th scroll — the Dhandayak book, asked once per visit */}
       <Modal open={askBook} onClose={() => setAskBook(false)} title={t.asks.bookTitle} wide>
         <p className="text-sm leading-relaxed text-slate-300">{t.asks.bookSub}</p>
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -157,10 +158,12 @@ export default function ScrollPrompts({
               icon={<Crown className="h-4 w-4" />}
               onClick={() => {
                 setAskBook(false);
-                setPayPlan("ultra");
+                setPayPlan(BUNDLE_TEST ? "bundle" : "ultra");
               }}
             >
-              {tpl(t.asks.bookUltra, { p: ULTRA_PRICE })}
+              {BUNDLE_TEST
+                ? tpl(t.asks.bookBundle, { p: BUNDLE_PRICE })
+                : tpl(t.asks.bookUltra, { p: ULTRA_PRICE })}
             </Button>
           )}
           <Button variant="ghost" className="w-full" onClick={() => setAskBook(false)}>

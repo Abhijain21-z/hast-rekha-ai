@@ -23,8 +23,8 @@ export const FAQS: FaqItem[] = [
   {
     q: { en: "Is it free?", hi: "क्या यह निःशुल्क है?" },
     a: {
-      en: "Yes — absolutely free. The whole reading on screen, Rashi, Nakshatra, Lagna, palm analysis, charts, print and language switching cost nothing, with no card and no login. Only the optional 5-year premium report (and a PDF of it) costs ₹51, one time.",
-      hi: "हाँ — बिल्कुल फ्री। स्क्रीन पर दिखने वाली पूरी रीडिंग, राशि, नक्षत्र, लग्न, हस्तरेखा विश्लेषण, ग्राफ़, प्रिंट और भाषा बदलना — सब कुछ मुफ़्त, न कार्ड न लॉगिन। सिर्फ़ वैकल्पिक 5-वर्षीय प्रीमियम रिपोर्ट (और उसकी PDF) का एक बार ₹51 लगता है।",
+      en: "The core reading is free: Rashi, Nakshatra, Lagna, palm analysis, all 12 life-area predictions and charts, with no card and no login. The optional Pro report costs ₹51 one time and adds the 5-year roadmap, the partner report, upay and a printable PDF. Printing the full report is a Pro feature — the free report is read on screen.",
+      hi: "मूल रीडिंग फ्री है: राशि, नक्षत्र, लग्न, हस्तरेखा विश्लेषण, सभी 12 जीवन-क्षेत्र भविष्यवाणियाँ और ग्राफ़ — न कार्ड, न लॉगिन। वैकल्पिक प्रो रिपोर्ट का एक बार ₹51 लगता है, जिसमें 5-वर्षीय रोडमैप, जीवनसाथी रिपोर्ट, उपाय और प्रिंट करने योग्य PDF जुड़ती है। पूरी रिपोर्ट की प्रिंटिंग प्रो सुविधा है — फ्री रिपोर्ट स्क्रीन पर पढ़ी जाती है।",
     },
   },
   {
@@ -93,22 +93,22 @@ export const FAQS: FaqItem[] = [
   {
     q: { en: "Is the ₹51 report compulsory?", hi: "क्या ₹51 रिपोर्ट लेना ज़रूरी है?" },
     a: {
-      en: "Not at all. Everything you see on screen — the full reading, all 12 life areas, palm analysis, charts and printing — stays free forever. ₹51 is only for readers who want the 5-year roadmap and the PDF.",
-      hi: "बिल्कुल नहीं। स्क्रीन पर दिखने वाली हर चीज़ — पूरी रीडिंग, सभी 12 जीवन-क्षेत्र, हस्तरेखा विश्लेषण, ग्राफ़ और प्रिंटिंग — हमेशा मुफ़्त रहती है। ₹51 सिर्फ़ उनके लिए है जिन्हें 5 साल का रोडमैप और PDF चाहिए।",
+      en: "Not at all. The full reading on screen — all 12 life areas, palm analysis and charts — stays free. ₹51 is only for readers who want the 5-year roadmap, the partner report and a printable PDF. Nothing is charged unless you choose it.",
+      hi: "बिल्कुल नहीं। स्क्रीन पर दिखने वाली पूरी रीडिंग — सभी 12 जीवन-क्षेत्र, हस्तरेखा विश्लेषण और ग्राफ़ — फ्री रहती है। ₹51 सिर्फ़ उनके लिए है जिन्हें 5 साल का रोडमैप, जीवनसाथी रिपोर्ट और प्रिंट करने योग्य PDF चाहिए। बिना आपकी पसंद के कुछ नहीं लिया जाता।",
     },
   },
   {
     q: { en: "How do I pay for the premium report?", hi: "प्रीमियम रिपोर्ट का भुगतान कैसे करें?" },
     a: {
-      en: "The report page shows a UPI QR code and UPI id. Pay ₹51 (or ₹351 for Ultra Pro) from any UPI app — GPay, PhonePe, Paytm, BHIM — and confirm on the same page: the report unlocks immediately. (Ultra Pro asks for the payment reference number for the book.)",
-      hi: "रिपोर्ट पेज पर UPI QR कोड और UPI आईडी दिखती है। किसी भी UPI ऐप — GPay, PhonePe, Paytm, BHIM — से ₹51 (या अल्ट्रा प्रो के ₹351) भेजें और उसी पेज पर पुष्टि करें: रिपोर्ट तुरंत अनलॉक हो जाती है। (अल्ट्रा प्रो में पुस्तक के लिए भुगतान का रेफ़रेंस नंबर माँगा जाता है।)",
+      en: "Open any report and tap the Pro button: checkout runs through Cashfree with UPI, cards or net banking, and the report unlocks as soon as the payment is confirmed. Pro is ₹51, Pro + Diwali PDF is ₹99, Pro + Dhandayak book is ₹199, and the 30-day membership is ₹1,000. A manual UPI QR stays available as a fallback.",
+      hi: "कोई भी रिपोर्ट खोलकर प्रो बटन दबाएँ: चेकआउट Cashfree से चलता है — UPI, कार्ड या नेट बैंकिंग — और भुगतान की पुष्टि होते ही रिपोर्ट अनलॉक हो जाती है। प्रो ₹51, प्रो + दिवाली PDF ₹99, प्रो + धनदायक पुस्तक ₹199, और 30-दिन मेंबरशिप ₹1,000 है। मैन्युअल UPI QR आपातकालीन विकल्प के रूप में उपलब्ध रहता है।",
     },
   },
   {
     q: { en: "What is the ₹351 Ultra Pro plan?", hi: "₹351 का अल्ट्रा प्रो प्लान क्या है?" },
     a: {
-      en: "Ultra Pro includes everything in Pro — the 5-year roadmap, partner prediction and PDF — plus full access to the 'धनदायक तांत्रिक प्रयोग — गुप्त खजाना' book. The book link unlocks only on an Ultra Pro report; nobody else can see it.",
-      hi: "अल्ट्रा प्रो में प्रो की हर चीज़ — 5-वर्षीय रोडमैप, जीवनसाथी भविष्यवाणी और PDF — के साथ 'धनदायक तांत्रिक प्रयोग — गुप्त खजाना' पुस्तक की पूरी एक्सेस मिलती है। पुस्तक का लिंक सिर्फ़ अल्ट्रा प्रो रिपोर्ट पर खुलता है, किसी और को नहीं दिखता।",
+      en: "Ultra Pro includes everything in Pro plus full access to the 'धनदायक तांत्रिक प्रयोग — गुप्त खजाना' book. It is the original ₹351 book plan and stays available for existing buyers; new visitors usually see the ₹199 launch bundle instead, which includes the same Pro report and book.",
+      hi: "अल्ट्रा प्रो में प्रो की हर चीज़ के साथ 'धनदायक तांत्रिक प्रयोग — गुप्त खजाना' पुस्तक की पूरी एक्सेस मिलती है। यह मूल ₹351 वाला पुस्तक प्लान है और मौजूदा खरीदारों के लिए उपलब्ध रहता है; नए विज़िटर को आमतौर पर ₹199 का लॉन्च बंडल दिखता है, जिसमें वही प्रो रिपोर्ट और पुस्तक शामिल है।",
     },
   },
   {
@@ -149,8 +149,8 @@ export const FAQS: FaqItem[] = [
   {
     q: { en: "Can I get a refund?", hi: "पैसे वापस मिल सकते हैं?" },
     a: {
-      en: "The amount is very small and the report is delivered instantly, so we do not run a refund process — but if something went wrong with your payment or unlock, write to us from the Contact page and we will fix it.",
-      hi: "रकम बहुत छोटी है और रिपोर्ट तुरंत मिल जाती है, इसलिए रिफ़ंड की प्रक्रिया नहीं है — पर अगर भुगतान या अनलॉक में कोई दिक्कत हुई हो तो संपर्क पेज से हमें लिखें, हम ठीक कर देंगे।",
+      en: "If money was deducted but the report did not unlock, or you were charged twice, write to us within 24 hours with the order ID and we will refund it after checking with the payment provider. Once a report has unlocked, the digital product is delivered and is generally non-refundable.",
+      hi: "अगर पैसे कट गए पर रिपोर्ट अनलॉक नहीं हुई, या दो बार भुगतान हो गया, तो 24 घंटे के भीतर ऑर्डर ID के साथ हमें लिखें; पेमेंट प्रोवाइडर से पुष्टि के बाद हम रिफंड कर देंगे। रिपोर्ट अनलॉक होने के बाद डिजिटल उत्पाद मिल चुका होता है और सामान्यतः गैर-वापसी योग्य है।",
     },
   },
   {

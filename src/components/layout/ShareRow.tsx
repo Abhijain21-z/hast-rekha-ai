@@ -42,7 +42,7 @@ export default function ShareRow({
 
   async function copy() {
     try {
-      await navigator.clipboard.writeText(tagged("copy", "referral"));
+      await navigator.clipboard.writeText(tagged("copy", "clipboard"));
       setCopied(true);
       toast("Link copied — share it with someone who needs it.");
       setTimeout(() => setCopied(false), 2200);

@@ -9,7 +9,7 @@ import {
   planChatMinutes,
   type ChatBillingSummary,
 } from "@/lib/chat-billing-rules";
-import { SIGNUP_TOKEN_BONUS, tokenProgress } from "@/lib/token-rules";
+import { SIGNUP_TOKEN_BONUS } from "@/lib/token-rules";
 import { chatSubject, isChatUuid } from "@/lib/chat-quota-rules";
 
 const MINUTE = 60_000;
@@ -43,17 +43,6 @@ describe("coin rules", () => {
     expect(CHAT_SESSION_IDLE_MS).toBe(2 * MINUTE);
   });
 
-  it("tracks progress towards the 350-coin Ultra Pro unlock", () => {
-    expect(tokenProgress(50)).toEqual({
-      balance: 50,
-      cost: 350,
-      remaining: 300,
-      percent: 14,
-      ready: false,
-    });
-    expect(tokenProgress(350).ready).toBe(true);
-    expect(tokenProgress(-5).balance).toBe(0);
-  });
 });
 
 describe("per-minute chat billing", () => {

@@ -10,23 +10,21 @@
     { "en": "Your rashi-wise secret wealth beej mantra + 21-day gupt prayog", "hi": "आपकी राशि के अनुसार धन-प्राप्ति का गुप्त बीज मंत्र + 21 दिन का विशेष गुप्त प्रयोग" },
     { "en": "Stotra / mantra to recite", "hi": "पाठ करने योग्य स्तोत्र / मंत्र" },
     { "en": "Gemstone wearing method (day, metal, finger)", "hi": "रत्न धारण विधि (वार, धातु, उंगली)" },
-    { "en": "50 AI Panditji chat minutes with your Pro report", "hi": "आपकी प्रो रिपोर्ट के साथ 50 AI पंडितजी चैट मिनट" },
-    { "en": "Printable full report", "hi": "प्रिंट करने योग्य संपूर्ण रिपोर्ट" },
-    { "en": "Print & download the complete premium report", "hi": "प्रीमियम रिपोर्ट प्रिंट व डाउनलोड" },
-    { "en": "FREE: Complete Diwali Puja PDF — full vidhi, samagri, mantra & aarti", "hi": "मुफ़्त: संपूर्ण दिवाली पूजा PDF — पूरी विधि, सामग्री, मंत्र व आरती" }
+    { "en": "200 AI tokens for Panditji chat (10 coins per minute = 20 minutes)", "hi": "पंडितजी चैट के लिए 200 AI टोकन (10 कॉइन प्रति मिनट = 20 मिनट)" },
+    { "en": "Print & download the complete premium report", "hi": "प्रीमियम रिपोर्ट प्रिंट व डाउनलोड" }
   ],
   "book": {
     "title": { "en": "Dhandayak Book (Gupt Khazana) — full access", "hi": "धनदायक पुस्तक (गुप्त खजाना) — पूरी एक्सेस" },
-    "sub": { "en": "धनदायक तांत्रिक प्रयोग — stuck money, debt freedom and business growth: the traditional book, included with Ultra Pro.", "hi": "धनदायक तांत्रिक प्रयोग — अटका धन, कर्ज मुक्ति और व्यापार वृद्धि: पारंपरिक पुस्तक, अल्ट्रा प्रो के साथ शामिल।" },
+    "sub": { "en": "धनदायक तांत्रिक प्रयोग — stuck money, debt freedom and business growth: the traditional book, included with the ₹199 bundle and Ultra Pro.", "hi": "धनदायक तांत्रिक प्रयोग — अटका धन, कर्ज मुक्ति और व्यापार वृद्धि: पारंपरिक पुस्तक, ₹199 बंडल और अल्ट्रा प्रो के साथ शामिल।" },
     "cta": { "en": "Open the book", "hi": "पुस्तक खोलें" },
     "opening": { "en": "Opening…", "hi": "खुल रहा है…" },
-    "private": { "en": "Private link — visible only on an Ultra Pro reading.", "hi": "प्राइवेट लिंक — सिर्फ़ अल्ट्रा प्रो रीडिंग पर दिखता है।" },
-    "soon": { "en": "The book link is being added right now and will appear on this page. Your Ultra Pro unlock is already saved.", "hi": "पुस्तक का लिंक अभी जोड़ा जा रहा है और इसी पेज पर दिखने लगेगा। आपका अल्ट्रा प्रो अनलॉक सुरक्षित है।" },
+    "private": { "en": "Private link — visible only when the book is unlocked.", "hi": "प्राइवेट लिंक — सिर्फ़ अनलॉक होने पर दिखता है।" },
+    "soon": { "en": "The book link is being added right now and will appear on this page. Your book unlock is already saved.", "hi": "पुस्तक का लिंक अभी जोड़ा जा रहा है और इसी पेज पर दिखने लगेगा। आपका बुक अनलॉक सुरक्षित है।" },
     "err": { "en": "Could not fetch the link just now — please try again in a moment.", "hi": "लिंक अभी नहीं मिल सका — कृपया थोड़ी देर बाद प्रयास करें।" }
   },
   "bookPerks": [
     { "en": "The complete Dhandayak (Gupt Khazana) book — access included", "hi": "पूरी धनदायक (गुप्त खजाना) पुस्तक — एक्सेस शामिल" },
-    { "en": "The book link stays private to Ultra Pro readers", "hi": "पुस्तक का लिंक सिर्फ़ अल्ट्रा प्रो पाठकों के लिए प्राइवेट" }
+    { "en": "The book link stays private to bundle and Ultra Pro readers", "hi": "पुस्तक का लिंक सिर्फ़ बंडल और अल्ट्रा प्रो पाठकों के लिए प्राइवेट" }
   ],
   "fields": {
     "Fire": { "en": "leadership, defence, sports, surgery, entrepreneurship, energy & engineering", "hi": "नेतृत्व, रक्षा, खेल, सर्जरी, उद्यमिता, ऊर्जा व इंजीनियरिंग" },

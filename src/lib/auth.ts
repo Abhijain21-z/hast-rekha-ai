@@ -11,7 +11,7 @@ const SESSION_DAYS = 30;
 
 export type SafeUser = Pick<
   User,
-  "id" | "name" | "email" | "preferredLang" | "referralCode" | "tokenBalance" | "createdAt"
+  "id" | "name" | "email" | "preferredLang" | "tokenBalance" | "createdAt"
 >;
 
 export const toSafeUser = (u: User): SafeUser => ({
@@ -19,7 +19,6 @@ export const toSafeUser = (u: User): SafeUser => ({
   name: u.name,
   email: u.email,
   preferredLang: u.preferredLang,
-  referralCode: u.referralCode,
   tokenBalance: u.tokenBalance,
   createdAt: u.createdAt,
 });

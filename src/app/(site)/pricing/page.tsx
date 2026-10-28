@@ -22,11 +22,11 @@ export async function generateMetadata({ searchParams }: { searchParams: Pricing
   const canonical = en ? `${url}?lang=en` : url;
 
   const title = en
-    ? "Hast Rekha Price — Free Reading & ₹51 Report | Hastrekha AI"
-    : "हस्त रेखा Price — Free Reading Aur ₹51 Pro | Hastrekha AI";
+    ? "Hast Rekha Price — Free Reading, ₹51 Pro & Membership | Hastrekha AI"
+    : "हस्त रेखा Price — फ्री रीडिंग, ₹51 प्रो और मेंबरशिप | Hastrekha AI";
   const description = en
-    ? "Complete palm reading is free — no login, no card. The ₹51 Pro report adds a 5-year roadmap, life-partner prediction and upay — no hidden charges."
-    : "पूरी हस्तरेखा रीडिंग फ्री — बिना लॉगिन, बिना कार्ड। ₹51 की प्रो रिपोर्ट में 5 साल का रोडमैप, जीवनसाथी भविष्यवाणी और उपाय — कोई hidden charge नहीं।";
+    ? "The core palm reading is free — no login, no card. Pro is ₹51 one time, Pro + Diwali PDF ₹99, Pro + book ₹199, or a ₹1,000 30-day family membership. Printing is a Pro feature."
+    : "मूल हस्तरेखा रीडिंग फ्री — बिना लॉगिन, बिना कार्ड। प्रो ₹51, प्रो + दिवाली PDF ₹99, प्रो + पुस्तक ₹199, या ₹1,000 का 30-दिन पारिवारिक मेंबरशिप। प्रिंटिंग प्रो सुविधा है।";
 
   return {
     title,
@@ -55,7 +55,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Pricing
       title,
       description,
       locale: en ? "en_IN" : "hi_IN",
-      images: [{ url: OG_IMAGE, alt: "Hastrekha AI pricing — free reading and ₹51 pro report" }],
+      images: [{ url: OG_IMAGE, alt: "Hastrekha AI pricing — free reading, ₹51 Pro and membership" }],
     },
     twitter: {
       card: "summary_large_image",

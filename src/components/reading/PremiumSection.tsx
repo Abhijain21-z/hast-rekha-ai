@@ -1,12 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { AlertTriangle, Briefcase, CalendarDays, Check, Crown, Flame, Gem, Gift, HeartHandshake, Lock, Orbit, ScrollText, Sparkles } from "lucide-react";
+import { AlertTriangle, BookOpen, Briefcase, CalendarDays, Check, Crown, Flame, Gem, Gift, HeartHandshake, Lock, Orbit, ScrollText, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, cn } from "@/components/ui";
-import { buildPremiumReport, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID } from "@/lib/premium";
-import { MANUAL_UPI_ENABLED, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
+import { buildPremiumReport, BOOK_COPY, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID } from "@/lib/premium";
+import { BUNDLE_PRICE, BUNDLE_TEST, DIWALI_PRICE, MANUAL_UPI_ENABLED, MEMBERSHIP_PRICE, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
 import { buildPartnerReport, prefersDevanagari } from "@/lib/partner";
 import type { ReadingDTO } from "@/lib/dto";
 import { DIWALI_OFFER } from "@/lib/diwali-offer";
@@ -80,11 +81,21 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
               </Button>
               <button
                 type="button"
-                onClick={() => setPayOpen("ultra")}
+                onClick={() => setPayOpen("bundle")}
                 className="mt-3 w-full rounded-full border border-gold-400/40 px-4 py-2.5 text-xs font-medium text-gold-200 transition hover:border-gold-400/70 hover:bg-gold-400/10"
               >
-                {t.pricing.ultra} · ₹{ULTRA_PRICE} · {t.pro.ultraTag}
+                {BUNDLE_TEST ? `Pro + Dhandayak book · ₹${BUNDLE_PRICE}` : `${t.pricing.ultra} · ₹${ULTRA_PRICE} · ${t.pro.ultraTag}`}
               </button>
+              <button
+                type="button"
+                onClick={() => setPayOpen("diwali")}
+                className="mt-2 w-full rounded-full border border-gold-400/30 px-4 py-2.5 text-xs font-medium text-gold-100 transition hover:border-gold-400/60 hover:bg-gold-400/10"
+              >
+                {L({ en: `Pro + Diwali PDF · ₹${DIWALI_PRICE}`, hi: `प्रो + दिवाली PDF · ₹${DIWALI_PRICE}` })}
+              </button>
+              <Link href="/membership" className="mt-3 text-xs font-medium text-slate-300 underline-offset-4 hover:text-gold-200 hover:underline">
+                {L({ en: `Membership · ₹${MEMBERSHIP_PRICE} / 30 days`, hi: `मेंबरशिप · ₹${MEMBERSHIP_PRICE} / 30 दिन` })}
+              </Link>
               {MANUAL_UPI_ENABLED && PRO_PAY_MODE === "upi" && (
                 <p className="mt-3 flex items-center gap-1 text-xs text-slate-500"><Sparkles className="h-3 w-3 text-gold-300" /> UPI · QR · {UPI_ID}</p>
               )}
@@ -206,11 +217,57 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
                 {L(report.closing)}
               </motion.p>
 
-              {/* Every Pro reading carries the Diwali Puja PDF. */}
-              <DiwaliPujaCard readingId={reading.id} />
+              {/* The Diwali Puja PDF is a ₹99 add-on; Pro buyers see it here. */}
+              <DiwaliPujaCard key={String(reading.diwaliPdf)} readingId={reading.id} onBuy={() => setPayOpen("diwali")} />
 
-              {/* Ultra Pro readings also carry the Dhandayak book. */}
-              {reading.ultra && <BookCard readingId={reading.id} />}
+              {/* Book owners get the link; everyone else gets a clear upsell. */}
+              {reading.ultra ? (
+                <BookCard readingId={reading.id} />
+              ) : (
+                <div className="no-print mt-6 rounded-[2rem] border-2 border-mystic-400/45 bg-cosmic-950/75 bg-gradient-to-br from-gold-400/12 via-cosmic-800/60 to-mystic-600/20 p-6 backdrop-blur-md">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-300">✦ {L({ en: "Add-on", hi: "ऐड-ऑन" })}</p>
+                  <h3 className="mt-2 font-display text-2xl text-white">
+                    <BookOpen className="mr-2 inline h-6 w-6 text-gold-300" />
+                    {L({ en: "Dhandayak (Gupt Khazana) book", hi: "धनदायक पुस्तक (गुप्त खजाना)" })}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-200">
+                    {L({
+                      en: "Your Pro report is complete. If you want the traditional Dhandayak book as well, add it to this report — the link opens right here.",
+                      hi: "आपकी प्रो रिपोर्ट पूरी है। अगर आप पारंपरिक धनदायक पुस्तक भी चाहते हैं, तो इसे इसी रिपोर्ट में जोड़ें — लिंक यहीं खुलेगा।",
+                    })}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setPayOpen(BUNDLE_TEST ? "bundle" : "ultra")}
+                    className="btn-gold mt-4 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm"
+                  >
+                    <BookOpen className="h-4 w-4" />
+                    {BUNDLE_TEST
+                      ? L({ en: `Add the book — ₹${BUNDLE_PRICE}`, hi: `पुस्तक जोड़ें — ₹${BUNDLE_PRICE}` })
+                      : L({ en: `Ultra Pro — ₹${ULTRA_PRICE}`, hi: `अल्ट्रा प्रो — ₹${ULTRA_PRICE}` })}
+                  </button>
+                  <p className="mt-2 text-xs italic text-slate-400">{L(BOOK_COPY.private)}</p>
+                </div>
+              )}
+
+              {/* Membership is the natural next step for someone reading often. */}
+              <div className="no-print mt-6 flex flex-col gap-4 rounded-[2rem] border border-gold-400/30 bg-gradient-to-br from-gold-400/10 via-cosmic-800/60 to-mystic-700/20 p-6 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-300">✦ {L({ en: "Membership", hi: "मेंबरशिप" })}</p>
+                  <p className="mt-2 font-display text-xl text-white">
+                    {L({ en: `30 Pro reports in 30 days · ₹${MEMBERSHIP_PRICE}`, hi: `30 दिनों में 30 प्रो रिपोर्ट · ₹${MEMBERSHIP_PRICE}` })}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-300">
+                    {L({
+                      en: "For family readings: 5 saved profiles, reports unlocked automatically, and a 30-day pass that simply expires — nothing to cancel.",
+                      hi: "परिवार की रीडिंग के लिए: 5 सहेजी प्रोफ़ाइल, रिपोर्ट अपने आप अनलॉक, और 30-दिन का पास जो समय पर ख़त्म हो जाता है — कुछ रद्द करने की ज़रूरत नहीं।",
+                    })}
+                  </p>
+                </div>
+                <Link href="/membership" className="shrink-0 rounded-full border border-gold-400/50 px-5 py-2.5 text-sm font-medium text-gold-100 transition hover:border-gold-400/80 hover:bg-gold-400/10">
+                  {L({ en: "See membership", hi: "मेंबरशिप देखें" })}
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -221,7 +278,8 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
         open={payOpen !== null}
         onClose={() => setPayOpen(null)}
         readingId={reading.id}
-        defaultPlan={payOpen ?? "pro"}
+        defaultPlan={payOpen ?? (unlocked ? "diwali" : "pro")}
+        alreadyPro={unlocked}
         onUnlocked={() => {
           setPayOpen(null);
           onUnlocked();

@@ -18,12 +18,14 @@ CREATE TABLE IF NOT EXISTS users (
   preferred_lang varchar(2) NOT NULL DEFAULT 'en',
   referral_code varchar(12),
   token_balance integer NOT NULL DEFAULT 0, -- 350 tokens = one Ultra Pro report
+  membership_until timestamptz,             -- 30-day membership pass, null = none
   created_at timestamptz NOT NULL DEFAULT now()
 );
 -- On a database created before referrals shipped, `users` already exists, so the
 -- CREATE TABLE above is a no-op. Add the columns before any index needs them.
 ALTER TABLE users ADD COLUMN IF NOT EXISTS referral_code varchar(12);
 ALTER TABLE users ADD COLUMN IF NOT EXISTS token_balance integer NOT NULL DEFAULT 0;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS membership_until timestamptz;
 CREATE UNIQUE INDEX IF NOT EXISTS users_referral_code_idx
   ON users (referral_code)
   WHERE referral_code IS NOT NULL;
@@ -62,10 +64,12 @@ CREATE TABLE IF NOT EXISTS readings (
   premium_utr text,
   premium_at timestamptz,
   ultra boolean NOT NULL DEFAULT false, -- Ultra Pro: Pro + the Dhandayak book
+  diwali_pdf boolean NOT NULL DEFAULT false, -- ₹99 add-on, grandfathered for old Pro buyers
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS readings_user_idx ON readings (user_id);
+ALTER TABLE readings ADD COLUMN IF NOT EXISTS diwali_pdf boolean NOT NULL DEFAULT false;
 
 -- One row per successful referral. The unique referred_user_id makes the
 -- 50-token credit idempotent even if the register request is retried.
@@ -181,10 +185,12 @@ CREATE TABLE IF NOT EXISTS birth_profiles (
   latitude real NOT NULL,
   longitude real NOT NULL,
   tz_offset real NOT NULL DEFAULT 5.5,
+  consent_at timestamptz, -- when the account holder confirmed the family member's consent
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS profiles_user_idx ON birth_profiles (user_id);
+ALTER TABLE birth_profiles ADD COLUMN IF NOT EXISTS consent_at timestamptz;
 
 CREATE TABLE IF NOT EXISTS reviews (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -223,9 +229,10 @@ CREATE INDEX IF NOT EXISTS review_archive_archived_idx ON review_archive (archiv
 
 CREATE TABLE IF NOT EXISTS payments (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  reading_id uuid NOT NULL REFERENCES readings(id) ON DELETE CASCADE,
+  reading_id uuid REFERENCES readings(id) ON DELETE CASCADE, -- null for standalone products
+  user_id uuid REFERENCES users(id) ON DELETE SET NULL,
   order_id text NOT NULL UNIQUE,   -- Cashfree order id
-  plan varchar(10) NOT NULL,       -- "pro" (₹51) | "ultra" (₹351)
+  plan varchar(10) NOT NULL,       -- pro | diwali | bundle | ultra | membership
   amount real NOT NULL,
   status varchar(20) NOT NULL DEFAULT 'created', -- created | paid | expired
   cf_order_id text,
@@ -240,7 +247,13 @@ CREATE TABLE IF NOT EXISTS payments (
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()
 );
+-- Older payments tables predate the standalone-product columns, so add them
+-- before any index refers to them. CREATE TABLE IF NOT EXISTS above does not
+-- alter an existing table.
+ALTER TABLE payments ADD COLUMN IF NOT EXISTS user_id uuid REFERENCES users(id) ON DELETE SET NULL;
+ALTER TABLE payments ALTER COLUMN reading_id DROP NOT NULL;
 CREATE INDEX IF NOT EXISTS payments_reading_idx ON payments (reading_id);
+CREATE INDEX IF NOT EXISTS payments_user_idx ON payments (user_id);
 
 CREATE TABLE IF NOT EXISTS contact_messages (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),

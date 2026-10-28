@@ -8,14 +8,12 @@ import { useLang } from "@/components/providers/LanguageProvider";
 import { Card, EmptyState, cn } from "@/components/ui";
 import { dailyHoroscope, nakshatraAt, rashiAt } from "@/lib/content";
 import { formatDate, type ReadingSummaryDTO } from "@/lib/dto";
-import ReferralCard from "@/components/referral/ReferralCard";
+import CoinWallet from "@/components/dashboard/CoinWallet";
+import MembershipCard, { type MembershipCardData } from "@/components/dashboard/MembershipCard";
 
 interface WalletData {
   balance: number;
   ledger: { id: string; delta: number; reason: string; balanceAfter: number; createdAt: string }[];
-  referralCode: string | null;
-  referralLink: string | null;
-  referralCount: number;
 }
 
 interface Props {
@@ -24,9 +22,10 @@ interface Props {
   stats: { readings: number; favorites: number; profiles: number };
   recent: ReadingSummaryDTO[];
   wallet: WalletData;
+  membership: MembershipCardData;
 }
 
-export default function Overview({ userName, memberSince, stats, recent, wallet }: Props) {
+export default function Overview({ userName, memberSince, stats, recent, wallet, membership }: Props) {
   const { t, L, lang, cl } = useLang();
   const primary = recent.find((r) => r.isFavorite) ?? recent[0];
   const daily = useMemo(() => (primary ? dailyHoroscope(primary.result.moonRashi) : null), [primary]);
@@ -115,14 +114,10 @@ export default function Overview({ userName, memberSince, stats, recent, wallet 
       </div>
 
       <div id="wallet" className="scroll-mt-32">
-        <ReferralCard
-          balance={wallet.balance}
-          referralCode={wallet.referralCode}
-          referralLink={wallet.referralLink}
-          referralCount={wallet.referralCount}
-          ledger={wallet.ledger}
-        />
+        <CoinWallet balance={wallet.balance} ledger={wallet.ledger} />
       </div>
+
+      <MembershipCard data={membership} />
 
       <div>
         <div className="mb-4 flex items-center justify-between">

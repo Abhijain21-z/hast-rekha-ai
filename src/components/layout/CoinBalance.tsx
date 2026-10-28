@@ -11,7 +11,7 @@ import { cn } from "@/components/ui";
  *
  * Signed-in readers see their real wallet; guests see the 50-coin signup offer.
  * Chat dispatches `hr:coins` after every billed minute, so the number moves
- * without a full page reload. Focus also refreshes it after a referral credit.
+ * without a full page reload. Focus also refreshes it after a wallet credit.
  */
 export default function CoinBalance({
   signedIn,

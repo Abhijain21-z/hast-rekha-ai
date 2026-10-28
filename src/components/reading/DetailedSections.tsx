@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { UserRound, Heart, Gem, Coins, Briefcase, Activity, Plane, Users, Sparkles, Landmark, Flame, type LucideIcon } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
-import type { PalmReport } from "@/lib/palm";
+import type { Area, PalmReport } from "@/lib/palm";
 import type { Rashi } from "@/lib/content";
 import { AgeRange, DecadeBars, LifeGraph, Meter, RadarChart, Tilt } from "./ReportCharts";
 import { PdfDividerButton } from "./ProPaywall";
@@ -19,12 +19,15 @@ export default function DetailedSections({
   readingId,
   unlocked,
   onUnlocked,
+  focusArea,
 }: {
   report: PalmReport;
   rashi: Rashi;
   readingId: string;
   unlocked: boolean;
   onUnlocked: () => void;
+  /** The reader's chosen life concern; its section is shown first. */
+  focusArea?: Area | null;
 }) {
   const { t, L } = useLang();
   const { timing, birthYear, age } = report;
@@ -32,6 +35,16 @@ export default function DetailedSections({
   const rangeLabel = (r: [number, number]) => `${r[0]}–${r[1]} · ${yr(r[0])}–${yr(r[1])}`;
 
   const radarData = (["career", "love", "health", "wealth", "family", "spirituality", "travel", "fame"] as const).map((a) => ({ label: t.report.areas[a], value: report.scores[a] }));
+
+  // Keep the report's natural order except for the reader's concern, which
+  // moves to the top. Array.prototype.sort is stable, so the rest is unchanged.
+  const orderedSections = focusArea
+    ? [...report.sections].sort((a, b) => {
+        const aFocus = a.def.area === focusArea ? 0 : 1;
+        const bFocus = b.def.area === focusArea ? 0 : 1;
+        return aFocus - bFocus;
+      })
+    : report.sections;
 
   return (
     <section id="sec-detailed" className="scroll-mt-28">
@@ -42,10 +55,11 @@ export default function DetailedSections({
       </div>
 
       <div className="space-y-6">
-        {report.sections.flatMap(({ def, paragraphs }, idx) => {
+        {orderedSections.flatMap(({ def, paragraphs }, idx) => {
           const Icon = ICONS[def.icon] ?? Sparkles;
           const color = def.area ? AREA_COLORS[def.area] : "#f5c242";
           const rashiKey = RASHI_KEY[def.key];
+          const isFocus = Boolean(focusArea && def.area === focusArea);
           const node = (
             <motion.div key={def.key} initial={{ opacity: 0, y: 40, rotateX: 10 }} whileInView={{ opacity: 1, y: 0, rotateX: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.65, ease: "easeOut" }} style={{ transformPerspective: 1200 }}>
               <Tilt max={3}>
@@ -58,7 +72,14 @@ export default function DetailedSections({
                           <Icon className="h-5 w-5" />
                         </span>
                         <div>
-                          <p className="text-xs uppercase tracking-[0.3em] text-slate-500">{t.report.section} 4.{idx + 1}</p>
+                          <p className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.3em] text-slate-500">
+                            <span>{t.report.section} 4.{idx + 1}</span>
+                            {isFocus && (
+                              <span className="rounded-full border border-gold-400/40 bg-gold-400/15 px-2 py-0.5 text-[10px] font-semibold tracking-wider text-gold-200">
+                                {L({ en: "Your main concern", hi: "आपकी मुख्य समस्या" })}
+                              </span>
+                            )}
+                          </p>
                           <h3 className="font-display text-xl text-white sm:text-2xl">{L(def.title)}</h3>
                         </div>
                       </div>
@@ -149,7 +170,7 @@ export default function DetailedSections({
             </motion.div>
           );
           // "Download Complete PDF" gate sits in the gap between every section box.
-          return idx < report.sections.length - 1
+          return idx < orderedSections.length - 1
             ? [node, <PdfDividerButton key={`pdf-${def.key}`} readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} />]
             : [node];
         })}

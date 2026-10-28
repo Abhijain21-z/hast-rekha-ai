@@ -11,7 +11,6 @@ import { BOOK_PROMO } from "@/lib/flags";
 import { Avatar, cn } from "@/components/ui";
 import ThemeToggle from "@/components/layout/ThemeToggle";
 import CoinBalance from "@/components/layout/CoinBalance";
-import ReferEarnButton from "@/components/referral/ReferEarnButton";
 import PwaInstall from "@/components/layout/PwaInstall";
 
 export type NavUser = { name: string; email: string; tokenBalance: number } | null;
@@ -112,7 +111,6 @@ export default function Navbar({ user }: { user: NavUser }) {
     { href: "/pricing", label: t.nav.pricing },
     { href: "/reviews", label: t.nav.reviews },
     { href: "/rashi", label: t.nav.rashi },
-    { href: "/chat", label: t.nav.chat },
     ...(BOOK_PROMO ? [{ href: "/upay", label: t.nav.upay ?? "उपाय" }] : []),
     { href: "/blog", label: t.nav.blog },
     { href: "/about", label: t.nav.about },
@@ -140,7 +138,6 @@ export default function Navbar({ user }: { user: NavUser }) {
             <LangToggle compact />
             <ThemeToggle compact />
             <CoinBalance signedIn={Boolean(user)} initialBalance={user?.tokenBalance ?? null} />
-            <ReferEarnButton signedIn={Boolean(user)} />
             <PwaInstall />
           </div>
         </div>
@@ -162,6 +159,19 @@ export default function Navbar({ user }: { user: NavUser }) {
               </Link>
             </li>
           ))}
+          {/* Panditji is a permanent menu item, not a popup. It keeps a gentle
+              gold blink so readers can always find the AI Jyotishi. */}
+          <li>
+            <Link
+              href="/chat"
+              className={cn(
+                "pandit-blink ml-1 flex items-center gap-1.5 whitespace-nowrap rounded-full border px-3 py-1.5 text-[12.5px] font-semibold text-gold-100 transition hover:bg-gold-400/25 hover:text-white",
+                pathname === "/chat" && "text-white",
+              )}
+            >
+              <Sparkles className="h-3.5 w-3.5" /> {t.nav.chat}
+            </Link>
+          </li>
         </ul>
 
         <div className="hidden items-center gap-2 xl:flex">
@@ -207,6 +217,13 @@ export default function Navbar({ user }: { user: NavUser }) {
             className="overflow-hidden border-t border-white/10 xl:hidden"
           >
             <div className="space-y-1 px-4 py-4">
+              <Link
+                href="/chat"
+                onClick={() => setOpen(false)}
+                className="pandit-blink mb-2 flex items-center gap-2 rounded-xl border px-4 py-3 text-base font-semibold text-gold-100"
+              >
+                <Sparkles className="h-4 w-4" /> {t.nav.chat}
+              </Link>
               {links.map((l, i) => (
                 <motion.div key={l.href} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }}>
                   <Link href={l.href} onClick={() => setOpen(false)} className="block rounded-xl px-4 py-3 text-base text-slate-200 hover:bg-white/6">

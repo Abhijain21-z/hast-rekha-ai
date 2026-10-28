@@ -25,6 +25,8 @@ export interface ReadingDTO {
   premiumUtr: string | null;
   /** Ultra Pro: Pro plus the Dhandayak book link. */
   ultra: boolean;
+  /** ₹99 Diwali Puja PDF add-on (grandfathered Pro buyers also have it). */
+  diwaliPdf: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -42,6 +44,7 @@ export interface ProfileDTO {
   latitude: number;
   longitude: number;
   tzOffset: number;
+  consentAt: string | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -64,6 +67,7 @@ export const toReadingSummary = (r: Reading): ReadingSummaryDTO => {
 
 export const toProfileDTO = (p: BirthProfile): ProfileDTO => ({
   ...p,
+  consentAt: p.consentAt ? p.consentAt.toISOString() : null,
   createdAt: p.createdAt.toISOString(),
   updatedAt: p.updatedAt.toISOString(),
 });

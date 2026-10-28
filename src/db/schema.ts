@@ -27,6 +27,8 @@ export const users = pgTable(
     referralCode: varchar("referral_code", { length: 12 }),
     /** Spendable reward balance. 350 tokens = one Ultra Pro report; never Pro. */
     tokenBalance: integer("token_balance").notNull().default(0),
+    /** 30-day membership pass; active while this timestamp is in the future. */
+    membershipUntil: timestamp("membership_until", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [uniqueIndex("users_referral_code_idx").on(t.referralCode).where(sql`${t.referralCode} IS NOT NULL`)],
@@ -76,6 +78,8 @@ export const readings = pgTable(
     premiumAt: timestamp("premium_at", { withTimezone: true }),
     /** Ultra Pro (₹351): Pro + the Dhandayak book. */
     ultra: boolean("ultra").notNull().default(false),
+    /** ₹99 Diwali Puja PDF add-on. Old Pro buyers are grandfathered by migration. */
+    diwaliPdf: boolean("diwali_pdf").notNull().default(false),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
@@ -264,12 +268,12 @@ export const payments = pgTable(
   "payments",
   {
     id: uuid("id").primaryKey().defaultRandom(),
-    readingId: uuid("reading_id")
-      .notNull()
-      .references(() => readings.id, { onDelete: "cascade" }),
+    readingId: uuid("reading_id").references(() => readings.id, { onDelete: "cascade" }),
+    /** Set for standalone products (membership); also mirrors the reading owner. */
+    userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
     /** Cashfree order id — unique so one payment can never unlock two readings. */
     orderId: text("order_id").notNull().unique(),
-    plan: varchar("plan", { length: 10 }).notNull(), // "pro" | "ultra"
+    plan: varchar("plan", { length: 10 }).notNull(), // pro | diwali | bundle | ultra | membership
     amount: real("amount").notNull(),
     /** created | paid | failed | expired */
     status: varchar("status", { length: 20 }).notNull().default("created"),
@@ -287,7 +291,7 @@ export const payments = pgTable(
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index("payments_reading_idx").on(t.readingId)],
+  (t) => [index("payments_reading_idx").on(t.readingId), index("payments_user_idx").on(t.userId)],
 );
 
 export const birthProfiles = pgTable(
@@ -305,6 +309,8 @@ export const birthProfiles = pgTable(
     latitude: real("latitude").notNull(),
     longitude: real("longitude").notNull(),
     tzOffset: real("tz_offset").notNull().default(5.5),
+    /** When the account holder confirmed the family member's consent. */
+    consentAt: timestamp("consent_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },

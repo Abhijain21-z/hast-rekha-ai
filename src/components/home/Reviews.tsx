@@ -3,11 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BadgeCheck, CalendarDays, ChevronLeft, ChevronRight, PenLine, Quote, Star, Users } from "lucide-react";
+import { BadgeCheck, CalendarDays, ChevronLeft, ChevronRight, Quote, Star, Users } from "lucide-react";
 import testimonialsJson from "@/content/testimonials.json";
 import { useLang } from "@/components/providers/LanguageProvider";
-import { Avatar, Button, Modal, SectionHeading, cn } from "@/components/ui";
-import ReviewForm, { type ReviewRow } from "@/components/reviews/ReviewForm";
+import { Avatar, SectionHeading, cn } from "@/components/ui";
 import { formatReviewDateTime } from "@/lib/review-date";
 import type { Bi } from "@/lib/i18n";
 
@@ -17,6 +16,7 @@ interface ReviewItem {
   rating: number;
   quote: Bi;
   user?: boolean;
+  agrees?: boolean | null;
   createdAt?: string;
   expiresAt?: string | null;
 }
@@ -30,24 +30,36 @@ export default function Reviews() {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(1);
   const [paused, setPaused] = useState(false);
-  const [writeOpen, setWriteOpen] = useState(false);
 
   useEffect(() => {
     fetch("/api/reviews")
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
         if (!d?.reviews) return;
+        // The home carousel is a showcase, not the full archive: reviews where
+        // the reader said the prediction did not match stay on /reviews, where
+        // the full picture (and the rating explanation) is shown.
         const userReviews: ReviewItem[] = (
-          d.reviews as { name: string; rating: number; text: string; createdAt?: string; expiresAt?: string | null }[]
-        ).map((r) => ({
-          name: r.name,
-          rating: r.rating,
-          user: true,
-          location: { en: t.reviews.community, hi: t.reviews.community },
-          quote: { en: r.text, hi: r.text },
-          createdAt: r.createdAt,
-          expiresAt: r.expiresAt,
-        }));
+          d.reviews as {
+            name: string;
+            rating: number;
+            text: string;
+            agrees?: boolean | null;
+            createdAt?: string;
+            expiresAt?: string | null;
+          }[]
+        )
+          .filter((r) => r.agrees !== false)
+          .map((r) => ({
+            name: r.name,
+            rating: r.rating,
+            user: true,
+            agrees: r.agrees ?? null,
+            location: { en: t.reviews.community, hi: t.reviews.community },
+            quote: { en: r.text, hi: r.text },
+            createdAt: r.createdAt,
+            expiresAt: r.expiresAt,
+          }));
         setItems([...userReviews, ...SEED]);
       })
       .catch(() => {});
@@ -66,9 +78,10 @@ export default function Reviews() {
     return () => window.clearInterval(id);
   }, []);
 
-  // Negative reviews vanish after their one-hour public window.
+  // Legacy negative reviews keep their old one-hour window; new reviews are
+  // permanent and are moderated by the "did not match" filter above.
   const liveItems = useMemo(
-    () => items.filter((r) => !r.expiresAt || new Date(r.expiresAt).getTime() > now),
+    () => items.filter((r) => r.agrees !== false && (!r.expiresAt || new Date(r.expiresAt).getTime() > now)),
     [items, now],
   );
 
@@ -83,29 +96,17 @@ export default function Reviews() {
 
   const go = (d: number) => setIndex((i) => Math.min(max, Math.max(0, i + d)));
 
-  function onSaved(review: ReviewRow) {
-    setItems((all) => [
-      {
-        name: review.name,
-        rating: review.rating,
-        user: true,
-        location: { en: t.reviews.community, hi: t.reviews.community },
-        quote: { en: review.text, hi: review.text },
-        createdAt: review.createdAt,
-        expiresAt: review.expiresAt,
-      },
-      ...all,
-    ]);
-    setIndex(0);
-    setWriteOpen(false);
-  }
-
   return (
     <section id="reviews" className="relative scroll-mt-20 py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow="✦ Reviews" title={t.reviews.title} sub={t.reviews.sub} />
         <div className="-mt-4 mb-6 flex justify-center">
-          <Button variant="outline" onClick={() => setWriteOpen(true)} icon={<PenLine className="h-4 w-4" />}>{t.reviews.write}</Button>
+          <Link
+            href="/reviews"
+            className="inline-flex items-center gap-2 rounded-full border border-gold-400/40 px-5 py-2.5 text-sm font-medium text-gold-200 transition hover:border-gold-400/70 hover:bg-gold-400/10"
+          >
+            {t.reviews.write}
+          </Link>
         </div>
 
         <div className="relative" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
@@ -159,10 +160,6 @@ export default function Reviews() {
           </div>
         </div>
       </div>
-
-      <Modal open={writeOpen} onClose={() => setWriteOpen(false)} title={t.reviews.write}>
-        <ReviewForm onSaved={onSaved} />
-      </Modal>
     </section>
   );
 }

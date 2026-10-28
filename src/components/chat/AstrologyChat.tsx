@@ -93,18 +93,18 @@ const UI = {
   outOfCoinsTitle: { en: "Your chat coins are used up", hi: "आपके चैट कॉइन पूरे हो गए" },
   proMinutesTitle: { en: "Your 50 Pro minutes are complete", hi: "आपके 50 प्रो मिनट पूरे हो गए" },
   outOfCoinsSignedIn: {
-    en: "Chat costs 10 coins per started minute. Refer a friend — you get 50 coins when they create an account, and they get 50 too.",
-    hi: "चैट पर हर शुरू हुए मिनट के 10 कॉइन लगते हैं। किसी दोस्त को रेफर करें — उनका अकाउंट बनते ही आपको 50 कॉइन मिलेंगे, और उन्हें भी 50 मिलेंगे।",
+    en: "Chat costs 10 coins per started minute. Your balance and usage are in the dashboard — if you run out, message our team and we will help.",
+    hi: "चैट पर हर शुरू हुए मिनट के 10 कॉइन लगते हैं। आपका बैलेंस और उपयोग डैशबोर्ड में है — कॉइन ख़त्म हों तो हमारी टीम को संदेश भेजें, हम मदद करेंगे।",
   },
   outOfCoinsGuest: {
     en: "Chat costs 10 coins per started minute. Create a free account and get 50 welcome coins — no card needed.",
     hi: "चैट पर हर शुरू हुए मिनट के 10 कॉइन लगते हैं। मुफ़्त अकाउंट बनाएँ और 50 वेलकम कॉइन पाएँ — कार्ड की ज़रूरत नहीं।",
   },
   outOfCoinsPro: {
-    en: "Your 50 included Pro minutes are done. Every new minute costs 10 coins. Refer a friend for 50 more, or message our team.",
-    hi: "आपके 50 शामिल प्रो मिनट पूरे हो गए। हर नए मिनट पर 10 कॉइन लगेंगे। 50 और कॉइन के लिए दोस्त को रेफर करें, या हमारी टीम को संदेश भेजें।",
+    en: "Your 50 included Pro minutes are done. Every new minute costs 10 coins. Check your balance in the dashboard, or message our team.",
+    hi: "आपके 50 शामिल प्रो मिनट पूरे हो गए। हर नए मिनट पर 10 कॉइन लगेंगे। डैशबोर्ड में अपना बैलेंस देखें, या हमारी टीम को संदेश भेजें।",
   },
-  referCta: { en: "Refer & Earn 50 coins", hi: "रेफर करें · 50 कॉइन पाएँ" },
+  walletCta: { en: "Open coin wallet", hi: "कॉइन वॉलेट खोलें" },
   registerCta: { en: "Create account · +50 coins", hi: "अकाउंट बनाएँ · +50 कॉइन" },
   supportCta: { en: "Chat with our team", hi: "हमारी टीम से बात करें" },
   proCta: { en: "See the Pro plan", hi: "प्रो प्लान देखें" },
@@ -446,7 +446,7 @@ export default function AstrologyChat({
                 className="btn-gold inline-flex flex-1 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
               >
                 <Coins className="h-4 w-4" />
-                {L(billing?.signedIn ? UI.referCta : UI.registerCta)}
+                {L(billing?.signedIn ? UI.walletCta : UI.registerCta)}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               {proDone ? (

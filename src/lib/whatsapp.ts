@@ -179,27 +179,19 @@ export interface SendDailyRashifalInput {
 }
 
 /**
- * Send one approved marketing template through Meta's WhatsApp Cloud API.
- * Returns the provider message id. Throws WhatsAppSendError on any failure.
+ * Send one approved template through Meta's WhatsApp Cloud API. Shared by the
+ * daily rashifal and the transactional Pro-report message.
  */
-export async function sendDailyRashifalTemplate(input: SendDailyRashifalInput): Promise<string> {
+async function sendTemplate(
+  to: string,
+  templateName: string,
+  languageCode: string,
+  components: WhatsAppTemplateComponent[],
+): Promise<string> {
   const config = getWhatsAppConfig();
   if (!config.configured) {
     throw new WhatsAppSendError(503, "WhatsApp sender is not configured");
   }
-
-  const to = normalizeWhatsAppPhone(input.to);
-  if (!to) throw new WhatsAppSendError(400, "Invalid WhatsApp number");
-
-  const templateName =
-    input.templateName?.trim() ||
-    process.env.WHATSAPP_RASHIFAL_TEMPLATE_NAME?.trim() ||
-    process.env.WHATSAPP_DAILY_TEMPLATE_NAME?.trim() ||
-    DAILY_TEMPLATE_NAME;
-  const languageCode =
-    input.languageCode?.trim() ||
-    process.env.WHATSAPP_DAILY_TEMPLATE_LANG?.trim() ||
-    DAILY_TEMPLATE_LANG;
 
   const body = {
     messaging_product: "whatsapp",
@@ -209,11 +201,7 @@ export async function sendDailyRashifalTemplate(input: SendDailyRashifalInput): 
     template: {
       name: templateName,
       language: { code: languageCode },
-      components: buildDailyTemplateComponents(
-        input.name.slice(0, 60),
-        input.rashiName.slice(0, 60),
-        input.url,
-      ),
+      components,
     },
   };
 
@@ -246,4 +234,78 @@ export async function sendDailyRashifalTemplate(input: SendDailyRashifalInput): 
     throw new WhatsAppSendError(502, "WhatsApp API did not return a message id");
   }
   return messageId;
+}
+
+/**
+ * Send one approved marketing template through Meta's WhatsApp Cloud API.
+ * Returns the provider message id. Throws WhatsAppSendError on any failure.
+ */
+export async function sendDailyRashifalTemplate(input: SendDailyRashifalInput): Promise<string> {
+  const config = getWhatsAppConfig();
+  if (!config.configured) {
+    throw new WhatsAppSendError(503, "WhatsApp sender is not configured");
+  }
+
+  const to = normalizeWhatsAppPhone(input.to);
+  if (!to) throw new WhatsAppSendError(400, "Invalid WhatsApp number");
+
+  const templateName =
+    input.templateName?.trim() ||
+    process.env.WHATSAPP_RASHIFAL_TEMPLATE_NAME?.trim() ||
+    process.env.WHATSAPP_DAILY_TEMPLATE_NAME?.trim() ||
+    DAILY_TEMPLATE_NAME;
+  const languageCode =
+    input.languageCode?.trim() ||
+    process.env.WHATSAPP_DAILY_TEMPLATE_LANG?.trim() ||
+    DAILY_TEMPLATE_LANG;
+
+  return sendTemplate(
+    to,
+    templateName,
+    languageCode,
+    buildDailyTemplateComponents(
+      input.name.slice(0, 60),
+      input.rashiName.slice(0, 60),
+      input.url,
+    ),
+  );
+}
+
+export interface SendProReportInput {
+  /** The payer's number, in any format normalizeWhatsAppPhone accepts. */
+  to: string;
+  name: string;
+  url: string;
+  templateName?: string;
+  languageCode?: string;
+}
+
+/**
+ * Transactional Pro-report link. Meta utility template parameters:
+ * {{1}} first name, {{2}} private report URL. The template must be approved
+ * before this can deliver; until then the send throws and the caller logs it
+ * without touching the unlocked report.
+ */
+export async function sendProReportTemplate(input: SendProReportInput): Promise<string> {
+  const to = normalizeWhatsAppPhone(input.to);
+  if (!to) throw new WhatsAppSendError(400, "Invalid WhatsApp number");
+
+  const templateName =
+    input.templateName?.trim() ||
+    process.env.WHATSAPP_REPORT_TEMPLATE_NAME?.trim() ||
+    "pro_report_ready";
+  const languageCode =
+    input.languageCode?.trim() ||
+    process.env.WHATSAPP_REPORT_TEMPLATE_LANG?.trim() ||
+    DAILY_TEMPLATE_LANG;
+
+  return sendTemplate(to, templateName, languageCode, [
+    {
+      type: "body",
+      parameters: [
+        { type: "text", text: input.name.slice(0, 60) },
+        { type: "text", text: input.url },
+      ],
+    },
+  ]);
 }

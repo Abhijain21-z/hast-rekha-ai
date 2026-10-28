@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Copy, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, History, BarChart3, TrendingUp, Orbit, ScrollText, Hand, ListChecks, CalendarDays, MessageCircle } from "lucide-react";
+import { ChevronDown, Copy, Sparkles, Moon, Sun, Star, ArrowRight, Info, Check, History, BarChart3, TrendingUp, Orbit, ScrollText, Hand, ListChecks, CalendarDays, MessageCircle, Target } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Badge, Card, cn } from "@/components/ui";
 import { nakshatraAt, rashiAt, PANCHANG, tithiName } from "@/lib/content";
@@ -12,16 +12,16 @@ import { byLang } from "@/lib/i18n";
 import { formatDegree } from "@/lib/format-degree";
 import { formatDate, formatTime12, tzLabel, type ReadingDTO } from "@/lib/dto";
 import { buildPalmReport, AREAS } from "@/lib/palm";
+import { focusArea, parseFocus } from "@/lib/focus";
 import AdvancedChartPanel from "./AdvancedChart";
 import { Gauge, LifeGraph, RadarChart, Tilt } from "./ReportCharts";
 import PastSection from "./PastSection";
 import DetailedSections from "./DetailedSections";
+import FocusSection from "./FocusSection";
 import PalmAnalysis from "./PalmAnalysis";
 import MantraSection from "./MantraSection";
 import PremiumSection from "./PremiumSection";
 import { DonateReminder } from "./DonateReminder";
-import ReadingReview from "./ReadingReview";
-import ReviewPrompt from "./ReviewPrompt";
 import ScrollPrompts from "./ScrollPrompts";
 import RashifalPanel from "@/components/rashifal/RashifalPanel";
 import RashifalTrinity from "@/components/rashifal/RashifalTrinity";
@@ -62,6 +62,8 @@ export default function ReadingResult({
   );
   const [copied, setCopied] = useState(false);
   const [tech, setTech] = useState(false);
+  const focus = parseFocus(reading.notes);
+  const focusKey = focusArea(focus);
 
   // A print-open link forces every reveal section visible before the browser
   // opens the print dialog. Without this, sections below the fold stay at
@@ -94,6 +96,9 @@ export default function ReadingResult({
   }
 
   const nav = [
+    ...(focus
+      ? [{ id: "sec-focus", label: L({ en: "Your main problem", hi: "आपकी मुख्य समस्या" }), icon: Target }]
+      : []),
     { id: "sec-past", label: t.report.past.split(" — ")[0], icon: History },
     { id: "sec-scores", label: t.report.scores, icon: BarChart3 },
     { id: "sec-graph", label: t.report.graph, icon: TrendingUp },
@@ -207,6 +212,9 @@ export default function ReadingResult({
           <Link href={`/register?next=/reading/${reading.id}`} className="btn-gold rounded-full px-4 py-2 text-xs">{t.auth.register}</Link>
         </motion.div>
       )}
+
+      {/* The problem the reader came for is always the first prediction. */}
+      <FocusSection focus={focus} report={report} readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* Big three */}
       <div className="print-only print-overview-heading">
@@ -434,7 +442,7 @@ export default function ReadingResult({
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
       {/* 4. Detailed sections */}
-      <div className="print-section-start mt-14"><DetailedSections report={report} rashi={rashi} readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} /></div>
+      <div className="print-section-start mt-14"><DetailedSections report={report} rashi={rashi} readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} focusArea={focusKey} /></div>
 
       <PdfDividerButton readingId={reading.id} unlocked={pro} onUnlocked={unlockPro} />
 
@@ -501,13 +509,7 @@ export default function ReadingResult({
 
       <p className="mt-8 text-center text-xs italic text-slate-500">{t.result.disclaimer}</p>
 
-      {/* 8. Review ask — feeds the home carousel and the Reviews page */}
-      <ReadingReview defaultName={reading.fullName} readingId={reading.id} />
-
-      {/* 9. Once the whole prediction has been read (page end), ask gently — never mid-read. */}
-      <ReviewPrompt readingId={reading.id} defaultName={reading.fullName} />
-
-      {/* 10. Scroll asks — the complete PDF after every 4th scroll, the book once after the 6th. */}
+      {/* 9. Scroll asks — the complete PDF after every 4th scroll, the book once after the 6th. */}
       <ScrollPrompts readingId={reading.id} unlocked={pro} ultra={reading.ultra} onUnlocked={unlockPro} />
 
       <DonateReminder enabled />

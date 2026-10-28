@@ -8,7 +8,6 @@ import { LayoutDashboard, BookOpen, PlusCircle, Users, Settings, LogOut, Menu, X
 import { useLang } from "@/components/providers/LanguageProvider";
 import { LangToggle } from "@/components/layout/Navbar";
 import { Avatar, cn } from "@/components/ui";
-import TokenRewardPopup from "@/components/referral/TokenRewardPopup";
 
 export interface ShellUser { name: string; email: string; preferredLang: string }
 
@@ -116,9 +115,6 @@ export default function DashboardShell({ user, children }: { user: ShellUser; ch
       <main className="lg:pl-64">
         <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-10 lg:py-10">{children}</div>
       </main>
-
-      {/* Shows the 50-token gift once the referrer next opens their dashboard. */}
-      <TokenRewardPopup />
     </div>
   );
 }

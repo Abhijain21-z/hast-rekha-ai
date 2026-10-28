@@ -31,7 +31,7 @@ export async function PATCH(req: Request, { params }: Ctx) {
     /** Pro unlock by confirmation — the paywall asks for no UTR (₹51). */
     confirmPaid?: boolean;
     /** Which plan the UPI reference was paid for. Defaults to Pro (₹51). */
-    plan?: "pro" | "ultra";
+    plan?: "pro" | "diwali" | "bundle" | "ultra";
   };
 
   // Pro unlock by confirmation (no UTR) belonged to the manual UPI panel. That
@@ -73,8 +73,9 @@ export async function PATCH(req: Request, { params }: Ctx) {
       .update(readings)
       .set({
         premium: true,
-        // Never downgrade an Ultra (₹351) unlock back to Pro.
-        ...(body.plan === "ultra" ? { ultra: true } : {}),
+        // Never downgrade a book or PDF unlock: each entitlement is additive.
+        ...(body.plan === "ultra" || body.plan === "bundle" ? { ultra: true } : {}),
+        ...(body.plan === "diwali" ? { diwaliPdf: true } : {}),
         premiumUtr: utr,
         premiumAt: new Date(),
         updatedAt: new Date(),

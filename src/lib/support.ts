@@ -1,4 +1,4 @@
-import { PDF_PRICE, ULTRA_PRICE } from "./flags";
+import { PLAN_PRICES, type PaidPlan } from "./plans";
 
 /**
  * Direct WhatsApp help for a dropped or stuck payment.
@@ -9,7 +9,15 @@ import { PDF_PRICE, ULTRA_PRICE } from "./flags";
 const SUPPORT_WHATSAPP = (process.env.NEXT_PUBLIC_SUPPORT_WHATSAPP || "919522333669").replace(/\D/g, "");
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.hastrekhaai.online").replace(/\/$/, "");
 
-export type SupportPlan = "pro" | "ultra";
+export type SupportPlan = PaidPlan;
+
+const PLAN_LABEL: Record<PaidPlan, string> = {
+  pro: "Pro report",
+  diwali: "Pro report + Diwali Puja PDF",
+  bundle: "Pro report + Dhandayak book",
+  ultra: "Ultra Pro",
+  membership: "30-day membership",
+};
 
 export interface PaymentHelpDetails {
   readingId?: string | null;
@@ -37,12 +45,9 @@ export function chatQuotaHelpUrl() {
 }
 
 export function paymentHelpUrl(details: PaymentHelpDetails = {}) {
-  const planLabel =
-    details.plan === "ultra"
-      ? `Ultra Pro (₹${ULTRA_PRICE})`
-      : details.plan === "pro"
-        ? `Pro (₹${PDF_PRICE})`
-        : "";
+  const planLabel = details.plan
+    ? `${PLAN_LABEL[details.plan]} (₹${PLAN_PRICES[details.plan]})`
+    : "";
   const issue =
     details.issue === "not_unlocked" || details.issue === "return_page"
       ? "Payment ke baad report unlock nahi hui."

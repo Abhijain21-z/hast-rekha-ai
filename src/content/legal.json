@@ -5,12 +5,12 @@
    "hi": "गोपनीयता नीति"
   },
   "updated": {
-   "en": "Last updated: 24 October 2026",
-   "hi": "अंतिम अद्यतन: 24 अक्टूबर 2026"
+   "en": "Last updated: 27 October 2026",
+   "hi": "????? ??????: 27 ??????? 2026"
   },
   "intro": {
-   "en": "Hast Rekha AI (\"we\", \"our\") respects your privacy. This policy explains what we collect, why we collect it, and how you remain in control. By using hastrekha.ai you agree to this policy.",
-   "hi": "हस्तरेखा AI (\"हम\") आपकी गोपनीयता का सम्मान करता है। यह नीति बताती है कि हम क्या एकत्र करते हैं, क्यों करते हैं, और आपका नियंत्रण कैसे बना रहता है। hastrekha.ai का उपयोग करके आप इस नीति से सहमत होते हैं।"
+   "en": "Hast Rekha AI (\"we\", \"our\") respects your privacy. This policy explains what we collect, why we collect it, and how you remain in control. By using https://www.hastrekhaai.online you agree to this policy.",
+   "hi": "हस्तरेखा AI (\"हम\") आपकी गोपनीयता का सम्मान करता है। यह नीति बताती है कि हम क्या एकत्र करते हैं, क्यों करते हैं, और आपका नियंत्रण कैसे बना रहता है। https://www.hastrekhaai.online का उपयोग करके आप इस नीति से सहमत होते हैं।"
   },
   "sections": [
    {
@@ -32,12 +32,16 @@
     },
     "p": [
      {
-      "en": "Birth details are used solely to compute your reading on our servers. Palm photos are resized inside your browser and stored only with your reading so you can revisit them. We do not sell or rent personal data. We share only what is necessary with the service providers described below: Cashfree for payments, Meta for WhatsApp delivery, our AI provider for the optional chat, and Vercel for hosting and aggregate analytics. We use no advertising trackers of our own.",
-      "hi": "जन्म विवरण का उपयोग केवल हमारे सर्वर पर आपकी रीडिंग गणना हेतु होता है। हथेली की फ़ोटो आपके ब्राउज़र में छोटी होती है और केवल आपकी रीडिंग के साथ सहेजी जाती है ताकि आप दोबारा देख सकें। हम व्यक्तिगत डेटा बेचते या किराए पर नहीं देते। हम केवल आवश्यक जानकारी नीचे बताए सेवा प्रदाताओं के साथ साझा करते हैं: भुगतान के लिए Cashfree, WhatsApp delivery के लिए Meta, वैकल्पिक चैट के लिए हमारा AI provider, और hosting व aggregate analytics के लिए Vercel। हम अपनी ओर से कोई विज्ञापन ट्रैकर उपयोग नहीं करते।"
+      "en": "Birth details are used solely to compute your reading on our servers. Palm photos are resized inside your browser and stored only with your reading so you can revisit them; we do not analyse the photo with computer vision — the palm reading is a rule-based interpretation of the hand you select. We do not sell or rent personal data. We share only what is necessary with the service providers described below: Cashfree for payments, Meta for WhatsApp delivery, our AI provider for the optional chat, and Vercel for hosting and aggregate analytics. We use no advertising trackers of our own.",
+      "hi": "जन्म विवरण का उपयोग केवल हमारे सर्वर पर आपकी रीडिंग गणना हेतु होता है। हथेली की फ़ोटो आपके ब्राउज़र में छोटी होती है और केवल आपकी रीडिंग के साथ सहेजी जाती है ताकि आप दोबारा देख सकें; हम फ़ोटो का कंप्यूटर विज़न से विश्लेषण नहीं करते — हस्तरेखा आपके चुने हुए हाथ की नियम-आधारित व्याख्या है। हम व्यक्तिगत डेटा बेचते या किराए पर नहीं देते। हम केवल आवश्यक जानकारी नीचे बताए सेवा प्रदाताओं के साथ साझा करते हैं: भुगतान के लिए Cashfree, WhatsApp delivery के लिए Meta, वैकल्पिक चैट के लिए हमारा AI provider, और hosting व aggregate analytics के लिए Vercel। हम अपनी ओर से कोई विज्ञापन ट्रैकर उपयोग नहीं करते।"
      },
      {
       "en": "We use Vercel Analytics to measure aggregate page views and referrers. It is cookieless and does not identify individual visitors.",
       "hi": "हम aggregate page views और referrer मापने के लिए Vercel Analytics उपयोग करते हैं। यह cookieless है और किसी व्यक्तिगत विज़िटर की पहचान नहीं करता।"
+     },
+     {
+      "en": "Promotion of our own products and services: we may use the information you give us — such as your name, the reports you open and your WhatsApp number or email where you have consented — to tell you about our own paid reports, add-ons, the membership pass and other services from Hast Rekha AI. This is promotion of our own products only; we do not sell, rent or share your personal data with other companies for their marketing. You can opt out of promotional messages at any time by replying STOP on WhatsApp or by writing to us, and you will still receive essential payment and report messages.",
+      "hi": "हमारे अपने उत्पादों व सेवाओं का प्रचार: हम आपकी दी गई जानकारी — जैसे आपका नाम, आपकी खोली गई रिपोर्ट और (सहमति देने पर) आपका WhatsApp नंबर या ईमेल — का उपयोग अपनी सशुल्क रिपोर्ट, ऐड-ऑन, मेंबरशिप पास और हस्तरेखा AI की अन्य सेवाओं के बारे में बताने के लिए कर सकते हैं। यह केवल हमारे अपने उत्पादों का प्रचार है; हम आपका व्यक्तिगत डेटा किसी अन्य कंपनी को उसके मार्केटिंग के लिए नहीं बेचते, किराए पर नहीं देते और साझा नहीं करते। आप WhatsApp पर STOP लिखकर या हमें लिखकर कभी भी प्रचार संदेश बंद कर सकते हैं; ज़रूरी भुगतान व रिपोर्ट संदेश फिर भी मिलते रहेंगे।"
      }
     ]
    },
@@ -54,6 +58,22 @@
      {
       "en": "We send these reminders through Meta's WhatsApp Business Platform. Meta processes the delivery. Readers who have bought Pro or Ultra Pro are excluded from the reminder audience. We do not sell or share your number with anyone else, and we do not message numbers that have not opted in.",
       "hi": "हम ये reminders Meta के WhatsApp Business Platform से भेजते हैं। Delivery Meta प्रोसेस करता है। जिन पाठकों ने Pro या Ultra Pro खरीदा है, उन्हें reminder audience से बाहर रखा जाता है। हम आपका नंबर किसी और को बेचते या साझा नहीं करते, और जिन numbers ने सहमति नहीं दी उन्हें message नहीं भेजते।"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Membership and family profiles",
+     "hi": "मेंबरशिप और पारिवारिक प्रोफ़ाइल"
+    },
+    "p": [
+     {
+      "en": "A membership is a 30-day pass tied to your account. We store the expiry date, the number of Pro reports unlocked under the pass in the last 30 days, and the payment record. It does not auto-renew, so no recurring mandate or card is stored for it.",
+      "hi": "मेंबरशिप आपके खाते से जुड़ा 30-दिन का पास है। हम समाप्ति तिथि, पिछले 30 दिनों में पास से अनलॉक हुई प्रो रिपोर्ट की संख्या और भुगतान रिकॉर्ड सहेजते हैं। यह अपने आप रिन्यू नहीं होता, इसलिए इसके लिए कोई आवर्ती मैंडेट या कार्ड सहेजा नहीं जाता।"
+     },
+     {
+      "en": "You may save birth profiles for family members. When you save someone else's details, you must confirm that you have their permission to do so, and we record the time of that confirmation. Those details are used only to generate readings you request, and you can edit or delete a profile at any time. Do not save another person's details without their consent.",
+      "hi": "आप परिवारजनों की जन्म प्रोफ़ाइल सहेज सकते हैं। किसी और की जानकारी सहेजते समय आपको पुष्टि करनी होती है कि आपके पास उसकी अनुमति है, और हम उस पुष्टि का समय दर्ज करते हैं। वह जानकारी केवल आपके द्वारा माँगी गई रीडिंग बनाने के लिए उपयोग होती है, और आप प्रोफ़ाइल कभी भी संपादित या हटा सकते हैं। किसी अन्य व्यक्ति की जानकारी उसकी सहमति के बिना न सहेजें।"
      }
     ]
    },
@@ -133,8 +153,8 @@
    "hi": "अस्वीकरण"
   },
   "updated": {
-   "en": "Last updated: 24 October 2026",
-   "hi": "अंतिम अद्यतन: 24 अक्टूबर 2026"
+   "en": "Last updated: 27 October 2026",
+   "hi": "????? ??????: 27 ??????? 2026"
   },
   "intro": {
    "en": "Hast Rekha AI is provided for entertainment and self-reflection purposes only.",
@@ -162,6 +182,10 @@
      {
       "en": "Astronomical positions are computed with standard formulas (Lahiri ayanamsa). Results are deterministic and transparent — the technical panel in every report shows the exact numbers. Still, no calculation can guarantee future events.",
       "hi": "खगोलीय स्थितियाँ मानक सूत्रों (लाहिड़ी अयनांश) से गणित हैं। परिणाम नियतात्मक व पारदर्शी हैं — हर रिपोर्ट का तकनीकी पैनल सटीक अंक दिखाता है। फिर भी कोई गणना भविष्य की घटनाओं की गारंटी नहीं दे सकती।"
+     },
+     {
+      "en": "Palm photo: the hand-line section is a traditional, rule-based reading of the lines, mounts and marks described for the hand you select. We do not use computer vision to detect lines from your uploaded photo, and the photo is not analysed by an AI model. The photo is stored only so you can see which hand the reading refers to and revisit it later; you can use the reading without uploading any photo.",
+      "hi": "हथेली की फ़ोटो: हस्तरेखा वाला हिस्सा उस हाथ के लिए बताई गई रेखाओं, पर्वतों व चिह्नों की पारंपरिक, नियम-आधारित रीडिंग है जिसे आप चुनते हैं। हम आपकी अपलोड की गई फ़ोटो से रेखाएँ पहचानने के लिए कंप्यूटर विज़न का उपयोग नहीं करते, और फ़ोटो किसी AI मॉडल से विश्लेषित नहीं होती। फ़ोटो केवल इसलिए सहेजी जाती है कि आप देख सकें कि रीडिंग किस हाथ की है और बाद में दोबारा खोल सकें; आप बिना फ़ोटो के भी रीडिंग ले सकते हैं।"
      }
     ]
    },
@@ -179,13 +203,13 @@
    },
    {
     "h": {
-     "en": "Premium payments",
-     "hi": "प्रीमियम भुगतान"
+     "en": "Paid reports, add-ons and membership",
+     "hi": "सशुल्क रिपोर्ट, ऐड-ऑन और मेंबरशिप"
     },
     "p": [
      {
-      "en": "The ₹51 premium unlock and optional donations are voluntary contributions processed directly through UPI to our published UPI ID. Refunds for the digital premium report are available within 24 hours if the report fails to unlock; write to abhijain.technical@gmail.com.",
-      "hi": "₹51 प्रीमियम अनलॉक व वैकल्पिक दान हमारी प्रकाशित UPI ID पर UPI से प्रत्यक्ष प्रक्रिया की गई स्वैच्छिक सहभागिता है। यदि रिपोर्ट अनलॉक न हो तो 24 घंटे के भीतर डिजिटल प्रीमियम रिपोर्ट हेतु धनवापसी उपलब्ध; abhijain.technical@gmail.com पर लिखें।"
+      "en": "Paid reports are one-time digital purchases: the ₹51 Pro report, the ₹99 Pro + Diwali Puja PDF option, the ₹199 Pro + Dhandayak book bundle, the ₹351 Ultra Pro report for existing buyers, and the ₹1,000 30-day membership pass. Prices are shown in Indian Rupees and include applicable taxes. Payments are processed by Cashfree (UPI, cards and net banking); the manual UPI QR is an emergency fallback. A membership is a pass, not a recurring subscription — it does not auto-renew and simply expires. Refunds are covered by our Refund & Cancellation Policy.",
+      "hi": "सशुल्क रिपोर्ट एक बार की डिजिटल खरीद हैं: ₹51 प्रो रिपोर्ट, ₹99 प्रो + दिवाली पूजा PDF, ₹199 प्रो + धनदायक पुस्तक बंडल, मौजूदा खरीदारों के लिए ₹351 अल्ट्रा प्रो रिपोर्ट, और ₹1,000 का 30-दिन मेंबरशिप पास। कीमतें भारतीय रुपये में हैं और लागू कर सहित हैं। भुगतान Cashfree (UPI, कार्ड व नेट बैंकिंग) से होता है; मैन्युअल UPI QR आपातकालीन विकल्प है। मेंबरशिप एक पास है, आवर्ती सब्सक्रिप्शन नहीं — यह अपने आप रिन्यू नहीं होता और समय पर ख़त्म हो जाता है। रिफंड हमारी रिफंड व रद्दीकरण नीति के अनुसार हैं।"
      }
     ]
    },
@@ -274,8 +298,8 @@
     },
     "p": [
      {
-      "en": "Transparency: every report shows the exact degrees and ayanamsa behind it, and we openly state that AI helped build this website. Privacy: your data stays with you. Bilingual first: Hindi and English, carefully reviewed by humans. No fear-mongering: every caution is paired with a remedy. Affordability: the complete free report costs nothing; the premium 5-year roadmap is a one-time ₹51.",
-      "hi": "पारदर्शिता: हर रिपोर्ट अपने पीछे के सटीक अंश व अयनांश दिखाती है, और हम खुलकर बताते हैं कि इस वेबसाइट को बनाने में AI की मदद ली गई है। गोपनीयता: आपका डेटा आपके पास रहता है। द्विभाषी सर्वप्रथम: हिंदी व अंग्रेज़ी, मनुष्यों द्वारा सावधानी से जाँची गई। भय न फैलाना: हर सावधानी के साथ उपाय। किफ़ायत: संपूर्ण निःशुल्क रिपोर्ट का कोई शुल्क नहीं; प्रीमियम 5-वर्षीय रोडमैप एक बार का ₹51।"
+      "en": "Transparency: every report shows the exact degrees and ayanamsa behind it, and we openly state that AI helped build this website. Privacy: your data stays with you. Bilingual first: Hindi and English, carefully reviewed by humans. No fear-mongering: every caution is paired with a remedy. Honest pricing: the core reading is free, the Pro report is a one-time ₹51, add-ons are clearly separate, and the membership is a 30-day pass with a published fair-use limit.",
+      "hi": "पारदर्शिता: हर रिपोर्ट अपने पीछे के सटीक अंश व अयनांश दिखाती है, और हम खुलकर बताते हैं कि इस वेबसाइट को बनाने में AI की मदद ली गई है। गोपनीयता: आपका डेटा आपके पास रहता है। द्विभाषी सर्वप्रथम: हिंदी व अंग्रेज़ी, मनुष्यों द्वारा सावधानी से जाँची गई। भय न फैलाना: हर सावधानी के साथ उपाय। ईमानदार मूल्य: मूल रीडिंग फ्री, प्रो रिपोर्ट एक बार का ₹51, ऐड-ऑन साफ़ अलग, और मेंबरशिप 30-दिन का पास जिसकी फेयर-यूज़ सीमा सार्वजनिक है।"
      }
     ]
    },
@@ -349,44 +373,89 @@
   ]
  },
  "refunds": {
-  "title": { "en": "Refund & Cancellation Policy", "hi": "रिफंड और रद्दीकरण नीति" },
-  "updated": { "en": "Last updated: 24 October 2026", "hi": "अंतिम अद्यतन: 24 अक्टूबर 2026" },
+  "title": {
+   "en": "Refund & Cancellation Policy",
+   "hi": "रिफंड और रद्दीकरण नीति"
+  },
+  "updated": {
+   "en": "Last updated: 27 October 2026",
+   "hi": "????? ??????: 27 ??????? 2026"
+  },
   "intro": {
-   "en": "This policy explains refunds and cancellations for the paid digital reports on Hast Rekha AI (https://www.hastrekhaai.online): the ₹51 Pro report and the ₹351 Ultra Pro report (which includes the Dhandayak book). All payments are one-time — there is no subscription.",
-   "hi": "यह नीति हस्त रेखा AI (https://www.hastrekhaai.online) की सशुल्क डिजिटल रिपोर्ट्स — ₹51 प्रो रिपोर्ट और ₹351 अल्ट्रा प्रो रिपोर्ट (धनदायक पुस्तक सहित) — के रिफंड और रद्दीकरण के बारे में बताती है। सभी भुगतान एक बार के हैं — कोई सब्सक्रिप्शन नहीं है।"
+   "en": "This policy explains refunds and cancellations for the paid digital products on Hast Rekha AI (https://www.hastrekhaai.online): the ₹51 Pro report, the ₹99 Pro + Diwali Puja PDF option, the ₹199 Pro + Dhandayak book bundle, the ₹351 Ultra Pro report, and the ₹1,000 30-day membership pass. Every purchase is one-time. The membership is a pass, not a recurring subscription, and it does not auto-renew.",
+   "hi": "यह नीति हस्त रेखा AI (https://www.hastrekhaai.online) के सशुल्क डिजिटल उत्पादों — ₹51 प्रो रिपोर्ट, ₹99 प्रो + दिवाली पूजा PDF, ₹199 प्रो + धनदायक पुस्तक बंडल, ₹351 अल्ट्रा प्रो रिपोर्ट और ₹1,000 का 30-दिन मेंबरशिप पास — के रिफंड व रद्दीकरण के बारे में बताती है। हर खरीद एक बार की है। मेंबरशिप एक पास है, आवर्ती सब्सक्रिप्शन नहीं, और यह अपने आप रिन्यू नहीं होता।"
   },
   "sections": [
    {
-    "h": { "en": "Instant digital delivery", "hi": "तुरंत डिजिटल डिलीवरी" },
+    "h": {
+     "en": "Instant digital delivery",
+     "hi": "तुरंत डिजिटल डिलीवरी"
+    },
     "p": [
-     { "en": "Payment unlocks the report in your browser immediately. Because the product is digital and delivered instantly, it cannot be returned like a physical item.", "hi": "भुगतान के साथ रिपोर्ट आपके ब्राउज़र में तुरंत अनलॉक हो जाती है। उत्पाद डिजिटल है और तुरंत मिलता है, इसलिए इसे किसी भौतिक वस्तु की तरह वापस नहीं किया जा सकता।" }
+     {
+      "en": "Payment unlocks the report in your browser immediately. Because the product is digital and delivered instantly, it cannot be returned like a physical item.",
+      "hi": "भुगतान के साथ रिपोर्ट आपके ब्राउज़र में तुरंत अनलॉक हो जाती है। उत्पाद डिजिटल है और तुरंत मिलता है, इसलिए इसे किसी भौतिक वस्तु की तरह वापस नहीं किया जा सकता।"
+     }
     ]
    },
    {
-    "h": { "en": "When we refund", "hi": "हम कब रिफंड देते हैं" },
+    "h": {
+     "en": "When we refund",
+     "hi": "हम कब रिफंड देते हैं"
+    },
     "p": [
-     { "en": "If money was deducted but your report did not unlock, or you were charged twice for the same report, we will refund the affected payment. Write to abhijain.technical@gmail.com within 24 hours of the payment with the order ID or UTR and the phone/email you paid from.", "hi": "अगर पैसे कट गए हों पर आपकी रिपोर्ट अनलॉक नहीं हुई, या एक ही रिपोर्ट के लिए दो बार भुगतान हो गया हो, तो हम प्रभावित भुगतान का रिफंड करते हैं। भुगतान के 24 घंटे के भीतर ऑर्डर ID या UTR तथा जिस नंबर/ईमेल से भुगतान किया हो, उसके साथ abhijain.technical@gmail.com पर लिखें।" },
-     { "en": "We verify the payment with our payment provider and, when it qualifies, refund it to the original payment method.", "hi": "हम भुगतान की पुष्टि अपने पेमेंट प्रोवाइडर से करते हैं और पात्र होने पर उसे उसी भुगतान विधि में वापस करते हैं।" }
+     {
+      "en": "If money was deducted but your report did not unlock, or you were charged twice for the same report, we will refund the affected payment. Write to abhijain.technical@gmail.com within 24 hours of the payment with the order ID or UTR and the phone/email you paid from.",
+      "hi": "अगर पैसे कट गए हों पर आपकी रिपोर्ट अनलॉक नहीं हुई, या एक ही रिपोर्ट के लिए दो बार भुगतान हो गया हो, तो हम प्रभावित भुगतान का रिफंड करते हैं। भुगतान के 24 घंटे के भीतर ऑर्डर ID या UTR तथा जिस नंबर/ईमेल से भुगतान किया हो, उसके साथ abhijain.technical@gmail.com पर लिखें।"
+     },
+     {
+      "en": "We verify the payment with our payment provider and, when it qualifies, refund it to the original payment method.",
+      "hi": "हम भुगतान की पुष्टि अपने पेमेंट प्रोवाइडर से करते हैं और पात्र होने पर उसे उसी भुगतान विधि में वापस करते हैं।"
+     }
     ]
    },
    {
-    "h": { "en": "When we do not refund", "hi": "हम कब रिफंड नहीं देते" },
+    "h": {
+     "en": "When we do not refund",
+     "hi": "हम कब रिफंड नहीं देते"
+    },
     "p": [
-     { "en": "Once a report has unlocked successfully, the digital product is delivered and is generally non-refundable. Refunds are not given for a change of mind, or because you disagree with the predictions — readings are for entertainment and self-reflection (see our Disclaimer).", "hi": "रिपोर्ट सफलतापूर्वक अनलॉक होने के बाद डिजिटल उत्पाद मिल चुका होता है और सामान्यतः गैर-वापसी योग्य है। मन बदलने या भविष्यवाणियों से सहमत न होने पर रिफंड नहीं दिया जाता — रीडिंग मनोरंजन और आत्म-चिंतन के लिए हैं (हमारा डिस्क्लेमर देखें)।" },
-     { "en": "Optional donations are voluntary and non-refundable.", "hi": "वैकल्पिक दान स्वैच्छिक हैं और गैर-वापसी योग्य हैं।" },
-     { "en": "Referral token upgrades: when an Ultra Pro report is unlocked with 350 referral tokens, no money is paid, so there is no cash amount to refund. If a redemption fails, the tokens remain in your balance.", "hi": "रेफ़ल टोकन अपग्रेड: जब 350 रेफ़ल टोकन से अल्ट्रा प्रो रिपोर्ट अनलॉक होती है, तो कोई धन नहीं दिया जाता, इसलिए नकद रिफंड की कोई राशि नहीं होती। यदि रिडेम्प्शन विफल हो, तो टोकन आपके बैलेंस में बने रहते हैं।" }
+     {
+      "en": "Once a report has unlocked successfully, the digital product is delivered and is generally non-refundable. Refunds are not given for a change of mind, or because you disagree with the predictions — readings are for entertainment and self-reflection (see our Disclaimer).",
+      "hi": "रिपोर्ट सफलतापूर्वक अनलॉक होने के बाद डिजिटल उत्पाद मिल चुका होता है और सामान्यतः गैर-वापसी योग्य है। मन बदलने या भविष्यवाणियों से सहमत न होने पर रिफंड नहीं दिया जाता — रीडिंग मनोरंजन और आत्म-चिंतन के लिए हैं (हमारा डिस्क्लेमर देखें)।"
+     },
+     {
+      "en": "Optional donations are voluntary and non-refundable.",
+      "hi": "वैकल्पिक दान स्वैच्छिक हैं और गैर-वापसी योग्य हैं।"
+     },
+     {
+      "en": "Membership: a 30-day pass that has already unlocked one or more Pro reports is generally non-refundable, because access has been delivered. If a pass was charged but never activated on your account, contact us within 24 hours and we will refund it.",
+      "hi": "मेंबरशिप: जिस 30-दिन पास से एक या अधिक प्रो रिपोर्ट पहले ही अनलॉक हो चुकी हैं, वह सामान्यतः गैर-वापसी योग्य है, क्योंकि एक्सेस मिल चुका है। यदि पास का भुगतान हुआ पर आपके खाते पर कभी सक्रिय नहीं हुआ, तो 24 घंटे के भीतर संपर्क करें; हम रिफंड कर देंगे।"
+     }
     ]
    },
    {
-    "h": { "en": "Cancellation", "hi": "रद्दीकरण" },
+    "h": {
+     "en": "Cancellation",
+     "hi": "रद्दीकरण"
+    },
     "p": [
-     { "en": "There is nothing to cancel: each report is a one-time purchase, not a recurring plan. If you start a payment and do not complete it, no money is taken and the order simply expires.", "hi": "रद्द करने के लिए कुछ नहीं है: हर रिपोर्ट एक बार की खरीद है, कोई आवर्ती प्लान नहीं। अगर आप भुगतान शुरू करके पूरा नहीं करते, तो कोई पैसा नहीं कटता और ऑर्डर स्वयं समाप्त हो जाता है।" }
+     {
+      "en": "There is nothing to cancel: each report and add-on is a one-time purchase, and the membership is a 30-day pass that expires on its own with no auto-renewal. If you start a payment and do not complete it, no money is taken and the order simply expires.",
+      "hi": "रद्द करने के लिए कुछ नहीं है: हर रिपोर्ट व ऐड-ऑन एक बार की खरीद है, और मेंबरशिप 30-दिन का पास है जो बिना ऑटो-रिन्यूअल के समय पर ख़त्म हो जाता है। अगर आप भुगतान शुरू करके पूरा नहीं करते, तो कोई पैसा नहीं कटता और ऑर्डर स्वयं समाप्त हो जाता है।"
+     }
     ]
    },
    {
-    "h": { "en": "Contact", "hi": "संपर्क" },
+    "h": {
+     "en": "Contact",
+     "hi": "संपर्क"
+    },
     "p": [
-     { "en": "For any payment or refund question, email abhijain.technical@gmail.com or use the contact page at https://www.hastrekhaai.online/contact.", "hi": "भुगतान या रिफंड से जुड़े किसी भी प्रश्न के लिए abhijain.technical@gmail.com पर ईमेल करें या https://www.hastrekhaai.online/contact पर संपर्क करें।" }
+     {
+      "en": "For any payment or refund question, email abhijain.technical@gmail.com or use the contact page at https://www.hastrekhaai.online/contact.",
+      "hi": "भुगतान या रिफंड से जुड़े किसी भी प्रश्न के लिए abhijain.technical@gmail.com पर ईमेल करें या https://www.hastrekhaai.online/contact पर संपर्क करें।"
+     }
     ]
    }
   ]
@@ -397,8 +466,8 @@
    "hi": "सेवा की शर्तें"
   },
   "updated": {
-   "en": "Last updated: 24 October 2026",
-   "hi": "अंतिम अद्यतन: 24 अक्टूबर 2026"
+   "en": "Last updated: 27 October 2026",
+   "hi": "????? ??????: 27 ??????? 2026"
   },
   "intro": {
    "en": "Welcome to Hast Rekha AI (https://www.hastrekhaai.online). By using this website, you agree to these Terms of Service. Please read them carefully before using our astrology and palmistry services.",
@@ -464,32 +533,56 @@
     },
     "p": [
      {
-      "en": "Certain advanced features may require payment. Prices are displayed in Indian Rupees (INR) and are inclusive of applicable taxes. Payments are processed through UPI. All paid reports are delivered digitally and, given their instant nature, are generally non-refundable once generated. If you were charged but did not receive your report, contact us at abhijain.technical@gmail.com and we will resolve it.",
-      "hi": "कुछ उन्नत सुविधाओं के लिए भुगतान आवश्यक हो सकता है। कीमतें भारतीय रुपये (INR) में प्रदर्शित होती हैं और लागू कर सहित हैं। भुगतान UPI के माध्यम से किया जाता है। सभी सशुल्क रिपोर्ट डिजिटल रूप से वितरित होती हैं और उनकी त्वरित प्रकृति के कारण एक बार बनने के बाद सामान्यतः गैर-धनवापसी योग्य होती हैं। यदि भुगतान हुआ परंतु रिपोर्ट नहीं मिली, तो abhijain.technical@gmail.com पर संपर्क करें।"
+      "en": "Certain advanced features require payment. Prices are displayed in Indian Rupees (INR) and are inclusive of applicable taxes. Payments are processed securely by Cashfree (UPI, cards and net banking); a manual UPI QR is available as a fallback. The paid options are the ₹51 Pro report, the ₹99 Pro + Diwali Puja PDF option, the ₹199 Pro + Dhandayak book bundle, the ₹351 Ultra Pro report, and the ₹1,000 30-day membership pass. All paid reports are delivered digitally and, given their instant nature, are generally non-refundable once generated. If you were charged but did not receive your report, contact us at abhijain.technical@gmail.com and we will resolve it.",
+      "hi": "कुछ उन्नत सुविधाओं के लिए भुगतान आवश्यक हो सकता है। कीमतें भारतीय रुपये (INR) में प्रदर्शित होती हैं और लागू कर सहित हैं। भुगतान Cashfree (UPI, कार्ड व नेट बैंकिंग) से सुरक्षित रूप से होता है; मैन्युअल UPI QR आपातकालीन विकल्प है। सशुल्क विकल्प हैं ₹51 प्रो रिपोर्ट, ₹99 प्रो + दिवाली पूजा PDF, ₹199 प्रो + धनदायक पुस्तक बंडल, ₹351 अल्ट्रा प्रो रिपोर्ट और ₹1,000 का 30-दिन मेंबरशिप पास। सभी सशुल्क रिपोर्ट डिजिटल रूप से वितरित होती हैं और उनकी त्वरित प्रकृति के कारण एक बार बनने के बाद सामान्यतः गैर-धनवापसी योग्य होती हैं। यदि भुगतान हुआ परंतु रिपोर्ट नहीं मिली, तो abhijain.technical@gmail.com पर संपर्क करें।"
      }
     ]
    },
    {
     "h": {
-     "en": "Referral Tokens and Ultra Pro Redemption",
-     "hi": "रेफ़ल टोकन और अल्ट्रा प्रो रिडेम्प्शन"
+     "en": "Membership pass",
+     "hi": "???????? ???"
     },
     "p": [
      {
-      "en": "Hast Rekha AI may offer promotional referral tokens. A referrer receives 50 tokens only after the person they referred creates an account using the referral link or code. Opening the link, creating a reading without an account, or registering without the code does not earn tokens. One reward is allowed per new account; self-referrals, duplicate or fake accounts and automated signups are not eligible, and tokens may be reversed if abuse is detected.",
-      "hi": "हस्त रेखा AI प्रचारात्मक रेफ़ल टोकन दे सकता है। रेफ़र करने वाले को 50 टोकन तभी मिलते हैं जब उसका रेफ़र किया गया व्यक्ति रेफ़ल लिंक या कोड से खाता बनाता है। केवल लिंक खोलने, बिना खाते के रीडिंग बनाने या कोड के बिना पंजीकरण करने पर टोकन नहीं मिलते। प्रत्येक नए खाते पर एक ही बार इनाम मिलता है; स्वयं को रेफ़र करना, डुप्लिकेट या फ़र्ज़ी खाते और स्वचालित साइनअप पात्र नहीं हैं, और दुरुपयोग पाए जाने पर टोकन वापस लिए जा सकते हैं।"
-     },
+      "en": "A membership is a 30-day pass tied to your account. It is not a recurring subscription: it does not auto-renew, no mandate is created, and access simply ends on the expiry date. Buying again extends the pass from the later of the current date or the existing expiry.",
+      "hi": "???????? ???? ???? ?? ????? 30-??? ?? ??? ??? ?? ?????? ???????????? ???? ??: ?? ???? ?? ?????? ???? ????, ??? ?????? ???? ????, ?? ?????? ??????? ???? ?? ????? ??? ?? ???? ??? ?????? ?????? ?? ??? ?????? ???? ?? ???? ?? ?? ??? ??????? ? ?? ??? ??? ?? ? ?? ??? ????? ???"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Fair use",
+     "hi": "????-????"
+    },
+    "p": [
      {
-      "en": "Tokens have no cash value, cannot be transferred or sold, and cannot be exchanged for cash. 350 tokens may be redeemed once to unlock a single Ultra Pro report (₹351 value). Tokens are not accepted for the ₹51 Pro report; that report is always purchased with real money at checkout.",
-      "hi": "टोकन का कोई नकद मूल्य नहीं है, इन्हें स्थानांतरित या बेचा नहीं जा सकता और नकद में नहीं बदला जा सकता। 350 टोकन एक बार में एक अल्ट्रा प्रो रिपोर्ट (₹351 मूल्य) अनलॉक करने के लिए इस्तेमाल किए जा सकते हैं। ₹51 प्रो रिपोर्ट के लिए टोकन स्वीकार नहीं किए जाते; वह रिपोर्ट हमेशा चेकआउट पर वास्तविक धन से खरीदी जाती है।"
-     },
+      "en": "A membership includes up to 30 Pro reports in a rolling 30-day window and up to 5 saved birth profiles. These limits keep the pass affordable and prevent abuse. Reaching the report limit does not cancel the pass or delete anything; you can still buy individual reports at the normal price, and the pass keeps working for profiles.",
+      "hi": "???????? ??? ?????? 30 ????? ?? ???? ??? ?????? 30 ???? ??????? ?? ?????? 5 ????? ???? ????????? ????? ???? ?? ?????? ??? ?? ???????? ???? ??? ?? ???????? ????? ???? ??????? ???? ???? ???? ?? ??? ???? ???? ???? ?? ??? ?? ???? ?????; ?? ??????? ???? ?? ??? ?? ??????? ???? ???? ???, ?? ??? ????????? ?? ??? ???? ???? ???"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Family profiles and consent",
+     "hi": "????????? ????????? ?? ?????"
+    },
+    "p": [
      {
-      "en": "A token redemption is final and unlocks the report on the account that redeems it. Because a token upgrade is not a cash payment, no cash refund is available for that upgrade. If a redemption fails, the tokens are not deducted from your balance.",
-      "hi": "टोकन रिडेम्प्शन अंतिम है और रिपोर्ट उसी खाते में अनलॉक होती है जो रिडेम्प्शन करता है। टोकन से किया गया अपग्रेड नकद भुगतान नहीं है, इसलिए उस अपग्रेड के लिए नकद रिफंड उपलब्ध नहीं है। यदि रिडेम्प्शन विफल होता है, तो टोकन आपके बैलेंस से नहीं कटते।"
-     },
+      "en": "You may save birth details for family members only with their permission. By saving a profile you confirm that you have that permission, and we record the time of confirmation. Do not use the service to profile someone who has objected or who is not aware. You can edit or delete any profile at any time, and the person concerned can ask us to delete their details by writing to abhijain.technical@gmail.com.",
+      "hi": "?? ?????????? ?? ???? ??????? ???? ???? ?????? ?? ???? ???? ???? ????????? ?????? ?? ?????? ???? ??? ?? ???? ??? ?? ?????? ??, ?? ?? ?????? ?? ??? ???? ???? ???? ???? ??? ??????? ?? ????????? ? ????? ????? ?????? ?? ?? ?? ???? ???? ??????? ? ??? ?? ??? ?? ????????? ??? ?? ??????? ?? ??? ???? ???, ?? ??????? ??????? abhijain.technical@gmail.com ?? ????? ???? ??????? ????? ?? ??? ?? ???? ???"
+     }
+    ]
+   },
+   {
+    "h": {
+     "en": "Abuse",
+     "hi": "????????"
+    },
+    "p": [
      {
-      "en": "We may change, suspend or end the token programme, or change the number of tokens needed for a reward, by posting notice on this page. Tokens already earned remain usable for the reward value shown at the time they were earned, unless the account has breached these Terms.",
-      "hi": "हम इस पृष्ठ पर सूचना देकर टोकन कार्यक्रम बदल, निलंबित या समाप्त कर सकते हैं, या किसी इनाम के लिए आवश्यक टोकन की संख्या बदल सकते हैं। पहले कमाए गए टोकन उस समय दिखाए गए इनाम मूल्य के लिए तब तक उपयोगी रहेंगे, जब तक खाते ने इन शर्तों का उल्लंघन न किया हो।"
+      "en": "Sharing one account to generate reports for strangers, automated bulk generation, reselling report access, or using another person's details without consent is not allowed. If we detect this, we may suspend the pass or the account. Reports already bought individually are unaffected.",
+      "hi": "???????? ?? ??? ??????? ????? ???? ?? ???? ???? ????, ???????? ??? ???????, ??????? ?????? ?? ??? ?????, ?? ???? ???? ??????? ?? ??????? ???? ????? ?? ????? ???? ????? ???? ??? ??? ??? ???? ?? ?? ??? ?? ???? ??????? ?? ???? ???? ??? ?? ????? ?? ??????? ?? ???? ??? ???? ?????"
      }
     ]
    },

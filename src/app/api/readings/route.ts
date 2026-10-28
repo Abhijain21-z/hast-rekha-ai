@@ -8,6 +8,8 @@ import { RASHIS } from "@/lib/content";
 import { toReadingSummary } from "@/lib/dto";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { upsertWhatsAppSubscriber } from "@/lib/whatsapp-subscribers";
+import { encodeFocus, isFocusKey } from "@/lib/focus";
+import { membershipCanUnlockReport } from "@/lib/membership";
 
 export const dynamic = "force-dynamic";
 
@@ -34,6 +36,8 @@ interface Body {
   whatsappPhone?: string | null;
   /** Separate, explicit consent for the 3x/week marketing message. */
   dailyRashifalOptIn?: boolean;
+  /** Optional main life concern; stored in `notes` and shown first. */
+  focus?: string | null;
   title?: string;
 }
 
@@ -71,6 +75,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "WhatsApp number is required" }, { status: 400 });
   }
   const dailyRashifalOptIn = body.dailyRashifalOptIn === true;
+  const focus = isFocusKey(body.focus) ? body.focus : null;
 
   let result;
   try {
@@ -80,6 +85,13 @@ export async function POST(req: Request) {
   }
 
   const user = await getCurrentUser();
+
+  // Members get every new report unlocked until the rolling fair-use cap. A
+  // failed lookup must never block the reading, so it simply stays free.
+  const memberUnlock = user
+    ? await membershipCanUnlockReport(user.id).catch(() => false)
+    : false;
+
   const [row] = await db
     .insert(readings)
     .values({
@@ -98,7 +110,10 @@ export async function POST(req: Request) {
       palmHand,
       gender,
       married,
+      notes: encodeFocus(focus),
       whatsappPhone,
+      premium: memberUnlock,
+      premiumAt: memberUnlock ? new Date() : null,
     })
     .returning();
 
@@ -123,5 +138,5 @@ export async function POST(req: Request) {
     }
   }
 
-  return NextResponse.json({ id: row.id, result }, { status: 201 });
+  return NextResponse.json({ id: row.id, result, memberUnlock }, { status: 201 });
 }
