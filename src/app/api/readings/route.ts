@@ -36,6 +36,8 @@ interface Body {
   whatsappPhone?: string | null;
   /** Separate, explicit consent for the 3x/week marketing message. */
   dailyRashifalOptIn?: boolean;
+  /** Marketing consent for WhatsApp follow-up about Pro plans. Defaults to true. */
+  marketingOptIn?: boolean;
   /** Optional main life concern; stored in `notes` and shown first. */
   focus?: string | null;
   title?: string;
@@ -75,6 +77,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "WhatsApp number is required" }, { status: 400 });
   }
   const dailyRashifalOptIn = body.dailyRashifalOptIn === true;
+  const marketingOptIn = body.marketingOptIn !== false; // default true
   const focus = isFocusKey(body.focus) ? body.focus : null;
 
   let result;
@@ -112,6 +115,7 @@ export async function POST(req: Request) {
       married,
       notes: encodeFocus(focus),
       whatsappPhone,
+      marketingOptIn,
       premium: memberUnlock,
       premiumAt: memberUnlock ? new Date() : null,
     })

@@ -68,6 +68,8 @@ export const readings = pgTable(
     palmHand: varchar("palm_hand", { length: 10 }),
     /** Required for new readings; older rows may still be null. Never exposed in the public DTO. */
     whatsappPhone: text("whatsapp_phone"),
+    /** Marketing consent for WhatsApp follow-up about Pro plans. Defaults to true. */
+    marketingOptIn: boolean("marketing_opt_in").notNull().default(true),
     // Optional profile details captured in the form; shown back on the report.
     gender: varchar("gender", { length: 10 }), // "male" | "female" | "trans"
     married: boolean("married"), // null when the visitor skipped the question

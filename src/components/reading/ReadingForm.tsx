@@ -25,6 +25,7 @@ export default function ReadingForm({ loggedIn }: Props) {
   const [fullName, setFullName] = useState(params.get("name") ?? "");
   const [whatsappPhone, setWhatsappPhone] = useState("");
   const [dailyRashifal, setDailyRashifal] = useState(true);
+  const [marketingOptIn, setMarketingOptIn] = useState(true);
   const [birthDate, setBirthDate] = useState(params.get("dob") ?? "");
   const [birthTime, setBirthTime] = useState(params.get("tob") ?? "");
   const [timeUnknown, setTimeUnknown] = useState(false);
@@ -171,6 +172,7 @@ export default function ReadingForm({ loggedIn }: Props) {
         focus: focus || null,
         whatsappPhone: waDigits,
         dailyRashifalOptIn: dailyRashifal,
+        marketingOptIn: marketingOptIn,
       }),
     }).then(async (res) => {
       if (!res.ok) throw new Error("request failed");
@@ -273,6 +275,23 @@ export default function ReadingForm({ loggedIn }: Props) {
             </label>
             <ErrorText>{errors.whatsappPhone}</ErrorText>
           </div>
+
+          <label
+            htmlFor="marketing-opt-in"
+            className="mt-3 flex cursor-pointer items-start gap-2.5 rounded-xl border border-gold-400/15 bg-gold-400/[0.04] p-3"
+          >
+            <input
+              id="marketing-opt-in"
+              type="checkbox"
+              checked={marketingOptIn}
+              onChange={(e) => setMarketingOptIn(e.target.checked)}
+              className="mt-0.5 h-4 w-4 shrink-0 accent-[#f5c242]"
+            />
+            <span className="text-xs leading-relaxed">
+              <span className="font-medium text-slate-200">मुझे व्हाट्सऐप पर प्रो प्लान की जानकारी भेजें</span>
+              <span className="mt-0.5 block text-slate-500">(ऐच्छिक — कभी भी STOP लिखकर बंद कर सकते हैं)</span>
+            </span>
+          </label>
 
           <div className="grid gap-5 sm:grid-cols-2">
             <div>

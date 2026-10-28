@@ -309,3 +309,38 @@ export async function sendProReportTemplate(input: SendProReportInput): Promise<
     },
   ]);
 }
+
+/**
+ * Follow-up message for free readers who opted into marketing.
+ * Uses a WhatsApp marketing template (must be approved by Meta first).
+ * Parameters: {{1}} name, {{2}} pro plan link.
+ */
+export async function sendProFollowUpTemplate(input: {
+  to: string;
+  name: string;
+  url: string;
+  templateName?: string;
+  languageCode?: string;
+}): Promise<string> {
+  const to = normalizeWhatsAppPhone(input.to);
+  if (!to) throw new WhatsAppSendError(400, "Invalid WhatsApp number");
+
+  const templateName =
+    input.templateName?.trim() ||
+    process.env.WHATSAPP_PRO_FOLLOWUP_TEMPLATE_NAME?.trim() ||
+    "pro_followup";
+  const languageCode =
+    input.languageCode?.trim() ||
+    process.env.WHATSAPP_PRO_FOLLOWUP_TEMPLATE_LANG?.trim() ||
+    DAILY_TEMPLATE_LANG;
+
+  return sendTemplate(to, templateName, languageCode, [
+    {
+      type: "body",
+      parameters: [
+        { type: "text", text: input.name.slice(0, 60) },
+        { type: "text", text: input.url.slice(0, 60) },
+      ],
+    },
+  ]);
+}
