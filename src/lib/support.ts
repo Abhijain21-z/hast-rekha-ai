@@ -33,12 +33,12 @@ export function supportWhatsAppNumber() {
   return SUPPORT_WHATSAPP;
 }
 
-/** Used when a Pro reader has used all 50 included AI Panditji chat minutes. */
+/** Used when a Pro reader has used all 50 included AI Panditji chat messages. */
 export function chatQuotaHelpUrl() {
   const text = [
     "Namaste Hast Rekha AI team 🙏",
-    "Mere Pro plan ke 50 AI Panditji chat minutes poore ho gaye hain.",
-    "Aage chat ke liye 10 coins per minute lagte hain.",
+    "Mere Pro plan ke 50 AI Panditji chat messages poore ho gaye hain.",
+    "Aage chat ke liye 10 coins per message lagte hain.",
     "Kripya batayein ki aur chat coins kaise le sakta hoon.",
   ].join("\n");
   return `https://wa.me/${SUPPORT_WHATSAPP}?text=${encodeURIComponent(text)}`;

@@ -1,32 +1,25 @@
 import { describe, expect, it } from "vitest";
 import {
-  CHAT_COINS_PER_MINUTE,
+  CHAT_COINS_PER_MESSAGE,
   CHAT_GUEST_COINS,
-  CHAT_PRO_INCLUDED_MINUTES,
-  CHAT_SESSION_IDLE_MS,
-  affordableMinutes,
+  CHAT_PRO_INCLUDED_MESSAGES,
+  affordableMessages,
   chatNeedsCoins,
-  planChatMinutes,
   type ChatBillingSummary,
 } from "@/lib/chat-billing-rules";
 import { SIGNUP_TOKEN_BONUS } from "@/lib/token-rules";
 import { chatSubject, isChatUuid } from "@/lib/chat-quota-rules";
-
-const MINUTE = 60_000;
 
 function billing(overrides: Partial<ChatBillingSummary> = {}): ChatBillingSummary {
   return {
     plan: "free",
     signedIn: false,
     coins: CHAT_GUEST_COINS,
-    coinsPerMinute: CHAT_COINS_PER_MINUTE,
-    includedMinutesLimit: null,
-    includedMinutesUsed: null,
-    includedMinutesLeft: null,
-    sessionStartedAt: null,
-    sessionLastSeenAt: null,
-    sessionBilledMinutes: 0,
-    sessionActive: false,
+    coinsPerMessage: CHAT_COINS_PER_MESSAGE,
+    includedMessagesLimit: null,
+    includedMessagesUsed: null,
+    includedMessagesLeft: null,
+    messagesSent: 0,
     ...overrides,
   };
 }
@@ -37,140 +30,49 @@ describe("coin rules", () => {
     expect(SIGNUP_TOKEN_BONUS).toBe(50);
   });
 
-  it("prices chat at 10 coins per started minute and Pro at 50 included minutes", () => {
-    expect(CHAT_COINS_PER_MINUTE).toBe(10);
-    expect(CHAT_PRO_INCLUDED_MINUTES).toBe(50);
-    expect(CHAT_SESSION_IDLE_MS).toBe(2 * MINUTE);
+  it("prices chat at 10 coins per message and Pro at 50 included messages", () => {
+    expect(CHAT_COINS_PER_MESSAGE).toBe(10);
+    expect(CHAT_PRO_INCLUDED_MESSAGES).toBe(50);
   });
 
 });
 
-describe("per-minute chat billing", () => {
-  const startedAt = 1_000_000;
+describe("per-message chat billing", () => {
 
-  it("bills the first minute when a session starts", () => {
-    expect(
-      planChatMinutes({
-        startedAt: null,
-        lastSeenAt: null,
-        billedMinutes: 0,
-        now: startedAt,
-      }),
-    ).toEqual({ reset: true, minutesDue: 1, newMinutes: 1 });
+  it("charges exactly one message per billChatTime call", () => {
+    // Each message costs CHAT_COINS_PER_MESSAGE coins
+    expect(CHAT_COINS_PER_MESSAGE).toBe(10);
   });
 
-  it("does not charge again within the same started minute", () => {
-    expect(
-      planChatMinutes({
-        startedAt,
-        lastSeenAt: startedAt + 20_000,
-        billedMinutes: 1,
-        now: startedAt + 45_000,
-      }),
-    ).toEqual({ reset: false, minutesDue: 1, newMinutes: 0 });
-  });
-
-  it("bills each later started minute exactly once", () => {
-    expect(
-      planChatMinutes({
-        startedAt,
-        lastSeenAt: startedAt + 20_000,
-        billedMinutes: 1,
-        now: startedAt + MINUTE + 1,
-      }),
-    ).toEqual({ reset: false, minutesDue: 2, newMinutes: 1 });
-
-    expect(
-      planChatMinutes({
-        startedAt,
-        lastSeenAt: startedAt + MINUTE + 10_000,
-        billedMinutes: 2,
-        now: startedAt + 2 * MINUTE + 1,
-      }),
-    ).toEqual({ reset: false, minutesDue: 3, newMinutes: 1 });
-  });
-
-  it("starts a fresh paid minute after two idle minutes", () => {
-    expect(
-      planChatMinutes({
-        startedAt,
-        lastSeenAt: startedAt + 10 * MINUTE,
-        billedMinutes: 3,
-        now: startedAt + 12 * MINUTE + 1,
-      }),
-    ).toEqual({ reset: true, minutesDue: 1, newMinutes: 1 });
-  });
-
-  it("keeps an active session when the gap is exactly the idle window", () => {
-    expect(
-      planChatMinutes({
-        startedAt,
-        lastSeenAt: startedAt + 2 * MINUTE,
-        billedMinutes: 4,
-        now: startedAt + 4 * MINUTE,
-      }),
-    ).toEqual({ reset: false, minutesDue: 4, newMinutes: 0 });
-  });
-
-  it("ignores malformed stored counters", () => {
-    expect(
-      planChatMinutes({
-        startedAt,
-        lastSeenAt: startedAt + 1_000,
-        billedMinutes: Number.NaN,
-        now: startedAt + 20_000,
-      }).newMinutes,
-    ).toBe(1);
-    expect(
-      planChatMinutes({
-        startedAt,
-        lastSeenAt: startedAt + 1_000,
-        billedMinutes: -4,
-        now: startedAt + 20_000,
-      }).newMinutes,
-    ).toBe(1);
-  });
 });
 
 describe("chat affordability", () => {
-  it("needs coins when the wallet cannot buy the next minute", () => {
+  it("needs coins when the wallet cannot pay for the next message", () => {
     expect(chatNeedsCoins(billing({ coins: 10 }))).toBe(false);
     expect(chatNeedsCoins(billing({ coins: 9 }))).toBe(true);
+    expect(chatNeedsCoins(billing({ coins: 0 }))).toBe(true);
   });
 
-  it("keeps the paid minute usable while the session is active", () => {
-    const now = Date.now();
-    expect(
-      chatNeedsCoins(
-        billing({
-          coins: 5,
-          sessionLastSeenAt: new Date(now - 10_000).toISOString(),
-        }),
-        now,
-      ),
-    ).toBe(false);
-  });
-
-  it("does not demand coins while Pro minutes remain", () => {
+  it("does not demand coins while Pro messages remain", () => {
     expect(
       chatNeedsCoins(
         billing({
           plan: "pro",
           coins: 0,
-          includedMinutesLeft: 12,
+          includedMessagesLeft: 12,
         }),
       ),
     ).toBe(false);
   });
 
-  it("shows how many minutes the balance can buy", () => {
-    expect(affordableMinutes(billing({ coins: 40 }))).toBe(4);
+  it("shows how many messages the balance can buy", () => {
+    expect(affordableMessages(billing({ coins: 40 }))).toBe(4);
     expect(
-      affordableMinutes(
+      affordableMessages(
         billing({
           plan: "pro",
           coins: 0,
-          includedMinutesLeft: 37,
+          includedMessagesLeft: 37,
         }),
       ),
     ).toBe(37);

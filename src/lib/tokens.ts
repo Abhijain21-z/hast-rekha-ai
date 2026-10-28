@@ -3,8 +3,8 @@
  *
  * Product rules (owner-confirmed):
  *   - Every new account starts with 50 coins.
- *   - Chat with Panditji costs 10 coins per started minute; a Pro report
- *     includes 50 minutes before coins are used.
+ *   - Chat with Panditji costs 10 coins per message; a Pro report
+ *     includes 50 messages before coins are used.
  *   - Coins are never accepted as payment for the ₹51 Pro report.
  *
  * The ledger is append-only and every mutation runs in a transaction with a

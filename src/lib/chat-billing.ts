@@ -1,27 +1,30 @@
 /**
  * Server-side coin billing for the AI Panditji chat.
  *
- * The wallet and the session row move together inside one transaction, so two
- * simultaneous messages cannot double-charge or overspend. A provider failure
- * refunds the newly billed minutes and rewinds the session counter.
+ * The wallet moves inside one transaction, so two simultaneous messages
+ * cannot double-charge or overspend. A provider failure refunds the coins
+ * and no charge is applied.
+ *
+ * Rules:
+ *   - Every message costs CHAT_COINS_PER_MESSAGE coins (10 by default).
+ *   - Pro messages are free up to CHAT_PRO_INCLUDED_MESSAGES (50 by default).
+ *   - Coins are deducted only when the provider call succeeds.
  */
 import { and, eq, or } from "drizzle-orm";
 import { db, pool } from "@/db";
 import { chatSessions, chatUsage, readings, users } from "@/db/schema";
 import type { ChatPlan } from "./chat-quota-rules";
 import {
-  CHAT_COINS_PER_MINUTE,
+  CHAT_COINS_PER_MESSAGE,
   CHAT_GUEST_COINS,
-  CHAT_PRO_INCLUDED_MINUTES,
-  isChatSessionActive,
-  planChatMinutes,
+  CHAT_PRO_INCLUDED_MESSAGES,
   type ChatBillingSummary,
 } from "./chat-billing-rules";
 
 /**
  * A reader is Pro for chat if the open reading is Pro/Ultra, or if their
  * account has unlocked any Pro/Ultra report before. A guest with a Pro reading
- * link therefore gets the 50 included minutes for that report.
+ * link therefore gets the 50 included messages for that report.
  */
 export async function resolveChatPlan(
   userId: string | null,
@@ -91,18 +94,16 @@ export async function getChatBilling(
       : Promise.resolve([]),
     db
       .select({
-        startedAt: chatSessions.startedAt,
-        lastSeenAt: chatSessions.lastSeenAt,
-        billedMinutes: chatSessions.billedMinutes,
+        messagesSent: chatSessions.billedMinutes, // repurposed column: counts messages sent
       })
       .from(chatSessions)
       .where(eq(chatSessions.subject, subject))
       .limit(1),
   ]);
 
-  const includedMinutesUsed =
+  const includedMessagesUsed =
     plan === "pro"
-      ? Math.min(Math.max(0, usageRows[0]?.used ?? 0), CHAT_PRO_INCLUDED_MINUTES)
+      ? Math.min(Math.max(0, usageRows[0]?.used ?? 0), CHAT_PRO_INCLUDED_MESSAGES)
       : null;
   const session = sessionRows[0] ?? null;
 
@@ -110,17 +111,14 @@ export async function getChatBilling(
     plan,
     signedIn: Boolean(userId),
     coins,
-    coinsPerMinute: CHAT_COINS_PER_MINUTE,
-    includedMinutesLimit: plan === "pro" ? CHAT_PRO_INCLUDED_MINUTES : null,
-    includedMinutesUsed,
-    includedMinutesLeft:
-      includedMinutesUsed === null
+    coinsPerMessage: CHAT_COINS_PER_MESSAGE,
+    includedMessagesLimit: plan === "pro" ? CHAT_PRO_INCLUDED_MESSAGES : null,
+    includedMessagesUsed,
+    includedMessagesLeft:
+      includedMessagesUsed === null
         ? null
-        : Math.max(0, CHAT_PRO_INCLUDED_MINUTES - includedMinutesUsed),
-    sessionStartedAt: session?.startedAt.toISOString() ?? null,
-    sessionLastSeenAt: session?.lastSeenAt.toISOString() ?? null,
-    sessionBilledMinutes: Math.max(0, session?.billedMinutes ?? 0),
-    sessionActive: session ? isChatSessionActive(session.lastSeenAt.toISOString()) : false,
+        : Math.max(0, CHAT_PRO_INCLUDED_MESSAGES - includedMessagesUsed),
+    messagesSent: Math.max(0, session?.messagesSent ?? 0),
   };
 }
 
@@ -128,10 +126,9 @@ export interface ChatCharge {
   subject: string;
   userId: string | null;
   plan: ChatPlan;
-  newMinutes: number;
-  includedMinutes: number;
+  messagesSent: number;
+  includedMessages: number;
   coinCost: number;
-  sessionReset: boolean;
 }
 
 export type ChatChargeResult =
@@ -139,12 +136,13 @@ export type ChatChargeResult =
   | { ok: false; billing: ChatBillingSummary; coinsNeeded: number };
 
 /**
- * Reserve the minutes this message consumes.
+ * Reserve coins for one message.
  *
- * - A new/expired session bills its first started minute up front.
- * - Pro minutes are used before coins.
- * - When the next minute cannot be paid for, nothing is charged and the caller
+ * - Pro included messages are used before coins.
+ * - When the next message cannot be paid for, nothing is charged and the caller
  *   returns 402 with the refreshed balance.
+ * - The charge is committed only after the provider call succeeds; on failure
+ *   the caller must call refundChatTime to undo it.
  */
 export async function billChatTime(input: {
   subject: string;
@@ -171,24 +169,16 @@ export async function billChatTime(input: {
     }
 
     const sessionResult = await client.query<{
-      started_at: Date;
-      last_seen_at: Date;
-      billed_minutes: number;
+      messages_sent: number;
     }>(
-      `SELECT started_at, last_seen_at, billed_minutes
+      `SELECT billed_minutes as messages_sent
        FROM chat_sessions WHERE subject = $1 FOR UPDATE`,
       [subject],
     );
     const session = sessionResult.rows[0];
     if (!session) throw new Error("chat session row disappeared");
 
-    const now = Date.now();
-    const timing = planChatMinutes({
-      startedAt: session.started_at.getTime(),
-      lastSeenAt: session.last_seen_at.getTime(),
-      billedMinutes: session.billed_minutes,
-      now,
-    });
+    const alreadySent = Math.max(0, session.messages_sent ?? 0);
 
     let includedLeft = 0;
     if (plan === "pro") {
@@ -198,12 +188,12 @@ export async function billChatTime(input: {
         [subject],
       );
       const used = usageResult.rows[0]?.used ?? 0;
-      includedLeft = Math.max(0, CHAT_PRO_INCLUDED_MINUTES - used);
+      includedLeft = Math.max(0, CHAT_PRO_INCLUDED_MESSAGES - used);
     }
 
-    const includedMinutes = Math.min(timing.newMinutes, includedLeft);
-    const coinMinutes = timing.newMinutes - includedMinutes;
-    const coinCost = coinMinutes * CHAT_COINS_PER_MINUTE;
+    const includedMessages = Math.min(1, includedLeft);
+    const coinMessages = 1 - includedMessages;
+    const coinCost = coinMessages * CHAT_COINS_PER_MESSAGE;
 
     let coins: number;
     if (userId) {
@@ -236,7 +226,7 @@ export async function billChatTime(input: {
             userId,
             -coinCost,
             balanceAfter,
-            JSON.stringify({ minutes: coinMinutes, includedMinutes, plan }),
+            JSON.stringify({ messages: coinMessages, includedMessages, plan }),
           ],
         );
       }
@@ -270,31 +260,21 @@ export async function billChatTime(input: {
       }
     }
 
-    if (includedMinutes > 0) {
+    if (includedMessages > 0) {
       await client.query(
         `UPDATE chat_usage
          SET used = used + $2, updated_at = now()
          WHERE subject = $1 AND plan = 'pro'`,
-        [subject, includedMinutes],
+        [subject, includedMessages],
       );
     }
 
-    if (timing.reset) {
-      await client.query(
-        `UPDATE chat_sessions
-         SET started_at = now(), last_seen_at = now(),
-             billed_minutes = $2, updated_at = now()
-         WHERE subject = $1`,
-        [subject, timing.minutesDue],
-      );
-    } else {
-      await client.query(
-        `UPDATE chat_sessions
-         SET last_seen_at = now(), billed_minutes = $2, updated_at = now()
-         WHERE subject = $1`,
-        [subject, timing.minutesDue],
-      );
-    }
+    await client.query(
+      `UPDATE chat_sessions
+       SET billed_minutes = $2, updated_at = now()
+       WHERE subject = $1`,
+      [subject, alreadySent + 1],
+    );
 
     await client.query("COMMIT");
 
@@ -305,10 +285,9 @@ export async function billChatTime(input: {
         subject,
         userId,
         plan,
-        newMinutes: timing.newMinutes,
-        includedMinutes,
+        messagesSent: alreadySent + 1,
+        includedMessages,
         coinCost,
-        sessionReset: timing.reset,
       },
     };
   } catch (error) {
@@ -325,18 +304,18 @@ export async function billChatTime(input: {
 
 /** Undo a reservation when the AI provider fails before answering. */
 export async function refundChatTime(charge: ChatCharge): Promise<void> {
-  if (charge.newMinutes <= 0 && charge.coinCost <= 0 && charge.includedMinutes <= 0) return;
+  if (charge.messagesSent <= 0 && charge.coinCost <= 0 && charge.includedMessages <= 0) return;
 
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
 
-    if (charge.includedMinutes > 0) {
+    if (charge.includedMessages > 0) {
       await client.query(
         `UPDATE chat_usage
          SET used = GREATEST(used - $2, 0), updated_at = now()
          WHERE subject = $1 AND plan = 'pro'`,
-        [charge.subject, charge.includedMinutes],
+        [charge.subject, charge.includedMessages],
       );
     }
 
@@ -356,7 +335,7 @@ export async function refundChatTime(charge: ChatCharge): Promise<void> {
               charge.userId,
               charge.coinCost,
               balanceAfter,
-              JSON.stringify({ minutes: charge.newMinutes, refund: true }),
+              JSON.stringify({ messages: charge.messagesSent, refund: true }),
             ],
           );
         }
@@ -373,9 +352,9 @@ export async function refundChatTime(charge: ChatCharge): Promise<void> {
     await client.query(
       `UPDATE chat_sessions
        SET billed_minutes = GREATEST(billed_minutes - $2, 0),
-           last_seen_at = now(), updated_at = now()
+           updated_at = now()
        WHERE subject = $1`,
-      [charge.subject, charge.newMinutes],
+      [charge.subject, charge.messagesSent],
     );
 
     await client.query("COMMIT");

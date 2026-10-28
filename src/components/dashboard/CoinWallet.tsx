@@ -27,7 +27,7 @@ const REASON_LABEL: Record<string, { en: string; hi: string }> = {
  */
 export default function CoinWallet({ balance, ledger }: { balance: number; ledger: LedgerRow[] }) {
   const { L } = useLang();
-  const minutes = Math.floor(balance / 10);
+  const messages = Math.floor(balance / 10);
 
   return (
     <Card strong className="relative overflow-hidden p-6 sm:p-8">
@@ -46,11 +46,11 @@ export default function CoinWallet({ balance, ledger }: { balance: number; ledge
             </div>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-300">
               {L({
-                en: "Every account starts with 50 welcome coins. AI Panditji chat costs 10 coins per started minute — your balance covers about",
-                hi: "हर अकाउंट में 50 स्वागत कॉइन मिलते हैं। AI पंडितजी चैट हर शुरू हुए मिनट पर 10 कॉइन लेती है — आपका बैलेंस लगभग",
+                en: "Every account starts with 50 welcome coins. AI Panditji chat costs 10 coins per message — your balance covers about",
+                hi: "हर अकाउंट में 50 स्वागत कॉइन मिलते हैं। AI पंडितजी चैट हर मैसेज पर 10 कॉइन लेती है — आपका बैलेंस लगभग",
               })}{" "}
               <b className="text-gold-200">
-                {minutes} {L({ en: minutes === 1 ? "minute" : "minutes", hi: "मिनट" })}
+                {messages} {L({ en: messages === 1 ? "message" : "messages", hi: "मैसेज" })}
               </b>
               . {L({ en: "Coins are never accepted for the ₹51 Pro report.", hi: "₹51 की प्रो रिपोर्ट के लिए कॉइन नहीं लिए जाते।" })}
             </p>

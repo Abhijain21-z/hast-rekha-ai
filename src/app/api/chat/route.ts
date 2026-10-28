@@ -50,8 +50,8 @@ function chatJson(
  * AI Panditji chat.
  *
  * - The chart summary is built server-side; birth details never leave the app.
- * - Chat costs 10 coins per started minute. Pro reports include 50 minutes.
- *   The minutes are reserved before the provider call and refunded if the call
+ * - Chat costs 10 coins per message. Pro reports include 50 messages.
+ *   The coins are reserved before the provider call and refunded if the call
  *   fails, so a 502 never costs the reader a coin.
  * - Chat history is not stored; only the current request is forwarded.
  */

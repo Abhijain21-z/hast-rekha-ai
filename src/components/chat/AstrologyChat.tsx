@@ -7,7 +7,7 @@ import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, Input, cn } from "@/components/ui";
 import { chatQuotaHelpUrl } from "@/lib/support";
 import {
-  affordableMinutes,
+  affordableMessages,
   chatNeedsCoins,
   type ChatBillingSummary,
 } from "@/lib/chat-billing-rules";
@@ -73,44 +73,43 @@ const UI = {
   checking: { en: "Checking your coin balance…", hi: "आपका कॉइन बैलेंस देखा जा रहा है…" },
   freePlan: { en: "Free", hi: "फ्री" },
   proPlan: { en: "Pro", hi: "प्रो" },
-  activeMinute: { en: "This minute is active", hi: "यह मिनट चालू है" },
   coinsLine: {
-    en: "{n} coins · 10 coins per started minute",
-    hi: "{n} कॉइन · हर शुरू हुए मिनट पर 10 कॉइन",
+    en: "{n} coins · 10 coins per message",
+    hi: "{n} कॉइन · हर मैसेज पर 10 कॉइन",
   },
-  minutesAffordable: {
-    en: "About {n} min left",
-    hi: "लगभग {n} मिनट बाकी",
+  messagesAffordable: {
+    en: "{n} messages left",
+    hi: "{n} मैसेज बाकी",
   },
   proLeft: {
-    en: "{n} of 50 Pro minutes left",
-    hi: "50 में से {n} प्रो मिनट बाकी",
+    en: "{n} of 50 Pro messages left",
+    hi: "50 में से {n} प्रो मैसेज बाकी",
   },
   proDone: {
-    en: "50 Pro minutes complete · now 10 coins/min",
-    hi: "50 प्रो मिनट पूरे · अब 10 कॉइन/मिनट",
+    en: "50 Pro messages complete · now 10 coins/message",
+    hi: "50 प्रो मैसेज पूरे · अब 10 कॉइन/मैसेज",
   },
   outOfCoinsTitle: { en: "Your chat coins are used up", hi: "आपके चैट कॉइन पूरे हो गए" },
-  proMinutesTitle: { en: "Your 50 Pro minutes are complete", hi: "आपके 50 प्रो मिनट पूरे हो गए" },
+  proMinutesTitle: { en: "Your 50 Pro messages are complete", hi: "आपके 50 प्रो मैसेज पूरे हो गए" },
   outOfCoinsSignedIn: {
-    en: "Chat costs 10 coins per started minute. Your balance and usage are in the dashboard — if you run out, message our team and we will help.",
-    hi: "चैट पर हर शुरू हुए मिनट के 10 कॉइन लगते हैं। आपका बैलेंस और उपयोग डैशबोर्ड में है — कॉइन ख़त्म हों तो हमारी टीम को संदेश भेजें, हम मदद करेंगे।",
+    en: "Chat costs 10 coins per message. Your balance is in the dashboard — if you run out, message our team and we will help.",
+    hi: "चैट पर हर मैसेज के 10 कॉइन लगते हैं। आपका बैलेंस डैशबोर्ड में है — कॉइन ख़त्म हों तो हमारी टीम को संदेश भेजें, हम मदद करेंगे।",
   },
   outOfCoinsGuest: {
-    en: "Chat costs 10 coins per started minute. Create a free account and get 50 welcome coins — no card needed.",
-    hi: "चैट पर हर शुरू हुए मिनट के 10 कॉइन लगते हैं। मुफ़्त अकाउंट बनाएँ और 50 वेलकम कॉइन पाएँ — कार्ड की ज़रूरत नहीं।",
+    en: "Chat costs 10 coins per message. Create a free account and get 50 welcome coins — no card needed.",
+    hi: "चैट पर हर मैसेज के 10 कॉइन लगते हैं। मुफ़्त अकाउंट बनाएँ और 50 वेलकम कॉइन पाएँ — कार्ड की ज़रूरत नहीं।",
   },
   outOfCoinsPro: {
-    en: "Your 50 included Pro minutes are done. Every new minute costs 10 coins. Check your balance in the dashboard, or message our team.",
-    hi: "आपके 50 शामिल प्रो मिनट पूरे हो गए। हर नए मिनट पर 10 कॉइन लगेंगे। डैशबोर्ड में अपना बैलेंस देखें, या हमारी टीम को संदेश भेजें।",
+    en: "Your 50 included Pro messages are done. Every new message costs 10 coins. Check your balance in the dashboard, or message our team.",
+    hi: "आपके 50 शामिल प्रो मैसेज पूरे हो गए। हर नए मैसेज पर 10 कॉइन लगेंगे। डैशबोर्ड में अपना बैलेंस देखें, या हमारी टीम को संदेश भेजें।",
   },
   walletCta: { en: "Open coin wallet", hi: "कॉइन वॉलेट खोलें" },
   registerCta: { en: "Create account · +50 coins", hi: "अकाउंट बनाएँ · +50 कॉइन" },
   supportCta: { en: "Chat with our team", hi: "हमारी टीम से बात करें" },
   proCta: { en: "See the Pro plan", hi: "प्रो प्लान देखें" },
   minuteNote: {
-    en: "10 coins per started minute. A session ends after 2 idle minutes, so you are never charged while away.",
-    hi: "हर शुरू हुए मिनट पर 10 कॉइन। 2 मिनट निष्क्रिय रहने पर सत्र बंद हो जाता है, इसलिए दूर रहने पर कॉइन नहीं कटते।",
+    en: "10 coins per message. Coins are deducted only when Panditji replies.",
+    hi: "हर मैसेज पर 10 कॉइन। कॉइन तभी कटते हैं जब पंडितजी जवाब देते हैं।",
   },
   newReading: { en: "Open your reading first", hi: "पहले अपनी रीडिंग खोलें" },
 };
@@ -144,7 +143,7 @@ export default function AstrologyChat({
   // The greeting is rendered outside the message history, so switching
   // language updates it without touching the conversation.
   const greeting = L(readingId ? UI.greeting : UI.genericGreeting);
-  const needsCoins = blocked || chatNeedsCoins(billing, now);
+  const needsCoins = blocked || chatNeedsCoins(billing);
 
   const loadBilling = useCallback(
     async (signal?: AbortSignal) => {
@@ -272,7 +271,7 @@ export default function AstrologyChat({
   }
 
   const pro = billing?.plan === "pro";
-  const includedLeft = billing?.includedMinutesLeft ?? 0;
+  const includedLeft = billing?.includedMessagesLeft ?? 0;
   const showProBar = pro && billing !== null;
   const proDone = pro && includedLeft <= 0;
 
@@ -336,20 +335,13 @@ export default function AstrologyChat({
                 />
               </div>
             ) : (
-              <div className="mt-1.5 flex items-center gap-1.5 text-[10px] text-slate-500">
+                <div className="mt-1.5 flex items-center gap-1.5 text-[10px] text-slate-500">
                 <Coins className="h-3 w-3 text-gold-300/80" />
-                {L(UI.minutesAffordable).replace(
+                {L(UI.messagesAffordable).replace(
                   "{n}",
-                  String(affordableMinutes(billing)),
+                  String(affordableMessages(billing)),
                 )}
               </div>
-            )}
-
-            {billing.sessionActive && billing.sessionBilledMinutes > 0 && (
-              <p className="mt-1.5 inline-flex items-center gap-1.5 text-[10px] font-medium text-emerald-200/90">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-300" />
-                {L(UI.activeMinute)}
-              </p>
             )}
           </div>
         )}
