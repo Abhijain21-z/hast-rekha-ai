@@ -65,7 +65,7 @@ export default function HomePage() {
         <div className="relative z-10 mx-auto max-w-3xl px-4 text-center mt-1">
           <p className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-sm font-medium text-emerald-100 inline-flex items-center gap-2 shadow-[0_0_20px_-5px] shadow-emerald-400/20 animate-pulse">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            अभी वेबसाइट की सभी एरर ठीक कर दी गई हैं और बहुत से नए फीचर्स भी डाल दिए गए हैं।
+            अभी से वेबसाइट के उपयोग में आने वाली सभी समस्याओं का समाधान कर लिया गया है।
           </p>
         </div>
         <PanditjiPromo />
