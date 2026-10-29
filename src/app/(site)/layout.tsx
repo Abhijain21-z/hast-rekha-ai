@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CouponPopup from "@/components/offers/CouponPopup";
 import { getCurrentUser } from "@/lib/auth";
 
 export default async function SiteLayout({ children }: { children: ReactNode }) {
@@ -16,6 +17,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       />
       <main className="pt-[106px]">{children}</main>
       <Footer />
+      <CouponPopup />
     </>
   );
 }

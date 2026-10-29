@@ -6,6 +6,7 @@ import { payments, readings } from "@/db/schema";
 import { getCurrentUser } from "@/lib/auth";
 import { cashfreeConfigured, createCashfreeOrder } from "@/lib/cashfree";
 import { PLAN_PRICES, isPaidPlan, type PaidPlan } from "@/lib/plans";
+import { couponPrice, findCoupon } from "@/lib/coupons";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export const dynamic = "force-dynamic";
@@ -22,7 +23,8 @@ const PLAN_NOTE: Record<PaidPlan, string> = {
 
 /**
  * Create a Cashfree order and hand back its payment session id. The price
- * always comes from the server-side plan table — never the client.
+ * always comes from the server-side plan table — never the client. A coupon
+ * code is re-resolved here too, so a tampered request cannot invent a price.
  *
  * Report plans unlock one reading. The membership is a standalone 30-day pass:
  * it needs a signed-in account but no reading.
@@ -42,10 +44,12 @@ export async function POST(req: Request) {
     plan?: unknown;
     phone?: unknown;
     whatsappOptIn?: unknown;
+    coupon?: unknown;
   };
   const plan = isPaidPlan(body.plan) ? body.plan : null;
   const readingId = typeof body.readingId === "string" ? body.readingId : "";
   const whatsappOptIn = body.whatsappOptIn === true;
+  const coupon = findCoupon(body.coupon);
 
   if (!plan) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
@@ -87,7 +91,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Please sign in to buy membership" }, { status: 401 });
   }
 
-  const amount = PLAN_PRICES[plan];
+  const listPrice = PLAN_PRICES[plan];
+  const amount = couponPrice(listPrice, coupon);
   const orderId = `hr_${plan}_${randomUUID().replace(/-/g, "").slice(0, 20)}`;
 
   const requestOrigin = new URL(req.url).origin;
@@ -128,6 +133,8 @@ export async function POST(req: Request) {
       orderId,
       paymentSessionId: order.payment_session_id,
       amount,
+      listPrice,
+      coupon: coupon?.code ?? null,
       plan,
     });
   } catch (error) {

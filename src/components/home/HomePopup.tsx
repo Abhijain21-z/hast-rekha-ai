@@ -19,12 +19,14 @@ export default function HomePopup() {
   function yes() {
     sessionStorage.setItem("hr-popup-dismissed", "1");
     setOpen(false);
+    window.dispatchEvent(new Event("hr:home-popup-closed"));
     router.push("/reading");
   }
 
   function no() {
     sessionStorage.setItem("hr-popup-dismissed", "1");
     setOpen(false);
+    window.dispatchEvent(new Event("hr:home-popup-closed"));
   }
 
   if (!open) return null;

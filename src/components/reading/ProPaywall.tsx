@@ -17,6 +17,7 @@ import {
   ULTRA_PRICE,
 } from "@/lib/flags";
 import { PLAN_PRICES, type ReportPlan } from "@/lib/plans";
+import { COUPON_STORAGE_KEY, couponPrice, findCoupon, type Coupon } from "@/lib/coupons";
 import type { Bi } from "@/lib/i18n";
 import { getCashfree } from "@/lib/cashfree-client";
 import { PaymentHelpModal } from "./PaymentHelp";
@@ -135,12 +136,16 @@ export function ProPaywallModal({
     return saved && /^[6-9]\d{9}$/.test(saved) ? saved : "";
   });
   const [waOptIn, setWaOptIn] = useState(false);
+  const [coupon, setCoupon] = useState<Coupon | null>(null);
+  const [couponInput, setCouponInput] = useState("");
+  const [couponErr, setCouponErr] = useState("");
   const [helpOpen, setHelpOpen] = useState(false);
   const [helpIssue, setHelpIssue] = useState<"checkout_closed" | "not_unlocked">("checkout_closed");
   const [lastOrderId, setLastOrderId] = useState<string | null>(null);
   const prefetchRef = useRef<{ key: string; at: number; promise: Promise<CashfreeOrderResult> } | null>(null);
 
-  const price = PLAN_PRICES[plan];
+  const listPrice = PLAN_PRICES[plan];
+  const price = couponPrice(listPrice, coupon);
   const perks =
     plan === "diwali"
       ? [...PREMIUM_PERKS, DIWALI_PERK]
@@ -155,9 +160,9 @@ export function ProPaywallModal({
   const needsUtr = plan !== "pro";
   const manualUpi = MANUAL_UPI_ENABLED && PRO_PAY_MODE === "upi";
 
-  const anchor = alreadyPro ? null : plan === "pro" ? PDF_PRICE_ANCHOR : plan === "bundle" ? ULTRA_PRICE : null;
+  const anchor = alreadyPro ? null : coupon ? listPrice : plan === "pro" ? PDF_PRICE_ANCHOR : plan === "bundle" ? ULTRA_PRICE : null;
   const saved = anchor ? anchor - price : 0;
-  const percentOff = anchor ? Math.round((1 - price / anchor) * 100) : 0;
+  const percentOff = coupon ? coupon.percentOff : anchor ? Math.round((1 - price / anchor) * 100) : 0;
 
   const cmpRows: { label: Bi; free: boolean; pro: boolean; bundle: boolean; diwali: boolean }[] = [
     {
@@ -225,6 +230,44 @@ export function ProPaywallModal({
       .catch(() => setQr(null));
   }, [open, deepLink, manualUpi]);
 
+  // A code saved by the offer popup (or `?coupon=` in the URL) is applied here.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const fromUrl = new URLSearchParams(window.location.search).get("coupon");
+    const found = findCoupon(fromUrl) ?? findCoupon(window.localStorage.getItem(COUPON_STORAGE_KEY));
+    if (found) {
+      setCoupon(found);
+      setCouponInput(found.code);
+    }
+  }, []);
+
+  function applyCouponCode() {
+    const found = findCoupon(couponInput);
+    if (!found) {
+      setCouponErr(
+        L({ en: "This code is not valid or has expired.", hi: "यह कोड सही नहीं है या खत्म हो गया है।" }),
+      );
+      return;
+    }
+    setCouponErr("");
+    setCoupon(found);
+    setCouponInput(found.code);
+    prefetchRef.current = null;
+    try {
+      window.localStorage.setItem(COUPON_STORAGE_KEY, found.code);
+    } catch {}
+  }
+
+  function removeCoupon() {
+    setCoupon(null);
+    setCouponInput("");
+    setCouponErr("");
+    prefetchRef.current = null;
+    try {
+      window.localStorage.removeItem(COUPON_STORAGE_KEY);
+    } catch {}
+  }
+
   // Warm up Cashfree's checkout script while the visitor is choosing a plan and
   // typing their number, so tapping Pay opens the gateway immediately.
   useEffect(() => {
@@ -262,11 +305,17 @@ export function ProPaywallModal({
     }
   }
 
-  function fetchOrder(planKey: ProPlan, phoneDigits: string, optIn: boolean): Promise<CashfreeOrderResult> {
+  function fetchOrder(planKey: ProPlan, phoneDigits: string, optIn: boolean, couponCode: string): Promise<CashfreeOrderResult> {
     return fetch("/api/payments/cashfree/order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ readingId, plan: planKey, phone: phoneDigits, whatsappOptIn: optIn }),
+      body: JSON.stringify({
+        readingId,
+        plan: planKey,
+        phone: phoneDigits,
+        whatsappOptIn: optIn,
+        coupon: couponCode || undefined,
+      }),
     })
       .then(async (res) => {
         const data = (await res.json().catch(() => ({}))) as { paymentSessionId?: string; orderId?: string; error?: string };
@@ -275,9 +324,9 @@ export function ProPaywallModal({
       .catch(() => ({ ok: false }));
   }
 
-  /** The key is plan + phone + consent, because each one changes the order row. */
-  function orderKey(planKey: ProPlan, phoneDigits: string, optIn: boolean) {
-    return `${planKey}:${phoneDigits}:${optIn ? "wa" : "no-wa"}`;
+  /** The key is plan + phone + consent + coupon, because each one changes the order row. */
+  function orderKey(planKey: ProPlan, phoneDigits: string, optIn: boolean, couponCode: string) {
+    return `${planKey}:${phoneDigits}:${optIn ? "wa" : "no-wa"}:${couponCode}`;
   }
 
   /**
@@ -285,12 +334,12 @@ export function ProPaywallModal({
    * click handler below awaits the same promise, so most visitors skip the
    * server round-trip entirely.
    */
-  function prefetchOrder(planKey: ProPlan, phoneDigits: string, optIn: boolean) {
+  function prefetchOrder(planKey: ProPlan, phoneDigits: string, optIn: boolean, couponCode: string) {
     if (!CASHFREE_ENABLED || !/^[6-9]\d{9}$/.test(phoneDigits)) return;
-    const key = orderKey(planKey, phoneDigits, optIn);
+    const key = orderKey(planKey, phoneDigits, optIn, couponCode);
     const cached = prefetchRef.current;
     if (cached?.key === key && Date.now() - cached.at < ORDER_TTL_MS) return;
-    prefetchRef.current = { key, at: Date.now(), promise: fetchOrder(planKey, phoneDigits, optIn) };
+    prefetchRef.current = { key, at: Date.now(), promise: fetchOrder(planKey, phoneDigits, optIn, couponCode) };
   }
 
   /**
@@ -309,11 +358,14 @@ export function ProPaywallModal({
       return;
     }
     setCfBusy(true);
-    const key = orderKey(plan, phoneDigits, waOptIn);
+    const couponCode = coupon?.code ?? "";
+    const key = orderKey(plan, phoneDigits, waOptIn, couponCode);
     try {
       const cached = prefetchRef.current;
       const request =
-        cached?.key === key && Date.now() - cached.at < ORDER_TTL_MS ? cached.promise : fetchOrder(plan, phoneDigits, waOptIn);
+        cached?.key === key && Date.now() - cached.at < ORDER_TTL_MS
+          ? cached.promise
+          : fetchOrder(plan, phoneDigits, waOptIn, couponCode);
       prefetchRef.current = { key, at: Date.now(), promise: request };
       const data = await request;
       if (!data.ok || !data.paymentSessionId || !data.orderId) {
@@ -432,6 +484,58 @@ export function ProPaywallModal({
           })}
         </div>
 
+        {/* Coupon: validated on the server, so the discounted amount is never trusted from the client. */}
+        <div className="mt-5 rounded-2xl border border-emerald-400/30 bg-emerald-400/[0.07] px-4 py-3">
+          {coupon ? (
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <p className="flex items-center gap-2 text-sm text-emerald-100">
+                <Check className="h-4 w-4 shrink-0 text-emerald-300" />
+                <span>
+                  <b>{coupon.code}</b> — {L(coupon.label)}{" "}
+                  {L({ en: "applied", hi: "लागू हो गया" })}
+                </span>
+              </p>
+              <button
+                type="button"
+                onClick={removeCoupon}
+                className="text-xs text-slate-300 underline underline-offset-4 hover:text-white"
+              >
+                {L({ en: "Remove", hi: "हटाएँ" })}
+              </button>
+            </div>
+          ) : (
+            <>
+              <label htmlFor="hr-coupon" className="text-xs font-semibold uppercase tracking-wider text-emerald-200">
+                {L({ en: "Have a coupon code?", hi: "कूपन कोड है?" })}
+              </label>
+              <div className="mt-2 flex gap-2">
+                <input
+                  id="hr-coupon"
+                  value={couponInput}
+                  onChange={(e) => setCouponInput(e.target.value.toUpperCase())}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      applyCouponCode();
+                    }
+                  }}
+                  placeholder="SAVE50"
+                  autoComplete="off"
+                  className="min-w-0 flex-1 rounded-xl border border-white/15 bg-cosmic-900/70 px-3 py-2 text-sm uppercase tracking-wider text-white placeholder:text-slate-500 focus:border-emerald-400/60 focus:outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={applyCouponCode}
+                  className="shrink-0 rounded-xl border border-emerald-400/50 bg-emerald-400/15 px-4 py-2 text-sm font-medium text-emerald-100 transition hover:bg-emerald-400/25"
+                >
+                  {L({ en: "Apply", hi: "लागू करें" })}
+                </button>
+              </div>
+            </>
+          )}
+          {couponErr && <p className="mt-2 text-xs text-rose-300">{couponErr}</p>}
+        </div>
+
         {/* Price block: the ₹51 and ₹199 offers keep a struck-through anchor. */}
         <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-2xl border border-gold-400/30 bg-gold-400/10 px-5 py-4">
           {anchor && (
@@ -481,7 +585,7 @@ export function ProPaywallModal({
                     setPhone(digits);
                     if (digits.length === 10) {
                       window.localStorage.setItem("hr-whatsapp", digits);
-                      prefetchOrder(plan, digits, waOptIn);
+                      prefetchOrder(plan, digits, waOptIn, coupon?.code ?? "");
                     }
                   }}
                   placeholder={t.pro.cfPhonePh}
