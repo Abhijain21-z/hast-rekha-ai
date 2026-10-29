@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { readings } from "@/db/schema";
+import { isAdminKey } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -11,19 +12,23 @@ export const maxDuration = 300;
  * GET /api/admin/export-free-users
  *
  * Exports all FREE users (premium = false) as a CSV file.
- * Protect with x-cron-secret header matching CRON_SECRET env var.
+ * Protect with x-cron-secret (CRON_SECRET) or the owner key
+ * (x-admin-key header, or ?key= for a plain browser download).
  *
  * Query params:
  *   format - "csv" (default) or "json"
  */
 export async function GET(req: Request) {
-  const cronSecret = req.headers.get("x-cron-secret");
-  if (cronSecret !== process.env.CRON_SECRET) {
-    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
-  }
-
   const url = new URL(req.url);
   const format = url.searchParams.get("format") ?? "csv";
+
+  // Two ways in: the cron secret (machine) or the owner key in the URL, so the
+  // admin page can offer a plain download link.
+  const cronOk = Boolean(process.env.CRON_SECRET) && req.headers.get("x-cron-secret") === process.env.CRON_SECRET;
+  const adminOk = isAdminKey(req.headers.get("x-admin-key")) || isAdminKey(url.searchParams.get("key"));
+  if (!cronOk && !adminOk) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  }
 
   // Find all FREE readers (not premium)
   const rows = await db

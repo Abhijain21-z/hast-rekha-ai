@@ -7,25 +7,23 @@ export const maxDuration = 300;
 /**
  * POST /api/cron/follow-up-pro
  *
- * Cron endpoint to send daily Pro follow-up messages to free readers.
- * Protect with CRON_SECRET header.
+ * Daily Pro-plan follow-up to free readers who opted into marketing.
+ * Protected by CRON_SECRET (Vercel Cron sends it automatically).
  *
- * Add to Vercel Cron:
+ * Vercel Cron config:
  *   Path: /api/cron/follow-up-pro
- *   Schedule: 0 9 * * * (every day at 9:00 AM UTC)
+ *   Schedule: 0 9 * * * (09:00 UTC = 14:30 IST)
  */
 export async function POST(req: Request) {
-  const cronSecret = req.headers.get("x-cron-secret");
-  if (cronSecret !== process.env.CRON_SECRET) {
+  const secret = process.env.CRON_SECRET ?? "";
+  if (!secret || req.headers.get("x-cron-secret") !== secret) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  // Forward to the follow-up API with a reasonable limit
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hastrekhaai.online";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hastrekhaai.online";
   const res = await fetch(`${baseUrl}/api/whatsapp/follow-up-pro?limit=100`, {
     method: "GET",
-    headers: { "Cache-Control": "no-store" },
+    headers: { "Cache-Control": "no-store", "x-cron-secret": secret },
   });
 
   const data = await res.json();

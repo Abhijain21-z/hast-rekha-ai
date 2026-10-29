@@ -70,6 +70,8 @@ export const readings = pgTable(
     whatsappPhone: text("whatsapp_phone"),
     /** Marketing consent for WhatsApp follow-up about Pro plans. Defaults to true. */
     marketingOptIn: boolean("marketing_opt_in").notNull().default(true),
+    /** Last time a Pro-plan follow-up was sent (or manually marked sent). */
+    followupSentAt: timestamp("followup_sent_at", { withTimezone: true }),
     // Optional profile details captured in the form; shown back on the report.
     gender: varchar("gender", { length: 10 }), // "male" | "female" | "trans"
     married: boolean("married"), // null when the visitor skipped the question
