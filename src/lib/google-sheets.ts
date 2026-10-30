@@ -58,6 +58,7 @@ export const FREE_USERS_SHEET_HEADERS = [
   "Source",
   "Reading ID",
   "User ID",
+  "Plan Status",
 ] as const;
 
 const IST_FORMATTER = new Intl.DateTimeFormat("en-IN", {
@@ -103,15 +104,14 @@ export interface FreeUsersSheetData {
 }
 
 /**
- * Build the current free-reader table. One row per phone number (newest
+ * Build the current reader table. One row per phone number (newest
  * reading wins), plus one row per reading when no phone/email exists.
  *
- * Readers with a successful payment, a Pro/Ultra reading, or an active
- * membership are deliberately excluded: the sheet is a free-reader list, not
- * a customer list.
+ * All readers are included (free + paid). The "Plan Status" column shows
+ * whether the user has upgraded to Pro or Ultra.
  */
 export async function buildFreeUsersSheetData(): Promise<FreeUsersSheetData> {
-  const [readingRows, paidRows, premiumRows, memberRows] = await Promise.all([
+  const [readingRows, paidRows, premiumRows, ultraRows, memberRows] = await Promise.all([
     db
       .select({
         id: readings.id,
@@ -128,10 +128,11 @@ export async function buildFreeUsersSheetData(): Promise<FreeUsersSheetData> {
         followupSentAt: readings.followupSentAt,
         createdAt: readings.createdAt,
         result: readings.result,
+        premium: readings.premium,
+        ultra: readings.ultra,
       })
       .from(readings)
       .leftJoin(users, eq(users.id, readings.userId))
-      .where(and(eq(readings.premium, false), eq(readings.ultra, false)))
       .orderBy(desc(readings.createdAt))
       .limit(10_000),
     db
@@ -141,7 +142,11 @@ export async function buildFreeUsersSheetData(): Promise<FreeUsersSheetData> {
     db
       .select({ phone: readings.whatsappPhone })
       .from(readings)
-      .where(or(eq(readings.premium, true), eq(readings.ultra, true))),
+      .where(eq(readings.premium, true)),
+    db
+      .select({ phone: readings.whatsappPhone })
+      .from(readings)
+      .where(eq(readings.ultra, true)),
     db
       .select({ id: users.id })
       .from(users)
@@ -160,6 +165,12 @@ export async function buildFreeUsersSheetData(): Promise<FreeUsersSheetData> {
     if (phone) premiumPhones.add(phone);
   }
 
+  const ultraPhones = new Set<string>();
+  for (const row of ultraRows) {
+    const phone = toIndiaTenDigits(row.phone);
+    if (phone) ultraPhones.add(phone);
+  }
+
   const memberIds = new Set(memberRows.map((row) => row.id));
 
   const syncedAt = ist(new Date());
@@ -170,13 +181,16 @@ export async function buildFreeUsersSheetData(): Promise<FreeUsersSheetData> {
   for (const row of readingRows) {
     const phone = toIndiaTenDigits(row.phone);
 
-    if (phone && (paidPhones.has(phone) || premiumPhones.has(phone))) {
-      skippedPaid += 1;
-      continue;
-    }
-    if (row.userId && memberIds.has(row.userId)) {
-      skippedPaid += 1;
-      continue;
+    // Determine plan status for this user
+    let planStatus = "Free";
+    if (phone && ultraPhones.has(phone)) {
+      planStatus = "Ultra";
+    } else if (phone && (premiumPhones.has(phone) || paidPhones.has(phone))) {
+      planStatus = "Pro";
+    } else if (row.premium) {
+      planStatus = "Pro";
+    } else if (row.ultra) {
+      planStatus = "Ultra";
     }
 
     const key = phone
@@ -205,6 +219,7 @@ export async function buildFreeUsersSheetData(): Promise<FreeUsersSheetData> {
       row.userId ? "Account" : "Guest",
       row.id,
       row.userId ?? "",
+      planStatus,
     ]);
   }
 
