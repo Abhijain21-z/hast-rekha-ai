@@ -122,7 +122,7 @@ export default function MembershipPage({
       }
 
       const cashfree = await getCashfree(CASHFREE_MODE);
-      const result = await cashfree.checkout({ paymentSessionId: data.paymentSessionId, redirectTarget: "_modal" });
+      const result = await cashfree.checkout({ paymentSessionId: data.paymentSessionId, redirectTarget: "_self" });
       if (result.redirect) return; // The return page verifies and shows the result.
       if (result.error) {
         setError(L({ en: "Payment was not completed. You can try again whenever you are ready.", hi: "भुगतान पूरा नहीं हुआ। जब चाहें दोबारा कोशिश कर सकते हैं।" }));

@@ -79,7 +79,7 @@ export default function Pricing({ heading = true }: { heading?: boolean }) {
           </motion.div>
 
           {/* Pro + Diwali PDF — ₹99 add-on */}
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6, delay: 0.12 }} className="relative flex flex-col overflow-hidden rounded-3xl border-2 border-rose-400/40 bg-gradient-to-br from-rose-400/10 via-cosmic-800/85 to-gold-400/10 p-6">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6, delay: 0.12 }} className="relative flex flex-col overflow-hidden rounded-3xl border-2 border-gold-400/70 bg-gradient-to-br from-gold-400/15 via-cosmic-800/85 to-rose-400/10 p-6 gold-glow">
             <div className="relative flex items-center justify-between gap-2">
               <p className="font-display text-xl text-rose-200">{L({ en: "Pro + Diwali PDF", hi: "प्रो + दिवाली PDF" })}</p>
               <Badge className="px-2.5 py-1 text-[10px]"><Gift className="h-3 w-3" /> {L({ en: "PDF add-on", hi: "PDF ऐड-ऑन" })}</Badge>

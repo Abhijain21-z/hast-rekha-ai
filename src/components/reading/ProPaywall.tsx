@@ -396,7 +396,7 @@ export function ProPaywallModal({
       }
       setLastOrderId(data.orderId);
       const cashfree = await getCashfree(CASHFREE_MODE);
-      const result = await cashfree.checkout({ paymentSessionId: data.paymentSessionId, redirectTarget: "_modal" });
+      const result = await cashfree.checkout({ paymentSessionId: data.paymentSessionId, redirectTarget: "_self" });
 
       if (result.error) {
         // A dismissed modal also lands here — not a failed payment, but a drop.
