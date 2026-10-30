@@ -1,7 +1,12 @@
 {
+  "buildCommand": "node scripts/migrate.mjs && next build",
   "crons": [
     {
       "path": "/api/cron/daily-rashifal",
+      "schedule": "30 3 * * *"
+    },
+    {
+      "path": "/api/cron/daily-outreach",
       "schedule": "30 3 * * *"
     }
   ]

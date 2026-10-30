@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { desc } from "drizzle-orm";
+import { and, desc, eq, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { readings } from "@/db/schema";
+import { payments, readings, users } from "@/db/schema";
 import { isAdminKey } from "@/lib/admin-auth";
+import { getGoogleSheetsConfig, getLastSheetSync } from "@/lib/google-sheets";
+import { toIndiaTenDigits } from "@/lib/whatsapp";
+import OutreachAutomation from "./OutreachAutomation";
 import OutreachTable, { type FreeReader } from "./OutreachTable";
 
 export const dynamic = "force-dynamic";
@@ -41,25 +44,47 @@ export default async function FreeUsersPage({
     );
   }
 
-  const rows = await db
-    .select({
-      id: readings.id,
-      fullName: readings.fullName,
-      whatsappPhone: readings.whatsappPhone,
-      marketingOptIn: readings.marketingOptIn,
-      followupSentAt: readings.followupSentAt,
-      createdAt: readings.createdAt,
-    })
-    .from(readings)
-    .orderBy(desc(readings.createdAt))
-    .limit(3000);
+  const [rows, paidRows, memberRows] = await Promise.all([
+    db
+      .select({
+        id: readings.id,
+        userId: readings.userId,
+        fullName: readings.fullName,
+        whatsappPhone: readings.whatsappPhone,
+        marketingOptIn: readings.marketingOptIn,
+        followupSentAt: readings.followupSentAt,
+        createdAt: readings.createdAt,
+      })
+      .from(readings)
+      .where(and(eq(readings.premium, false), eq(readings.ultra, false)))
+      .orderBy(desc(readings.createdAt))
+      .limit(3000),
+    db
+      .select({ phone: payments.customerPhone })
+      .from(payments)
+      .where(eq(payments.status, "paid")),
+    db
+      .select({ id: users.id })
+      .from(users)
+      .where(sql`${users.membershipUntil} > now()`),
+  ]);
+
+  const paidPhones = new Set<string>();
+  for (const row of paidRows) {
+    const phone = toIndiaTenDigits(row.phone);
+    if (phone) paidPhones.add(phone);
+  }
+  const memberIds = new Set(memberRows.map((row) => row.id));
 
   // One row per phone number: the newest reading wins, so the same person is
-  // never messaged three times for three readings.
+  // never messaged three times for three readings. Paid readers and active
+  // members are excluded even if they also took a free reading.
   const byPhone = new Map<string, FreeReader>();
   for (const row of rows) {
-    const phone = (row.whatsappPhone ?? "").replace(/\D/g, "").slice(-10);
-    if (!/^[6-9]\d{9}$/.test(phone)) continue;
+    const phone = toIndiaTenDigits(row.whatsappPhone);
+    if (!phone) continue;
+    if (paidPhones.has(phone)) continue;
+    if (row.userId && memberIds.has(row.userId)) continue;
     if (byPhone.has(phone)) continue;
     byPhone.set(phone, {
       id: row.id,
@@ -72,6 +97,25 @@ export default async function FreeUsersPage({
   }
 
   const readers = [...byPhone.values()];
+  const sheetConfig = getGoogleSheetsConfig();
+  const lastSync = await getLastSheetSync();
 
-  return <OutreachTable readers={readers} adminKey={key ?? ""} />;
+  const stats = {
+    total: readers.length,
+    optedIn: readers.filter((r) => r.marketingOptIn).length,
+    sent: readers.filter((r) => r.followupSentAt).length,
+    pending: readers.filter((r) => r.marketingOptIn && !r.followupSentAt).length,
+  };
+
+  const automation = (
+    <OutreachAutomation
+      adminKey={key ?? ""}
+      stats={stats}
+      lastSync={lastSync}
+      sheetUrl={sheetConfig.sheetUrl}
+      sheetConfigured={sheetConfig.configured}
+    />
+  );
+
+  return <OutreachTable readers={readers} adminKey={key ?? ""} automation={automation} />;
 }

@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
-import { readings } from "@/db/schema";
+import { payments, readings } from "@/db/schema";
 import { isAdminKey } from "@/lib/admin-auth";
+import { toIndiaTenDigits } from "@/lib/whatsapp";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -30,29 +31,46 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  // Find all FREE readers (not premium)
-  const rows = await db
-    .select({
-      id: readings.id,
-      fullName: readings.fullName,
-      birthDate: readings.birthDate,
-      birthTime: readings.birthTime,
-      placeName: readings.placeName,
-      gender: readings.gender,
-      married: readings.married,
-      whatsappPhone: readings.whatsappPhone,
-      marketingOptIn: readings.marketingOptIn,
-      premium: readings.premium,
-      createdAt: readings.createdAt,
-    })
-    .from(readings)
-    .where(eq(readings.premium, false))
-    .orderBy(desc(readings.createdAt));
+  // Find all FREE readers (not Pro/Ultra, and no successful payment).
+  const [rows, paidRows] = await Promise.all([
+    db
+      .select({
+        id: readings.id,
+        fullName: readings.fullName,
+        birthDate: readings.birthDate,
+        birthTime: readings.birthTime,
+        placeName: readings.placeName,
+        gender: readings.gender,
+        married: readings.married,
+        whatsappPhone: readings.whatsappPhone,
+        marketingOptIn: readings.marketingOptIn,
+        premium: readings.premium,
+        createdAt: readings.createdAt,
+      })
+      .from(readings)
+      .where(and(eq(readings.premium, false), eq(readings.ultra, false)))
+      .orderBy(desc(readings.createdAt)),
+    db
+      .select({ phone: payments.customerPhone })
+      .from(payments)
+      .where(eq(payments.status, "paid")),
+  ]);
+
+  const paidPhones = new Set<string>();
+  for (const row of paidRows) {
+    const phone = toIndiaTenDigits(row.phone);
+    if (phone) paidPhones.add(phone);
+  }
+
+  const freeRows = rows.filter((row) => {
+    const phone = toIndiaTenDigits(row.whatsappPhone);
+    return !phone || !paidPhones.has(phone);
+  });
 
   if (format === "json") {
     return NextResponse.json({
-      total: rows.length,
-      users: rows,
+      total: freeRows.length,
+      users: freeRows,
     });
   }
 
@@ -71,7 +89,7 @@ export async function GET(req: Request) {
     "Created At",
   ];
 
-  const csvRows = rows.map((r) => [
+  const csvRows = freeRows.map((r) => [
     r.id,
     `"${(r.fullName ?? "").replace(/"/g, '""')}"`,
     r.birthDate ?? "",

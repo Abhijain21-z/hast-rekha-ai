@@ -230,15 +230,34 @@ export function ProPaywallModal({
       .catch(() => setQr(null));
   }, [open, deepLink, manualUpi]);
 
-  // A code saved by the offer popup (or `?coupon=` in the URL) is applied here.
+  // A code saved by the offer popup, `?coupon=` in the URL, or a WhatsApp
+  // follow-up click is applied here. The approved template's button carries
+  // utm_source=whatsapp & utm_campaign=pro_followup, so that traffic gets
+  // SAVE50 without changing the approved template.
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const fromUrl = new URLSearchParams(window.location.search).get("coupon");
-    const found = findCoupon(fromUrl) ?? findCoupon(window.localStorage.getItem(COUPON_STORAGE_KEY));
-    if (found) {
+    const params = new URLSearchParams(window.location.search);
+    const fromUrl = params.get("coupon");
+    const fromWhatsApp =
+      params.get("utm_source") === "whatsapp" &&
+      params.get("utm_campaign") === "pro_followup";
+    const found =
+      findCoupon(fromUrl) ??
+      (fromWhatsApp ? findCoupon("SAVE50") : null) ??
+      findCoupon(window.localStorage.getItem(COUPON_STORAGE_KEY));
+    if (!found) return;
+    if (fromWhatsApp) {
+      try {
+        window.localStorage.setItem(COUPON_STORAGE_KEY, found.code);
+      } catch {}
+    }
+    // Defer the state update out of the effect body: reading the URL and
+    // localStorage is the external-system work; React only needs the result.
+    const timer = window.setTimeout(() => {
       setCoupon(found);
       setCouponInput(found.code);
-    }
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   function applyCouponCode() {

@@ -22,3 +22,6 @@ skills-lock.json
 
 # Local scratch files
 .tmp-*
+
+# Local Apps Script copy containing the webhook secret
+google-sheet-webhook.local.gs

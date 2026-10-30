@@ -379,6 +379,50 @@ export const contactMessages = pgTable("contact_messages", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
+/**
+ * One row per attempted Pro-plan WhatsApp follow-up. The reader's
+ * `readings.followup_sent_at` is still the source of truth for eligibility;
+ * this table is the owner-visible audit trail (provider message id + errors).
+ */
+export const outreachSends = pgTable(
+  "outreach_sends",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    /** Normalized 10-digit Indian mobile. */
+    phone: text("phone").notNull(),
+    name: text("name"),
+    template: text("template").notNull(),
+    providerMessageId: text("provider_message_id"),
+    /** sent | error */
+    status: varchar("status", { length: 20 }).notNull(),
+    error: text("error"),
+    sentAt: timestamp("sent_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    index("outreach_sends_phone_idx").on(t.phone),
+    index("outreach_sends_sent_idx").on(t.sentAt),
+  ],
+);
+
+/**
+ * One row per Google Sheet sync attempt. The sheet itself is rewritten from
+ * the database, so a retry is idempotent; this table only powers the owner
+ * dashboard's "last synced" status.
+ */
+export const outreachSyncRuns = pgTable(
+  "outreach_sync_runs",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    startedAt: timestamp("started_at", { withTimezone: true }).notNull().defaultNow(),
+    finishedAt: timestamp("finished_at", { withTimezone: true }),
+    rowCount: integer("row_count").notNull().default(0),
+    /** running | success | error */
+    status: varchar("status", { length: 20 }).notNull().default("running"),
+    error: text("error"),
+  },
+  (t) => [index("outreach_sync_runs_started_idx").on(t.startedAt)],
+);
+
 export type User = typeof users.$inferSelect;
 export type Session = typeof sessions.$inferSelect;
 export type Reading = typeof readings.$inferSelect;
@@ -400,3 +444,7 @@ export type ChatUsage = typeof chatUsage.$inferSelect;
 export type NewChatUsage = typeof chatUsage.$inferInsert;
 export type ChatWallet = typeof chatWallets.$inferSelect;
 export type ChatSession = typeof chatSessions.$inferSelect;
+export type OutreachSend = typeof outreachSends.$inferSelect;
+export type NewOutreachSend = typeof outreachSends.$inferInsert;
+export type OutreachSyncRun = typeof outreachSyncRuns.$inferSelect;
+export type NewOutreachSyncRun = typeof outreachSyncRuns.$inferInsert;

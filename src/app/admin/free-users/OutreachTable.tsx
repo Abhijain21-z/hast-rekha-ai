@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { Check, Copy, Download, MessageCircle, Search } from "lucide-react";
 import { buildProFollowUpMessage, buildWhatsAppChatUrl } from "@/lib/outreach";
 
@@ -27,9 +27,11 @@ function formatDate(iso: string | null): string {
 export default function OutreachTable({
   readers,
   adminKey,
+  automation,
 }: {
   readers: FreeReader[];
   adminKey: string;
+  automation?: ReactNode;
 }) {
   const [filter, setFilter] = useState<Filter>("pending");
   const [query, setQuery] = useState("");
@@ -42,13 +44,14 @@ export default function OutreachTable({
     const total = readers.length;
     const done = readers.filter((r) => sent[r.id]).length;
     const optedIn = readers.filter((r) => r.marketingOptIn).length;
-    return { total, done, pending: total - done, optedIn };
+    const pending = readers.filter((r) => r.marketingOptIn && !sent[r.id]).length;
+    return { total, done, pending, optedIn };
   }, [readers, sent]);
 
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
     return readers.filter((r) => {
-      if (filter === "pending" && sent[r.id]) return false;
+      if (filter === "pending" && (sent[r.id] || !r.marketingOptIn)) return false;
       if (filter === "sent" && !sent[r.id]) return false;
       if (!q) return true;
       return r.name.toLowerCase().includes(q) || r.phone.includes(q);
@@ -97,6 +100,8 @@ export default function OutreachTable({
         <Stat label="भेज दिया" value={stats.done} tone="emerald" />
         <Stat label="मार्केटिंग सहमति" value={stats.optedIn} tone="mystic" />
       </section>
+
+      {automation}
 
       <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap gap-2">
@@ -192,15 +197,21 @@ export default function OutreachTable({
                       <Copy className="h-4 w-4" />
                     )}
                   </button>
-                  <a
-                    href={waUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => void markSent(reader.id)}
-                    className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-emerald-900/30 transition hover:bg-emerald-400"
-                  >
-                    <MessageCircle className="h-4 w-4" /> WhatsApp
-                  </a>
+                  {reader.marketingOptIn ? (
+                    <a
+                      href={waUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => void markSent(reader.id)}
+                      className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-emerald-900/30 transition hover:bg-emerald-400"
+                    >
+                      <MessageCircle className="h-4 w-4" /> WhatsApp
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-2 rounded-full border border-rose-400/30 px-4 py-2 text-xs text-rose-300">
+                      सहमति नहीं
+                    </span>
+                  )}
                 </div>
               </li>
             );

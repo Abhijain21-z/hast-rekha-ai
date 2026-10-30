@@ -1,31 +1,49 @@
 import { NextResponse } from "next/server";
+import { sendFollowUps } from "@/lib/outreach-sender";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 export const maxDuration = 300;
 
 /**
- * POST /api/cron/follow-up-pro
+ * POST/GET /api/cron/follow-up-pro
  *
- * Daily Pro-plan follow-up to free readers who opted into marketing.
- * Protected by CRON_SECRET (Vercel Cron sends it automatically).
+ * Legacy dedicated follow-up cron. The combined daily cron is
+ * `/api/cron/daily-outreach` (sheet sync + WhatsApp). This route stays for
+ * manual runs and for anyone pointing an external scheduler at it.
  *
- * Vercel Cron config:
- *   Path: /api/cron/follow-up-pro
- *   Schedule: 0 9 * * * (09:00 UTC = 14:30 IST)
+ * Vercel Cron sends `Authorization: Bearer $CRON_SECRET`; the x-cron-secret
+ * header is also accepted for manual curl calls.
  */
-export async function POST(req: Request) {
-  const secret = process.env.CRON_SECRET ?? "";
-  if (!secret || req.headers.get("x-cron-secret") !== secret) {
+function authorized(req: Request): boolean {
+  const secret = process.env.CRON_SECRET?.trim();
+  if (!secret) return false;
+  return (
+    req.headers.get("authorization") === `Bearer ${secret}` ||
+    req.headers.get("x-cron-secret") === secret
+  );
+}
+
+async function run(req: Request) {
+  if (!authorized(req)) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hastrekhaai.online";
-  const res = await fetch(`${baseUrl}/api/whatsapp/follow-up-pro?limit=100`, {
-    method: "GET",
-    headers: { "Cache-Control": "no-store", "x-cron-secret": secret },
-  });
+  const url = new URL(req.url);
+  const limit = Math.min(
+    Math.max(Number(url.searchParams.get("limit") ?? "100") || 100, 1),
+    200,
+  );
+  const dryRun = url.searchParams.get("dryRun") === "1";
 
-  const data = await res.json();
-  return NextResponse.json(data, { status: res.status });
+  const result = await sendFollowUps({ limit, dryRun });
+  return NextResponse.json(result);
+}
+
+export async function GET(req: Request) {
+  return run(req);
+}
+
+export async function POST(req: Request) {
+  return run(req);
 }

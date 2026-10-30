@@ -1,5 +1,8 @@
 import { after } from "next/server";
-import { isStopMessage, verifyMetaSignature } from "@/lib/whatsapp";
+import { eq, sql } from "drizzle-orm";
+import { db } from "@/db";
+import { readings } from "@/db/schema";
+import { isStopMessage, toIndiaTenDigits, verifyMetaSignature } from "@/lib/whatsapp";
 import { markWhatsAppOptedOut } from "@/lib/whatsapp-subscribers";
 
 export const dynamic = "force-dynamic";
@@ -76,6 +79,17 @@ export async function POST(req: Request) {
           for (const message of change.value?.messages ?? []) {
             const text = message.text?.body;
             if (!message.from || !text || !isStopMessage(text)) continue;
+            const phone = toIndiaTenDigits(message.from);
+            if (phone) {
+              // STOP applies to every marketing message, not just the daily
+              // rashifal: remove the number from the Pro follow-up audience too.
+              await db
+                .update(readings)
+                .set({ marketingOptIn: false, updatedAt: new Date() })
+                .where(
+                  sql`right(regexp_replace(coalesce(${readings.whatsappPhone}, ''), '[^0-9]', '', 'g'), 10) = ${phone}`,
+                );
+            }
             if (await markWhatsAppOptedOut(message.from)) optedOut += 1;
           }
         }
