@@ -51,7 +51,7 @@ export function includesBook(plan: PaidPlan): boolean {
   return plan === "bundle" || plan === "ultra";
 }
 
-/** Plans that unlock the Diwali Puja PDF. */
+/** Plans that unlock the Diwali Puja PDF (now included with every report plan). */
 export function includesDiwaliPdf(plan: PaidPlan): boolean {
-  return plan === "diwali";
+  return plan !== "membership";
 }

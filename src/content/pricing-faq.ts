@@ -42,8 +42,8 @@ export const PRICING_FAQS: PricingFaqItem[] = [
       hi: "क्या पेड रिपोर्ट अभी ख़रीदी जा सकती है?",
     },
     a: {
-      en: "Yes — secure checkout is live through Cashfree. Open any report and tap the Pro button: you can pay by UPI, card or net banking. Pro is ₹51, Pro + Diwali PDF is ₹99, Pro + Dhandayak book is ₹199, and the 30-day membership is ₹1,000. A manual UPI QR stays available as a fallback. The report unlocks as soon as the payment is confirmed.",
-      hi: "हाँ — Cashfree से सुरक्षित चेकआउट चालू है। कोई भी रिपोर्ट खोलकर प्रो बटन दबाएँ: UPI, कार्ड या नेट बैंकिंग से भुगतान कर सकते हैं। प्रो ₹51, प्रो + दिवाली PDF ₹99, प्रो + धनदायक पुस्तक ₹199, और 30-दिन मेंबरशिप ₹1,000 है। मैन्युअल UPI QR आपातकालीन विकल्प के रूप में उपलब्ध रहता है। भुगतान की पुष्टि होते ही रिपोर्ट अनलॉक हो जाती है।",
+      en: "Yes — secure checkout is live through Cashfree. Open any report and tap the Pro button: you can pay by UPI, card or net banking. Pro is ₹51 (now with the Diwali Puja PDF included), Pro + Dhandayak book is ₹199, and the 30-day membership is ₹1,000. A manual UPI QR stays available as a fallback. The report unlocks as soon as the payment is confirmed.",
+      hi: "हाँ — Cashfree से सुरक्षित चेकआउट चालू है। कोई भी रिपोर्ट खोलकर प्रो बटन दबाएँ: UPI, कार्ड या नेट बैंकिंग से भुगतान कर सकते हैं। प्रो ₹51 (अब दिवाली पूजा PDF शामिल), प्रो + धनदायक पुस्तक ₹199, और 30-दिन मेंबरशिप ₹1,000 है। मैन्युअल UPI QR आपातकालीन विकल्प के रूप में उपलब्ध रहता है। भुगतान की पुष्टि होते ही रिपोर्ट अनलॉक हो जाती है।",
     },
   },
   {
@@ -72,8 +72,8 @@ export const PRICING_FAQS: PricingFaqItem[] = [
       hi: "20% की सेवा राशि कहाँ जाती है?",
     },
     a: {
-      en: "20% of what you pay for a paid plan — Pro (₹51), Pro + book (₹199), Pro + Diwali PDF (₹99) or the ₹1,000 membership — is set aside for animal welfare and greenery: feed for cows, monkeys and stray animals, and tree planting. It comes out of the plan price, so you pay nothing extra, and the free reading is unaffected. This is a voluntary commitment by the site owner, not a separate charity collection.",
-      hi: "पेड प्लान — प्रो (₹51), प्रो + पुस्तक (₹199), प्रो + दिवाली PDF (₹99) या ₹1,000 की मेंबरशिप — में दी गई राशि का 20% बेज़ुबान जानवरों की सेवा और हरियाली के लिए अलग रखा जाता है: गाय, बंदर और आवारा जानवरों का भोजन, और पेड़-पौधे लगाना। यह प्लान की कीमत में से जाता है, आपको अलग से कुछ नहीं देना है, और फ्री रीडिंग पर इसका कोई असर नहीं। यह साइट मालिक की स्वैच्छिक प्रतिबद्धता है, अलग से कोई चैरिटी वसूली नहीं।",
+      en: "20% of what you pay for a paid plan — Pro (₹51, Diwali Puja PDF included), Pro + book (₹199) or the ₹1,000 membership — is set aside for animal welfare and greenery: feed for cows, monkeys and stray animals, and tree planting. It comes out of the plan price, so you pay nothing extra, and the free reading is unaffected. This is a voluntary commitment by the site owner, not a separate charity collection.",
+      hi: "पेड प्लान — प्रो (₹51, दिवाली पूजा PDF शामिल), प्रो + पुस्तक (₹199) या ₹1,000 की मेंबरशिप — में दी गई राशि का 20% बेज़ुबान जानवरों की सेवा और हरियाली के लिए अलग रखा जाता है: गाय, बंदर और आवारा जानवरों का भोजन, और पेड़-पौधे लगाना। यह प्लान की कीमत में से जाता है, आपको अलग से कुछ नहीं देना है, और फ्री रीडिंग पर इसका कोई असर नहीं। यह साइट मालिक की स्वैच्छिक प्रतिबद्धता है, अलग से कोई चैरिटी वसूली नहीं।",
     },
   },
   {

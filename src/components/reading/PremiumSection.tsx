@@ -7,7 +7,7 @@ import { AlertTriangle, BookOpen, Briefcase, CalendarDays, Check, Crown, Flame, 
 import { useLang } from "@/components/providers/LanguageProvider";
 import { Button, cn } from "@/components/ui";
 import { buildPremiumReport, BOOK_COPY, PREMIUM_PERKS, PREMIUM_PRICE, UPI_ID } from "@/lib/premium";
-import { BUNDLE_PRICE, BUNDLE_TEST, DIWALI_PRICE, MANUAL_UPI_ENABLED, MEMBERSHIP_PRICE, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
+import { BUNDLE_PRICE, BUNDLE_TEST, MANUAL_UPI_ENABLED, MEMBERSHIP_PRICE, PDF_PRICE_ANCHOR, PRO_PAY_MODE, ULTRA_PRICE } from "@/lib/flags";
 import { buildPartnerReport, prefersDevanagari } from "@/lib/partner";
 import type { ReadingDTO } from "@/lib/dto";
 import { DIWALI_OFFER } from "@/lib/diwali-offer";
@@ -85,13 +85,6 @@ export default function PremiumSection({ reading, unlocked, onUnlocked }: { read
                 className="mt-3 w-full rounded-full border border-gold-400/40 px-4 py-2.5 text-xs font-medium text-gold-200 transition hover:border-gold-400/70 hover:bg-gold-400/10"
               >
                 {BUNDLE_TEST ? `Pro + Dhandayak book · ₹${BUNDLE_PRICE}` : `${t.pricing.ultra} · ₹${ULTRA_PRICE} · ${t.pro.ultraTag}`}
-              </button>
-              <button
-                type="button"
-                onClick={() => setPayOpen("diwali")}
-                className="mt-2 w-full rounded-full border border-gold-400/30 px-4 py-2.5 text-xs font-medium text-gold-100 transition hover:border-gold-400/60 hover:bg-gold-400/10"
-              >
-                {L({ en: `Pro + Diwali PDF · ₹${DIWALI_PRICE}`, hi: `प्रो + दिवाली PDF · ₹${DIWALI_PRICE}` })}
               </button>
               <Link href="/membership" className="mt-3 text-xs font-medium text-slate-300 underline-offset-4 hover:text-gold-200 hover:underline">
                 {L({ en: `Membership · ₹${MEMBERSHIP_PRICE} / 30 days`, hi: `मेंबरशिप · ₹${MEMBERSHIP_PRICE} / 30 दिन` })}

@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { readings } from "@/db/schema";
 import { isStopMessage, toIndiaTenDigits, verifyMetaSignature } from "@/lib/whatsapp";
 import { markWhatsAppOptedOut } from "@/lib/whatsapp-subscribers";
+import { handleWhatsAppChat } from "@/lib/whatsapp-chat";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -70,7 +71,7 @@ export async function POST(req: Request) {
     return new Response("OK", { status: 200 });
   }
 
-  // Meta expects a fast 200; the DB update can finish after the response.
+  // Meta expects a fast 200; processing happens after the response.
   after(async () => {
     try {
       let optedOut = 0;
@@ -78,19 +79,24 @@ export async function POST(req: Request) {
         for (const change of entry.changes ?? []) {
           for (const message of change.value?.messages ?? []) {
             const text = message.text?.body;
-            if (!message.from || !text || !isStopMessage(text)) continue;
+            if (!message.from || !text) continue;
             const phone = toIndiaTenDigits(message.from);
-            if (phone) {
-              // STOP applies to every marketing message, not just the daily
-              // rashifal: remove the number from the Pro follow-up audience too.
+            if (!phone) continue;
+
+            // STOP handling: opt out immediately
+            if (isStopMessage(text)) {
               await db
                 .update(readings)
                 .set({ marketingOptIn: false, updatedAt: new Date() })
                 .where(
                   sql`right(regexp_replace(coalesce(${readings.whatsappPhone}, ''), '[^0-9]', '', 'g'), 10) = ${phone}`,
                 );
+              if (await markWhatsAppOptedOut(message.from)) optedOut += 1;
+              continue;
             }
-            if (await markWhatsAppOptedOut(message.from)) optedOut += 1;
+
+            // AI chatbot reply for all other messages
+            await handleWhatsAppChat(message.from, text);
           }
         }
       }

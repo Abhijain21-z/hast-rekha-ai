@@ -43,7 +43,7 @@ export async function PATCH(req: Request, { params }: Ctx) {
     }
     const [row] = await db
       .update(readings)
-      .set({ premium: true, premiumAt: new Date(), updatedAt: new Date() })
+      .set({ premium: true, diwaliPdf: true, premiumAt: new Date(), updatedAt: new Date() })
       .where(eq(readings.id, id))
       .returning();
     if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 });
@@ -75,7 +75,8 @@ export async function PATCH(req: Request, { params }: Ctx) {
         premium: true,
         // Never downgrade a book or PDF unlock: each entitlement is additive.
         ...(body.plan === "ultra" || body.plan === "bundle" ? { ultra: true } : {}),
-        ...(body.plan === "diwali" ? { diwaliPdf: true } : {}),
+        // Every report plan now includes the Diwali Puja PDF.
+        diwaliPdf: true,
         premiumUtr: utr,
         premiumAt: new Date(),
         updatedAt: new Date(),

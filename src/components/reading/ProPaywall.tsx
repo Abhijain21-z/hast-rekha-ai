@@ -58,8 +58,8 @@ const PLAN_INFO: Record<ProPlan, { title: Bi; sub: Bi }> = {
   pro: {
     title: { en: "Pro report", hi: "प्रो रिपोर्ट" },
     sub: {
-      en: "5-year roadmap, complete PDF, partner report, upay & 50 chat minutes",
-      hi: "5-वर्षीय रोडमैप, पूरी PDF, जीवनसाथी रिपोर्ट, उपाय और 50 चैट मिनट",
+      en: "5-year roadmap, complete PDF, partner report, upay, Diwali Puja PDF & 50 chat minutes",
+      hi: "5-वर्षीय रोडमैप, पूरी PDF, जीवनसाथी रिपोर्ट, उपाय, दिवाली पूजा PDF और 50 चैट मिनट",
     },
   },
   diwali: {
@@ -122,7 +122,7 @@ export function ProPaywallModal({
   const [copied, setCopied] = useState(false);
 
   const planOptions = useMemo<ProPlan[]>(() => {
-    const base: ProPlan[] = BUNDLE_TEST ? ["pro", "bundle", "diwali"] : ["pro", "ultra", "diwali"];
+    const base: ProPlan[] = BUNDLE_TEST ? ["pro", "bundle"] : ["pro", "ultra"];
     return alreadyPro ? base.filter((key) => key !== "pro") : base;
   }, [alreadyPro]);
 
@@ -147,11 +147,9 @@ export function ProPaywallModal({
   const listPrice = PLAN_PRICES[plan];
   const price = couponPrice(listPrice, coupon);
   const perks =
-    plan === "diwali"
-      ? [...PREMIUM_PERKS, DIWALI_PERK]
-      : plan === "pro"
-        ? PREMIUM_PERKS
-        : [...PREMIUM_PERKS, ...BOOK_PERKS];
+    plan === "bundle" || plan === "ultra"
+      ? [...PREMIUM_PERKS, ...BOOK_PERKS, DIWALI_PERK]
+      : [...PREMIUM_PERKS, DIWALI_PERK];
   const deepLink = useMemo(() => upiDeepLink(readingId, price), [readingId, price]);
 
   // The manual UPI panel confirms ₹51 Pro without a reference, so every other
@@ -210,8 +208,8 @@ export function ProPaywallModal({
     {
       label: { en: "Complete Diwali Puja PDF", hi: "संपूर्ण दिवाली पूजा PDF" },
       free: false,
-      pro: false,
-      bundle: false,
+      pro: true,
+      bundle: true,
       diwali: true,
     },
     {
@@ -432,15 +430,12 @@ export function ProPaywallModal({
 
   function planTitle(key: ProPlan) {
     if (alreadyPro && key === "bundle") return L({ en: "Dhandayak book", hi: "धनदायक पुस्तक" });
-    if (alreadyPro && key === "diwali") return L({ en: "Diwali Puja PDF", hi: "दिवाली पूजा PDF" });
     return L(PLAN_INFO[key].title);
   }
 
   function planSub(key: ProPlan) {
     if (alreadyPro && key === "bundle")
       return L({ en: "Add the complete book to this Pro report", hi: "इस प्रो रिपोर्ट में पूरी पुस्तक जोड़ें" });
-    if (alreadyPro && key === "diwali")
-      return L({ en: "Add the complete PDF to this Pro report", hi: "इस प्रो रिपोर्ट में पूरी PDF जोड़ें" });
     return L(PLAN_INFO[key].sub);
   }
 
@@ -475,9 +470,9 @@ export function ProPaywallModal({
           </p>
         )}
 
-        {/* Plan switch — Pro, the bundle, and the Diwali PDF add-on. */}
+        {/* Plan switch — the ₹51 Pro report (Diwali PDF included) and the book bundle. */}
         <p className="mt-5 text-xs font-semibold uppercase tracking-wider text-gold-300">{t.pro.planTitle}</p>
-        <div className={cn("mt-2 grid gap-3", planOptions.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3")}>
+        <div className={cn("mt-2 grid gap-3", planOptions.length === 1 ? "sm:grid-cols-1" : planOptions.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3")}>
           {planOptions.map((key) => {
             const active = plan === key;
             return (

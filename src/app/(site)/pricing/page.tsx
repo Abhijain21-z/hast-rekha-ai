@@ -25,8 +25,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Pricing
     ? "Hast Rekha Price — Free Reading, ₹51 Pro & Membership | Hastrekha AI"
     : "हस्त रेखा Price — फ्री रीडिंग, ₹51 प्रो और मेंबरशिप | Hastrekha AI";
   const description = en
-    ? "The core palm reading is free — no login, no card. Pro is ₹51 one time, Pro + Diwali PDF ₹99, Pro + book ₹199, or a ₹1,000 30-day family membership. Printing is a Pro feature."
-    : "मूल हस्तरेखा रीडिंग फ्री — बिना लॉगिन, बिना कार्ड। प्रो ₹51, प्रो + दिवाली PDF ₹99, प्रो + पुस्तक ₹199, या ₹1,000 का 30-दिन पारिवारिक मेंबरशिप। प्रिंटिंग प्रो सुविधा है।";
+    ? "The core palm reading is free — no login, no card. Pro is ₹51 one time and now includes the Diwali Puja PDF, Pro + book is ₹199, or a ₹1,000 30-day family membership. Printing is a Pro feature."
+    : "मूल हस्तरेखा रीडिंग फ्री — बिना लॉगिन, बिना कार्ड। प्रो ₹51 (अब दिवाली पूजा PDF शामिल), प्रो + पुस्तक ₹199, या ₹1,000 का 30-दिन पारिवारिक मेंबरशिप। प्रिंटिंग प्रो सुविधा है।";
 
   return {
     title,

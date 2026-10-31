@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { readings } from "@/db/schema";
@@ -10,6 +10,7 @@ import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { upsertWhatsAppSubscriber } from "@/lib/whatsapp-subscribers";
 import { encodeFocus, isFocusKey } from "@/lib/focus";
 import { membershipCanUnlockReport } from "@/lib/membership";
+import { syncFreeUsersToSheet } from "@/lib/google-sheets";
 
 export const dynamic = "force-dynamic";
 
@@ -141,6 +142,23 @@ export async function POST(req: Request) {
       }
     }
   }
+
+  // Every new free reading should land in the owner's Google Sheet right away.
+  // The sync runs after the response is sent, so the reading stays fast and a
+  // Sheet hiccup can never block or fail the visitor's reading.
+  after(async () => {
+    try {
+      const sheet = await syncFreeUsersToSheet();
+      if (!sheet.ok && sheet.configured) {
+        console.error("[sheet] post-reading sync failed:", sheet.error ?? "unknown");
+      }
+    } catch (error) {
+      console.error(
+        "[sheet] post-reading sync failed:",
+        error instanceof Error ? error.message : error,
+      );
+    }
+  });
 
   return NextResponse.json({ id: row.id, result, memberUnlock }, { status: 201 });
 }

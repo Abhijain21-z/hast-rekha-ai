@@ -61,7 +61,7 @@ export default function DiwaliPujaPromo({
           <Sparkles className="mx-auto h-7 w-7 text-gold-300" />
           <p className="mt-2 font-display text-xl text-white">{L(DIWALI_OFFER.promoBadge)}</p>
           <p className="mt-1 text-xs leading-relaxed text-slate-300">
-            {L({ en: "One-time ₹99 · Pro report + PDF", hi: "एक बार ₹99 · प्रो रिपोर्ट + PDF" })}
+            {L({ en: "Included with Pro · ₹51", hi: "प्रो में शामिल · ₹51" })}
           </p>
           <Link
             href="/reading"

@@ -1,13 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { UserRound, Heart, Gem, Coins, Briefcase, Activity, Plane, Users, Sparkles, Landmark, Flame, type LucideIcon } from "lucide-react";
+import { UserRound, Heart, Gem, Coins, Briefcase, Activity, Plane, Users, Sparkles, Landmark, Flame, Crown, type LucideIcon } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import type { Area, PalmReport } from "@/lib/palm";
 import type { Rashi } from "@/lib/content";
 import { AgeRange, DecadeBars, LifeGraph, Meter, RadarChart, Tilt } from "./ReportCharts";
-import { PdfDividerButton } from "./ProPaywall";
-import { ProReadMore, ProText } from "./ProTeaser";
+import { PdfDividerButton, ProPaywallModal, type ProPlan } from "./ProPaywall";
+import { ProReadMore, ProText, firstSentence } from "./ProTeaser";
+import SamplePredictionModal from "./SamplePredictionModal";
 
 const ICONS: Record<string, LucideIcon> = { UserRound, Heart, Gem, Coins, Briefcase, Activity, Plane, Users, Sparkles, Landmark, Flame };
 const AREA_COLORS: Record<string, string> = { career: "#fbbf24", love: "#fb7185", health: "#34d399", wealth: "#f5c242", family: "#60a5fa", spirituality: "#c084fc", travel: "#22d3ee", fame: "#f97316" };
@@ -30,6 +32,8 @@ export default function DetailedSections({
   focusArea?: Area | null;
 }) {
   const { t, L } = useLang();
+  const [payPlan, setPayPlan] = useState<ProPlan | null>(null);
+  const [sampleOpen, setSampleOpen] = useState(false);
   const { timing, birthYear, age } = report;
   const yr = (a: number) => birthYear + a;
   const rangeLabel = (r: [number, number]) => `${r[0]}–${r[1]} · ${yr(r[0])}–${yr(r[1])}`;
@@ -84,21 +88,64 @@ export default function DetailedSections({
                         </div>
                       </div>
                       <div className="mt-5 space-y-3">
-                        {paragraphs.slice(0, -1).map((p, i) => (
-                          <motion.p key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + i * 0.08 }} className="text-sm leading-relaxed text-slate-200 sm:text-[15px]">
-                            <ProText text={L(p)} unlocked={unlocked} />
-                          </motion.p>
-                        ))}
-                        {rashiKey && (
-                          <div className="mt-4 rounded-2xl border border-gold-400/20 bg-gold-400/5 p-4">
-                            <p className="text-xs font-semibold uppercase tracking-wider text-gold-300">{t.report.byRashi} · {rashi.symbol} {L(rashi.short)}</p>
-                            <p className="mt-1.5 text-sm leading-relaxed text-slate-200">{L(rashi.predictions[rashiKey])}</p>
-                          </div>
-                        )}
-                        {paragraphs.length > 0 && (
-                          <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + paragraphs.length * 0.08 }}>
-                            <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} text={L(paragraphs[paragraphs.length - 1])} className="mt-4" />
-                          </motion.div>
+                        {unlocked ? (
+                          <>
+                            {paragraphs.slice(0, -1).map((p, i) => (
+                              <motion.p key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + i * 0.08 }} className="text-sm leading-relaxed text-slate-200 sm:text-[15px]">
+                                <ProText text={L(p)} unlocked={unlocked} />
+                              </motion.p>
+                            ))}
+                            {rashiKey && (
+                              <div className="mt-4 rounded-2xl border border-gold-400/20 bg-gold-400/5 p-4">
+                                <p className="text-xs font-semibold uppercase tracking-wider text-gold-300">{t.report.byRashi} · {rashi.symbol} {L(rashi.short)}</p>
+                                <p className="mt-1.5 text-sm leading-relaxed text-slate-200">{L(rashi.predictions[rashiKey])}</p>
+                              </div>
+                            )}
+                            {paragraphs.length > 0 && (
+                              <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 + paragraphs.length * 0.08 }}>
+                                <ProReadMore readingId={readingId} unlocked={unlocked} onUnlocked={onUnlocked} text={L(paragraphs[paragraphs.length - 1])} className="mt-4" />
+                              </motion.div>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            {/* Free version: one line only, then the Pro ask. */}
+                            <p className="text-sm leading-relaxed text-slate-200 sm:text-[15px]">
+                              {firstSentence(L(paragraphs[0] ?? def.title))}
+                            </p>
+                            <div className="mt-4 rounded-2xl border border-gold-400/35 bg-gold-400/[0.08] p-4">
+                              <p className="text-sm font-semibold text-gold-100">
+                                {L({
+                                  en: "The Pro plan gives you the vistrat (detailed) analysis of this field.",
+                                  hi: "प्रो प्लान में इस क्षेत्र का विस्तृत (detailed) विश्लेषण मिलेगा।",
+                                })}
+                              </p>
+                              <p className="mt-1 text-xs leading-relaxed text-slate-300">
+                                {L({
+                                  en: "5-year predictions, exact timing, personal upay and remedies — all based on your own chart. Do you want to see Pro?",
+                                  hi: "5 साल की भविष्यवाणी, सटीक समय, व्यक्तिगत उपाय और रत्न — सब आपकी कुंडली के अनुसार। क्या आप प्रो देखना चाहते हैं?",
+                                })}
+                              </p>
+                              <div className="mt-3 flex flex-wrap gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => setPayPlan("pro")}
+                                  className="btn-gold inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
+                                >
+                                  <Crown className="h-4 w-4" />
+                                  {L({ en: "Yes, show me Pro — ₹51", hi: "हाँ, प्रो दिखाएँ — ₹51" })}
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => setSampleOpen(true)}
+                                  className="inline-flex items-center gap-2 rounded-full border border-gold-400/45 bg-cosmic-900/60 px-4 py-2.5 text-sm font-medium text-gold-100 transition hover:border-gold-400/70 hover:bg-gold-400/10"
+                                >
+                                  <Sparkles className="h-4 w-4" />
+                                  {L({ en: "Sample prediction", hi: "सैंपल भविष्यवाणी देखें" })}
+                                </button>
+                              </div>
+                            </div>
+                          </>
                         )}
                       </div>
                     </div>
@@ -175,6 +222,24 @@ export default function DetailedSections({
             : [node];
         })}
       </div>
+
+      <ProPaywallModal
+        key={payPlan ?? "closed"}
+        open={payPlan !== null}
+        onClose={() => setPayPlan(null)}
+        readingId={readingId}
+        defaultPlan={payPlan ?? "pro"}
+        onUnlocked={() => {
+          setPayPlan(null);
+          onUnlocked();
+        }}
+      />
+      <SamplePredictionModal
+        open={sampleOpen}
+        onClose={() => setSampleOpen(false)}
+        readingId={readingId}
+        onUnlocked={onUnlocked}
+      />
     </section>
   );
 }

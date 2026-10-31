@@ -100,8 +100,8 @@ export const FAQS: FaqItem[] = [
   {
     q: { en: "How do I pay for the premium report?", hi: "प्रीमियम रिपोर्ट का भुगतान कैसे करें?" },
     a: {
-      en: "Open any report and tap the Pro button: checkout runs through Cashfree with UPI, cards or net banking, and the report unlocks as soon as the payment is confirmed. Pro is ₹51, Pro + Diwali PDF is ₹99, Pro + Dhandayak book is ₹199, and the 30-day membership is ₹1,000. A manual UPI QR stays available as a fallback.",
-      hi: "कोई भी रिपोर्ट खोलकर प्रो बटन दबाएँ: चेकआउट Cashfree से चलता है — UPI, कार्ड या नेट बैंकिंग — और भुगतान की पुष्टि होते ही रिपोर्ट अनलॉक हो जाती है। प्रो ₹51, प्रो + दिवाली PDF ₹99, प्रो + धनदायक पुस्तक ₹199, और 30-दिन मेंबरशिप ₹1,000 है। मैन्युअल UPI QR आपातकालीन विकल्प के रूप में उपलब्ध रहता है।",
+      en: "Open any report and tap the Pro button: checkout runs through Cashfree with UPI, cards or net banking, and the report unlocks as soon as the payment is confirmed. Pro is ₹51 (Diwali Puja PDF included), Pro + Dhandayak book is ₹199, and the 30-day membership is ₹1,000. A manual UPI QR stays available as a fallback.",
+      hi: "कोई भी रिपोर्ट खोलकर प्रो बटन दबाएँ: चेकआउट Cashfree से चलता है — UPI, कार्ड या नेट बैंकिंग — और भुगतान की पुष्टि होते ही रिपोर्ट अनलॉक हो जाती है। प्रो ₹51 (दिवाली पूजा PDF शामिल), प्रो + धनदायक पुस्तक ₹199, और 30-दिन मेंबरशिप ₹1,000 है। मैन्युअल UPI QR आपातकालीन विकल्प के रूप में उपलब्ध रहता है।",
     },
   },
   {

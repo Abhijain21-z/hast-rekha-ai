@@ -46,6 +46,18 @@ export function splitProTail(text: string): { head: string; tail: string } {
 }
 
 /**
+ * First sentence only — the free (1-line) version of a report field. Very long
+ * sentences are capped so every field stays one line on mobile.
+ */
+export function firstSentence(text: string, max = 170): string {
+  const clean = text.trim();
+  if (!clean) return "";
+  const match = clean.match(/[^।.!?]+[।.!?]/);
+  const line = (match ? match[0] : clean).trim();
+  return line.length > max ? `${line.slice(0, max - 1).trimEnd()}…` : line;
+}
+
+/**
  * Show the full free text without any inline highlight/blur. Free users keep
  * a complete reading, and only the Pro teaser at the end of a section is
  * blurred.

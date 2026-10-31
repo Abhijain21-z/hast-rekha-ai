@@ -237,9 +237,36 @@ async function sendTemplate(
 }
 
 /**
- * Send one approved marketing template through Meta's WhatsApp Cloud API.
- * Returns the provider message id. Throws WhatsAppSendError on any failure.
+ * Send a free-form text message via WhatsApp Cloud API.
+ * Used for AI chatbot replies (within 24-hour window).
  */
+export async function sendTextMessage(to: string, body: string): Promise<string> {
+  const config = getWhatsAppConfig();
+  if (!config.configured) throw new Error("WhatsApp not configured");
+  const normalized = normalizeWhatsAppPhone(to);
+  if (!normalized) throw new Error("Invalid phone number");
+  const res = await fetch(
+    `https://graph.facebook.com/${config.apiVersion}/${config.phoneNumberId}/messages`,
+    {
+      method: "POST",
+      headers: { Authorization: `Bearer ${config.token}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        messaging_product: "whatsapp",
+        recipient_type: "individual",
+        to: normalized,
+        type: "text",
+        text: { body: body.slice(0, 4096) },
+      }),
+      signal: AbortSignal.timeout(10_000),
+    },
+  );
+  const json = (await res.json().catch(() => null)) as { messages?: { id?: string }[]; error?: { message?: string } } | null;
+  if (!res.ok) throw new Error(json?.error?.message || `WhatsApp API ${res.status}`);
+  const id = json?.messages?.[0]?.id;
+  if (!id) throw new Error("No message id returned");
+  return id;
+}
+
 export async function sendDailyRashifalTemplate(input: SendDailyRashifalInput): Promise<string> {
   const config = getWhatsAppConfig();
   if (!config.configured) {

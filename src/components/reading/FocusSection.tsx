@@ -1,13 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Target } from "lucide-react";
+import { ArrowRight, Crown, Sparkles, Target } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { focusOption } from "@/lib/focus";
 import type { PalmReport } from "@/lib/palm";
 import { Meter } from "./ReportCharts";
-import { ProReadMore, ProText } from "./ProTeaser";
+import { ProReadMore, ProText, firstSentence } from "./ProTeaser";
+import { ProPaywallModal, type ProPlan } from "./ProPaywall";
+import SamplePredictionModal from "./SamplePredictionModal";
 
 /**
  * The reader told us the one problem that brought them here. This card is the
@@ -28,6 +31,8 @@ export default function FocusSection({
   onUnlocked: () => void;
 }) {
   const { t, L } = useLang();
+  const [payPlan, setPayPlan] = useState<ProPlan | null>(null);
+  const [sampleOpen, setSampleOpen] = useState(false);
   const option = focusOption(focus);
   if (!option) return null;
 
@@ -67,17 +72,60 @@ export default function FocusSection({
 
           {primary && (
             <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.04] p-4 sm:p-5">
-              <p className="text-sm leading-relaxed text-slate-100 sm:text-[15px]">
-                <ProText text={L(primary.paragraphs[0])} unlocked={unlocked} />
-              </p>
-              {last && primary.paragraphs.length > 1 && (
-                <ProReadMore
-                  readingId={readingId}
-                  unlocked={unlocked}
-                  onUnlocked={onUnlocked}
-                  text={L(last)}
-                  className="mt-4"
-                />
+              {unlocked ? (
+                <>
+                  <p className="text-sm leading-relaxed text-slate-100 sm:text-[15px]">
+                    <ProText text={L(primary.paragraphs[0])} unlocked={unlocked} />
+                  </p>
+                  {last && primary.paragraphs.length > 1 && (
+                    <ProReadMore
+                      readingId={readingId}
+                      unlocked={unlocked}
+                      onUnlocked={onUnlocked}
+                      text={L(last)}
+                      className="mt-4"
+                    />
+                  )}
+                </>
+              ) : (
+                <>
+                  {/* Free version: one line only, then the Pro ask. */}
+                  <p className="text-sm leading-relaxed text-slate-100 sm:text-[15px]">
+                    {firstSentence(L(primary.paragraphs[0]))}
+                  </p>
+                  <div className="mt-4 rounded-2xl border border-gold-400/35 bg-gold-400/[0.08] p-4">
+                    <p className="text-sm font-semibold text-gold-100">
+                      {L({
+                        en: "The Pro plan gives you the vistrat (detailed) analysis of this problem.",
+                        hi: "प्रो प्लान में इस समस्या का विस्तृत (detailed) विश्लेषण मिलेगा।",
+                      })}
+                    </p>
+                    <p className="mt-1 text-xs leading-relaxed text-slate-300">
+                      {L({
+                        en: "5-year predictions, exact timing, personal upay and remedies — all based on your own chart. Do you want to see Pro?",
+                        hi: "5 साल की भविष्यवाणी, सटीक समय, व्यक्तिगत उपाय और रत्न — सब आपकी कुंडली के अनुसार। क्या आप प्रो देखना चाहते हैं?",
+                      })}
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setPayPlan("pro")}
+                        className="btn-gold inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold"
+                      >
+                        <Crown className="h-4 w-4" />
+                        {L({ en: "Yes, show me Pro — ₹51", hi: "हाँ, प्रो दिखाएँ — ₹51" })}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setSampleOpen(true)}
+                        className="inline-flex items-center gap-2 rounded-full border border-gold-400/45 bg-cosmic-900/60 px-4 py-2.5 text-sm font-medium text-gold-100 transition hover:border-gold-400/70 hover:bg-gold-400/10"
+                      >
+                        <Sparkles className="h-4 w-4" />
+                        {L({ en: "Sample prediction", hi: "सैंपल भविष्यवाणी देखें" })}
+                      </button>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           )}
@@ -94,11 +142,32 @@ export default function FocusSection({
               href="#sec-detailed"
               className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-gold-400/40 bg-gold-400/10 px-5 py-2.5 text-sm font-medium text-gold-100 transition hover:border-gold-400/70 hover:bg-gold-400/20"
             >
-              {L({ en: "Read all predictions", hi: "सभी भविष्यवाणियाँ पढ़ें" })} <ArrowRight className="h-4 w-4" />
+              {unlocked
+                ? L({ en: "Read all predictions", hi: "सभी भविष्यवाणियाँ पढ़ें" })
+                : L({ en: "See all fields", hi: "सभी क्षेत्र देखें" })}{" "}
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </motion.div>
+
+      <ProPaywallModal
+        key={payPlan ?? "closed"}
+        open={payPlan !== null}
+        onClose={() => setPayPlan(null)}
+        readingId={readingId}
+        defaultPlan={payPlan ?? "pro"}
+        onUnlocked={() => {
+          setPayPlan(null);
+          onUnlocked();
+        }}
+      />
+      <SamplePredictionModal
+        open={sampleOpen}
+        onClose={() => setSampleOpen(false)}
+        readingId={readingId}
+        onUnlocked={onUnlocked}
+      />
     </section>
   );
 }

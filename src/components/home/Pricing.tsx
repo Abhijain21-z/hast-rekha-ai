@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BookOpen, CalendarDays, Check, Crown, Gift, Sparkles } from "lucide-react";
+import { BookOpen, CalendarDays, Check, Crown, Sparkles } from "lucide-react";
 import { useLang } from "@/components/providers/LanguageProvider";
 import { SectionHeading, Badge } from "@/components/ui";
 import { PREMIUM_PERKS } from "@/lib/premium";
-import { BUNDLE_PRICE, BUNDLE_TEST, DIWALI_PRICE, MEMBERSHIP_PRICE, PDF_PRICE, ULTRA_PRICE } from "@/lib/flags";
+import { BUNDLE_PRICE, BUNDLE_TEST, MEMBERSHIP_PRICE, PDF_PRICE, ULTRA_PRICE } from "@/lib/flags";
 import DiwaliPujaPromo from "@/components/offers/DiwaliPujaPromo";
 import SevaPledge from "@/components/offers/SevaPledge";
 
@@ -65,7 +65,10 @@ export default function Pricing({ heading = true }: { heading?: boolean }) {
               <p><span className="gold-text font-display text-3xl font-bold leading-none">₹{PDF_PRICE}</span> <span className="text-xs text-slate-300">{t.pricing.premSub}</span></p>
             </div>
             <ul className="relative mt-5 flex-1 space-y-3">
-              {t.pricing.premList.map((f) => (
+              {[
+                ...t.pricing.premList,
+                L({ en: "Complete Diwali Puja PDF — Diwali gift", hi: "संपूर्ण दिवाली पूजा PDF — दिवाली गिफ्ट" }),
+              ].map((f) => (
                 <li key={f} className="flex items-start gap-2.5 text-sm text-gold-50">
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-400/25 text-gold-200"><Check className="h-3 w-3" /></span>
                   {f}
@@ -76,30 +79,6 @@ export default function Pricing({ heading = true }: { heading?: boolean }) {
               <Crown className="h-4 w-4" /> {t.pricing.choosePrem}
             </Link>
             <p className="relative mt-3 text-center text-[11px] leading-relaxed text-slate-300">{t.pricing.payNote}</p>
-          </motion.div>
-
-          {/* Pro + Diwali PDF — ₹99 add-on */}
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.6, delay: 0.12 }} className="relative flex flex-col overflow-hidden rounded-3xl border-2 border-gold-400/70 bg-gradient-to-br from-gold-400/15 via-cosmic-800/85 to-rose-400/10 p-6 gold-glow">
-            <div className="relative flex items-center justify-between gap-2">
-              <p className="font-display text-xl text-rose-200">{L({ en: "Pro + Diwali PDF", hi: "प्रो + दिवाली PDF" })}</p>
-              <Badge className="px-2.5 py-1 text-[10px]"><Gift className="h-3 w-3" /> {L({ en: "PDF add-on", hi: "PDF ऐड-ऑन" })}</Badge>
-            </div>
-            <p className="relative mt-3">
-              <span className="gold-text font-display text-3xl font-bold leading-none">₹{DIWALI_PRICE}</span>{" "}
-              <span className="text-xs text-slate-300">{L({ en: "one-time · Pro + PDF", hi: "एक बार · प्रो + PDF" })}</span>
-            </p>
-            <ul className="relative mt-5 flex-1 space-y-3">
-              {[...PREMIUM_PERKS.slice(0, 5), { en: "Complete Diwali Puja PDF", hi: "संपूर्ण दिवाली पूजा PDF" }].map((f) => (
-                <li key={f.en} className="flex items-start gap-2.5 text-sm text-slate-100">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-400/25 text-rose-300"><Check className="h-3 w-3" /></span>
-                  {L(f)}
-                </li>
-              ))}
-            </ul>
-            <Link href="/reading" className="btn-gold relative mt-6 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm">
-              <Gift className="h-4 w-4" /> {L({ en: "Get Pro + Diwali PDF", hi: "प्रो + दिवाली PDF लें" })}
-            </Link>
-            <p className="relative mt-3 text-center text-[11px] leading-relaxed text-slate-300">{L({ en: "Everything in Pro plus the complete Diwali Puja PDF.", hi: "प्रो की हर चीज़ और संपूर्ण दिवाली पूजा PDF।" })}</p>
           </motion.div>
 
           {/* Bundle (test) or legacy Ultra Pro */}
@@ -164,14 +143,14 @@ export default function Pricing({ heading = true }: { heading?: boolean }) {
           <p className="text-xs text-slate-400 text-center mb-6">✓ = शामिल | ✗ = नहीं मिलता</p>
           <div className="space-y-3">
             {[
-              { label: "12 जीवन-क्षेत्र", free: true, pro: true, diwali: true, bundle: true, tag: "सभी" },
-              { label: "5 साल की भविष्यवाणी", free: false, pro: true, diwali: true, bundle: true, tag: "प्रो+" },
-              { label: "साथी की भविष्यवाणी", free: false, pro: true, diwali: true, bundle: true, tag: "प्रो+" },
-              { label: "व्यक्तिगत उपाय", free: false, pro: true, diwali: true, bundle: true, tag: "प्रो+" },
-              { label: "PDF डाउनलोड", free: false, pro: true, diwali: true, bundle: true, tag: "प्रो+" },
-              { label: "दिवाली पूजा PDF", free: false, pro: false, diwali: true, bundle: false, tag: "PDF" },
-              { label: "धनदायक पुस्तक + 900+ पुस्तक PDF", free: false, pro: false, diwali: false, bundle: true, tag: "बंडल" },
-              { label: "200 AI टोकन (चैट)", free: false, pro: true, diwali: true, bundle: true, tag: "प्रो+" },
+              { label: "12 जीवन-क्षेत्र", free: true, pro: true, bundle: true, tag: "सभी" },
+              { label: "5 साल की भविष्यवाणी", free: false, pro: true, bundle: true, tag: "प्रो+" },
+              { label: "साथी की भविष्यवाणी", free: false, pro: true, bundle: true, tag: "प्रो+" },
+              { label: "व्यक्तिगत उपाय", free: false, pro: true, bundle: true, tag: "प्रो+" },
+              { label: "PDF डाउनलोड", free: false, pro: true, bundle: true, tag: "प्रो+" },
+              { label: "दिवाली पूजा PDF", free: false, pro: true, bundle: true, tag: "प्रो+" },
+              { label: "धनदायक पुस्तक + 900+ पुस्तक PDF", free: false, pro: false, bundle: true, tag: "बंडल" },
+              { label: "200 AI टोकन (चैट)", free: false, pro: true, bundle: true, tag: "प्रो+" },
             ].map((row, i) => (
               <div key={row.label} className={`flex flex-wrap items-center justify-between gap-3 rounded-2xl border px-4 py-3 text-sm transition ${i % 2 === 0 ? 'bg-white/[0.04] border-white/10' : 'bg-gold-400/[0.04] border-gold-400/15'}`}>
                 <span className="font-medium text-slate-100">{row.label}</span>
@@ -182,9 +161,6 @@ export default function Pricing({ heading = true }: { heading?: boolean }) {
                   <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${row.pro ? 'bg-gold-400/20 text-gold-200' : 'bg-rose-500/20 text-rose-300'}`}>
                     ₹51 {row.pro ? '✓' : '✗'}
                   </span>
-                  <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${row.diwali ? 'bg-rose-400/20 text-rose-200' : 'bg-rose-500/20 text-rose-300'}`}>
-                    ₹99 {row.diwali ? '✓' : '✗'}
-                  </span>
                   <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide ${row.bundle ? 'bg-mystic-400/20 text-mystic-200' : 'bg-rose-500/20 text-rose-300'}`}>
                     ₹199 {row.bundle ? '✓' : '✗'}
                   </span>
@@ -192,7 +168,7 @@ export default function Pricing({ heading = true }: { heading?: boolean }) {
               </div>
             ))}
           </div>
-          <p className="mt-3 text-[11px] text-slate-500 text-center">फ्री = निःशुल्क | ₹51 = प्रो | ₹99 = प्रो + दिवाली PDF | ₹199 = प्रो + पुस्तक (900+ लाइब्रेरी)</p>
+          <p className="mt-3 text-[11px] text-slate-500 text-center">फ्री = निःशुल्क | ₹51 = प्रो (दिवाली पूजा PDF शामिल) | ₹199 = प्रो + पुस्तक (900+ लाइब्रेरी)</p>
         </div>
 
         <div className="mt-8">
