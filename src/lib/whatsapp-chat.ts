@@ -2,11 +2,9 @@ import { pool } from "@/db";
 import { getChatConfig } from "@/lib/ai-chat";
 import { sendTextMessage } from "@/lib/whatsapp";
 import { isStopMessage, toIndiaTenDigits } from "@/lib/whatsapp";
+import { buildReportLink, fixLinks, wantsReportLink } from "@/lib/whatsapp-links";
 
 const MAX_HISTORY = 8;
-
-/** The only domain the bot may ever send. Anything else is rewritten. */
-const SITE_URL = "https://www.hastrekhaai.online";
 
 interface ChatMsg { role: "user" | "assistant"; content: string }
 
@@ -71,19 +69,6 @@ async function getUserContext(
   }
 }
 
-/** Keep only our own links; replace anything invented with the real report link. */
-function fixLinks(reply: string, link: string): string {
-  return reply.replace(/https?:\/\/[^\s)>\]]+/gi, (url) => {
-    try {
-      const host = new URL(url).hostname.replace(/^www\./, "").toLowerCase();
-      if (host === "hastrekhaai.online" || host === "hastrekhaai.ai.online") return url;
-    } catch {
-      /* fall through to the canonical link */
-    }
-    return link;
-  });
-}
-
 export async function handleWhatsAppChat(from: string, text: string): Promise<void> {
   const phone = toIndiaTenDigits(from);
   if (!phone) return;
@@ -110,9 +95,7 @@ export async function handleWhatsAppChat(from: string, text: string): Promise<vo
 
   // The report page is the only place where the Pro payment can actually
   // happen, so the bot always hands out this exact URL (never an invented one).
-  const reportLink = readingId
-    ? `${SITE_URL}/reading/${readingId}?utm_source=whatsapp&utm_campaign=pro_followup`
-    : `${SITE_URL}/reading?utm_source=whatsapp&utm_campaign=pro_followup`;
+  const reportLink = buildReportLink(readingId);
 
   const systemPrompt = `You are "Hast Rekha AI" — a warm, caring Vedic astrology friend chatting on WhatsApp. You're talking to someone who got a free reading and saw the Pro plan offer. Your REAL goal: make them feel understood and gently guide them to buy the Pro plan (Rs 51 for 5 years of predictions). Sales should feel like a friend's advice, never pushy.
 
@@ -124,7 +107,7 @@ How to reply (follow strictly):
 - VERY SHORT: 2-3 lines max, under 50 words. WhatsApp style. No long paragraphs ever.
 - Listen to EXACTLY what they said and reply to that. Don't repeat generic lines.
 - Empathise first ("samajh sakti hoon", "bilkul valid") then one gentle point.
-- If price doubt: "Sirf Rs 51 mein 5 saal ki predictions — ek chai se bhi sasta. Is Diwali Diwali Puja PDF bhi free mil rahi hai."
+- If price doubt: "Sirf Rs 51 mein 5 saal ki predictions — ek chai se bhi sasta. Is Diwali, Diwali Puja PDF bhi free mil rahi hai."
 - Diwali hook (use when natural, once): "Rs 51 ke Pro me sampurn Diwali Puja PDF bhi free hai — vidhi, samagri, mantra, aarti."
 - If trust doubt: "Aapka naam aur chart safe hai, hum data share nahi karte."
 - If not interested: respect, "koi baat nahi", leave door open, offer free general help.
@@ -173,12 +156,7 @@ How to reply (follow strictly):
     // The owner wants the real form/report link after the user shares details
     // or asks about Pro/payment — append it deterministically so the LLM can
     // never leave the user without a working link.
-    const wantsLink =
-      /(link|kharid|lena|lelu|le lu|payment|pay|pro|plan|report|reading|form|detail|naam|name|janm|birth|dob|date|samay|time|sthan|place)/i.test(
-        text,
-      ) ||
-      /\b\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4}\b/.test(text);
-    if (wantsLink && !reply.includes("hastrekhaai.online")) {
+    if (wantsReportLink(text) && !reply.includes(reportLink)) {
       reply = `${reply}\n\n👉 Apni report yahan kholein / Pro lein: ${reportLink}`;
     }
 
