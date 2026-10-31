@@ -110,7 +110,7 @@ export default function DetailedSections({
                         ) : (
                           <>
                             {/* Free version: one line only, then the Pro ask. */}
-                            <p className="text-sm leading-relaxed text-slate-200 sm:text-[15px]">
+                            <p className="line-clamp-1 text-sm leading-relaxed text-slate-200 sm:text-[15px]">
                               {firstSentence(L(paragraphs[0] ?? def.title))}
                             </p>
                             <div className="mt-4 rounded-2xl border border-gold-400/35 bg-gold-400/[0.08] p-4">
