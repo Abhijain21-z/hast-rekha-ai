@@ -341,9 +341,9 @@ export async function sendProReportTemplate(input: SendProReportInput): Promise<
  * Follow-up message for free readers who opted into marketing.
  * Uses a WhatsApp marketing template (must be approved by Meta first).
  *
- * The plan details (₹51 Pro, ₹199 Pro + book, ₹99 PDF) live inside the approved
- * template body, and the "Plan dekhein" URL button is static, so this call only
- * fills {{1}} with the reader's name.
+ * The plan details (₹51 Pro, ₹199 Pro + book, Diwali Puja PDF included) live
+ * inside the approved template body, and the "Plan dekhein" URL button is
+ * static, so this call only fills {{1}} with the reader's name.
  */
 export async function sendProFollowUpTemplate(input: {
   to: string;
@@ -357,7 +357,7 @@ export async function sendProFollowUpTemplate(input: {
   const templateName =
     input.templateName?.trim() ||
     process.env.WHATSAPP_PRO_FOLLOWUP_TEMPLATE_NAME?.trim() ||
-    "pro_followup";
+    "pro_followup_v4";
   const languageCode =
     input.languageCode?.trim() ||
     process.env.WHATSAPP_PRO_FOLLOWUP_TEMPLATE_LANG?.trim() ||

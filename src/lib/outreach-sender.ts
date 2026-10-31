@@ -40,7 +40,7 @@ export function maskPhone(phone: string): string {
 }
 
 function templateName(): string {
-  return process.env.WHATSAPP_PRO_FOLLOWUP_TEMPLATE_NAME?.trim() || "pro_followup";
+  return process.env.WHATSAPP_PRO_FOLLOWUP_TEMPLATE_NAME?.trim() || "pro_followup_v4";
 }
 
 async function mapLimit<T, R>(
@@ -148,7 +148,7 @@ export async function getEligibleFreeReaders(limit = 100): Promise<EligibleReade
 }
 
 /**
- * Send the approved `pro_followup` template to the next eligible batch.
+ * Send the approved Pro follow-up template to the next eligible batch.
  *
  * Sends run with a small concurrency pool (Meta's Cloud API handles this
  * comfortably) so a 100-message batch finishes inside a Vercel function even
